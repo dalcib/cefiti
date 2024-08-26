@@ -162,7 +162,7 @@ export const regras: Regra[] = [
   },
 
   //PINTA-PRETA-DOS-CITROS
-  {        
+  /*{        
     desc: 'DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros',
     part: ['mudas', 'estacas', 'gemas', 'material de propagação', 'plantas'],
     orig: ['AM', 'ES', 'MT', 'MS', 'MG', 'PE', 'PR', 'RJ', 'RS', 'SC', 'SP', 'BA', 'GO', 'TO'],
@@ -182,7 +182,7 @@ export const regras: Regra[] = [
       'PTV com a seguinte declaração adicional: "Os frutos foram produzidos sob Manejo Integrado de Guignardia citricarpa e submetidos a processo de seleção para a retirada de folhas e partes de ramos";',
       'Os frutos devem estar isentos de material vegetativo.'
     ]
-  },
+  },*/
 
   //MOKO-DA-BANANEIRA
   {
@@ -476,7 +476,7 @@ export const regras: Regra[] = [
   },
 
   //ANTHONOMUS TOMENTOSUS
-{
+/*{
     desc: "DE UF com ocorrência de Anthonomus tomentosus PARA UF sem a ocorrência de Anthonomus tomentosus",
     part: ["frutos"],
     orig: ["AP", "RR"],
@@ -487,7 +487,7 @@ export const regras: Regra[] = [
       'Se a partida não for proveniente dos municípios de Boa Vista, Mucajaí e Pacaraima: PTV com a seguinte declaração adicional: "A partida foi inspecionada e encontra-se livre de Anthonomus tomentosus"; ',
       'Estas exigências fitossanitárias só se aplicam a frutos frescos;'
     ]
-  },
+  },*/
 
   //CANCRO CÍTRICO
 

@@ -104,14 +104,14 @@ export const pragas: Praga[] = [
     hosp: ['Citrus spp.', 'Fortunella spp.', 'Poncirus spp.', 'Murraya paniculata'],
     files: [{ leg: 'Portaria SDA nº 317, de 21 de maio de 2021', link: 'PORT317-2021.pdf' }],
   },
-  {
+  /*{
     prag: 'Phyllosticta citricarpa (Guinardia citricarpa)',
     pragc: 'PINTA-PRETA-DOS-CITROS',
     hosp: ['Citrus spp.'],
     files: [
       { leg: 'Instrução Normativa MAPA nº 3, de 8 de janeiro de 2008', link: 'IN03-2008.pdf' },
     ],
-  },
+  },*/
   {
     prag: 'Ralstonia solanacearum raça 2',
     pragc: 'MOKO-DA-BANANEIRA',
@@ -128,7 +128,7 @@ export const pragas: Praga[] = [
       { leg: 'Instrução Normativa SDA/MAPA nº 17, de 31 de maio de 2005', link: 'IN17-2005.pdf' },
     ],
   },
-  {
+ /* {
     prag: 'Anthonomus tomentosus',
     pragc: 'ANTHONOMUS TOMENTOSUS',
     hosp: ['Malpighia spp.'],
@@ -138,7 +138,7 @@ export const pragas: Praga[] = [
         link: 'IN38-2018.pdf',
       },
     ],
-  },
+  },*/
   {
     prag: 'Xanthomonas citri subsp. citri',
     pragc: 'CANCRO CÍTRICO',

@@ -1,6 +1,6 @@
 {
   "name": "cefiti",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "description": "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual",
   "private": true,
   "repository": {
@@ -20,7 +20,8 @@
   "scripts": {
     "start": "node dev.mjs",
     "testonly": "node --test-reporter spec --test-only --test ./**/*test.cjs ",
-    "runtest": "node --test-reporter spec --test ./**/*test.cjs ",   "buildtest": "esbuild --bundle --platform=node  --format=cjs ./src/store.test.ts > ./src/store.test.cjs",
+    "runtest": "node --test-reporter spec --test ./**/*test.cjs ",   
+    "buildtest": "esbuild --bundle --platform=node  --format=cjs ./src/store.test.ts > ./src/store.test.cjs",
     "test": "npm run buildtest && npm run runtest",
     "analyze": "source-map-explorer public/*.js",
     "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx .",
@@ -29,7 +30,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "valtio": "^1.11.2"
+    "valtio": "^1.13.2"
   },
   "devDependencies": {
     "@types/d3-array": "^2.0.0",
@@ -37,10 +38,9 @@
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "d3-array": "^2.3.2",
-    "esbuild": "^0.19.2",
+    "esbuild": "^0.23.0",
     "source-map-explorer": "^2.1.0",
-    "tsx": "^3.12.7",
-    "typescript": "^3.6.3"
+    "typescript": "^5.5.4"
   },
   "browserslist": [
     ">0.2%",
