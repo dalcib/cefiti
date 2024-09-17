@@ -110,28 +110,28 @@ export const regras: Regra[] = [
   {
     desc: 'DE UF com ocorrência de HLB de município com ocorrência da praga e dos municípios limítrofes PARA qualquer UF',
     part: ['mudas', 'estacas', 'gemas', 'ramas', 'raízes', 'material de propagação vegetativo', 'plantas'],
-    orig: ['MG', 'MS', 'PR', 'SC', 'SP'],
+    orig: ['GO', 'MG', 'MS', 'PR', 'SC', 'SP'],
     dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Candidatus liberibacter americanus e Candidatus liberibacter asiaticus',
     exig: [
-      'PTV com a seguinte declaração adicional: “O material de propagação é originário de UF com ocorrência de Candidatus Liberibacter spp, foi produzido em ambiente protegido e encontra-se livre da praga”;  \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica.'
+      'PTV, baseado em CFO ou CFOC, com a seguinte Declaração Adicional (DA): "O material de propagação é originário de UF com ocorrência de Candidatus Liberibacter spp, foi produzido em ambiente protegido e encontra-se livre da praga".'
     ]
   },
 
   {
     desc: 'DE UF com ocorrência de HLB, de município sem ocorrência da praga, exceto aqueles limítrofes às áreas de ocorrência, PARA qualquer UF.',
     part: ['mudas', 'estacas', 'gemas', 'ramas', 'raízes', 'material de propagação vegetativo', 'plantas'],
-    orig: ['MG', 'MS', 'PR', 'SC', 'SP'],
+    orig: ['GO', 'MG', 'MS', 'PR', 'SC', 'SP'],
     dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Candidatus liberibacter americanus e Candidatus liberibacter asiaticus',
     exig: [
-      'PTV com a seguinte declaração adicional: “O material de propagação é originário de município sem ocorrência de Candidatus Liberibacter spp., de UF com ocorrência, e encontra-se livre da praga”; \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica.'
+      'PTV, baseado em Certificado Fitossanitário de Origem - CFO, ou Certificado Fitossanitário de Origem Consolidado - CFOC, com a seguinte Declaração Adicional (DA): "O material de propagação é originário de município sem ocorrência de Candidatus Liberibacter spp., de UF com ocorrência, e encontra-se livre da praga.".'
     ]
   },
   {
     desc: 'DE UF sem ocorrência de HLB PARA qualquer UF',
     part: ['mudas', 'estacas', 'gemas', 'ramas', 'raízes', 'material de propagação vegetativo', 'plantas'],
-    orig: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'PA', 'PB', 'PE', 'PI', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SE', 'TO'],
+    orig: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'MA', 'MT', 'PA', 'PB', 'PE', 'PI', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SE', 'TO'],
     dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Candidatus liberibacter americanus e Candidatus liberibacter asiaticus',
     exig: [
@@ -139,10 +139,10 @@ export const regras: Regra[] = [
     ]
   },
   {
-    desc: 'DE UF com ocorrência de HLB, bem como de município com ocorrência da praga e dos municípios limítrofes, PARA UF reconhecida pelo MAPA como sem ocorrência de HLB',
+    desc: 'DE UF com ocorrência de HLB, oriúndos de município com ocorrência da praga e dos municípios limítrofes, PARA UF reconhecida pelo MAPA como sem ocorrência de HLB',
     part: ['frutos'],
-    orig: ['MG', 'MS', 'PR', 'SC', 'SP'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'TO'],
+    orig: ['GO', 'MG', 'MS', 'PR', 'SC', 'SP'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'MA', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'TO'],
     prag: 'Candidatus liberibacter americanus e Candidatus liberibacter asiaticus',
     exig: [
       'PTV com a seguinte declaração adicional: “Os frutos foram submetidos a beneficiamento primário na origem para retirada de restos vegetais, qual seja, totalmente isentos de folhas e ramos de plantas cítricas”.'
@@ -568,6 +568,15 @@ export const regras: Regra[] = [
       exig: [
         'PTV com a seguinte DA: "O material de propagação é originário de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida".'
       ]
+  }, {  // 
+      desc: 'DE município não incluído nas áreas livres oficialmente reconhecidas PARA qualquer UF',
+      part: ['frutos', 'material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
+      orig: ['PA'],
+      dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+      prag: 'Xanthomonas citri subsp. citri',
+        exig: [
+          'Proibida a emissão de PTV. TRÂNSITO PROIBIDO.'
+        ]
    }, {  //4 - Destino PR
     desc: 'DE Área Livre de Cancro Cítrico PARA o Estado do Paraná',
     part: ['frutos'],
