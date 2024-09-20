@@ -1,7 +1,7 @@
 //CEFiTI - Regras
 
 // prettier-ignore
-export const regras: Regra[] = [
+export const regras /*: Regra[]*/ = [
 
   //MOSCA-DA-CARAMBOLA
   {

@@ -1,6 +1,6 @@
 //CEFiTI - Pragas
 
-export const pragas: Praga[] = [
+export const pragas /*: Praga[]*/ = [
   {
     prag: 'Bactrocera carambolae',
     pragc: 'MOSCA-DA-CARAMBOLA',

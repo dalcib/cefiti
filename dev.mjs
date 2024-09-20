@@ -1,4 +1,5 @@
 import esbuild from "esbuild";
+import fs from "fs"
 
 const context = await esbuild
   .context({
@@ -11,13 +12,14 @@ const context = await esbuild
     sourcemap: true,
     format: 'esm',
     jsx: 'automatic',
-    //target: ["chrome58", "firefox57", "safari11", "edge18"],
-    //splitting: true,
-    //target:'es2020' ,
     define: {
       //"process.env.NODE_ENV": isDevServer ? '"development"' : '"production"',
        "process.env.npm_package_version": '"'+ process.env.npm_package_version+'"'
-    }
+    },
+    //loader: { '.db.js': 'copy' },
+    external: ["./*.db.js"],
+    //assetNames: 'public/[name]',
+    metafile: true,
   })
   .catch(() => {
     console.log("ERROR");
@@ -35,3 +37,5 @@ const serveResult = await context.serve({
 });
 
 console.log(`Listening on http://${serveResult.host}:${serveResult.port}`);
+
+//fs.writeFileSync('meta.json', JSON.stringify(context.metafile))

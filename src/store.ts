@@ -1,12 +1,16 @@
 import {proxy} from 'valtio'
 import {useProxy} from 'valtio/utils'
 //import { useState } from './useState.js'
-import { regras, pragas, hospedeiros, estados } from './db'
+//import { regras, pragas, hospedeiros, estados } from './db'
+import { regras } from '../public/dbRegras.db'
+import { pragas } from '../public/dbPragas.db'
+import { hospedeiros } from '../public/dbHospedeiros.db'
+import { estados } from './estados'
 
 export class Store {
-  dbRegras= regras
-  dbHospedeiros = hospedeiros
-  dbPragas = pragas
+  dbRegras: Regra[]= regras
+  dbHospedeiros: Hospedeiro[] = hospedeiros
+  dbPragas: Praga[] = pragas
   estados = estados
   db: Db[] = this.dbRegras.map(regra => ({
     ...this.dbPragas.find(item => item.prag === regra.prag),
