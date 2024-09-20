@@ -1,4 +1,4 @@
-const cacheKey = 'CEFiTI6.2.0';
+const cacheKey = 'CEFiTI'+process.env.npm_package_version //6.2.0';
 
 self.addEventListener('install', (event) => {
     event.waitUntil(caches.open(cacheKey).then((cache) => { 

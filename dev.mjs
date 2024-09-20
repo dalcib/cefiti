@@ -16,6 +16,7 @@ const context = await esbuild
     //target:'es2020' ,
     define: {
       //"process.env.NODE_ENV": isDevServer ? '"development"' : '"production"',
+       "process.env.npm_package_version": '"'+ process.env.npm_package_version+'"'
     }
   })
   .catch(() => {
