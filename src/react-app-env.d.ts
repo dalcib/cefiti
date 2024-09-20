@@ -53,7 +53,8 @@ interface Estado {
 
 //declare global {
 interface Window {
-  ga(send: string, event?: string, search?: string, category?: string, data?: string): void
+  //ga(event?: string, search?: string, category?: string, data?: string): void
+  gtag(event: string, action_name: string, {eventCategory: string, dimension5: string});
 }
 //}
 

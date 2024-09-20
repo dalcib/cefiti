@@ -143,7 +143,8 @@ export class Store {
       return
     }
     if (process.env.NODE_ENV !== 'development') {
-      window.ga('send', 'event', 'search', 'click', store.dados.hospSci)
+      //window.ga('send', 'event', 'search', 'click', store.dados.hospSci)
+      window.gtag('event', 'click', {'eventCategory': 'search', 'dimension5': store.dados.hospSci});
       //console.log('click', process.env.NODE_ENV, store.dados.hospSci)
     }
     this.searched = true
