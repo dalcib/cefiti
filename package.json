@@ -1,6 +1,6 @@
 {
   "name": "cefiti",
-  "version": "6.2.0",
+  "version": "6.3.0",
   "description": "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual",
   "private": true,
   "repository": {
@@ -25,7 +25,8 @@
     "test": "npm run buildtest && npm run runtest",
     "analyze": "source-map-explorer public/*.js",
     "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx .",
-    "build": "esbuild src/index.tsx --bundle --minify --sourcemap --outfile=public/index.js --format=esm --jsx=automatic"
+    "build": "esbuild src/index.tsx --bundle --minify --sourcemap --outfile=public/index.js --format=esm --jsx=automatic",
+    "meta": "esbuild src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
   },
   "dependencies": {
     "react": "^18.2.0",

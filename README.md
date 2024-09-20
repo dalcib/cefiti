@@ -4,7 +4,17 @@
 
 ## **_CHANGELOG_**
 
-## 6.0.1
+## 6.3.0
+- [db] Atualiza HLB para Goiás
+- [db] Atualiza Cancro Cítrico para Pará
+- Separa arquivos da base de dados para serem fornecidos diretamente
+- Automatiza versão para o webworker- Atualiza o Analytics
+
+## 6.2.0
+- [db] Exclui Pinta Preta (_Phyllosticta citricarpa_)
+- [db] Exclui _Anthonomus tomentosus_
+
+## 6.1.0
 
 - [db] Fix: Ajusta DA na linha 117 das regras
 - [db] Fix: Tira o Abastecimento do nome do MAPA nas regras
