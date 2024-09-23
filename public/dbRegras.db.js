@@ -114,7 +114,7 @@ export const regras /*: Regra[]*/ = [
     dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Candidatus liberibacter americanus e Candidatus liberibacter asiaticus',
     exig: [
-      'PTV, baseado em CFO ou CFOC, com a seguinte Declaração Adicional (DA): "O material de propagação é originário de UF com ocorrência de Candidatus Liberibacter spp, foi produzido em ambiente protegido e encontra-se livre da praga". \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica.'
+      'PTV, baseado em Certificado Fitossanitário de Origem - CFO, ou Certificado Fitossanitário de Origem Consolidado - CFOC, com a seguinte Declaração Adicional (DA): "O material de propagação é originário de UF com ocorrência de Candidatus Liberibacter spp, foi produzido em ambiente protegido e encontra-se livre da praga". \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica.'
     ]
   },
 
