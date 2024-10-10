@@ -4,6 +4,10 @@
 
 ## **_CHANGELOG_**
 
+## 6.4.0
+ - [db] Inclúi a praga Moliníase
+ - Fix ComoboBox da Lista de Hospedeiros
+
 ## 6.3.0
 - [db] Atualiza HLB para Goiás
 - [db] Atualiza Cancro Cítrico para Pará

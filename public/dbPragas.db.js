@@ -1,6 +1,6 @@
 //CEFiTI - Pragas
 
-export const pragas /*: Praga[]*/ = [
+export const pragas /*: Praga[]*/ = window.pragas = [
   {
     prag: 'Bactrocera carambolae',
     pragc: 'MOSCA-DA-CARAMBOLA',
@@ -144,5 +144,15 @@ export const pragas /*: Praga[]*/ = [
     pragc: 'CANCRO CÍTRICO',
     hosp: ['Citrus spp.', 'Fortunella spp.', 'Poncirus spp.'],
     files: [{ leg: 'Instrução Normativa nº 21, de 25 de abril de 2018', link: 'IN21-2018.pdf' }],
+  },
+  {
+    prag: 'Moniliophthora roreri',
+    pragc: 'MONILÍASE',
+    hosp: ['Theobroma spp.'],
+    files: [
+      { leg: 'Portaria SDA nº 703, de 21 de novembro de 2022', link: 'PORT703-2022.pdf' },
+      { leg: 'Instrução Normativa nº 112, de 11 de dezembro de 2020', link: 'IN112-2020.pdf' },
+      { leg: 'Instrução Normativa nº 38, de 23 de junho de 2008', link: 'IN38-2008.pdf' }
+    ],
   },
 ]

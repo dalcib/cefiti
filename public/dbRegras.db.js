@@ -1,7 +1,7 @@
 //CEFiTI - Regras
 
 // prettier-ignore
-export const regras /*: Regra[]*/ = [
+export const regras /*: Regra[]*/ = window.regras =[
 
   //MOSCA-DA-CARAMBOLA
   {
@@ -646,4 +646,27 @@ export const regras /*: Regra[]*/ = [
     exig: [
       'PTV com a seguinte DA: "O material de propagação é proveniente de Área sob Erradicação e foi produzido em imóvel sem ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), conforme preconiza a legislação específica vigente".'
     ]
+  }, {
+    desc: 'DE Área com ocorrência de Monilíase PARA qualquer UF',
+    part: ['amêndoas', 'frutos', 'material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
+    orig: ['AM', 'AC'],
+    dest: ['AC', 'AL',  'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    prag: 'Moniliophthora roreri',
+    exig: [
+      'Se a partida for procedente DE área sob quarentena PARA local sem ocorrência: TRÂNSITO PROIBIDO (Todo o estado do AMAZONAS e dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves do ACRE) \na)Carga acompanhada de nota fiscal.', 
+      'Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente DE área sob quarentena PARA local sem ocorrência: \na)As amêndoas devem estar acondicionadas em sacarias novas;  \nb)Carga acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc)verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html .'
+    ]
+  },{
+    desc: 'DE Área sem ocorrência de Monilíase PARA qualquer UF',
+    part: ['amêndoas', 'frutos', 'material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
+    orig: ['AC', 'AL',  'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    dest: ['AC', 'AL', 'AM',  'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    prag: 'Moniliophthora roreri',
+    exig: [
+      'TRÂNSITO LIVRE:  \na)Carga acompanhada de nota fiscal.', 
+      'Obs: os municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves do ACRE são municípios com ocorrência, sendo o TRÂNSITO PROIBIDO destas orígens'
+    ]
   }]
+
+
+  

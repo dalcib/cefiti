@@ -1,7 +1,7 @@
 //CEFiTI - Hospedeiros
 
 // prettier-ignore
-export const hospedeiros /*: Hospedeiro[]*/ = [
+export const hospedeiros /*: Hospedeiro[]*/ = window.hospedeiros = [
   { nomeVul: 'Abacate (Persea gratissima)', nomeSci: 'Persea gratissima', count: 1 },
   { nomeVul: 'Abeto Europeu', nomeSci: 'Picea abies', count: 1 },
   { nomeVul: 'Abeto Vermelho Comum', nomeSci: 'Picea abies', count: 1 },
@@ -77,6 +77,8 @@ export const hospedeiros /*: Hospedeiro[]*/ = [
   { nomeVul: 'Bordo-da-videira', nomeSci: 'Acer circinatum', count: 1 },
   { nomeVul: 'Broto Vermelho Oriental', nomeSci: 'Cercis canadensis', count: 1 },
   { nomeVul: 'Cabeça-de-negro', nomeSci: 'Albizia lebbeck', count: 1 },
+  { nomeVul: 'Cacau', nomeSci: 'Theobroma cacao', count: 1 },
+  { nomeVul: 'Cacauí', nomeSci: 'Theobroma speciosum', count: 1 },
   { nomeVul: 'Caimito', nomeSci: 'Chrysophyllum cainito', count: 1 },
   { nomeVul: 'Cajá (S. lutea)', nomeSci: 'Spondias lutea', count: 1 },
   { nomeVul: 'Cajá (S. mombin)', nomeSci: 'Spondias mombin', count: 1 },
@@ -141,6 +143,7 @@ export const hospedeiros /*: Hospedeiro[]*/ = [
   { nomeVul: 'Coqueiro', nomeSci: 'Cocos nucifera', count: 1 },
   { nomeVul: 'Corrente-de-ouro', nomeSci: 'Laburnum anagyrioides', count: 1 },
   { nomeVul: 'Cutite', nomeSci: 'Pouteria macrophylla', count: 0 },
+  { nomeVul: 'Cupuaçu', nomeSci: 'Theobroma grandiflorum', count: 0 },
   { nomeVul: 'Espinho Branco', nomeSci: 'Craetaegus monogyna', count: 1 },
   { nomeVul: 'Faia Americana', nomeSci: 'Fagus americana', count: 1 },
   { nomeVul: 'Faia Cobre', nomeSci: 'Fagus sylvantica', count: 1 },
@@ -270,6 +273,7 @@ export const hospedeiros /*: Hospedeiro[]*/ = [
   { nomeVul: 'Teja', nomeSci: 'Tilia cordata', count: 1 },
   { nomeVul: 'Tejo', nomeSci: 'Tilia cordata', count: 1 },
   { nomeVul: 'Tella', nomeSci: 'Tilia cordata', count: 1 },
+  { nomeVul: 'Theobroma spp', nomeSci: 'Theobroma spp.', count: 1 },
   { nomeVul: 'Texa', nomeSci: 'Tilia cordata', count: 1 },
   { nomeVul: 'Tilha', nomeSci: 'Tilia cordata', count: 1 },
   { nomeVul: 'Tília', nomeSci: 'Tilia sp.', count: 1 },
