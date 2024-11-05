@@ -1,6 +1,6 @@
 //CEFiTI - Pragas
 
-export const pragas /*: Praga[]*/ = window.pragas = [
+export const pragas = globalThis.pragas = [
   {
     prag: 'Bactrocera carambolae',
     pragc: 'MOSCA-DA-CARAMBOLA',

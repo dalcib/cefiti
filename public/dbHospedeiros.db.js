@@ -1,7 +1,7 @@
 //CEFiTI - Hospedeiros
 
 // prettier-ignore
-export const hospedeiros /*: Hospedeiro[]*/ = window.hospedeiros = [
+export const hospedeiros = globalThis.hospedeiros = [
   { nomeVul: 'Abacate (Persea gratissima)', nomeSci: 'Persea gratissima', count: 1 },
   { nomeVul: 'Abeto Europeu', nomeSci: 'Picea abies', count: 1 },
   { nomeVul: 'Abeto Vermelho Comum', nomeSci: 'Picea abies', count: 1 },
