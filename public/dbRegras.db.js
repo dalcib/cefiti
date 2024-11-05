@@ -648,23 +648,55 @@ export const regras /*: Regra[]*/ = window.regras =[
     ]
   }, {
     desc: 'DE Área com ocorrência de Monilíase PARA qualquer UF',
-    part: ['amêndoas', 'frutos', 'material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
-    orig: ['AM', 'AC'],
+    part: ['frutos', 'material de propagação vegetativa', 'polpa in natura (não congelada)'],
+    orig: ['AM'],
     dest: ['AC', 'AL',  'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Moniliophthora roreri',
     exig: [
-      'Se a partida for procedente DE área sob quarentena PARA local sem ocorrência: TRÂNSITO PROIBIDO (Todo o estado do AMAZONAS e dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves do ACRE) \na)Carga acompanhada de nota fiscal.', 
-      'Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente DE área sob quarentena PARA local sem ocorrência: \na)As amêndoas devem estar acondicionadas em sacarias novas;  \nb)Carga acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc)verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html .'
+      'TRÂNSITO PROIBIDO',
+      'Obs: Polpa congelada tem trânsito livre'
+    ]
+  },{
+    desc: 'DE Área com ocorrência de Monilíase PARA qualquer UF', // amêndoas
+    part: ['amêndoas'],
+    orig: ['AM'],
+    dest: ['AC', 'AL',  'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    prag: 'Moniliophthora roreri',
+    exig: [
+      'Se a partida for de amêndoas não fermentadas ou não cumprem os requisitos do item abaixo: TRÂNSITO PROIBIDO', 
+      'Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente DE área sob quarentena PARA local sem ocorrência, TRÂNSITO LIVRE obedecendo as seguintes condiçoes: \na) As amêndoas devem estar acondicionadas em sacarias novas;  \nb) Carga deve estar acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc) Verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html .'
     ]
   },{
     desc: 'DE Área sem ocorrência de Monilíase PARA qualquer UF',
-    part: ['amêndoas', 'frutos', 'material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
-    orig: ['AC', 'AL',  'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
-    dest: ['AC', 'AL', 'AM',  'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    part: ['amêndoas', 'frutos', 'material de propagação vegetativa', 'polpa in natura (não congelada)'],
+    orig: ['AL', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Moniliophthora roreri',
     exig: [
-      'TRÂNSITO LIVRE:  \na)Carga acompanhada de nota fiscal.', 
-      'Obs: os municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves do ACRE são municípios com ocorrência, sendo o TRÂNSITO PROIBIDO destas orígens'
+      'TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal.'
+    ]
+  },{
+    desc: 'DE UF com e sem ocorrência de Monilíase PARA qualquer UF',  //Acre
+    part: [ 'frutos', 'material de propagação vegetativa', 'polpa in natura (não congelada)'],
+    orig: ['AC'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    prag: 'Moniliophthora roreri',
+    exig: [
+      'Se a partida for proveniente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves: TRÂNSITO PROIBIDO',
+      'Se a partida for proveniente dos demais municípios do Acre: TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal',
+      'Obs: Polpa congelada tem trânsito livre'
+    ]
+  },
+  {
+    desc: 'DE UF com e sem ocorrência de Monilíase PARA qualquer UF',  //Acre
+    part: ['amêndoas'],
+    orig: ['AC'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    prag: 'Moniliophthora roreri',
+    exig: [
+      'Se a partida for de amêndoas não fermentadas ou que não cumprem os requisitos do item seguinte, e são proveniente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves: TRÂNSITO PROIBIDO',
+      'Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves, TRÂNSITO LIVRE obedecendo as seguintes condiçoes: \na) As amêndoas devem estar acondicionadas em sacarias novas;  \nb) Carga deve estar acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc) Verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html .',
+      'Se a partida for proveniente dos demais municípios do Acre: TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal'
     ]
   }]
 
