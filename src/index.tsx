@@ -1,8 +1,6 @@
 import React from 'react'
-import ReactDom from 'react-dom'
-//import { renderToString } from 'react-dom/server'
+import {createRoot} from 'react-dom/client';
 import { App } from './app'
-//import * as serviceWorker from './serviceWorker'
 
 /* import './css/estilo-abas.css'
 import './css/estilo-formulario.css'
@@ -14,15 +12,17 @@ import './css/estilo-template.css' */
 import './css/main.css'
 import './css/app.css'
 
-//console.log(renderToString(<App />))
+const container = document.getElementById('root');
+if (!container) {
+  throw new Error('Root container missing in index.html');
+}
+const root = createRoot(container);
 
-ReactDom.render(
+root.render(
   //<React.StrictMode>
-  <App />,
+  <App />
   //</React.StrictMode>,
-  document.getElementById('root')
 )
-//ReactDom.hydrate(<App />, document.getElementById('root'))
 
 
 if ('serviceWorker' in navigator) {
