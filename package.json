@@ -29,6 +29,7 @@
     "meta": "esbuild src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
   },
   "dependencies": {
+    "prettier": "^3.5.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "valtio": "^1.13.2"

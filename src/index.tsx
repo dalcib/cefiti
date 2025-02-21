@@ -1,4 +1,4 @@
-import {createRoot} from 'react-dom/client';
+import { createRoot } from 'react-dom/client'
 import { App } from './app'
 
 /* import './css/estilo-abas.css'
@@ -11,11 +11,11 @@ import './css/estilo-template.css' */
 import './css/main.css'
 import './css/app.css'
 
-const container = document.getElementById('root');
+const container = document.getElementById('root')
 if (!container) {
-  throw new Error('Root container missing in index.html');
+  throw new Error('Root container missing in index.html')
 }
-const root = createRoot(container);
+const root = createRoot(container)
 
 root.render(
   //<React.StrictMode>
@@ -23,12 +23,14 @@ root.render(
   //</React.StrictMode>,
 )
 
-
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js').then(() => {
-    console.log('Service worker registered!');
-  }).catch((error) => {
-    console.warn('Error registering service worker:');
-    console.warn(error);
-  });
+  navigator.serviceWorker
+    .register('./sw.js')
+    .then(() => {
+      console.log('Service worker registered!')
+    })
+    .catch((error) => {
+      console.warn('Error registering service worker:')
+      console.warn(error)
+    })
 }

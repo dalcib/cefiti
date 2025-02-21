@@ -5,7 +5,7 @@ import { hospedeiros } from '../public/dbHospedeiros.db'
 //import './utils'
 import * as d3 from 'd3-array'
 import { describe, it, before, test } from 'node:test'
-import assert from 'node:assert';
+import assert from 'node:assert'
 
 const estadosSemAC = [
   { estado: '', UF: '' },
@@ -42,32 +42,37 @@ describe('Store origem e destino', () => {
   it('origem AC', () => {
     store.dados.orig = 'AC'
     //console.log('xxxxxxxxxx', store.destino, estadosSemAC)
-    assert.deepEqual(store.destino,estadosSemAC)
+    assert.deepEqual(store.destino, estadosSemAC)
   })
 
   it('origem MT', () => {
     store.dados.orig = 'MT'
-    assert.deepEqual(store.destino,estadosSemAC)
+    assert.deepEqual(store.destino, estadosSemAC)
   })
 
   it('destino AC', () => {
     store.dados.dest = 'AC'
-    assert.deepEqual(store.origem,estadosSemAC)
+    assert.deepEqual(store.origem, estadosSemAC)
   })
 
   it('destino MT', () => {
     store.dados.dest = 'MT'
-    assert.deepEqual(store.origem,estadosSemAC)
+    assert.deepEqual(store.origem, estadosSemAC)
   })
 })
 
 describe('Store hospedeiros nomeSci', () => {
   it('unique values Nome Vulgar', () => {
     //assert(store.listaNomesVul.length,hospedeiros.length)
-    assert.strictEqual(hospedeiros.map((v) => v.nomeVul).filter((i, x, a) => a.indexOf(i) !== x),[])
     assert.strictEqual(
-      hospedeiros.map((v) => v.nomeVul).filter((i, x, a) => a.indexOf(i) === x).length
-    , hospedeiros.length)
+      hospedeiros.map((v) => v.nomeVul).filter((i, x, a) => a.indexOf(i) !== x),
+      []
+    )
+    assert.strictEqual(
+      hospedeiros.map((v) => v.nomeVul).filter((i, x, a) => a.indexOf(i) === x)
+        .length,
+      hospedeiros.length
+    )
   })
 })
 
@@ -75,12 +80,12 @@ describe('Store partes', () => {
   it('de Acerola', () => {
     //debugger
     store.dados.hospSci = 'Malpighia spp.'
-    assert.strictEqual(store.partes,['', 'frutos'])
+    assert.strictEqual(store.partes, ['', 'frutos'])
   })
 
   it('de Banana', () => {
     store.dados.hospSci = 'Musa spp.'
-    assert.strictEqual(store.partes,[
+    assert.strictEqual(store.partes, [
       '',
       'flores',
       'frutos',
@@ -92,7 +97,7 @@ describe('Store partes', () => {
 
   it('de Citrus', () => {
     store.dados.hospSci = 'Citrus spp.'
-    assert.strictEqual(store.partes,[
+    assert.strictEqual(store.partes, [
       '',
       'caules',
       'estacas',
@@ -118,17 +123,17 @@ describe('Store partes', () => {
 describe('Store: gender', () => {
   it('Acacia sp.', () => {
     store.dados.hospSci = 'Acacia sp.'
-    assert.strictEqual(store.gender,'Acacia')
+    assert.strictEqual(store.gender, 'Acacia')
   })
 
   it('Acer macrophyllum', () => {
     store.dados.hospSci = 'Acer macrophyllum'
-    assert.strictEqual(store.gender,'Acer')
+    assert.strictEqual(store.gender, 'Acer')
   })
 
   it('Betula lutea (synonym: alleghaniensis) ', () => {
     store.dados.hospSci = 'Betula lutea (synonym: alleghaniensis)'
-    assert.strictEqual(store.gender,'Betula')
+    assert.strictEqual(store.gender, 'Betula')
   })
 })
 
@@ -141,22 +146,20 @@ describe('Store filtro geral', () => {
   })
 
   it('Musa spp. count', () => {
-    assert.strictEqual(store.result.length,3)
+    assert.strictEqual(store.result.length, 3)
   })
   it('Musa spp. legis', () => {
-    assert.strictEqual(store.result.flatMap((v) => v.files).map((v) => v.link),[
-      'IN17-2009.pdf',
-      'IN17-2005.pdf',
-      'IN17-2005.pdf',
-    ])
+    assert.strictEqual(
+      store.result.flatMap((v) => v.files).map((v) => v.link),
+      ['IN17-2009.pdf', 'IN17-2005.pdf', 'IN17-2005.pdf']
+    )
   })
 
   it('Musa spp. pragas', () => {
-    assert.strictEqual(store.result.map((v) => v.pragc),[
-      'MOKO-DA-BANANEIRA',
-      'SIGATOKA NEGRA',
-      'SIGATOKA NEGRA',
-    ])
+    assert.strictEqual(
+      store.result.map((v) => v.pragc),
+      ['MOKO-DA-BANANEIRA', 'SIGATOKA NEGRA', 'SIGATOKA NEGRA']
+    )
   })
 
   it('Eugenia uniflora', () => {
@@ -164,7 +167,7 @@ describe('Store filtro geral', () => {
     store.dados.prod = 'frutos'
     store.dados.orig = 'PI'
     store.dados.dest = 'DF'
-    assert.strictEqual(store.result.length,1)
+    assert.strictEqual(store.result.length, 1)
   })
 
   it('Malus spp.', () => {
@@ -172,9 +175,15 @@ describe('Store filtro geral', () => {
     store.dados.prod = 'frutos'
     store.dados.orig = 'SC'
     store.dados.dest = 'MT'
-    assert.strictEqual(store.result.length,1)
-    assert.strictEqual(store.result.flatMap((v) => v.files).map((v) => v.link),['IN20-2013.pdf'])
-    assert.strictEqual(store.result.map((v) => v.pragc),['CANCRO EUROPEU DAS POMÁCEAS'])
+    assert.strictEqual(store.result.length, 1)
+    assert.strictEqual(
+      store.result.flatMap((v) => v.files).map((v) => v.link),
+      ['IN20-2013.pdf']
+    )
+    assert.strictEqual(
+      store.result.map((v) => v.pragc),
+      ['CANCRO EUROPEU DAS POMÁCEAS']
+    )
   })
 
   it('Citrus sinensis sementes SP->ES', () => {
@@ -182,7 +191,7 @@ describe('Store filtro geral', () => {
     store.dados.prod = 'sementes'
     store.dados.orig = 'SP'
     store.dados.dest = 'ES'
-    assert.strictEqual(store.result.length,0)
+    assert.strictEqual(store.result.length, 0)
     //assert(store.result.by('files').flatten().by('link'),['PORT291-1997.pdf', 'IN53-2008.pdf'])
     //assert(store.result.by('pragc'),['CANCRO CÍTRICO', 'GREENING'])
   })
@@ -192,12 +201,15 @@ describe('Store filtro geral', () => {
     store.dados.prod = 'material de propagação'
     store.dados.orig = 'RS'
     store.dados.dest = 'ES'
-    assert.strictEqual(store.result.length,2)
-    assert.strictEqual(store.result.flatMap((v) => v.files).map((v) => v.link),[
-      'IN03-2008.pdf',
-      'IN21-2018.pdf',
-    ])
-    assert.strictEqual(store.result.map((v) => v.pragc),['PINTA-PRETA-DOS-CITROS', 'CANCRO CÍTRICO'])
+    assert.strictEqual(store.result.length, 2)
+    assert.strictEqual(
+      store.result.flatMap((v) => v.files).map((v) => v.link),
+      ['IN03-2008.pdf', 'IN21-2018.pdf']
+    )
+    assert.strictEqual(
+      store.result.map((v) => v.pragc),
+      ['PINTA-PRETA-DOS-CITROS', 'CANCRO CÍTRICO']
+    )
   })
 
   it('Citrus sinensis mudas SP->ES', () => {
@@ -205,17 +217,15 @@ describe('Store filtro geral', () => {
     store.dados.prod = 'mudas'
     store.dados.orig = 'SP'
     store.dados.dest = 'ES'
-    assert.strictEqual(store.result.length,3)
-    assert.strictEqual(store.result.flatMap((v) => v.files).map((v) => v.link),[
-      'IN53-2008.pdf',
-      'IN03-2008.pdf',
-      'IN21-2018.pdf',
-    ])
-    assert.strictEqual(store.result.map((v) => v.pragc),[
-      'GREENING',
-      'PINTA-PRETA-DOS-CITROS',
-      'CANCRO CÍTRICO',
-    ])
+    assert.strictEqual(store.result.length, 3)
+    assert.strictEqual(
+      store.result.flatMap((v) => v.files).map((v) => v.link),
+      ['IN53-2008.pdf', 'IN03-2008.pdf', 'IN21-2018.pdf']
+    )
+    assert.strictEqual(
+      store.result.map((v) => v.pragc),
+      ['GREENING', 'PINTA-PRETA-DOS-CITROS', 'CANCRO CÍTRICO']
+    )
     assert.deepStrictEqual(store.result, snap)
   })
 })
@@ -223,16 +233,18 @@ describe('Store filtro geral', () => {
 describe('Sync between NomeVulg and NomeSci', () => {
   it('should define NomeVulg based in NomeSci', () => {
     // @ts-expect-error xxx
-    const e: EventChange = { currentTarget: { name: 'hospSci', value: 'Musa spp.' } }
+    const e: EventChange = {
+      currentTarget: { name: 'hospSci', value: 'Musa spp.' },
+    }
     store.handleChanges(e)
     //store.dados.hospSci = 'Musa spp.'
-    assert.strictEqual(store.dados.hospVul,'Banana')
+    assert.strictEqual(store.dados.hospVul, 'Banana')
   })
   it('should define NomeSci  based in NomeVulg ', () => {
     // @ts-expect-error xxx
     store.handleChanges({ currentTarget: { name: 'hospVul', value: 'Banana' } })
     //store.dados.hospVul = 'Banana'
-    assert.strictEqual(store.dados.hospSci,'Musa spp.')
+    assert.strictEqual(store.dados.hospSci, 'Musa spp.')
   })
 })
 
@@ -240,7 +252,7 @@ test('Check normalization of db ', () => {
   regras.map((regra) => {
     const praga = pragas.find((item) => item.prag === regra.prag)
     if (!praga) {
-      assert.strictEqual(regra.prag,praga)
+      assert.strictEqual(regra.prag, praga)
       //throw Error(`Dados da praga ${regra.prag} não cadastrados.`)
     }
     return regra
@@ -256,7 +268,10 @@ test('duplicates nomeVul', () => {
     ),
     ([key, values]) => ({ nomeVulg: key, ...values })
   )
-  assert.strictEqual(countDupli.filter((v) => !v.countNomeVulg),[])
+  assert.strictEqual(
+    countDupli.filter((v) => !v.countNomeVulg),
+    []
+  )
 })
 
 test('should join Pragas and Regras', () => {
@@ -266,196 +281,168 @@ test('should join Pragas and Regras', () => {
   })
 })
 
-//`Store filtro geral Citrus sinensis mudas SP->ES 1`] = 
+//`Store filtro geral Citrus sinensis mudas SP->ES 1`] =
 const snap = [
-   {
-    "desc": "DE UF com ocorrência de Greening PARA UF reconhecida pelo MAPA como livre da ocorrência de Greening",
-    "dest":  [
-      "AC",
-      "AL",
-      "AM",
-      "AP",
-      "BA",
-      "CE",
-      "DF",
-      "ES",
-      "GO",
-      "MA",
-      "MS",
-      "MT",
-      "PA",
-      "PB",
-      "PE",
-      "PI",
-      "RJ",
-      "RN",
-      "RO",
-      "RR",
-      "RS",
-      "SC",
-      "SE",
-      "TO",
+  {
+    desc: 'DE UF com ocorrência de Greening PARA UF reconhecida pelo MAPA como livre da ocorrência de Greening',
+    dest: [
+      'AC',
+      'AL',
+      'AM',
+      'AP',
+      'BA',
+      'CE',
+      'DF',
+      'ES',
+      'GO',
+      'MA',
+      'MS',
+      'MT',
+      'PA',
+      'PB',
+      'PE',
+      'PI',
+      'RJ',
+      'RN',
+      'RO',
+      'RR',
+      'RS',
+      'SC',
+      'SE',
+      'TO',
     ],
-    "exig":  [
+    exig: [
       'PTV;\n Obs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em \ndesacordo com o previsto nesta Instrução Normativa, será sumariamente destruída, não cabendo ao infrator qualquer tipo de indenização, sem prejuízo das demais sanções estabelecidas pela legislação estadual e federal de defesa sanitária vegetal, conforme o art. 5º, da Instrução Normativa MAPA nº. 53, de 16 de outubro de 2010.',
     ],
-    "files":  [
-       {
-        "leg": "Instrução Normativa nº 53, de 16 de outubro de 2008",
-        "link": "IN53-2008.pdf",
+    files: [
+      {
+        leg: 'Instrução Normativa nº 53, de 16 de outubro de 2008',
+        link: 'IN53-2008.pdf',
       },
     ],
-    "hosp":  [
-      "Citrus spp.",
-      "Fortunella spp.",
-      "Poncirus spp.",
-      "Murraya paniculata",
+    hosp: [
+      'Citrus spp.',
+      'Fortunella spp.',
+      'Poncirus spp.',
+      'Murraya paniculata',
     ],
-    "orig":  [
-      "MG",
-      "PR",
-      "SP",
+    orig: ['MG', 'PR', 'SP'],
+    part: [
+      'mudas',
+      'estacas',
+      'gemas',
+      'ramas',
+      'raízes',
+      'material de propagação',
+      'plantas',
     ],
-    "part":  [
-      "mudas",
-      "estacas",
-      "gemas",
-      "ramas",
-      "raízes",
-      "material de propagação",
-      "plantas",
-    ],
-    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
-    "pragc": "GREENING",
+    prag: 'Candidatus liberibacter americanus e Candidatus liberibacter asiaticus',
+    pragc: 'GREENING',
   },
-   {
-    "desc": "DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros",
-    "dest":  [
-      "AC",
-      "AL",
-      "AM",
-      "AP",
-      "BA",
-      "CE",
-      "DF",
-      "ES",
-      "GO",
-      "MA",
-      "MG",
-      "MS",
-      "MT",
-      "PA",
-      "PB",
-      "PE",
-      "PI",
-      "PR",
-      "RN",
-      "RO",
-      "RR",
-      "RS",
-      "SC",
-      "SE",
-      "SP",
-      "TO",
+  {
+    desc: 'DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros',
+    dest: [
+      'AC',
+      'AL',
+      'AM',
+      'AP',
+      'BA',
+      'CE',
+      'DF',
+      'ES',
+      'GO',
+      'MA',
+      'MG',
+      'MS',
+      'MT',
+      'PA',
+      'PB',
+      'PE',
+      'PI',
+      'PR',
+      'RN',
+      'RO',
+      'RR',
+      'RS',
+      'SC',
+      'SE',
+      'SP',
+      'TO',
     ],
-    "exig":  [
-      "PTV;",
-      "A partida deve ser transportada em veículos fechados ou totalmente protegidos por lona.",
+    exig: [
+      'PTV;',
+      'A partida deve ser transportada em veículos fechados ou totalmente protegidos por lona.',
     ],
-    "files":  [
-       {
-        "leg": "Instrução Normativa MAPA nº 3, de 8 de janeiro de 2008",
-        "link": "IN03-2008.pdf",
+    files: [
+      {
+        leg: 'Instrução Normativa MAPA nº 3, de 8 de janeiro de 2008',
+        link: 'IN03-2008.pdf',
       },
     ],
-    "hosp":  [
-      "Citrus spp.",
+    hosp: ['Citrus spp.'],
+    orig: [
+      'AM',
+      'ES',
+      'MT',
+      'MS',
+      'MG',
+      'PE',
+      'PR',
+      'RJ',
+      'RS',
+      'SC',
+      'SP',
+      'BA',
+      'GO',
     ],
-    "orig":  [
-      "AM",
-      "ES",
-      "MT",
-      "MS",
-      "MG",
-      "PE",
-      "PR",
-      "RJ",
-      "RS",
-      "SC",
-      "SP",
-      "BA",
-      "GO",
-    ],
-    "part":  [
-      "mudas",
-      "estacas",
-      "gemas",
-      "material de propagação",
-      "plantas",
-    ],
-    "prag": "Phyllosticta citricarpa (Guinardia citricarpa)",
-    "pragc": "PINTA-PRETA-DOS-CITROS",
+    part: ['mudas', 'estacas', 'gemas', 'material de propagação', 'plantas'],
+    prag: 'Phyllosticta citricarpa (Guinardia citricarpa)',
+    pragc: 'PINTA-PRETA-DOS-CITROS',
   },
-   {
-    "desc": "DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
-    "dest":  [
-      "AC",
-      "AL",
-      "AM",
-      "AP",
-      "BA",
-      "CE",
-      "DF",
-      "ES",
-      "GO",
-      "MA",
-      "MG",
-      "MS",
-      "MT",
-      "PA",
-      "PB",
-      "PE",
-      "PI",
-      "PR",
-      "RJ",
-      "RN",
-      "RO",
-      "RR",
-      "RS",
-      "SC",
-      "SE",
-      "SP",
-      "TO",
+  {
+    desc: 'DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF',
+    dest: [
+      'AC',
+      'AL',
+      'AM',
+      'AP',
+      'BA',
+      'CE',
+      'DF',
+      'ES',
+      'GO',
+      'MA',
+      'MG',
+      'MS',
+      'MT',
+      'PA',
+      'PB',
+      'PE',
+      'PI',
+      'PR',
+      'RJ',
+      'RN',
+      'RO',
+      'RR',
+      'RS',
+      'SC',
+      'SE',
+      'SP',
+      'TO',
     ],
-    "exig":  [
-      'PTV com a seguinte DA: \\"O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico (Xanthomonas citri subsp. citri) e foi produzido conforme preconiza a legislação específica em vigor\\".' ,
+    exig: [
+      'PTV com a seguinte DA: \\"O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico (Xanthomonas citri subsp. citri) e foi produzido conforme preconiza a legislação específica em vigor\\".',
     ],
-    "files":  [
-       {
-        "leg": "Instrução Normativa nº 21, de 25 de abril de 2018",
-        "link": "IN21-2018.pdf",
+    files: [
+      {
+        leg: 'Instrução Normativa nº 21, de 25 de abril de 2018',
+        link: 'IN21-2018.pdf',
       },
     ],
-    "hosp":  [
-      "Citrus spp.",
-      "Fortunella spp.",
-      "Poncirus spp.",
-    ],
-    "orig":  [
-      "MT",
-      "MS",
-      "RS",
-      "SP",
-      "SC",
-    ],
-    "part":  [
-      "material de propagação",
-      "mudas",
-      "estacas",
-      "gemas",
-      "plantas",
-    ],
-    "prag": "Xanthomonas citri subsp. citri",
-    "pragc": "CANCRO CÍTRICO",
+    hosp: ['Citrus spp.', 'Fortunella spp.', 'Poncirus spp.'],
+    orig: ['MT', 'MS', 'RS', 'SP', 'SC'],
+    part: ['material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
+    prag: 'Xanthomonas citri subsp. citri',
+    pragc: 'CANCRO CÍTRICO',
   },
 ]

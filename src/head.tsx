@@ -19,14 +19,28 @@ export const Head = () => (
         </div>
         <div id="identificacao-sistema" style={{ float: 'none' }}>
           <br />
-          <div style={{ float: 'right', color: '#fff', padding: '5px 10px 5px 15px' }}>
+          <div
+            style={{
+              float: 'right',
+              color: '#fff',
+              padding: '5px 10px 5px 15px',
+            }}
+          >
             <p>Versão {pkg.version}</p>
           </div>
           <h1>CEFiTI</h1>
-          <div style={{ float: 'right', color: '#fff', padding: '5px 10px 5px 15px' }}>
+          <div
+            style={{
+              float: 'right',
+              color: '#fff',
+              padding: '5px 10px 5px 15px',
+            }}
+          >
             <p>Data: {new Date().toLocaleDateString()}</p>
           </div>
-          <h2>Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual</h2>
+          <h2>
+            Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual
+          </h2>
         </div>
         <div id="dados-login" />
       </div>
