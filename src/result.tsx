@@ -121,7 +121,7 @@ function Result() {
           <h4 className="h4">TRÂNSITO NACIONAL DE PARTIDA EXPORTADA</h4>
           <div style={{ margin: '6px' }}>
             <span>
-              1 – SE A PARTIDA JÁ ESTIVER COM CERTIFICADO FITOSSANITÁRIO NO
+              1 - SE A PARTIDA JÁ ESTIVER COM CERTIFICADO FITOSSANITÁRIO NO
               INTERIOR DO BRASIL, EM TRÂNSITO PARA PONTO DE EGRESSO:
             </span>
             <span>- Certificado Fitossanitário.</span>

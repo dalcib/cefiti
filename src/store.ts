@@ -36,17 +36,23 @@ export class Store {
   }
 
   get listaNomesSci() {
-    return this.hospedeirosRegulamentados
-      .map((v) => v.nomeSci)
-      .filter((i, x, a) => a.indexOf(i) === x)
-      .sort((a, b) => a.localeCompare(b))
+    return [
+      '',
+      ...this.hospedeirosRegulamentados
+        .map((v) => v.nomeSci)
+        .filter((i, x, a) => a.indexOf(i) === x)
+        .sort((a, b) => a.localeCompare(b)),
+    ]
   }
 
   get listaNomesVul() {
-    return this.hospedeirosRegulamentados
-      .map((v) => v.nomeVul)
-      .filter((i, x, a) => a.indexOf(i) === x)
-      .sort((a, b) => a.localeCompare(b))
+    return [
+      '',
+      ...this.hospedeirosRegulamentados
+        .map((v) => v.nomeVul)
+        .filter((i, x, a) => a.indexOf(i) === x)
+        .sort((a, b) => a.localeCompare(b)),
+    ]
   }
 
   get empty(): boolean {

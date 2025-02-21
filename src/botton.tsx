@@ -19,10 +19,6 @@ export const Botton = () => (
       <h5 className="center">
         Departamento de Sanidade Vegetal - DSV/SDA/MAPA
       </h5>
-      {/*       <h5 className="center">
-        Desenvolvido pelo SSV-MT -
-        <a href="mailto:ssv-mt@agricultura.gov.br">ssv-mt@agricultura.gov.br</a>
-      </h5> */}
       <h6 className="center">
         Código fonte:
         <a href="https://github.com/dalcib/cefiti">
