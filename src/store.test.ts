@@ -73,7 +73,7 @@ describe('Store hospedeiros nomeSci', () => {
 
 describe('Store partes', () => {
   it('de Acerola', () => {
-    debugger
+    //debugger
     store.dados.hospSci = 'Malpighia spp.'
     assert.strictEqual(store.partes,['', 'frutos'])
   })
@@ -222,14 +222,14 @@ describe('Store filtro geral', () => {
 
 describe('Sync between NomeVulg and NomeSci', () => {
   it('should define NomeVulg based in NomeSci', () => {
-    // @ts-ignore
+    // @ts-expect-error xxx
     const e: EventChange = { currentTarget: { name: 'hospSci', value: 'Musa spp.' } }
     store.handleChanges(e)
     //store.dados.hospSci = 'Musa spp.'
     assert.strictEqual(store.dados.hospVul,'Banana')
   })
   it('should define NomeSci  based in NomeVulg ', () => {
-    // @ts-ignore
+    // @ts-expect-error xxx
     store.handleChanges({ currentTarget: { name: 'hospVul', value: 'Banana' } })
     //store.dados.hospVul = 'Banana'
     assert.strictEqual(store.dados.hospSci,'Musa spp.')

@@ -20,7 +20,7 @@
   "scripts": {
     "start": "node dev.mjs",
     "testonly": "node --test-reporter spec --test-only --test ./**/*test.cjs ",
-    "runtest": "node --test-reporter spec --test ./**/*test.cjs ",   
+    "runtest": "node --test-reporter spec --test ./**/*test.cjs ",
     "buildtest": "esbuild --bundle --platform=node  --format=cjs ./src/store.test.ts > ./src/store.test.cjs",
     "test": "npm run buildtest && npm run runtest",
     "analyze": "source-map-explorer public/*.js",
@@ -34,28 +34,24 @@
     "valtio": "^1.13.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.20.0",
     "@types/d3-array": "^2.0.0",
     "@types/node": "^20.4.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "d3-array": "^2.3.2",
     "esbuild": "^0.23.0",
+    "eslint": "^9.20.1",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^16.0.0",
     "source-map-explorer": "^2.1.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.24.1"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
-  "eslintIgnore": [
-    "/assests/**/*",
-    "assets/**/*"
   ]
 }

@@ -7,7 +7,7 @@ interface PropsSelect {
   empty: boolean
 }
 
-const Select = memo(({ source, name, empty }: PropsSelect) => {
+const Select = memo(function Select ({ source, name, empty }: PropsSelect)  {
   const store = useStore()
   return (
     <select

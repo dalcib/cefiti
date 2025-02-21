@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 const cacheKey = 'CEFiTI'+process.env.npm_package_version //6.2.0';
 
 self.addEventListener('install', (event) => {

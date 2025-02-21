@@ -117,19 +117,21 @@ export class Store {
   handleChanges(event: React.FormEvent<HTMLSelectElement>) {
     const target = event.currentTarget;
     switch (target.name) {
-      case "hospSci":
+      case "hospSci": {
         const hospVulg = this.dbHospedeiros.find(
           (hosp) => hosp.nomeSci === target.value
         );
         this.dados.prod = "";
-        this.dados.hospVul = hospVulg ? hospVulg.nomeVul : "";
+        this.dados.hospVul = hospVulg ? hospVulg.nomeVul : "";}
         break;
-      case "hospVul":
+      case "hospVul": {
         const hospSci = this.dbHospedeiros.find(
           (hosp) => hosp.nomeVul === target.value
         );
         this.dados.prod = "";
         this.dados.hospSci = hospSci ? hospSci.nomeSci : "";
+        break;
+      }
         break;
       default:
         break;
