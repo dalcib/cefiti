@@ -4,17 +4,27 @@
 
 ## **_CHANGELOG_**
 
+## 7.0.0
+
+- Atualiza React para 19.0.0 e Valtio para 2.0.0
+- Reimplementa Eslint e Prettier
+- Refactora Form
+- [db] Atualiza Paraíba e Piauí como área infestada de Sigatoka Negra
+
 ## 6.4.0
- - [db] Inclúi a praga Moliníase
- - Fix ComoboBox da Lista de Hospedeiros
+
+- [db] Inclúi a praga Moliníase
+- Fix ComoboBox da Lista de Hospedeiros
 
 ## 6.3.0
+
 - [db] Atualiza HLB para Goiás
 - [db] Atualiza Cancro Cítrico para Pará
 - Separa arquivos da base de dados para serem fornecidos diretamente
 - Automatiza versão para o webworker- Atualiza o Analytics
 
 ## 6.2.0
+
 - [db] Exclui Pinta Preta (_Phyllosticta citricarpa_)
 - [db] Exclui _Anthonomus tomentosus_
 
@@ -30,7 +40,7 @@
 - [db] Atualizaçao geral da legislação
 - Atualizaççao do React e React-DOM
 - Substitui Mobx por Valtio
-- Implementa PWA - Aplicativo instalável 
+- Implementa PWA - Aplicativo instalável
 
 ## 5.2.27
 

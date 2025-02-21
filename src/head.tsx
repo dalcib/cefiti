@@ -1,5 +1,5 @@
 import Menu from './menu'
-import pkg from './../package.json'
+import { version } from './../package.json'
 
 export const Head = () => (
   <>
@@ -26,7 +26,7 @@ export const Head = () => (
               padding: '5px 10px 5px 15px',
             }}
           >
-            <p>Versão {pkg.version}</p>
+            <p>Versão {version}</p>
           </div>
           <h1>CEFiTI</h1>
           <div
