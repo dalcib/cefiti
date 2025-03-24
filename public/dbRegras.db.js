@@ -161,29 +161,6 @@ export const regras = globalThis.regras =[
     ]
   },
 
-  //PINTA-PRETA-DOS-CITROS
-  /*{        
-    desc: 'DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros',
-    part: ['mudas', 'estacas', 'gemas', 'material de propagação', 'plantas'],
-    orig: ['AM', 'ES', 'MT', 'MS', 'MG', 'PE', 'PR', 'RJ', 'RS', 'SC', 'SP', 'BA', 'GO', 'TO'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP'],
-    prag: 'Phyllosticta citricarpa (Guinardia citricarpa)',
-    exig: [
-      'PTV;',
-      'A partida deve ser transportada em veículos fechados ou totalmente protegidos por lona.'
-    ]
-  }, {
-    desc: 'DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros',
-    part: ['frutos'],
-    orig: ['AM', 'ES', 'MT', 'MS', 'MG', 'PE', 'PR', 'RJ', 'RS', 'SC', 'SP', 'BA', 'GO', 'TO'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP'],
-    prag: 'Phyllosticta citricarpa (Guinardia citricarpa)',
-    exig: [
-      'PTV com a seguinte declaração adicional: "Os frutos foram produzidos sob Manejo Integrado de Guignardia citricarpa e submetidos a processo de seleção para a retirada de folhas e partes de ramos";',
-      'Os frutos devem estar isentos de material vegetativo.'
-    ]
-  },*/
-
   //MOKO-DA-BANANEIRA
   {
     desc: 'Material para pesquisa DE qualquer UF PARA UF sem ocorrência ou Área Livre de Moko-da-bananeira.', 
@@ -474,20 +451,6 @@ export const regras = globalThis.regras =[
       'Esta proibição só se aplica a mudas não micropopagadas;'
     ]
   },
-
-  //ANTHONOMUS TOMENTOSUS
-/*{
-    desc: "DE UF com ocorrência de Anthonomus tomentosus PARA UF sem a ocorrência de Anthonomus tomentosus",
-    part: ["frutos"],
-    orig: ["AP", "RR"],
-    dest: ["AC", "AL", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Anthonomus tomentosus",
-    exig: [
-      'Se a partida for proveniente de Boa Vista, Mucajaí e Pacaraima: TRÂNSITO PROIBIDO;',
-      'Se a partida não for proveniente dos municípios de Boa Vista, Mucajaí e Pacaraima: PTV com a seguinte declaração adicional: "A partida foi inspecionada e encontra-se livre de Anthonomus tomentosus"; ',
-      'Estas exigências fitossanitárias só se aplicam a frutos frescos;'
-    ]
-  },*/
 
   //CANCRO CÍTRICO
 
