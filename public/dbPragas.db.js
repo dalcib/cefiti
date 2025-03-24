@@ -11,7 +11,9 @@ export const pragas = (globalThis.pragas = [
       'Artocarpus integrifolia',
       'Averrhoa bilimbi',
       'Averrhoa carambola',
+      'Calycolpus goetheanus',
       'Capsicum annuum',
+      'Carica papaya',
       'Chrysobalanus icaco',
       'Citrus aurantium',
       'Citrus paradisi',
@@ -26,6 +28,7 @@ export const pragas = (globalThis.pragas = [
       'Psidium guajava',
       'Spondias mombin',
       'Spondias lutea',
+      'Spondias purpurea',
       'Syzygium aqueum',
       'Syzygium jambos',
       'Syzygium malaccense',
@@ -46,16 +49,40 @@ export const pragas = (globalThis.pragas = [
     ],
     files: [
       {
-        leg: 'Instrução Normativa nº 28, de 20 de julho de 2017',
-        link: 'IN28-2017.pdf',
+        leg: 'Portaria nº 776, de 12 de março de 2025',
+        link: 'PORT776-2025.pdf',
       },
       {
-        leg: 'Resolução nº 04, de 29 de março de 2019 [Pará]',
+        leg: 'Resolução nº 04, de 29 de março de 2019',
         link: 'RES04-2019.pdf',
       },
       {
         leg: 'Portaria SDA nº 780, de 6 de abril de 2023',
         link: 'PORT780-2023.pdf',
+      },
+      {
+        leg: 'Portaria MAPA nº 734, de 13 de novembro de 2024',
+        link: 'PORT734-2024.pdf',
+      },
+      {
+        leg: 'Portaria SDA nº 940, de 17 de novembro de 2023',
+        link: 'PORT940-2023.pdf',
+      },
+      {
+        leg: 'Portaria MAPA nº 627, de 10 de novembro de 2023',
+        link: 'PORT627-2023.pdf',
+      },
+      {
+        leg: 'Portaria SDA/MAPA n° 859, de 19 de julho de 2023',
+        link: 'PORT859-2023.pdf',
+      },
+      {
+        leg: 'Resolução nº 05, de 31 de outubro de 2018',
+        link: 'RES05-2018.pdf',
+      },
+      {
+        leg: 'Instrução Normativa SDA n° 2, de 19 de janeiro de 2018',
+        link: 'IN02-2018.pdf',
       },
     ],
   },

@@ -11,8 +11,21 @@ export const regras = globalThis.regras =[
     dest: ['AC', 'AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Bactrocera carambolae',
     exig: [
-      'Se a partida tiver que transitar por área sob quarentena: \na) PTV;\nb) os frutos devem estar acondicionados em embalagens que não permitam o contato do produto com a praga;\nc) os frutos devem ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm',
-      'Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções acima'
+      `Se os frutos  forem destinados a locais sem ocorrência da praga e transitarem em áreas sob quarentena, deverão:  
+I - estar acondicionados em embalagens que não permitam o contato do produto com a praga;  
+II - ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm; e I 
+II - estar acompanhados de Permissão de Trânsito de Vegetais - PTV, conforme o disposto no art. 2º, da Instrução Normativa MAPA nº 28, de 24 de agosto de 2016.`,
+`Se o frutos saírem de Unidade da Federação sem ocorrência da praga e transitarem por zona tampão, áreas erradicadas e áreas sem detecção em Unidade da Federação com ocorrência da praga, com destino a outra Unidade da Federação sem ocorrência, deverão: 
+I - possuir documento que ateste a origem, podendo ser emitida apenas a PTV, sem a necessidade de CFO/CFOC.  
+II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrência de Bactrocera carambolae”.`,
+`Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções e Portarias acima.` 
+/*Portaria MAPA nº 734, de 13/11/24, que prorroga estado de emergência fitossanitária relativo ao risco iminente de dispersão da praga quarentenária presente Bactrocera carambolae (mosca-da-carambola) nos estados do Amapá, Amazonas, Pará e Roraima; 
+Portaria da Secretaria de Defesa Agropecuária (SDA/MAPA) nº 940, de 17/11/23, que declara as áreas sob quarentena do Pará; 
+* Portaria MAPA nº 627, de 10/11/2023, que declara estado de emergência fitossanitária relativo ao risco iminente de dispersão da praga quarentenária presente Bactrocera carambolae (mosca-da-carambola) nos estados do Amapá, Amazonas, Pará e Roraima; 
+* Portaria SDA/MAPA n° 859, de 19/07/23, que declara a zona tampão em parte do município de Presidente Figueiredo, localizado no estado do Amazonas; 
+* Portaria SDA/MAPA nº 780, de 06 /04/23, que estabelece todo estado de Roraima como área sob quarentena; 
+* Resolução do Departamento de Sanidade Vegetal e Insumos Agrícolas (DSV/SDA/MAPA) n° 5, de 31/10/18, que declara o estado do Amapá como área sob quarentena; e 
+* Instrução Normativa SDA/MAPA n° 2, de 19/01/18, que classifica as UF sem ocorrência como de alto, médio e baixo risco para a introdução da praga.`*/
     ]
   }, {
     desc: 'DE UF com ocorrência de Mosca-da-carambola PARA qualquer UF',
@@ -23,7 +36,21 @@ export const regras = globalThis.regras =[
     exig: [
       'Se a partida for procedente DE área sob quarentena e de área protegida PARA local sem ocorrência: TRÂNSITO PROIBIDO.',
       'Se a partida for procedente DE zona tampão, de áreas erradicadas e de áreas sem detecção: PTV com a seguinte DA: "A partida está livre de Bactrocera carambolae”',
-      'Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções acima'
+      `Se os frutos  forem destinados a locais sem ocorrência da praga e transitarem em áreas sob quarentena, deverão:  
+I - estar acondicionados em embalagens que não permitam o contato do produto com a praga;  
+II - ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm; e I 
+II - estar acompanhados de Permissão de Trânsito de Vegetais - PTV, conforme o disposto no art. 2º, da Instrução Normativa MAPA nº 28, de 24 de agosto de 2016.
+Se o frutos saírem de Unidade da Federação sem ocorrência da praga e transitarem por zona tampão, áreas erradicadas e áreas sem detecção em Unidade da Federação com ocorrência da praga, com destino a outra Unidade da Federação sem ocorrência, deverão: 
+I - possuir documento que ateste a origem, podendo ser emitida apenas a PTV, sem a necessidade de CFO/CFOC.  
+II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrência de Bactrocera carambolae”.`,  
+`Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções e Portarias acima.`
+/*Portaria MAPA nº 734, de 13/11/24, que prorroga estado de emergência fitossanitária relativo ao risco iminente de dispersão da praga quarentenária presente Bactrocera carambolae (mosca-da-carambola) nos estados do Amapá, Amazonas, Pará e Roraima; 
+Portaria da Secretaria de Defesa Agropecuária (SDA/MAPA) nº 940, de 17/11/23, que declara as áreas sob quarentena do Pará; 
+* Portaria MAPA nº 627, de 10/11/23, que declara estado de emergência fitossanitária relativo ao risco iminente de dispersão da praga quarentenária presente Bactrocera carambolae (mosca-da-carambola) nos estados do Amapá, Amazonas, Pará e Roraima; 
+* Portaria SDA/MAPA n° 859, de 19/07/23, que declara a zona tampão em parte do município de Presidente Figueiredo, localizado no estado do Amazonas; 
+* Portaria SDA/MAPA nº 780, de 06/04/23, que estabelece todo estado de Roraima como área sob quarentena; 
+* Resolução do Departamento de Sanidade Vegetal e Insumos Agrícolas (DSV/SDA/MAPA) n° 5, de 31/10/18, que declara o estado do Amapá como área sob quarentena; e 
+* Instrução Normativa SDA/MAPA n° 2, de 19/01/18, que classifica as UF sem ocorrência como de alto, médio e baixo risco para a introdução da praga. `*/
     ]
   }, 
   //ÁCARO HINDU
