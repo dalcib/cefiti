@@ -40,6 +40,13 @@ self.addEventListener('install', (event) => {
         './leg/PORT125-1998.pdf',
         './leg/PORT780-2023.pdf',
         './leg/RES04-2019.pdf',
+        './leg/IN02-2018.pdf',
+        './leg/PORT627-2023.pdf',
+        './leg/PORT734-2024.pdf',
+        './leg/PORT776-2025.pdf',
+        './leg/PORT859-2023.pdf',
+        './leg/PORT940-2023.pdf',
+        './leg/RES05-2018.pdf',
       ])
     })
   )
