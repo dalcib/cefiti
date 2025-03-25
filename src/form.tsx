@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { Store, useStore } from './store'
+import { Store, useStore } from './store.ts'
 
 interface PropsSelect {
   source: 'listaNomesSci' | 'listaNomesVul' | 'partes' | 'destino' | 'origem'

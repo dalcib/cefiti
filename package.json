@@ -3,6 +3,7 @@
   "version": "7.0.0",
   "description": "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual",
   "private": true,
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cefiti/cefiti.git"
@@ -19,10 +20,7 @@
   "homepage": ".",
   "scripts": {
     "start": "node dev.mjs",
-    "testonly": "node --test-reporter spec --test-only --test ./**/*test.cjs ",
-    "runtest": "node --test-reporter spec --test ./**/*test.cjs ",
-    "buildtest": "esbuild --bundle --platform=node  --format=cjs ./src/store.test.ts > ./src/store.test.cjs",
-    "test": "npm run buildtest && npm run runtest",
+    "test": "node --test --experimental-strip-types src/store.ai.test.ts",
     "analyze": "source-map-explorer public/*.js",
     "lint": "eslint --ignore-pattern ./assests/**/* .",
     "build": "esbuild src/index.tsx --bundle --minify --sourcemap --outfile=public/index.js --format=esm --jsx=automatic",

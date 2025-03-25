@@ -1,4 +1,4 @@
-import { useStore } from './store'
+import { useStore } from './store.ts'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 

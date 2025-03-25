@@ -1,4 +1,4 @@
-import { useStore } from './store'
+import { useStore } from './store.ts'
 
 const Base = () => {
   const store = useStore()

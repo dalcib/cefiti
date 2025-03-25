@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    //"target": "esnext",
+    //"module": "nodenext",
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
     "target": "es5",
     "lib": ["esnext", "dom", "dom.iterable"],
     "sourceMap": true,
@@ -24,5 +30,10 @@
     "noFallthroughCasesInSwitch": true
   },
   "exclude": ["node_modules", "build", "assets"],
-  "include": ["src", "public/dbRegras.db.js", "public/dbPragas.db.js", "public/dbHospedeiros.db.js"]
+  "include": [
+    "src",
+    "public/dbRegras.db.js",
+    "public/dbPragas.db.js",
+    "public/dbHospedeiros.db.js"
+  ]
 }

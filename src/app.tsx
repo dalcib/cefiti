@@ -1,8 +1,8 @@
-import Base from './base'
-import Result from './result'
-import Form from './form'
-import { Head } from './head'
-import { Botton } from './botton'
+import Base from './base.tsx'
+import Result from './result.tsx'
+import Form from './form.tsx'
+import { Head } from './head.tsx'
+import { Botton } from './botton.tsx'
 
 export const App = () => (
   <div id="resolucao">
