@@ -1,9 +1,9 @@
 import { proxy } from 'valtio'
 import { useProxy } from 'valtio/utils'
-import { regras } from '../public/dbRegras.db'
-import { pragas } from '../public/dbPragas.db'
-import { hospedeiros } from '../public/dbHospedeiros.db'
-import { estados } from './estados'
+import { regras } from '../public/dbRegras.db.js'
+import { pragas } from '../public/dbPragas.db.js'
+import { hospedeiros } from '../public/dbHospedeiros.db.js'
+import { estados } from './estados.ts'
 
 export class Store {
   dbRegras: Regra[] = regras
@@ -23,15 +23,8 @@ export class Store {
   }
 
   get hospedeirosRegulamentados() {
-    return this.dbHospedeiros.filter(
-      (hospedeiro) =>
-        this.hospedeirosPragas.includes(hospedeiro.nomeSci) ||
-        this.hospedeirosPragas.includes(
-          `${hospedeiro.nomeSci.split(' ')[0]} sp.`
-        ) ||
-        this.hospedeirosPragas.includes(
-          `${hospedeiro.nomeSci.split(' ')[0]} spp.`
-        )
+    return this.dbHospedeiros.filter((hospedeiro) =>
+      this.species(this.hospedeirosPragas, hospedeiro.nomeSci)
     )
   }
 
@@ -71,8 +64,12 @@ export class Store {
     )
   }
 
-  get gender(): string {
-    return this.dados.hospSci.split(' ')[0]
+  species(species: string[], nomeSci: string): boolean {
+    return (
+      species.includes(nomeSci) ||
+      species.includes(`${nomeSci.split(' ')[0]} sp.`) ||
+      species.includes(`${nomeSci.split(' ')[0]} spp.`)
+    )
   }
 
   get completed(): boolean {
@@ -87,12 +84,7 @@ export class Store {
 
   get partes(): string[] {
     return this.db
-      .filter(
-        (exigen) =>
-          exigen.hosp.includes(this.dados.hospSci) ||
-          exigen.hosp.includes(`${this.gender} sp.`) ||
-          exigen.hosp.includes(`${this.gender} spp.`)
-      )
+      .filter((exigen) => this.species(exigen.hosp, this.dados.hospSci))
       .flatMap((v) => v.part)
       .filter((i, x, a) => a.indexOf(i) === x)
       .concat([''])
@@ -102,9 +94,7 @@ export class Store {
   get result() {
     return this.db.filter((exigen) => {
       return (
-        (exigen.hosp.includes(this.dados.hospSci) ||
-          exigen.hosp.includes(`${this.gender} sp.`) ||
-          exigen.hosp.includes(`${this.gender} spp.`)) &&
+        this.species(exigen.hosp, this.dados.hospSci) &&
         exigen.orig.includes(this.dados.orig) &&
         exigen.dest.includes(this.dados.dest) &&
         exigen.part.includes(this.dados.prod)
@@ -165,7 +155,7 @@ export class Store {
   }
 
   handleSearch(event: React.MouseEvent<HTMLButtonElement>) {
-    if (!store.completed) {
+    if (!this.completed) {
       alert('Finalize a seleçao dos critérios para a consulta')
       event.preventDefault()
       return
