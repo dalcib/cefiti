@@ -216,4 +216,15 @@ export const pragas = (globalThis.pragas = [
       },
     ],
   },
+  {
+    prag: 'Rhizoctonia theobromae (Ceratobasidium theobromae)',
+    pragc: 'VASSOURA DE BRUXA DA MANDIOCA',
+    hosp: ['Manihot esculenta'],
+    files: [
+      {
+        leg: 'Portaria SDA/MAPA nº 1.257, de 19 de março de 2025',
+        link: 'PORT1257-2025.pdf',
+      },
+    ],
+  },
 ])

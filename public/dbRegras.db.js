@@ -622,7 +622,11 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
     exig: [
       'PTV com a seguinte DA: "O material de propagação é proveniente de Área sob Erradicação e foi produzido em imóvel sem ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), conforme preconiza a legislação específica vigente".'
     ]
-  }, {
+  },
+  
+  //MONILÍASE DO CACAUEIRO
+  
+  {
     desc: 'DE Área com ocorrência de Monilíase PARA qualquer UF',
     part: ['frutos', 'material de propagação vegetativa', 'polpa in natura (não congelada)'],
     orig: ['AM'],
@@ -674,4 +678,44 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
       'Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves, TRÂNSITO LIVRE obedecendo as seguintes condiçoes: \na) As amêndoas devem estar acondicionadas em sacarias novas;  \nb) Carga deve estar acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc) Verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html .',
       'Se a partida for proveniente dos demais municípios do Acre: TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal'
     ]
-  }]
+  },
+
+  //VASSOURA DE BRUXA DA MANDIOCA
+
+    {
+    desc: 'DE UF sem presença de Rhizoctonia theobromae (Ceratobasidium theobromae) PARA qualquer UF',  
+    part: ['Materiais vegetais'],
+    orig: ['AC', 'AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    prag: 'Rhizoctonia theobromae (Ceratobasidium theobromae)',
+    exig: [
+      `TRÂNSITO LIVRE`,
+      `A Permissão de Trânsito de Vegetais - PTV é necessária no caso de a partida de plantas e partes de plantas hospedeiras da praga transitar em áreas com ocorrência, devendo este: 
+I - ser transportado em embalagens lacradas; e
+II - ser lacrado pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrital de Defesa Sanitária Vegetal na Unidade Federativa de origem e o número do lacre informado na Permissão de Trânsito de Vegetais - PTV.`
+    ]
+  },
+    {
+    desc: 'DE UF com presença de Rhizoctonia theobromae (Ceratobasidium theobromae), oriundo de municípios sem ocorrência, PARA quaquer UF',  
+    part: ['Materiais vegetais'],
+    orig: ['AP'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    prag: 'Rhizoctonia theobromae (Ceratobasidium theobromae)',
+    exig: [
+      `PTV, baseada em CFO ou CFOC, com a seguinte DA: "A partida é originária de município sem ocorrência de Rhizoctonia theobromae, em Unidade Federativa com ocorrência, e encontra-se livre da praga".`,
+      `No caso da partida de plantas e partes de plantas hospedeiras da praga transitar em áreas com ocorrência, deverá esta: 
+I - ser transportada em embalagens lacradas; e 
+II - ser lacrada pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrital de Defesa Sanitária Vegetal no município de origem e o número do lacre informado na Permissão de Trânsito de Vegetais - PTV.`
+    ]
+  },
+  {
+    desc: 'DE UF com presença de Rhizoctonia theobromae (Ceratobasidium theobromae), oriundo de municípios com ocorrência, PARA qualquer UF',  
+    part: ['Materiais vegetais'],
+    orig: ['AP'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    prag: 'Rhizoctonia theobromae (Ceratobasidium theobromae)',
+    exig: [
+      `Se a partida tiver como origem os municípios de Oiapoque, Calçoene, Amapá, Pracuúba, Tartarugalzinho e Pedra Branca do Amaparí: TRÂNSITO PROIBIDO.`
+    ]
+  },
+]
