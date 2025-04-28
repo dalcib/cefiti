@@ -282,8 +282,8 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {
     desc: 'DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra',
     part: ['frutos', 'flores'],
-    orig: ['CE', 'DF', 'RN', 'SE'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
+    orig: ['CE', 'DF', 'RN'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: [
       'PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;',
@@ -296,7 +296,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
     desc: 'DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra',
     part: ['frutos', 'flores'],
     orig: ['MG'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: [
       'PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;',
@@ -310,7 +310,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
     desc: 'DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra',
     part: ['frutos', 'flores'],
     orig: ['MS'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: ['PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;',
       'As bananas não podem transitar em cacho, em todo o território nacional;',
@@ -335,8 +335,8 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {
     desc: 'DE área livre de Sigatoka Negra PARA área livre de Sigatoka Negra ',
     part: ['frutos', 'flores'],
-    orig: ['CE', 'DF', 'GO', 'MG', 'MS', 'RN', 'SE'],
-    dest: ['CE', 'DF', 'GO', 'MG', 'MS', 'RN', 'SE'],
+    orig: ['CE', 'DF', 'GO', 'MG', 'MS', 'RN'],
+    dest: ['CE', 'DF', 'GO', 'MG', 'MS', 'RN'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: ['PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;',
       'A partida deve estar lacrada para transitar por AC, AM, AP, MA, MG (exceto pelos municípios listados no item 6.1), MS (exceto pelos municípios listados no item 6.2), MT, PA, PR, RS, RJ, RO, RR, SC, SP, TO e GO (somente nos municípios listados no ítem 7);',
@@ -349,8 +349,8 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {
     desc: 'DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra',
     part: ['frutos', 'flores'],
-    orig: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
-    dest: ['CE', 'DF', 'GO', 'MG', 'MS', 'RN', 'SE'],
+    orig: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
+    dest: ['CE', 'DF', 'GO', 'MG', 'MS', 'RN'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: [
       'PTV com a seguinte declaração adicional: "A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra";',
@@ -363,8 +363,8 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {
     desc: 'DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra',
     part: ['frutos', 'flores'],
-    orig: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
+    orig: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: [
       'OU Partida isenta de PTV, sendo porém PROIBIDO o trânsito por Área Livre de Sigatoka Negra, listadas no Item 2; OU PTV com a seguinte declaração adicional: "A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra", sendo permitido o trânsito por Área Livre de Sigatoka Negra;',
@@ -377,8 +377,8 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {
     desc: 'DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra',
     part: ['mudas'],
-    orig: ['CE', 'DF', 'GO', 'RN', 'SE'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
+    orig: ['CE', 'DF', 'GO', 'RN'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: [
       'PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;',  
@@ -390,7 +390,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
     desc: 'DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra',
     part: ['mudas'],
     orig: ['MG'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: [
       'PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;',  
@@ -402,7 +402,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
     desc: 'DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra',
     part: ['mudas'],
     orig: ['GO'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: [
       'PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;',  
@@ -414,7 +414,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
     desc: 'DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra',
     part: ['mudas'],
     orig: ['MS'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: [
       'PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;', 
@@ -426,8 +426,8 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {
     desc: 'DE área livre de Sigatoka Negra PARA área livre de Sigatoka Negra',
     part: ['mudas'],
-    orig: ['CE', 'DF', 'GO', 'MG', 'MS',  'RN', 'SE'],
-    dest: ['CE', 'DF', 'GO', 'MG', 'MS',  'RN', 'SE'],
+    orig: ['CE', 'DF', 'GO', 'MG', 'MS',  'RN'],
+    dest: ['CE', 'DF', 'GO', 'MG', 'MS',  'RN'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: [
       'PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra.',
@@ -441,8 +441,8 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {
     desc: 'DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra',
     part: ['mudas'],
-    orig: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
-    dest: ['CE', 'DF', 'GO', 'MG', 'MS', 'RN', 'SE'],
+    orig: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
+    dest: ['CE', 'DF', 'GO', 'MG', 'MS', 'RN'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: [
       'TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;',
@@ -453,8 +453,8 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {
     desc: 'DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra',  
     part: ['mudas'],
-    orig: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SC', 'SP', 'TO'],
+    orig: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RS', 'RJ', 'RO', 'RR', 'SE', 'SC', 'SP', 'TO'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: [
       'TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;',
