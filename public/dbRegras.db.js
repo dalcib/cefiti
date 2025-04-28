@@ -339,7 +339,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
     dest: ['CE', 'DF', 'GO', 'MG', 'MS', 'RN'],
     prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     exig: ['PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;',
-      'A partida deve estar lacrada para transitar por AC, AM, AP, MA, MG (exceto pelos municípios listados no item 6.1), MS (exceto pelos municípios listados no item 6.2), MT, PA, PR, RS, RJ, RO, RR, SC, SP, TO e GO (somente nos municípios listados no ítem 7);',
+      'A partida deve estar lacrada para transitar por AC, AL, AM, AP, MA, MG (exceto pelos municípios listados no item 6.1), MS (exceto pelos municípios listados no item 6.2), MT, PA, PE, PI, PR, RS, RJ, RO, RR, SC, SE, SP, TO e GO (somente nos municípios listados no ítem 7);',
       'As bananas não podem transitar em cacho, em todo o território nacional;',
       'A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;',
       'Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;',
