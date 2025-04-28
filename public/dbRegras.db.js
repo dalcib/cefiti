@@ -470,22 +470,22 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   {    //1
     desc: 'DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação',
     part: ['frutos', 'material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
-    orig: ['AC', 'AL', 'AP', 'MA', 'PI'],
-    dest: ['AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    orig: ['AC', 'AP', 'MA'],
+    dest: ['AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Xanthomonas citri subsp. citri',
     exig: ['Proibida a emissão de PTV. TRÂNSITO PROIBIDO.']
   }, {  //1-PR
     desc: 'DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação',
     part: ['frutos', 'material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
     orig: ['PR'],
-    dest: ['AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    dest: ['AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Xanthomonas citri subsp. citri',
     exig: ['Se a partida tiver origem os municípios de Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: Proibida a emissão de PTV. TRÂNSITO PROIBIDO.']
   }, {  //2
     desc: 'DE Área Sem Ocorrência de Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação',
     part: ['frutos'],
-    orig: ['AM', 'BA', 'DF', 'ES', 'GO', 'MG', 'PB', 'PE', 'RO', 'RJ', 'SE', 'TO'],
-    dest: ['AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MT', 'MS', 'PA', 'PB', 'PE', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    orig: ['AL', 'AM', 'BA', 'DF', 'ES', 'GO', 'MG', 'PB', 'PE', 'RO', 'RJ', 'SE', 'TO'],
+    dest: ['AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MT', 'MS', 'PA', 'PI', 'PB', 'PE', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Xanthomonas citri subsp. citri',
         exig: [
           'PTV com a seguinte DA: "Os frutos são originários de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida".',
@@ -496,8 +496,8 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {  //3
     desc: 'DE Área Sem Ocorrência de Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação',
     part: ['material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
-    orig: ['AM', 'BA', 'DF', 'ES', 'GO', 'MG', 'PB', 'PE', 'RO', 'RJ', 'SE', 'TO'],
-    dest: ['AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MT', 'MS', 'PA', 'PB', 'PE', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    orig: ['AL', 'AM', 'BA', 'DF', 'ES', 'GO', 'MG', 'PB', 'PE', 'RO', 'RJ', 'SE', 'TO'],
+    dest: ['AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MT', 'MS', 'PA', 'PI', 'PB', 'PE', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Xanthomonas citri subsp. citri',
         exig: [
           'PTV com a seguinte DA: "O material de propagação é originário de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida".'
@@ -505,7 +505,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {  //2 - Destino PR
     desc: 'DE Área Sem Ocorrência de Cancro Cítrico PARA o Estado do Paraná',
     part: ['frutos'],
-    orig: ['AM', 'BA', 'DF', 'ES', 'GO', 'MG', 'PB', 'PE', 'RO', 'RJ', 'SE', 'TO'],
+    orig: ['AL', 'AM', 'BA', 'DF', 'ES', 'GO', 'MG', 'PB', 'PE', 'RO', 'RJ', 'SE', 'TO'],
     dest: ['PR'],
     prag: 'Xanthomonas citri subsp. citri',
         exig: [
@@ -517,7 +517,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {  //3 - Destino PR
     desc: 'DE Área Sem Ocorrência de Cancro Cítrico PARA o Estado do Paraná',
     part: ['material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
-    orig: ['AM', 'BA', 'DF', 'ES', 'GO', 'MG', 'PB', 'PE', 'RO', 'RJ', 'SE', 'TO'],
+    orig: ['AL', 'AM', 'BA', 'DF', 'ES', 'GO', 'MG', 'PB', 'PE', 'RO', 'RJ', 'SE', 'TO'],
     dest: ['PR'],
     prag: 'Xanthomonas citri subsp. citri',
         exig: [
@@ -530,7 +530,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
     desc: 'DE Área Livre de Cancro Cítrico PARA qualquer Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação',
     part: ['frutos'],
     orig: ['PA'],
-    dest: ['AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MT', 'MS', 'PA', 'PB', 'PE', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    dest: ['AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MT', 'MS', 'PA', 'PI', 'PB', 'PE', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Xanthomonas citri subsp. citri',
       exig: [
         'PTV com a seguinte DA: "Os frutos são originários de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida".'
@@ -539,7 +539,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
     desc: 'DE Área Livre de Cancro Cítrico PARA qualquer Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação',
     part: ['material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
     orig: ['PA'],
-    dest: ['AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MT', 'MS', 'PA', 'PB', 'PE', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    dest: ['AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MT', 'MS', 'PA', 'PI', 'PB', 'PE', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Xanthomonas citri subsp. citri',
       exig: [
         'PTV com a seguinte DA: "O material de propagação é originário de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida".'
@@ -574,7 +574,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {  // 6
     desc: 'DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF',
     part: ['material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
-    orig: ['CE', 'GO', 'MG', 'MT', 'MS', 'RS', 'SP', 'SC'],
+    orig: ['CE', 'GO', 'MG', 'MT', 'MS', 'PI', 'RS', 'SP', 'SC'],
     dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Xanthomonas citri subsp. citri',
     exig: [
@@ -595,7 +595,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {
     desc: 'DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF',
     part: ['frutos'],
-    orig: ['CE', 'GO', 'MG', 'MT', 'MS', 'RS', 'SP', 'SC'],
+    orig: ['CE', 'GO', 'MG', 'MT', 'MS', 'PI', 'RS', 'SP', 'SC'],
     dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Xanthomonas citri subsp. citri',
     exig: [
