@@ -1,7 +1,7 @@
-import { useStore } from './store.ts'
+import { store } from './store.ts'
 
 const Base = () => {
-  const store = useStore()
+  //const store = useStore()
   return store.exibeBase ?
       <div>
         <br />

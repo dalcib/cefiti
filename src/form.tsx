@@ -1,13 +1,12 @@
-import { memo } from 'react'
-import { Store, useStore } from './store.ts'
+import { Store, store } from './store'
 
 interface PropsSelect {
   source: 'listaNomesSci' | 'listaNomesVul' | 'partes' | 'destino' | 'origem'
   name: keyof Store['dados']
 }
 
-const Select = memo(function Select({ source, name }: PropsSelect) {
-  const store = useStore()
+const Select = function Select({ source, name }: PropsSelect) {
+  //const store = useStore()
 
   return (
     <select
@@ -29,10 +28,10 @@ const Select = memo(function Select({ source, name }: PropsSelect) {
       ))}
     </select>
   )
-})
+}
 
 function Form() {
-  const store = useStore()
+  //const store = useStore()
   if (store.searched) return <div />
 
   return (
@@ -76,11 +75,7 @@ interface FormFieldProps extends PropsSelect {
   label: string
 }
 
-const FormField = memo(function FormField({
-  label,
-  name,
-  source,
-}: FormFieldProps) {
+const FormField = function FormField({ label, name, source }: FormFieldProps) {
   return (
     <div>
       <label className="form" htmlFor={name}>
@@ -89,6 +84,6 @@ const FormField = memo(function FormField({
       <Select name={name} source={source} />
     </div>
   )
-})
+}
 
 export default Form

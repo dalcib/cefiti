@@ -1,5 +1,4 @@
-import { proxy } from 'valtio'
-import { useProxy } from 'valtio/utils'
+import { deepSignal } from 'deepsignal'
 import { regras } from '../public/dbRegras.db.js'
 import { pragas } from '../public/dbPragas.db.js'
 import { hospedeiros } from '../public/dbHospedeiros.db.js'
@@ -110,8 +109,8 @@ export class Store {
     this.dados.dest = ''
   }
 
-  handleChanges(event: React.FormEvent<HTMLSelectElement>) {
-    const target = event.currentTarget
+  handleChanges(event: Event) {
+    const target = event.currentTarget as HTMLSelectElement
     switch (target.name) {
       case 'hospSci':
         {
@@ -154,7 +153,7 @@ export class Store {
     }
   }
 
-  handleSearch(event: React.MouseEvent<HTMLButtonElement>) {
+  handleSearch(event: Event) {
     if (!this.completed) {
       alert('Finalize a seleçao dos critérios para a consulta')
       event.preventDefault()
@@ -173,8 +172,19 @@ export class Store {
   }
 }
 
-export const store = proxy(new Store())
-
-export function useStore() {
-  return useProxy(store)
+//deepSignal only accepts plain objects, so we need to clone the Store class
+//and remove the constructor to avoid issues with deepSignal
+function clone(source: Store) {
+  let descriptors: Record<string, PropertyDescriptor> = {}
+  for (
+    let p = source;
+    p && p !== Object.prototype;
+    p = Object.getPrototypeOf(p)
+  ) {
+    descriptors = { ...Object.getOwnPropertyDescriptors(p), ...descriptors }
+  }
+  delete (descriptors as any)['constructor']
+  return Object.defineProperties({}, descriptors) as Store
 }
+
+export const store = deepSignal<Store>(clone(new Store()))

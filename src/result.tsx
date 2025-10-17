@@ -1,9 +1,9 @@
-import { useStore } from './store.ts'
+import { store } from './store.ts'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
 function Result() {
-  const store = useStore()
+  //const store = useStore()
   return (
     <div>
       <div className={store.completed && store.searched ? '' : 'hidden'}>

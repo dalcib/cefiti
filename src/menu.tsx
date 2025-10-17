@@ -1,7 +1,7 @@
-import { useStore } from './store'
+import { store } from './store'
 
 const Menu = () => {
-  const store = useStore()
+  //const store = useStore()
   return (
     <div id="moldura-navegacao-global">
       <div id="navegacao-global">
