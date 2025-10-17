@@ -6,7 +6,7 @@
     "rewriteRelativeImportExtensions": true,
     "verbatimModuleSyntax": true,
     "erasableSyntaxOnly": true,
-    "target": "es5",
+    "target": "es2015",
     "lib": ["esnext", "dom", "dom.iterable"],
     "sourceMap": true,
     "allowJs": true,

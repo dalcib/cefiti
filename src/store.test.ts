@@ -2,8 +2,6 @@ import { store } from './store'
 import { regras } from '../public/dbRegras.db'
 import { pragas } from '../public/dbPragas.db'
 import { hospedeiros } from '../public/dbHospedeiros.db'
-//import './utils'
-import * as d3 from 'd3-array'
 import { describe, it, before, test } from 'node:test'
 import assert from 'node:assert'
 
@@ -260,13 +258,12 @@ test('Check normalization of db ', () => {
 })
 
 test('duplicates nomeVul', () => {
-  const countDupli = Array.from(
-    d3.rollup(
-      hospedeiros,
-      (v) => ({ countNomeVulg: v.length }),
-      (k) => k.nomeVul
-    ),
-    ([key, values]) => ({ nomeVulg: key, ...values })
+  const groupedByNomeVul = Object.groupBy(hospedeiros, ({ nomeVul }) => nomeVul)
+  const countDupli = Object.entries(groupedByNomeVul).map(
+    ([nomeVulg, items]) => ({
+      nomeVulg,
+      countNomeVulg: items?.length,
+    })
   )
   assert.strictEqual(
     countDupli.filter((v) => !v.countNomeVulg),

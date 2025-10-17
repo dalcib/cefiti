@@ -17,10 +17,10 @@ const Select = function Select({ source, name }: PropsSelect) {
       name={name}
       onChange={(e) => store.handleChanges(e)}
     >
-      {store[source].map((option, i) => (
+      {store[source].map((option) => (
         <option
           value={typeof option === 'string' ? option : option.UF}
-          key={i}
+          key={typeof option === 'string' ? option : option.UF}
           aria-selected="false"
         >
           {typeof option === 'string' ? option : option.estado}

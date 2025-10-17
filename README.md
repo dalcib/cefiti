@@ -4,6 +4,18 @@
 
 ## **_CHANGELOG_**
 
+## &.0.0
+
+- Substitui React por Preact e Valtio por Preact/Signal
+- Mosca da Carambola: Seriguela, Mamão e Calycolpus goetheanus
+
+## 7.1.0
+
+- Vassoura de Bruxa da Mandioca: Inclusão
+- Cancro Cítrico: AL e PI
+- Sigatoka Negra - SE incidência
+- Revisão Mosca da Carambola
+
 ## 7.0.0
 
 - Atualiza React para 19.0.0 e Valtio para 2.0.0

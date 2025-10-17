@@ -23,7 +23,6 @@ function Result() {
           </span>
           <br />
         </div>
-        <span>{store.searched}</span>
 
         {store.result.map((item: Db, i: number) => {
           return (
@@ -44,7 +43,7 @@ function Result() {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               {'          '}
               <br />
-              {item.files.map((file, iii) => {
+              {item.files?.map((file, iii) => {
                 return (
                   <div key={file.link.concat(iii.toString())}>
                     <a
@@ -59,7 +58,7 @@ function Result() {
                 )
               })}
               <span className="small underline">{item.desc}</span>
-              {item.exig.map((exig, ii) => {
+              {item.exig?.map((exig, ii) => {
                 return (
                   <div
                     style={{ margin: '6px' }}
@@ -143,7 +142,7 @@ function Result() {
           <button
             onClick={() => store.handleMenu('Voltar')}
             className="form-button"
-            disabled={false}
+            type="button"
           >
             Voltar
           </button>
@@ -151,7 +150,7 @@ function Result() {
           <button
             onClick={() => store.handleMenu('Nova')}
             className="form-button"
-            disabled={false}
+            type="button"
           >
             Nova Consulta
           </button>

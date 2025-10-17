@@ -30,20 +30,18 @@ export class Store {
   get listaNomesSci() {
     return [
       '',
-      ...this.hospedeirosRegulamentados
-        .map((v) => v.nomeSci)
-        .filter((i, x, a) => a.indexOf(i) === x)
-        .sort((a, b) => a.localeCompare(b)),
+      ...[
+        ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeSci)),
+      ].sort((a, b) => a.localeCompare(b)),
     ]
   }
 
   get listaNomesVul() {
     return [
       '',
-      ...this.hospedeirosRegulamentados
-        .map((v) => v.nomeVul)
-        .filter((i, x, a) => a.indexOf(i) === x)
-        .sort((a, b) => a.localeCompare(b)),
+      ...[
+        ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeVul)),
+      ].sort((a, b) => a.localeCompare(b)),
     ]
   }
 
@@ -61,6 +59,10 @@ export class Store {
     return this.estados.filter(
       (estado) => estado.UF !== this.dados.orig || estado.UF === ''
     )
+  }
+
+  get gender() {
+    return this.dados.hospSci.split(' ')[0]
   }
 
   species(species: string[], nomeSci: string): boolean {
@@ -84,9 +86,8 @@ export class Store {
   get partes(): string[] {
     return this.db
       .filter((exigen) => this.species(exigen.hosp, this.dados.hospSci))
-      .flatMap((v) => v.part)
-      .filter((i, x, a) => a.indexOf(i) === x)
-      .concat([''])
+      .flatMap((v) => v.part.concat(['']))
+      .filter((i, x, a) => a.indexOf(i) === x) // Keep unique after adding empty string
       .sort((a: string, b: string) => a.localeCompare(b))
   }
 
@@ -183,7 +184,7 @@ function clone(source: Store) {
   ) {
     descriptors = { ...Object.getOwnPropertyDescriptors(p), ...descriptors }
   }
-  delete (descriptors as any)['constructor']
+  delete descriptors['constructor']
   return Object.defineProperties({}, descriptors) as Store
 }
 

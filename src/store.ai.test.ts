@@ -129,7 +129,7 @@ describe('Store', () => {
         name: 'hospSci',
         value: 'someSpecies',
       },
-    } as React.FormEvent<HTMLSelectElement>
+    } as unknown as Event
 
     store.handleChanges(mockEvent)
     expect(store.dados.hospSci).toBe('someSpecies')
@@ -157,7 +157,7 @@ describe('Store', () => {
   it('should handle search correctly', () => {
     const mockEvent = {
       preventDefault: mock.fn(),
-    } as unknown as React.MouseEvent<HTMLButtonElement>
+    } as unknown as Event
     store.handleSearch(mockEvent)
     expect(store.searched).toBe(false)
     expect(mockEvent.preventDefault).toHaveBeenCalled() //Should prevent default because it's not completed
