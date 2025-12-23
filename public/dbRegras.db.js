@@ -7,8 +7,8 @@ export const regras = globalThis.regras =[
   {
     desc: 'DE UF sem ocorrência de Mosca-da-carambola PARA UF sem ocorrência de Mosca-da-carambola',
     part: ['frutos'],
-    orig: ['AC', 'AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RS', 'SC', 'SE', 'SP', 'TO'],
-    dest: ['AC', 'AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    orig: ['AC', 'AL', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    dest: ['AC', 'AL', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Bactrocera carambolae',
     exig: [
       `Se os frutos  forem destinados a locais sem ocorrência da praga e transitarem em áreas sob quarentena, deverão:  
@@ -23,7 +23,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
   }, {
     desc: 'DE UF com ocorrência de Mosca-da-carambola PARA qualquer UF',
     part: ['frutos'],
-    orig: ['AP', 'PA', 'RR'],
+    orig: ['AP', 'AM', 'PA', 'RR'],
     dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Bactrocera carambolae',
     exig: [
@@ -719,3 +719,4 @@ II - ser lacrada pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrit
     ]
   },
 ]
+
