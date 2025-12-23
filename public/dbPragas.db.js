@@ -84,6 +84,10 @@ export const pragas = (globalThis.pragas = [
         leg: 'Instrução Normativa SDA n° 2, de 19 de janeiro de 2018',
         link: 'IN02-2018.pdf',
       },
+      {
+        leg: 'Portaria SDA/MAPA n° 1503, de 19 de dezembro de 2025',
+        link: 'PORT1503-2025.pdf',
+      },
     ],
   },
   {
@@ -228,3 +232,4 @@ export const pragas = (globalThis.pragas = [
     ],
   },
 ])
+
