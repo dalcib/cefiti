@@ -4,7 +4,11 @@
 
 ## **_CHANGELOG_**
 
-## &.0.0
+## 8.1.0
+
+- Atualiza ocorrencia de Mosca da Carambola no Amazonas
+
+## 8.0.0
 
 - Substitui React por Preact e Valtio por Preact/Signal
 - Mosca da Carambola: Seriguela, Mamão e Calycolpus goetheanus

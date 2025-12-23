@@ -1,7 +1,8 @@
 import { deepSignal } from 'deepsignal'
-import { regras } from '../public/dbRegras.db.js'
-import { pragas } from '../public/dbPragas.db.js'
-import { hospedeiros } from '../public/dbHospedeiros.db.js'
+// @ts-expect-error external file
+import { regras } from './dbRegras.db.js' // @ts-expect-error external file
+import { pragas } from './dbPragas.db.js' // @ts-expect-error external file
+import { hospedeiros } from './dbHospedeiros.db.js'
 import { estados } from './estados.ts'
 
 export class Store {
