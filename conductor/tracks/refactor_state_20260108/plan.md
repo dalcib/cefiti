@@ -5,7 +5,7 @@
 - [x] Task: Conductor - User Manual Verification 'Foundation & Analysis' (Protocol in workflow.md) [a511c44]
 
 ## Phase 2: Refactoring Core State
-- [ ] Task: Refactor data loading and initialization logic in Store
+- [x] Task: Refactor data loading and initialization logic in Store [f67b5da]
 - [ ] Task: Transition `dados` and `searched` state to Preact Signals
 - [ ] Task: Implement signal-based computed properties for `result`, `hospedeirosRegulamentados`, and `partes`
 - [ ] Task: Conductor - User Manual Verification 'Refactoring Core State' (Protocol in workflow.md)
