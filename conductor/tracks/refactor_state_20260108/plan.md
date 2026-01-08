@@ -1,7 +1,7 @@
 # Plan: Refactor and Modernize State Management
 
 ## Phase 1: Foundation & Analysis
-- [ ] Task: Audit current `src/store.ts` for signal usage and bottlenecks
+- [x] Task: Audit current `src/store.ts` for signal usage and bottlenecks [f333f9f]
 - [ ] Task: Conductor - User Manual Verification 'Foundation & Analysis' (Protocol in workflow.md)
 
 ## Phase 2: Refactoring Core State
