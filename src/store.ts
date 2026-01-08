@@ -1,66 +1,110 @@
+import { signal, computed, type Signal } from '@preact/signals'
 import { deepSignal } from 'deepsignal'
 // @ts-expect-error external file
-import { regras } from './dbRegras.db.js' // @ts-expect-error external file
-import { pragas } from './dbPragas.db.js' // @ts-expect-error external file
-import { hospedeiros } from './dbHospedeiros.db.js'
-import { estados } from './estados.ts'
+import { regras as defaultRegras } from './dbRegras.db.js'
+// @ts-expect-error external file
+import { pragas as defaultPragas } from './dbPragas.db.js'
+// @ts-expect-error external file
+import { hospedeiros as defaultHospedeiros } from './dbHospedeiros.db.js'
+import { estados as defaultEstados } from './estados.ts'
 
 export class Store {
-  dbRegras: Regra[] = regras
-  dbHospedeiros: Hospedeiro[] = hospedeiros
-  dbPragas: Praga[] = pragas
-  estados = estados
-  db: Db[] = this.dbRegras.map((regra) => ({
-    ...this.dbPragas.find((item) => item.prag === regra.prag),
-    ...regra,
-  })) as Db[]
-  dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
-  exibeBase: boolean = false
-  searched: boolean = false
+  private _dbRegras: Signal<Regra[]>
+  private _dbHospedeiros: Signal<Hospedeiro[]>
+  private _dbPragas: Signal<Praga[]>
+  private _estados: Signal<Estado[]>
+  private _dados: Dados
+  private _exibeBase: Signal<boolean>
+  private _searched: Signal<boolean>
 
-  get hospedeirosPragas() {
-    return this.dbPragas.flatMap((praga) => praga.hosp)
+  constructor(
+    regras: Regra[] = defaultRegras,
+    pragas: Praga[] = defaultPragas,
+    hospedeiros: Hospedeiro[] = defaultHospedeiros,
+    est: Estado[] = defaultEstados
+  ) {
+    this._dbRegras = signal(regras)
+    this._dbPragas = signal(pragas)
+    this._dbHospedeiros = signal(hospedeiros)
+    this._estados = signal(est)
+    this._dados = deepSignal({
+      hospSci: '',
+      hospVul: '',
+      prod: '',
+      orig: '',
+      dest: '',
+    })
+    this._exibeBase = signal(false)
+    this._searched = signal(false)
   }
 
-  get hospedeirosRegulamentados() {
-    return this.dbHospedeiros.filter((hospedeiro) =>
-      this.species(this.hospedeirosPragas, hospedeiro.nomeSci)
+  // Getters for base data
+  get dbRegras() { return this._dbRegras.value }
+  get dbHospedeiros() { return this._dbHospedeiros.value }
+  get dbPragas() { return this._dbPragas.value }
+  get estados() { return this._estados.value }
+  
+  // State getters/setters
+  get dados() { return this._dados }
+  get exibeBase() { return this._exibeBase.value }
+  set exibeBase(v) { this._exibeBase.value = v }
+  get searched() { return this._searched.value }
+  set searched(v) { this._searched.value = v }
+
+  // Computed signals
+  private _db = computed(() =>
+    this._dbRegras.value.map((regra) => ({
+      ...this._dbPragas.value.find((item) => item.prag === regra.prag),
+      ...regra,
+    })) as Db[]
+  )
+  get db() { return this._db.value }
+
+  private _hospedeirosPragas = computed(() =>
+    this._dbPragas.value.flatMap((praga) => praga.hosp)
+  )
+  get hospedeirosPragas() { return this._hospedeirosPragas.value }
+
+  private _hospedeirosRegulamentados = computed(() =>
+    this._dbHospedeiros.value.filter((hospedeiro) =>
+      this.species(this._hospedeirosPragas.value, hospedeiro.nomeSci)
     )
-  }
+  )
+  get hospedeirosRegulamentados() { return this._hospedeirosRegulamentados.value }
 
-  get listaNomesSci() {
-    return [
-      '',
-      ...[
-        ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeSci)),
-      ].sort((a, b) => a.localeCompare(b)),
-    ]
-  }
+  private _listaNomesSci = computed(() => [
+    '',
+    ...[
+      ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeSci)),
+    ].sort((a, b) => a.localeCompare(b)),
+  ])
+  get listaNomesSci() { return this._listaNomesSci.value }
 
-  get listaNomesVul() {
-    return [
-      '',
-      ...[
-        ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeVul)),
-      ].sort((a, b) => a.localeCompare(b)),
-    ]
-  }
+  private _listaNomesVul = computed(() => [
+    '',
+    ...[
+      ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeVul)),
+    ].sort((a, b) => a.localeCompare(b)),
+  ])
+  get listaNomesVul() { return this._listaNomesVul.value }
 
   get empty(): boolean {
     return this.result.length === 0
   }
 
-  get origem() {
-    return this.estados.filter(
+  private _origem = computed(() =>
+    this.estados.filter(
       (estado) => estado.UF !== this.dados.dest || estado.UF === ''
     )
-  }
+  )
+  get origem() { return this._origem.value }
 
-  get destino() {
-    return this.estados.filter(
+  private _destino = computed(() =>
+    this.estados.filter(
       (estado) => estado.UF !== this.dados.orig || estado.UF === ''
     )
-  }
+  )
+  get destino() { return this._destino.value }
 
   get gender() {
     return this.dados.hospSci.split(' ')[0]
@@ -74,26 +118,28 @@ export class Store {
     )
   }
 
-  get completed(): boolean {
-    return (
-      Boolean(this.dados.hospSci) &&
-      Boolean(this.dados.hospVul) &&
-      Boolean(this.dados.prod) &&
-      Boolean(this.dados.orig) &&
-      Boolean(this.dados.dest)
-    )
-  }
+  private _completed = computed(() =>
+    Boolean(this.dados.hospSci) &&
+    Boolean(this.dados.hospVul) &&
+    Boolean(this.dados.prod) &&
+    Boolean(this.dados.orig) &&
+    Boolean(this.dados.dest)
+  )
+  get completed() { return this._completed.value }
 
-  get partes(): string[] {
-    return this.db
+  private _partes = computed(() => {
+    const p = this.db
       .filter((exigen) => this.species(exigen.hosp, this.dados.hospSci))
-      .flatMap((v) => v.part.concat(['']))
-      .filter((i, x, a) => a.indexOf(i) === x) // Keep unique after adding empty string
-      .sort((a: string, b: string) => a.localeCompare(b))
-  }
+      .flatMap((v) => v.part)
 
-  get result() {
-    return this.db.filter((exigen) => {
+    return ['', ...new Set(p)].sort((a: string, b: string) =>
+      a.localeCompare(b)
+    )
+  })
+  get partes() { return this._partes.value }
+
+  private _result = computed(() =>
+    this.db.filter((exigen) => {
       return (
         this.species(exigen.hosp, this.dados.hospSci) &&
         exigen.orig.includes(this.dados.orig) &&
@@ -101,7 +147,8 @@ export class Store {
         exigen.part.includes(this.dados.prod)
       )
     })
-  }
+  )
+  get result() { return this._result.value }
 
   clean(): void {
     this.dados.hospSci = ''
@@ -130,12 +177,12 @@ export class Store {
           )
           this.dados.prod = ''
           this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
-          break
         }
         break
       default:
         break
     }
+    // @ts-expect-error - index access
     this.dados[target.name as keyof Dados] = target.value
   }
 
@@ -144,7 +191,7 @@ export class Store {
       this.exibeBase = !this.exibeBase
     }
     if (i === 'Nova') {
-      store.clean()
+      this.clean()
       this.searched = false
     }
     if (i === 'Voltar') {
@@ -162,31 +209,14 @@ export class Store {
       return
     }
     if (process.env.NODE_ENV !== 'development') {
-      //window.ga('send', 'event', 'search', 'click', store.dados.hospSci)
       window.gtag('event', 'click', {
         eventCategory: 'search',
-        dimension5: store.dados.hospSci,
+        dimension5: this.dados.hospSci,
       })
-      //console.log('click', process.env.NODE_ENV, store.dados.hospSci)
     }
     this.searched = true
     event.preventDefault()
   }
 }
 
-//deepSignal only accepts plain objects, so we need to clone the Store class
-//and remove the constructor to avoid issues with deepSignal
-function clone(source: Store) {
-  let descriptors: Record<string, PropertyDescriptor> = {}
-  for (
-    let p = source;
-    p && p !== Object.prototype;
-    p = Object.getPrototypeOf(p)
-  ) {
-    descriptors = { ...Object.getOwnPropertyDescriptors(p), ...descriptors }
-  }
-  delete descriptors['constructor']
-  return Object.defineProperties({}, descriptors) as Store
-}
-
-export const store = deepSignal<Store>(clone(new Store()))
+export const store = new Store()
