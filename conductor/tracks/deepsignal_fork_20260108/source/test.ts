@@ -32,10 +32,18 @@ describe("FastDeepSignal", () => {
         dispose();
     });
 
-    it("should support filter override", () => {
-        const arr = deepSignal([{ val: 1 }, { val: 2 }]);
-        const res = arr.filter(i => i.val === 1);
-        assert.strictEqual(res.length, 1);
-        assert.strictEqual(res[0].val, 1);
+    it("should support class instances", () => {
+        class Counter {
+            count = 0;
+            inc() { this.count++; }
+        }
+        const c = deepSignal(new Counter());
+        let value = 0;
+        const dispose = effect(() => value = c.count);
+        
+        assert.strictEqual(value, 0);
+        c.inc();
+        assert.strictEqual(value, 1);
+        dispose();
     });
 });

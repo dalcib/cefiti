@@ -11,6 +11,11 @@ const shouldProxy = (val: any): boolean => {
   return true;
 };
 
+export const shallow = <T extends object>(obj: T): T => {
+  ignore.add(obj);
+  return obj;
+};
+
 export const deepSignal = <T extends object>(obj: T): T => {
   if (!shouldProxy(obj)) return obj;
   if (objToProxy.has(obj)) return objToProxy.get(obj);
@@ -88,7 +93,6 @@ const arrayHandlers: ProxyHandler<any[]> = {
     }
     const result = Reflect.set(target, key, value, receiver);
     s.value = value;
-    // If setting index, verify length? For now keep simple.
     return result;
   },
 };
