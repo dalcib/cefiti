@@ -1,168 +1,88 @@
-import { signal, computed, type Signal, type ReadonlySignal } from '@preact/signals'
+import { deepSignal, shallow } from './lib/fast-deep-signal.ts'
 // @ts-expect-error external file
-import { regras as defaultRegras } from '../public/dbRegras.db.js'
+import { regras } from '../public/dbRegras.db.js'
 // @ts-expect-error external file
-import { pragas as defaultPragas } from '../public/dbPragas.db.js'
+import { pragas } from '../public/dbPragas.db.js'
 // @ts-expect-error external file
-import { hospedeiros as defaultHospedeiros } from '../public/dbHospedeiros.db.js'
-import { estados as defaultEstados } from './estados.ts'
+import { hospedeiros } from '../public/dbHospedeiros.db.js'
+import { estados } from './estados.ts'
 
 export class Store {
-  private _dbRegras: Signal<Regra[]>
-  private _dbHospedeiros: Signal<Hospedeiro[]>
-  private _dbPragas: Signal<Praga[]>
-  private _estados: Signal<Estado[]>
-
-  // Individual signals for dados fields
-  private _hospSci = signal('')
-  private _hospVul = signal('')
-  private _prod = signal('')
-  private _orig = signal('')
-  private _dest = signal('')
-
-  private _exibeBase = signal(false)
-  private _searched = signal(false)
-
-  // Proxy object for backward compatibility
-  private _dadosProxy: Dados
+  dbRegras: Regra[]
+  dbHospedeiros: Hospedeiro[]
+  dbPragas: Praga[]
+  estados: Estado[]
+  db: Db[]
+  
+  dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  exibeBase: boolean = false
+  searched: boolean = false
 
   constructor(
-    regras: Regra[] = defaultRegras,
-    pragas: Praga[] = defaultPragas,
-    hospedeiros: Hospedeiro[] = defaultHospedeiros,
-    est: Estado[] = defaultEstados
+    _regras: Regra[] = regras,
+    _pragas: Praga[] = pragas,
+    _hospedeiros: Hospedeiro[] = hospedeiros,
+    _estados: Estado[] = estados
   ) {
-    this._dbRegras = signal(regras)
-    this._dbPragas = signal(pragas)
-    this._dbHospedeiros = signal(hospedeiros)
-    this._estados = signal(est)
-
-    const self = this
-    this._dadosProxy = new Proxy({} as Dados, {
-      get(_, prop) {
-        switch (prop) {
-          case 'hospSci': return self._hospSci.value
-          case 'hospVul': return self._hospVul.value
-          case 'prod': return self._prod.value
-          case 'orig': return self._orig.value
-          case 'dest': return self._dest.value
-          default: return undefined
-        }
-      },
-      set(_, prop, value) {
-        switch (prop) {
-          case 'hospSci': self._hospSci.value = value; break
-          case 'hospVul': self._hospVul.value = value; break
-          case 'prod': self._prod.value = value; break
-          case 'orig': self._orig.value = value; break
-          case 'dest': self._dest.value = value; break
-          default: return false
-        }
-        return true
-      },
-      ownKeys() {
-        return ['hospSci', 'hospVul', 'prod', 'orig', 'dest']
-      },
-      getOwnPropertyDescriptor(_, prop) {
-        if (['hospSci', 'hospVul', 'prod', 'orig', 'dest'].includes(prop as string)) {
-          return {
-            enumerable: true,
-            configurable: true,
-          }
-        }
-        return undefined
-      }
-    })
+    this.dbRegras = shallow(_regras)
+    this.dbPragas = shallow(_pragas)
+    this.dbHospedeiros = shallow(_hospedeiros)
+    this.estados = shallow(_estados)
+    
+    this.db = shallow(this.dbRegras.map((regra) => ({
+      ...this.dbPragas.find((item) => item.prag === regra.prag),
+      ...regra,
+    })) as Db[])
   }
 
-  // Getters for base data
-  get dbRegras() { return this._dbRegras.value }
-  get dbHospedeiros() { return this._dbHospedeiros.value }
-  get dbPragas() { return this._dbPragas.value }
-  get estados() { return this._estados.value }
+  get hospedeirosPragas() {
+    return this.dbPragas.flatMap((praga) => praga.hosp)
+  }
 
-  // State accessors
-  get dados() { return this._dadosProxy }
-  
-  get exibeBase() { return this._exibeBase.value }
-  set exibeBase(v) { this._exibeBase.value = v }
-  get searched() { return this._searched.value }
-  set searched(v) { this._searched.value = v }
-
-  // Computed signals
-  // Optimized: Use a Map for pragas lookup (O(R+P) instead of O(R*P))
-  private _db = computed(() => {
-    const pragasMap = new Map(this._dbPragas.value.map(p => [p.prag, p]))
-    return this._dbRegras.value.map((regra) => ({
-      ...pragasMap.get(regra.prag),
-      ...regra,
-    })) as Db[]
-  })
-  get db() { return this._db.value }
-
-  private _hospedeirosPragas = computed(() =>
-    this._dbPragas.value.flatMap((praga) => praga.hosp)
-  )
-  get hospedeirosPragas() { return this._hospedeirosPragas.value }
-
-  // Optimized: Use a Set for faster species lookup
-  private _hospedeirosPragasSet = computed(() => new Set(this.hospedeirosPragas))
-
-  private _hospedeirosRegulamentados = computed(() =>
-    this._dbHospedeiros.value.filter((hospedeiro) =>
-      this.speciesSet(this._hospedeirosPragasSet.value, hospedeiro.nomeSci)
+  get hospedeirosRegulamentados() {
+    return this.dbHospedeiros.filter((hospedeiro) =>
+      this.species(this.hospedeirosPragas, hospedeiro.nomeSci)
     )
-  )
-  get hospedeirosRegulamentados() { return this._hospedeirosRegulamentados.value }
+  }
 
-  private _listaNomesSci = computed(() => [
-    '',
-    ...[
-      ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeSci)),
-    ].sort((a, b) => a.localeCompare(b)),
-  ])
-  get listaNomesSci() { return this._listaNomesSci.value }
+  get listaNomesSci() {
+    return [
+      '',
+      ...[
+        ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeSci)),
+      ].sort((a, b) => a.localeCompare(b)),
+    ]
+  }
 
-  private _listaNomesVul = computed(() => [
-    '',
-    ...[
-      ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeVul)),
-    ].sort((a, b) => a.localeCompare(b)),
-  ])
-  get listaNomesVul() { return this._listaNomesVul.value }
+  get listaNomesVul() {
+    return [
+      '',
+      ...[
+        ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeVul)),
+      ].sort((a, b) => a.localeCompare(b)),
+    ]
+  }
 
   get empty(): boolean {
     return this.result.length === 0
   }
 
-  private _origem = computed(() =>
-    this.estados.filter(
-      (estado) => estado.UF !== this._dest.value || estado.UF === ''
+  get origem() {
+    return this.estados.filter(
+      (estado) => estado.UF !== this.dados.dest || estado.UF === ''
     )
-  )
-  get origem() { return this._origem.value }
+  }
 
-  private _destino = computed(() =>
-    this.estados.filter(
-      (estado) => estado.UF !== this._orig.value || estado.UF === ''
+  get destino() {
+    return this.estados.filter(
+      (estado) => estado.UF !== this.dados.orig || estado.UF === ''
     )
-  )
-  get destino() { return this._destino.value }
+  }
 
   get gender() {
-    return this._hospSci.value.split(' ')[0]
+    return this.dados.hospSci.split(' ')[0]
   }
 
-  // Optimized lookup
-  speciesSet(speciesSet: Set<string>, nomeSci: string): boolean {
-    return (
-      speciesSet.has(nomeSci) ||
-      speciesSet.has(`${nomeSci.split(' ')[0]} sp.`) ||
-      speciesSet.has(`${nomeSci.split(' ')[0]} spp.`)
-    )
-  }
-
-  // For compatibility
   species(species: string[], nomeSci: string): boolean {
     return (
       species.includes(nomeSci) ||
@@ -171,71 +91,70 @@ export class Store {
     )
   }
 
-  private _completed = computed(() =>
-    Boolean(this._hospSci.value) &&
-    Boolean(this._hospVul.value) &&
-    Boolean(this._prod.value) &&
-    Boolean(this._orig.value) &&
-    Boolean(this._dest.value)
-  )
-  get completed() { return this._completed.value }
+  get completed(): boolean {
+    return (
+      Boolean(this.dados.hospSci) &&
+      Boolean(this.dados.hospVul) &&
+      Boolean(this.dados.prod) &&
+      Boolean(this.dados.orig) &&
+      Boolean(this.dados.dest)
+    )
+  }
 
-  private _partes = computed(() => {
+  get partes(): string[] {
     const p = this.db
-      .filter((exigen) => this.species(exigen.hosp, this._hospSci.value))
+      .filter((exigen) => this.species(exigen.hosp, this.dados.hospSci))
       .flatMap((v) => v.part)
 
-    return ['', ...new Set(p)].sort((a: string, b: string) =>
-      a.localeCompare(b)
-    )
-  })
-  get partes() { return this._partes.value }
+    // Ensure empty string is always included
+    return ['', ...new Set(p)].sort((a: string, b: string) => a.localeCompare(b))
+  }
 
-  private _result = computed(() =>
-    this.db.filter((exigen) => {
+  get result() {
+    return this.db.filter((exigen) => {
       return (
-        this.species(exigen.hosp, this._hospSci.value) &&
-        exigen.orig.includes(this._orig.value) &&
-        exigen.dest.includes(this._dest.value) &&
-        exigen.part.includes(this._prod.value)
+        this.species(exigen.hosp, this.dados.hospSci) &&
+        exigen.orig.includes(this.dados.orig) &&
+        exigen.dest.includes(this.dados.dest) &&
+        exigen.part.includes(this.dados.prod)
       )
     })
-  )
-  get result() { return this._result.value }
+  }
 
   clean(): void {
-    this._hospSci.value = ''
-    this._hospVul.value = ''
-    this._prod.value = ''
-    this._orig.value = ''
-    this._dest.value = ''
+    this.dados.hospSci = ''
+    this.dados.hospVul = ''
+    this.dados.prod = ''
+    this.dados.orig = ''
+    this.dados.dest = ''
   }
 
   handleChanges(event: Event) {
     const target = event.currentTarget as HTMLSelectElement
-    const value = target.value
-    
-    if (target.name === 'hospSci') {
-      const hospVulg = this.dbHospedeiros.find(
-        (hosp) => hosp.nomeSci === value
-      )
-      this._prod.value = ''
-      this._hospVul.value = hospVulg ? hospVulg.nomeVul : ''
-    } else if (target.name === 'hospVul') {
-      const hospSci = this.dbHospedeiros.find(
-        (hosp) => hosp.nomeVul === value
-      )
-      this._prod.value = ''
-      this._hospSci.value = hospSci ? hospSci.nomeSci : ''
-    }
-
     switch (target.name) {
-      case 'hospSci': this._hospSci.value = value; break
-      case 'hospVul': this._hospVul.value = value; break
-      case 'prod': this._prod.value = value; break
-      case 'orig': this._orig.value = value; break
-      case 'dest': this._dest.value = value; break
+      case 'hospSci':
+        {
+          const hospVulg = this.dbHospedeiros.find(
+            (hosp) => hosp.nomeSci === target.value
+          )
+          this.dados.prod = ''
+          this.dados.hospVul = hospVulg ? hospVulg.nomeVul : ''
+        }
+        break
+      case 'hospVul':
+        {
+          const hospSci = this.dbHospedeiros.find(
+            (hosp) => hosp.nomeVul === target.value
+          )
+          this.dados.prod = ''
+          this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
+          break
+        }
+        break
+      default:
+        break
     }
+    this.dados[target.name as keyof Dados] = target.value
   }
 
   handleMenu(i: string) {
@@ -263,7 +182,7 @@ export class Store {
     if (process.env.NODE_ENV !== 'development') {
       window.gtag('event', 'click', {
         eventCategory: 'search',
-        dimension5: this._hospSci.value,
+        dimension5: this.dados.hospSci,
       })
     }
     this.searched = true
@@ -271,4 +190,4 @@ export class Store {
   }
 }
 
-export const store = new Store()
+export const store = deepSignal(new Store())

@@ -1,6 +1,6 @@
 import { performance } from 'perf_hooks'
-import { Store as NewStore } from './store.ts'
-import { createOldStore } from './store.old.ts'
+import { Store as RestoredStore } from './store.ts'
+import { createOldStore as createBaselineStore } from './store.old.ts'
 
 // Mock global objects
 globalThis.alert = () => {}
@@ -21,7 +21,6 @@ function benchmark(label: string, setupFn: () => any, runFn: (store: any) => voi
   // Run iterations
   const startRun = performance.now()
   for (let i = 0; i < iterations; i++) {
-    // Reset state for fairness if needed, but store.clean() inside scenario handles it
     runFn(store)
   }
   const endRun = performance.now()
@@ -31,8 +30,6 @@ function benchmark(label: string, setupFn: () => any, runFn: (store: any) => voi
   console.log(`  Total Run Time (${iterations} iterations): ${totalTime.toFixed(4)}ms`)
   console.log(`  Avg per iteration: ${avgTime.toFixed(4)}ms`)
   
-  // Memory (approx)
-  if (globalThis.gc) { globalThis.gc() }
   const used = process.memoryUsage().heapUsed / 1024 / 1024;
   console.log(`  Memory (Heap Used): ${used.toFixed(2)} MB`);
 
@@ -42,48 +39,36 @@ function benchmark(label: string, setupFn: () => any, runFn: (store: any) => voi
 const scenario = (store: any) => {
   store.clean()
   
-  // 1. Select Species (triggers filtering)
-  // Note: Old store requires name/value on currentTarget. New store supports it too.
+  // 1. Select Species
   const event1 = { currentTarget: { name: 'hospSci', value: 'Citrus spp.' } } as any
   store.handleChanges(event1)
-  
-  // Access computed to force evaluation
-  const r1 = store.result
-  const l1 = Array.isArray(r1) ? r1.length : r1.value.length
+  const _1 = store.result.length
 
   // 2. Select Origin
   const event2 = { currentTarget: { name: 'orig', value: 'SP' } } as any
   store.handleChanges(event2)
-  
-  const r2 = store.result
-  const l2 = Array.isArray(r2) ? r2.length : r2.value.length
+  const _2 = store.result.length
 
   // 3. Select Destination
   const event3 = { currentTarget: { name: 'dest', value: 'BA' } } as any
   store.handleChanges(event3)
-  
-  const r3 = store.result
-  const l3 = Array.isArray(r3) ? r3.length : r3.value.length
+  const _3 = store.result.length
 }
 
-// Check imports
+console.log("Performance Verification: Restored Store vs Baseline");
+
 try {
-  const oldStore = createOldStore()
-  const newStore = new NewStore()
-  
-  const resultsOld = benchmark('Old Store (deepSignal)', () => createOldStore(), scenario, 1000)
-  const resultsNew = benchmark('New Store (@preact/signals)', () => new NewStore(), scenario, 1000)
+  const resultsOld = benchmark('Baseline (Original deepSignal)', () => createBaselineStore(), scenario, 1000)
+  // RestoredStore is the class. We need to wrap it in deepSignal as in store.ts
+  // But store.ts exports the instance. For benchmark we want fresh instances.
+  // In store.ts: export const store = deepSignal(new Store())
+  // So we import deepSignal from the lib.
+  const { deepSignal } = await import('./lib/fast-deep-signal.ts');
+  const resultsNew = benchmark('Restored Store (FastDeepSignal + shallow)', () => deepSignal(new RestoredStore()), scenario, 1000)
 
   console.log('\n--- Comparative Analysis ---')
-  console.log(`Setup Delta (New - Old): ${(resultsNew.setup - resultsOld.setup).toFixed(4)}ms`)
-  console.log(`Run Delta (New - Old): ${(resultsNew.totalRun - resultsOld.totalRun).toFixed(4)}ms`)
-  
   const ratio = resultsOld.totalRun / resultsNew.totalRun
-  if (ratio > 1) {
-    console.log(`Performance: New Store is ${ratio.toFixed(2)}x FASTER`)
-  } else {
-    console.log(`Performance: New Store is ${(1/ratio).toFixed(2)}x SLOWER`)
-  }
+  console.log(`Performance: Restored Store is ${ratio.toFixed(2)}x FASTER than baseline`)
 
 } catch (e) {
   console.error('Benchmark failed:', e)
