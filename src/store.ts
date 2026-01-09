@@ -1,10 +1,10 @@
 import { signal, computed, type Signal, type ReadonlySignal } from '@preact/signals'
 // @ts-expect-error external file
-import { regras as defaultRegras } from './dbRegras.db.js'
+import { regras as defaultRegras } from '../public/dbRegras.db.js'
 // @ts-expect-error external file
-import { pragas as defaultPragas } from './dbPragas.db.js'
+import { pragas as defaultPragas } from '../public/dbPragas.db.js'
 // @ts-expect-error external file
-import { hospedeiros as defaultHospedeiros } from './dbHospedeiros.db.js'
+import { hospedeiros as defaultHospedeiros } from '../public/dbHospedeiros.db.js'
 import { estados as defaultEstados } from './estados.ts'
 
 export class Store {
