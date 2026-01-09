@@ -31,4 +31,19 @@ describe('Store Refactoring', () => {
     // Check if db (merged) is correct
     expect(store.db[0].pragc).toBe('Praga Comum 1')
   })
+
+  it('should be reactive when updating dados fields', () => {
+    const store = new Store()
+    let callCount = 0
+    // Accessing a computed property that depends on dados
+    const _ = store.completed 
+    
+    store.dados.hospSci = 'Citrus spp.'
+    store.dados.hospVul = 'Citros'
+    store.dados.prod = 'frutos'
+    store.dados.orig = 'AC'
+    store.dados.dest = 'BA'
+    
+    expect(store.completed).toBe(true)
+  })
 })
