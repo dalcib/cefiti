@@ -11,6 +11,6 @@
 - [x] Task: Conductor - User Manual Verification 'Features & Compatibility' (Protocol in workflow.md) [76f6b2f]
 
 ## Phase 3: Validation & Optimization
-- [ ] Task: Re-run benchmark comparing `FastDeepSignal` vs Explicit Signals vs Old DeepSignal
-- [ ] Task: Document performance delta and integration guide
-- [ ] Task: Conductor - User Manual Verification 'Validation & Optimization' (Protocol in workflow.md)
+- [x] Task: Re-run benchmark comparing `FastDeepSignal` vs Explicit Signals vs Old DeepSignal [f2e5f21]
+- [x] Task: Document performance delta and integration guide [62c952d]
+- [~] Task: Conductor - User Manual Verification 'Validation & Optimization' (Protocol in workflow.md)
