@@ -90,12 +90,14 @@ export class Store {
   set searched(v) { this._searched.value = v }
 
   // Computed signals
-  private _db = computed(() =>
-    this._dbRegras.value.map((regra) => ({
-      ...this._dbPragas.value.find((item) => item.prag === regra.prag),
+  // Optimized: Use a Map for pragas lookup (O(R+P) instead of O(R*P))
+  private _db = computed(() => {
+    const pragasMap = new Map(this._dbPragas.value.map(p => [p.prag, p]))
+    return this._dbRegras.value.map((regra) => ({
+      ...pragasMap.get(regra.prag),
       ...regra,
     })) as Db[]
-  )
+  })
   get db() { return this._db.value }
 
   private _hospedeirosPragas = computed(() =>
@@ -103,9 +105,12 @@ export class Store {
   )
   get hospedeirosPragas() { return this._hospedeirosPragas.value }
 
+  // Optimized: Use a Set for faster species lookup
+  private _hospedeirosPragasSet = computed(() => new Set(this.hospedeirosPragas))
+
   private _hospedeirosRegulamentados = computed(() =>
     this._dbHospedeiros.value.filter((hospedeiro) =>
-      this.species(this._hospedeirosPragas.value, hospedeiro.nomeSci)
+      this.speciesSet(this._hospedeirosPragasSet.value, hospedeiro.nomeSci)
     )
   )
   get hospedeirosRegulamentados() { return this._hospedeirosRegulamentados.value }
@@ -148,6 +153,16 @@ export class Store {
     return this._hospSci.value.split(' ')[0]
   }
 
+  // Optimized lookup
+  speciesSet(speciesSet: Set<string>, nomeSci: string): boolean {
+    return (
+      speciesSet.has(nomeSci) ||
+      speciesSet.has(`${nomeSci.split(' ')[0]} sp.`) ||
+      speciesSet.has(`${nomeSci.split(' ')[0]} spp.`)
+    )
+  }
+
+  // For compatibility
   species(species: string[], nomeSci: string): boolean {
     return (
       species.includes(nomeSci) ||
