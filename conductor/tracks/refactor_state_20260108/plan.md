@@ -6,7 +6,7 @@
 
 ## Phase 2: Refactoring Core State
 - [x] Task: Refactor data loading and initialization logic in Store [f67b5da]
-- [ ] Task: Transition `dados` and `searched` state to Preact Signals
+- [x] Task: Transition `dados` and `searched` state to Preact Signals [92158b6]
 - [ ] Task: Implement signal-based computed properties for `result`, `hospedeirosRegulamentados`, and `partes`
 - [ ] Task: Conductor - User Manual Verification 'Refactoring Core State' (Protocol in workflow.md)
 
