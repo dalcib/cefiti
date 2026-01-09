@@ -1,9 +1,6 @@
 import { deepSignal, shallow } from './lib/fast-deep-signal.ts'
-// @ts-expect-error external file
 import { regras } from '../public/dbRegras.db.js'
-// @ts-expect-error external file
 import { pragas } from '../public/dbPragas.db.js'
-// @ts-expect-error external file
 import { hospedeiros } from '../public/dbHospedeiros.db.js'
 import { estados } from './estados.ts'
 
@@ -13,7 +10,7 @@ export class Store {
   dbPragas: Praga[]
   estados: Estado[]
   db: Db[]
-  
+
   dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
   exibeBase: boolean = false
   searched: boolean = false
@@ -28,7 +25,7 @@ export class Store {
     this.dbPragas = shallow(_pragas)
     this.dbHospedeiros = shallow(_hospedeiros)
     this.estados = shallow(_estados)
-    
+
     this.db = shallow(this.dbRegras.map((regra) => ({
       ...this.dbPragas.find((item) => item.prag === regra.prag),
       ...regra,

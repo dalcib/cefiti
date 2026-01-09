@@ -1,26 +1,27 @@
 import assert from 'node:assert'
 export * from 'node:test'
 
-interface Expect {
-  toBe<T>(expected: T): void
-  toEqual<T>(expected: T): void
+interface Expect<T> {
+  toBe(expected: T): void
+  toEqual(expected: T): void
   toBeTruthy(): void
   toBeFalsy(): void
   toBeGreaterThan(expected: number): void
   toBeGreaterThanOrEqual(expected: number): void
   toBeLessThan(expected: number): void
-  toContain<T>(expected: T): void
-  toHaveProperty<T extends object, K extends keyof T>(
+  toContain(expected: T extends any[] | string ? T[number] | string : any): void
+  toHaveProperty<K extends keyof T>(
     property: K,
     value?: T[K]
   ): void
-  toBeInstanceOf<T>(expectedClass: new (...args: unknown[]) => T): void
+  toBeInstanceOf<U>(expectedClass: new (...args: unknown[]) => U): void
+  //@ts-ignore
   toMatch(expectedRegex: RegExp): void
   toHaveBeenCalled(): void
   toHaveBeenCalledTimes(times: number): void
 }
 
-function expect<T>(actual: T): Expect {
+function expect<T>(actual: T): Expect<T> {
   return {
     toBe: (expected) => {
       assert.strictEqual(actual, expected)
@@ -59,14 +60,14 @@ function expect<T>(actual: T): Expect {
         throw new Error('toContain can only be used with arrays or strings')
       }
     },
-    toHaveProperty: function <U extends object, K extends keyof U>(
-      property: K,
-      value?: U[K]
+    toHaveProperty: function (
+      property: any,
+      value?: any
     ) {
       if (typeof actual === 'object' && actual !== null) {
-        assert.ok(Object.prototype.hasOwnProperty.call(actual, property))
+        assert.ok(property in actual)
         if (arguments.length === 2) {
-          assert.deepStrictEqual((actual as unknown as U)[property], value)
+          assert.deepStrictEqual((actual as any)[property], value)
         }
       } else {
         throw new Error('toHaveProperty can only be used with objects')

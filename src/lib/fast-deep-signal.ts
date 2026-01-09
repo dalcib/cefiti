@@ -1,4 +1,5 @@
 import { signal, computed, Signal } from "@preact/signals";
+import { useMemo } from "preact/hooks";
 
 const proxyToSignals = new WeakMap<object, Map<string | symbol, Signal<any>>>();
 const objToProxy = new WeakMap<object, any>();
@@ -11,19 +12,27 @@ const shouldProxy = (val: any): boolean => {
   return true;
 };
 
+export type DeepSignal<T> = T & {
+  [K in keyof T as K extends string ? `$${K}` : never]: Signal<T[K]>
+};
+
 export const shallow = <T extends object>(obj: T): T => {
   ignore.add(obj);
   return obj;
 };
 
-export const deepSignal = <T extends object>(obj: T): T => {
-  if (!shouldProxy(obj)) return obj;
+export const deepSignal = <T extends object>(obj: T): DeepSignal<T> => {
+  if (!shouldProxy(obj)) return obj as DeepSignal<T>;
   if (objToProxy.has(obj)) return objToProxy.get(obj);
 
   const handler = Array.isArray(obj) ? arrayHandlers : objectHandlers;
   const proxy = new Proxy(obj, handler);
   objToProxy.set(obj, proxy);
-  return proxy as T;
+  return proxy as DeepSignal<T>;
+};
+
+export const useDeepSignal = <T extends object>(obj: T): DeepSignal<T> => {
+  return useMemo(() => deepSignal(obj), []);
 };
 
 function getDescriptor(target: any, key: string | symbol): PropertyDescriptor | undefined {
@@ -46,14 +55,14 @@ const getSignal = (target: object, key: string | symbol, receiver: any) => {
   if (!signals.has(key)) {
     const desc = getDescriptor(target, key);
     if (desc && typeof desc.get === 'function') {
-        // It's a getter, use computed
-        signals.set(key, computed(() => Reflect.get(target, key, receiver)));
+      // It's a getter, use computed
+      signals.set(key, computed(() => Reflect.get(target, key, receiver)));
     } else {
-        let value = Reflect.get(target, key, receiver);
-        if (shouldProxy(value)) {
-          value = deepSignal(value);
-        }
-        signals.set(key, signal(value));
+      let value = Reflect.get(target, key, receiver);
+      if (shouldProxy(value)) {
+        value = deepSignal(value);
+      }
+      signals.set(key, signal(value));
     }
   }
   return signals.get(key)!;
@@ -61,71 +70,72 @@ const getSignal = (target: object, key: string | symbol, receiver: any) => {
 
 const objectHandlers: ProxyHandler<object> = {
   get(target, key, receiver) {
+    if (typeof key === 'string' && key.startsWith('$')) {
+      const actualKey = key.slice(1);
+      if (actualKey in target) {
+        return getSignal(target, actualKey, receiver);
+      }
+    }
     const s = getSignal(target, key, receiver);
     return s.value;
   },
   set(target, key, value, receiver) {
+    if (typeof key === 'string' && key.startsWith('$')) {
+      // Direct signal assignment not typically supported in deepsignal this way?
+      // deepsignal usually throws on mutation of $prop?
+      // But for compatibility with test setting state.test = ..., that's normal set.
+      // If setting state.$test = ..., maybe throw?
+      // We'll ignore setting $prop for now or throw.
+      return true;
+    }
+
     const s = getSignal(target, key, receiver);
-    
-    // If it was a computed (getter), we probably shouldn't be setting it unless there's a setter?
-    // Reflect.set will handle the setter call.
-    // If it's a writable signal, we update .value.
-    
-    // Check if it's a computed signal (read-only usually, unless we handled setter)
-    // For now, assume standard property set.
-    
+
     if (shouldProxy(value)) {
       value = deepSignal(value);
     }
     const result = Reflect.set(target, key, value, receiver);
-    
-    // Only update signal value if it's not a computed derived from getter?
-    // Actually, if we set a property that was a getter, it might become a value property.
-    // Or if it has a setter, the getter value changes indirectly.
-    // If it has a setter, the computed should re-run automatically because dependencies changed?
-    // No, computed tracks dependencies.
-    // If setter updates internal state, computed updates.
-    
-    // So we DON'T update s.value if it is a computed!
-    // We only update s.value if it is a standard signal.
-    
-    // How to distinguish?
-    // We can check descriptor again, or check if signal is writable.
-    // @preact/signals Computed is not writable.
-    
-    // Simple check: try/catch write? Or check if it has a setter.
-    
+
     const desc = getDescriptor(target, key);
     if (!desc || typeof desc.get !== 'function') {
-        s.value = value;
+      s.value = value;
     }
-    
+
     return result;
   },
 };
 
 const arrayHandlers: ProxyHandler<any[]> = {
   get(target, key, receiver) {
+    if (typeof key === 'string' && key.startsWith('$')) {
+      if (key === '$length') return getSignal(target, 'length', receiver);
+      const actualKey = key.slice(1);
+      // Check if index
+      if (!isNaN(Number(actualKey))) {
+        return getSignal(target, actualKey, receiver);
+      }
+    }
+
     // OPTIMIZATION: Override iteration methods to bypass index access traps
     if (key === 'map' || key === 'filter' || key === 'forEach' || key === 'find' || key === 'some' || key === 'every' || key === 'reduce') {
-        return (...args: any[]) => {
-            // Track length to ensure dependency on array mutations
-            getSignal(target, 'length', receiver).value;
-            
-            // Native method on raw target
-            const func = Array.prototype[key as any];
-            
-            return func.apply(target, args.map((arg, i) => {
-                // Wrap callback
-                if (typeof arg === 'function') {
-                    return (item: any, index: number, arr: any[]) => {
-                        // Pass PROXY of item to callback to ensure deep tracking
-                        return arg(deepSignal(item), index, receiver);
-                    }
-                }
-                return arg;
-            }));
-        }
+      return (...args: any[]) => {
+        // Track length to ensure dependency on array mutations
+        getSignal(target, 'length', receiver).value;
+
+        // Native method on raw target
+        const func = Array.prototype[key as any];
+
+        return func.apply(target, args.map((arg) => {
+          // Wrap callback
+          if (typeof arg === 'function') {
+            return (item: any, index: number/*, arr: any[]*/) => {
+              // Pass PROXY of item to callback to ensure deep tracking
+              return arg(deepSignal(item), index, receiver);
+            }
+          }
+          return arg;
+        }));
+      }
     }
 
     const s = getSignal(target, key, receiver);
@@ -134,7 +144,7 @@ const arrayHandlers: ProxyHandler<any[]> = {
   set(target, key, value, receiver) {
     const s = getSignal(target, key, receiver);
     if (shouldProxy(value)) {
-        value = deepSignal(value);
+      value = deepSignal(value);
     }
     const result = Reflect.set(target, key, value, receiver);
     s.value = value;
