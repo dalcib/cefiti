@@ -10,8 +10,8 @@
 - [x] Task: Implement signal-based computed properties for `result`, `hospedeirosRegulamentados`, and `partes` [982edb9]
 - [x] Task: Conductor - User Manual Verification 'Refactoring Core State' (Protocol in workflow.md) [ab69d1f]
 
-## Phase 3: Testing & Optimization
+## Phase 3: Testing & Optimization [checkpoint: dc3864a]
 - [x] Task: Benchmark Performance: Old vs New Store [95fb836]
 - [x] Task: Update unit tests in `src/store.ai.test.ts` to cover complex search edge cases [a525c81]
 - [x] Task: Optimize filtering logic for large datasets [52edac5]
-- [ ] Task: Conductor - User Manual Verification 'Testing & Optimization' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Testing & Optimization' (Protocol in workflow.md) [dc3864a]
