@@ -10,7 +10,7 @@
 - [x] Task: Optimize array handling to avoid re-wrapping during iteration [f2e5f21]
 - [x] Task: Conductor - User Manual Verification 'Features & Compatibility' (Protocol in workflow.md) [76f6b2f]
 
-## Phase 3: Validation & Optimization
+## Phase 3: Validation & Optimization [checkpoint: b1c80c8]
 - [x] Task: Re-run benchmark comparing `FastDeepSignal` vs Explicit Signals vs Old DeepSignal [f2e5f21]
 - [x] Task: Document performance delta and integration guide [62c952d]
-- [~] Task: Conductor - User Manual Verification 'Validation & Optimization' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Validation & Optimization' (Protocol in workflow.md) [b1c80c8]
