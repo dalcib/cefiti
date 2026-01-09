@@ -12,6 +12,6 @@
 
 ## Phase 3: Testing & Optimization
 - [x] Task: Benchmark Performance: Old vs New Store [95fb836]
-- [ ] Task: Update unit tests in `src/store.ai.test.ts` to cover complex search edge cases
+- [x] Task: Update unit tests in `src/store.ai.test.ts` to cover complex search edge cases [a525c81]
 - [ ] Task: Optimize filtering logic for large datasets
 - [ ] Task: Conductor - User Manual Verification 'Testing & Optimization' (Protocol in workflow.md)
