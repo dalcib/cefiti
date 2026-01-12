@@ -229,7 +229,10 @@ export const pragas = (globalThis.pragas = [
         leg: 'Portaria SDA/MAPA nº 1.257, de 19 de março de 2025',
         link: 'PORT1257-2025.pdf',
       },
+      {
+        leg: 'Portaria SDA/MAPA nº 1.512, de 07 de janeiro de 2026',
+        link: 'PORT1512-2026.pdf',
+      },
     ],
   },
 ])
-

@@ -685,7 +685,7 @@ II- constará a seguinte DA na PTV:  "A partida foi produzida em UF sem ocorrên
     {
     desc: 'DE UF sem presença de Rhizoctonia theobromae (Ceratobasidium theobromae) PARA qualquer UF',  
     part: ['Materiais vegetais'],
-    orig: ['AC', 'AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    orig: ['AC', 'AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Rhizoctonia theobromae (Ceratobasidium theobromae)',
     exig: [
@@ -698,8 +698,8 @@ II - ser lacrado pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrit
     {
     desc: 'DE UF com presença de Rhizoctonia theobromae (Ceratobasidium theobromae), oriundo de municípios sem ocorrência, PARA quaquer UF',  
     part: ['Materiais vegetais'],
-    orig: ['AP'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    orig: ['AP','PA'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Rhizoctonia theobromae (Ceratobasidium theobromae)',
     exig: [
       `PTV, baseada em CFO ou CFOC, com a seguinte DA: "A partida é originária de município sem ocorrência de Rhizoctonia theobromae, em Unidade Federativa com ocorrência, e encontra-se livre da praga".`,
@@ -711,12 +711,12 @@ II - ser lacrada pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrit
   {
     desc: 'DE UF com presença de Rhizoctonia theobromae (Ceratobasidium theobromae), oriundo de municípios com ocorrência, PARA qualquer UF',  
     part: ['Materiais vegetais'],
-    orig: ['AP'],
-    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    orig: ['AP', 'PA'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Rhizoctonia theobromae (Ceratobasidium theobromae)',
     exig: [
-      `Se a partida tiver como origem os municípios de Oiapoque, Calçoene, Amapá, Pracuúba, Tartarugalzinho e Pedra Branca do Amaparí: TRÂNSITO PROIBIDO.`
+      `Se a partida tiver como origem os municípios de Oiapoque, Calçoene, Amapá, Pracuúba, Tartarugalzinho e Pedra Branca do Amaparí no estado do Amapá, ou os município de Almeirim, Óbidos e Oriximiná, na área da
+Terra Indígena do Parque do Tumucumaque no Estado do Pará, municípios de Almeirim, Óbidos e Oriximiná, na área da Terra Indígena do Parque do Tumucumaque: TRÂNSITO PROIBIDO.`
     ]
   },
 ]
-
