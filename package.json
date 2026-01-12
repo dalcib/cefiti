@@ -1,6 +1,6 @@
 {
   "name": "cefiti",
-  "version": "8.1.0",
+  "version": "8.1.1",
   "description": "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual",
   "private": true,
   "type": "module",
@@ -32,23 +32,18 @@
     "preact": "^10.27.0"
   },
   "devDependencies": {
-    "prettier": "^3.5.1",
     "@eslint/js": "^9.20.0",
-    "@types/d3-array": "^2.0.0",
     "@types/node": "^20.4.0",
-    "d3-array": "^2.3.2",
     "esbuild": "^0.23.0",
     "eslint": "^9.20.1",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^16.0.0",
+    "prettier": "^3.5.1",
     "source-map-explorer": "^2.1.0",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.24.1"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "prettier": {
+    "printWidth": 200
+  }
 }

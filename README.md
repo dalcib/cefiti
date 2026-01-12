@@ -4,6 +4,12 @@
 
 ## **_CHANGELOG_**
 
+## 8.1.1
+
+- Vassoura de Bruxa da Mandioca: Inclusão de municípios do Pará como área de ocorrência
+- Remoção do pacote d3-array
+- Ajuste na configuração do Prettier
+
 ## 8.1.0
 
 - Atualiza ocorrencia de Mosca da Carambola no Amazonas

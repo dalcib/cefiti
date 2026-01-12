@@ -1,41 +1,42 @@
-import esbuild from 'esbuild'
+import esbuild from "esbuild";
 //import { version } from './../package.json'
 //import fs from "fs"
 
 const context = await esbuild
   .context({
-    entryPoints: ['./src/index.tsx', './src/sw.js'],
+    entryPoints: ["./src/index.tsx", "./src/sw.js"],
     bundle: true,
-    outdir: './public',
+    outdir: "./public",
     minify: true,
     sourcemap: true,
-    format: 'esm',
-    jsx: 'automatic',
+    format: "esm",
+    jsx: "automatic",
+    target: ["es2017"],
     define: {
       //"process.env.NODE_ENV": isDevServer ? '"development"' : '"production"',
       //'process.env.npm_package_version': '"' + version + '"',
     },
     //loader: { '.db.js': 'copy' },
-    external: ['./*.db.js'],
+    external: ["./*.db.js"],
     //assetNames: 'public/[name]',
     metafile: true,
   })
   .catch(() => {
-    console.log('ERROR')
+    console.log("ERROR");
     // eslint-disable-next-line no-undef
-    process.exit(1)
-  })
+    process.exit(1);
+  });
 
-await context.rebuild()
+await context.rebuild();
 
-await context.watch()
+await context.watch();
 
 const serveResult = await context.serve({
-  servedir: './public',
-  host: 'localhost',
+  servedir: "./public",
+  host: "localhost",
   port: 3001,
-})
+});
 
-console.log(`Listening on http://${serveResult.host}:${serveResult.port}`)
+console.log(`Listening on http://${serveResult.host}:${serveResult.port}`);
 
 //fs.writeFileSync('meta.json', JSON.stringify(context.metafile))
