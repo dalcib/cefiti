@@ -1,22 +1,36 @@
-import { deepSignal } from 'deepsignal'
-// @ts-expect-error external file
-import { regras } from './dbRegras.db.js' // @ts-expect-error external file
-import { pragas } from './dbPragas.db.js' // @ts-expect-error external file
-import { hospedeiros } from './dbHospedeiros.db.js'
+import { deepSignal, shallow } from './lib/fast-deep-signal.ts'
+import { regras } from '../public/dbRegras.db.js'
+import { pragas } from '../public/dbPragas.db.js'
+import { hospedeiros } from '../public/dbHospedeiros.db.js'
 import { estados } from './estados.ts'
 
 export class Store {
-  dbRegras: Regra[] = regras
-  dbHospedeiros: Hospedeiro[] = hospedeiros
-  dbPragas: Praga[] = pragas
-  estados = estados
-  db: Db[] = this.dbRegras.map((regra) => ({
-    ...this.dbPragas.find((item) => item.prag === regra.prag),
-    ...regra,
-  })) as Db[]
+  dbRegras: Regra[]
+  dbHospedeiros: Hospedeiro[]
+  dbPragas: Praga[]
+  estados: Estado[]
+  db: Db[]
+
   dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
   exibeBase: boolean = false
   searched: boolean = false
+
+  constructor(
+    _regras: Regra[] = regras,
+    _pragas: Praga[] = pragas,
+    _hospedeiros: Hospedeiro[] = hospedeiros,
+    _estados: Estado[] = estados
+  ) {
+    this.dbRegras = shallow(_regras)
+    this.dbPragas = shallow(_pragas)
+    this.dbHospedeiros = shallow(_hospedeiros)
+    this.estados = shallow(_estados)
+
+    this.db = shallow(this.dbRegras.map((regra) => ({
+      ...this.dbPragas.find((item) => item.prag === regra.prag),
+      ...regra,
+    })) as Db[])
+  }
 
   get hospedeirosPragas() {
     return this.dbPragas.flatMap((praga) => praga.hosp)
@@ -85,11 +99,12 @@ export class Store {
   }
 
   get partes(): string[] {
-    return this.db
+    const p = this.db
       .filter((exigen) => this.species(exigen.hosp, this.dados.hospSci))
-      .flatMap((v) => v.part.concat(['']))
-      .filter((i, x, a) => a.indexOf(i) === x) // Keep unique after adding empty string
-      .sort((a: string, b: string) => a.localeCompare(b))
+      .flatMap((v) => v.part)
+
+    // Ensure empty string is always included
+    return ['', ...new Set(p)].sort((a: string, b: string) => a.localeCompare(b))
   }
 
   get result() {
@@ -144,7 +159,7 @@ export class Store {
       this.exibeBase = !this.exibeBase
     }
     if (i === 'Nova') {
-      store.clean()
+      this.clean()
       this.searched = false
     }
     if (i === 'Voltar') {
@@ -162,31 +177,14 @@ export class Store {
       return
     }
     if (process.env.NODE_ENV !== 'development') {
-      //window.ga('send', 'event', 'search', 'click', store.dados.hospSci)
       window.gtag('event', 'click', {
         eventCategory: 'search',
-        dimension5: store.dados.hospSci,
+        dimension5: this.dados.hospSci,
       })
-      //console.log('click', process.env.NODE_ENV, store.dados.hospSci)
     }
     this.searched = true
     event.preventDefault()
   }
 }
 
-//deepSignal only accepts plain objects, so we need to clone the Store class
-//and remove the constructor to avoid issues with deepSignal
-function clone(source: Store) {
-  let descriptors: Record<string, PropertyDescriptor> = {}
-  for (
-    let p = source;
-    p && p !== Object.prototype;
-    p = Object.getPrototypeOf(p)
-  ) {
-    descriptors = { ...Object.getOwnPropertyDescriptors(p), ...descriptors }
-  }
-  delete descriptors['constructor']
-  return Object.defineProperties({}, descriptors) as Store
-}
-
-export const store = deepSignal<Store>(clone(new Store()))
+export const store = deepSignal(new Store())

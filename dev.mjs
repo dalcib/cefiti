@@ -17,7 +17,7 @@ const context = await esbuild
       //'process.env.npm_package_version': '"' + version + '"',
     },
     //loader: { '.db.js': 'copy' },
-    external: ["./*.db.js"],
+    //external: ['./*.db.js'],
     //assetNames: 'public/[name]',
     metafile: true,
   })
