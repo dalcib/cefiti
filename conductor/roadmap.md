@@ -1,3 +1,7 @@
+Cada tarefa abaixo deve ser feita em uma branch separada
+Cada tarefa terá um arquivo descritivo na subpasta Tasks
+Só as tarefas não completadas e que tem um arquivo descritivo devem ser executadas
+
 - [x] Substiruit o Prettier e o ESLint pelo Biome @tasks/Biome.md
 - [ ] Converter DB para JSON
 - [ ] Converter JSON para Firebase para uso offline
