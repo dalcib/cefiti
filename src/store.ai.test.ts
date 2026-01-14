@@ -1,14 +1,14 @@
-import { Store } from './store.ts'
 import { estados } from './estados.ts'
-import { describe, it, beforeEach, expect, mock } from './expect.ts'
+import { beforeEach, describe, expect, it, mock } from './expect.ts'
+import { Store } from './store.ts'
 
 const mockWindow = {
-  gtag: () => { }, // Empty function for gtag
-  print: () => { }, //Empty function for print
+  gtag: () => {}, // Empty function for gtag
+  print: () => {}, //Empty function for print
 }
 globalThis.window = mockWindow as unknown as Window & typeof globalThis
 globalThis.alert = ((message: string) => console.log(message)) as unknown as (
-  message?: string
+  message?: string,
 ) => void
 
 describe('Store', () => {

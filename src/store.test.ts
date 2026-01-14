@@ -1,9 +1,9 @@
-import { store } from './store'
-import { regras } from '../public/dbRegras.db'
-import { pragas } from '../public/dbPragas.db'
-import { hospedeiros } from '../public/dbHospedeiros.db'
-import { describe, it, before, test } from 'node:test'
 import assert from 'node:assert'
+import { before, describe, it, test } from 'node:test'
+import { hospedeiros } from '../public/dbHospedeiros.db'
+import { pragas } from '../public/dbPragas.db'
+import { regras } from '../public/dbRegras.db'
+import { store } from './store'
 
 const estadosSemAC = [
   { estado: '', UF: '' },
@@ -64,12 +64,12 @@ describe('Store hospedeiros nomeSci', () => {
     //assert(store.listaNomesVul.length,hospedeiros.length)
     assert.strictEqual(
       hospedeiros.map((v) => v.nomeVul).filter((i, x, a) => a.indexOf(i) !== x),
-      []
+      [],
     )
     assert.strictEqual(
       hospedeiros.map((v) => v.nomeVul).filter((i, x, a) => a.indexOf(i) === x)
         .length,
-      hospedeiros.length
+      hospedeiros.length,
     )
   })
 })
@@ -149,14 +149,14 @@ describe('Store filtro geral', () => {
   it('Musa spp. legis', () => {
     assert.strictEqual(
       store.result.flatMap((v) => v.files).map((v) => v.link),
-      ['IN17-2009.pdf', 'IN17-2005.pdf', 'IN17-2005.pdf']
+      ['IN17-2009.pdf', 'IN17-2005.pdf', 'IN17-2005.pdf'],
     )
   })
 
   it('Musa spp. pragas', () => {
     assert.strictEqual(
       store.result.map((v) => v.pragc),
-      ['MOKO-DA-BANANEIRA', 'SIGATOKA NEGRA', 'SIGATOKA NEGRA']
+      ['MOKO-DA-BANANEIRA', 'SIGATOKA NEGRA', 'SIGATOKA NEGRA'],
     )
   })
 
@@ -176,11 +176,11 @@ describe('Store filtro geral', () => {
     assert.strictEqual(store.result.length, 1)
     assert.strictEqual(
       store.result.flatMap((v) => v.files).map((v) => v.link),
-      ['IN20-2013.pdf']
+      ['IN20-2013.pdf'],
     )
     assert.strictEqual(
       store.result.map((v) => v.pragc),
-      ['CANCRO EUROPEU DAS POMÁCEAS']
+      ['CANCRO EUROPEU DAS POMÁCEAS'],
     )
   })
 
@@ -202,11 +202,11 @@ describe('Store filtro geral', () => {
     assert.strictEqual(store.result.length, 2)
     assert.strictEqual(
       store.result.flatMap((v) => v.files).map((v) => v.link),
-      ['IN03-2008.pdf', 'IN21-2018.pdf']
+      ['IN03-2008.pdf', 'IN21-2018.pdf'],
     )
     assert.strictEqual(
       store.result.map((v) => v.pragc),
-      ['PINTA-PRETA-DOS-CITROS', 'CANCRO CÍTRICO']
+      ['PINTA-PRETA-DOS-CITROS', 'CANCRO CÍTRICO'],
     )
   })
 
@@ -218,11 +218,11 @@ describe('Store filtro geral', () => {
     assert.strictEqual(store.result.length, 3)
     assert.strictEqual(
       store.result.flatMap((v) => v.files).map((v) => v.link),
-      ['IN53-2008.pdf', 'IN03-2008.pdf', 'IN21-2018.pdf']
+      ['IN53-2008.pdf', 'IN03-2008.pdf', 'IN21-2018.pdf'],
     )
     assert.strictEqual(
       store.result.map((v) => v.pragc),
-      ['GREENING', 'PINTA-PRETA-DOS-CITROS', 'CANCRO CÍTRICO']
+      ['GREENING', 'PINTA-PRETA-DOS-CITROS', 'CANCRO CÍTRICO'],
     )
     assert.deepStrictEqual(store.result, snap)
   })
@@ -240,7 +240,9 @@ describe('Sync between NomeVulg and NomeSci', () => {
   })
   it('should define NomeSci  based in NomeVulg ', () => {
     // @ts-expect-error xxx
-    store.handleChanges({ currentTarget: { name: 'hospVul', value: 'Banana' } })
+    store.handleChanges({
+      currentTarget: { name: 'hospVul', value: 'Banana' },
+    })
     //store.dados.hospVul = 'Banana'
     assert.strictEqual(store.dados.hospSci, 'Musa spp.')
   })
@@ -263,11 +265,11 @@ test('duplicates nomeVul', () => {
     ([nomeVulg, items]) => ({
       nomeVulg,
       countNomeVulg: items?.length,
-    })
+    }),
   )
   assert.strictEqual(
     countDupli.filter((v) => !v.countNomeVulg),
-    []
+    [],
   )
 })
 

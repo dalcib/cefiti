@@ -1,4 +1,5 @@
 import assert from 'node:assert'
+
 export * from 'node:test'
 
 interface Expect<T> {
@@ -10,12 +11,9 @@ interface Expect<T> {
   toBeGreaterThanOrEqual(expected: number): void
   toBeLessThan(expected: number): void
   toContain(expected: T extends any[] | string ? T[number] | string : any): void
-  toHaveProperty<K extends keyof T>(
-    property: K,
-    value?: T[K]
-  ): void
+  toHaveProperty<K extends keyof T>(property: K, value?: T[K]): void
   toBeInstanceOf<U>(expectedClass: new (...args: unknown[]) => U): void
-  //@ts-ignore
+  //@ts-expect-error
   toMatch(expectedRegex: RegExp): void
   toHaveBeenCalled(): void
   toHaveBeenCalledTimes(times: number): void
@@ -60,10 +58,7 @@ function expect<T>(actual: T): Expect<T> {
         throw new Error('toContain can only be used with arrays or strings')
       }
     },
-    toHaveProperty: function (
-      property: any,
-      value?: any
-    ) {
+    toHaveProperty: function (property: any, value?: any) {
       if (typeof actual === 'object' && actual !== null) {
         assert.ok(property in actual)
         if (arguments.length === 2) {
@@ -92,7 +87,7 @@ function expect<T>(actual: T): Expect<T> {
         assert.ok(
           (
             actual as unknown as { mock: { callCount: () => number } }
-          ).mock.callCount() > 0
+          ).mock.callCount() > 0,
         )
       } else {
         throw new Error('toHaveBeenCalled can only be used with mock functions')
@@ -107,11 +102,11 @@ function expect<T>(actual: T): Expect<T> {
           (
             actual as unknown as { mock: { callCount: () => number } }
           ).mock.callCount(),
-          times
+          times,
         )
       } else {
         throw new Error(
-          'toHaveBeenCalledTimes can only be used with mock functions'
+          'toHaveBeenCalledTimes can only be used with mock functions',
         )
       }
     },

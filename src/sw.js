@@ -1,4 +1,5 @@
 import { version } from './../package.json'
+
 // eslint-disable-next-line no-undef
 const cacheKey = 'CEFiTI' + version //8.0.0';
 
@@ -49,7 +50,7 @@ self.addEventListener('install', (event) => {
         './leg/RES05-2018.pdf',
         './leg/PORT1257-2025.pdf',
       ])
-    })
+    }),
   )
 })
 
@@ -64,9 +65,9 @@ self.addEventListener('activate', (event) => {
           if (!cacheKey.includes(key)) {
             return caches.delete(key)
           }
-        })
+        }),
       )
-    })
+    }),
   )
 })
 
@@ -79,7 +80,7 @@ self.addEventListener('fetch', (event) => {
             console.log(
               event.request.url,
               new URL(event.request.url).protocol,
-              'xxxxxxxxx'
+              'xxxxxxxxx',
             )
             cache.put(event.request, fetchedResponse.clone())
           }
@@ -88,7 +89,7 @@ self.addEventListener('fetch', (event) => {
         .catch(() => {
           return cache.match(event.request)
         })
-    })
+    }),
   )
   //}
 })

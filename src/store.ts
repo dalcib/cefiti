@@ -1,8 +1,8 @@
-import { deepSignal } from './lib/fast-deep-signal.ts'
-import { regras } from '../public/dbRegras.db.js'
-import { pragas } from '../public/dbPragas.db.js'
 import { hospedeiros } from '../public/dbHospedeiros.db.js'
+import { pragas } from '../public/dbPragas.db.js'
+import { regras } from '../public/dbRegras.db.js'
 import { estados } from './estados.ts'
+import { deepSignal } from './lib/fast-deep-signal.ts'
 
 const db = regras.map((regra) => ({
   ...pragas.find((item) => item.prag === regra.prag),
@@ -14,7 +14,7 @@ export class Store {
   exibeBase: boolean = false
   searched: boolean = false
 
-  constructor() { }
+  constructor() {}
 
   get hospedeirosPragas() {
     return pragas.flatMap((praga) => praga.hosp)
@@ -22,7 +22,7 @@ export class Store {
 
   get hospedeirosRegulamentados() {
     return hospedeiros.filter((hospedeiro) =>
-      this.species(this.hospedeirosPragas, hospedeiro.nomeSci)
+      this.species(this.hospedeirosPragas, hospedeiro.nomeSci),
     )
   }
 
@@ -50,13 +50,13 @@ export class Store {
 
   get origem() {
     return estados.filter(
-      (estado) => estado.UF !== this.dados.dest || estado.UF === ''
+      (estado) => estado.UF !== this.dados.dest || estado.UF === '',
     )
   }
 
   get destino() {
     return estados.filter(
-      (estado) => estado.UF !== this.dados.orig || estado.UF === ''
+      (estado) => estado.UF !== this.dados.orig || estado.UF === '',
     )
   }
 
@@ -88,7 +88,9 @@ export class Store {
       .flatMap((v) => v.part)
 
     // Ensure empty string is always included
-    return ['', ...new Set(p)].sort((a: string, b: string) => a.localeCompare(b))
+    return ['', ...new Set(p)].sort((a: string, b: string) =>
+      a.localeCompare(b),
+    )
   }
 
   get result() {
@@ -116,7 +118,7 @@ export class Store {
       case 'hospSci':
         {
           const hospVulg = hospedeiros.find(
-            (hosp) => hosp.nomeSci === target.value
+            (hosp) => hosp.nomeSci === target.value,
           )
           this.dados.prod = ''
           this.dados.hospVul = hospVulg ? hospVulg.nomeVul : ''
@@ -125,7 +127,7 @@ export class Store {
       case 'hospVul':
         {
           const hospSci = hospedeiros.find(
-            (hosp) => hosp.nomeVul === target.value
+            (hosp) => hosp.nomeVul === target.value,
           )
           this.dados.prod = ''
           this.dados.hospSci = hospSci ? hospSci.nomeSci : ''

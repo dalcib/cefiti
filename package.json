@@ -1,49 +1,43 @@
 {
-  "name": "cefiti",
-  "version": "8.1.1",
-  "description": "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual",
-  "private": true,
-  "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cefiti/cefiti.git"
-  },
-  "bugs": {
-    "url": "https://github.com/cefiti/cefiti/issues"
-  },
-  "keywords": [],
-  "authors": [
-    "Dalci de Jesus Bagolin",
-    "Omar Roberto da Silveira"
-  ],
-  "license": "MIT",
-  "homepage": ".",
-  "scripts": {
-    "start": "node dev.mjs",
-    "test": "node --test --experimental-strip-types src/store.ai.test.ts",
-    "analyze": "source-map-explorer public/*.js",
-    "lint": "eslint --ignore-pattern ./assests/**/* .",
-    "build": "esbuild src/index.tsx --bundle --minify --sourcemap --outfile=public/index.js --format=esm --jsx=automatic",
-    "meta": "esbuild src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
-  },
-  "dependencies": {
-    "@preact/signals": "^2.2.1",
-    "deepsignal": "^1.6.0",
-    "preact": "^10.27.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.20.0",
-    "@types/node": "^20.4.0",
-    "esbuild": "^0.23.0",
-    "eslint": "^9.20.1",
-    "eslint-plugin-react": "^7.37.4",
-    "globals": "^16.0.0",
-    "prettier": "^3.5.1",
-    "source-map-explorer": "^2.1.0",
-    "typescript": "^5.5.4",
-    "typescript-eslint": "^8.24.1"
-  },
-  "prettier": {
-    "printWidth": 200
-  }
+	"name": "cefiti",
+	"version": "8.1.1",
+	"description": "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual",
+	"private": true,
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cefiti/cefiti.git"
+	},
+	"bugs": {
+		"url": "https://github.com/cefiti/cefiti/issues"
+	},
+	"keywords": [],
+	"authors": [
+		"Dalci de Jesus Bagolin",
+		"Omar Roberto da Silveira"
+	],
+	"license": "MIT",
+	"homepage": ".",
+	"scripts": {
+		"start": "node dev.mjs",
+		"test": "node --test --experimental-strip-types src/store.ai.test.ts",
+		"analyze": "source-map-explorer public/*.js",
+		"lint": "biome lint .",
+		"format": "biome format . --write",
+		"check": "biome check --write .",
+		"build": "esbuild src/index.tsx --bundle --minify --sourcemap --outfile=public/index.js --format=esm --jsx=automatic",
+		"meta": "esbuild src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
+	},
+	"dependencies": {
+		"@preact/signals": "^2.2.1",
+		"deepsignal": "^1.6.0",
+		"preact": "^10.27.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.3.11",
+		"@types/node": "^20.4.0",
+		"esbuild": "^0.23.0",
+		"source-map-explorer": "^2.1.0",
+		"typescript": "^5.5.4"
+	}
 }

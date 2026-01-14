@@ -223,7 +223,8 @@ div#corpo #area-mensagens ul li {
 }
 
 div#corpo #area-mensagens ul.msg-informativa {
-  background: url(./img/ico-msg-informativa.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+  background: url(./img/ico-msg-informativa.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
   background-size: 30px 30px;
   background-color: #cbe0f4;
   background-position: 10px;
@@ -232,7 +233,8 @@ div#corpo #area-mensagens ul.msg-informativa {
 }
 
 div#corpo #area-mensagens ul.msg-alerta {
-  background: url(./img/ico-msg-alerta.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+  background: url(./img/ico-msg-alerta.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
   background-size: 30px 30px;
   background-color: #fff6bf;
   background-position: 10px;
@@ -241,7 +243,8 @@ div#corpo #area-mensagens ul.msg-alerta {
 }
 
 div#corpo #area-mensagens ul.msg-sucesso {
-  background: url(./img/ico-msg-sucesso.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+  background: url(./img/ico-msg-sucesso.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
   background-size: 30px 30px;
   background-color: #e6efc2;
   background-position: 10px;
@@ -250,7 +253,8 @@ div#corpo #area-mensagens ul.msg-sucesso {
 }
 
 div#corpo #area-mensagens ul.msg-erro {
-  background: url(./img/ico-msg-erro.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+  background: url(./img/ico-msg-erro.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
   background-size: 30px 30px;
   background-color: #fbe3e4;
   background-position: 10px;
@@ -313,7 +317,8 @@ div.dialog #area-mensagens-dialog p {
 }
 
 div.dialog #area-mensagens-dialog ul.msg-informativa {
-  background: url(./img/ico-msg-informativa.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+  background: url(./img/ico-msg-informativa.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
   background-size: 30px 30px;
   background-color: #cbe0f4;
   background-position: 10px;
@@ -322,7 +327,8 @@ div.dialog #area-mensagens-dialog ul.msg-informativa {
 }
 
 div.dialog #area-mensagens-dialog ul.msg-alerta {
-  background: url(./img/ico-msg-alerta.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+  background: url(./img/ico-msg-alerta.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
   background-size: 30px 30px;
   background-color: #fff6bf;
   background-position: 10px;
@@ -331,7 +337,8 @@ div.dialog #area-mensagens-dialog ul.msg-alerta {
 }
 
 div.dialog #area-mensagens-dialog ul.msg-sucesso {
-  background: url(./img/ico-msg-sucesso.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+  background: url(./img/ico-msg-sucesso.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
   background-size: 30px 30px;
   background-color: #e6efc2;
   background-position: 10px;
@@ -340,7 +347,8 @@ div.dialog #area-mensagens-dialog ul.msg-sucesso {
 }
 
 div.dialog #area-mensagens-dialog ul.msg-erro {
-  background: url(./img/ico-msg-erro.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+  background: url(./img/ico-msg-erro.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
   background-size: 30px 30px;
   background-color: #fbe3e4;
   background-position: 10px;
@@ -372,12 +380,12 @@ div#moldura-topo #topo #identificacao-ministerio span #imagemGov {
   height: 24px;
   width: 500px;
   background: #f1f1f1
-    url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAMAAAC5m+00AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACrUExURQCXSF27iQCWRQOWSQCWSRCdVACSSgCWRwCVSRKcVv/oAP/yAAIvh/bjBQKVTP/rAK3PF/3sARZBkg05ima2LCqiPg+ZRR9JoermBbGwLwEqkgCST1GwMRqdQZfIHdzgCSdSlTlYbEWrNyNKeouUPHOgtEJsn2WOrSClX2m/lF+6i3q8JsDVEBpCgWN2WefTD8i/IYSstzKmO3eIUaa2h3SOjfvlHjVfq6OmNShvDYIAAAFISURBVCjPbVHXksMgDNQBljC4l9iOndjp5VKv//+XnXByb7fDADO7rNAK9v4DngPv/h/24BHBuEhqB3pCeUxJIAWKtMZlIVCTciogH3yhWMpinM2t7ZctS5UgAR74kVICpMauNrfmaucTpMj5e+4VUNTOEvuzCoL8EvZLJCH1SIHAqKjtehowposwTmbIcqZIt+UpNV/3zWa3HYLp2sZ1gegoPXkNU5M238Ow3d132cIYEyel9MHDLo2NcX4519puPkPmbOIowrdTbGyTZXk2BEH1kZo4LPSjFgq2DFcVc3lWNZbt2rGWIIiwTOztzJZV9W77glCp8RsSNHdc1NfL6rxoxp5JCcmUC1cJjdx0GKZ1hxq0eqYBkuPlzLHrjXuiOAwaDUGQFJyWBpyU7EUaQI/xckGeA98jksqNQLmp8BnB4Xh8+ReHX640GNLt25uiAAAAAElFTkSuQmCC')
+    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAMAAAC5m+00AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACrUExURQCXSF27iQCWRQOWSQCWSRCdVACSSgCWRwCVSRKcVv/oAP/yAAIvh/bjBQKVTP/rAK3PF/3sARZBkg05ima2LCqiPg+ZRR9JoermBbGwLwEqkgCST1GwMRqdQZfIHdzgCSdSlTlYbEWrNyNKeouUPHOgtEJsn2WOrSClX2m/lF+6i3q8JsDVEBpCgWN2WefTD8i/IYSstzKmO3eIUaa2h3SOjfvlHjVfq6OmNShvDYIAAAFISURBVCjPbVHXksMgDNQBljC4l9iOndjp5VKv//+XnXByb7fDADO7rNAK9v4DngPv/h/24BHBuEhqB3pCeUxJIAWKtMZlIVCTciogH3yhWMpinM2t7ZctS5UgAR74kVICpMauNrfmaucTpMj5e+4VUNTOEvuzCoL8EvZLJCH1SIHAqKjtehowposwTmbIcqZIt+UpNV/3zWa3HYLp2sZ1gegoPXkNU5M238Ow3d132cIYEyel9MHDLo2NcX4519puPkPmbOIowrdTbGyTZXk2BEH1kZo4LPSjFgq2DFcVc3lWNZbt2rGWIIiwTOztzJZV9W77glCp8RsSNHdc1NfL6rxoxp5JCcmUC1cJjdx0GKZ1hxq0eqYBkuPlzLHrjXuiOAwaDUGQFJyWBpyU7EUaQI/xckGeA98jksqNQLmp8BnB4Xh8+ReHX640GNLt25uiAAAAAElFTkSuQmCC")
     no-repeat scroll 8px center;
 }
 
 div#moldura-topo #topo #identificacao-ministerio span #imagemGov:after {
-  content: 'Ministério da Agricultura, Pecuária e Abastecimento';
+  content: "Ministério da Agricultura, Pecuária e Abastecimento";
   margin-left: 40px;
   color: #606060;
   font-weight: bold;

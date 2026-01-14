@@ -1,4 +1,4 @@
-import { Store, store } from './store'
+import { type Store, store } from './store'
 
 interface PropsSelect {
   source: 'listaNomesSci' | 'listaNomesVul' | 'partes' | 'destino' | 'origem'

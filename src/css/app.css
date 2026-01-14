@@ -121,8 +121,8 @@ div#moldura-navegacao-global #navegacao-global {
   div#corpo #conteudo h4 *,
   div#corpo #conteudo h4 i,
   div#corpo #conteudo h4 a {
-    background: url(http://sistemasweb.agricultura.gov.br/styles_java/img/blt-subtitulo.gif) left
-      no-repeat !important;
+    background: url(http://sistemasweb.agricultura.gov.br/styles_java/img/blt-subtitulo.gif)
+      left no-repeat !important;
     border-bottom: 1px solid #ccc;
     font-size: 1.2em;
     margin-bottom: 15px;

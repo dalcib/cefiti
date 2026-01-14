@@ -57,7 +57,7 @@ interface Window {
   gtag(
     event: string,
     action_name: string,
-    { eventCategory: string, dimension5: string }
+    { eventCategory: string, dimension5: string },
   )
 }
 //}

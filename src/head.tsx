@@ -1,5 +1,5 @@
-import Menu from './menu.tsx'
 import { version } from './../package.json'
+import Menu from './menu.tsx'
 
 export const Head = () => (
   <>
