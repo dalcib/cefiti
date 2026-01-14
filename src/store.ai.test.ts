@@ -1,13 +1,10 @@
 import { Store } from './store.ts'
-import { regras } from '../public/dbRegras.db.js'
-import { pragas } from '../public/dbPragas.db.js'
-import { hospedeiros } from '../public/dbHospedeiros.db.js'
 import { estados } from './estados.ts'
 import { describe, it, beforeEach, expect, mock } from './expect.ts'
 
 const mockWindow = {
-  gtag: () => {}, // Empty function for gtag
-  print: () => {}, //Empty function for print
+  gtag: () => { }, // Empty function for gtag
+  print: () => { }, //Empty function for print
 }
 globalThis.window = mockWindow as unknown as Window & typeof globalThis
 globalThis.alert = ((message: string) => console.log(message)) as unknown as (
@@ -23,12 +20,7 @@ describe('Store', () => {
   })
 
   it('should initialize correctly', () => {
-    expect(store.dbRegras).toEqual(regras)
-    expect(store.dbHospedeiros).toEqual(hospedeiros)
-    expect(store.dbPragas).toEqual(pragas)
-    expect(store.estados).toEqual(estados)
     //  Test db creation -  This might require mocking the db data for reliable testing.
-    expect(store.db.length).toBeGreaterThanOrEqual(0) // Adjust expectation based on your db data
     expect(store.dados).toEqual({
       hospSci: '',
       hospVul: '',

@@ -1,43 +1,27 @@
-import { deepSignal, shallow } from './lib/fast-deep-signal.ts'
+import { deepSignal } from './lib/fast-deep-signal.ts'
 import { regras } from '../public/dbRegras.db.js'
 import { pragas } from '../public/dbPragas.db.js'
 import { hospedeiros } from '../public/dbHospedeiros.db.js'
 import { estados } from './estados.ts'
 
-export class Store {
-  dbRegras: Regra[]
-  dbHospedeiros: Hospedeiro[]
-  dbPragas: Praga[]
-  estados: Estado[]
-  db: Db[]
+const db = regras.map((regra) => ({
+  ...pragas.find((item) => item.prag === regra.prag),
+  ...regra,
+})) as Db[]
 
+export class Store {
   dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
   exibeBase: boolean = false
   searched: boolean = false
 
-  constructor(
-    _regras: Regra[] = regras,
-    _pragas: Praga[] = pragas,
-    _hospedeiros: Hospedeiro[] = hospedeiros,
-    _estados: Estado[] = estados
-  ) {
-    this.dbRegras = shallow(_regras)
-    this.dbPragas = shallow(_pragas)
-    this.dbHospedeiros = shallow(_hospedeiros)
-    this.estados = shallow(_estados)
-
-    this.db = shallow(this.dbRegras.map((regra) => ({
-      ...this.dbPragas.find((item) => item.prag === regra.prag),
-      ...regra,
-    })) as Db[])
-  }
+  constructor() { }
 
   get hospedeirosPragas() {
-    return this.dbPragas.flatMap((praga) => praga.hosp)
+    return pragas.flatMap((praga) => praga.hosp)
   }
 
   get hospedeirosRegulamentados() {
-    return this.dbHospedeiros.filter((hospedeiro) =>
+    return hospedeiros.filter((hospedeiro) =>
       this.species(this.hospedeirosPragas, hospedeiro.nomeSci)
     )
   }
@@ -65,13 +49,13 @@ export class Store {
   }
 
   get origem() {
-    return this.estados.filter(
+    return estados.filter(
       (estado) => estado.UF !== this.dados.dest || estado.UF === ''
     )
   }
 
   get destino() {
-    return this.estados.filter(
+    return estados.filter(
       (estado) => estado.UF !== this.dados.orig || estado.UF === ''
     )
   }
@@ -99,7 +83,7 @@ export class Store {
   }
 
   get partes(): string[] {
-    const p = this.db
+    const p = db
       .filter((exigen) => this.species(exigen.hosp, this.dados.hospSci))
       .flatMap((v) => v.part)
 
@@ -108,7 +92,7 @@ export class Store {
   }
 
   get result() {
-    return this.db.filter((exigen) => {
+    return db.filter((exigen) => {
       return (
         this.species(exigen.hosp, this.dados.hospSci) &&
         exigen.orig.includes(this.dados.orig) &&
@@ -131,7 +115,7 @@ export class Store {
     switch (target.name) {
       case 'hospSci':
         {
-          const hospVulg = this.dbHospedeiros.find(
+          const hospVulg = hospedeiros.find(
             (hosp) => hosp.nomeSci === target.value
           )
           this.dados.prod = ''
@@ -140,7 +124,7 @@ export class Store {
         break
       case 'hospVul':
         {
-          const hospSci = this.dbHospedeiros.find(
+          const hospSci = hospedeiros.find(
             (hosp) => hosp.nomeVul === target.value
           )
           this.dados.prod = ''
