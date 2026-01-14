@@ -1,9 +1,13 @@
 import assert from 'node:assert'
 import { before, describe, it, test } from 'node:test'
-import { hospedeiros } from '../public/dbHospedeiros.db'
-import { pragas } from '../public/dbPragas.db'
-import { regras } from '../public/dbRegras.db'
-import { store } from './store'
+import { hospedeiros } from '../public/dbHospedeiros.db.js'
+import { pragas } from '../public/dbPragas.db.js'
+import { regras } from '../public/dbRegras.db.js'
+import { store } from './store.ts'
+
+type EventChange = {
+  currentTarget: { name: string; value: string }
+}
 
 const estadosSemAC = [
   { estado: '', UF: '' },
@@ -62,7 +66,7 @@ describe('Store origem e destino', () => {
 describe('Store hospedeiros nomeSci', () => {
   it('unique values Nome Vulgar', () => {
     //assert(store.listaNomesVul.length,hospedeiros.length)
-    assert.strictEqual(
+    assert.deepEqual(
       hospedeiros.map((v) => v.nomeVul).filter((i, x, a) => a.indexOf(i) !== x),
       [],
     )
@@ -78,12 +82,12 @@ describe('Store partes', () => {
   it('de Acerola', () => {
     //debugger
     store.dados.hospSci = 'Malpighia spp.'
-    assert.strictEqual(store.partes, ['', 'frutos'])
+    assert.deepEqual(store.partes, ['', 'frutos'])
   })
 
   it('de Banana', () => {
     store.dados.hospSci = 'Musa spp.'
-    assert.strictEqual(store.partes, [
+    assert.deepEqual(store.partes, [
       '',
       'flores',
       'frutos',
@@ -95,7 +99,7 @@ describe('Store partes', () => {
 
   it('de Citrus', () => {
     store.dados.hospSci = 'Citrus spp.'
-    assert.strictEqual(store.partes, [
+    assert.deepEqual(store.partes, [
       '',
       'caules',
       'estacas',
@@ -147,14 +151,14 @@ describe('Store filtro geral', () => {
     assert.strictEqual(store.result.length, 3)
   })
   it('Musa spp. legis', () => {
-    assert.strictEqual(
+    assert.deepEqual(
       store.result.flatMap((v) => v.files).map((v) => v.link),
       ['IN17-2009.pdf', 'IN17-2005.pdf', 'IN17-2005.pdf'],
     )
   })
 
   it('Musa spp. pragas', () => {
-    assert.strictEqual(
+    assert.deepEqual(
       store.result.map((v) => v.pragc),
       ['MOKO-DA-BANANEIRA', 'SIGATOKA NEGRA', 'SIGATOKA NEGRA'],
     )
@@ -174,11 +178,11 @@ describe('Store filtro geral', () => {
     store.dados.orig = 'SC'
     store.dados.dest = 'MT'
     assert.strictEqual(store.result.length, 1)
-    assert.strictEqual(
+    assert.deepEqual(
       store.result.flatMap((v) => v.files).map((v) => v.link),
       ['IN20-2013.pdf'],
     )
-    assert.strictEqual(
+    assert.deepEqual(
       store.result.map((v) => v.pragc),
       ['CANCRO EUROPEU DAS POMÁCEAS'],
     )
@@ -200,11 +204,11 @@ describe('Store filtro geral', () => {
     store.dados.orig = 'RS'
     store.dados.dest = 'ES'
     assert.strictEqual(store.result.length, 2)
-    assert.strictEqual(
+    assert.deepEqual(
       store.result.flatMap((v) => v.files).map((v) => v.link),
       ['IN03-2008.pdf', 'IN21-2018.pdf'],
     )
-    assert.strictEqual(
+    assert.deepEqual(
       store.result.map((v) => v.pragc),
       ['PINTA-PRETA-DOS-CITROS', 'CANCRO CÍTRICO'],
     )
@@ -216,11 +220,11 @@ describe('Store filtro geral', () => {
     store.dados.orig = 'SP'
     store.dados.dest = 'ES'
     assert.strictEqual(store.result.length, 3)
-    assert.strictEqual(
+    assert.deepEqual(
       store.result.flatMap((v) => v.files).map((v) => v.link),
       ['IN53-2008.pdf', 'IN03-2008.pdf', 'IN21-2018.pdf'],
     )
-    assert.strictEqual(
+    assert.deepEqual(
       store.result.map((v) => v.pragc),
       ['GREENING', 'PINTA-PRETA-DOS-CITROS', 'CANCRO CÍTRICO'],
     )
@@ -230,19 +234,18 @@ describe('Store filtro geral', () => {
 
 describe('Sync between NomeVulg and NomeSci', () => {
   it('should define NomeVulg based in NomeSci', () => {
-    // @ts-expect-error xxx
     const e: EventChange = {
       currentTarget: { name: 'hospSci', value: 'Musa spp.' },
     }
-    store.handleChanges(e)
+    store.handleChanges(e as unknown as Event)
     //store.dados.hospSci = 'Musa spp.'
     assert.strictEqual(store.dados.hospVul, 'Banana')
   })
   it('should define NomeSci  based in NomeVulg ', () => {
-    // @ts-expect-error xxx
-    store.handleChanges({
+    const e: EventChange = {
       currentTarget: { name: 'hospVul', value: 'Banana' },
-    })
+    }
+    store.handleChanges(e as unknown as Event)
     //store.dados.hospVul = 'Banana'
     assert.strictEqual(store.dados.hospSci, 'Musa spp.')
   })
@@ -267,7 +270,7 @@ test('duplicates nomeVul', () => {
       countNomeVulg: items?.length,
     }),
   )
-  assert.strictEqual(
+  assert.deepEqual(
     countDupli.filter((v) => !v.countNomeVulg),
     [],
   )
@@ -444,4 +447,16 @@ const snap = [
     prag: 'Xanthomonas citri subsp. citri',
     pragc: 'CANCRO CÍTRICO',
   },
+  it('should be reactive when updating dados fields', () => {
+    // Accessing a computed property that depends on dados
+    store.completed
+
+    store.dados.hospSci = 'Citrus spp.'
+    store.dados.hospVul = 'Citros'
+    store.dados.prod = 'frutos'
+    store.dados.orig = 'AC'
+    store.dados.dest = 'BA'
+
+    assert.equal(store.completed, true)
+  })
 ]

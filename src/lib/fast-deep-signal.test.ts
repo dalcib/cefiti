@@ -1,6 +1,6 @@
 import { h, render } from 'preact'
 import { act } from 'preact/test-utils'
-import { afterEach, beforeEach, describe, expect, it, mock } from '../expect.ts'
+import { afterEach, beforeEach, describe, expect, it, mock } from './expect.ts'
 import { doc } from './dom-mock.ts'
 import { deepSignal, useDeepSignal } from './fast-deep-signal.ts'
 
@@ -10,17 +10,17 @@ describe('deepsignal (preact)', () => {
 
   // Simple rerender hook
   /*const setupRerender = () => {
-		let module: any;
-		try { module = require("preact/test-utils"); } catch (e) { }
-		if (module && module.setupRerender) return module.setupRerender();
-		return () => { };
-	};*/
+    let module: any;
+    try { module = require("preact/test-utils"); } catch (e) { }
+    if (module && module.setupRerender) return module.setupRerender();
+    return () => { };
+  };*/
 
   beforeEach(() => {
     scratch = doc.createElement('div') as any
     // rerender = setupRerender();
     // Just use empty for now as act() usually handles it
-    rerender = () => {}
+    rerender = () => { }
   })
 
   afterEach(() => {
@@ -30,7 +30,6 @@ describe('deepsignal (preact)', () => {
   describe('direct signal bindigns', () => {
     it('should update deepSignal-based Text (no parent component)', () => {
       const state = deepSignal({ test: 'test' })
-      // @ts-expect-error
       render(h('span', null, state.$test), scratch)
 
       const text = scratch.firstChild!.firstChild!
