@@ -6,10 +6,10 @@
 	"type": "module",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/cefiti/cefiti.git"
+		"url": "git+https://github.com/dalci/cefiti.git"
 	},
 	"bugs": {
-		"url": "https://github.com/cefiti/cefiti/issues"
+		"url": "https://github.com/dalci/cefiti/issues"
 	},
 	"keywords": [],
 	"authors": [
@@ -29,15 +29,12 @@
 		"meta": "esbuild src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
 	},
 	"dependencies": {
-		"@preact/signals": "^2.2.1",
-		"deepsignal": "^1.6.0",
-		"preact": "^10.27.0"
+		"@preact/signals": "^2.5.1",
+		"preact": "^10.28.2"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.3.11",
-		"@types/node": "^20.4.0",
-		"esbuild": "^0.23.0",
-		"source-map-explorer": "^2.1.0",
-		"typescript": "^5.5.4"
+		"@types/node": "^25.0.8",
+		"esbuild": "^0.27.2"
 	}
 }
