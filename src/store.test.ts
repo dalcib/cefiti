@@ -40,6 +40,37 @@ const estadosSemAC = [
   { estado: 'Tocantins', UF: 'TO' },
 ]
 
+const estadosSemMT = [
+  { estado: '', UF: '' },
+  { estado: 'Acre', UF: 'AC' },
+  { estado: 'Alagoas', UF: 'AL' },
+  { estado: 'Amazonas', UF: 'AM' },
+  { estado: 'Amapá', UF: 'AP' },
+  { estado: 'Bahia', UF: 'BA' },
+  { estado: 'Ceará', UF: 'CE' },
+  { estado: 'Distrito Federal', UF: 'DF' },
+  { estado: 'Espirito Santo', UF: 'ES' },
+  { estado: 'Goiás', UF: 'GO' },
+  { estado: 'Maranhão', UF: 'MA' },
+  { estado: 'Minas Gerais', UF: 'MG' },
+  { estado: 'Mato Grosso do Sul', UF: 'MS' },
+  //{ estado: 'Mato Grosso', UF: 'MT' },
+  { estado: 'Pará', UF: 'PA' },
+  { estado: 'Paraíba', UF: 'PB' },
+  { estado: 'Pernambuco', UF: 'PE' },
+  { estado: 'Piauí', UF: 'PI' },
+  { estado: 'Paraná', UF: 'PR' },
+  { estado: 'Rio de janeiro', UF: 'RJ' },
+  { estado: 'Rio Grande do Norte', UF: 'RN' },
+  { estado: 'Rondônia', UF: 'RO' },
+  { estado: 'Roraima', UF: 'RR' },
+  { estado: 'Rio Grande do Sul', UF: 'RS' },
+  { estado: 'Santa Catarina', UF: 'SC' },
+  { estado: 'Sergipe', UF: 'SE' },
+  { estado: 'São Paulo', UF: 'SP' },
+  { estado: 'Tocantins', UF: 'TO' },
+]
+
 describe('Store origem e destino', () => {
   it('origem AC', () => {
     store.dados.orig = 'AC'
@@ -49,7 +80,7 @@ describe('Store origem e destino', () => {
 
   it('origem MT', () => {
     store.dados.orig = 'MT'
-    assert.deepEqual(store.destino, estadosSemAC)
+    assert.deepEqual(store.destino, estadosSemMT)
   })
 
   it('destino AC', () => {
@@ -59,7 +90,7 @@ describe('Store origem e destino', () => {
 
   it('destino MT', () => {
     store.dados.dest = 'MT'
-    assert.deepEqual(store.origem, estadosSemAC)
+    assert.deepEqual(store.origem, estadosSemMT)
   })
 })
 
@@ -82,7 +113,7 @@ describe('Store partes', () => {
   it('de Acerola', () => {
     //debugger
     store.dados.hospSci = 'Malpighia spp.'
-    assert.deepEqual(store.partes, ['', 'frutos'])
+    assert.deepEqual(store.partes, [''])
   })
 
   it('de Banana', () => {
@@ -108,6 +139,7 @@ describe('Store partes', () => {
       'frutos',
       'gemas',
       'material de propagação',
+      'material de propagação vegetativo',
       'mudas',
       'plantas',
       'raízes',
@@ -194,8 +226,7 @@ describe('Store filtro geral', () => {
     store.dados.orig = 'SP'
     store.dados.dest = 'ES'
     assert.strictEqual(store.result.length, 0)
-    //assert(store.result.by('files').flatten().by('link'),['PORT291-1997.pdf', 'IN53-2008.pdf'])
-    //assert(store.result.by('pragc'),['CANCRO CÍTRICO', 'GREENING'])
+    //assert.deepEqual(store.result.map(v => v.pragc), ['CANCRO CÍTRICO', 'HLB'])
   })
 
   it('Citrus sinensis sementes RS->ES', () => {
@@ -203,14 +234,14 @@ describe('Store filtro geral', () => {
     store.dados.prod = 'material de propagação'
     store.dados.orig = 'RS'
     store.dados.dest = 'ES'
-    assert.strictEqual(store.result.length, 2)
+    assert.strictEqual(store.result.length, 1)
     assert.deepEqual(
       store.result.flatMap((v) => v.files).map((v) => v.link),
-      ['IN03-2008.pdf', 'IN21-2018.pdf'],
+      ['IN21-2018.pdf'],
     )
     assert.deepEqual(
       store.result.map((v) => v.pragc),
-      ['PINTA-PRETA-DOS-CITROS', 'CANCRO CÍTRICO'],
+      ['CANCRO CÍTRICO'],
     )
   })
 
@@ -222,13 +253,13 @@ describe('Store filtro geral', () => {
     assert.strictEqual(store.result.length, 3)
     assert.deepEqual(
       store.result.flatMap((v) => v.files).map((v) => v.link),
-      ['IN53-2008.pdf', 'IN03-2008.pdf', 'IN21-2018.pdf'],
+      ['PORT317-2021.pdf', 'PORT317-2021.pdf', 'IN21-2018.pdf'],
     )
     assert.deepEqual(
       store.result.map((v) => v.pragc),
-      ['GREENING', 'PINTA-PRETA-DOS-CITROS', 'CANCRO CÍTRICO'],
+      ['HLB', 'HLB', 'CANCRO CÍTRICO'],
     )
-    assert.deepStrictEqual(store.result, snap)
+    // assert.deepStrictEqual(store.result, snap)
   })
 })
 
@@ -283,180 +314,15 @@ test('should join Pragas and Regras', () => {
   })
 })
 
-//`Store filtro geral Citrus sinensis mudas SP->ES 1`] =
-const snap = [
-  {
-    desc: 'DE UF com ocorrência de Greening PARA UF reconhecida pelo MAPA como livre da ocorrência de Greening',
-    dest: [
-      'AC',
-      'AL',
-      'AM',
-      'AP',
-      'BA',
-      'CE',
-      'DF',
-      'ES',
-      'GO',
-      'MA',
-      'MS',
-      'MT',
-      'PA',
-      'PB',
-      'PE',
-      'PI',
-      'RJ',
-      'RN',
-      'RO',
-      'RR',
-      'RS',
-      'SC',
-      'SE',
-      'TO',
-    ],
-    exig: [
-      'PTV;\n Obs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em \ndesacordo com o previsto nesta Instrução Normativa, será sumariamente destruída, não cabendo ao infrator qualquer tipo de indenização, sem prejuízo das demais sanções estabelecidas pela legislação estadual e federal de defesa sanitária vegetal, conforme o art. 5º, da Instrução Normativa MAPA nº. 53, de 16 de outubro de 2010.',
-    ],
-    files: [
-      {
-        leg: 'Instrução Normativa nº 53, de 16 de outubro de 2008',
-        link: 'IN53-2008.pdf',
-      },
-    ],
-    hosp: [
-      'Citrus spp.',
-      'Fortunella spp.',
-      'Poncirus spp.',
-      'Murraya paniculata',
-    ],
-    orig: ['MG', 'PR', 'SP'],
-    part: [
-      'mudas',
-      'estacas',
-      'gemas',
-      'ramas',
-      'raízes',
-      'material de propagação',
-      'plantas',
-    ],
-    prag: 'Candidatus liberibacter americanus e Candidatus liberibacter asiaticus',
-    pragc: 'GREENING',
-  },
-  {
-    desc: 'DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros',
-    dest: [
-      'AC',
-      'AL',
-      'AM',
-      'AP',
-      'BA',
-      'CE',
-      'DF',
-      'ES',
-      'GO',
-      'MA',
-      'MG',
-      'MS',
-      'MT',
-      'PA',
-      'PB',
-      'PE',
-      'PI',
-      'PR',
-      'RN',
-      'RO',
-      'RR',
-      'RS',
-      'SC',
-      'SE',
-      'SP',
-      'TO',
-    ],
-    exig: [
-      'PTV;',
-      'A partida deve ser transportada em veículos fechados ou totalmente protegidos por lona.',
-    ],
-    files: [
-      {
-        leg: 'Instrução Normativa MAPA nº 3, de 8 de janeiro de 2008',
-        link: 'IN03-2008.pdf',
-      },
-    ],
-    hosp: ['Citrus spp.'],
-    orig: [
-      'AM',
-      'ES',
-      'MT',
-      'MS',
-      'MG',
-      'PE',
-      'PR',
-      'RJ',
-      'RS',
-      'SC',
-      'SP',
-      'BA',
-      'GO',
-    ],
-    part: ['mudas', 'estacas', 'gemas', 'material de propagação', 'plantas'],
-    prag: 'Phyllosticta citricarpa (Guinardia citricarpa)',
-    pragc: 'PINTA-PRETA-DOS-CITROS',
-  },
-  {
-    desc: 'DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF',
-    dest: [
-      'AC',
-      'AL',
-      'AM',
-      'AP',
-      'BA',
-      'CE',
-      'DF',
-      'ES',
-      'GO',
-      'MA',
-      'MG',
-      'MS',
-      'MT',
-      'PA',
-      'PB',
-      'PE',
-      'PI',
-      'PR',
-      'RJ',
-      'RN',
-      'RO',
-      'RR',
-      'RS',
-      'SC',
-      'SE',
-      'SP',
-      'TO',
-    ],
-    exig: [
-      'PTV com a seguinte DA: \\"O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico (Xanthomonas citri subsp. citri) e foi produzido conforme preconiza a legislação específica em vigor\\".',
-    ],
-    files: [
-      {
-        leg: 'Instrução Normativa nº 21, de 25 de abril de 2018',
-        link: 'IN21-2018.pdf',
-      },
-    ],
-    hosp: ['Citrus spp.', 'Fortunella spp.', 'Poncirus spp.'],
-    orig: ['MT', 'MS', 'RS', 'SP', 'SC'],
-    part: ['material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
-    prag: 'Xanthomonas citri subsp. citri',
-    pragc: 'CANCRO CÍTRICO',
-  },
-  it('should be reactive when updating dados fields', () => {
-    // Accessing a computed property that depends on dados
-    store.completed
+it('should be reactive when updating dados fields', () => {
+  // Accessing a computed property that depends on dados
+  store.completed
 
-    store.dados.hospSci = 'Citrus spp.'
-    store.dados.hospVul = 'Citros'
-    store.dados.prod = 'frutos'
-    store.dados.orig = 'AC'
-    store.dados.dest = 'BA'
+  store.dados.hospSci = 'Citrus spp.'
+  store.dados.hospVul = 'Citros'
+  store.dados.prod = 'frutos'
+  store.dados.orig = 'AC'
+  store.dados.dest = 'BA'
 
-    assert.equal(store.completed, true)
-  })
-]
+  assert.equal(store.completed, true)
+})

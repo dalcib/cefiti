@@ -1,11 +1,11 @@
-import { hospedeiros } from '../public/dbHospedeiros.db.js'
-import { pragas } from '../public/dbPragas.db.js'
-import { regras } from '../public/dbRegras.db.js'
+import { hospedeiros } from './dbHospedeiros.db.js'
+import { pragas } from './dbPragas.db.js'
+import { regras } from './dbRegras.db.js'
 import { estados } from './estados.ts'
 import { deepSignal } from './lib/fast-deep-signal.ts'
 
 const db = regras.map((regra) => ({
-  ...pragas.find((item) => item.prag === regra.prag),
+  ...pragas.find((item) => item.id === regra.idprag),
   ...regra,
 })) as Db[]
 
@@ -14,7 +14,7 @@ export class Store {
   exibeBase: boolean = false
   searched: boolean = false
 
-  constructor() {}
+  constructor() { }
 
   get hospedeirosPragas() {
     return pragas.flatMap((praga) => praga.hosp)

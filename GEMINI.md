@@ -83,3 +83,8 @@ This project is a Single Page Application (SPA) and Progressive Web App (PWA).
 
 - The project recently migrated from React/MobX/Webpack to Preact/Signals/Esbuild (v8.0.0).
 - `src/expect.ts` seems to be a custom wrapper or helper for assertions in tests.
+
+
+## Instructions
+- When necessary, always run `npm test` automatically after you finish modifying any file to validate the changes.
+

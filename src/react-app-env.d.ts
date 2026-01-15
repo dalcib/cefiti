@@ -17,6 +17,7 @@ interface Dados {
 }
 
 interface Regra {
+  idprag: number
   desc: string
   part: string[]
   orig: string[]
@@ -31,6 +32,7 @@ interface Files {
 }
 
 interface Praga {
+  id: number
   prag: string
   hosp: string[]
   pragc: string
@@ -38,9 +40,9 @@ interface Praga {
 }
 
 interface Hospedeiro {
+  id: number
   nomeVul: string
   nomeSci: string
-  count: number
   count_nameVul?: number
 }
 

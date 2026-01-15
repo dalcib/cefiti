@@ -1,6 +1,6 @@
 import assert from 'node:assert'
 
-export * from 'node:test'
+export { describe, it, test, before, after, beforeEach, afterEach, mock } from 'node:test'
 
 interface Expect<T> {
   toBe(expected: T): void
@@ -13,7 +13,6 @@ interface Expect<T> {
   toContain(expected: T extends any[] | string ? T[number] | string : any): void
   toHaveProperty<K extends keyof T>(property: K, value?: T[K]): void
   toBeInstanceOf<U>(expectedClass: new (...args: unknown[]) => U): void
-  //@ts-expect-error
   toMatch(expectedRegex: RegExp): void
   toHaveBeenCalled(): void
   toHaveBeenCalledTimes(times: number): void

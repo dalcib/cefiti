@@ -2,6 +2,7 @@
 
 export const pragas = (globalThis.pragas = [
   {
+    id: 1,
     prag: "Bactrocera carambolae",
     pragc: "MOSCA-DA-CARAMBOLA",
     hosp: [
@@ -91,6 +92,7 @@ export const pragas = (globalThis.pragas = [
     ],
   },
   {
+    id: 2,
     prag: "Schizotetranychus hindustanicus",
     pragc: "ÁCARO HINDU",
     hosp: ["Cocos nucifera", "Azadirachta indica", "Sorghum bicolor", "Acacia spp.", "Melia azedarach", "Citrus spp."],
@@ -102,6 +104,7 @@ export const pragas = (globalThis.pragas = [
     ],
   },
   {
+    id: 3,
     prag: "Sternochetus mangiferae",
     pragc: "GORGULHO DA MANGA",
     hosp: ["Mangifera indica"],
@@ -113,6 +116,7 @@ export const pragas = (globalThis.pragas = [
     ],
   },
   {
+    id: 4,
     prag: "BSV e CMV",
     pragc: "BANANA STREAK VIRUS e CUCUMBER MOSAIC VIRUS",
     hosp: ["Musa spp."],
@@ -124,6 +128,7 @@ export const pragas = (globalThis.pragas = [
     ],
   },
   {
+    id: 5,
     prag: "Xanthomonas campestris pv. viticola",
     pragc: "CANCRO-DA-VIDEIRA",
     hosp: ["Vitis spp. e seus híbridos"],
@@ -135,6 +140,7 @@ export const pragas = (globalThis.pragas = [
     ],
   },
   {
+    id: 6,
     prag: "Neonectria ditissima (Neonectria galligena)",
     pragc: "CANCRO EUROPEU DAS POMÁCEAS",
     hosp: ["Malus sp."],
@@ -146,6 +152,7 @@ export const pragas = (globalThis.pragas = [
     ],
   },
   {
+    id: 7,
     prag: "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
     pragc: "HLB",
     hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp.", "Murraya paniculata"],
@@ -157,6 +164,7 @@ export const pragas = (globalThis.pragas = [
     ],
   },
   {
+    id: 8,
     prag: "Ralstonia solanacearum raça 2",
     pragc: "MOKO-DA-BANANEIRA",
     hosp: ["Musa spp.", "Heliconia spp."],
@@ -168,6 +176,7 @@ export const pragas = (globalThis.pragas = [
     ],
   },
   {
+    id: 9,
     prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     pragc: "SIGATOKA NEGRA",
     hosp: ["Musa spp.", "Heliconia spp."],
@@ -179,6 +188,7 @@ export const pragas = (globalThis.pragas = [
     ],
   },
   {
+    id: 10,
     prag: "Xanthomonas citri subsp. citri",
     pragc: "CANCRO CÍTRICO",
     hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
@@ -190,6 +200,7 @@ export const pragas = (globalThis.pragas = [
     ],
   },
   {
+    id: 11,
     prag: "Moniliophthora roreri",
     pragc: "MONILÍASE",
     hosp: ["Theobroma spp."],
@@ -209,6 +220,7 @@ export const pragas = (globalThis.pragas = [
     ],
   },
   {
+    id: 12,
     prag: "Rhizoctonia theobromae (Ceratobasidium theobromae)",
     pragc: "VASSOURA DE BRUXA DA MANDIOCA",
     hosp: ["Manihot esculenta"],
