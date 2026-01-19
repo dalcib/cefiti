@@ -1,43 +1,50 @@
 import esbuild from "esbuild";
+import process from "node:process";
 
-//import { version } from './../package.json'
-//import fs from "fs"
+const isBuild = process.argv.includes("--build");
 
-const context = await esbuild
-	.context({
-		entryPoints: ["./src/index.tsx", "./src/sw.js"],
-		bundle: true,
-		outdir: "./public",
-		minify: true,
-		sourcemap: true,
-		format: "esm",
-		jsx: "automatic",
-		target: ["es2017"],
-		define: {
-			//"process.env.NODE_ENV": isDevServer ? '"development"' : '"production"',
-			//'process.env.npm_package_version': '"' + version + '"',
-		},
-		//loader: { '.db.js': 'copy' },
-		//external: ['./*.db.js'],
-		//assetNames: 'public/[name]',
-		metafile: true,
-	})
-	.catch(() => {
-		console.log("ERROR");
-		// eslint-disable-next-line no-undef
+/** @type {esbuild.BuildOptions} */
+const config = {
+	entryPoints: ["./src/index.tsx", "./src/sw.js", "./src/db.ts"],
+	bundle: true,
+	outdir: "./public",
+	minify: true,
+	sourcemap: true,
+	format: "esm",
+	jsx: "automatic",
+	target: ["es2017"],
+	define: {
+		"process.env.NODE_ENV": isBuild ? '"production"' : '"development"',
+	},
+	metafile: true,
+	alias: {
+		"#db": "./db.js",
+	},
+	external: ["./db.js"],
+};
+
+if (isBuild) {
+	try {
+		await esbuild.build(config);
+		console.log("Build complete successfully");
+	} catch (error) {
+		console.error("Build failed:", error);
+		process.exit(1);
+	}
+} else {
+	const context = await esbuild.context(config).catch((err) => {
+		console.error("ESBuild context error:", err);
 		process.exit(1);
 	});
 
-await context.rebuild();
+	await context.rebuild();
+	await context.watch();
 
-await context.watch();
+	const serveResult = await context.serve({
+		servedir: "./public",
+		host: "localhost",
+		port: 3001,
+	});
 
-const serveResult = await context.serve({
-	servedir: "./public",
-	host: "localhost",
-	port: 3001,
-});
-
-console.log(`Listening on http://${serveResult.host}:${serveResult.port}`);
-
-//fs.writeFileSync('meta.json', JSON.stringify(context.metafile))
+	console.log(`Listening on http://${serveResult.host}:${serveResult.port}`);
+}

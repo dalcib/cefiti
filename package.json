@@ -18,6 +18,12 @@
 	],
 	"license": "MIT",
 	"homepage": ".",
+	"imports": {
+		"#db": {
+			"node": "./src/db.ts",
+			"default": "./db.js"
+		}
+	},
 	"scripts": {
 		"start": "node dev.mjs",
 		"test": "node --test --experimental-strip-types \"src/**/*.test.ts\"",
@@ -25,7 +31,7 @@
 		"lint": "biome lint .",
 		"format": "biome format . --write",
 		"check": "biome check --write .",
-		"build": "esbuild src/index.tsx --bundle --minify --sourcemap --outfile=public/index.js --format=esm --jsx=automatic",
+		"build": "node dev.mjs --build",
 		"meta": "esbuild src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
 	},
 	"dependencies": {

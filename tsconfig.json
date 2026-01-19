@@ -2,12 +2,22 @@
 	"compilerOptions": {
 		//"target": "esnext",
 		//"module": "nodenext",
+		"baseUrl": ".",
+		"paths": {
+			"#db": [
+				"./src/db.ts"
+			]
+		},
 		"allowImportingTsExtensions": true,
 		"rewriteRelativeImportExtensions": true,
 		"verbatimModuleSyntax": true,
 		"erasableSyntaxOnly": true,
 		"target": "es2015",
-		"lib": ["esnext", "dom", "dom.iterable"],
+		"lib": [
+			"esnext",
+			"dom",
+			"dom.iterable"
+		],
 		"sourceMap": true,
 		"allowJs": true,
 		"skipLibCheck": true,
@@ -22,7 +32,6 @@
 		"noEmit": true,
 		"jsx": "react-jsx",
 		"jsxImportSource": "preact",
-
 		"experimentalDecorators": true,
 		//"suppressImplicitAnyIndexErrors": true,
 		"noUnusedLocals": true,
@@ -30,7 +39,11 @@
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true
 	},
-	"exclude": ["node_modules", "build", "assets"],
+	"exclude": [
+		"node_modules",
+		"build",
+		"assets"
+	],
 	"include": [
 		"src",
 		"public/dbRegras.db.js",

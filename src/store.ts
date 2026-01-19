@@ -1,4 +1,4 @@
-import { legislacoes, hospedeiros, pragas, regras, estados, type Db, type Dados, type Legislacao } from './db.ts'
+import { legislacoes, hospedeiros, pragas, regras, estados, type Db, type Dados, type Legislacao } from '#db'
 import { deepSignal } from './lib/fast-deep-signal.ts'
 
 declare global {

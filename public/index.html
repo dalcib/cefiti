@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html style="height:100%" lang="pt-br">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1HQVDXLFL5"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-1HQVDXLFL5');
-    </script>
-    <meta charset="utf-8" />
-    <meta
-      name="description"
-      content="Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <link rel="manifest" href="./manifest.json" crossorigin="use-credentials" />
-    <link rel="shortcut icon" href="./favicon.ico" />
-    <link rel="preconnect" href="//www.google-analytics.com" />
-    <link href="./index.css" rel="stylesheet">
-    <title>CEFiTI</title>
-    <script type="module" src="./index.js"></script>
-    <script>
-      //new EventSource('/esbuild').addEventListener('change', () => location.reload())
-    </script>
-  </head>
 
-  <body style="height:100%">
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root" style="display:flex;height:100%"></div>
-  </body>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1HQVDXLFL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-1HQVDXLFL5');
+  </script>
+  <meta charset="utf-8" />
+  <meta name="description" content="Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="manifest" href="./manifest.json" crossorigin="use-credentials" />
+  <link rel="shortcut icon" href="./favicon.ico" />
+  <link rel="preconnect" href="//www.google-analytics.com" />
+  <link href="./index.css" rel="stylesheet">
+  <title>CEFiTI</title>
+  <script type="module" src="./db.js"></script>
+  <script type="module" src="./index.js"></script>
+  <script>
+    //new EventSource('/esbuild').addEventListener('change', () => location.reload())
+  </script>
+</head>
+
+<body style="height:100%">
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root" style="display:flex;height:100%"></div>
+</body>
+
 </html>
