@@ -1,8 +1,8 @@
 import assert from 'node:assert'
 import { before, describe, it, test } from 'node:test'
-import { hospedeiros } from '../public/dbHospedeiros.db.js'
-import { pragas } from '../public/dbPragas.db.js'
-import { regras } from '../public/dbRegras.db.js'
+import { hospedeiros } from './dbHospedeiros.db.js'
+import { pragas } from './dbPragas.db.js'
+import { regras } from './dbRegras.db.js'
 import { store } from './store.ts'
 
 type EventChange = {
@@ -95,17 +95,17 @@ describe('Store origem e destino', () => {
 })
 
 describe('Store hospedeiros nomeSci', () => {
-  it('unique values Nome Vulgar', () => {
-    //assert(store.listaNomesVul.length,hospedeiros.length)
-    assert.deepEqual(
-      hospedeiros.map((v) => v.nomeVul).filter((i, x, a) => a.indexOf(i) !== x),
-      [],
-    )
-    assert.strictEqual(
-      hospedeiros.map((v) => v.nomeVul).filter((i, x, a) => a.indexOf(i) === x)
-        .length,
-      hospedeiros.length,
-    )
+  it('unique values Nome Sci', () => {
+    const names = hospedeiros.map((v) => v.nomeSci)
+    const uniqueNames = [...new Set(names)]
+    assert.strictEqual(names.length, uniqueNames.length)
+  })
+
+  it('nomeVul is an array of strings', () => {
+    hospedeiros.forEach((h) => {
+      assert(Array.isArray(h.nomeVul))
+      h.nomeVul.forEach((v) => assert.strictEqual(typeof v, 'string'))
+    })
   })
 })
 
@@ -269,16 +269,34 @@ describe('Sync between NomeVulg and NomeSci', () => {
       currentTarget: { name: 'hospSci', value: 'Musa spp.' },
     }
     store.handleChanges(e as unknown as Event)
-    //store.dados.hospSci = 'Musa spp.'
     assert.strictEqual(store.dados.hospVul, 'Banana')
   })
-  it('should define NomeSci  based in NomeVulg ', () => {
+
+  it('should define NomeSci based in NomeVulg', () => {
     const e: EventChange = {
       currentTarget: { name: 'hospVul', value: 'Banana' },
     }
     store.handleChanges(e as unknown as Event)
-    //store.dados.hospVul = 'Banana'
     assert.strictEqual(store.dados.hospSci, 'Musa spp.')
+  })
+
+  it('should maintain current NomeVulg if valid for new NomeSci', () => {
+    // Picea abies has ['Abeto Europeu', 'Abeto Vermelho Comum', 'Noruega Abeto']
+    store.dados.hospVul = 'Noruega Abeto'
+    const e: EventChange = {
+      currentTarget: { name: 'hospSci', value: 'Picea abies' },
+    }
+    store.handleChanges(e as unknown as Event)
+    assert.strictEqual(store.dados.hospVul, 'Noruega Abeto')
+  })
+
+  it('should pick first NomeVulg if current is invalid for new NomeSci', () => {
+    store.dados.hospVul = 'Banana'
+    const e: EventChange = {
+      currentTarget: { name: 'hospSci', value: 'Picea abies' },
+    }
+    store.handleChanges(e as unknown as Event)
+    assert.strictEqual(store.dados.hospVul, 'Abeto Europeu')
   })
 })
 
@@ -293,18 +311,11 @@ test('Check normalization of db ', () => {
   })
 })
 
-test('duplicates nomeVul', () => {
-  const groupedByNomeVul = Object.groupBy(hospedeiros, ({ nomeVul }) => nomeVul)
-  const countDupli = Object.entries(groupedByNomeVul).map(
-    ([nomeVulg, items]) => ({
-      nomeVulg,
-      countNomeVulg: items?.length,
-    }),
-  )
-  assert.deepEqual(
-    countDupli.filter((v) => !v.countNomeVulg),
-    [],
-  )
+test('no duplicate common names in same species record', () => {
+  hospedeiros.forEach((h) => {
+    const uniqueVul = [...new Set(h.nomeVul)]
+    assert.strictEqual(h.nomeVul.length, uniqueVul.length)
+  })
 })
 
 test('should join Pragas and Regras', () => {

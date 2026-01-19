@@ -39,7 +39,7 @@ export class Store {
     return [
       '',
       ...[
-        ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeVul)),
+        ...new Set(this.hospedeirosRegulamentados.flatMap((v) => v.nomeVul)),
       ].sort((a, b) => a.localeCompare(b)),
     ]
   }
@@ -121,17 +121,22 @@ export class Store {
             (hosp) => hosp.nomeSci === target.value,
           )
           this.dados.prod = ''
-          this.dados.hospVul = hospVulg ? hospVulg.nomeVul : ''
+          if (hospVulg) {
+            if (!hospVulg.nomeVul.includes(this.dados.hospVul)) {
+              this.dados.hospVul = hospVulg.nomeVul[0]
+            }
+          } else {
+            this.dados.hospVul = ''
+          }
         }
         break
       case 'hospVul':
         {
-          const hospSci = hospedeiros.find(
-            (hosp) => hosp.nomeVul === target.value,
+          const hospSci = hospedeiros.find((hosp) =>
+            hosp.nomeVul.includes(target.value),
           )
           this.dados.prod = ''
           this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
-          break
         }
         break
       default:

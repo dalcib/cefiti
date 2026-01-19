@@ -1,287 +1,1523 @@
 //CEFiTI - Hospedeiros
 
 export const hospedeiros = globalThis.hospedeiros = [
-  { id: 1, nomeVul: 'Abacate (Persea gratissima)', nomeSci: 'Persea gratissima' },
-  { id: 2, nomeVul: 'Abeto Europeu', nomeSci: 'Picea abies' },
-  { id: 3, nomeVul: 'Abeto Vermelho Comum', nomeSci: 'Picea abies' },
-  { id: 4, nomeVul: 'Abiu (C. cainito)', nomeSci: 'Chrysophyllum cainito' },
-  { id: 5, nomeVul: 'Abiu (P. cainito)', nomeSci: 'Pouteria caimito' },
-  { id: 6, nomeVul: 'Acácia', nomeSci: 'Acacia spp.' },
-  { id: 7, nomeVul: 'Acerola(qualquer espécie)', nomeSci: 'Malpighia spp.' },
-  { id: 8, nomeVul: 'Acerola (M. punicifolia)', nomeSci: 'Malpighia punicifolia' },
-  { id: 9, nomeVul: 'Acerola (M. emarginata)', nomeSci: 'Malpighia emarginata' },
-  { id: 10, nomeVul: 'Ajuru', nomeSci: 'Chrysobalanus icaco' },
-  { id: 11, nomeVul: 'Álamo (Populus x canadensis)', nomeSci: 'Populus x canadensis' },
-  { id: 12, nomeVul: 'Álamo Americano', nomeSci: 'Tilia americana' },
-  { id: 13, nomeVul: 'Álamo Branco', nomeSci: 'Populus alba' },
-  { id: 14, nomeVul: 'Álamo Grande Dente', nomeSci: 'Populus grandidenta' },
-  { id: 15, nomeVul: 'Álamo', nomeSci: 'Populus spp.' },
-  { id: 16, nomeVul: 'Albízia', nomeSci: 'Albizia lebbeck' },
-  { id: 17, nomeVul: 'Alder Cinza', nomeSci: 'Alnus incana' },
-  { id: 18, nomeVul: 'Alder Japonês', nomeSci: 'Alnus japonica' },
-  { id: 19, nomeVul: 'Alder Negro', nomeSci: 'Alnus glutinosa' },
-  { id: 20, nomeVul: 'Alder Vermelha', nomeSci: 'Alnus rubra' },
-  { id: 21, nomeVul: 'Alder', nomeSci: 'Alnus sp.' },
-  { id: 22, nomeVul: 'Algodão Americano', nomeSci: 'Populus wislizeni' },
-  { id: 23, nomeVul: 'Ameixa', nomeSci: 'Prunus spp.' },
-  { id: 24, nomeVul: 'Ameixa-roxa', nomeSci: 'Syzygium cumini' },
-  { id: 25, nomeVul: 'Ameixeira-japonesa', nomeSci: 'Prunus salicina' },
-  { id: 26, nomeVul: 'Amelanchier', nomeSci: 'Amelanchier laevis' },
-  { id: 27, nomeVul: 'Amendoeira', nomeSci: 'Terminalia catappa' },
-  { id: 28, nomeVul: 'Amieiro Negro', nomeSci: 'Frangula almus' },
-  { id: 29, nomeVul: 'Amieiro', nomeSci: 'Alnus glutinosa' },
-  { id: 30, nomeVul: 'Angico', nomeSci: 'Acacia spp.' },
-  { id: 31, nomeVul: 'Araçá-Boi', nomeSci: 'Eugenia stipitata' },
-  { id: 32, nomeVul: 'Araçapeua', nomeSci: 'Calycolpus goetheanus' },
-  { id: 33, nomeVul: 'Arapaju', nomeSci: 'Manilkara zapota' },
-  { id: 34, nomeVul: 'Arbusto Espinheiro do Bosque', nomeSci: 'Crataegus oxyacanthoides (syn: oxyacantha)' },
-  { id: 35, nomeVul: 'Arbusto Espinhento', nomeSci: 'Craetaegus monogyna' },
-  { id: 36, nomeVul: 'Árvore Preta', nomeSci: 'Fraxinus nigra (syn. sambucifolia)' },
-  { id: 37, nomeVul: 'Aveia', nomeSci: 'Avena sativa' },
-  { id: 38, nomeVul: 'Avelã', nomeSci: 'Corylus avellana' },
-  { id: 39, nomeVul: 'Aveleira Japonesa', nomeSci: 'Corylus sieboldiana' },
-  { id: 40, nomeVul: 'Aveleira Siberiana', nomeSci: 'Corylus heterophylla var. thunbergiii' },
-  { id: 41, nomeVul: 'Azevinho', nomeSci: 'Ilex aquifolium' },
-  { id: 42, nomeVul: 'Bacupari', nomeSci: 'Garcinia dulcis' },
-  { id: 43, nomeVul: 'Bálsamo', nomeSci: 'Myroxylon balsamum' },
-  { id: 44, nomeVul: 'Banana', nomeSci: 'Musa spp.' },
-  { id: 45, nomeVul: 'Bergamota', nomeSci: 'Citrus reticulata' },
-  { id: 46, nomeVul: 'Bétula Branca (B.papyrifera)', nomeSci: 'Betula papyrifera' },
-  { id: 47, nomeVul: 'Bétula Branca (B.pendula)', nomeSci: 'Betula pendula (syn:verrucosa)' },
-  { id: 48, nomeVul: 'Bétula Branca (B.pubescens)', nomeSci: 'Betula pubescens' },
-  { id: 49, nomeVul: 'Bétula Cinza', nomeSci: 'Betula populifolia' },
-  { id: 50, nomeVul: 'Bétula Lenta', nomeSci: 'Betula lenta' },
-  { id: 51, nomeVul: 'Bétula lenta', nomeSci: 'Betula nigra' },
-  { id: 52, nomeVul: 'Bétula Lutea', nomeSci: 'Betula lutea (synonym: alleghaniensis)' },
-  { id: 53, nomeVul: 'Bétula Monarca', nomeSci: 'Betula maximowicziana' },
-  { id: 54, nomeVul: 'Bétula Negra', nomeSci: 'Betula nigra' },
-  { id: 55, nomeVul: 'Bétula Papel', nomeSci: 'Betula papyrifera' },
-  { id: 56, nomeVul: 'Bétula', nomeSci: 'Betula sp.' },
-  { id: 57, nomeVul: 'Bilimbi (A. bilimbi)', nomeSci: 'Averrhoa bilimbi' },
-  { id: 58, nomeVul: 'Bilimbi (C. cainito)', nomeSci: 'Chrysophyllum cainito' },
-  { id: 59, nomeVul: 'Biribá', nomeSci: 'Rollinia omucosa' },
-  { id: 60, nomeVul: 'Bordo Japonês', nomeSci: 'Acer palmatum' },
-  { id: 61, nomeVul: 'Bordo Vermelho (A.macrophyllum)', nomeSci: 'Acer macrophyllum' },
-  { id: 62, nomeVul: 'Bordo Vermelho (A.rubrum)', nomeSci: 'Acer rubrum' },
-  { id: 63, nomeVul: 'Bordo (A.mono)', nomeSci: 'Acer mono subsp. Heterophyllum' },
-  { id: 64, nomeVul: 'Bordo (A.negundo)', nomeSci: 'Acer negundo' },
-  { id: 65, nomeVul: 'Bordo (A.sacharum)', nomeSci: 'Acer saccharum' },
-  { id: 66, nomeVul: 'Bordo (A.spicatum)', nomeSci: 'Acer spicatum' },
-  { id: 67, nomeVul: 'Bordo (Acer pennsylvanicum)', nomeSci: 'Acer pennsylvanicum' },
-  { id: 68, nomeVul: 'Bordo (Acer pseudoplatanus)', nomeSci: 'Acer pseudoplatanus' },
-  { id: 69, nomeVul: 'Bordo', nomeSci: 'Acer sp.' },
-  { id: 70, nomeVul: 'Bordo-da-videira', nomeSci: 'Acer circinatum' },
-  { id: 71, nomeVul: 'Broto Vermelho Oriental', nomeSci: 'Cercis canadensis' },
-  { id: 72, nomeVul: 'Cabeça-de-negro', nomeSci: 'Albizia lebbeck' },
-  { id: 73, nomeVul: 'Cacau', nomeSci: 'Theobroma cacao' },
-  { id: 74, nomeVul: 'Cacauí', nomeSci: 'Theobroma speciosum' },
-  { id: 75, nomeVul: 'Caimito', nomeSci: 'Chrysophyllum cainito' },
-  { id: 76, nomeVul: 'Cajá (S. lutea)', nomeSci: 'Spondias lutea' },
-  { id: 77, nomeVul: 'Cajá (S. mombin)', nomeSci: 'Spondias mombin' },
-  { id: 78, nomeVul: 'Cajá-mirim (S. lutea)', nomeSci: 'Spondias lutea' },
-  { id: 79, nomeVul: 'Cajá-mirim (S. mombin)', nomeSci: 'Spondias mombin' },
-  { id: 80, nomeVul: 'Cajazeiro (S. lutea)', nomeSci: 'Spondias lutea' },
-  { id: 81, nomeVul: 'Cajazeiro (S. mombin)', nomeSci: 'Spondias mombin' },
-  { id: 82, nomeVul: 'Caju', nomeSci: 'Anacardium occidentale' },
-  { id: 83, nomeVul: 'Carambola Amarela (A. bilimbi)', nomeSci: 'Averrhoa bilimbi' },
-  { id: 84, nomeVul: 'Carambola amarela (C. cainito)', nomeSci: 'Chrysophyllum cainito' },
-  { id: 85, nomeVul: 'Carambola', nomeSci: 'Averrhoa carambola' },
-  { id: 86, nomeVul: 'Cárpino Betulas', nomeSci: 'Carpinus betulas' },
-  { id: 87, nomeVul: 'Cárpino', nomeSci: 'Carpinus sp.' },
-  { id: 88, nomeVul: 'Carvalho Água', nomeSci: 'Quercus laurifolia' },
-  { id: 89, nomeVul: 'Carvalho Branco do Brejo', nomeSci: 'Quercus bicolor' },
-  { id: 90, nomeVul: 'Carvalho Branco Oregon', nomeSci: 'Quercus garryana' },
-  { id: 91, nomeVul: 'Carvalho Branco', nomeSci: 'Quercus alba' },
-  { id: 92, nomeVul: 'Carvalho Campeão(Q.borealis)', nomeSci: 'Quercus borealis (syn: rubra)' },
-  { id: 93, nomeVul: 'Carvalho Campeão(Q.rubra)', nomeSci: 'Quercus rubra' },
-  { id: 94, nomeVul: 'Carvalho Castanheiro', nomeSci: 'Quercus montana' },
-  { id: 95, nomeVul: 'Carvalho Escarlata', nomeSci: 'Quercus coccinea' },
-  { id: 96, nomeVul: 'Carvalho Folha Diamante', nomeSci: 'Quercus laurifolia' },
-  { id: 97, nomeVul: 'Carvalho Glorioso do Brejo', nomeSci: 'Quercus laurifolia' },
-  { id: 98, nomeVul: 'Carvalho Glorioso', nomeSci: 'Quercus laurifolia' },
-  { id: 99, nomeVul: 'Carvalho Konara', nomeSci: 'Quercus glandulifera' },
-  { id: 100, nomeVul: 'Carvalho Koreano', nomeSci: 'Quercus glandulifera' },
-  { id: 101, nomeVul: 'Carvalho Mongoliano', nomeSci: 'Quercus mongolica var grosserrata' },
-  { id: 102, nomeVul: 'Carvalho Obtuso', nomeSci: 'Quercus laurifolia' },
-  { id: 103, nomeVul: 'Carvalho Oregon', nomeSci: 'Quercus garryana' },
-  { id: 104, nomeVul: 'Carvalho Preto', nomeSci: 'Quercus velutina' },
-  { id: 105, nomeVul: 'Carvalho Vermelho do Norte (Q.borealis)', nomeSci: 'Quercus borealis (syn: rubra)' },
-  { id: 106, nomeVul: 'Carvalho Vermelho do Norte (Q.rubra)', nomeSci: 'Quercus rubra' },
-  { id: 107, nomeVul: 'Carvalho', nomeSci: 'Quercus sp.' },
-  { id: 108, nomeVul: 'Carvalho-alvarinho', nomeSci: 'Quercus robur' },
-  { id: 109, nomeVul: 'Carvalho-roble', nomeSci: 'Quercus robur' },
-  { id: 110, nomeVul: 'Carvalho-vermelho', nomeSci: 'Quercus robur' },
-  { id: 111, nomeVul: 'Castanha-da-Índia(A.hippocastanum)', nomeSci: 'Aesculus hippocastanum' },
-  { id: 112, nomeVul: 'Castanha-da-Índia', nomeSci: 'Aesculus sp.' },
-  { id: 113, nomeVul: 'Castanheiro Europeu', nomeSci: 'Castanea dentata' },
-  { id: 114, nomeVul: 'Cereja de Pássaro Virginia', nomeSci: 'Prunus virginiana' },
-  { id: 115, nomeVul: 'Cereja de Pássaro', nomeSci: 'Prunus ssiori' },
-  { id: 116, nomeVul: 'Cerejeira Chorona', nomeSci: 'Prunus subhirtella var. pendula' },
-  { id: 117, nomeVul: 'Cerejeira Negra', nomeSci: 'Prunus serotina' },
-  { id: 118, nomeVul: 'Cerejeira', nomeSci: 'Prunus avium' },
-  { id: 119, nomeVul: 'Chá-da-Índia', nomeSci: 'Camellia sinensis' },
-  { id: 120, nomeVul: 'Choupo Branco', nomeSci: 'Populus alba' },
-  { id: 121, nomeVul: 'Choupo Tremedor', nomeSci: 'Populus tremula' },
-  { id: 122, nomeVul: 'Choupo Trêmulo', nomeSci: 'Populus tremuloides' },
-  { id: 123, nomeVul: 'Choupo(P.x canadensis)', nomeSci: 'Populus x canadensis' },
-  { id: 124, nomeVul: 'Choupo', nomeSci: 'Populus spp.' },
-  { id: 125, nomeVul: 'Choupo-bálsamo', nomeSci: 'Populus balsamifera' },
-  { id: 126, nomeVul: 'Chuva-de-ouro', nomeSci: 'Laburnum anagyrioides' },
-  { id: 127, nomeVul: 'Cinamomo', nomeSci: 'Melia azedarach' },
-  { id: 128, nomeVul: 'Cinza Japonês', nomeSci: 'Fraxinus mandshurica var. Japonica' },
-  { id: 129, nomeVul: 'Cinza-da-montanha', nomeSci: 'Sorbus sp.' },
-  { id: 130, nomeVul: 'Citros', nomeSci: 'Citrus spp.' },
-  { id: 131, nomeVul: 'Coprosma Frondoso Fino', nomeSci: 'Coprosma areolata' },
-  { id: 132, nomeVul: 'Coqueiro', nomeSci: 'Cocos nucifera' },
-  { id: 133, nomeVul: 'Corrente-de-ouro', nomeSci: 'Laburnum anagyrioides' },
-  { id: 134, nomeVul: 'Cutite', nomeSci: 'Pouteria macrophylla' },
-  { id: 135, nomeVul: 'Cupuaçu', nomeSci: 'Theobroma grandiflorum' },
-  { id: 136, nomeVul: 'Espinho Branco', nomeSci: 'Craetaegus monogyna' },
-  { id: 137, nomeVul: 'Faia Americana', nomeSci: 'Fagus americana' },
-  { id: 138, nomeVul: 'Faia Cobre', nomeSci: 'Fagus sylvantica' },
-  { id: 139, nomeVul: 'Faia do Oriente', nomeSci: 'Fagus orientalis' },
-  { id: 140, nomeVul: 'Faia Japonesa', nomeSci: 'Fagus crenata f. grandifolia (syn. Americana)' },
-  { id: 141, nomeVul: 'Faia Roxa', nomeSci: 'Fagus silvatica f. purpurea' },
-  { id: 142, nomeVul: 'Faia', nomeSci: 'Fagus sp.' },
-  { id: 143, nomeVul: 'Falso Castanho Japonês', nomeSci: 'Aesculus turbinata' },
-  { id: 144, nomeVul: 'Faveiro', nomeSci: 'Albizia lebbeck' },
-  { id: 145, nomeVul: 'Feixe Branco', nomeSci: 'Sorbus aria' },
-  { id: 146, nomeVul: 'Flamboyant', nomeSci: 'Delonix regia' },
-  { id: 147, nomeVul: 'Fortunela', nomeSci: 'Fortunella spp.' },
-  { id: 148, nomeVul: 'Freixo (F.bungeana)', nomeSci: 'Fraxinus bungeana' },
-  { id: 149, nomeVul: 'Freixo (F.excelsior)', nomeSci: 'Fraxinus excelsior' },
-  { id: 150, nomeVul: 'Fruta Pão', nomeSci: 'Artocarpus altilis' },
-  { id: 151, nomeVul: 'Gafanhoto Preto', nomeSci: 'Robinia pseudoacacia' },
-  { id: 152, nomeVul: 'Goiaba', nomeSci: 'Psidium guajava' },
-  { id: 153, nomeVul: 'Goiaba-araçá', nomeSci: 'Psidium guineense' },
-  { id: 154, nomeVul: 'Goma Preta', nomeSci: 'Nyssa sylvatica' },
-  { id: 155, nomeVul: 'Gomuto', nomeSci: 'Arenga pinnata' },
-  { id: 156, nomeVul: 'Grão Amargo', nomeSci: 'Prunus virginiana' },
-  { id: 157, nomeVul: 'Helicônia', nomeSci: 'Heliconia spp.' },
-  { id: 158, nomeVul: 'Jaca', nomeSci: 'Artocarpus integrifolia' },
-  { id: 159, nomeVul: "Jambo D'água", nomeSci: 'Syzygium aqueum' },
-  { id: 160, nomeVul: 'Jambo Amarelo', nomeSci: 'Syzygium jambos' },
-  { id: 161, nomeVul: 'Jambo Branco (S.aqueum)', nomeSci: 'Syzygium aqueum' },
-  { id: 162, nomeVul: 'Jambo Branco (S.samarangense)', nomeSci: 'Syzygium samarangense' },
-  { id: 163, nomeVul: 'Jambo Rosa (S. jambos)', nomeSci: 'Syzygium jambos' },
-  { id: 164, nomeVul: 'Jambo Rosa (S. samarangese)', nomeSci: 'Syzygium samarangense' },
-  { id: 165, nomeVul: 'Jambo Vermelho', nomeSci: 'Syzygium malaccense' },
-  { id: 166, nomeVul: 'Jambosa', nomeSci: 'Syzygium aqueum' },
-  { id: 167, nomeVul: 'Juglans', nomeSci: 'Juglans sp.' },
-  { id: 168, nomeVul: 'Jujuba (Z. jujuba)', nomeSci: 'Ziziphus jujuba' },
-  { id: 169, nomeVul: 'Jujuba (Z. mauritiana)', nomeSci: 'Ziziphus mauritiana' },
-  { id: 170, nomeVul: 'Jujuba Chinesa', nomeSci: 'Ziziphus jujuba' },
-  { id: 171, nomeVul: 'Jurema', nomeSci: 'Acacia spp.' },
-  { id: 172, nomeVul: 'Karamu', nomeSci: 'Coprosma lucida' },
-  { id: 173, nomeVul: 'Kowhai', nomeSci: 'Sophora microphylla' },
-  { id: 174, nomeVul: 'Laranja Azeda', nomeSci: 'Citrus aurantium' },
-  { id: 175, nomeVul: 'Laranja Caipira', nomeSci: 'Citrus aurantium' },
-  { id: 176, nomeVul: 'Laranja da Terra', nomeSci: 'Citrus aurantium' },
-  { id: 177, nomeVul: 'Laranja', nomeSci: 'Citrus sinensis' },
-  { id: 178, nomeVul: 'Laranja Doce', nomeSci: 'Citrus sinensis' },
-  { id: 179, nomeVul: 'Licania', nomeSci: 'Licania sp.' },
-  { id: 180, nomeVul: 'Limão Cayena', nomeSci: 'Averrhoa bilimbi' },
-  { id: 181, nomeVul: 'Linda-dos-jardins', nomeSci: 'Rhus typhina' },
-  { id: 182, nomeVul: 'Louro Califórnia', nomeSci: 'Umbelluraria californica' },
-  { id: 183, nomeVul: 'Maçã (M. communis)', nomeSci: 'Malus communis' },
-  { id: 184, nomeVul: 'Maçã (M. pumila var domestica)', nomeSci: 'Malus pumila var domestica' },
-  { id: 185, nomeVul: 'Maçã (M. pumila)', nomeSci: 'Malus pumila' },
-  { id: 186, nomeVul: 'Maçã (M. x domestica)', nomeSci: 'Malus x domestica' },
-  { id: 187, nomeVul: 'Maçã (Pyrus malus)', nomeSci: 'Pyrus malus' },
-  { id: 188, nomeVul: 'Maçã Silvestre', nomeSci: 'Malus sylvestris' },
-  { id: 189, nomeVul: 'Maça', nomeSci: 'Malus sp.' },
-  { id: 190, nomeVul: 'Maçã-de-pobre ', nomeSci: 'Ziziphus mauritiana' },
-  { id: 191, nomeVul: 'Mamão', nomeSci: 'Carica papaya' },
-  { id: 192, nomeVul: 'Maçaranduba', nomeSci: 'Manilkara zapota' },
-  { id: 193, nomeVul: 'Manchu Cinza', nomeSci: 'Fraxinus mandshurica' },
-  { id: 194, nomeVul: 'Mandarina,', nomeSci: 'Citrus reticulata' },
-  { id: 195, nomeVul: 'Mandioca', nomeSci: 'Manihot esculenta' },
-  { id: 196, nomeVul: 'Manga', nomeSci: 'Mangifera indica' },
-  { id: 197, nomeVul: 'Mararaju', nomeSci: 'Manilkara zapota' },
-  { id: 198, nomeVul: 'Mexerica', nomeSci: 'Citrus reticulata' },
-  { id: 199, nomeVul: 'Mogno Indiano Ocidental', nomeSci: 'Swietenia mahagoni' },
-  { id: 200, nomeVul: 'Mogno', nomeSci: 'Switenia macrophyla' },
-  { id: 201, nomeVul: 'Murici ou Muruci', nomeSci: 'Bysonima crassifolia' },
-  { id: 202, nomeVul: 'Murta', nomeSci: 'Murraya paniculata' },
-  { id: 203, nomeVul: 'Nespereira', nomeSci: 'Eriobotrya japonica' },
-  { id: 204, nomeVul: 'Nim', nomeSci: 'Azadirachta indica' },
-  { id: 205, nomeVul: 'Nogueira Amarga Casca de Pelúcia', nomeSci: 'Carya ovata' },
-  { id: 206, nomeVul: 'Nogueira Amarga Coração Branco', nomeSci: 'Carya tomentosa' },
-  { id: 207, nomeVul: 'Nogueira Amarga de Porco', nomeSci: 'Carya glabra' },
-  { id: 208, nomeVul: 'Nogueira Amarga spp', nomeSci: 'Carya spp.' },
-  { id: 209, nomeVul: 'Nogueira Amarga', nomeSci: 'Carya cordiformis' },
-  { id: 210, nomeVul: 'Nogueira Branca', nomeSci: 'Juglans cinerea' },
-  { id: 211, nomeVul: 'Nogueira Comum', nomeSci: 'Juglans regia' },
-  { id: 212, nomeVul: 'Nogueira europeia', nomeSci: 'Juglans regia' },
-  { id: 213, nomeVul: 'Nogueira Pecã', nomeSci: 'Carya illinoensis' },
-  { id: 214, nomeVul: 'Nogueira Preta', nomeSci: 'Juglans nigra' },
-  { id: 215, nomeVul: 'Nogueira', nomeSci: 'Juglans sp.' },
-  { id: 216, nomeVul: 'Noruega Abeto', nomeSci: 'Picea abies' },
-  { id: 217, nomeVul: 'Olmo Americano', nomeSci: 'Ulmus americana' },
-  { id: 218, nomeVul: 'Olmo Escocês', nomeSci: 'Ulmus glabra (syn. montana)' },
-  { id: 219, nomeVul: 'Olmo', nomeSci: 'Ulmus sp.' },
-  { id: 220, nomeVul: 'Padreiro', nomeSci: 'Acer pseudoplatanus' },
-  { id: 221, nomeVul: 'Palma forrageira', nomeSci: 'Opuntia cochenillifera' },
-  { id: 222, nomeVul: 'Pau Cachorro do Pacífico', nomeSci: 'Cornus muttallii' },
-  { id: 223, nomeVul: 'Pau Cachorro', nomeSci: 'Cornus sp.' },
-  { id: 224, nomeVul: 'Pera Asiática', nomeSci: 'Pyrus pyrifolia' },
-  { id: 225, nomeVul: 'Pera Nashi', nomeSci: 'Pyrus pyrifolia' },
-  { id: 226, nomeVul: 'Pereira Europeia', nomeSci: 'Pyrus communis' },
-  { id: 227, nomeVul: 'Pereira Japonesa', nomeSci: 'Pyrus pyrifolia var culta' },
-  { id: 228, nomeVul: 'Pimenta Picante', nomeSci: 'Capsicum annuum' },
-  { id: 229, nomeVul: 'Pimenta-de-Cheiro', nomeSci: 'Capsicum chinense' },
-  { id: 230, nomeVul: 'Pimenta-do-diabo', nomeSci: 'Capsicum annuum' },
-  { id: 231, nomeVul: 'Pitanga Vermelha', nomeSci: 'Eugenia uniflora' },
-  { id: 232, nomeVul: 'Plátano Oriental', nomeSci: 'Platanus orientalis' },
-  { id: 233, nomeVul: 'Plátano', nomeSci: 'Platanus orientalis' },
-  { id: 234, nomeVul: 'Pomelo', nomeSci: 'Citrus paradisi' },
-  { id: 235, nomeVul: 'Poncirus', nomeSci: 'Poncirus spp.' },
-  { id: 236, nomeVul: 'Ponkan', nomeSci: 'Citrus reticulata' },
-  { id: 237, nomeVul: 'Ribes', nomeSci: 'Ribes sp.' },
-  { id: 238, nomeVul: 'Rosa', nomeSci: 'Rosa spp.' },
-  { id: 239, nomeVul: 'Rustifina Rus', nomeSci: 'Rhus typhina' },
-  { id: 240, nomeVul: 'Salgueiro Branco', nomeSci: 'Salix alba' },
-  { id: 241, nomeVul: 'Salgueiro Cinza', nomeSci: 'Salix cinerea' },
-  { id: 242, nomeVul: 'Salgueiro Dourado', nomeSci: 'Salix alba var Vitelina' },
-  { id: 243, nomeVul: 'Salgueiro Preto', nomeSci: 'Salix nigricans' },
-  { id: 244, nomeVul: 'Salgueiro Púrpura', nomeSci: 'Salix purpurea' },
-  { id: 245, nomeVul: 'Salgueiro Velho Mundo', nomeSci: 'Salix amygdalina' },
-  { id: 246, nomeVul: 'Salgueiro-folha-de-pêssego', nomeSci: 'Salix amygdaloides' },
-  { id: 247, nomeVul: 'Salgueiro-taco-de-críquete', nomeSci: 'Salix alba L. Coerulea' },
-  { id: 248, nomeVul: 'Salix', nomeSci: 'Salix spp.' },
-  { id: 249, nomeVul: 'Sanguinho', nomeSci: 'Frangula almus' },
-  { id: 250, nomeVul: 'Sapoti', nomeSci: 'Manilkara zapota' },
-  { id: 251, nomeVul: 'Sapotilha', nomeSci: 'Manilkara zapota' },
-  { id: 252, nomeVul: 'Seriguela', nomeSci: 'Spondias purpurea' },
-  { id: 253, nomeVul: 'Seringueira', nomeSci: 'Hevea brasiliensis' },
-  { id: 254, nomeVul: 'Sete Copas', nomeSci: 'Terminalia catappa' },
-  { id: 255, nomeVul: 'Sófora', nomeSci: 'Sophora microphylla' },
-  { id: 256, nomeVul: 'Sorgo', nomeSci: 'Sorghum bicolor' },
-  { id: 257, nomeVul: 'Sorva (S. domestica)', nomeSci: 'Sorbus domestica' },
-  { id: 258, nomeVul: 'Sorva', nomeSci: 'Sorbus sp.' },
-  { id: 259, nomeVul: 'Sumac Staghorn', nomeSci: 'Rhus typhina' },
-  { id: 260, nomeVul: 'Tangerina', nomeSci: 'Citrus reticulata' },
-  { id: 261, nomeVul: 'Taperebá (S. lutea)', nomeSci: 'Spondias lutea' },
-  { id: 262, nomeVul: 'Taperebá (S. mombin)', nomeSci: 'Spondias mombin' },
-  { id: 263, nomeVul: 'Teca', nomeSci: 'Tectona grandis' },
-  { id: 264, nomeVul: 'Teja', nomeSci: 'Tilia cordata' },
-  { id: 265, nomeVul: 'Tejo', nomeSci: 'Tilia cordata' },
-  { id: 266, nomeVul: 'Tella', nomeSci: 'Tilia cordata' },
-  { id: 267, nomeVul: 'Theobroma spp', nomeSci: 'Theobroma spp.' },
-  { id: 268, nomeVul: 'Texa', nomeSci: 'Tilia cordata' },
-  { id: 269, nomeVul: 'Tilha', nomeSci: 'Tilia cordata' },
-  { id: 270, nomeVul: 'Tília', nomeSci: 'Tilia sp.' },
-  { id: 271, nomeVul: 'Tillera', nomeSci: 'Tilia cordata' },
-  { id: 272, nomeVul: 'Tilo', nomeSci: 'Tilia americana' },
-  { id: 273, nomeVul: 'Tomate', nomeSci: 'Licopersicum esculentum' },
-  { id: 274, nomeVul: 'Toranja', nomeSci: 'Citrus paradisi' },
-  { id: 275, nomeVul: 'Tramazeira', nomeSci: 'Sorbus aucuparia' },
-  { id: 276, nomeVul: 'Tulipeiro', nomeSci: 'Liriodendron tulipifera' },
-  { id: 277, nomeVul: 'Tupelo', nomeSci: 'Nyssa sylvatica' },
-  { id: 278, nomeVul: 'Ulmeiro', nomeSci: 'Ulmus sp.' },
-  { id: 279, nomeVul: 'Unha-de-gato', nomeSci: 'Acacia spp.' },
-  { id: 280, nomeVul: 'Uva', nomeSci: 'Vitis spp. e seus híbridos' },
-  { id: 281, nomeVul: 'Videira e seus híbridos', nomeSci: 'Vitis spp. e seus híbridos' },
-  { id: 282, nomeVul: 'Vimeiro Púrpura', nomeSci: 'Salix purpurea' },
-  { id: 283, nomeVul: 'Viola', nomeSci: 'Viola sp.' },
+  {
+    "id": 1,
+    "nomeSci": "Persea gratissima",
+    "nomeVul": [
+      "Abacate (Persea gratissima)"
+    ]
+  },
+  {
+    "id": 2,
+    "nomeSci": "Picea abies",
+    "nomeVul": [
+      "Abeto Europeu",
+      "Abeto Vermelho Comum",
+      "Noruega Abeto"
+    ]
+  },
+  {
+    "id": 3,
+    "nomeSci": "Chrysophyllum cainito",
+    "nomeVul": [
+      "Abiu (C. cainito)",
+      "Bilimbi (C. cainito)",
+      "Caimito",
+      "Carambola amarela (C. cainito)"
+    ]
+  },
+  {
+    "id": 4,
+    "nomeSci": "Pouteria caimito",
+    "nomeVul": [
+      "Abiu (P. cainito)"
+    ]
+  },
+  {
+    "id": 5,
+    "nomeSci": "Acacia spp.",
+    "nomeVul": [
+      "Acácia",
+      "Angico",
+      "Jurema",
+      "Unha-de-gato"
+    ]
+  },
+  {
+    "id": 6,
+    "nomeSci": "Malpighia spp.",
+    "nomeVul": [
+      "Acerola(qualquer espécie)"
+    ]
+  },
+  {
+    "id": 7,
+    "nomeSci": "Malpighia punicifolia",
+    "nomeVul": [
+      "Acerola (M. punicifolia)"
+    ]
+  },
+  {
+    "id": 8,
+    "nomeSci": "Malpighia emarginata",
+    "nomeVul": [
+      "Acerola (M. emarginata)"
+    ]
+  },
+  {
+    "id": 9,
+    "nomeSci": "Chrysobalanus icaco",
+    "nomeVul": [
+      "Ajuru"
+    ]
+  },
+  {
+    "id": 10,
+    "nomeSci": "Populus x canadensis",
+    "nomeVul": [
+      "Álamo (Populus x canadensis)",
+      "Choupo(P.x canadensis)"
+    ]
+  },
+  {
+    "id": 11,
+    "nomeSci": "Tilia americana",
+    "nomeVul": [
+      "Álamo Americano",
+      "Tilo"
+    ]
+  },
+  {
+    "id": 12,
+    "nomeSci": "Populus alba",
+    "nomeVul": [
+      "Álamo Branco",
+      "Choupo Branco"
+    ]
+  },
+  {
+    "id": 13,
+    "nomeSci": "Populus grandidenta",
+    "nomeVul": [
+      "Álamo Grande Dente"
+    ]
+  },
+  {
+    "id": 14,
+    "nomeSci": "Populus spp.",
+    "nomeVul": [
+      "Álamo",
+      "Choupo"
+    ]
+  },
+  {
+    "id": 15,
+    "nomeSci": "Albizia lebbeck",
+    "nomeVul": [
+      "Albízia",
+      "Cabeça-de-negro",
+      "Faveiro"
+    ]
+  },
+  {
+    "id": 16,
+    "nomeSci": "Alnus incana",
+    "nomeVul": [
+      "Alder Cinza"
+    ]
+  },
+  {
+    "id": 17,
+    "nomeSci": "Alnus japonica",
+    "nomeVul": [
+      "Alder Japonês"
+    ]
+  },
+  {
+    "id": 18,
+    "nomeSci": "Alnus glutinosa",
+    "nomeVul": [
+      "Alder Negro",
+      "Amieiro"
+    ]
+  },
+  {
+    "id": 19,
+    "nomeSci": "Alnus rubra",
+    "nomeVul": [
+      "Alder Vermelha"
+    ]
+  },
+  {
+    "id": 20,
+    "nomeSci": "Alnus sp.",
+    "nomeVul": [
+      "Alder"
+    ]
+  },
+  {
+    "id": 21,
+    "nomeSci": "Populus wislizeni",
+    "nomeVul": [
+      "Algodão Americano"
+    ]
+  },
+  {
+    "id": 22,
+    "nomeSci": "Prunus spp.",
+    "nomeVul": [
+      "Ameixa"
+    ]
+  },
+  {
+    "id": 23,
+    "nomeSci": "Syzygium cumini",
+    "nomeVul": [
+      "Ameixa-roxa"
+    ]
+  },
+  {
+    "id": 24,
+    "nomeSci": "Prunus salicina",
+    "nomeVul": [
+      "Ameixeira-japonesa"
+    ]
+  },
+  {
+    "id": 25,
+    "nomeSci": "Amelanchier laevis",
+    "nomeVul": [
+      "Amelanchier"
+    ]
+  },
+  {
+    "id": 26,
+    "nomeSci": "Terminalia catappa",
+    "nomeVul": [
+      "Amendoeira",
+      "Sete Copas"
+    ]
+  },
+  {
+    "id": 27,
+    "nomeSci": "Frangula almus",
+    "nomeVul": [
+      "Amieiro Negro",
+      "Sanguinho"
+    ]
+  },
+  {
+    "id": 28,
+    "nomeSci": "Eugenia stipitata",
+    "nomeVul": [
+      "Araçá-Boi"
+    ]
+  },
+  {
+    "id": 29,
+    "nomeSci": "Calycolpus goetheanus",
+    "nomeVul": [
+      "Araçapeua"
+    ]
+  },
+  {
+    "id": 30,
+    "nomeSci": "Manilkara zapota",
+    "nomeVul": [
+      "Arapaju",
+      "Maçaranduba",
+      "Mararaju",
+      "Sapoti",
+      "Sapotilha"
+    ]
+  },
+  {
+    "id": 31,
+    "nomeSci": "Crataegus oxyacanthoides (syn: oxyacantha)",
+    "nomeVul": [
+      "Arbusto Espinheiro do Bosque"
+    ]
+  },
+  {
+    "id": 32,
+    "nomeSci": "Craetaegus monogyna",
+    "nomeVul": [
+      "Arbusto Espinhento",
+      "Espinho Branco"
+    ]
+  },
+  {
+    "id": 33,
+    "nomeSci": "Fraxinus nigra (syn. sambucifolia)",
+    "nomeVul": [
+      "Árvore Preta"
+    ]
+  },
+  {
+    "id": 34,
+    "nomeSci": "Avena sativa",
+    "nomeVul": [
+      "Aveia"
+    ]
+  },
+  {
+    "id": 35,
+    "nomeSci": "Corylus avellana",
+    "nomeVul": [
+      "Avelã"
+    ]
+  },
+  {
+    "id": 36,
+    "nomeSci": "Corylus sieboldiana",
+    "nomeVul": [
+      "Aveleira Japonesa"
+    ]
+  },
+  {
+    "id": 37,
+    "nomeSci": "Corylus heterophylla var. thunbergiii",
+    "nomeVul": [
+      "Aveleira Siberiana"
+    ]
+  },
+  {
+    "id": 38,
+    "nomeSci": "Ilex aquifolium",
+    "nomeVul": [
+      "Azevinho"
+    ]
+  },
+  {
+    "id": 39,
+    "nomeSci": "Garcinia dulcis",
+    "nomeVul": [
+      "Bacupari"
+    ]
+  },
+  {
+    "id": 40,
+    "nomeSci": "Myroxylon balsamum",
+    "nomeVul": [
+      "Bálsamo"
+    ]
+  },
+  {
+    "id": 41,
+    "nomeSci": "Musa spp.",
+    "nomeVul": [
+      "Banana"
+    ]
+  },
+  {
+    "id": 42,
+    "nomeSci": "Citrus reticulata",
+    "nomeVul": [
+      "Bergamota",
+      "Mandarina,",
+      "Mexerica",
+      "Ponkan",
+      "Tangerina"
+    ]
+  },
+  {
+    "id": 43,
+    "nomeSci": "Betula papyrifera",
+    "nomeVul": [
+      "Bétula Branca (B.papyrifera)",
+      "Bétula Papel"
+    ]
+  },
+  {
+    "id": 44,
+    "nomeSci": "Betula pendula (syn:verrucosa)",
+    "nomeVul": [
+      "Bétula Branca (B.pendula)"
+    ]
+  },
+  {
+    "id": 45,
+    "nomeSci": "Betula pubescens",
+    "nomeVul": [
+      "Bétula Branca (B.pubescens)"
+    ]
+  },
+  {
+    "id": 46,
+    "nomeSci": "Betula populifolia",
+    "nomeVul": [
+      "Bétula Cinza"
+    ]
+  },
+  {
+    "id": 47,
+    "nomeSci": "Betula lenta",
+    "nomeVul": [
+      "Bétula Lenta"
+    ]
+  },
+  {
+    "id": 48,
+    "nomeSci": "Betula nigra",
+    "nomeVul": [
+      "Bétula lenta",
+      "Bétula Negra"
+    ]
+  },
+  {
+    "id": 49,
+    "nomeSci": "Betula lutea (synonym: alleghaniensis)",
+    "nomeVul": [
+      "Bétula Lutea"
+    ]
+  },
+  {
+    "id": 50,
+    "nomeSci": "Betula maximowicziana",
+    "nomeVul": [
+      "Bétula Monarca"
+    ]
+  },
+  {
+    "id": 51,
+    "nomeSci": "Betula sp.",
+    "nomeVul": [
+      "Bétula"
+    ]
+  },
+  {
+    "id": 52,
+    "nomeSci": "Averrhoa bilimbi",
+    "nomeVul": [
+      "Bilimbi (A. bilimbi)",
+      "Carambola Amarela (A. bilimbi)",
+      "Limão Cayena"
+    ]
+  },
+  {
+    "id": 53,
+    "nomeSci": "Rollinia omucosa",
+    "nomeVul": [
+      "Biribá"
+    ]
+  },
+  {
+    "id": 54,
+    "nomeSci": "Acer palmatum",
+    "nomeVul": [
+      "Bordo Japonês"
+    ]
+  },
+  {
+    "id": 55,
+    "nomeSci": "Acer macrophyllum",
+    "nomeVul": [
+      "Bordo Vermelho (A.macrophyllum)"
+    ]
+  },
+  {
+    "id": 56,
+    "nomeSci": "Acer rubrum",
+    "nomeVul": [
+      "Bordo Vermelho (A.rubrum)"
+    ]
+  },
+  {
+    "id": 57,
+    "nomeSci": "Acer mono subsp. Heterophyllum",
+    "nomeVul": [
+      "Bordo (A.mono)"
+    ]
+  },
+  {
+    "id": 58,
+    "nomeSci": "Acer negundo",
+    "nomeVul": [
+      "Bordo (A.negundo)"
+    ]
+  },
+  {
+    "id": 59,
+    "nomeSci": "Acer saccharum",
+    "nomeVul": [
+      "Bordo (A.sacharum)"
+    ]
+  },
+  {
+    "id": 60,
+    "nomeSci": "Acer spicatum",
+    "nomeVul": [
+      "Bordo (A.spicatum)"
+    ]
+  },
+  {
+    "id": 61,
+    "nomeSci": "Acer pennsylvanicum",
+    "nomeVul": [
+      "Bordo (Acer pennsylvanicum)"
+    ]
+  },
+  {
+    "id": 62,
+    "nomeSci": "Acer pseudoplatanus",
+    "nomeVul": [
+      "Bordo (Acer pseudoplatanus)",
+      "Padreiro"
+    ]
+  },
+  {
+    "id": 63,
+    "nomeSci": "Acer sp.",
+    "nomeVul": [
+      "Bordo"
+    ]
+  },
+  {
+    "id": 64,
+    "nomeSci": "Acer circinatum",
+    "nomeVul": [
+      "Bordo-da-videira"
+    ]
+  },
+  {
+    "id": 65,
+    "nomeSci": "Cercis canadensis",
+    "nomeVul": [
+      "Broto Vermelho Oriental"
+    ]
+  },
+  {
+    "id": 66,
+    "nomeSci": "Theobroma cacao",
+    "nomeVul": [
+      "Cacau"
+    ]
+  },
+  {
+    "id": 67,
+    "nomeSci": "Theobroma speciosum",
+    "nomeVul": [
+      "Cacauí"
+    ]
+  },
+  {
+    "id": 68,
+    "nomeSci": "Spondias lutea",
+    "nomeVul": [
+      "Cajá (S. lutea)",
+      "Cajá-mirim (S. lutea)",
+      "Cajazeiro (S. lutea)",
+      "Taperebá (S. lutea)"
+    ]
+  },
+  {
+    "id": 69,
+    "nomeSci": "Spondias mombin",
+    "nomeVul": [
+      "Cajá (S. mombin)",
+      "Cajá-mirim (S. mombin)",
+      "Cajazeiro (S. mombin)",
+      "Taperebá (S. mombin)"
+    ]
+  },
+  {
+    "id": 70,
+    "nomeSci": "Anacardium occidentale",
+    "nomeVul": [
+      "Caju"
+    ]
+  },
+  {
+    "id": 71,
+    "nomeSci": "Averrhoa carambola",
+    "nomeVul": [
+      "Carambola"
+    ]
+  },
+  {
+    "id": 72,
+    "nomeSci": "Carpinus betulas",
+    "nomeVul": [
+      "Cárpino Betulas"
+    ]
+  },
+  {
+    "id": 73,
+    "nomeSci": "Carpinus sp.",
+    "nomeVul": [
+      "Cárpino"
+    ]
+  },
+  {
+    "id": 74,
+    "nomeSci": "Quercus laurifolia",
+    "nomeVul": [
+      "Carvalho Água",
+      "Carvalho Folha Diamante",
+      "Carvalho Glorioso",
+      "Carvalho Glorioso do Brejo",
+      "Carvalho Obtuso"
+    ]
+  },
+  {
+    "id": 75,
+    "nomeSci": "Quercus bicolor",
+    "nomeVul": [
+      "Carvalho Branco do Brejo"
+    ]
+  },
+  {
+    "id": 76,
+    "nomeSci": "Quercus garryana",
+    "nomeVul": [
+      "Carvalho Branco Oregon",
+      "Carvalho Oregon"
+    ]
+  },
+  {
+    "id": 77,
+    "nomeSci": "Quercus alba",
+    "nomeVul": [
+      "Carvalho Branco"
+    ]
+  },
+  {
+    "id": 78,
+    "nomeSci": "Quercus borealis (syn: rubra)",
+    "nomeVul": [
+      "Carvalho Campeão(Q.borealis)",
+      "Carvalho Vermelho do Norte (Q.borealis)"
+    ]
+  },
+  {
+    "id": 79,
+    "nomeSci": "Quercus rubra",
+    "nomeVul": [
+      "Carvalho Campeão(Q.rubra)",
+      "Carvalho Vermelho do Norte (Q.rubra)"
+    ]
+  },
+  {
+    "id": 80,
+    "nomeSci": "Quercus montana",
+    "nomeVul": [
+      "Carvalho Castanheiro"
+    ]
+  },
+  {
+    "id": 81,
+    "nomeSci": "Quercus coccinea",
+    "nomeVul": [
+      "Carvalho Escarlata"
+    ]
+  },
+  {
+    "id": 82,
+    "nomeSci": "Quercus glandulifera",
+    "nomeVul": [
+      "Carvalho Konara",
+      "Carvalho Koreano"
+    ]
+  },
+  {
+    "id": 83,
+    "nomeSci": "Quercus mongolica var grosserrata",
+    "nomeVul": [
+      "Carvalho Mongoliano"
+    ]
+  },
+  {
+    "id": 84,
+    "nomeSci": "Quercus velutina",
+    "nomeVul": [
+      "Carvalho Preto"
+    ]
+  },
+  {
+    "id": 85,
+    "nomeSci": "Quercus sp.",
+    "nomeVul": [
+      "Carvalho"
+    ]
+  },
+  {
+    "id": 86,
+    "nomeSci": "Quercus robur",
+    "nomeVul": [
+      "Carvalho-alvarinho",
+      "Carvalho-roble",
+      "Carvalho-vermelho"
+    ]
+  },
+  {
+    "id": 87,
+    "nomeSci": "Aesculus hippocastanum",
+    "nomeVul": [
+      "Castanha-da-Índia(A.hippocastanum)"
+    ]
+  },
+  {
+    "id": 88,
+    "nomeSci": "Aesculus sp.",
+    "nomeVul": [
+      "Castanha-da-Índia"
+    ]
+  },
+  {
+    "id": 89,
+    "nomeSci": "Castanea dentata",
+    "nomeVul": [
+      "Castanheiro Europeu"
+    ]
+  },
+  {
+    "id": 90,
+    "nomeSci": "Prunus virginiana",
+    "nomeVul": [
+      "Cereja de Pássaro Virginia",
+      "Grão Amargo"
+    ]
+  },
+  {
+    "id": 91,
+    "nomeSci": "Prunus ssiori",
+    "nomeVul": [
+      "Cereja de Pássaro"
+    ]
+  },
+  {
+    "id": 92,
+    "nomeSci": "Prunus subhirtella var. pendula",
+    "nomeVul": [
+      "Cerejeira Chorona"
+    ]
+  },
+  {
+    "id": 93,
+    "nomeSci": "Prunus serotina",
+    "nomeVul": [
+      "Cerejeira Negra"
+    ]
+  },
+  {
+    "id": 94,
+    "nomeSci": "Prunus avium",
+    "nomeVul": [
+      "Cerejeira"
+    ]
+  },
+  {
+    "id": 95,
+    "nomeSci": "Camellia sinensis",
+    "nomeVul": [
+      "Chá-da-Índia"
+    ]
+  },
+  {
+    "id": 96,
+    "nomeSci": "Populus tremula",
+    "nomeVul": [
+      "Choupo Tremedor"
+    ]
+  },
+  {
+    "id": 97,
+    "nomeSci": "Populus tremuloides",
+    "nomeVul": [
+      "Choupo Trêmulo"
+    ]
+  },
+  {
+    "id": 98,
+    "nomeSci": "Populus balsamifera",
+    "nomeVul": [
+      "Choupo-bálsamo"
+    ]
+  },
+  {
+    "id": 99,
+    "nomeSci": "Laburnum anagyrioides",
+    "nomeVul": [
+      "Chuva-de-ouro",
+      "Corrente-de-ouro"
+    ]
+  },
+  {
+    "id": 100,
+    "nomeSci": "Melia azedarach",
+    "nomeVul": [
+      "Cinamomo"
+    ]
+  },
+  {
+    "id": 101,
+    "nomeSci": "Fraxinus mandshurica var. Japonica",
+    "nomeVul": [
+      "Cinza Japonês"
+    ]
+  },
+  {
+    "id": 102,
+    "nomeSci": "Sorbus sp.",
+    "nomeVul": [
+      "Cinza-da-montanha",
+      "Sorva"
+    ]
+  },
+  {
+    "id": 103,
+    "nomeSci": "Citrus spp.",
+    "nomeVul": [
+      "Citros"
+    ]
+  },
+  {
+    "id": 104,
+    "nomeSci": "Coprosma areolata",
+    "nomeVul": [
+      "Coprosma Frondoso Fino"
+    ]
+  },
+  {
+    "id": 105,
+    "nomeSci": "Cocos nucifera",
+    "nomeVul": [
+      "Coqueiro"
+    ]
+  },
+  {
+    "id": 106,
+    "nomeSci": "Pouteria macrophylla",
+    "nomeVul": [
+      "Cutite"
+    ]
+  },
+  {
+    "id": 107,
+    "nomeSci": "Theobroma grandiflorum",
+    "nomeVul": [
+      "Cupuaçu"
+    ]
+  },
+  {
+    "id": 108,
+    "nomeSci": "Fagus americana",
+    "nomeVul": [
+      "Faia Americana"
+    ]
+  },
+  {
+    "id": 109,
+    "nomeSci": "Fagus sylvantica",
+    "nomeVul": [
+      "Faia Cobre"
+    ]
+  },
+  {
+    "id": 110,
+    "nomeSci": "Fagus orientalis",
+    "nomeVul": [
+      "Faia do Oriente"
+    ]
+  },
+  {
+    "id": 111,
+    "nomeSci": "Fagus crenata f. grandifolia (syn. Americana)",
+    "nomeVul": [
+      "Faia Japonesa"
+    ]
+  },
+  {
+    "id": 112,
+    "nomeSci": "Fagus silvatica f. purpurea",
+    "nomeVul": [
+      "Faia Roxa"
+    ]
+  },
+  {
+    "id": 113,
+    "nomeSci": "Fagus sp.",
+    "nomeVul": [
+      "Faia"
+    ]
+  },
+  {
+    "id": 114,
+    "nomeSci": "Aesculus turbinata",
+    "nomeVul": [
+      "Falso Castanho Japonês"
+    ]
+  },
+  {
+    "id": 115,
+    "nomeSci": "Sorbus aria",
+    "nomeVul": [
+      "Feixe Branco"
+    ]
+  },
+  {
+    "id": 116,
+    "nomeSci": "Delonix regia",
+    "nomeVul": [
+      "Flamboyant"
+    ]
+  },
+  {
+    "id": 117,
+    "nomeSci": "Fortunella spp.",
+    "nomeVul": [
+      "Fortunela"
+    ]
+  },
+  {
+    "id": 118,
+    "nomeSci": "Fraxinus bungeana",
+    "nomeVul": [
+      "Freixo (F.bungeana)"
+    ]
+  },
+  {
+    "id": 119,
+    "nomeSci": "Fraxinus excelsior",
+    "nomeVul": [
+      "Freixo (F.excelsior)"
+    ]
+  },
+  {
+    "id": 120,
+    "nomeSci": "Artocarpus altilis",
+    "nomeVul": [
+      "Fruta Pão"
+    ]
+  },
+  {
+    "id": 121,
+    "nomeSci": "Robinia pseudoacacia",
+    "nomeVul": [
+      "Gafanhoto Preto"
+    ]
+  },
+  {
+    "id": 122,
+    "nomeSci": "Psidium guajava",
+    "nomeVul": [
+      "Goiaba"
+    ]
+  },
+  {
+    "id": 123,
+    "nomeSci": "Psidium guineense",
+    "nomeVul": [
+      "Goiaba-araçá"
+    ]
+  },
+  {
+    "id": 124,
+    "nomeSci": "Nyssa sylvatica",
+    "nomeVul": [
+      "Goma Preta",
+      "Tupelo"
+    ]
+  },
+  {
+    "id": 125,
+    "nomeSci": "Arenga pinnata",
+    "nomeVul": [
+      "Gomuto"
+    ]
+  },
+  {
+    "id": 126,
+    "nomeSci": "Heliconia spp.",
+    "nomeVul": [
+      "Helicônia"
+    ]
+  },
+  {
+    "id": 127,
+    "nomeSci": "Artocarpus integrifolia",
+    "nomeVul": [
+      "Jaca"
+    ]
+  },
+  {
+    "id": 128,
+    "nomeSci": "Syzygium aqueum",
+    "nomeVul": [
+      "Jambo Branco (S.aqueum)",
+      "Jambo D'água",
+      "Jambosa"
+    ]
+  },
+  {
+    "id": 129,
+    "nomeSci": "Syzygium jambos",
+    "nomeVul": [
+      "Jambo Amarelo",
+      "Jambo Rosa (S. jambos)"
+    ]
+  },
+  {
+    "id": 130,
+    "nomeSci": "Syzygium samarangense",
+    "nomeVul": [
+      "Jambo Branco (S.samarangense)",
+      "Jambo Rosa (S. samarangese)"
+    ]
+  },
+  {
+    "id": 131,
+    "nomeSci": "Syzygium malaccense",
+    "nomeVul": [
+      "Jambo Vermelho"
+    ]
+  },
+  {
+    "id": 132,
+    "nomeSci": "Juglans sp.",
+    "nomeVul": [
+      "Juglans",
+      "Nogueira"
+    ]
+  },
+  {
+    "id": 133,
+    "nomeSci": "Ziziphus jujuba",
+    "nomeVul": [
+      "Jujuba (Z. jujuba)",
+      "Jujuba Chinesa"
+    ]
+  },
+  {
+    "id": 134,
+    "nomeSci": "Ziziphus mauritiana",
+    "nomeVul": [
+      "Jujuba (Z. mauritiana)",
+      "Maçã-de-pobre "
+    ]
+  },
+  {
+    "id": 135,
+    "nomeSci": "Coprosma lucida",
+    "nomeVul": [
+      "Karamu"
+    ]
+  },
+  {
+    "id": 136,
+    "nomeSci": "Sophora microphylla",
+    "nomeVul": [
+      "Kowhai",
+      "Sófora"
+    ]
+  },
+  {
+    "id": 137,
+    "nomeSci": "Citrus aurantium",
+    "nomeVul": [
+      "Laranja Azeda",
+      "Laranja Caipira",
+      "Laranja da Terra"
+    ]
+  },
+  {
+    "id": 138,
+    "nomeSci": "Citrus sinensis",
+    "nomeVul": [
+      "Laranja",
+      "Laranja Doce"
+    ]
+  },
+  {
+    "id": 139,
+    "nomeSci": "Licania sp.",
+    "nomeVul": [
+      "Licania"
+    ]
+  },
+  {
+    "id": 140,
+    "nomeSci": "Rhus typhina",
+    "nomeVul": [
+      "Linda-dos-jardins",
+      "Rustifina Rus",
+      "Sumac Staghorn"
+    ]
+  },
+  {
+    "id": 141,
+    "nomeSci": "Umbelluraria californica",
+    "nomeVul": [
+      "Louro Califórnia"
+    ]
+  },
+  {
+    "id": 142,
+    "nomeSci": "Malus communis",
+    "nomeVul": [
+      "Maçã (M. communis)"
+    ]
+  },
+  {
+    "id": 143,
+    "nomeSci": "Malus pumila var domestica",
+    "nomeVul": [
+      "Maçã (M. pumila var domestica)"
+    ]
+  },
+  {
+    "id": 144,
+    "nomeSci": "Malus pumila",
+    "nomeVul": [
+      "Maçã (M. pumila)"
+    ]
+  },
+  {
+    "id": 145,
+    "nomeSci": "Malus x domestica",
+    "nomeVul": [
+      "Maçã (M. x domestica)"
+    ]
+  },
+  {
+    "id": 146,
+    "nomeSci": "Pyrus malus",
+    "nomeVul": [
+      "Maçã (Pyrus malus)"
+    ]
+  },
+  {
+    "id": 147,
+    "nomeSci": "Malus sylvestris",
+    "nomeVul": [
+      "Maçã Silvestre"
+    ]
+  },
+  {
+    "id": 148,
+    "nomeSci": "Malus sp.",
+    "nomeVul": [
+      "Maça"
+    ]
+  },
+  {
+    "id": 149,
+    "nomeSci": "Carica papaya",
+    "nomeVul": [
+      "Mamão"
+    ]
+  },
+  {
+    "id": 150,
+    "nomeSci": "Fraxinus mandshurica",
+    "nomeVul": [
+      "Manchu Cinza"
+    ]
+  },
+  {
+    "id": 151,
+    "nomeSci": "Manihot esculenta",
+    "nomeVul": [
+      "Mandioca"
+    ]
+  },
+  {
+    "id": 152,
+    "nomeSci": "Mangifera indica",
+    "nomeVul": [
+      "Manga"
+    ]
+  },
+  {
+    "id": 153,
+    "nomeSci": "Swietenia mahagoni",
+    "nomeVul": [
+      "Mogno Indiano Ocidental"
+    ]
+  },
+  {
+    "id": 154,
+    "nomeSci": "Switenia macrophyla",
+    "nomeVul": [
+      "Mogno"
+    ]
+  },
+  {
+    "id": 155,
+    "nomeSci": "Bysonima crassifolia",
+    "nomeVul": [
+      "Murici ou Muruci"
+    ]
+  },
+  {
+    "id": 156,
+    "nomeSci": "Murraya paniculata",
+    "nomeVul": [
+      "Murta"
+    ]
+  },
+  {
+    "id": 157,
+    "nomeSci": "Eriobotrya japonica",
+    "nomeVul": [
+      "Nespereira"
+    ]
+  },
+  {
+    "id": 158,
+    "nomeSci": "Azadirachta indica",
+    "nomeVul": [
+      "Nim"
+    ]
+  },
+  {
+    "id": 159,
+    "nomeSci": "Carya ovata",
+    "nomeVul": [
+      "Nogueira Amarga Casca de Pelúcia"
+    ]
+  },
+  {
+    "id": 160,
+    "nomeSci": "Carya tomentosa",
+    "nomeVul": [
+      "Nogueira Amarga Coração Branco"
+    ]
+  },
+  {
+    "id": 161,
+    "nomeSci": "Carya glabra",
+    "nomeVul": [
+      "Nogueira Amarga de Porco"
+    ]
+  },
+  {
+    "id": 162,
+    "nomeSci": "Carya spp.",
+    "nomeVul": [
+      "Nogueira Amarga spp"
+    ]
+  },
+  {
+    "id": 163,
+    "nomeSci": "Carya cordiformis",
+    "nomeVul": [
+      "Nogueira Amarga"
+    ]
+  },
+  {
+    "id": 164,
+    "nomeSci": "Juglans cinerea",
+    "nomeVul": [
+      "Nogueira Branca"
+    ]
+  },
+  {
+    "id": 165,
+    "nomeSci": "Juglans regia",
+    "nomeVul": [
+      "Nogueira Comum",
+      "Nogueira europeia"
+    ]
+  },
+  {
+    "id": 166,
+    "nomeSci": "Carya illinoensis",
+    "nomeVul": [
+      "Nogueira Pecã"
+    ]
+  },
+  {
+    "id": 167,
+    "nomeSci": "Juglans nigra",
+    "nomeVul": [
+      "Nogueira Preta"
+    ]
+  },
+  {
+    "id": 168,
+    "nomeSci": "Ulmus americana",
+    "nomeVul": [
+      "Olmo Americano"
+    ]
+  },
+  {
+    "id": 169,
+    "nomeSci": "Ulmus glabra (syn. montana)",
+    "nomeVul": [
+      "Olmo Escocês"
+    ]
+  },
+  {
+    "id": 170,
+    "nomeSci": "Ulmus sp.",
+    "nomeVul": [
+      "Olmo",
+      "Ulmeiro"
+    ]
+  },
+  {
+    "id": 171,
+    "nomeSci": "Opuntia cochenillifera",
+    "nomeVul": [
+      "Palma forrageira"
+    ]
+  },
+  {
+    "id": 172,
+    "nomeSci": "Cornus muttallii",
+    "nomeVul": [
+      "Pau Cachorro do Pacífico"
+    ]
+  },
+  {
+    "id": 173,
+    "nomeSci": "Cornus sp.",
+    "nomeVul": [
+      "Pau Cachorro"
+    ]
+  },
+  {
+    "id": 174,
+    "nomeSci": "Pyrus pyrifolia",
+    "nomeVul": [
+      "Pera Asiática",
+      "Pera Nashi"
+    ]
+  },
+  {
+    "id": 175,
+    "nomeSci": "Pyrus communis",
+    "nomeVul": [
+      "Pereira Europeia"
+    ]
+  },
+  {
+    "id": 176,
+    "nomeSci": "Pyrus pyrifolia var culta",
+    "nomeVul": [
+      "Pereira Japonesa"
+    ]
+  },
+  {
+    "id": 177,
+    "nomeSci": "Capsicum annuum",
+    "nomeVul": [
+      "Pimenta Picante",
+      "Pimenta-do-diabo"
+    ]
+  },
+  {
+    "id": 178,
+    "nomeSci": "Capsicum chinense",
+    "nomeVul": [
+      "Pimenta-de-Cheiro"
+    ]
+  },
+  {
+    "id": 179,
+    "nomeSci": "Eugenia uniflora",
+    "nomeVul": [
+      "Pitanga Vermelha"
+    ]
+  },
+  {
+    "id": 180,
+    "nomeSci": "Platanus orientalis",
+    "nomeVul": [
+      "Plátano",
+      "Plátano Oriental"
+    ]
+  },
+  {
+    "id": 181,
+    "nomeSci": "Citrus paradisi",
+    "nomeVul": [
+      "Pomelo",
+      "Toranja"
+    ]
+  },
+  {
+    "id": 182,
+    "nomeSci": "Poncirus spp.",
+    "nomeVul": [
+      "Poncirus"
+    ]
+  },
+  {
+    "id": 183,
+    "nomeSci": "Ribes sp.",
+    "nomeVul": [
+      "Ribes"
+    ]
+  },
+  {
+    "id": 184,
+    "nomeSci": "Rosa spp.",
+    "nomeVul": [
+      "Rosa"
+    ]
+  },
+  {
+    "id": 185,
+    "nomeSci": "Salix alba",
+    "nomeVul": [
+      "Salgueiro Branco"
+    ]
+  },
+  {
+    "id": 186,
+    "nomeSci": "Salix cinerea",
+    "nomeVul": [
+      "Salgueiro Cinza"
+    ]
+  },
+  {
+    "id": 187,
+    "nomeSci": "Salix alba var Vitelina",
+    "nomeVul": [
+      "Salgueiro Dourado"
+    ]
+  },
+  {
+    "id": 188,
+    "nomeSci": "Salix nigricans",
+    "nomeVul": [
+      "Salgueiro Preto"
+    ]
+  },
+  {
+    "id": 189,
+    "nomeSci": "Salix purpurea",
+    "nomeVul": [
+      "Salgueiro Púrpura",
+      "Vimeiro Púrpura"
+    ]
+  },
+  {
+    "id": 190,
+    "nomeSci": "Salix amygdalina",
+    "nomeVul": [
+      "Salgueiro Velho Mundo"
+    ]
+  },
+  {
+    "id": 191,
+    "nomeSci": "Salix amygdaloides",
+    "nomeVul": [
+      "Salgueiro-folha-de-pêssego"
+    ]
+  },
+  {
+    "id": 192,
+    "nomeSci": "Salix alba L. Coerulea",
+    "nomeVul": [
+      "Salgueiro-taco-de-críquete"
+    ]
+  },
+  {
+    "id": 193,
+    "nomeSci": "Salix spp.",
+    "nomeVul": [
+      "Salix"
+    ]
+  },
+  {
+    "id": 194,
+    "nomeSci": "Spondias purpurea",
+    "nomeVul": [
+      "Seriguela"
+    ]
+  },
+  {
+    "id": 195,
+    "nomeSci": "Hevea brasiliensis",
+    "nomeVul": [
+      "Seringueira"
+    ]
+  },
+  {
+    "id": 196,
+    "nomeSci": "Sorghum bicolor",
+    "nomeVul": [
+      "Sorgo"
+    ]
+  },
+  {
+    "id": 197,
+    "nomeSci": "Sorbus domestica",
+    "nomeVul": [
+      "Sorva (S. domestica)"
+    ]
+  },
+  {
+    "id": 198,
+    "nomeSci": "Tectona grandis",
+    "nomeVul": [
+      "Teca"
+    ]
+  },
+  {
+    "id": 199,
+    "nomeSci": "Tilia cordata",
+    "nomeVul": [
+      "Teja",
+      "Tejo",
+      "Tella",
+      "Texa",
+      "Tilha",
+      "Tillera"
+    ]
+  },
+  {
+    "id": 200,
+    "nomeSci": "Theobroma spp.",
+    "nomeVul": [
+      "Theobroma spp"
+    ]
+  },
+  {
+    "id": 201,
+    "nomeSci": "Tilia sp.",
+    "nomeVul": [
+      "Tília"
+    ]
+  },
+  {
+    "id": 202,
+    "nomeSci": "Licopersicum esculentum",
+    "nomeVul": [
+      "Tomate"
+    ]
+  },
+  {
+    "id": 203,
+    "nomeSci": "Sorbus aucuparia",
+    "nomeVul": [
+      "Tramazeira"
+    ]
+  },
+  {
+    "id": 204,
+    "nomeSci": "Liriodendron tulipifera",
+    "nomeVul": [
+      "Tulipeiro"
+    ]
+  },
+  {
+    "id": 205,
+    "nomeSci": "Vitis spp. e seus híbridos",
+    "nomeVul": [
+      "Uva",
+      "Videira e seus híbridos"
+    ]
+  },
+  {
+    "id": 206,
+    "nomeSci": "Viola sp.",
+    "nomeVul": [
+      "Viola"
+    ]
+  }
 ]
