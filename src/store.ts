@@ -1,3 +1,4 @@
+import { legislacoes } from './dbLeg.db.js'
 import { hospedeiros } from './dbHospedeiros.db.js'
 import { pragas } from './dbPragas.db.js'
 import { regras } from './dbRegras.db.js'
@@ -6,10 +7,14 @@ import { deepSignal } from './lib/fast-deep-signal.ts'
 
 const hospedeiroMap = new Map(hospedeiros.map((h) => [h.id, h.nomeSci]))
 
-const db = regras.map((regra) => ({
-  ...pragas.find((item) => item.id === regra.idprag),
-  ...regra,
-})) as Db[]
+const db = regras.map((regra) => {
+  const praga = pragas.find((item) => item.id === regra.idprag)
+  return {
+    ...praga,
+    ...regra,
+    files: praga?.files.map(id => legislacoes.find(l => l.id === id)) || []
+  }
+}) as Db[]
 
 export class Store {
   dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
