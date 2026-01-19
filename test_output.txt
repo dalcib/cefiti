@@ -1,0 +1,553 @@
+
+> cefiti@8.1.1 test
+> node --test --experimental-strip-types "src/**/*.test.ts"
+
+(node:20236) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Γû╢ deepsignal (preact)
+  Γû╢ direct signal bindigns
+    Γ£ö should update deepSignal-based Text (no parent component) (5.6602ms)
+    Γ£ö should update deepSignal-based Text (in a parent component) (1.5355ms)
+    Γ£ö should update props without re-rendering (1.2827ms)
+  Γ£ö direct signal bindigns (9.5251ms)
+  Γû╢ component bindings
+    Γ£ö should subscribe to deepSignals (1.9126ms)
+    Γ£ö should not subscribe to unrelated deepSignals (0.8418ms)
+    Γ£ö should not subscribe to child signals (0.5906ms)
+  Γ£ö component bindings (3.6362ms)
+  Γû╢ useDeepSignal
+    Γ£ö should return a deep signal that is internally stable (0.5133ms)
+  Γ£ö useDeepSignal (0.6952ms)
+Γ£ö deepsignal (preact) (14.5835ms)
+(node:12672) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Finalize a sele├ºao dos crit├⌐rios para a consulta
+Γû╢ Store
+  Γ£ö should initialize correctly (2.6137ms)
+  Γ£ö should calculate hospedeirosPragas correctly (0.4676ms)
+  Γ£ö should calculate hospedeirosRegulamentados correctly (1.7644ms)
+  Γ£ö should calculate listaNomesSci correctly (14.177ms)
+  Γ£ö should calculate listaNomesVul correctly (3.0299ms)
+  Γ£ö should correctly determine empty state (0.5002ms)
+  Γ£ö should filter origem correctly (0.2326ms)
+  Γ£ö should filter destino correctly (0.2191ms)
+  Γ£ö should correctly check species (0.2878ms)
+  Γ£ö should correctly determine completed state (0.2865ms)
+  Γ£ö should calculate partes correctly (0.2252ms)
+  Γ£ö should filter result correctly (0.1232ms)
+  Γ£ö should clean the data correctly (0.1057ms)
+  Γ£ö should handle changes correctly (0.1601ms)
+  Γ£ö should handle menu actions correctly (0.1364ms)
+  Γ£ö should handle search correctly (0.6393ms)
+Γ£ö Store (26.6254ms)
+(node:31256) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Γû╢ Store Edge Cases
+  Γ£ö should match species with "spp." suffix (1.408ms)
+  Γ£ö should auto-fill vulgar name when scientific name is selected (0.8591ms)
+  Γ£ö should auto-fill scientific name when vulgar name is selected (0.3887ms)
+  Γ£ö should correctly filter results for multi-state rules (1.3576ms)
+  Γ£ö should return empty result if part does not match (0.2376ms)
+  Γ£ö should handle specific destination matching (0.2069ms)
+Γ£ö Store Edge Cases (5.8076ms)
+(node:25512) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Γû╢ Store origem e destino
+  Γ£û origem AC (4.2472ms)
+  Γ£û origem MT (0.7062ms)
+  Γ£û destino AC (0.5985ms)
+  Γ£û destino MT (0.6849ms)
+Γ£û Store origem e destino (8.1996ms)
+Γû╢ Store hospedeiros nomeSci
+  Γ£ö unique values Nome Sci (0.3962ms)
+  Γ£ö nomeVul is an array of strings (0.3203ms)
+Γ£ö Store hospedeiros nomeSci (0.9945ms)
+Γû╢ Store partes
+  Γ£ö de Acerola (0.5488ms)
+  Γ£ö de Banana (11.7952ms)
+  Γ£ö de Citrus (0.5065ms)
+Γ£ö Store partes (13.3213ms)
+Γû╢ Store: gender
+  Γ£ö Acacia sp. (0.3548ms)
+  Γ£ö Acer macrophyllum (0.2078ms)
+  Γ£ö Betula lutea (synonym: alleghaniensis)  (0.1351ms)
+Γ£ö Store: gender (0.8285ms)
+Γû╢ Store filtro geral
+  Γ£ö Musa spp. count (0.3773ms)
+  Γ£ö Musa spp. legis (0.1151ms)
+  Γ£ö Musa spp. pragas (0.0969ms)
+  Γ£ö Eugenia uniflora (0.163ms)
+  Γ£ö Malus spp. (0.1706ms)
+  Γ£ö Citrus sinensis sementes SP->ES (0.1282ms)
+  Γ£ö Citrus sinensis sementes RS->ES (0.1659ms)
+  Γ£ö Citrus sinensis mudas SP->ES (0.1995ms)
+Γ£ö Store filtro geral (1.9556ms)
+Γû╢ Sync between NomeVulg and NomeSci
+  Γ£ö should define NomeVulg based in NomeSci (0.2117ms)
+  Γ£ö should define NomeSci based in NomeVulg (0.0889ms)
+  Γ£ö should maintain current NomeVulg if valid for new NomeSci (0.0597ms)
+  Γ£ö should pick first NomeVulg if current is invalid for new NomeSci (0.0666ms)
+Γ£ö Sync between NomeVulg and NomeSci (0.5236ms)
+Γ£ö Check normalization of db  (0.1666ms)
+Γ£ö no duplicate common names in same species record (1.0352ms)
+Γ£ö should join Pragas and Regras (0.4262ms)
+Γ£ö should be reactive when updating dados fields (0.3097ms)
+Γä╣ tests 57
+Γä╣ suites 12
+Γä╣ pass 53
+Γä╣ fail 4
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 262.0865
+
+Γ£û failing tests:
+
+test at src\store.test.ts:75:3
+Γ£û origem AC (4.2472ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:
+  
+  [
+    {
+      UF: '',
+      estado: ''
+    },
+    {
+      UF: 'AL',
+      estado: 'Alagoas',
+      ibge: '27'
+    },
+    {
+      UF: 'AM',
+      estado: 'Amazonas',
+      ibge: '13'
+    },
+    {
+      UF: 'AP',
+      estado: 'Amap├í',
+      ibge: '16'
+    },
+    {
+      UF: 'BA',
+      estado: 'Bahia',
+      ibge: '29'
+    },
+    {
+      UF: 'CE',
+      estado: 'Cear├í',
+      ibge: '23'
+    },
+    {
+      UF: 'DF',
+      estado: 'Distrito Federal',
+      ibge: '53'
+    },
+    {
+      UF: 'ES',
+      estado: 'Espirito Santo',
+      ibge: '32'
+    },
+    {
+      UF: 'GO',
+      estado: 'Go...
+  
+  should loosely deep-equal
+  
+  [
+    {
+      UF: '',
+      estado: ''
+    },
+    {
+      UF: 'AL',
+      estado: 'Alagoas'
+    },
+    {
+      UF: 'AM',
+      estado: 'Amazonas'
+    },
+    {
+      UF: 'AP',
+      estado: 'Amap├í'
+    },
+    {
+      UF: 'BA',
+      estado: 'Bahia'
+    },
+    {
+      UF: 'CE',
+      estado: 'Cear├í'
+    },
+    {
+      UF: 'DF',
+      estado: 'Distrito Federal'
+    },
+    {
+      UF: 'ES',
+      estado: 'Espirito Santo'
+    },
+    {
+      UF: 'GO',
+      estado: 'Goi├ís'
+    },
+    {
+      UF: 'MA',
+      estado: 'Maranh├úo'
+    },
+    {
+      UF: 'MG',
+      estado: 'Minas Gerais'
+    },
+    {
+    ...
+      at TestContext.<anonymous> (file:///C:/Users/dalci/playgroung/cefiti/src/store.test.ts:78:12)
+      at Test.runInAsyncScope (node:async_hooks:211:14)
+      at Test.run (node:internal/test_runner/test:980:25)
+      at Test.start (node:internal/test_runner/test:878:17)
+      at node:internal/test_runner/test:1358:71
+      at node:internal/per_context/primordials:483:82
+      at new Promise (<anonymous>)
+      at new SafePromise (node:internal/per_context/primordials:451:29)
+      at node:internal/per_context/primordials:483:9
+      at Array.map (<anonymous>) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { estado: '', UF: '' }, { estado: 'Alagoas', UF: 'AL', ibge: '27' }, { estado: 'Amazonas', UF: 'AM', ibge: '13' }, { estado: 'Amap├í', UF: 'AP', ibge: '16' }, { estado: 'Bahia', UF: 'BA', ibge: '29' }, { estado: 'Cear├í', UF: 'CE', ibge: '23' }, { estado: 'Distrito Federal', UF: 'DF', ibge: '53' }, { estado: 'Espirito Santo', UF: 'ES', ibge: '32' }, { estado: 'Goi├ís', UF: 'GO', ibge: '52' }, { estado: 'Maranh├úo', UF: 'MA', ibge: '21' }, { estado: 'Minas Gerais', UF: 'MG', ibge: '31' }, { estado: 'Mato Grosso do Sul', UF: 'MS', ibge: '50' }, { estado: 'Mato Grosso', UF: 'MT', ibge: '51' }, { estado: 'Par├í', UF: 'PA', ibge: '15' }, { estado: 'Para├¡ba', UF: 'PB', ibge: '25' }, { estado: 'Pernambuco', UF: 'PE', ibge: '26' }, { estado: 'Piau├¡', UF: 'PI', ibge: '22' }, { estado: 'Paran├í', UF: 'PR', ibge: '41' }, { estado: 'Rio de janeiro', UF: 'RJ', ibge: '33' }, { estado: 'Rio Grande do Norte', UF: 'RN', ibge: '24' }, { estado: 'Rond├┤nia', UF: 'RO', ibge: '11' }, { estado: 'Roraima', UF: 'RR', ibge: '14' }, { estado: 'Rio Grande do Sul', UF: 'RS', ibge: '43' }, { estado: 'Santa Catarina', UF: 'SC', ibge: '42' }, { estado: 'Sergipe', UF: 'SE', ibge: '28' }, { estado: 'S├úo Paulo', UF: 'SP', ibge: '35' }, { estado: 'Tocantins', UF: 'TO', ibge: '17' } ],
+    expected: [ { estado: '', UF: '' }, { estado: 'Alagoas', UF: 'AL' }, { estado: 'Amazonas', UF: 'AM' }, { estado: 'Amap├í', UF: 'AP' }, { estado: 'Bahia', UF: 'BA' }, { estado: 'Cear├í', UF: 'CE' }, { estado: 'Distrito Federal', UF: 'DF' }, { estado: 'Espirito Santo', UF: 'ES' }, { estado: 'Goi├ís', UF: 'GO' }, { estado: 'Maranh├úo', UF: 'MA' }, { estado: 'Minas Gerais', UF: 'MG' }, { estado: 'Mato Grosso do Sul', UF: 'MS' }, { estado: 'Mato Grosso', UF: 'MT' }, { estado: 'Par├í', UF: 'PA' }, { estado: 'Para├¡ba', UF: 'PB' }, { estado: 'Pernambuco', UF: 'PE' }, { estado: 'Piau├¡', UF: 'PI' }, { estado: 'Paran├í', UF: 'PR' }, { estado: 'Rio de janeiro', UF: 'RJ' }, { estado: 'Rio Grande do Norte', UF: 'RN' }, { estado: 'Rond├┤nia', UF: 'RO' }, { estado: 'Roraima', UF: 'RR' }, { estado: 'Rio Grande do Sul', UF: 'RS' }, { estado: 'Santa Catarina', UF: 'SC' }, { estado: 'Sergipe', UF: 'SE' }, { estado: 'S├úo Paulo', UF: 'SP' }, { estado: 'Tocantins', UF: 'TO' } ],
+    operator: 'deepEqual'
+  }
+
+test at src\store.test.ts:81:3
+Γ£û origem MT (0.7062ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:
+  
+  [
+    {
+      UF: '',
+      estado: ''
+    },
+    {
+      UF: 'AC',
+      estado: 'Acre',
+      ibge: '12'
+    },
+    {
+      UF: 'AL',
+      estado: 'Alagoas',
+      ibge: '27'
+    },
+    {
+      UF: 'AM',
+      estado: 'Amazonas',
+      ibge: '13'
+    },
+    {
+      UF: 'AP',
+      estado: 'Amap├í',
+      ibge: '16'
+    },
+    {
+      UF: 'BA',
+      estado: 'Bahia',
+      ibge: '29'
+    },
+    {
+      UF: 'CE',
+      estado: 'Cear├í',
+      ibge: '23'
+    },
+    {
+      UF: 'DF',
+      estado: 'Distrito Federal',
+      ibge: '53'
+    },
+    {
+      UF: 'ES',
+      estado: 'Espirito San...
+  
+  should loosely deep-equal
+  
+  [
+    {
+      UF: '',
+      estado: ''
+    },
+    {
+      UF: 'AC',
+      estado: 'Acre'
+    },
+    {
+      UF: 'AL',
+      estado: 'Alagoas'
+    },
+    {
+      UF: 'AM',
+      estado: 'Amazonas'
+    },
+    {
+      UF: 'AP',
+      estado: 'Amap├í'
+    },
+    {
+      UF: 'BA',
+      estado: 'Bahia'
+    },
+    {
+      UF: 'CE',
+      estado: 'Cear├í'
+    },
+    {
+      UF: 'DF',
+      estado: 'Distrito Federal'
+    },
+    {
+      UF: 'ES',
+      estado: 'Espirito Santo'
+    },
+    {
+      UF: 'GO',
+      estado: 'Goi├ís'
+    },
+    {
+      UF: 'MA',
+      estado: 'Maranh├úo'
+    },
+    {
+      UF: 'M...
+      at TestContext.<anonymous> (file:///C:/Users/dalci/playgroung/cefiti/src/store.test.ts:83:12)
+      at Test.runInAsyncScope (node:async_hooks:211:14)
+      at Test.run (node:internal/test_runner/test:980:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:678:18)
+      at Test.postRun (node:internal/test_runner/test:1091:19)
+      at Test.run (node:internal/test_runner/test:1019:12)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1360:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:297:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { estado: '', UF: '' }, { estado: 'Acre', UF: 'AC', ibge: '12' }, { estado: 'Alagoas', UF: 'AL', ibge: '27' }, { estado: 'Amazonas', UF: 'AM', ibge: '13' }, { estado: 'Amap├í', UF: 'AP', ibge: '16' }, { estado: 'Bahia', UF: 'BA', ibge: '29' }, { estado: 'Cear├í', UF: 'CE', ibge: '23' }, { estado: 'Distrito Federal', UF: 'DF', ibge: '53' }, { estado: 'Espirito Santo', UF: 'ES', ibge: '32' }, { estado: 'Goi├ís', UF: 'GO', ibge: '52' }, { estado: 'Maranh├úo', UF: 'MA', ibge: '21' }, { estado: 'Minas Gerais', UF: 'MG', ibge: '31' }, { estado: 'Mato Grosso do Sul', UF: 'MS', ibge: '50' }, { estado: 'Par├í', UF: 'PA', ibge: '15' }, { estado: 'Para├¡ba', UF: 'PB', ibge: '25' }, { estado: 'Pernambuco', UF: 'PE', ibge: '26' }, { estado: 'Piau├¡', UF: 'PI', ibge: '22' }, { estado: 'Paran├í', UF: 'PR', ibge: '41' }, { estado: 'Rio de janeiro', UF: 'RJ', ibge: '33' }, { estado: 'Rio Grande do Norte', UF: 'RN', ibge: '24' }, { estado: 'Rond├┤nia', UF: 'RO', ibge: '11' }, { estado: 'Roraima', UF: 'RR', ibge: '14' }, { estado: 'Rio Grande do Sul', UF: 'RS', ibge: '43' }, { estado: 'Santa Catarina', UF: 'SC', ibge: '42' }, { estado: 'Sergipe', UF: 'SE', ibge: '28' }, { estado: 'S├úo Paulo', UF: 'SP', ibge: '35' }, { estado: 'Tocantins', UF: 'TO', ibge: '17' } ],
+    expected: [ { estado: '', UF: '' }, { estado: 'Acre', UF: 'AC' }, { estado: 'Alagoas', UF: 'AL' }, { estado: 'Amazonas', UF: 'AM' }, { estado: 'Amap├í', UF: 'AP' }, { estado: 'Bahia', UF: 'BA' }, { estado: 'Cear├í', UF: 'CE' }, { estado: 'Distrito Federal', UF: 'DF' }, { estado: 'Espirito Santo', UF: 'ES' }, { estado: 'Goi├ís', UF: 'GO' }, { estado: 'Maranh├úo', UF: 'MA' }, { estado: 'Minas Gerais', UF: 'MG' }, { estado: 'Mato Grosso do Sul', UF: 'MS' }, { estado: 'Par├í', UF: 'PA' }, { estado: 'Para├¡ba', UF: 'PB' }, { estado: 'Pernambuco', UF: 'PE' }, { estado: 'Piau├¡', UF: 'PI' }, { estado: 'Paran├í', UF: 'PR' }, { estado: 'Rio de janeiro', UF: 'RJ' }, { estado: 'Rio Grande do Norte', UF: 'RN' }, { estado: 'Rond├┤nia', UF: 'RO' }, { estado: 'Roraima', UF: 'RR' }, { estado: 'Rio Grande do Sul', UF: 'RS' }, { estado: 'Santa Catarina', UF: 'SC' }, { estado: 'Sergipe', UF: 'SE' }, { estado: 'S├úo Paulo', UF: 'SP' }, { estado: 'Tocantins', UF: 'TO' } ],
+    operator: 'deepEqual'
+  }
+
+test at src\store.test.ts:86:3
+Γ£û destino AC (0.5985ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:
+  
+  [
+    {
+      UF: '',
+      estado: ''
+    },
+    {
+      UF: 'AL',
+      estado: 'Alagoas',
+      ibge: '27'
+    },
+    {
+      UF: 'AM',
+      estado: 'Amazonas',
+      ibge: '13'
+    },
+    {
+      UF: 'AP',
+      estado: 'Amap├í',
+      ibge: '16'
+    },
+    {
+      UF: 'BA',
+      estado: 'Bahia',
+      ibge: '29'
+    },
+    {
+      UF: 'CE',
+      estado: 'Cear├í',
+      ibge: '23'
+    },
+    {
+      UF: 'DF',
+      estado: 'Distrito Federal',
+      ibge: '53'
+    },
+    {
+      UF: 'ES',
+      estado: 'Espirito Santo',
+      ibge: '32'
+    },
+    {
+      UF: 'GO',
+      estado: 'Go...
+  
+  should loosely deep-equal
+  
+  [
+    {
+      UF: '',
+      estado: ''
+    },
+    {
+      UF: 'AL',
+      estado: 'Alagoas'
+    },
+    {
+      UF: 'AM',
+      estado: 'Amazonas'
+    },
+    {
+      UF: 'AP',
+      estado: 'Amap├í'
+    },
+    {
+      UF: 'BA',
+      estado: 'Bahia'
+    },
+    {
+      UF: 'CE',
+      estado: 'Cear├í'
+    },
+    {
+      UF: 'DF',
+      estado: 'Distrito Federal'
+    },
+    {
+      UF: 'ES',
+      estado: 'Espirito Santo'
+    },
+    {
+      UF: 'GO',
+      estado: 'Goi├ís'
+    },
+    {
+      UF: 'MA',
+      estado: 'Maranh├úo'
+    },
+    {
+      UF: 'MG',
+      estado: 'Minas Gerais'
+    },
+    {
+    ...
+      at TestContext.<anonymous> (file:///C:/Users/dalci/playgroung/cefiti/src/store.test.ts:88:12)
+      at Test.runInAsyncScope (node:async_hooks:211:14)
+      at Test.run (node:internal/test_runner/test:980:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:678:18)
+      at Test.postRun (node:internal/test_runner/test:1091:19)
+      at Test.run (node:internal/test_runner/test:1019:12)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:678:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { estado: '', UF: '' }, { estado: 'Alagoas', UF: 'AL', ibge: '27' }, { estado: 'Amazonas', UF: 'AM', ibge: '13' }, { estado: 'Amap├í', UF: 'AP', ibge: '16' }, { estado: 'Bahia', UF: 'BA', ibge: '29' }, { estado: 'Cear├í', UF: 'CE', ibge: '23' }, { estado: 'Distrito Federal', UF: 'DF', ibge: '53' }, { estado: 'Espirito Santo', UF: 'ES', ibge: '32' }, { estado: 'Goi├ís', UF: 'GO', ibge: '52' }, { estado: 'Maranh├úo', UF: 'MA', ibge: '21' }, { estado: 'Minas Gerais', UF: 'MG', ibge: '31' }, { estado: 'Mato Grosso do Sul', UF: 'MS', ibge: '50' }, { estado: 'Mato Grosso', UF: 'MT', ibge: '51' }, { estado: 'Par├í', UF: 'PA', ibge: '15' }, { estado: 'Para├¡ba', UF: 'PB', ibge: '25' }, { estado: 'Pernambuco', UF: 'PE', ibge: '26' }, { estado: 'Piau├¡', UF: 'PI', ibge: '22' }, { estado: 'Paran├í', UF: 'PR', ibge: '41' }, { estado: 'Rio de janeiro', UF: 'RJ', ibge: '33' }, { estado: 'Rio Grande do Norte', UF: 'RN', ibge: '24' }, { estado: 'Rond├┤nia', UF: 'RO', ibge: '11' }, { estado: 'Roraima', UF: 'RR', ibge: '14' }, { estado: 'Rio Grande do Sul', UF: 'RS', ibge: '43' }, { estado: 'Santa Catarina', UF: 'SC', ibge: '42' }, { estado: 'Sergipe', UF: 'SE', ibge: '28' }, { estado: 'S├úo Paulo', UF: 'SP', ibge: '35' }, { estado: 'Tocantins', UF: 'TO', ibge: '17' } ],
+    expected: [ { estado: '', UF: '' }, { estado: 'Alagoas', UF: 'AL' }, { estado: 'Amazonas', UF: 'AM' }, { estado: 'Amap├í', UF: 'AP' }, { estado: 'Bahia', UF: 'BA' }, { estado: 'Cear├í', UF: 'CE' }, { estado: 'Distrito Federal', UF: 'DF' }, { estado: 'Espirito Santo', UF: 'ES' }, { estado: 'Goi├ís', UF: 'GO' }, { estado: 'Maranh├úo', UF: 'MA' }, { estado: 'Minas Gerais', UF: 'MG' }, { estado: 'Mato Grosso do Sul', UF: 'MS' }, { estado: 'Mato Grosso', UF: 'MT' }, { estado: 'Par├í', UF: 'PA' }, { estado: 'Para├¡ba', UF: 'PB' }, { estado: 'Pernambuco', UF: 'PE' }, { estado: 'Piau├¡', UF: 'PI' }, { estado: 'Paran├í', UF: 'PR' }, { estado: 'Rio de janeiro', UF: 'RJ' }, { estado: 'Rio Grande do Norte', UF: 'RN' }, { estado: 'Rond├┤nia', UF: 'RO' }, { estado: 'Roraima', UF: 'RR' }, { estado: 'Rio Grande do Sul', UF: 'RS' }, { estado: 'Santa Catarina', UF: 'SC' }, { estado: 'Sergipe', UF: 'SE' }, { estado: 'S├úo Paulo', UF: 'SP' }, { estado: 'Tocantins', UF: 'TO' } ],
+    operator: 'deepEqual'
+  }
+
+test at src\store.test.ts:91:3
+Γ£û destino MT (0.6849ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:
+  
+  [
+    {
+      UF: '',
+      estado: ''
+    },
+    {
+      UF: 'AC',
+      estado: 'Acre',
+      ibge: '12'
+    },
+    {
+      UF: 'AL',
+      estado: 'Alagoas',
+      ibge: '27'
+    },
+    {
+      UF: 'AM',
+      estado: 'Amazonas',
+      ibge: '13'
+    },
+    {
+      UF: 'AP',
+      estado: 'Amap├í',
+      ibge: '16'
+    },
+    {
+      UF: 'BA',
+      estado: 'Bahia',
+      ibge: '29'
+    },
+    {
+      UF: 'CE',
+      estado: 'Cear├í',
+      ibge: '23'
+    },
+    {
+      UF: 'DF',
+      estado: 'Distrito Federal',
+      ibge: '53'
+    },
+    {
+      UF: 'ES',
+      estado: 'Espirito San...
+  
+  should loosely deep-equal
+  
+  [
+    {
+      UF: '',
+      estado: ''
+    },
+    {
+      UF: 'AC',
+      estado: 'Acre'
+    },
+    {
+      UF: 'AL',
+      estado: 'Alagoas'
+    },
+    {
+      UF: 'AM',
+      estado: 'Amazonas'
+    },
+    {
+      UF: 'AP',
+      estado: 'Amap├í'
+    },
+    {
+      UF: 'BA',
+      estado: 'Bahia'
+    },
+    {
+      UF: 'CE',
+      estado: 'Cear├í'
+    },
+    {
+      UF: 'DF',
+      estado: 'Distrito Federal'
+    },
+    {
+      UF: 'ES',
+      estado: 'Espirito Santo'
+    },
+    {
+      UF: 'GO',
+      estado: 'Goi├ís'
+    },
+    {
+      UF: 'MA',
+      estado: 'Maranh├úo'
+    },
+    {
+      UF: 'M...
+      at TestContext.<anonymous> (file:///C:/Users/dalci/playgroung/cefiti/src/store.test.ts:93:12)
+      at Test.runInAsyncScope (node:async_hooks:211:14)
+      at Test.run (node:internal/test_runner/test:980:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:678:18)
+      at Test.postRun (node:internal/test_runner/test:1091:19)
+      at Test.run (node:internal/test_runner/test:1019:12)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:678:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { estado: '', UF: '' }, { estado: 'Acre', UF: 'AC', ibge: '12' }, { estado: 'Alagoas', UF: 'AL', ibge: '27' }, { estado: 'Amazonas', UF: 'AM', ibge: '13' }, { estado: 'Amap├í', UF: 'AP', ibge: '16' }, { estado: 'Bahia', UF: 'BA', ibge: '29' }, { estado: 'Cear├í', UF: 'CE', ibge: '23' }, { estado: 'Distrito Federal', UF: 'DF', ibge: '53' }, { estado: 'Espirito Santo', UF: 'ES', ibge: '32' }, { estado: 'Goi├ís', UF: 'GO', ibge: '52' }, { estado: 'Maranh├úo', UF: 'MA', ibge: '21' }, { estado: 'Minas Gerais', UF: 'MG', ibge: '31' }, { estado: 'Mato Grosso do Sul', UF: 'MS', ibge: '50' }, { estado: 'Par├í', UF: 'PA', ibge: '15' }, { estado: 'Para├¡ba', UF: 'PB', ibge: '25' }, { estado: 'Pernambuco', UF: 'PE', ibge: '26' }, { estado: 'Piau├¡', UF: 'PI', ibge: '22' }, { estado: 'Paran├í', UF: 'PR', ibge: '41' }, { estado: 'Rio de janeiro', UF: 'RJ', ibge: '33' }, { estado: 'Rio Grande do Norte', UF: 'RN', ibge: '24' }, { estado: 'Rond├┤nia', UF: 'RO', ibge: '11' }, { estado: 'Roraima', UF: 'RR', ibge: '14' }, { estado: 'Rio Grande do Sul', UF: 'RS', ibge: '43' }, { estado: 'Santa Catarina', UF: 'SC', ibge: '42' }, { estado: 'Sergipe', UF: 'SE', ibge: '28' }, { estado: 'S├úo Paulo', UF: 'SP', ibge: '35' }, { estado: 'Tocantins', UF: 'TO', ibge: '17' } ],
+    expected: [ { estado: '', UF: '' }, { estado: 'Acre', UF: 'AC' }, { estado: 'Alagoas', UF: 'AL' }, { estado: 'Amazonas', UF: 'AM' }, { estado: 'Amap├í', UF: 'AP' }, { estado: 'Bahia', UF: 'BA' }, { estado: 'Cear├í', UF: 'CE' }, { estado: 'Distrito Federal', UF: 'DF' }, { estado: 'Espirito Santo', UF: 'ES' }, { estado: 'Goi├ís', UF: 'GO' }, { estado: 'Maranh├úo', UF: 'MA' }, { estado: 'Minas Gerais', UF: 'MG' }, { estado: 'Mato Grosso do Sul', UF: 'MS' }, { estado: 'Par├í', UF: 'PA' }, { estado: 'Para├¡ba', UF: 'PB' }, { estado: 'Pernambuco', UF: 'PE' }, { estado: 'Piau├¡', UF: 'PI' }, { estado: 'Paran├í', UF: 'PR' }, { estado: 'Rio de janeiro', UF: 'RJ' }, { estado: 'Rio Grande do Norte', UF: 'RN' }, { estado: 'Rond├┤nia', UF: 'RO' }, { estado: 'Roraima', UF: 'RR' }, { estado: 'Rio Grande do Sul', UF: 'RS' }, { estado: 'Santa Catarina', UF: 'SC' }, { estado: 'Sergipe', UF: 'SE' }, { estado: 'S├úo Paulo', UF: 'SP' }, { estado: 'Tocantins', UF: 'TO' } ],
+    operator: 'deepEqual'
+  }

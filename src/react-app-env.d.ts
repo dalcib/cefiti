@@ -51,6 +51,7 @@ type Db = Praga & Regra
 interface Estado {
   estado: string
   UF: string
+  ibge?: number
 }
 
 //declare global {
