@@ -19,8 +19,10 @@ const config = {
 	metafile: true,
 	alias: {
 		"#db": "./db.js",
+		preact: "https://esm.sh/preact@10.28.2",
+		"@preact/signals": "https://esm.sh/@preact/signals@2.5.1",
 	},
-	external: ["./db.js"],
+	external: ["./db.js", "https://esm.sh/*"],
 };
 
 if (isBuild) {

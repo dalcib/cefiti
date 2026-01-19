@@ -15,6 +15,8 @@ self.addEventListener('install', (event) => {
         './index.css',
         './index.js',
         './db.js',
+        'https://esm.sh/preact@10.28.2',
+        'https://esm.sh/@preact/signals@2.5.1',
         './leg/IN02-2014.pdf',
         './leg/IN02-2018.pdf',
         './leg/IN03-2008.pdf',
@@ -79,7 +81,7 @@ self.addEventListener('fetch', (event) => {
     caches.open(cacheKey).then((cache) => {
       return fetch(event.request)
         .then((fetchedResponse) => {
-          if (new URL(event.request.url).protocol == !'chrome-extension:') {
+          if (new URL(event.request.url).protocol !== 'chrome-extension:') {
             console.log(
               event.request.url,
               new URL(event.request.url).protocol,
