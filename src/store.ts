@@ -1,18 +1,24 @@
-import { legislacoes } from './dbLeg.db.js'
-import { hospedeiros } from './dbHospedeiros.db.js'
-import { pragas } from './dbPragas.db.js'
-import { regras } from './dbRegras.db.js'
-import { estados } from './estados.ts'
+import { legislacoes, hospedeiros, pragas, regras, estados, type Db, type Dados, type Legislacao } from './db.ts'
 import { deepSignal } from './lib/fast-deep-signal.ts'
+
+declare global {
+  interface Window {
+    gtag(
+      event: string,
+      action_name: string,
+      params: { eventCategory: string, dimension5: string },
+    ): void
+  }
+}
 
 const hospedeiroMap = new Map(hospedeiros.map((h) => [h.id, h.nomeSci]))
 
-const db = regras.map((regra) => {
+export const db = regras.map((regra) => {
   const praga = pragas.find((item) => item.id === regra.idprag)
   return {
     ...praga,
     ...regra,
-    files: praga?.files.map(id => legislacoes.find(l => l.id === id)) || []
+    files: praga?.files.map(id => legislacoes.find(l => l.id === id)).filter(Boolean) as Legislacao[]
   }
 }) as Db[]
 

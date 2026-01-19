@@ -1,8 +1,6 @@
 import assert from 'node:assert'
 import { before, describe, it, test } from 'node:test'
-import { hospedeiros } from './dbHospedeiros.db.js'
-import { pragas } from './dbPragas.db.js'
-import { regras } from './dbRegras.db.js'
+import { hospedeiros, pragas, regras } from './db.ts'
 import { store } from './store.ts'
 
 type EventChange = {

@@ -1,4 +1,5 @@
-import { store } from './store.ts'
+import { store, db } from './store.ts'
+import type { Db } from './db.ts'
 
 const Base = () => {
   //const store = useStore()
@@ -19,7 +20,7 @@ const Base = () => {
           </tr>
         </thead>
         <tbody>
-          {store.db.map((item: Db, i: number) => {
+          {db.map((item: Db, i: number) => {
             return (
               <tr key={i}>
                 <td style={{ width: '10%' }}>

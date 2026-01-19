@@ -1,4 +1,4 @@
-import { estados } from './estados.ts'
+import { estados } from './db.ts'
 import { beforeEach, describe, expect, it, mock } from './lib/expect.ts'
 import { Store } from './store.ts'
 
