@@ -4,6 +4,8 @@ import { regras } from './dbRegras.db.js'
 import { estados } from './estados.ts'
 import { deepSignal } from './lib/fast-deep-signal.ts'
 
+const hospedeiroMap = new Map(hospedeiros.map((h) => [h.id, h.nomeSci]))
+
 const db = regras.map((regra) => ({
   ...pragas.find((item) => item.id === regra.idprag),
   ...regra,
@@ -17,7 +19,9 @@ export class Store {
   constructor() { }
 
   get hospedeirosPragas() {
-    return pragas.flatMap((praga) => praga.hosp)
+    return pragas.flatMap((praga) =>
+      praga.hosp.map((id) => hospedeiroMap.get(id) || ''),
+    )
   }
 
   get hospedeirosRegulamentados() {
@@ -64,11 +68,14 @@ export class Store {
     return this.dados.hospSci.split(' ')[0]
   }
 
-  species(species: string[], nomeSci: string): boolean {
+  species(species: (string | number)[], nomeSci: string): boolean {
+    const speciesNames = species.map((s) =>
+      typeof s === 'number' ? hospedeiroMap.get(s) || '' : s,
+    )
     return (
-      species.includes(nomeSci) ||
-      species.includes(`${nomeSci.split(' ')[0]} sp.`) ||
-      species.includes(`${nomeSci.split(' ')[0]} spp.`)
+      speciesNames.includes(nomeSci) ||
+      speciesNames.includes(`${nomeSci.split(' ')[0]} sp.`) ||
+      speciesNames.includes(`${nomeSci.split(' ')[0]} spp.`)
     )
   }
 

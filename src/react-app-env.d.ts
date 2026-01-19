@@ -34,14 +34,14 @@ interface Files {
 interface Praga {
   id: number
   prag: string
-  hosp: string[]
+  hosp: number[]
   pragc: string
   files: Files[]
 }
 
 interface Hospedeiro {
   id: number
-  nomeVul: string
+  nomeVul: string[]
   nomeSci: string
   count_nameVul?: number
 }
