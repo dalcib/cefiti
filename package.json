@@ -38,6 +38,7 @@
 	},
 	"dependencies": {
 		"@preact/signals": "^2.5.1",
+		"md-block": "^0.0.1",
 		"preact": "^10.28.2"
 	},
 	"devDependencies": {
