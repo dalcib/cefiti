@@ -14,7 +14,7 @@ self.addEventListener('install', (event) => {
         './favicon.ico',
         './index.css',
         './index.js',
-        './db.js',
+        'https://cefiti.web.app/db.js',
         './leg/IN02-2014.pdf',
         './leg/IN02-2018.pdf',
         './leg/IN03-2008.pdf',

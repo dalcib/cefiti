@@ -1,0 +1,34 @@
+{
+    "hosting": {
+        "public": "public",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ],
+        "headers": [
+            {
+                "source": "**",
+                "headers": [
+                    {
+                        "key": "Access-Control-Allow-Origin",
+                        "value": "*"
+                    }
+                ]
+            },
+            {
+                "source": "/db.js",
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/javascript"
+                    },
+                    {
+                        "key": "Content-Disposition",
+                        "value": "inline; filename=\"db.js\""
+                    }
+                ]
+            }
+        ]
+    }
+}

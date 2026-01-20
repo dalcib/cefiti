@@ -8,7 +8,7 @@ const externalDbPlugin = {
 	setup(build) {
 		build.onResolve({ filter: /^#db$/ }, (args) => {
 			return {
-				path: "./db.js",
+				path: "https://cefiti.web.app/db.js",
 				external: true,
 			};
 		});
@@ -36,16 +36,9 @@ const appConfig = {
 	plugins: [externalDbPlugin],
 };
 
-/** @type {esbuild.BuildOptions} */
-const dbConfig = {
-	...commonConfig,
-	entryPoints: ["./src/db.ts"],
-	minify: false, // Keeping db.js readable
-};
-
 if (isBuild) {
 	try {
-		await Promise.all([esbuild.build(appConfig), esbuild.build(dbConfig)]);
+		await esbuild.build(appConfig);
 		console.log("Build complete successfully");
 	} catch (error) {
 		console.error("Build failed:", error);
@@ -57,13 +50,8 @@ if (isBuild) {
 		process.exit(1);
 	});
 
-	const dbContext = await esbuild.context(dbConfig).catch((err) => {
-		console.error("DB context error:", err);
-		process.exit(1);
-	});
-
-	await Promise.all([appContext.rebuild(), dbContext.rebuild()]);
-	await Promise.all([appContext.watch(), dbContext.watch()]);
+	await appContext.rebuild();
+	await appContext.watch();
 
 	const serveResult = await appContext.serve({
 		servedir: "./public",

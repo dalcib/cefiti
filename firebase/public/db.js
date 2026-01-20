@@ -1179,4 +1179,3 @@ export {
   pragas,
   regras
 };
-//# sourceMappingURL=db.js.map

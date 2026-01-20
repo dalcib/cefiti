@@ -1,6 +1,6 @@
 {
 	"name": "cefiti",
-	"version": "8.1.1",
+	"version": "8.1.2",
 	"description": "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual",
 	"private": true,
 	"type": "module",
@@ -32,6 +32,8 @@
 		"format": "biome format . --write",
 		"check": "biome check --write .",
 		"build": "node dev.mjs --build",
+		"build-db": "esbuild src/db.ts --bundle --outfile=firebase/public/db.js --format=esm --target=es2017",
+		"deploy-db": "cd firebase && npx firebase-tools deploy --only hosting",
 		"meta": "esbuild src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
 	},
 	"dependencies": {
