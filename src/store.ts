@@ -22,12 +22,59 @@ export const db = regras.map((regra) => {
   }
 }) as Db[]
 
+
+interface Municipio {
+  id: string
+  nome: string
+  uf: string
+}
+
 export class Store {
-  dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  dados: Dados = {
+    hospSci: '',
+    hospVul: '',
+    prod: '',
+    orig: '',
+    dest: '',
+    municipioOrigem: '',
+    municipioDestino: '',
+  }
   exibeBase: boolean = false
   searched: boolean = false
+  municipios: Municipio[] = []
 
-  constructor() { }
+  constructor() {
+    this.loadMunicipios()
+  }
+
+  async loadMunicipios() {
+    if (typeof window === 'undefined') return
+    try {
+      const response = await fetch('/municipios.txt')
+      if (response.ok) {
+        const text = await response.text()
+        const ufMap = new Map<string, string>()
+        for (const e of estados) {
+          if (e.ibge) {
+            ufMap.set(String(e.ibge), e.UF)
+          }
+        }
+
+        this.municipios = text
+          .split('\n')
+          .filter((l) => l.trim().length > 6)
+          .map((l) => {
+            const id = l.slice(0, 6)
+            const nome = l.slice(6).trim()
+            const ibgePrefix = id.slice(0, 2)
+            const uf = ufMap.get(ibgePrefix) || ''
+            return { id, nome, uf }
+          })
+      }
+    } catch (error) {
+      console.error('Erro ao carregar municipios', error)
+    }
+  }
 
   get hospedeirosPragas() {
     return pragas.flatMap((praga) =>
@@ -73,6 +120,16 @@ export class Store {
     return estados.filter(
       (estado) => estado.UF !== this.dados.orig || estado.UF === '',
     )
+  }
+
+  get municipiosOrigem() {
+    if (!this.dados.orig) return []
+    return this.municipios.filter((m) => m.uf === this.dados.orig)
+  }
+
+  get municipiosDestino() {
+    if (!this.dados.dest) return []
+    return this.municipios.filter((m) => m.uf === this.dados.dest)
   }
 
   get gender() {
@@ -128,6 +185,8 @@ export class Store {
     this.dados.prod = ''
     this.dados.orig = ''
     this.dados.dest = ''
+    this.dados.municipioOrigem = ''
+    this.dados.municipioDestino = ''
   }
 
   handleChanges(event: Event) {

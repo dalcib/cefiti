@@ -267,6 +267,8 @@ describe('Sync between NomeVulg and NomeSci', () => {
       currentTarget: { name: 'hospSci', value: 'Musa spp.' },
     }
     store.handleChanges(e as unknown as Event)
+    // Add assertions for new fields if necessary, or ensure existing tests pass
+    store.handleChanges(e as unknown as Event)
     assert.strictEqual(store.dados.hospVul, 'Banana')
   })
 

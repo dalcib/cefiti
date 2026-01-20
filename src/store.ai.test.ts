@@ -27,6 +27,8 @@ describe('Store', () => {
       prod: '',
       orig: '',
       dest: '',
+      municipioOrigem: '',
+      municipioDestino: '',
     })
     expect(store.exibeBase).toBe(false)
     expect(store.searched).toBe(false)
@@ -112,6 +114,8 @@ describe('Store', () => {
       prod: '',
       orig: '',
       dest: '',
+      municipioOrigem: '',
+      municipioDestino: '',
     })
   })
 
@@ -139,6 +143,8 @@ describe('Store', () => {
       prod: '',
       orig: '',
       dest: '',
+      municipioOrigem: '',
+      municipioDestino: '',
     })
     expect(store.searched).toBe(false)
     store.handleMenu('Voltar')

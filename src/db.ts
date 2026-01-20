@@ -6,6 +6,8 @@ export interface Dados {
   prod: string
   orig: string
   dest: string
+  municipioOrigem: string
+  municipioDestino: string
 }
 
 export interface Regra {
