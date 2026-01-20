@@ -15,12 +15,9 @@ const externalDbPlugin = {
 	},
 };
 
-/** @type {esbuild.BuildOptions} */
-const config = {
-	entryPoints: ["./src/index.tsx", "./src/sw.js", "./src/db.ts"],
+const commonConfig = {
 	bundle: true,
 	outdir: "./public",
-	minify: true,
 	sourcemap: true,
 	format: "esm",
 	jsx: "automatic",
@@ -29,27 +26,46 @@ const config = {
 		"process.env.NODE_ENV": isBuild ? '"production"' : '"development"',
 	},
 	metafile: true,
+};
+
+/** @type {esbuild.BuildOptions} */
+const appConfig = {
+	...commonConfig,
+	entryPoints: ["./src/index.tsx", "./src/sw.js"],
+	minify: true,
 	plugins: [externalDbPlugin],
+};
+
+/** @type {esbuild.BuildOptions} */
+const dbConfig = {
+	...commonConfig,
+	entryPoints: ["./src/db.ts"],
+	minify: false, // Keeping db.js readable
 };
 
 if (isBuild) {
 	try {
-		await esbuild.build(config);
+		await Promise.all([esbuild.build(appConfig), esbuild.build(dbConfig)]);
 		console.log("Build complete successfully");
 	} catch (error) {
 		console.error("Build failed:", error);
 		process.exit(1);
 	}
 } else {
-	const context = await esbuild.context(config).catch((err) => {
-		console.error("ESBuild context error:", err);
+	const appContext = await esbuild.context(appConfig).catch((err) => {
+		console.error("App context error:", err);
 		process.exit(1);
 	});
 
-	await context.rebuild();
-	await context.watch();
+	const dbContext = await esbuild.context(dbConfig).catch((err) => {
+		console.error("DB context error:", err);
+		process.exit(1);
+	});
 
-	const serveResult = await context.serve({
+	await Promise.all([appContext.rebuild(), dbContext.rebuild()]);
+	await Promise.all([appContext.watch(), dbContext.watch()]);
+
+	const serveResult = await appContext.serve({
 		servedir: "./public",
 		host: "localhost",
 		port: 3001,
