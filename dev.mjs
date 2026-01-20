@@ -3,6 +3,18 @@ import process from "node:process";
 
 const isBuild = process.argv.includes("--build");
 
+const externalDbPlugin = {
+	name: "external-db",
+	setup(build) {
+		build.onResolve({ filter: /^#db$/ }, (args) => {
+			return {
+				path: "./db.js",
+				external: true,
+			};
+		});
+	},
+};
+
 /** @type {esbuild.BuildOptions} */
 const config = {
 	entryPoints: ["./src/index.tsx", "./src/sw.js", "./src/db.ts"],
@@ -17,12 +29,7 @@ const config = {
 		"process.env.NODE_ENV": isBuild ? '"production"' : '"development"',
 	},
 	metafile: true,
-	alias: {
-		"#db": "./db.js",
-		preact: "https://esm.sh/preact@10.28.2",
-		"@preact/signals": "https://esm.sh/@preact/signals@2.5.1",
-	},
-	external: ["./db.js", "https://esm.sh/*"],
+	plugins: [externalDbPlugin],
 };
 
 if (isBuild) {
@@ -48,5 +55,5 @@ if (isBuild) {
 		port: 3001,
 	});
 
-	console.log(`Listening on http://${serveResult.host}:${serveResult.port}`);
+	console.log(`Listening on http://localhost:${serveResult.port}`);
 }

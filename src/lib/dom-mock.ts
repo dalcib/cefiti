@@ -1,5 +1,5 @@
 // Mock DOM environment for Preact
-const noop = () => {}
+const noop = () => { }
 
 // Minimal Node implementation
 export class Node {
@@ -112,8 +112,8 @@ export class Element extends Node {
   removeAttribute(k: string) {
     delete this.attributes[k]
   }
-  addEventListener() {}
-  removeEventListener() {}
+  addEventListener() { }
+  removeEventListener() { }
 }
 
 export const doc = {
@@ -125,7 +125,6 @@ export const doc = {
   documentElement: new Element('HTML'),
 }
 
-// @ts-expect-error
 globalThis.window = {
   document: doc,
   requestAnimationFrame: (cb: any) => setTimeout(cb, 0),
@@ -137,14 +136,14 @@ globalThis.window = {
   Node: Node,
   Element: Element,
   Text: Text,
-  Event: class Event {},
+  Event: class Event { },
 } as any
 
 // @ts-expect-error
 globalThis.document = doc
-// @ts-expect-error
+
 globalThis.requestAnimationFrame = globalThis.window.requestAnimationFrame
-// @ts-expect-error
+
 globalThis.cancelAnimationFrame = globalThis.window.cancelAnimationFrame
 // @ts-expect-error
 globalThis.Node = Node
