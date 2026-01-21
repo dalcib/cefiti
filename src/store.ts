@@ -6,9 +6,24 @@ declare global {
     gtag(
       event: string,
       action_name: string,
-      params: { eventCategory: string, dimension5: string },
+      params: {
+        hospSci: string
+        prod: string
+        orig: string
+        dest: string
+      },
     ): void
   }
+}
+
+export interface Dados {
+  hospSci: string
+  hospVul: string
+  prod: string
+  orig: string
+  dest: string
+  municipioOrigem: string
+  municipioDestino: string
 }
 
 const hospedeiroMap = new Map(hospedeiros.map((h) => [h.id, h.nomeSci]))
@@ -245,9 +260,11 @@ export class Store {
       return
     }
     if (process.env.NODE_ENV !== 'development') {
-      window.gtag('event', 'click', {
-        eventCategory: 'search',
-        dimension5: this.dados.hospSci,
+      window.gtag('event', 'search_hosp', {
+        hospSci: this.dados.hospSci,
+        prod: this.dados.prod,
+        orig: this.dados.orig,
+        dest: this.dados.dest,
       })
     }
     this.searched = true

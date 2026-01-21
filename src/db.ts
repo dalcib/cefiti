@@ -1,14 +1,5 @@
 // CEFiTI - Database
 
-export interface Dados {
-  hospSci: string
-  hospVul: string
-  prod: string
-  orig: string
-  dest: string
-  municipioOrigem: string
-  municipioDestino: string
-}
 
 export interface Regra {
   idprag: number

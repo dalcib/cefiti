@@ -95,9 +95,9 @@ function Form() {
         source="listaNomesVul"
       />
       <FormField label="Parte da Planta:" name="prod" source="partes" />
-      <FormField label="Origem:" name="orig" source="origem" />
+      <FormField label="Estado de Origem:" name="orig" source="origem" />
       <FormField label="Município de Origem:" name="municipioOrigem" source="municipiosOrigem" />
-      <FormField label="Destino:" name="dest" source="destino" />
+      <FormField label="Estado de Destino:" name="dest" source="destino" />
       <FormField label="Município de Destino:" name="municipioDestino" source="municipiosDestino" />
       <br />
       <div>
