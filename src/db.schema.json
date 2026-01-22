@@ -1,171 +1,140 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "CEFiTI Database Schema",
-    "type": "object",
-    "properties": {
-        "hospedeiros": {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CEFiTI Database Schema",
+  "type": "object",
+  "properties": {
+    "hospedeiros": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "nomeSci": {
+            "type": "string"
+          },
+          "nomeVul": {
             "type": "array",
             "items": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "integer"
-                    },
-                    "nomeSci": {
-                        "type": "string"
-                    },
-                    "nomeVul": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "required": [
-                    "id",
-                    "nomeSci",
-                    "nomeVul"
-                ]
-            },
-            "uniqueItems": true
-        },
-        "pragas": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "integer"
-                    },
-                    "prag": {
-                        "type": "string"
-                    },
-                    "pragc": {
-                        "type": "string"
-                    },
-                    "hosp": {
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    },
-                    "files": {
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                },
-                "required": [
-                    "id",
-                    "prag",
-                    "pragc",
-                    "hosp",
-                    "files"
-                ]
-            },
-            "uniqueItems": true
-        },
-        "regras": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "idprag": {
-                        "type": "integer"
-                    },
-                    "desc": {
-                        "type": "string"
-                    },
-                    "part": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "orig": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "dest": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "prag": {
-                        "type": "string"
-                    },
-                    "exig": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "required": [
-                    "idprag",
-                    "desc",
-                    "part",
-                    "orig",
-                    "dest",
-                    "prag",
-                    "exig"
-                ]
+              "type": "string"
             }
+          }
         },
-        "legislacoes": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "integer"
-                    },
-                    "leg": {
-                        "type": "string"
-                    },
-                    "link": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "id",
-                    "leg",
-                    "link"
-                ]
-            },
-            "uniqueItems": true
-        },
-        "estados": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "estado": {
-                        "type": "string"
-                    },
-                    "UF": {
-                        "type": "string"
-                    },
-                    "ibge": {
-                        "type": "integer"
-                    }
-                },
-                "required": [
-                    "estado",
-                    "UF"
-                ]
-            }
-        }
+        "required": ["id", "nomeSci", "nomeVul"]
+      },
+      "uniqueItems": true
     },
-    "required": [
-        "hospedeiros",
-        "pragas",
-        "regras",
-        "legislacoes",
-        "estados"
-    ]
+    "pragas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "prag": {
+            "type": "string"
+          },
+          "pragc": {
+            "type": "string"
+          },
+          "hosp": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        },
+        "required": ["id", "prag", "pragc", "hosp", "files"]
+      },
+      "uniqueItems": true
+    },
+    "regras": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "idprag": {
+            "type": "integer"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "part": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "orig": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dest": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "prag": {
+            "type": "string"
+          },
+          "exig": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": ["idprag", "desc", "part", "orig", "dest", "prag", "exig"]
+      }
+    },
+    "legislacoes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "leg": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "leg", "link"]
+      },
+      "uniqueItems": true
+    },
+    "estados": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "estado": {
+            "type": "string"
+          },
+          "UF": {
+            "type": "string"
+          },
+          "ibge": {
+            "type": "integer"
+          }
+        },
+        "required": ["estado", "UF"]
+      }
+    }
+  },
+  "required": ["hospedeiros", "pragas", "regras", "legislacoes", "estados"]
 }

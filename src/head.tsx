@@ -7,13 +7,20 @@ export const Head = () => (
       <div id="topo">
         <div id="identificacao-ministerio">
           <span>
+            <span className="ministerio-text">
+              Ministério da Agricultura e Pecuária
+            </span>
             <div id="imagemGov">
               <a
                 href="http://www.brasil.gov.br"
                 target="_blank"
                 rel="noopener noreferrer"
                 id="brasilgov"
-              />
+                className="visually-hidden"
+                aria-label="Governo Federal do Brasil"
+              >
+                Brasil.gov.br
+              </a>
             </div>
           </span>
         </div>

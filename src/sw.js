@@ -1,7 +1,7 @@
 import { version } from './../package.json'
 
 // eslint-disable-next-line no-undef
-const cacheKey = 'CEFiTI' + version //8.0.0';
+const cacheKey = `CEFiTI${version}` //8.0.0';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -64,11 +64,7 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
-        keys.map((key) => {
-          if (!cacheKey.includes(key)) {
-            return caches.delete(key)
-          }
-        }),
+        keys.filter((key) => !cacheKey.includes(key)).map((key) => caches.delete(key)),
       )
     }),
   )

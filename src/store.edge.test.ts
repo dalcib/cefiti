@@ -2,8 +2,6 @@ import { describe, expect, it } from './lib/expect.ts'
 import { Store } from './store.ts'
 
 describe('Store Edge Cases', () => {
-
-
   it('should match species with "spp." suffix', () => {
     const store = new Store()
     // Citrus sinensis should match "Citrus spp."
@@ -15,14 +13,16 @@ describe('Store Edge Cases', () => {
     const store = new Store()
     const event = {
       currentTarget: { name: 'hospSci', value: 'Citrus sinensis' },
-    } as any
+    } as unknown as Event
     store.handleChanges(event)
     expect(store.dados.hospVul).toBe('Laranja')
   })
 
   it('should auto-fill scientific name when vulgar name is selected', () => {
     const store = new Store()
-    const event = { currentTarget: { name: 'hospVul', value: 'Laranja' } } as any
+    const event = {
+      currentTarget: { name: 'hospVul', value: 'Laranja' },
+    } as unknown as Event
     store.handleChanges(event)
     expect(store.dados.hospSci).toBe('Citrus sinensis')
   })
@@ -60,7 +60,7 @@ describe('Store Edge Cases', () => {
     store.dados.orig = 'AC'
     store.dados.dest = 'AC' // Destination same as origin
 
-    // By current logic, if dest is the same as orig, it's filtered out from available destinations 
+    // By current logic, if dest is the same as orig, it's filtered out from available destinations
     // BUT if manually set, it matches if it's in the rule list.
     // Rule 1 includes 'AC' in dest.
     expect(store.result.length).toBeGreaterThanOrEqual(1)

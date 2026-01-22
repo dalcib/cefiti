@@ -14,20 +14,30 @@ div#navegacao-global p span {
   margin: 0 5px 2px 0;
 }
 
-div#navegacao-global p span a {
+div#navegacao-global p span a,
+div#navegacao-global p span button {
   background: url(./img/bkg-navegacao-global-a.gif) no-repeat right;
   color: #fff;
   display: inline-block;
   padding: 5px 10px 5px 15px;
   text-decoration: none;
+  /* Button resets */
+  border: 0;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  line-height: inherit;
+  background-color: transparent;
 }
 
-div#navegacao-global p span a:hover {
+div#navegacao-global p span a:hover,
+div#navegacao-global p span button:hover {
   background: #f8af2d url(./img/blt-navegacao-hover.gif) no-repeat left;
   color: #6b5a22;
 }
 
-div#navegacao-global p span a.navegacao-global-ativa {
+div#navegacao-global p span a.navegacao-global-ativa,
+div#navegacao-global p span button.navegacao-global-ativa {
   background: #f8af2d url(./img/blt-navegacao-hover.gif) no-repeat left;
   color: #6b5a22;
 }

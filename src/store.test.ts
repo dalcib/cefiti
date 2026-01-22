@@ -102,7 +102,9 @@ describe('Store hospedeiros nomeSci', () => {
   it('nomeVul is an array of strings', () => {
     hospedeiros.forEach((h) => {
       assert(Array.isArray(h.nomeVul))
-      h.nomeVul.forEach((v) => assert.strictEqual(typeof v, 'string'))
+      h.nomeVul.forEach((v) => {
+        assert.strictEqual(typeof v, 'string')
+      })
     })
   })
 })
@@ -301,13 +303,12 @@ describe('Sync between NomeVulg and NomeSci', () => {
 })
 
 test('Check normalization of db ', () => {
-  regras.map((regra) => {
+  regras.forEach((regra) => {
     const praga = pragas.find((item) => item.prag === regra.prag)
     if (!praga) {
       assert.strictEqual(regra.prag, praga)
       //throw Error(`Dados da praga ${regra.prag} não cadastrados.`)
     }
-    return regra
   })
 })
 

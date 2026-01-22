@@ -7,19 +7,19 @@ const Menu = () => {
       <div id="navegacao-global">
         <p>
           <span>
-            <a href="#" onClick={() => store.handleMenu('Base')}>
+            <button type="button" onClick={() => store.handleMenu('Base')}>
               Ver Base de Dados
-            </a>
+            </button>
           </span>
           <span title="Para salvar o resultado como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como PDF' na página de impressão">
-            <a href="#" onClick={() => store.handleMenu('Print')}>
+            <button type="button" onClick={() => store.handleMenu('Print')}>
               Imprimir
-            </a>
+            </button>
           </span>
           <span>
-            <a href="#" onClick={() => store.handleMenu('Nova')}>
+            <button type="button" onClick={() => store.handleMenu('Nova')}>
               NOVA CONSULTA
-            </a>
+            </button>
           </span>
         </p>
       </div>

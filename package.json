@@ -1,49 +1,49 @@
 {
-	"name": "cefiti",
-	"version": "8.1.2",
-	"description": "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual",
-	"private": true,
-	"type": "module",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/dalci/cefiti.git"
-	},
-	"bugs": {
-		"url": "https://github.com/dalci/cefiti/issues"
-	},
-	"keywords": [],
-	"authors": [
-		"Dalci de Jesus Bagolin",
-		"Omar Roberto da Silveira"
-	],
-	"license": "MIT",
-	"homepage": ".",
-	"imports": {
-		"#db": {
-			"node": "./src/db.ts",
-			"default": "./db.js"
-		}
-	},
-	"scripts": {
-		"start": "node dev.mjs",
-		"test": "node --test --experimental-strip-types \"src/**/*.test.ts\"",
-		"analyze": "source-map-explorer public/*.js",
-		"lint": "biome lint .",
-		"format": "biome format . --write",
-		"check": "biome check --write .",
-		"build": "node dev.mjs --build",
-		"build-db": "esbuild src/db.ts --bundle --outfile=firebase/public/db.js --format=esm --target=es2017",
-		"deploy-db": "cd firebase && npx firebase-tools deploy --only hosting",
-		"meta": "esbuild src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
-	},
-	"dependencies": {
-		"@preact/signals": "^2.5.1",
-		"md-block": "^0.0.1",
-		"preact": "^10.28.2"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.3.11",
-		"@types/node": "^25.0.8",
-		"esbuild": "^0.27.2"
-	}
+  "name": "cefiti",
+  "version": "8.1.2",
+  "description": "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual",
+  "private": true,
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalci/cefiti.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dalci/cefiti/issues"
+  },
+  "keywords": [],
+  "authors": [
+    "Dalci de Jesus Bagolin",
+    "Omar Roberto da Silveira"
+  ],
+  "license": "MIT",
+  "homepage": ".",
+  "imports": {
+    "#db": {
+      "node": "./src/db.ts",
+      "default": "./db.js"
+    }
+  },
+  "scripts": {
+    "start": "node dev.mjs",
+    "test": "node --test --experimental-strip-types \"src/**/*.test.ts\"",
+    "analyze": "source-map-explorer public/*.js",
+    "lint": "biome lint .",
+    "format": "biome format . --write",
+    "check": "biome check --write .",
+    "build": "node dev.mjs --build",
+    "build-db": "esbuild src/db.ts --bundle --outfile=firebase/public/db.js --format=esm --target=es2017",
+    "deploy-db": "cd firebase && npx firebase-tools deploy --only hosting",
+    "meta": "esbuild src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
+  },
+  "dependencies": {
+    "@preact/signals": "^2.5.1",
+    "md-block": "^0.0.1",
+    "preact": "^10.28.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.11",
+    "@types/node": "^25.0.8",
+    "esbuild": "^0.27.2"
+  }
 }

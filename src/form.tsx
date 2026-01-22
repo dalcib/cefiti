@@ -1,12 +1,19 @@
-import { store, type Dados } from './store'
+import type { Estado } from './db'
+import { type Dados, type Municipio, store } from './store'
 
 interface PropsSelect {
-  source: 'listaNomesSci' | 'listaNomesVul' | 'partes' | 'destino' | 'origem' | 'municipiosOrigem' | 'municipiosDestino'
+  source:
+    | 'listaNomesSci'
+    | 'listaNomesVul'
+    | 'partes'
+    | 'destino'
+    | 'origem'
+    | 'municipiosOrigem'
+    | 'municipiosDestino'
   name: keyof Dados
 }
 
 const Select = function Select({ source, name }: PropsSelect) {
-
   /* if (name.startsWith('municipio')) {
     const normalize = (s: string) =>
       s
@@ -64,15 +71,21 @@ const Select = function Select({ source, name }: PropsSelect) {
       name={name}
       onChange={(e) => store.handleChanges(e)}
     >
-      {store[source].map((option) => (
-        <option
-          value={typeof option === 'string' ? option.toString() : (option as any).nome || (option as any).UF}
-          key={typeof option === 'string' ? option.toString() : (option as any).id || (option as any).UF}
-          aria-selected="false"
-        >
-          {typeof option === 'string' ? option : (option as any).nome || (option as any).estado}
-        </option>
-      ))}
+      {store[source].map((option) => {
+        const opt = option as string | Municipio | Estado
+        const value =
+          typeof opt === 'string' ? opt : 'nome' in opt ? opt.nome : opt.UF
+        const key =
+          typeof opt === 'string' ? opt : 'id' in opt ? opt.id : opt.UF
+        const label =
+          typeof opt === 'string' ? opt : 'nome' in opt ? opt.nome : opt.estado
+
+        return (
+          <option value={value} key={key} aria-selected="false">
+            {label}
+          </option>
+        )
+      })}
     </select>
   )
 }
@@ -109,6 +122,7 @@ function Form() {
           Fotos da Espécie Vegetal
         </a>
         <button
+          type="submit"
           onClick={(e) => store.handleSearch(e)}
           className="form-button margin-left-100"
           disabled={false}

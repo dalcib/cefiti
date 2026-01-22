@@ -1,11 +1,15 @@
 import { computed, Signal, signal } from '@preact/signals'
-import { useMemo } from 'preact/hooks'
 
-const proxyToSignals = new WeakMap<object, Map<string | symbol, Signal<any>>>()
-const objToProxy = new WeakMap<object, any>()
+//import { useMemo } from 'preact/hooks'
+
+const proxyToSignals = new WeakMap<
+  object,
+  Map<string | symbol, Signal<unknown>>
+>()
+const objToProxy = new WeakMap<object, object>()
 const ignore = new WeakSet<object>()
 
-const shouldProxy = (val: any): boolean => {
+const shouldProxy = (val: unknown): boolean => {
   if (typeof val !== 'object' || val === null) return false
   if (val instanceof Signal) return false
   if (ignore.has(val)) return false
@@ -23,20 +27,22 @@ export const shallow = <T extends object>(obj: T): T => {
 
 export const deepSignal = <T extends object>(obj: T): DeepSignal<T> => {
   if (!shouldProxy(obj)) return obj as DeepSignal<T>
-  if (objToProxy.has(obj)) return objToProxy.get(obj)
+  if (objToProxy.has(obj)) return objToProxy.get(obj) as DeepSignal<T>
 
-  const handler = Array.isArray(obj) ? arrayHandlers : objectHandlers
+  const handler = (
+    Array.isArray(obj) ? arrayHandlers : objectHandlers
+  ) as ProxyHandler<T>
   const proxy = new Proxy(obj, handler)
   objToProxy.set(obj, proxy)
   return proxy as DeepSignal<T>
 }
 
-export const useDeepSignal = <T extends object>(obj: T): DeepSignal<T> => {
+/* export const useDeepSignal = <T extends object>(obj: T): DeepSignal<T> => {
   return useMemo(() => deepSignal(obj), [])
-}
+} */
 
 function getDescriptor(
-  target: any,
+  target: object,
   key: string | symbol,
 ): PropertyDescriptor | undefined {
   let current = target
@@ -48,7 +54,7 @@ function getDescriptor(
   return undefined
 }
 
-const getSignal = (target: object, key: string | symbol, receiver: any) => {
+const getSignal = (target: object, key: string | symbol, receiver: object) => {
   let signals = proxyToSignals.get(receiver)
   if (!signals) {
     signals = new Map()
@@ -71,6 +77,7 @@ const getSignal = (target: object, key: string | symbol, receiver: any) => {
       signals.set(key, signal(value))
     }
   }
+  // biome-ignore lint/style/noNonNullAssertion: Guaranteed to exist after the check above
   return signals.get(key)!
 }
 
@@ -111,13 +118,13 @@ const objectHandlers: ProxyHandler<object> = {
   },
 }
 
-const arrayHandlers: ProxyHandler<any[]> = {
+const arrayHandlers: ProxyHandler<object[]> = {
   get(target, key, receiver) {
     if (typeof key === 'string' && key.startsWith('$')) {
       if (key === '$length') return getSignal(target, 'length', receiver)
       const actualKey = key.slice(1)
       // Check if index
-      if (!isNaN(Number(actualKey))) {
+      if (!Number.isNaN(Number(actualKey))) {
         return getSignal(target, actualKey, receiver)
       }
     }
@@ -132,11 +139,12 @@ const arrayHandlers: ProxyHandler<any[]> = {
       key === 'every' ||
       key === 'reduce'
     ) {
-      return (...args: any[]) => {
+      return (...args: unknown[]) => {
         // Track length to ensure dependency on array mutations
         getSignal(target, 'length', receiver).value
 
         // Native method on raw target
+        // biome-ignore lint/suspicious/noExplicitAny: Native methods need index access
         const func = Array.prototype[key as any]
 
         return func.apply(
@@ -144,9 +152,9 @@ const arrayHandlers: ProxyHandler<any[]> = {
           args.map((arg) => {
             // Wrap callback
             if (typeof arg === 'function') {
-              return (item: any, index: number /*, arr: any[]*/) => {
+              return (item: unknown, index: number /*, arr: any[]*/) => {
                 // Pass PROXY of item to callback to ensure deep tracking
-                return arg(deepSignal(item), index, receiver)
+                return arg(deepSignal(item as object), index, receiver)
               }
             }
             return arg

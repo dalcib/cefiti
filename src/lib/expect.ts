@@ -1,6 +1,15 @@
 import assert from 'node:assert'
 
-export { describe, it, test, before, after, beforeEach, afterEach, mock } from 'node:test'
+export {
+  after,
+  afterEach,
+  before,
+  beforeEach,
+  describe,
+  it,
+  mock,
+  test,
+} from 'node:test'
 
 interface Expect<T> {
   toBe(expected: T): void
@@ -10,8 +19,8 @@ interface Expect<T> {
   toBeGreaterThan(expected: number): void
   toBeGreaterThanOrEqual(expected: number): void
   toBeLessThan(expected: number): void
-  toContain(expected: T extends any[] | string ? T[number] | string : any): void
-  toHaveProperty<K extends keyof T>(property: K, value?: T[K]): void
+  toContain(expected: T extends readonly (infer U)[] ? U : (T extends string ? string : unknown)): void
+  toHaveProperty(property: string | number | symbol, value?: unknown): void
   toBeInstanceOf<U>(expectedClass: new (...args: unknown[]) => U): void
   toMatch(expectedRegex: RegExp): void
   toHaveBeenCalled(): void
@@ -46,7 +55,7 @@ function expect<T>(actual: T): Expect<T> {
     },
     toBeLessThan: (expected) => {
       if (typeof actual !== 'number') {
-        throw new Error('toBeGreaterThan can only be used with numbers')
+        throw new Error('toBeLessThan can only be used with numbers')
       }
       assert.ok(actual < expected)
     },
@@ -57,11 +66,11 @@ function expect<T>(actual: T): Expect<T> {
         throw new Error('toContain can only be used with arrays or strings')
       }
     },
-    toHaveProperty: function (property: any, value?: any) {
+    toHaveProperty: (property: string | number | symbol, ...args: unknown[]) => {
       if (typeof actual === 'object' && actual !== null) {
         assert.ok(property in actual)
-        if (arguments.length === 2) {
-          assert.deepStrictEqual((actual as any)[property], value)
+        if (args.length > 0) {
+          assert.deepStrictEqual((actual as Record<string | number | symbol, unknown>)[property], args[0])
         }
       } else {
         throw new Error('toHaveProperty can only be used with objects')

@@ -1,5 +1,5 @@
-import { store, db } from './store.ts'
 import type { Db } from './db.ts'
+import { db, store } from './store.ts'
 
 const Base = () => {
   //const store = useStore()

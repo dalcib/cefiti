@@ -1,5 +1,13 @@
-import { legislacoes, hospedeiros, pragas, regras, estados, type Db, type Legislacao } from '#db'
-import { deepSignal } from './lib/fast-deep-signal.ts'
+import {
+  type Db,
+  estados,
+  hospedeiros,
+  type Legislacao,
+  legislacoes,
+  pragas,
+  regras,
+} from '#db'
+import { deepSignal } from './lib/deep-signals.ts'
 
 declare global {
   interface Window {
@@ -33,12 +41,13 @@ export const db = regras.map((regra) => {
   return {
     ...praga,
     ...regra,
-    files: praga?.files.map(id => legislacoes.find(l => l.id === id)).filter(Boolean) as Legislacao[]
+    files: praga?.files
+      .map((id) => legislacoes.find((l) => l.id === id))
+      .filter(Boolean) as Legislacao[],
   }
 }) as Db[]
 
-
-interface Municipio {
+export interface Municipio {
   id: string
   nome: string
   uf: string

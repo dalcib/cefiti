@@ -385,7 +385,7 @@ div#moldura-topo #topo #identificacao-ministerio span #imagemGov {
 }
 
 div#moldura-topo #topo #identificacao-ministerio span #imagemGov:after {
-  content: "Ministério da Agricultura, Pecuária e Abastecimento";
+  content: "";
   margin-left: 40px;
   color: #606060;
   font-weight: bold;
