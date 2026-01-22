@@ -17,7 +17,7 @@
 * {
   /* Se aplica a todas as declarações */
   border: 0;
-  font-family: arial, verdana, helvetica;
+  font-family: arial, verdana, helvetica, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -26,15 +26,60 @@ body {
   font-size: 0.8em;
 }
 
-div#resolucao {
+#resolucao {
   width: 100%;
+}
+
+/********************header*****************************/
+#identificacao-ministerio {
+  position: relative;
+  clear: both;
+  overflow: hidden;
+  min-width: 1000px;
+  height: 31px;
+  background: #f1f1f1 none repeat scroll 0 0;
+}
+
+/* Configurações do span dentro da div #identificacao-ministerio */
+#identificacao-ministerio span {
+  display: block;
+  height: 31px;
+  background: #f1f1f1 none repeat scroll 0 0;
+}
+
+/* Configurações da imagem */
+#imagemGov {
+  position: absolute;
+  top: 4px;
+  height: 24px;
+  width: 500px;
+  background: #f1f1f1
+    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAMAAAC5m+00AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACrUExURQCXSF27iQCWRQOWSQCWSRCdVACSSgCWRwCVSRKcVv/oAP/yAAIvh/bjBQKVTP/rAK3PF/3sARZBkg05ima2LCqiPg+ZRR9JoermBbGwLwEqkgCST1GwMRqdQZfIHdzgCSdSlTlYbEWrNyNKeouUPHOgtEJsn2WOrSClX2m/lF+6i3/lF+6i3/lF+6i3/lF+6i3/lF+6i3/lF+6i3/lF+6i3q8JsDVEBpCgWN2WefTD8i/IYSstzKmO3eIUaa2h3SOjfvlHjVfq6OmNShvDYIAAAFISURBVCjPbVHXksMgDNQBljC4l9iOndjp5VKv//+XnXByb7fDADO7rNAK9v4DngPv/h/24BHBuEhqB3pCeUxJIAWKtMZlIVCTciogH3yhWMpinM2t7ZctS5UgAR74kVICpMauNrfmaucTpMj5e+4VUNTOEvuzCoL8EvZLJCH1SIHAqKjtehowposwTmbIcqZIt+UpNV/3zWa3HYLp2sZ1gegoPXkNU5M238Ow3d132cIYEyel9MHDLo2NcX4519puPkPmbOIowrdTbGyTZXk2BEH1kZo4LPSjFgq2DFcVc3lWNZbt2rGWIIiwTOztzJZV9W77glCp8RsSNHdc1NfL6rxoxp5JCcmUC1cJjdx0GKZ1hxq0eqYBkuPlzLHrjXuiOAwaDUGQFJyWBpyU7EUaQI/xckGeA98jksqNQLmp8BnB4Xh8+ReHX640GNLt25uiAAAAAElFTkSuQmCC")
+    no-repeat scroll 8px center;
+}
+
+#imagemGov:after {
+  content: "";
+  margin-left: 40px;
+  color: #606060;
+  font-weight: bold;
+  position: absolute;
+  top: 4px;
+}
+
+/* configurações para o link http://www.brasil.gov.br*/
+#brasilgov {
+  height: 24px;
+  float: right;
+  display: block;
+  border: 0;
 }
 
 /* div#moldura-topo {
      height: 116px; 
 } */
 
-div#moldura-topo #topo {
+#topo {
   /*   height: 116px; */
   background: none repeat scroll 0% 0% #3866b5;
 }
@@ -45,12 +90,12 @@ div#moldura-topo #topo {
   margin-right: 8px;
 } */
 
-div#moldura-topo #topo #identificacao-sistema {
+#identificacao-sistema {
   float: left;
   padding-bottom: 10px; /* */
 }
 
-div#moldura-topo #topo #identificacao-sistema p {
+#identificacao-sistema p {
   color: #dcecff;
   border-bottom: 1px solid #dcecff;
   font-weight: bold;
@@ -58,20 +103,19 @@ div#moldura-topo #topo #identificacao-sistema p {
   width: 311px;
 }
 
-div#moldura-topo #topo #identificacao-sistema h1 {
+#identificacao-sistema h1 {
   font-size: 3.5em;
   color: #ffffff;
   margin: 0 0 2px 10px;
-  _margin-bottom: 4px; /* Ajuste de posicionamento para o IE6 */
 }
 
-div#moldura-topo #topo #identificacao-sistema h2 {
+#identificacao-sistema h2 {
   color: #dcecff;
   font-size: 1.3em;
   margin-left: 10px;
 }
 
-div#moldura-topo #topo #dados-login {
+#dados-login {
   float: right;
   font-size: 0.8em;
   line-height: 1.5em;
@@ -79,58 +123,50 @@ div#moldura-topo #topo #dados-login {
   color: #ffffff;
 }
 
-div#moldura-topo #topo #dados-login p span {
+#dados-login p span {
   color: #dcecff;
 }
 
-div#moldura-topo #topo #dados-login p.links {
+#dados-login p.links {
   margin-top: 15px;
-  _margin-top: 16px; /* Ajuste de posicionamento para o IE6 */
 }
 
-div#moldura-navegacao-global {
+#moldura-navegacao-global {
   background: #0f4098 none repeat scroll 0 0;
-  _height: 28px; /* Ajuste de posicionamento para o IE6 */
 }
 
-div#moldura-navegacao-global #navegacao-global {
+#navegacao-global {
   background: #0f4098 none repeat scroll 0 0;
   overflow: hidden;
 }
 
-div#navegacao-local {
+#navegacao-local {
   float: left;
   padding: 10px 10px 20px 10px;
   width: 135px;
 }
 
-div#corpo {
+#corpo {
   padding: 10px 20px 20px 30px;
 }
 
-* html #corpo {
-  /* Bug dos 3 pixels - IE6 */
-  _display: inline-block;
-  _margin-left: 152px;
-}
-
-div#corpo p.caminho-navegacao {
+#corpo p.caminho-navegacao {
   font-size: 0.8em;
   margin-bottom: 15px;
 }
 
-div#corpo p.caminho-navegacao span {
+#corpo p.caminho-navegacao span {
   background: url(./img/blt-caminho-navegacao.gif) no-repeat left;
   display: inline-block;
   margin-right: 5px;
   padding-left: 8px;
 }
 
-div#corpo p.caminho-navegacao span.caminho-navegacao-ativa {
+#corpo p.caminho-navegacao span.caminho-navegacao-ativa {
   color: #618cd2;
 }
 
-div#corpo p.ajuda-contextual {
+#corpo p.ajuda-contextual {
   float: right;
   background-color: #3866b5;
   padding: 5px;
@@ -138,31 +174,31 @@ div#corpo p.ajuda-contextual {
   font-weight: bold;
 }
 
-div#corpo h3 {
+#corpo h3 {
   font-size: 1.5em;
   font-weight: normal;
   margin-bottom: 10px;
   margin-top: 20px;
 }
 
-div#corpo hr {
+#corpo hr {
   border-bottom: 1px solid #ccc;
   margin-bottom: 15px;
   padding: 0 0 2px 10px;
 }
 
-div#corpo #conteudo {
+#conteudo {
   background: #fff;
   border-top: 1px solid #1e64d3;
   border-bottom: 1px solid #1e64d3;
   padding: 10px 20px 20px;
 }
 
-div#corpo #conteudo-login {
+#conteudo-login {
   background: #fff;
 }
 
-div#corpo #conteudo-login-novo {
+#conteudo-login-novo {
   background: #eaebee;
   border-top: 4px solid #1e64d3;
   padding: 20px;
@@ -171,7 +207,7 @@ div#corpo #conteudo-login-novo {
   max-width: 300px;
 }
 
-div#corpo #conteudo-reenviar-senha {
+#conteudo-reenviar-senha {
   background: #eaebee;
   border-top: 4px solid #1e64d3;
   padding: 20px;
@@ -180,7 +216,7 @@ div#corpo #conteudo-reenviar-senha {
   max-width: 500px;
 }
 
-div#corpo #conteudo h4 {
+#conteudo h4 {
   background: url(./img/blt-subtitulo.gif) left no-repeat;
   border-bottom: 1px solid #ccc;
   font-size: 1em;
@@ -188,7 +224,7 @@ div#corpo #conteudo h4 {
   padding: 0 0 2px 10px;
 }
 
-div#corpo #conteudo h5 {
+#conteudo h5 {
   background: url(./img/blt-subtitulo.gif) left no-repeat;
   font-size: 1em;
   margin-bottom: 15px;
@@ -196,33 +232,32 @@ div#corpo #conteudo h5 {
   padding: 0 0 2px 10px;
 }
 
-div#corpo #conteudo p.conteudo {
+#conteudo p.conteudo {
   margin-bottom: 20px;
 }
 
-div#corpo #area-mensagens {
+#area-mensagens {
   font-size: 0.9em;
   margin-bottom: 20px;
 }
 
-div#corpo #area-mensagens p {
+#area-mensagens p {
   padding: 5px;
 }
 
-div#corpo #area-mensagens ul {
+#area-mensagens ul {
   font-weight: bold;
   list-style: none;
   min-height: 20px;
-  _height: 20px; /* Adaptação IE6 */
   padding: 10px;
 }
 
-div#corpo #area-mensagens ul li {
+#area-mensagens ul li {
   line-height: 1.2em;
   margin-left: 40px;
 }
 
-div#corpo #area-mensagens ul.msg-informativa {
+#area-mensagens ul.msg-informativa {
   background: url(./img/ico-msg-informativa.png) no-repeat scroll left center
     rgba(0, 0, 0, 0);
   background-size: 30px 30px;
@@ -232,7 +267,7 @@ div#corpo #area-mensagens ul.msg-informativa {
   color: #286eae;
 }
 
-div#corpo #area-mensagens ul.msg-alerta {
+#area-mensagens ul.msg-alerta {
   background: url(./img/ico-msg-alerta.png) no-repeat scroll left center
     rgba(0, 0, 0, 0);
   background-size: 30px 30px;
@@ -242,7 +277,7 @@ div#corpo #area-mensagens ul.msg-alerta {
   color: #817134;
 }
 
-div#corpo #area-mensagens ul.msg-sucesso {
+#area-mensagens ul.msg-sucesso {
   background: url(./img/ico-msg-sucesso.png) no-repeat scroll left center
     rgba(0, 0, 0, 0);
   background-size: 30px 30px;
@@ -252,7 +287,7 @@ div#corpo #area-mensagens ul.msg-sucesso {
   color: #529214;
 }
 
-div#corpo #area-mensagens ul.msg-erro {
+#area-mensagens ul.msg-erro {
   background: url(./img/ico-msg-erro.png) no-repeat scroll left center
     rgba(0, 0, 0, 0);
   background-size: 30px 30px;
@@ -262,7 +297,7 @@ div#corpo #area-mensagens ul.msg-erro {
   color: #d12f19;
 }
 
-div#controle-exibicao-menu {
+#controle-exibicao-menu {
   left: 0;
   margin-left: 3px;
   padding-top: 190px;
@@ -291,32 +326,31 @@ div#controle-exibicao-menu {
   height: 80px;
 }
 
-div.dialog #area-mensagens-dialog {
+#area-mensagens-dialog {
   font-size: 0.9em;
   margin-bottom: 20px;
   padding: 10px;
 }
 
-div.dialog #area-mensagens-dialog ul {
+#area-mensagens-dialog ul {
   font-weight: bold;
   list-style: none;
   min-height: 20px;
-  _height: 20px; /* Adaptação IE6 */
   padding-top: 5px;
   text-align: left;
 }
 
-div.dialog #area-mensagens-dialog ul li {
+#area-mensagens-dialog ul li {
   font-size: 0.9em;
   margin-bottom: 20px;
   padding-left: 5%;
 }
 
-div.dialog #area-mensagens-dialog p {
+#area-mensagens-dialog p {
   padding: 5px;
 }
 
-div.dialog #area-mensagens-dialog ul.msg-informativa {
+#area-mensagens-dialog ul.msg-informativa {
   background: url(./img/ico-msg-informativa.png) no-repeat scroll left center
     rgba(0, 0, 0, 0);
   background-size: 30px 30px;
@@ -326,7 +360,7 @@ div.dialog #area-mensagens-dialog ul.msg-informativa {
   color: #286eae;
 }
 
-div.dialog #area-mensagens-dialog ul.msg-alerta {
+#area-mensagens-dialog ul.msg-alerta {
   background: url(./img/ico-msg-alerta.png) no-repeat scroll left center
     rgba(0, 0, 0, 0);
   background-size: 30px 30px;
@@ -336,7 +370,7 @@ div.dialog #area-mensagens-dialog ul.msg-alerta {
   color: #817134;
 }
 
-div.dialog #area-mensagens-dialog ul.msg-sucesso {
+#area-mensagens-dialog ul.msg-sucesso {
   background: url(./img/ico-msg-sucesso.png) no-repeat scroll left center
     rgba(0, 0, 0, 0);
   background-size: 30px 30px;
@@ -346,7 +380,7 @@ div.dialog #area-mensagens-dialog ul.msg-sucesso {
   color: #529214;
 }
 
-div.dialog #area-mensagens-dialog ul.msg-erro {
+#area-mensagens-dialog ul.msg-erro {
   background: url(./img/ico-msg-erro.png) no-repeat scroll left center
     rgba(0, 0, 0, 0);
   background-size: 30px 30px;
@@ -356,62 +390,17 @@ div.dialog #area-mensagens-dialog ul.msg-erro {
   color: #d12f19;
 }
 
-/********************header*****************************/
-div#moldura-topo #topo #identificacao-ministerio {
-  position: relative;
-  clear: both;
-  overflow: hidden;
-  min-width: 1000px;
-  height: 31px;
-  background: #f1f1f1 none repeat scroll 0 0;
-}
-
-/* Configurações do span dentro da div #identificacao-ministerio */
-div#moldura-topo #topo #identificacao-ministerio span {
-  display: block;
-  height: 31px;
-  background: #f1f1f1 none repeat scroll 0 0;
-}
-
-/* Configurações da imagem */
-div#moldura-topo #topo #identificacao-ministerio span #imagemGov {
-  position: absolute;
-  top: 4px;
-  height: 24px;
-  width: 500px;
-  background: #f1f1f1
-    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAMAAAC5m+00AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACrUExURQCXSF27iQCWRQOWSQCWSRCdVACSSgCWRwCVSRKcVv/oAP/yAAIvh/bjBQKVTP/rAK3PF/3sARZBkg05ima2LCqiPg+ZRR9JoermBbGwLwEqkgCST1GwMRqdQZfIHdzgCSdSlTlYbEWrNyNKeouUPHOgtEJsn2WOrSClX2m/lF+6i3q8JsDVEBpCgWN2WefTD8i/IYSstzKmO3eIUaa2h3SOjfvlHjVfq6OmNShvDYIAAAFISURBVCjPbVHXksMgDNQBljC4l9iOndjp5VKv//+XnXByb7fDADO7rNAK9v4DngPv/h/24BHBuEhqB3pCeUxJIAWKtMZlIVCTciogH3yhWMpinM2t7ZctS5UgAR74kVICpMauNrfmaucTpMj5e+4VUNTOEvuzCoL8EvZLJCH1SIHAqKjtehowposwTmbIcqZIt+UpNV/3zWa3HYLp2sZ1gegoPXkNU5M238Ow3d132cIYEyel9MHDLo2NcX4519puPkPmbOIowrdTbGyTZXk2BEH1kZo4LPSjFgq2DFcVc3lWNZbt2rGWIIiwTOztzJZV9W77glCp8RsSNHdc1NfL6rxoxp5JCcmUC1cJjdx0GKZ1hxq0eqYBkuPlzLHrjXuiOAwaDUGQFJyWBpyU7EUaQI/xckGeA98jksqNQLmp8BnB4Xh8+ReHX640GNLt25uiAAAAAElFTkSuQmCC")
-    no-repeat scroll 8px center;
-}
-
-div#moldura-topo #topo #identificacao-ministerio span #imagemGov:after {
-  content: "";
-  margin-left: 40px;
-  color: #606060;
-  font-weight: bold;
-  position: absolute;
-  top: 4px;
-}
-
-/* configurações para o link http://www.brasil.gov.br*/
-div#moldura-topo #topo #identificacao-ministerio span #brasilgov {
-  height: 24px;
-  float: right;
-  display: block;
-  border: 0 !important;
-}
-
 /* Configurações para a div de gestores */
-div#divGestores ul {
+#divGestores ul {
   margin-left: 5px;
   list-style: none;
 }
-div#divGestores ul li {
+#divGestores ul li {
   margin-top: 5px;
   list-style-type: circle;
   list-style-position: inside;
 }
-div#divGestores ul li ul li {
+#divGestores ul li ul li {
   padding: 3px;
   list-style-type: square;
   list-style-image: url(./img/blt-navegacao.gif);

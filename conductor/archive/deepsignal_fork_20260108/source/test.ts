@@ -1,7 +1,7 @@
-import { describe, it } from "node:test";
 import assert from "node:assert";
-import { deepSignal } from "./index.ts";
+import { describe, it } from "node:test";
 import { effect } from "@preact/signals";
+import { deepSignal } from "./index.ts";
 
 describe("FastDeepSignal", () => {
     it("should be reactive", () => {

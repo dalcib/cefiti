@@ -19,7 +19,13 @@ interface Expect<T> {
   toBeGreaterThan(expected: number): void
   toBeGreaterThanOrEqual(expected: number): void
   toBeLessThan(expected: number): void
-  toContain(expected: T extends readonly (infer U)[] ? U : (T extends string ? string : unknown)): void
+  toContain(
+    expected: T extends readonly (infer U)[]
+      ? U
+      : T extends string
+        ? string
+        : unknown,
+  ): void
   toHaveProperty(property: string | number | symbol, value?: unknown): void
   toBeInstanceOf<U>(expectedClass: new (...args: unknown[]) => U): void
   toMatch(expectedRegex: RegExp): void
@@ -66,11 +72,17 @@ function expect<T>(actual: T): Expect<T> {
         throw new Error('toContain can only be used with arrays or strings')
       }
     },
-    toHaveProperty: (property: string | number | symbol, ...args: unknown[]) => {
+    toHaveProperty: (
+      property: string | number | symbol,
+      ...args: unknown[]
+    ) => {
       if (typeof actual === 'object' && actual !== null) {
         assert.ok(property in actual)
         if (args.length > 0) {
-          assert.deepStrictEqual((actual as Record<string | number | symbol, unknown>)[property], args[0])
+          assert.deepStrictEqual(
+            (actual as Record<string | number | symbol, unknown>)[property],
+            args[0],
+          )
         }
       } else {
         throw new Error('toHaveProperty can only be used with objects')

@@ -1,5 +1,5 @@
 import type { Db } from '#db'
-import { store} from './store.ts'
+import { store } from './store.ts'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 

@@ -1,4 +1,4 @@
-import { signal, computed, Signal } from "@preact/signals";
+import { computed, Signal, signal } from "@preact/signals";
 
 const proxyToSignals = new WeakMap<object, Map<string | symbol, Signal<any>>>();
 const objToProxy = new WeakMap<object, any>();

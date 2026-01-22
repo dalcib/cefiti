@@ -129,7 +129,8 @@ export const doc = {
 
 globalThis.window = {
   document: doc,
-  requestAnimationFrame: (cb: (time: number) => void) => setTimeout(() => cb(Date.now()), 0),
+  requestAnimationFrame: (cb: (time: number) => void) =>
+    setTimeout(() => cb(Date.now()), 0),
   cancelAnimationFrame: clearTimeout,
   console: console,
   history: { replaceState: noop, pushState: noop },

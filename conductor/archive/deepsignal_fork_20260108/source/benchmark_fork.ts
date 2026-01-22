@@ -1,7 +1,7 @@
-import { signal, computed } from "@preact/signals";
+import { computed, signal } from "@preact/signals";
+import { deepSignal as originalDeepSignal } from "deepsignal";
 import { performance } from "perf_hooks";
 import { deepSignal as fastDeepSignal, shallow } from "./index.ts";
-import { deepSignal as originalDeepSignal } from "deepsignal";
 
 const COUNT = 10000;
 const data = Array.from({ length: COUNT }, (_, i) => ({ val: i, other: 'data' }));

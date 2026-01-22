@@ -112,7 +112,7 @@ div#moldura-navegacao-global #navegacao-global {
 @media print {
   .no-print,
   .no-print * {
-    display: none !important;
+    display: none;
   }
   #corpo {
     font-size: 1.2em;
@@ -122,7 +122,7 @@ div#moldura-navegacao-global #navegacao-global {
   div#corpo #conteudo h4 i,
   div#corpo #conteudo h4 a {
     background: url(http://sistemasweb.agricultura.gov.br/styles_java/img/blt-subtitulo.gif)
-      left no-repeat !important;
+      left no-repeat;
     border-bottom: 1px solid #ccc;
     font-size: 1.2em;
     margin-bottom: 15px;

@@ -47,6 +47,12 @@
         "conductor/**/*",
         "docs/**/*",
         "public/**/*",
+        "public/index.js",
+        "public/index.js.map",
+        "public/index.css",
+        "public/index.css.map",
+        "public/sw.js",
+        "public/sw.js.map",
         "src/db.ts",
         "firebase/public/db.js"
       ],

@@ -12,19 +12,17 @@
     /* Se aplica a todas as declarações */
     border: 0;
     color: #000;
-    font-family:
-      arial,
-      verdana helvetica;
+    font-family: arial, verdana, helvetica, sans-serif;
     margin: 0;
     padding: 0;
   }
 
   body {
     color: #666;
-    font:
-      normal 11px / 1em verdana,
-      arial,
-      serif;
+    font-family: verdana, arial, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 1em;
   }
 
   div#resolucao {

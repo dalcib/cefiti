@@ -1,15 +1,8 @@
 import { h, render } from 'preact'
 import { act } from 'preact/test-utils'
-import { deepSignal, /* useDeepSignal */ } from './deep-signals.ts'
+import { deepSignal /* useDeepSignal */ } from './deep-signals.ts'
 import { doc } from './dom-mock.ts'
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  mock,
-} from './expect.ts'
+import { afterEach, beforeEach, describe, expect, it, mock } from './expect.ts'
 
 describe('deepsignal (preact)', () => {
   let scratch: HTMLElement
