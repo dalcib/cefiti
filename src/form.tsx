@@ -1,14 +1,13 @@
-import { type Store, store } from './store'
+import { store, type Dados } from './store'
 
 interface PropsSelect {
   source: 'listaNomesSci' | 'listaNomesVul' | 'partes' | 'destino' | 'origem' | 'municipiosOrigem' | 'municipiosDestino'
-  name: keyof Store['dados']
+  name: keyof Dados
 }
 
 const Select = function Select({ source, name }: PropsSelect) {
-  //const store = useStore()
 
-  if (name.startsWith('municipio')) {
+  /* if (name.startsWith('municipio')) {
     const normalize = (s: string) =>
       s
         .normalize('NFD')
@@ -54,7 +53,7 @@ const Select = function Select({ source, name }: PropsSelect) {
         </datalist>
       </>
     )
-  }
+  } */
 
   return (
     <select
@@ -96,9 +95,9 @@ function Form() {
       />
       <FormField label="Parte da Planta:" name="prod" source="partes" />
       <FormField label="Estado de Origem:" name="orig" source="origem" />
-      <FormField label="Município de Origem:" name="municipioOrigem" source="municipiosOrigem" />
+      {/*  <FormField label="Município de Origem:" name="municipioOrigem" source="municipiosOrigem" /> */}
       <FormField label="Estado de Destino:" name="dest" source="destino" />
-      <FormField label="Município de Destino:" name="municipioDestino" source="municipiosDestino" />
+      {/*  <FormField label="Município de Destino:" name="municipioDestino" source="municipiosDestino" /> */}
       <br />
       <div>
         <a
