@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true,
+  //"editor.formatOnPaste": true,
+  //"editor.formatOnType": true,
+  "biome.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "explicit"
+  }
+}

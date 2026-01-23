@@ -1,0 +1,34 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "lint",
+			"problemMatcher": [
+				"$biome"
+			],
+			"label": "npm: lint",
+			"detail": "biome lint ."
+		},
+		{
+			"type": "npm",
+			"script": "format",
+			"problemMatcher": [
+				"$biome"
+			],
+			"label": "npm: format",
+			"detail": "biome format . --write"
+		},
+		{
+			"type": "npm",
+			"script": "check",
+			"problemMatcher": [
+				"$biome"
+			],
+			"label": "npm: check",
+			"detail": "biome check --write ."
+		}
+	]
+}
