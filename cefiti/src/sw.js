@@ -79,8 +79,8 @@ self.addEventListener('fetch', (event) => {
           if (new URL(event.request.url).protocol !== 'chrome-extension:') {
             console.log(
               event.request.url,
-              new URL(event.request.url).protocol,
-              'xxxxxxxxx',
+              //new URL(event.request.url).protocol,
+              'cached',
             )
             cache.put(event.request, fetchedResponse.clone())
           }

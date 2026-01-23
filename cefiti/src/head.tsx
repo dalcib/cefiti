@@ -7,9 +7,6 @@ export const Head = () => (
       <div id="topo">
         <div id="identificacao-ministerio">
           <span>
-            <span className="ministerio-text">
-              Ministério da Agricultura e Pecuária
-            </span>
             <div id="imagemGov">
               <a
                 href="http://www.brasil.gov.br"
