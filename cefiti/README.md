@@ -4,6 +4,9 @@
 
 ## **_CHANGELOG_**
 
+## 9.0.0
+ - Separação do banco de dados do sistema para facilitar a atualização
+
 ## 8.1.1
 
 - Vassoura de Bruxa da Mandioca: Inclusão de municípios do Pará como área de ocorrência

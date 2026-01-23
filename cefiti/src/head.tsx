@@ -43,7 +43,7 @@ export const Head = () => (
               padding: '5px 10px 5px 15px',
             }}
           >
-            <p>Data: {new Date().toLocaleDateString()}</p>
+            <p>Data: {new Date().toLocaleDateString('pt-BR')}</p>
           </div>
           <h2>
             Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual
