@@ -1,19 +1,12 @@
+import assert from 'node:assert/strict'
+import { afterEach, beforeEach, describe, it, mock } from 'node:test'
 import { h, render } from 'preact'
 import { act } from 'preact/test-utils'
-import { deepSignal /* useDeepSignal */ } from './deep-signals.ts'
+import { deepSignal /* useDeepSignal */ } from '../src/deep-signals.ts'
 import { doc } from './dom-mock.ts'
-import { afterEach, beforeEach, describe, expect, it, mock } from './expect.ts'
 
 describe('deepsignal (preact)', () => {
   let scratch: HTMLElement
-
-  // Simple rerender hook
-  /*const setupRerender = () => {
-    let module: any;
-    try { module = require("preact/test-utils"); } catch (e) { }
-    if (module && module.setupRerender) return module.setupRerender();
-    return () => { };
-  };*/
 
   beforeEach(() => {
     scratch = doc.createElement('div') as unknown as HTMLElement
@@ -29,16 +22,16 @@ describe('deepsignal (preact)', () => {
       render(h('span', null, state.$test), scratch)
 
       // biome-ignore lint/style/noNonNullAssertion: Test setup guarantees existence
-      const text = scratch.firstChild!.firstChild!
-      expect(text).toHaveProperty('data', 'test')
+      const text = scratch.firstChild!.firstChild! as unknown as { data: string }
+      assert.strictEqual(text.data, 'test')
 
       act(() => {
         state.test = 'changed'
       })
 
       // biome-ignore lint/style/noNonNullAssertion: Test setup guarantees existence
-      expect(scratch.firstChild!.firstChild!).toBe(text)
-      expect(text).toHaveProperty('data', 'changed')
+      assert.strictEqual(scratch.firstChild!.firstChild!, text as unknown as ChildNode)
+      assert.strictEqual(text.data, 'changed')
     })
 
     it('should update deepSignal-based Text (in a parent component)', async () => {
@@ -51,24 +44,22 @@ describe('deepsignal (preact)', () => {
       }
       render(h(App, { x: state.$test }), scratch)
 
-      // biome-ignore lint/suspicious/noExplicitAny: Mock inspection
-      const initialCallCount = (spy as any).mock.callCount()
+      const initialCallCount = spy.mock.callCount()
 
       // biome-ignore lint/style/noNonNullAssertion: Test setup guarantees existence
-      const text = scratch.firstChild!.firstChild!
-      expect(text).toHaveProperty('data', 'test')
+      const text = scratch.firstChild!.firstChild! as unknown as { data: string }
+      assert.strictEqual(text.data, 'test')
 
       act(() => {
         state.test = 'changed'
       })
 
       // biome-ignore lint/style/noNonNullAssertion: Test setup guarantees existence
-      expect(scratch.firstChild!.firstChild!).toBe(text)
-      expect(text).toHaveProperty('data', 'changed')
+      assert.strictEqual(scratch.firstChild!.firstChild!, text as unknown as ChildNode)
+      assert.strictEqual(text.data, 'changed')
 
       // Ensure no re-render of App (because signal was passed directly as text content?)
-      // Actually if we pass signal as prop, and use it in JSX, Preact optimized it.
-      expect(spy).toHaveBeenCalledTimes(initialCallCount)
+      assert.strictEqual(spy.mock.callCount(), initialCallCount)
     })
 
     it('should update props without re-rendering', async () => {
@@ -80,24 +71,23 @@ describe('deepsignal (preact)', () => {
       }
       render(h(Wrap, null), scratch)
 
-      // biome-ignore lint/suspicious/noExplicitAny: Mock inspection
-      const initialCallCount = (spy as any).mock.callCount()
+      const initialCallCount = spy.mock.callCount()
 
-      expect(scratch.firstChild).toHaveProperty('value', 'initial')
+      assert.strictEqual((scratch.firstChild as unknown as HTMLInputElement).value, 'initial')
 
       act(() => {
         state.test = 'updated'
       })
 
-      expect(scratch.firstChild).toHaveProperty('value', 'updated')
-      expect(spy).toHaveBeenCalledTimes(initialCallCount)
+      assert.strictEqual((scratch.firstChild as unknown as HTMLInputElement).value, 'updated')
+      assert.strictEqual(spy.mock.callCount(), initialCallCount)
 
       act(() => {
         state.test = 'second update'
       })
 
-      expect(scratch.firstChild).toHaveProperty('value', 'second update')
-      expect(spy).toHaveBeenCalledTimes(initialCallCount)
+      assert.strictEqual((scratch.firstChild as unknown as HTMLInputElement).value, 'second update')
+      assert.strictEqual(spy.mock.callCount(), initialCallCount)
     })
   })
 
@@ -110,13 +100,13 @@ describe('deepsignal (preact)', () => {
       }
 
       render(h(App, null), scratch)
-      expect(scratch.textContent).toBe('foo')
+      assert.strictEqual(scratch.textContent, 'foo')
 
       act(() => {
         state.test = 'bar'
       })
 
-      expect(scratch.textContent).toBe('bar')
+      assert.strictEqual(scratch.textContent, 'bar')
     })
 
     it('should not subscribe to unrelated deepSignals', () => {
@@ -129,15 +119,14 @@ describe('deepsignal (preact)', () => {
       }
 
       render(h(App, null), scratch)
-      // biome-ignore lint/suspicious/noExplicitAny: Mock inspection
-      const initialCallCount = (spy as any).mock.callCount()
-      expect(initialCallCount).toBe(1)
+      const initialCallCount = spy.mock.callCount()
+      assert.strictEqual(initialCallCount, 1)
 
       act(() => {
         state.unrelated = 'baz'
       })
 
-      expect(spy).toHaveBeenCalledTimes(initialCallCount)
+      assert.strictEqual(spy.mock.callCount(), initialCallCount)
     })
 
     it('should not subscribe to child signals', () => {
@@ -154,42 +143,14 @@ describe('deepsignal (preact)', () => {
       }
 
       render(h(App, null), scratch)
-      expect(scratch.textContent).toBe('foo')
-      // biome-ignore lint/suspicious/noExplicitAny: Mock inspection
-      const initialCallCount = (spy as any).mock.callCount()
+      assert.strictEqual(scratch.textContent, 'foo')
+      const initialCallCount = spy.mock.callCount()
 
       act(() => {
         state.test = 'bar'
       })
 
-      expect(spy).toHaveBeenCalledTimes(initialCallCount)
+      assert.strictEqual(spy.mock.callCount(), initialCallCount)
     })
   })
-
-  /*describe('useDeepSignal', () => {
-    it('should return a deep signal that is internally stable', async () => {
-      const spy = mock.fn()
-      let state: any
-
-      function App() {
-        spy()
-        state = useDeepSignal({ test: 'test' })
-        return h('p', null, state.test)
-      }
-
-      render(h(App, null), scratch)
-
-      expect(scratch.textContent).toBe('test')
-      expect(spy).toHaveBeenCalledTimes(1)
-      const stateAfterRender = state!
-
-      act(() => {
-        state!.test = 'updated'
-      })
-
-      expect(scratch.textContent).toBe('updated')
-      expect(spy).toHaveBeenCalledTimes(2)
-      expect(stateAfterRender).toBe(state!)
-    })
-  })*/
 })

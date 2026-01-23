@@ -7,7 +7,7 @@ import {
   pragas,
   regras,
 } from '#db'
-import { deepSignal } from './lib/deep-signals.ts'
+import { deepSignal } from './deep-signals.ts'
 
 declare global {
   interface Window {

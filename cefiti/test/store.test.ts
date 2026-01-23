@@ -1,7 +1,7 @@
-import assert from 'node:assert'
+import assert from 'node:assert/strict'
 import { before, describe, it, test } from 'node:test'
-import { hospedeiros, pragas, regras } from './db.ts'
-import { store } from './store.ts'
+import { hospedeiros, pragas, regras } from '../src/db.ts'
+import { store } from '../src/store.ts'
 
 type EventChange = {
   currentTarget: { name: string; value: string }

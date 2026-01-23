@@ -1,7 +1,16 @@
+import fs from 'node:fs'
 import process from 'node:process'
 import esbuild from 'esbuild'
 
+const project =
+  process.argv.slice(2).find((arg) => !arg.startsWith('--')) || 'cefiti'
+const baseDir = `./${project}`
 const isBuild = process.argv.includes('--build')
+
+if (!fs.existsSync(baseDir)) {
+  console.error(`Project directory ${baseDir} does not exist.`)
+  process.exit(1)
+}
 
 const externalDbPlugin = {
   name: 'external-db',
@@ -17,7 +26,7 @@ const externalDbPlugin = {
 
 const commonConfig = {
   bundle: true,
-  outdir: './public',
+  outdir: `${baseDir}/public`,
   sourcemap: true,
   format: 'esm',
   jsx: 'automatic',
@@ -28,25 +37,30 @@ const commonConfig = {
   metafile: true,
 }
 
+const entryPoints = [`${baseDir}/src/index.tsx`]
+if (fs.existsSync(`${baseDir}/src/sw.js`)) {
+  entryPoints.push(`${baseDir}/src/sw.js`)
+}
+
 /** @type {esbuild.BuildOptions} */
 const appConfig = {
   ...commonConfig,
-  entryPoints: ['./src/index.tsx', './src/sw.js'],
+  entryPoints,
   minify: true,
-  plugins: [externalDbPlugin],
+  plugins: project === 'cefiti' ? [externalDbPlugin] : [],
 }
 
 if (isBuild) {
   try {
     await esbuild.build(appConfig)
-    console.log('Build complete successfully')
+    console.log(`Build for ${project} complete successfully`)
   } catch (error) {
-    console.error('Build failed:', error)
+    console.error(`Build for ${project} failed:`, error)
     process.exit(1)
   }
 } else {
   const appContext = await esbuild.context(appConfig).catch((err) => {
-    console.error('App context error:', err)
+    console.error(`App context error for ${project}:`, err)
     process.exit(1)
   })
 
@@ -54,10 +68,10 @@ if (isBuild) {
   await appContext.watch()
 
   const serveResult = await appContext.serve({
-    servedir: './public',
+    servedir: `${baseDir}/public`,
     host: 'localhost',
-    port: 3001,
+    port: project === 'cefiti' ? 3001 : 3002,
   })
 
-  console.log(`Listening on http://localhost:${serveResult.port}`)
+  console.log(`${project} listening on http://localhost:${serveResult.port}`)
 }

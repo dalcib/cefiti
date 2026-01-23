@@ -20,21 +20,23 @@
   "homepage": ".",
   "imports": {
     "#db": {
-      "node": "./src/db.ts",
-      "default": "./db.js"
+      "node": "./cefiti/src/db.ts",
+      "default": "./cefiti/public/db.js"
     }
   },
   "scripts": {
-    "start": "node dev.mjs",
-    "test": "node --test --experimental-strip-types \"src/**/*.test.ts\"",
-    "analyze": "source-map-explorer public/*.js",
+    "start": "node dev.mjs cefiti",
+    "start:admin": "node dev.mjs cefiti-admin",
+    "test": "node --test --experimental-strip-types \"cefiti/test/**/*.test.ts\"",
+    "analyze": "source-map-explorer cefiti/public/*.js",
     "lint": "biome lint .",
     "format": "biome format . --write",
     "check": "biome check --write .",
-    "build": "node dev.mjs --build",
-    "build-db": "esbuild src/db.ts --bundle --outfile=firebase/public/db.js --format=esm --target=es2017",
+    "build": "node dev.mjs cefiti --build",
+    "build:admin": "node dev.mjs cefiti-admin --build",
+    "build-db": "esbuild cefiti/src/db.ts --bundle --outfile=cefiti/public/db.js --format=esm --target=es2017",
     "deploy-db": "cd firebase && npx firebase-tools deploy --only hosting",
-    "meta": "esbuild src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
+    "meta": "esbuild cefiti/src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
   },
   "dependencies": {
     "@preact/signals": "^2.5.1",

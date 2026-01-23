@@ -1,8 +1,8 @@
 # CEFiTI - Project Context
 
-@docs/overview.md
-@docs/architecture.md
-@docs/glossary.md
+@conductor/docs/overview.md
+@conductor/docs/architecture.md
+@conductor/docs/glossary.md
 
 @conductor/product.md
 @conductor/product-guidelines.md

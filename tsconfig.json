@@ -4,7 +4,7 @@
     //"module": "nodenext",
     "baseUrl": ".",
     "paths": {
-      "#db": ["./src/db.ts"]
+      "#db": ["./cefiti/src/db.ts"]
     },
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true,
@@ -34,5 +34,5 @@
     "noFallthroughCasesInSwitch": true
   },
   "exclude": ["node_modules", "build", "assets"],
-  "include": ["src", "public/dbRegras.db.js", "public/dbPragas.db.js", "public/dbHospedeiros.db.js"]
+  "include": ["cefiti/src", "cefiti-admin/src", "cefiti/test", "cefiti/public/*.db.js"]
 }

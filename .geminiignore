@@ -1,4 +1,3 @@
 # Exclude your /packages/ directory and all subdirectories
-/assets/
 
 # Exclude your apikeys.txt file

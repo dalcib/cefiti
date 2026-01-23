@@ -1,7 +1,6 @@
 import { version } from './../package.json'
 
-// eslint-disable-next-line no-undef
-const cacheKey = `CEFiTI${version}` //8.0.0';
+const cacheKey = `CEFiTI${version}`
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

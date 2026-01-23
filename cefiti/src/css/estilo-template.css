@@ -1,0 +1,408 @@
+/* ###
+
+  Arquivo responsável pelo estilo do template
+  
+  #resolucao;
+  #topo;
+  #navegacao-global;
+  #navegacao-local;
+  #controle-exibicao-coluna;
+  #corpo;
+  #caminho-navegacao;
+  #area-mensagens;
+  #rodape;
+        
+### */
+
+* {
+  /* Se aplica a todas as declarações */
+  border: 0;
+  font-family: arial, verdana, helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 0.8em;
+}
+
+#resolucao {
+  width: 100%;
+}
+
+/********************header*****************************/
+#identificacao-ministerio {
+  position: relative;
+  clear: both;
+  overflow: hidden;
+  min-width: 1000px;
+  height: 31px;
+  background: #f1f1f1 none repeat scroll 0 0;
+}
+
+/* Configurações do span dentro da div #identificacao-ministerio */
+#identificacao-ministerio span {
+  display: block;
+  height: 31px;
+  background: #f1f1f1 none repeat scroll 0 0;
+}
+
+/* Configurações da imagem */
+#imagemGov {
+  position: absolute;
+  top: 4px;
+  height: 24px;
+  width: 500px;
+  background: #f1f1f1
+    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAMAAAC5m+00AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACrUExURQCXSF27iQCWRQOWSQCWSRCdVACSSgCWRwCVSRKcVv/oAP/yAAIvh/bjBQKVTP/rAK3PF/3sARZBkg05ima2LCqiPg+ZRR9JoermBbGwLwEqkgCST1GwMRqdQZfIHdzgCSdSlTlYbEWrNyNKeouUPHOgtEJsn2WOrSClX2m/lF+6i3/lF+6i3/lF+6i3/lF+6i3/lF+6i3/lF+6i3/lF+6i3q8JsDVEBpCgWN2WefTD8i/IYSstzKmO3eIUaa2h3SOjfvlHjVfq6OmNShvDYIAAAFISURBVCjPbVHXksMgDNQBljC4l9iOndjp5VKv//+XnXByb7fDADO7rNAK9v4DngPv/h/24BHBuEhqB3pCeUxJIAWKtMZlIVCTciogH3yhWMpinM2t7ZctS5UgAR74kVICpMauNrfmaucTpMj5e+4VUNTOEvuzCoL8EvZLJCH1SIHAqKjtehowposwTmbIcqZIt+UpNV/3zWa3HYLp2sZ1gegoPXkNU5M238Ow3d132cIYEyel9MHDLo2NcX4519puPkPmbOIowrdTbGyTZXk2BEH1kZo4LPSjFgq2DFcVc3lWNZbt2rGWIIiwTOztzJZV9W77glCp8RsSNHdc1NfL6rxoxp5JCcmUC1cJjdx0GKZ1hxq0eqYBkuPlzLHrjXuiOAwaDUGQFJyWBpyU7EUaQI/xckGeA98jksqNQLmp8BnB4Xh8+ReHX640GNLt25uiAAAAAElFTkSuQmCC")
+    no-repeat scroll 8px center;
+}
+
+#imagemGov:after {
+  content: "";
+  margin-left: 40px;
+  color: #606060;
+  font-weight: bold;
+  position: absolute;
+  top: 4px;
+}
+
+/* configurações para o link http://www.brasil.gov.br*/
+#brasilgov {
+  height: 24px;
+  float: right;
+  display: block;
+  border: 0;
+}
+
+/* div#moldura-topo {
+     height: 116px; 
+} */
+
+#topo {
+  /*   height: 116px; */
+  background: none repeat scroll 0% 0% #3866b5;
+}
+
+/* div#moldura-topo #topo #logomarca-governo-federal {
+  background: url(./img/logomarca-governo-federal.jpg) no-repeat right;
+  height: 21px;
+  margin-right: 8px;
+} */
+
+#identificacao-sistema {
+  float: left;
+  padding-bottom: 10px; /* */
+}
+
+#identificacao-sistema p {
+  color: #dcecff;
+  border-bottom: 1px solid #dcecff;
+  font-weight: bold;
+  margin: 10px 0 0 10px;
+  width: 311px;
+}
+
+#identificacao-sistema h1 {
+  font-size: 3.5em;
+  color: #ffffff;
+  margin: 0 0 2px 10px;
+}
+
+#identificacao-sistema h2 {
+  color: #dcecff;
+  font-size: 1.3em;
+  margin-left: 10px;
+}
+
+#dados-login {
+  float: right;
+  font-size: 0.8em;
+  line-height: 1.5em;
+  padding: 6px 15px 0 0;
+  color: #ffffff;
+}
+
+#dados-login p span {
+  color: #dcecff;
+}
+
+#dados-login p.links {
+  margin-top: 15px;
+}
+
+#moldura-navegacao-global {
+  background: #0f4098 none repeat scroll 0 0;
+}
+
+#navegacao-global {
+  background: #0f4098 none repeat scroll 0 0;
+  overflow: hidden;
+}
+
+#navegacao-local {
+  float: left;
+  padding: 10px 10px 20px 10px;
+  width: 135px;
+}
+
+#corpo {
+  padding: 10px 20px 20px 30px;
+}
+
+#corpo p.caminho-navegacao {
+  font-size: 0.8em;
+  margin-bottom: 15px;
+}
+
+#corpo p.caminho-navegacao span {
+  background: url(./img/blt-caminho-navegacao.gif) no-repeat left;
+  display: inline-block;
+  margin-right: 5px;
+  padding-left: 8px;
+}
+
+#corpo p.caminho-navegacao span.caminho-navegacao-ativa {
+  color: #618cd2;
+}
+
+#corpo p.ajuda-contextual {
+  float: right;
+  background-color: #3866b5;
+  padding: 5px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+#corpo h3 {
+  font-size: 1.5em;
+  font-weight: normal;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+#corpo hr {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 15px;
+  padding: 0 0 2px 10px;
+}
+
+#conteudo {
+  background: #fff;
+  border-top: 1px solid #1e64d3;
+  border-bottom: 1px solid #1e64d3;
+  padding: 10px 20px 20px;
+}
+
+#conteudo-login {
+  background: #fff;
+}
+
+#conteudo-login-novo {
+  background: #eaebee;
+  border-top: 4px solid #1e64d3;
+  padding: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 300px;
+}
+
+#conteudo-reenviar-senha {
+  background: #eaebee;
+  border-top: 4px solid #1e64d3;
+  padding: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 500px;
+}
+
+#conteudo h4 {
+  background: url(./img/blt-subtitulo.gif) left no-repeat;
+  border-bottom: 1px solid #ccc;
+  font-size: 1em;
+  margin-bottom: 15px;
+  padding: 0 0 2px 10px;
+}
+
+#conteudo h5 {
+  background: url(./img/blt-subtitulo.gif) left no-repeat;
+  font-size: 1em;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding: 0 0 2px 10px;
+}
+
+#conteudo p.conteudo {
+  margin-bottom: 20px;
+}
+
+#area-mensagens {
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
+
+#area-mensagens p {
+  padding: 5px;
+}
+
+#area-mensagens ul {
+  font-weight: bold;
+  list-style: none;
+  min-height: 20px;
+  padding: 10px;
+}
+
+#area-mensagens ul li {
+  line-height: 1.2em;
+  margin-left: 40px;
+}
+
+#area-mensagens ul.msg-informativa {
+  background: url(./img/ico-msg-informativa.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
+  background-size: 30px 30px;
+  background-color: #cbe0f4;
+  background-position: 10px;
+  border: 2px solid #96b6d3;
+  color: #286eae;
+}
+
+#area-mensagens ul.msg-alerta {
+  background: url(./img/ico-msg-alerta.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
+  background-size: 30px 30px;
+  background-color: #fff6bf;
+  background-position: 10px;
+  border: 2px solid #ffd324;
+  color: #817134;
+}
+
+#area-mensagens ul.msg-sucesso {
+  background: url(./img/ico-msg-sucesso.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
+  background-size: 30px 30px;
+  background-color: #e6efc2;
+  background-position: 10px;
+  border: 2px solid #c6d880;
+  color: #529214;
+}
+
+#area-mensagens ul.msg-erro {
+  background: url(./img/ico-msg-erro.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
+  background-size: 30px 30px;
+  background-color: #fbe3e4;
+  background-position: 10px;
+  border: 2px solid #fbc2c4;
+  color: #d12f19;
+}
+
+#controle-exibicao-menu {
+  left: 0;
+  margin-left: 3px;
+  padding-top: 190px;
+  position: absolute;
+  top: 0;
+  width: 11px;
+}
+
+/* Modal dialog */
+
+/* #dialog-confirm p {
+  background: url(./img/bkg-modal-confirm.png) no-repeat;
+  padding-left: 50px;
+  min-height: 48px;
+} */
+
+.carregando {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  z-index: 9999;
+}
+
+.carregando img {
+  width: 80px;
+  height: 80px;
+}
+
+#area-mensagens-dialog {
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+#area-mensagens-dialog ul {
+  font-weight: bold;
+  list-style: none;
+  min-height: 20px;
+  padding-top: 5px;
+  text-align: left;
+}
+
+#area-mensagens-dialog ul li {
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  padding-left: 5%;
+}
+
+#area-mensagens-dialog p {
+  padding: 5px;
+}
+
+#area-mensagens-dialog ul.msg-informativa {
+  background: url(./img/ico-msg-informativa.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
+  background-size: 30px 30px;
+  background-color: #cbe0f4;
+  background-position: 10px;
+  border: 2px solid #96b6d3;
+  color: #286eae;
+}
+
+#area-mensagens-dialog ul.msg-alerta {
+  background: url(./img/ico-msg-alerta.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
+  background-size: 30px 30px;
+  background-color: #fff6bf;
+  background-position: 10px;
+  border: 2px solid #ffd324;
+  color: #817134;
+}
+
+#area-mensagens-dialog ul.msg-sucesso {
+  background: url(./img/ico-msg-sucesso.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
+  background-size: 30px 30px;
+  background-color: #e6efc2;
+  background-position: 10px;
+  border: 2px solid #c6d880;
+  color: #529214;
+}
+
+#area-mensagens-dialog ul.msg-erro {
+  background: url(./img/ico-msg-erro.png) no-repeat scroll left center
+    rgba(0, 0, 0, 0);
+  background-size: 30px 30px;
+  background-color: #fbe3e4;
+  background-position: 10px;
+  border: 2px solid #fbc2c4;
+  color: #d12f19;
+}
+
+/* Configurações para a div de gestores */
+#divGestores ul {
+  margin-left: 5px;
+  list-style: none;
+}
+#divGestores ul li {
+  margin-top: 5px;
+  list-style-type: circle;
+  list-style-position: inside;
+}
+#divGestores ul li ul li {
+  padding: 3px;
+  list-style-type: square;
+  list-style-image: url(./img/blt-navegacao.gif);
+  margin-top: 0px;
+}
