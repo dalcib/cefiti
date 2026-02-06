@@ -3,7 +3,7 @@
 @conductor/docs/overview.md
 @conductor/docs/architecture.md
 @conductor/docs/glossary.md
-
+@conductor/docs/schema-database.md
 @conductor/product.md
 @conductor/product-guidelines.md
 @conductor/tech-stack.md

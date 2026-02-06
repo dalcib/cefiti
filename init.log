@@ -1,0 +1,18 @@
+Starting initialization of Firestore collections...
+Populating status_fitossanitario...
+(node:28356) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+- Created status: ├ürea Sem Ocorr├¬ncia
+- Created status: ├ürea Com Ocorr├¬ncia
+- Created status: Status Desconhecido
+- Created status: ├ürea Livre de Praga (ALP)
+- Created status: Sistema de Mitiga├º├úo de Risco (SMR)
+- Created status: ├ürea Sob Erradica├º├úo
+- Created status: Zona Tamp├úo
+- Created status: ├ürea Erradicada
+Initializing status_municipio...
+- Collection status_municipio initialized with metadata.
+Initializing rules...
+- Collection rules initialized with metadata.
+
+Initialization COMPLETED successfully!

@@ -13,7 +13,7 @@
         ]
       },
       {
-        "source": "/db.js",
+        "source": "/db*.js",
         "headers": [
           {
             "key": "Content-Type",

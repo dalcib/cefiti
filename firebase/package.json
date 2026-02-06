@@ -1,0 +1,19 @@
+{
+  "name": "cefiti-firebase",
+  "version": "1.0.0",
+  "description": "Firebase management and scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "publish:prod": "node scripts/publicar-db-legacy.ts && npx firebase-tools deploy --only hosting",
+    "publish:dev": "node scripts/publicar-db.ts && npx firebase-tools deploy --only hosting"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.2",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.6.0",
+    "firebase-tools": "^15.4.0"
+  }
+}
