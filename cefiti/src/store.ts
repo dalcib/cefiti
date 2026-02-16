@@ -37,7 +37,7 @@ export interface Dados {
 const hospedeiroMap = new Map(hospedeiros.map((h) => [h.id, h.nomeSci]))
 
 export const db = regras.map((regra) => {
-  const praga = pragas.find((item) => item.id === regra.idprag)
+  const praga = pragas.find((item) => item.prag === regra.prag)
   return {
     ...praga,
     ...regra,

@@ -5,8 +5,7 @@ Table configuracoes {
 }
 
 Table pragas {
-  id Int [pk, increment]
-  prag String [unique]
+  prag String [pk, unique]
   pragc String [unique]
   hosp Int[] [ref: < hospedeiros.id, note: "each element is a hospedeiro id"]
   files Int[] [ref: < files.id, note: "each element is a file id"]
@@ -23,9 +22,8 @@ Table regras {
   desc String
   dest String[] [Ref: > estados.uf, note: "each element is a estado uf"]
   orig String[] [Ref: > estados.uf, note: "each element is a estado uf"]
-  idprag Int [Ref: > pragas.id]
   part String[]
-  prag String
+  prag String [Ref: > pragas.prag]
   }
 
 Table legislacoes {
@@ -60,15 +58,14 @@ Table municipios {
 }
 
 Table status_municipio {
-  id Int [pk]
-  praga Int [Ref: > pragas.id]
+  praga String [Ref: = pragas.prag]
   estado Object{uf: Int(6)[]} [Ref: > estados.uf, note: "uf: id do estado, [] : lista de municipios"]
   status String [Ref: > status_fitossanitario.status]
 }
 
 Table rules {
   id Int [pk]
-  praga Int [Ref: > pragas.id]
+  praga String [Ref: > pragas.prag]
   status_origem status 
   status_destino status 
   exig String
