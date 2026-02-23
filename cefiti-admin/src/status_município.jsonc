@@ -56,6 +56,7 @@
         "status_fitossanitário": "Área Com Ocorrência",
         "estados": [
           {
+            //Portaria DIAGRO 10/25
             "uf": "AP",
             "ibge": 16,
             "municipios": {
@@ -66,8 +67,9 @@
               "0055": "Pracuúba",
               "0070": "Tartarugalzinho"
             }
-          }, //Portaria DIAGRO 10/25
+          },
           {
+            //PORT1512-2026
             "uf": "PA",
             "ibge": 15,
             "municipios": {
@@ -75,7 +77,7 @@
               "0510": "Óbidos",
               "0530": "Oriximiná"
             }
-          } //PORT1512-2026
+          }
         ]
       }
     ]
@@ -84,13 +86,13 @@
     "praga": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
     "status": [
       {
-        "status_fitossanitário": "Área Com Ocorrência", //hlb_ocorrencia2.pdf
+        "status_fitossanitário": "Área Com Ocorrência", //hlb_ocorrencia2.pdf (exceto Minas)
         "estados": [
           {
+            //Áreas de risco HLB_Greening em Minas Gerais.pdf (IMA)
             "uf": "MG",
             "ibge": 31,
             "municipios": {
-              //Áreas de risco HLB_Greening em Minas Gerais.pdf (IMA)
               /*
           Há uma direrença entre os dados do DSV e do IMA. 
           Foram utilizados aqui os dados do IMA, mas é necessário checar qual está valendo. 
