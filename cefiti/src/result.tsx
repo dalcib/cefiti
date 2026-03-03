@@ -46,13 +46,13 @@ function Result() {
               <br />
               {item.files?.map((file, iii) => {
                 return (
-                  <div key={file.link.concat(iii.toString())}>
+                  <div key={`${file.id}${iii}`}>
                     <a
                       target="_blank"
                       rel="noopener noreferrer"
-                      href={`leg/${file.link}`}
+                      href={`leg/${file.id}.pdf`}
                     >
-                      {file.leg}
+                      {file.leg}, de {file.data}
                     </a>
                     <br />
                   </div>

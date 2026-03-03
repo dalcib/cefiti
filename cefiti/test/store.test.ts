@@ -184,8 +184,8 @@ describe('Store filtro geral', () => {
   })
   it('Musa spp. legis', () => {
     assert.deepEqual(
-      store.result.flatMap((v) => v.files).map((v) => v.link),
-      ['IN17-2009.pdf', 'IN17-2005.pdf', 'IN17-2005.pdf'],
+      store.result.flatMap((v) => v.files).map((v) => v.id),
+      ['IN17-2009', 'IN17-2005', 'IN17-2005'],
     )
   })
 
@@ -211,8 +211,8 @@ describe('Store filtro geral', () => {
     store.dados.dest = 'MT'
     assert.strictEqual(store.result.length, 1)
     assert.deepEqual(
-      store.result.flatMap((v) => v.files).map((v) => v.link),
-      ['IN20-2013.pdf'],
+      store.result.flatMap((v) => v.files).map((v) => v.id),
+      ['IN20-2013'],
     )
     assert.deepEqual(
       store.result.map((v) => v.pragc),
@@ -236,8 +236,8 @@ describe('Store filtro geral', () => {
     store.dados.dest = 'ES'
     assert.strictEqual(store.result.length, 1)
     assert.deepEqual(
-      store.result.flatMap((v) => v.files).map((v) => v.link),
-      ['IN21-2018.pdf'],
+      store.result.flatMap((v) => v.files).map((v) => v.id),
+      ['IN21-2018'],
     )
     assert.deepEqual(
       store.result.map((v) => v.pragc),
@@ -252,8 +252,8 @@ describe('Store filtro geral', () => {
     store.dados.dest = 'ES'
     assert.strictEqual(store.result.length, 3)
     assert.deepEqual(
-      store.result.flatMap((v) => v.files).map((v) => v.link),
-      ['PORT317-2021.pdf', 'PORT317-2021.pdf', 'IN21-2018.pdf'],
+      store.result.flatMap((v) => v.files).map((v) => v.id),
+      ['PORT317-2021', 'PORT317-2021', 'IN21-2018'],
     )
     assert.deepEqual(
       store.result.map((v) => v.pragc),

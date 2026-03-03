@@ -1444,7 +1444,7 @@
         ]
       },
       {
-        "status_fitossanitário": "Área Livre de Praga (ALP)",
+        "status_fitossanitário": "Área Livre de Praga",
         "estados": [
           { "uf": "CE", "ibge": 23, "municipios": { "9999": "Todos" } },
           { "uf": "PE", "ibge": 26, "municipios": { "9999": "Todos" } },
@@ -1645,7 +1645,7 @@
         ]
       },
       {
-        "status_fitossanitário": "Área Livre de Praga (ALP)",
+        "status_fitossanitário": "Área Livre de Praga",
         "estados": [
           {
             "uf": "PA",
@@ -1667,7 +1667,7 @@
         ]
       },
       {
-        "status_fitossanitário": "Status Desconhecido", //??????
+        "status_fitossanitário": "Área de Status Desconhecido", //??????
         "estados": [
           { "uf": "AC", "ibge": 12, "municipios": { "9999": "Todos" } },
           { "uf": "AP", "ibge": 16, "municipios": { "9999": "Todos" } },
@@ -1675,7 +1675,7 @@
         ]
       },
       {
-        "status_fitossanitário": "Sistema de Mitigação de Risco (SMR)",
+        "status_fitossanitário": "Área de SMR",
         "estados": [
           {
             "uf": "PR",
@@ -2107,7 +2107,7 @@
         ]
       },
       {
-        "status_fitossanitário": "Área Livre de Praga (ALP)",
+        "status_fitossanitário": "Área Livre de Praga",
         "estados": [
           { "uf": "CE", "ibge": 23, "municipios": { "9999": "Todos" } },
           { "uf": "DF", "ibge": 53, "municipios": { "9999": "Todos" } },
@@ -2447,7 +2447,7 @@
         ]
       },
       {
-        "status_fitossanitário": "Sistema de Mitigação de Risco (SMR)", // 'AL', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PI', 'PR', 'RS', 'SC', 'SP', 'TO'
+        "status_fitossanitário": "Área de SMR", // 'AL', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PI', 'PR', 'RS', 'SC', 'SP', 'TO'
         "estados": [
           { "uf": "AL", "ibge": 27, "municipios": { "9999": "Todos" } },
           { "uf": "BA", "ibge": 29, "municipios": { "9999": "Todos" } },

@@ -43,10 +43,10 @@ const Base = () => {
                     <a
                       target="_blank"
                       rel="noopener noreferrer"
-                      key={file.link}
-                      href={`leg/${file.link}`}
+                      key={file.id}
+                      href={`leg/${file.id}.pdf`}
                     >
-                      {file.leg}
+                      {file.leg}, de {file.data}
                     </a>
                   ))}
                   <br />

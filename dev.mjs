@@ -47,7 +47,7 @@ const appConfig = {
   ...commonConfig,
   entryPoints,
   minify: true,
-  plugins: project === 'cefiti' ? [externalDbPlugin] : [],
+  plugins: project === 'cefiti' && isBuild ? [externalDbPlugin] : [],
 }
 
 if (isBuild) {

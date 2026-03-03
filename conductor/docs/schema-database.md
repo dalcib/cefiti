@@ -2,13 +2,14 @@ Table configuracoes {
   id Int [pk]
   version Int
   lastUpdate DateTime
+  catalogos Json [note: "Contains consolidated lists like status_fitossanitario"]
 }
 
 Table pragas {
   prag String [pk, unique]
   pragc String [unique]
   hosp Int[] [ref: < hospedeiros.id, note: "each element is a hospedeiro id"]
-  files Int[] [ref: < files.id, note: "each element is a file id"]
+  files String[] [ref: < legislacoes.id, note: "each element is a legislacao id"]
 }
 
 Table hospedeiros {
@@ -27,10 +28,9 @@ Table regras {
   }
 
 Table legislacoes {
-  id Int [pk, increment]
+  id String [pk]
   leg String [unique]
-  link String[unique]
-  file Int [Ref: - files.id]
+  data String
 }
 
 Table files {
@@ -58,25 +58,37 @@ Table municipios {
 }
 
 Table status_municipio {
-  praga String [Ref: = pragas.prag]
-  estado Object{uf: Int(6)[]} [Ref: > estados.uf, note: "uf: id do estado, [] : lista de municipios"]
-  status String [Ref: > status_fitossanitario.status]
+  praga String [pk, Ref: = pragas.prag]
+  status StatusItem[] [note: "Lista de status fitossanitários aplicáveis"]
+}
+
+Table StatusItem {
+  status_fitossanitário status 
+  estados EstadoItem[]
+}
+
+Table EstadoItem {
+  uf String [Ref: > estados.uf]
+  ibge Int(2) [note: "Código IBGE do estado (ex: 33 para RJ)"]
+  municipios Map<IBGE_Suffix(4), Name> [note: "Mapeamento de sufixos IBGE (4 dígitos) para nomes de municípios. Use {'9999': 'Todos'}para abranger todo o estado."]
 }
 
 Table rules {
   id Int [pk]
-  praga String [Ref: > pragas.prag]
+  part String[]
+  prag String [Ref: > pragas.prag]  
   status_origem status 
   status_destino status 
   exig String
 }
 
-Table status_fitossanitario {
-  status String [unique] 
-}
-
-enum status {
-  "A" //Ausente
-  "P" //Presente
-  "E" //Ausente com restrição
-}
+enum status { 
+ "Área de SMR",
+ "Área Com Ocorrência",
+ "Área Erradicada",
+ "Área Sob Erradicação",
+ "Área de Status Desconhecido",
+ "Zona Tampão",
+ "Área Livre de Praga (ALP)",
+ "Área Sem Registro"
+} [note: "Reference to configuracoes.catalogos.status_fitossanitario"]

@@ -48,7 +48,7 @@
           "files": {
             "type": "array",
             "items": {
-              "type": "integer"
+              "type": "string"
             }
           }
         },
@@ -104,16 +104,16 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer"
+            "type": "string"
           },
           "leg": {
             "type": "string"
           },
-          "link": {
+          "data": {
             "type": "string"
           }
         },
-        "required": ["id", "leg", "link"]
+        "required": ["id", "leg", "data"]
       },
       "uniqueItems": true
     },

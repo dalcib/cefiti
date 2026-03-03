@@ -21,7 +21,7 @@ export interface Praga {
   prag: string
   hosp: number[]
   pragc: string
-  files: number[]
+  files: string[]
 }
 
 export interface Hospedeiro {
@@ -32,9 +32,9 @@ export interface Hospedeiro {
 }
 
 export interface Legislacao {
-  id: number
+  id: string
   leg: string
-  link: string
+  data: string
 }
 
 export interface Estado {
@@ -269,84 +269,84 @@ export const pragas: Praga[] = //CEFiTI - Pragas
       "prag": "Bactrocera carambolae",
       "pragc": "MOSCA-DA-CARAMBOLA",
       "hosp": [70, 125, 120, 127, 52, 71, 29, 177, 149, 9, 137, 181, 42, 138, 179, 39, 202, 8, 152, 30, 122, 69, 68, 194, 128, 129, 131, 130, 26, 133, 134, 155, 178, 3, 28, 139, 4, 106, 123, 53, 23],
-      "files": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      "files": ["PORT776-2025", "RES04-2019", "PORT780-2023", "PORT734-2024", "PORT940-2023", "PORT627-2023", "PORT859-2023", "RES05-2018", "IN02-2018", "PORT1503-2025"]
     },
     {
       "id": 2,
       "prag": "Schizotetranychus hindustanicus",
       "pragc": "ÁCARO HINDU",
       "hosp": [105, 158, 196, 5, 100, 103],
-      "files": [11]
+      "files": ["IN08-2012"]
     },
     {
       "id": 3,
       "prag": "Sternochetus mangiferae",
       "pragc": "GORGULHO DA MANGA",
       "hosp": [152],
-      "files": [12]
+      "files": ["IN34-2017"]
     },
     {
       "id": 4,
       "prag": "BSV e CMV",
       "pragc": "BANANA STREAK VIRUS e CUCUMBER MOSAIC VIRUS",
       "hosp": [41],
-      "files": [13]
+      "files": ["IN46-2010"]
     },
     {
       "id": 5,
       "prag": "Xanthomonas campestris pv. viticola",
       "pragc": "CANCRO-DA-VIDEIRA",
       "hosp": [205],
-      "files": [14]
+      "files": ["IN02-2014"]
     },
     {
       "id": 6,
       "prag": "Neonectria ditissima (Neonectria galligena)",
       "pragc": "CANCRO EUROPEU DAS POMÁCEAS",
       "hosp": [148],
-      "files": [15]
+      "files": ["IN20-2013"]
     },
     {
       "id": 7,
       "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
       "pragc": "HLB",
       "hosp": [103, 117, 182, 156],
-      "files": [16]
+      "files": ["PORT317-2021"]
     },
     {
       "id": 8,
       "prag": "Ralstonia solanacearum raça 2",
       "pragc": "MOKO-DA-BANANEIRA",
       "hosp": [41, 126],
-      "files": [17]
+      "files": ["IN17-2009"]
     },
     {
       "id": 9,
       "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
       "pragc": "SIGATOKA NEGRA",
       "hosp": [41, 126],
-      "files": [18]
+      "files": ["IN17-2005"]
     },
     {
       "id": 10,
       "prag": "Xanthomonas citri subsp. citri",
       "pragc": "CANCRO CÍTRICO",
       "hosp": [103, 117, 182],
-      "files": [19]
+      "files": ["IN21-2018"]
     },
     {
       "id": 11,
       "prag": "Moniliophthora roreri",
       "pragc": "MONILÍASE",
       "hosp": [200],
-      "files": [20, 21, 22]
+      "files": ["PORT703-2022", "IN112-2020", "IN38-2008"]
     },
     {
       "id": 12,
       "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
       "pragc": "VASSOURA DE BRUXA DA MANDIOCA",
       "hosp": [151],
-      "files": [23, 24]
+      "files": ["PORT1257-2025", "PORT1512-2026"]
     }
   ];
 
@@ -1137,30 +1137,30 @@ Terra Indígena do Parque do Tumucumaque no Estado do Pará, municípios de Alme
 
 export const legislacoes: Legislacao[] =
   [
-    { "id": 1, "leg": "Portaria nº 776, de 12/03/2025", "link": "PORT776-2025.pdf" },
-    { "id": 2, "leg": "Resolução nº 04, de 29/03/2019", "link": "RES04-2019.pdf" },
-    { "id": 3, "leg": "Portaria SDA nº 780, de 06/04/2023", "link": "PORT780-2023.pdf" },
-    { "id": 4, "leg": "Portaria MAPA nº 734, de 13/11/2024", "link": "PORT734-2024.pdf" },
-    { "id": 5, "leg": "Portaria SDA nº 940, de 17/11/2023", "link": "PORT940-2023.pdf" },
-    { "id": 6, "leg": "Portaria MAPA nº 627, de 10/11/2023", "link": "PORT627-2023.pdf" },
-    { "id": 7, "leg": "Portaria SDA/MAPA n° 859, de 19/07/2023", "link": "PORT859-2023.pdf" },
-    { "id": 8, "leg": "Resolução nº 05, de 31/10/2018", "link": "RES05-2018.pdf" },
-    { "id": 9, "leg": "Instrução Normativa SDA n° 2, de 19/01/2018", "link": "IN02-2018.pdf" },
-    { "id": 10, "leg": "Portaria SDA/MAPA n° 1503, de 19/12/2025", "link": "PORT1503-2025.pdf" },
-    { "id": 11, "leg": "Instrução Normativa MAPA nº 8, de 17/04/2012", "link": "IN08-2012.pdf" },
-    { "id": 12, "leg": "Instrução Normativa MAPA/SDA nº. 34, de 05/09/2017", "link": "IN34-2017.pdf" },
-    { "id": 13, "leg": "Instrução Normativa MAPA nº 46, de 27/12/2010", "link": "IN46-2010.pdf" },
-    { "id": 14, "leg": "Instrução Normativa MAPA nº 2, de 06/02/2014", "link": "IN02-2014.pdf" },
-    { "id": 15, "leg": "Instrução Normativa nº 20, de 20/06/2013", "link": "IN20-2013.pdf" },
-    { "id": 16, "leg": "Portaria SDA nº 317, de 21/05/2021", "link": "PORT317-2021.pdf" },
-    { "id": 17, "leg": "Instrução Normativa SDA/MAPA nº 17, de 27/05/2009", "link": "IN17-2009.pdf" },
-    { "id": 18, "leg": "Instrução Normativa SDA/MAPA nº 17, de 31/05/2005", "link": "IN17-2005.pdf" },
-    { "id": 19, "leg": "Instrução Normativa nº 21, de 25/04/2018", "link": "IN21-2018.pdf" },
-    { "id": 20, "leg": "Portaria SDA nº 703, de 21/11/2022", "link": "PORT703-2022.pdf" },
-    { "id": 21, "leg": "Instrução Normativa nº 112, de 11/12/2020", "link": "IN112-2020.pdf" },
-    { "id": 22, "leg": "Instrução Normativa nº 38, de 23/06/2008", "link": "IN38-2008.pdf" },
-    { "id": 23, "leg": "Portaria SDA/MAPA nº 1.257, de 19/03/2025", "link": "PORT1257-2025.pdf" },
-    { "id": 24, "leg": "Portaria SDA/MAPA nº 1.512, de 07/01/2026", "link": "PORT1512-2026.pdf" }
+    { "id": "PORT776-2025", "leg": "Portaria nº 776", "data": "12/03/2025" },
+    { "id": "RES04-2019", "leg": "Resolução nº 04", "data": "29/03/2019" },
+    { "id": "PORT780-2023", "leg": "Portaria SDA nº 780", "data": "06/04/2023" },
+    { "id": "PORT734-2024", "leg": "Portaria MAPA nº 734", "data": "13/11/2024" },
+    { "id": "PORT940-2023", "leg": "Portaria SDA nº 940", "data": "17/11/2023" },
+    { "id": "PORT627-2023", "leg": "Portaria MAPA nº 627", "data": "10/11/2023" },
+    { "id": "PORT859-2023", "leg": "Portaria SDA/MAPA n° 859", "data": "19/07/2023" },
+    { "id": "RES05-2018", "leg": "Resolução nº 05", "data": "31/10/2018" },
+    { "id": "IN02-2018", "leg": "Instrução Normativa SDA n° 2", "data": "19/01/2018" },
+    { "id": "PORT1503-2025", "leg": "Portaria SDA/MAPA n° 1503", "data": "19/12/2025" },
+    { "id": "IN08-2012", "leg": "Instrução Normativa MAPA nº 8", "data": "17/04/2012" },
+    { "id": "IN34-2017", "leg": "Instrução Normativa MAPA/SDA nº. 34", "data": "05/09/2017" },
+    { "id": "IN46-2010", "leg": "Instrução Normativa MAPA nº 46", "data": "27/12/2010" },
+    { "id": "IN02-2014", "leg": "Instrução Normativa MAPA nº 2", "data": "06/02/2014" },
+    { "id": "IN20-2013", "leg": "Instrução Normativa nº 20", "data": "20/06/2013" },
+    { "id": "PORT317-2021", "leg": "Portaria SDA nº 317", "data": "21/05/2021" },
+    { "id": "IN17-2009", "leg": "Instrução Normativa SDA/MAPA nº 17", "data": "27/05/2009" },
+    { "id": "IN17-2005", "leg": "Instrução Normativa SDA/MAPA nº 17", "data": "31/05/2005" },
+    { "id": "IN21-2018", "leg": "Instrução Normativa nº 21", "data": "25/04/2018" },
+    { "id": "PORT703-2022", "leg": "Portaria SDA nº 703", "data": "21/11/2022" },
+    { "id": "IN112-2020", "leg": "Instrução Normativa nº 112", "data": "11/12/2020" },
+    { "id": "IN38-2008", "leg": "Instrução Normativa nº 38", "data": "23/06/2008" },
+    { "id": "PORT1257-2025", "leg": "Portaria SDA/MAPA nº 1.257", "data": "19/03/2025" },
+    { "id": "PORT1512-2026", "leg": "Portaria SDA/MAPA nº 1.512", "data": "07/01/2026" }
 
   ];
 
