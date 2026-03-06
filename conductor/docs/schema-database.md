@@ -74,12 +74,12 @@ Table EstadoItem {
 }
 
 Table rules {
-  id Int [pk]
+  prag String [pk, Ref: > pragas.prag]  
   part String[]
-  prag String [Ref: > pragas.prag]  
-  status_origem status 
-  status_destino status 
-  exig String
+  status_origem status[]
+  status_destino status[] 
+  exig String[]
+  leg String
 }
 
 enum status { 
@@ -91,4 +91,5 @@ enum status {
  "Zona Tampão",
  "Área Livre de Praga (ALP)",
  "Área Sem Registro"
+ "UF Sem Registro"
 } [note: "Reference to configuracoes.catalogos.status_fitossanitario"]

@@ -1,0 +1,68 @@
+[
+  {
+    "prag": "Bactrocera carambolae",
+    "desc": "De Área com Ocorrência (sob quarentena) para qualquer destino",
+    "status_origem": ["Área Com Ocorrência"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos"],
+    "exig": [
+      "TRÂNSITO PROIBIDO, pois são proibidas a saída e a certificação fitossanitária de origem de frutos hospedeiros de áreas sob quarentena.",
+      "EXCEÇÃO 1: Trânsito permitido para frutos oriundos de locais em Sistema de Mitigação de Risco (SMR) reconhecido pelo DSV, acompanhados de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV), desde que aprovado tratamento quarentenário para a praga.",
+      "EXCEÇÃO 2: Trânsito permitido para frutos oriundos de locais de produção livres de Bactrocera carambolae (ambientes protegidos e cadastrados), expedidos com CFO e PTV.",
+      "O envio que transitar por área sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. O veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+    ],
+    "leg": "Portaria MAPA Nº 776/2025, Art. 19, II; Art. 20, IV e V; Art. 21, §2º"
+  },
+  {
+    "prag": "Bactrocera carambolae",
+    "desc": "De Zona Tampão para qualquer destino",
+    "status_origem": ["Zona Tampão"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos"],
+    "exig": [
+      "O trânsito é PERMITIDO, por meio de emissão de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV).",
+      "O envio que transitar em áreas sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato do fruto com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. \nO veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+    ],
+    "leg": "Portaria MAPA Nº 776/2025, Art. 20, inciso III; Art. 21, §2º"
+  },
+  {
+    "prag": "Bactrocera carambolae",
+    "desc": "De municípios sem ocorrência/tampão localizados em UFs com ocorrência",
+    "status_origem": ["Área Sem Registro"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos"],
+    "exig": [
+      "O trânsito é PERMITIDO, por meio de emissão de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV).",
+      "O envio que transitar em áreas sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato do fruto com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. \nO veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+    ],
+    "leg": "Portaria MAPA Nº 776/2025, Art. 21, caput (a contrario sensu) e §2º"
+  },
+  {
+    "prag": "Bactrocera carambolae",
+    "desc": "De UF sem ocorrência para UF sem ocorrência",
+    "status_origem": ["UF Sem Registro"],
+    "status_destino": ["UF Sem Registro"],
+    "part": ["frutos"],
+    "exig": [
+      "TRÂNSITO LIVRE. A certificação fitossanitária de origem (CFO/CFOC) e a PTV são dispensadas, desde que a carga não transite por área com ocorrência da praga.",
+      "Caso a carga transite por área sob quarentena ou área transiente, será EXIGIDA a emissão da Permissão de Trânsito de Vegetais (PTV), devendo estar acondicionado em embalagens que não permitam o contato do fruto com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. \nO veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+    ],
+    "leg": "Portaria MAPA Nº 776/2025, Art. 18; Art. 21, caput, §1º, incisos II e III, e §2º"
+  },
+  {
+    "prag": "Bactrocera carambolae",
+    "desc": "De UF sem ocorrência para UF com ocorrência",
+    "status_origem": ["UF Sem Registro"],
+    "status_destino": [
+      "Área Com Ocorrência",
+      "Zona Tampão",
+      "Área Sem Registro"
+    ],
+    "part": ["frutos"],
+    "exig": [
+      "A certificação fitossanitária de origem (CFO/CFOC) é dispensada, mas é EXIGIDA a emissão de Permissão de Trânsito de Vegetais (PTV) por ser lote destinado a Unidade Federativa com ocorrência da praga.",
+      "O envio que transitar em áreas sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato do fruto com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. \nO veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+    ],
+    "leg": "Portaria MAPA Nº 776/2025, Art. 21, caput; Art. 21, §1º, inciso I e §2º"
+  }
+]

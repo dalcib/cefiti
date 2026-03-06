@@ -2,45 +2,73 @@
   //MOSCA-DA-CARAMBOLA
   {
     "prag": "Bactrocera carambolae",
-    "status_origem": ["Área Sem Registro"],
-    "status_destino": ["Área Sem Registro"],
-    "part": ["frutos"],
-    "exig": [
-      "Se os frutos  forem destinados a locais sem ocorrência da praga e transitarem em áreas sob quarentena, deverão:  \nI - estar acondicionados em embalagens que não permitam o contato do produto com a praga;  \nII - ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm; e I \nII - estar acompanhados de Permissão de Trânsito de Vegetais - PTV, conforme o disposto no art. 2º, da Instrução Normativa MAPA nº 28, de 24 de agosto de 2016.",
-      "Se o frutos saírem de Unidade da Federação sem ocorrência da praga e transitarem por zona tampão, áreas erradicadas e áreas sem detecção em Unidade da Federação com ocorrência da praga, com destino a outra Unidade da Federação sem ocorrência, deverão: \nI - possuir documento que ateste a origem, podendo ser emitida apenas a PTV, sem a necessidade de CFO/CFOC.  \nII- constará a seguinte DA na PTV:  \"A partida foi produzida em UF sem ocorrência de Bactrocera carambolae”.",
-      "[Se o frutos saírem de Unidade da Federação sem ocorrência da praga e transitarem em Unidade da Federação sem a ocorrência da praga: TRÂNSITO LIVRE]",
-      "Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão <nas Resoluções e Portarias acima> [no link abaixo]."
-    ]
-  },
-  {
-    "prag": "Bactrocera carambolae",
-    "desc": "DE UF com ocorrência de Mosca-da-carambola PARA qualquer UF",
+    "desc": "De Área com Ocorrência (sob quarentena) para qualquer destino",
     "status_origem": ["Área Com Ocorrência"],
     "status_destino": ["Todas as Áreas"],
     "part": ["frutos"],
     "exig": [
-      "Se a partida for procedente DE área sob quarentena e de área protegida PARA local sem ocorrência: TRÂNSITO PROIBIDO.",
-      "Se a partida for procedente DE zona tampão, de áreas erradicadas e de áreas sem detecção: PTV com a seguinte DA: \"A partida está livre de Bactrocera carambolae”",
-      "Se os frutos  forem destinados a locais sem ocorrência da praga e transitarem em áreas sob quarentena, deverão:  \nI - estar acondicionados em embalagens que não permitam o contato do produto com a praga;  \nII - ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm; e I \nII - estar acompanhados de Permissão de Trânsito de Vegetais - PTV, conforme o disposto no art. 2º, da Instrução Normativa MAPA nº 28, de 24 de agosto de 2016.",
-      "Se o frutos saírem de Unidade da Federação sem ocorrência da praga e transitarem por zona tampão, áreas erradicadas e áreas sem detecção em Unidade da Federação com ocorrência da praga, com destino a outra Unidade da Federação sem ocorrência, deverão: \nI - possuir documento que ateste a origem, podendo ser emitida apenas a PTV, sem a necessidade de CFO/CFOC.  \nII- constará a seguinte DA na PTV:  \"A partida foi produzida em UF sem ocorrência de Bactrocera carambolae”.",
-      "Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções e Portarias acima."
-    ]
-  },  {
+      "TRÂNSITO PROIBIDO, pois são proibidas a saída e a certificação fitossanitária de origem de frutos hospedeiros de áreas sob quarentena.",
+      "EXCEÇÃO 1: Trânsito permitido para frutos oriundos de locais em Sistema de Mitigação de Risco (SMR) reconhecido pelo DSV, acompanhados de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV), desde que aprovado tratamento quarentenário para a praga.",
+      "EXCEÇÃO 2: Trânsito permitido para frutos oriundos de locais de produção livres de Bactrocera carambolae (ambientes protegidos e cadastrados), expedidos com CFO e PTV.",
+      "O envio que transitar por área sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. O veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+    ],
+    "leg": "Portaria MAPA Nº 776/2025, Art. 19, II; Art. 20, IV e V; Art. 21, §2º"
+  },
+  {
     "prag": "Bactrocera carambolae",
-    "desc": "DE UF com ocorrência de Mosca-da-carambola PARA qualquer UF",
-    "status_origem": [],
-    "status_destino": [],
+    "desc": "De Zona Tampão para qualquer destino",
+    "status_origem": ["Zona Tampão"],
+    "status_destino": ["Todas as Áreas"],
     "part": ["frutos"],
     "exig": [
-      "Se a partida for procedente DE área sob quarentena e de área protegida PARA local sem ocorrência: TRÂNSITO PROIBIDO.",
-      "Se a partida for procedente DE zona tampão, de áreas erradicadas e de áreas sem detecção: PTV com a seguinte DA: \"A partida está livre de Bactrocera carambolae”",
-      "Se os frutos  forem destinados a locais sem ocorrência da praga e transitarem em áreas sob quarentena, deverão:  \nI - estar acondicionados em embalagens que não permitam o contato do produto com a praga;  \nII - ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm; e I \nII - estar acompanhados de Permissão de Trânsito de Vegetais - PTV, conforme o disposto no art. 2º, da Instrução Normativa MAPA nº 28, de 24 de agosto de 2016.",
-      "Se o frutos saírem de Unidade da Federação sem ocorrência da praga e transitarem por zona tampão, áreas erradicadas e áreas sem detecção em Unidade da Federação com ocorrência da praga, com destino a outra Unidade da Federação sem ocorrência, deverão: \nI - possuir documento que ateste a origem, podendo ser emitida apenas a PTV, sem a necessidade de CFO/CFOC.  \nII- constará a seguinte DA na PTV:  \"A partida foi produzida em UF sem ocorrência de Bactrocera carambolae”.",
-      "Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções e Portarias acima."
-    ]
-  }
+      "O trânsito é PERMITIDO, por meio de emissão de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV).",
+      "O envio que transitar em áreas sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato do fruto com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. \nO veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+    ],
+    "leg": "Portaria MAPA Nº 776/2025, Art. 20, inciso III; Art. 21, §2º"
+  },
+  {
+    "prag": "Bactrocera carambolae",
+    "desc": "De municípios sem ocorrência/tampão localizados em UFs com ocorrência",
+    "status_origem": ["Área Sem Registro"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos"],
+    "exig": [
+      "O trânsito é PERMITIDO, por meio de emissão de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV).",
+      "O envio que transitar em áreas sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato do fruto com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. \nO veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+    ],
+    "leg": "Portaria MAPA Nº 776/2025, Art. 21, caput (a contrario sensu) e §2º"
+  },
+  {
+    "prag": "Bactrocera carambolae",
+    "desc": "De UF sem ocorrência para UF sem ocorrência",
+    "status_origem": ["UF Sem Registro"],
+    "status_destino": ["UF Sem Registro"],
+    "part": ["frutos"],
+    "exig": [
+      "TRÂNSITO LIVRE. A certificação fitossanitária de origem (CFO/CFOC) e a PTV são dispensadas, desde que a carga não transite por área com ocorrência da praga.",
+      "Caso a carga transite por área sob quarentena ou área transiente, será EXIGIDA a emissão da Permissão de Trânsito de Vegetais (PTV), devendo estar acondicionado em embalagens que não permitam o contato do fruto com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. \nO veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+    ],
+    "leg": "Portaria MAPA Nº 776/2025, Art. 18; Art. 21, caput, §1º, incisos II e III, e §2º"
+  },
+  {
+    "prag": "Bactrocera carambolae",
+    "desc": "De UF sem ocorrência para UF com ocorrência",
+    "status_origem": ["UF Sem Registro"],
+    "status_destino": [
+      "Área Com Ocorrência",
+      "Zona Tampão",
+      "Área Sem Registro"
+    ],
+    "part": ["frutos"],
+    "exig": [
+      "A certificação fitossanitária de origem (CFO/CFOC) é dispensada, mas é EXIGIDA a emissão de Permissão de Trânsito de Vegetais (PTV) por ser lote destinado a Unidade Federativa com ocorrência da praga.",
+      "O envio que transitar em áreas sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato do fruto com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. \nO veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+    ],
+    "leg": "Portaria MAPA Nº 776/2025, Art. 21, caput; Art. 21, §1º, inciso I e §2º"
+  },
+
   //ÁCARO HINDU ##
-  { 
+  {
     // "DE UF com ocorrência de Ácaro-hindu-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-hindu-dos-citros",
     "prag": "Schizotetranychus hindustanicus",
     "status_origem": ["Área Com Ocorrência"],
@@ -105,7 +133,19 @@
     "prag": "Neonectria ditissima (Neonectria galligena)",
     "status_origem": ["Área Com Ocorrência"],
     "status_destino": ["Área Sem Registro"],
-    "part": ["mudas", "sementes", "estacas", "bulbos", "tubérculos", "manivas", "toletes", "gemas", "ramas", "rizomas", "material de propagação"],
+    "part": [
+      "mudas",
+      "sementes",
+      "estacas",
+      "bulbos",
+      "tubérculos",
+      "manivas",
+      "toletes",
+      "gemas",
+      "ramas",
+      "rizomas",
+      "material de propagação"
+    ],
     "exig": [
       "PTV com a seguinte declaração adicional: \"A Unidade de produção foi inspecionada oficialmente durante o período de produção e não foi constatada a presença de sintomas de infecção pela praga Neonectria galligena\";",
       "Esta exigência fitossanitária não se aplica a material propagativo in vitro."
@@ -127,7 +167,15 @@
     // "DE UF com ocorrência de HLB de município com ocorrência da praga e dos municípios limítrofes PARA qualquer UF",
     "status_origem": [],
     "status_destino": [],
-    "part": ["mudas", "estacas", "gemas", "ramas", "raízes", "material de propagação vegetativo", "plantas"],
+    "part": [
+      "mudas",
+      "estacas",
+      "gemas",
+      "ramas",
+      "raízes",
+      "material de propagação vegetativo",
+      "plantas"
+    ],
     "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
     "exig": [
       "PTV, baseado em Certificado Fitossanitário de Origem - CFO, ou Certificado Fitossanitário de Origem Consolidado - CFOC, com a seguinte Declaração Adicional (DA): \"O material de propagação é originário de UF com ocorrência de Candidatus Liberibacter spp, foi produzido em ambiente protegido e encontra-se livre da praga\". \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
@@ -139,7 +187,15 @@
     "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
     "status_origem": [],
     "status_destino": [],
-    "part": ["mudas", "estacas", "gemas", "ramas", "raízes", "material de propagação vegetativo", "plantas"],
+    "part": [
+      "mudas",
+      "estacas",
+      "gemas",
+      "ramas",
+      "raízes",
+      "material de propagação vegetativo",
+      "plantas"
+    ],
     "exig": [
       "PTV, baseado em Certificado Fitossanitário de Origem - CFO, ou Certificado Fitossanitário de Origem Consolidado - CFOC, com a seguinte Declaração Adicional (DA): \"O material de propagação é originário de município sem ocorrência de Candidatus Liberibacter spp., de UF com ocorrência, e encontra-se livre da praga.\".\n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
     ]
@@ -149,7 +205,15 @@
     "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
     "status_origem": [],
     "status_destino": [],
-    "part": ["mudas", "estacas", "gemas", "ramas", "raízes", "material de propagação vegetativo", "plantas"],
+    "part": [
+      "mudas",
+      "estacas",
+      "gemas",
+      "ramas",
+      "raízes",
+      "material de propagação vegetativo",
+      "plantas"
+    ],
     "exig": [
       "PTV com a seguinte declaração adicional: “O material de propagação é originário de UF sem ocorrência de Candidatus Liberibacter spp.”; \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
     ]
@@ -499,12 +563,26 @@
     "prag": "Xanthomonas citri pv. citri",
     "status_origem": [],
     "status_destino": [],
-    "part": ["frutos", "material de propagação", "mudas", "estacas", "gemas", "plantas"],
+    "part": [
+      "frutos",
+      "material de propagação",
+      "mudas",
+      "estacas",
+      "gemas",
+      "plantas"
+    ],
     "exig": ["Proibida a emissão de PTV. TRÂNSITO PROIBIDO."]
   },
   {
     // "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação",
-    "part": ["frutos", "material de propagação", "mudas", "estacas", "gemas", "plantas"],
+    "part": [
+      "frutos",
+      "material de propagação",
+      "mudas",
+      "estacas",
+      "gemas",
+      "plantas"
+    ],
     "status_origem": [],
     "status_destino": [],
     "prag": "Xanthomonas citri subsp. citri",
@@ -582,11 +660,18 @@
     ]
   },
   {
-   // "DE município não incluído nas áreas livres oficialmente reconhecidas PARA qualquer UF",
+    // "DE município não incluído nas áreas livres oficialmente reconhecidas PARA qualquer UF",
     "prag": "Xanthomonas citri subsp. citri",
     "status_origem": [],
     "status_destino": [],
-    "part": ["frutos", "material de propagação", "mudas", "estacas", "gemas", "plantas"],
+    "part": [
+      "frutos",
+      "material de propagação",
+      "mudas",
+      "estacas",
+      "gemas",
+      "plantas"
+    ],
     "exig": ["Proibida a emissão de PTV. TRÂNSITO PROIBIDO."]
   },
   {
@@ -673,7 +758,11 @@
     "prag": "Moniliophthora roreri",
     "status_origem": [],
     "status_destino": [],
-    "part": ["frutos", "material de propagação vegetativa", "polpa in natura (não congelada)"],
+    "part": [
+      "frutos",
+      "material de propagação vegetativa",
+      "polpa in natura (não congelada)"
+    ],
     "exig": ["TRÂNSITO PROIBIDO", "Obs: Polpa congelada tem trânsito livre"]
   },
   {
@@ -692,7 +781,12 @@
     "prag": "Moniliophthora roreri",
     "status_origem": [],
     "status_destino": [],
-    "part": ["amêndoas", "frutos", "material de propagação vegetativa", "polpa in natura (não congelada)"],
+    "part": [
+      "amêndoas",
+      "frutos",
+      "material de propagação vegetativa",
+      "polpa in natura (não congelada)"
+    ],
     "exig": ["TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal."]
   },
   {
@@ -700,7 +794,11 @@
     "prag": "Moniliophthora roreri",
     "status_origem": [],
     "status_destino": [],
-    "part": ["frutos", "material de propagação vegetativa", "polpa in natura (não congelada)"],
+    "part": [
+      "frutos",
+      "material de propagação vegetativa",
+      "polpa in natura (não congelada)"
+    ],
     "exig": [
       "Se a partida for proveniente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves: TRÂNSITO PROIBIDO",
       "Se a partida for proveniente dos demais municípios do Acre: TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal",

@@ -3521,6 +3521,35 @@
             }
           }
         ]
+      },
+      {
+        "status_fitossanitário": "UF Sem Registro",
+        "estados": [
+          { "uf": "RO", "ibge": 11, "municipios": { "9999": "Todos" } },
+          { "uf": "AC", "ibge": 12, "municipios": { "9999": "Todos" } },
+          { "uf": "AM", "ibge": 13, "municipios": { "9999": "Todos" } },
+          { "uf": "TO", "ibge": 17, "municipios": { "9999": "Todos" } },
+          { "uf": "MA", "ibge": 21, "municipios": { "9999": "Todos" } },
+          { "uf": "PI", "ibge": 22, "municipios": { "9999": "Todos" } },
+          { "uf": "CE", "ibge": 23, "municipios": { "9999": "Todos" } },
+          { "uf": "RN", "ibge": 24, "municipios": { "9999": "Todos" } },
+          { "uf": "PB", "ibge": 25, "municipios": { "9999": "Todos" } },
+          { "uf": "PE", "ibge": 26, "municipios": { "9999": "Todos" } },
+          { "uf": "AL", "ibge": 27, "municipios": { "9999": "Todos" } },
+          { "uf": "SE", "ibge": 28, "municipios": { "9999": "Todos" } },
+          { "uf": "BA", "ibge": 29, "municipios": { "9999": "Todos" } },
+          { "uf": "MG", "ibge": 31, "municipios": { "9999": "Todos" } },
+          { "uf": "ES", "ibge": 32, "municipios": { "9999": "Todos" } },
+          { "uf": "RJ", "ibge": 33, "municipios": { "9999": "Todos" } },
+          { "uf": "SP", "ibge": 35, "municipios": { "9999": "Todos" } },
+          { "uf": "PR", "ibge": 41, "municipios": { "9999": "Todos" } },
+          { "uf": "SC", "ibge": 42, "municipios": { "9999": "Todos" } },
+          { "uf": "RS", "ibge": 43, "municipios": { "9999": "Todos" } },
+          { "uf": "MS", "ibge": 50, "municipios": { "9999": "Todos" } },
+          { "uf": "MT", "ibge": 51, "municipios": { "9999": "Todos" } },
+          { "uf": "GO", "ibge": 52, "municipios": { "9999": "Todos" } },
+          { "uf": "DF", "ibge": 53, "municipios": { "9999": "Todos" } }
+        ]
       }
     ]
   }

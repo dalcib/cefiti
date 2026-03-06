@@ -51,7 +51,10 @@
         "cefiti/test/**/*",
         "cefiti/src/db.ts",
         "firebase/public/db.js",
-        "cefiti-admin/src/status_município.json"
+        "cefiti-admin/src/status_município.json",
+        "cefiti-admin/src/rules.jsonc",
+        "cefiti-admin/src/status.jsonc",
+        "cefiti-admin/src/leg_texto.jsonc"
       ],
       "linter": {
         "enabled": false
