@@ -1,855 +1,699 @@
 [
-  //MOSCA-DA-CARAMBOLA
+  // 1. Bactrocera carambolae
   {
     "prag": "Bactrocera carambolae",
     "desc": "De Área com Ocorrência (sob quarentena) para qualquer destino",
-    "status_origem": ["Área Com Ocorrência"],
-    "status_destino": ["Todas as Áreas"],
-    "part": ["frutos"],
+    "status_origem": [
+      "Área Com Ocorrência"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "frutos"
+    ],
     "exig": [
       "TRÂNSITO PROIBIDO, pois são proibidas a saída e a certificação fitossanitária de origem de frutos hospedeiros de áreas sob quarentena.",
       "EXCEÇÃO 1: Trânsito permitido para frutos oriundos de locais em Sistema de Mitigação de Risco (SMR) reconhecido pelo DSV, acompanhados de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV), desde que aprovado tratamento quarentenário para a praga.",
       "EXCEÇÃO 2: Trânsito permitido para frutos oriundos de locais de produção livres de Bactrocera carambolae (ambientes protegidos e cadastrados), expedidos com CFO e PTV.",
-      "O envio que transitar por área sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. O veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+      "O envio que transitar por área sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. O veículo deverá ser lacrado pelo Órgão Estadual na entrada e ter o lacre removido na saída, mediante inspeção."
     ],
     "leg": "Portaria MAPA Nº 776/2025, Art. 19, II; Art. 20, IV e V; Art. 21, §2º"
   },
   {
     "prag": "Bactrocera carambolae",
     "desc": "De Zona Tampão para qualquer destino",
-    "status_origem": ["Zona Tampão"],
-    "status_destino": ["Todas as Áreas"],
-    "part": ["frutos"],
+    "status_origem": [
+      "Zona Tampão"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "frutos"
+    ],
     "exig": [
       "O trânsito é PERMITIDO, por meio de emissão de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV).",
-      "O envio que transitar em áreas sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato do fruto com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. \nO veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+      "O envio que transitar em áreas sob quarentena ou área transiente deverá obedecer o uso de embalagens seguras, veículos fechados ou com tela de 2mm, além da lacração na entrada e deslacração na saída da área sob risco."
     ],
     "leg": "Portaria MAPA Nº 776/2025, Art. 20, inciso III; Art. 21, §2º"
   },
   {
     "prag": "Bactrocera carambolae",
     "desc": "De municípios sem ocorrência/tampão localizados em UFs com ocorrência",
-    "status_origem": ["Área Sem Registro"],
-    "status_destino": ["Todas as Áreas"],
-    "part": ["frutos"],
+    "status_origem": [
+      "Área Sem Registro"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "frutos"
+    ],
     "exig": [
       "O trânsito é PERMITIDO, por meio de emissão de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV).",
-      "O envio que transitar em áreas sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato do fruto com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. \nO veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+      "O envio que transitar em áreas sob quarentena ou transiente deverá transitar em embalagens e veículos adequados acompanhados de lacres do Órgão Defesa Sanitária Vegetal."
     ],
-    "leg": "Portaria MAPA Nº 776/2025, Art. 21, caput (a contrario sensu) e §2º"
+    "leg": "Portaria MAPA Nº 776/2025, Art. 21"
   },
   {
     "prag": "Bactrocera carambolae",
     "desc": "De UF sem ocorrência para UF sem ocorrência",
-    "status_origem": ["UF Sem Registro"],
-    "status_destino": ["UF Sem Registro"],
-    "part": ["frutos"],
+    "status_origem": [
+      "UF Sem Registro"
+    ],
+    "status_destino": [
+      "UF Sem Registro"
+    ],
+    "part": [
+      "frutos"
+    ],
     "exig": [
       "TRÂNSITO LIVRE. A certificação fitossanitária de origem (CFO/CFOC) e a PTV são dispensadas, desde que a carga não transite por área com ocorrência da praga.",
-      "Caso a carga transite por área sob quarentena ou área transiente, será EXIGIDA a emissão da Permissão de Trânsito de Vegetais (PTV), devendo estar acondicionado em embalagens que não permitam o contato do fruto com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. \nO veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+      "Caso transite por área sob risco, será EXIGIDA PTV e o transporte seguro com embalagens/veículos de proteção adequadas (tela 2mm) e controle via lacres do órgão estadual."
     ],
-    "leg": "Portaria MAPA Nº 776/2025, Art. 18; Art. 21, caput, §1º, incisos II e III, e §2º"
+    "leg": "Portaria MAPA Nº 776/2025, Art. 18; Art. 21"
   },
   {
     "prag": "Bactrocera carambolae",
     "desc": "De UF sem ocorrência para UF com ocorrência",
-    "status_origem": ["UF Sem Registro"],
+    "status_origem": [
+      "UF Sem Registro"
+    ],
     "status_destino": [
       "Área Com Ocorrência",
       "Zona Tampão",
       "Área Sem Registro"
     ],
-    "part": ["frutos"],
-    "exig": [
-      "A certificação fitossanitária de origem (CFO/CFOC) é dispensada, mas é EXIGIDA a emissão de Permissão de Trânsito de Vegetais (PTV) por ser lote destinado a Unidade Federativa com ocorrência da praga.",
-      "O envio que transitar em áreas sob quarentena ou área transiente deverá estar acondicionado em embalagens que não permitam o contato do fruto com a praga, transportado em veículos fechados ou com tela de malha de no máximo 2 mm. \nO veículo deverá ser lacrado pelo Órgão Estadual ou Distrital de Defesa Sanitária Vegetal na entrada da área sob quarentena ou transiente, e ter o lacre removido somente na saída, mediante inspeção."
+    "part": [
+      "frutos"
     ],
-    "leg": "Portaria MAPA Nº 776/2025, Art. 21, caput; Art. 21, §1º, inciso I e §2º"
+    "exig": [
+      "A CFO/CFOC é dispensada, mas é EXIGIDA PTV por ser lote destinado a Unidade Federativa com ocorrência da praga.",
+      "Se transitar em áreas sob risco severo, exigências de telas e lacres se aplicam."
+    ],
+    "leg": "Portaria MAPA Nº 776/2025, Art. 21"
   },
-
-  //ÁCARO HINDU ##
+  // 2. Schizotetranychus hindustanicus
   {
-    // "DE UF com ocorrência de Ácaro-hindu-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-hindu-dos-citros",
     "prag": "Schizotetranychus hindustanicus",
-    "status_origem": ["Área Com Ocorrência"],
-    "status_destino": ["Área Sem Registro"],
-    "part": ["plantas", "mudas", "raízes", "caules", "ramos", "folhas", "flores", "frutos"],
-    "exig": [
-      "TRÂNSITO PROIBIDO.\nMotivo: Ausência de área livre de ácaro-hindu-dos-citros, na origem da partida.",
-      "Para  frutos de Citrus spp. o trânsito é permitido com PTV com a declaração adicional: \"A partida atende às exigências constantes da Instrução Normativa MAPA nº 8, de 17 de abril de 2012, encontra-se livre do Ácaro Hindu dos Citros\";",
-      "Estas exigências fitossanitárias não se aplicam a material in vitro, madeira serrada e, ainda, frutos de coco (Cocus nucifera) secos e descascados;"
-    ]
-  },
-
-  //BANANA STREAK VIRUS e CUCUMBER MOSAIC VIRUS
-  {
-    // "DE qualquer UF PARA qualquer UF",
-    "prag": "BSV e CMV",
-    "part": ["mudas"],
-    "status_origem": ["Todas as Áreas"],
-    "status_destino": ["Todas as Áreas"],
-    "exig": [
-      "PTV com a seguinte declaração adicional: \"A partida encontra-se livre dos vírus Banana streak virus (BSV) e Cucumber mosaic virus (CMV), de acordo com o laudo laboratorial [nº do laudo], [nome do laboratório] -[município e UF de localização do laboratório]\";",
-      "As mudas de bananeira que transitarem em desrespeito às determinações deste artigo ficam sujeitas à interceptação, caso em que será determinado o retorno das mesmas ao local de origem e comunicado ao órgão fiscalizador da produção e comércio, para adoção das providências cabíveis, conforme o art. 13, § 2º., da Instrução Normativa MAPA nº. 46, de 27 de dezembro de 2010."
-    ]
-  },
-
-  //CANCRO-DA-VIDEIRA
-  {
-    // "DE UF com ocorrência de Cancro-da-videira PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-da-videira",
-    "prag": "Xanthomonas campestris pv. viticola",
-    "part": ["mudas"],
-    "status_origem": ["Área Com Ocorrência"],
-    "status_destino": ["Área Sem Registro"],
-    "exig": [
-      "PTV com a seguinte declaração adicional: \"As mudas foram obtidas por micropropagação e indexadas para Xanthomonas campestris pv. viticola\"."
-    ]
-  },
-  {
-    // "DE UF com ocorrência de Cancro-da-videira PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-da-videira",
-    "prag": "Xanthomonas campestris pv. viticola",
-    "part": ["frutos"],
-    "status_origem": ["Área Com Ocorrência"],
-    "status_destino": ["Área Sem Registro"],
-    "exig": [
-      "PTV com a seguinte declaração adicional: \"Os frutos foram produzidos em propriedade onde são adotadas as medidas de prevenção e controle do cancro bacteriano da videira, previstas na legislação fitossanitária\";",
-      "Estas exigências fitossanitárias só se aplicam a frutos, quando destinados a consumo in natura."
-    ]
-  },
-  {
-    // "DE UF com ocorrência de Cancro-da-videira PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-da-videira",
-    "prag": "Xanthomonas campestris pv. viticola",
-    "part": ["material para pesquisa"],
-    "status_origem": ["Área Com Ocorrência"],
-    "status_destino": ["Área Sem Registro"],
-    "exig": [
-      "PTV com a seguinte declaração adicional: \"O material foi lacrado na origem, sob número de lacre X, e embalado de maneira a garantir a não dispersão da praga\"."
-    ]
-  },
-
-  //CANCRO EUROPEU DAS POMÁCEAS
-  {
-    // "DE UF com ocorrência de Cancro-europeu-das-pomáceas PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-europeu-das-pomáceas",
-    "prag": "Neonectria ditissima (Neonectria galligena)",
-    "status_origem": ["Área Com Ocorrência"],
-    "status_destino": ["Área Sem Registro"],
+    "desc": "De Área com Ocorrência para UF Sem Registro (material in vitro, madeira serrada e frutos secos de coco)",
+    "status_origem": [
+      "Área Com Ocorrência"
+    ],
+    "status_destino": [
+      "UF Sem Registro",
+      "Área Sem Registro"
+    ],
     "part": [
-      "mudas",
-      "sementes",
-      "estacas",
-      "bulbos",
-      "tubérculos",
-      "manivas",
-      "toletes",
-      "gemas",
-      "ramas",
-      "rizomas",
-      "material de propagação"
+      "material in vitro",
+      "madeira serrada",
+      "frutos secos e descascados de Cocos nucifera"
     ],
     "exig": [
-      "PTV com a seguinte declaração adicional: \"A Unidade de produção foi inspecionada oficialmente durante o período de produção e não foi constatada a presença de sintomas de infecção pela praga Neonectria galligena\";",
-      "Esta exigência fitossanitária não se aplica a material propagativo in vitro."
-    ]
-  },
-  {
-    // "DE UF com ocorrência de Cancro-europeu-das-pomáceas PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-europeu-das-pomáceas",
-    "prag": "Neonectria ditissima (Neonectria galligena)",
-    "status_origem": ["Área Com Ocorrência"],
-    "status_destino": ["Área Sem Registro"],
-    "part": ["frutos"],
-    "exig": [
-      "PTV com a seguinte declaração adicional: \"Na unidade de produção e Unidade de Consolidação - UC foram adotados os procedimentos de controle e prevenção previstos nesta norma (Instrução Normativa nº 20, de 20 de junho de 2013) e os frutos não apresentam sintomas de Neonectria galligena\"."
-    ]
-  },
-
-  //GREENING
-  {
-    // "DE UF com ocorrência de HLB de município com ocorrência da praga e dos municípios limítrofes PARA qualquer UF",
-    "status_origem": [],
-    "status_destino": [],
-    "part": [
-      "mudas",
-      "estacas",
-      "gemas",
-      "ramas",
-      "raízes",
-      "material de propagação vegetativo",
-      "plantas"
+      "TRÂNSITO LIVRE. Estes materiais excetuam-se da proibição de trânsito."
     ],
-    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
-    "exig": [
-      "PTV, baseado em Certificado Fitossanitário de Origem - CFO, ou Certificado Fitossanitário de Origem Consolidado - CFOC, com a seguinte Declaração Adicional (DA): \"O material de propagação é originário de UF com ocorrência de Candidatus Liberibacter spp, foi produzido em ambiente protegido e encontra-se livre da praga\". \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
-    ]
+    "leg": "IN MAPA Nº 08/2012, Art. 1º, Parágrafo único"
   },
-
   {
-    // "DE UF com ocorrência de HLB, de município sem ocorrência da praga, exceto aqueles limítrofes às áreas de ocorrência, PARA qualquer UF.",
-    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
-    "status_origem": [],
-    "status_destino": [],
+    "prag": "Schizotetranychus hindustanicus",
+    "desc": "De Área com Ocorrência para UF Sem Registro (frutos de Citrus spp.)",
+    "status_origem": [
+      "Área Com Ocorrência"
+    ],
+    "status_destino": [
+      "UF Sem Registro",
+      "Área Sem Registro"
+    ],
     "part": [
-      "mudas",
-      "estacas",
-      "gemas",
-      "ramas",
-      "raízes",
-      "material de propagação vegetativo",
-      "plantas"
+      "frutos de Citrus spp."
     ],
     "exig": [
-      "PTV, baseado em Certificado Fitossanitário de Origem - CFO, ou Certificado Fitossanitário de Origem Consolidado - CFOC, com a seguinte Declaração Adicional (DA): \"O material de propagação é originário de município sem ocorrência de Candidatus Liberibacter spp., de UF com ocorrência, e encontra-se livre da praga.\".\n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
-    ]
+      "Trânsito PERMITIDO mediante beneficiamento e inspeção.",
+      "Beneficiamento: imersão em hipoclorito de sódio a 200 ppm por 10 min, lavagem com detergente neutro, escovação, secagem e aplicação de cera.",
+      "CFO/CFOC com DA: 'Os frutos foram imersos em solução de hipoclorito de sódio a 200 ppm por 10 minutos, seguido de lavagem com solução de detergente neutro, escovação, secagem e aplicação de cera e encontram-se livres do Ácaro Hindu dos Citros'.",
+      "PTV com DA: 'A partida atende às exigências constantes da Instrução Normativa nº 8/2012 e encontra-se livre do Ácaro Hindu dos Citros'."
+    ],
+    "leg": "IN MAPA Nº 08/2012, Art. 2º"
   },
   {
-    // "DE UF sem ocorrência de HLB PARA qualquer UF",
-    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
-    "status_origem": [],
-    "status_destino": [],
+    "prag": "Schizotetranychus hindustanicus",
+    "desc": "De Área com Ocorrência para UF Sem Registro (outras espécies e partes)",
+    "status_origem": [
+      "Área Com Ocorrência"
+    ],
+    "status_destino": [
+      "UF Sem Registro",
+      "Área Sem Registro"
+    ],
     "part": [
-      "mudas",
-      "estacas",
-      "gemas",
-      "ramas",
-      "raízes",
-      "material de propagação vegetativo",
-      "plantas"
+      "plantas e partes de Citrus spp. (exceto frutos), Cocos nucifera (exceto frutos secos/descascados), Acacia sp., Azadirachta indica, Melia azedarach e Sorghum bicolor"
     ],
     "exig": [
-      "PTV com a seguinte declaração adicional: “O material de propagação é originário de UF sem ocorrência de Candidatus Liberibacter spp.”; \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
-    ]
+      "TRÂNSITO PROIBIDO."
+    ],
+    "leg": "IN MAPA Nº 08/2012, Art. 1º"
   },
+  // 3. Sternochetus mangiferae
   {
-    // "DE UF com ocorrência de HLB, oriúndos de município com ocorrência da praga e dos municípios limítrofes, PARA UF reconhecida pelo MAPA como sem ocorrência de HLB",
-    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos"],
-    "exig": [
-      "PTV com a seguinte declaração adicional: “Os frutos foram submetidos a beneficiamento primário na origem para retirada de restos vegetais, qual seja, totalmente isentos de folhas e ramos de plantas cítricas”."
-    ]
-  },
-
-  //GORGULHO DA MANGA
-  {
-    // "DE UF com ocorrência PARA qualquer UF",
     "prag": "Sternochetus mangiferae",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos"],
-    "exig": [
-      "PTV com a seguinte Declaração Adicional: \"A partida foi produzida fora da zona interditada e encontra-se livre de Sternochetus mangiferae\"."
-    ]
-  },
-
-  //MOKO-DA-BANANEIRA
-  {
-    // "Material para pesquisa DE qualquer UF PARA UF sem ocorrência ou Área Livre de Moko-da-bananeira.",
-    "prag": "Ralstonia solanacearum raça 2",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["material para pesquisa"],
-    "exig": [
-      "Autorização da Superintendência Federal de Agricultura e Pecuária (SFA), da UF de origem da partida;",
-      "A partida deve ser transportada em recipiente lacrado;"
-    ]
-  },
-  {
-    // "DE UF com ocorrência de Moko-da-bananeira PARA todas as UFs",
-    "prag": "Ralstonia solanacearum raça 2",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["mudas", "rizomas"],
-    "exig": [
-      "TRÂNSITO PROIBIDO, exceto para mudas transportadas in vitro ou micropropagadas. \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009",
-      "Para mudas transportadas en vitro ou micropropagadas, será exigido: \na)PTV com a seguinte declaração adicional: \"As mudas encontram- se livres de Ralstonia solanacearum raça 2\". \nb) A carga deverá estar lacrada e o número do lacre constar na PTV. \nc) Na PTV deve constar se as mudas são in vitro ou micropropagadas;"
-    ]
-  },
-  {
-    // "DE Área Livre de Moko-da-bananeira PARA todas as UFs",
-    "prag": "Ralstonia solanacearum raça 2",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["mudas", "rizomas"],
-    "exig": [
-      "PTV com  a seguinte declaração adicional: \"As mudas foram produzidas em Área Livre de Ralstonia solanacearum raça 2, oficialmente reconhecida pelo Ministério da Agricultura e Pecuária.\".  \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009.",
-      "A carga deverá estar lacrada e o número do lacre constar na PTV."
-    ]
-  },
-  {
-    // "DE UF sem ocorrência de Moko-da-bananeira PARA todas as UFs",
-    "prag": "Ralstonia solanacearum raça 2",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["mudas", "rizomas"],
-    "exig": [
-      "PTV com  a seguinte declaração adicional: \"As mudas se encontram livres de Ralstonia solanacearum raça 2.\".  \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009.",
-      "Quando transitar pelas UFs AM, AP, PA, RO, RR e SE, onde ocorre a praga, a carga deverá estar lacrada e o número do lacre constar na PTV."
-    ]
-  },
-  {
-    // "DE UF com ocorrência de Moko-da-bananeira PARA área livre de Moko-da-bananeira",
-    "prag": "Ralstonia solanacearum raça 2",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos", "flores"],
-    "exig": [
-      "PTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga Ralstonia solanacearum raça 2\"; \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
-    ]
-  },
-  {
-    // "DE área livre de Moko-da-bananeira PARA área livre de Moko-da-bananeira",
-    "prag": "Ralstonia solanacearum raça 2",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos", "flores"],
-    "exig": [
-      "PTV com a seguinte declaração adicional: \"As mudas foram produzidas em área livre de Ralstonia solanacearum raça 2, oficialmente reconhecida pelo Ministério da Agricultura e Pecuária\". \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
-    ]
-  },
-  {
-    // "DE UF sem ocorrência de Moko-da-bananeira PARA todas as UFs",
-    "prag": "Ralstonia solanacearum raça 2",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos", "flores"],
-    "exig": [
-      "PTV para comprovar a origem. \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009;"
-    ]
-  },
-  {
-    // "DE UF com ocorrência de Moko-da-bananeira PARA UF sem ocorrência de Moko-da-bananeira",
-    "prag": "Ralstonia solanacearum raça 2",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos", "flores"],
-    "exig": [
-      "OU PTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos em UP onde não foi observada a presença de Ralstonia solanacearum raça 2, nos últimos doze meses\"; OU \nPTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga Ralstonia solanacearum raça 2\"; \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
-    ]
-  },
-
-  //SIGATOKA NEGRA
-  {
-    // "Mudas Micropropagadas DE qualquer UF PARA qualquer UF",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["mudas"],
-    "exig": [
-      "PTV;",
-      "As mudas deverão ser pré-aclimatadas ou aclimatadas em estufas ou casas de vegetação; e tratadas com fungicidas registrados, 10 (dez) dias antes de sua expedição para as Unidades da Federação;",
-      "As mudas também poderão ser transportadas quando ainda in vitro;",
-      "A exigência de PTV não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "Estas exigências só se aplicam a mudas micropropagadas; Para outras mudas que não sejam micropropagadas, o trânsito é proibido, salvo quando provenientes de bananais de Áreas Livres de Sigatoka Negra."
-    ]
-  },
-  {
-    // "Material para pesquisa DE qualquer UF PARA qualquer UF",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["material para pesquisa"],
-    "exig": [
-      "Autorização Declaratória emitida pela Área de Sanidade Vegetal da Superintendência Federal da Agricultura - SFA, na Unidade da Federação de origem do material genético;",
-      "O material genético deve ser transportado em recipiente lacrado, devendo o número do lacre constar da Autorização Declaratória;",
-      "O interessado deve comunicar a SFA de destino da partida, quando do recebimento do material, para inspeção fitossanitária;",
-      "Estas exigências fitossanitárias só se aplicam a material genético;"
-    ]
-  },
-  {
-    // "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos", "flores"],
-    "exig": [
-      "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
-      "As bananas não podem transitar em cacho, em todo o território nacional;",
-      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
-      "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "GO é área livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
-    ]
-  },
-  {
-    // "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos", "flores"],
-    "exig": [
-      "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
-      "As bananas não podem transitar em cacho, em todo o território nacional;",
-      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
-      "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "Estas exigências só se aplicam a partida proveniente do municípios livres de Sigatoka Negra em MG: Águas Vermelhas, Alto Rio Doce, Araçaí, Aracitaba, Araçuaí, Araguari, Araporã, Baldim, Barão de Cocais, Barbacena, Belo Horizonte, Belo Vale, Betim, Bocaiúva, Bom Jesus do Amparo, Bonfim, Brumadinho, Buritizeiro, Cachoeira Dourada, Caetanópolis, Caeté, Campina Verde, Campos Altos, Canápolis, Capim Branco, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Confins, Contagem, Cordisburgo, Coronel Pacheco, Desterro do Melo, Divinésia, Dores do Turvo, Engenheiro Navarro, Ervália, Esmeraldas, Espinosa, Estrela do Sul, Florestal, Francisco Sá, Franscisco Dumont, Frutal, Funilândia, Guaraciama, Guarani, Guidoval, Guiricema, Gurinhatã, Ibirité, Igarapé, Indianópolis, Inhaúma, Ipiaçu, Iraí de Minas, Itabira, Itabirito, Itacarambi, Itaobim, Itapagipe, Itatiaiuçú, Ituiutaba, Iturama, Jaboticatubas, Jaíba, Janaúba, Januária, Jequitaí, Jequitibá, Jequitinhonha, Joaíma, João Pinheiro, Juatuba, Juiz de Fora, Lagamar, Lagoa Formosa, Lagoa Santa, Lassance, Limeira do Oeste, Manga, Mário Campos, Mateus Leme, Matias Cardoso, Mato Verde, Matozinhos, Medina, Mercês, Moeda, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Lima, Nova Ponte, Nova Porteirinha, Nova União, Oliveira Fortes, Pai Pedro, Paiva, Paracatu, Paraopeba, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Pedro Leopoldo, Perdizes, Piau, Pirapora, Piraúba, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Prudente de Morais, Raposos, Ribeirão das Neves, Rio Acima, Rio Manso, Rio Paranaíba, Rio Pomba, Rodeiro, Sabará, Sacramento, Santa Bárbara do Tugúrio, Santa Barbara, Santa Luzia, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Geraldo, São Gonçalo do Abaeté, São Gonçalo do Rio Abaixo, São Gotardo, São João das Missões, São Joaquim de Bicas, São José da Lapa, São Sebastião da Vargem Alegre, Sarzedo, Serra do Salitre, Sete Lagoas, Silveirânia, Tapira, Taquaraçú de Minas, Tocantins, Tupaciguara, Ubá, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia, Veríssimo, Vespasiano e Visconde do Rio Branco;",
-      "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia"
-    ]
-  },
-  {
-    //"DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos", "flores"],
-    "exig": [
-      "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
-      "As bananas não podem transitar em cacho, em todo o território nacional;",
-      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
-      "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "Estas exigências só se aplicam a partida proveniente de municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
-      "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia"
-    ]
-  },
-  {
-    // "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos", "flores"],
-    "exig": [
-      "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
-      "As bananas não podem transitar em cacho, em todo o território nacional;",
-      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
-      "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "Estas exigências só se aplicam a partida proveniente de GO, com exceção dos municípios de Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
-    ]
-  },
-  {
-    // "DE área livre de Sigatoka Negra PARA área livre de Sigatoka Negra ",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos", "flores"],
-    "exig": [
-      "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
-      "A partida deve estar lacrada para transitar por AC, AL, AM, AP, MA, MG (exceto pelos municípios listados no item 6.1), MS (exceto pelos municípios listados no item 6.2), MT, PA, PE, PI, PR, RS, RJ, RO, RR, SC, SE, SP, TO e GO (somente nos municípios listados no ítem 7);",
-      "As bananas não podem transitar em cacho, em todo o território nacional;",
-      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
-      "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "Nas UFs de GO, MG e de MS estas exigências só se aplicam a partida proveniente e destinada a município livre de Sigatoka Negra: \n\n6.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n6.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
-      "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
-    ]
-  },
-  {
-    // "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos", "flores"],
-    "exig": [
-      "PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\";",
-      "As bananas não podem transitar em cacho, em todo o território nacional;",
-      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
-      "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "Para as UFs de GO, MG e de MS estas exigências só se aplicam a partida destinada a município livre de Sigatoka Negra: \n\n5.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n5.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
-      "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
-    ]
-  },
-  {
-    // "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos", "flores"],
-    "exig": [
-      "OU Partida isenta de PTV, sendo porém PROIBIDO o trânsito por Área Livre de Sigatoka Negra, listadas no Item 2; OU PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\", sendo permitido o trânsito por Área Livre de Sigatoka Negra;",
-      "ÁREAS LIVRE DE SIGATOKA NEGRA: Unidades da Federação CE, DF, GO, PB, PI, RN, SE, bem como GO, exceto os municípios citados no item 3 e pelos municípios livres de Sigatoka Negra de MG e de MS: \na) Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \nb)Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
-      "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia.",
-      "As bananas não podem transitar em cacho, em todo o território nacional;",
-      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
-      "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;"
-    ]
-  },
-  {
-    // "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["mudas"],
-    "exig": [
-      "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
-      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
-      "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
-    ]
-  },
-  {
-    // "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["mudas"],
-    "exig": [
-      "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
-      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
-      "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "Estas exigências só se aplicam a partida proveniente de municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Alto Rio Doce, Araçaí, Aracitaba, Araçuaí, Araguari, Araporã, Baldim, Barão de Cocais, Barbacena, Belo Horizonte, Belo Vale, Betim, Bocaiúva, Bom Jesus do Amparo, Bonfim, Brumadinho, Buritizeiro, Cachoeira Dourada, Caetanópolis, Caeté, Campina Verde, Campos Altos, Canápolis, Capim Branco, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Confins, Contagem, Cordisburgo, Coronel Pacheco, Desterro do Melo, Divinésia, Dores do Turvo, Engenheiro Navarro, Ervália, Esmeraldas, Espinosa, Estrela do Sul, Florestal, Francisco Sá, Franscisco Dumont, Frutal, Funilândia, Guaraciama, Guarani, Guidoval, Guiricema, Gurinhatã, Ibirité, Igarapé, Indianópolis, Inhaúma, Ipiaçu, Iraí de Minas, Itabira, Itabirito, Itacarambi, Itaobim, Itapagipe, Itatiaiuçú, Ituiutaba, Iturama, Jaboticatubas, Jaíba, Janaúba, Januária, Jequitaí, Jequitibá, Jequitinhonha, Joaíma, João Pinheiro, Juatuba, Juiz de Fora, Lagamar, Lagoa Formosa, Lagoa Santa, Lassance, Limeira do Oeste, Manga, Mário Campos, Mateus Leme, Matias Cardoso, Mato Verde, Matozinhos, Medina, Mercês, Moeda, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Lima, Nova Ponte, Nova Porteirinha, Nova União, Oliveira Fortes, Pai Pedro, Paiva, Paracatu, Paraopeba, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Pedro Leopoldo, Perdizes, Piau, Pirapora, Piraúba, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Prudente de Morais, Raposos, Ribeirão das Neves, Rio Acima, Rio Manso, Rio Paranaíba, Rio Pomba, Rodeiro, Sabará, Sacramento, Santa Bárbara do Tugúrio, Santa Barbara, Santa Luzia, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Geraldo, São Gonçalo do Abaeté, São Gonçalo do Rio Abaixo, São Gotardo, São João das Missões, São Joaquim de Bicas, São José da Lapa, São Sebastião da Vargem Alegre, Sarzedo, Serra do Salitre, Sete Lagoas, Silveirânia, Tapira, Taquaraçú de Minas, Tocantins, Tupaciguara, Ubá, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia, Veríssimo, Vespasiano e Visconde do Rio Branco;."
-    ]
-  },
-  {
-    // "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["mudas"],
-    "exig": [
-      "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
-      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
-      "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "Estas exigências só se aplicam a partida proveniente de GO, com exceção dos municípios de Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
-    ]
-  },
-  {
-    // "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["mudas"],
-    "exig": [
-      "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
-      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
-      "exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "Estas exigências só se aplicam a partida proveniente de municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
-      "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
-    ]
-  },
-  {
-    // "DE área livre de Sigatoka Negra PARA área livre de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["mudas"],
-    "exig": [
-      "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra.",
-      "A partida deve estar lacrada para transitar por AC, AM, AP, MA, MG (exceto pelos municípios listados no item 5.1), MS (exceto pelos municípios listados no item 5.2), MT, PA, PR, RS, RJ, RO, RR, SC, SP e TO;",
-      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
-      "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "Para as Ufs de MG e MS estas exigências só se aplicam a partida proveniente e destinada a município livre de Sigatoka Negra: \n\n5.1 -  Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba, Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n5.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
-      "Estas exigências só se aplicam a mudas não micropopagadas;",
-      "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia"
-    ]
-  },
-  {
-    // "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["mudas"],
-    "exig": [
-      "TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;",
-      "Esta proibição não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "Para as UFs de MG e MS, esta proibição só se aplica a partida destinada a município livre de Sigatoka Negra:\n\n3.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo;\n\n3.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
-      "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
-    ]
-  },
-  {
-    // "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["mudas"],
-    "exig": [
-      "TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;",
-      "Esta proibição não se aplica a partida proveniente de município livre de Sigatoka Negra de MG e de MS: \n\na)Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\nb)Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
-      "Esta proibição não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-      "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia;",
-      "Esta proibição só se aplica a mudas não micropopagadas;"
-    ]
-  },
-
-  //CANCRO CÍTRICO
-
-  {
-    // "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação",
-    "prag": "Xanthomonas citri pv. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": [
-      "frutos",
-      "material de propagação",
-      "mudas",
-      "estacas",
-      "gemas",
-      "plantas"
+    "desc": "De Área com Ocorrência (Zona Interditada) para áreas indenes",
+    "status_origem": [
+      "Área Com Ocorrência"
     ],
-    "exig": ["Proibida a emissão de PTV. TRÂNSITO PROIBIDO."]
-  },
-  {
-    // "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação",
-    "part": [
-      "frutos",
-      "material de propagação",
-      "mudas",
-      "estacas",
-      "gemas",
-      "plantas"
+    "status_destino": [
+      "UF Sem Registro",
+      "Área Sem Registro"
     ],
-    "status_origem": [],
-    "status_destino": [],
-    "prag": "Xanthomonas citri subsp. citri",
-    "exig": [
-      "Se a partida tiver origem os municípios de Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: Proibida a emissão de PTV. TRÂNSITO PROIBIDO."
-    ]
-  },
-  {
-    // "DE Área Sem Ocorrência de Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco or Área sob Erradicação",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos"],
-    "exig": [
-      "PTV com a seguinte DA: \"Os frutos são originários de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\".",
-      "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
-      "Em GO, os municípios de Itajá, Itarumã, Jataí e Lagoa Santa são Área sob Erradicação.",
-      "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
-    ]
-  },
-  {
-    // "DE Área Sem Ocorrência de Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["material de propagação", "mudas", "estacas", "gemas", "plantas"],
-    "exig": [
-      "PTV com a seguinte DA: \"O material de propagação é originário de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\"."
-    ]
-  },
-  {
-    // "DE Área Sem Ocorrência de Cancro Cítrico PARA o Estado do Paraná",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos"],
-    "exig": [
-      "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"Os frutos são originários de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\".",
-      "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
-      "Em GO, os municípios de Itajá, Itarumã, Jataí e Lagoa Santa são Área sob Erradicação.",
-      "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
-    ]
-  },
-  {
-    // "DE Área Sem Ocorrência de Cancro Cítrico PARA o Estado do Paraná",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["material de propagação", "mudas", "estacas", "gemas", "plantas"],
-    "exig": [
-      "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"O material de propagação é originário de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\".",
-      "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
-      "Em GO, os municípios de Itajá, Itarumã, Jataí e Lagoa Santa são Área sob Erradicação.",
-      "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
-    ]
-  },
-  {
-    // "DE Área Livre de Cancro Cítrico PARA qualquer Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos"],
-    "exig": [
-      "PTV com a seguinte DA: \"Os frutos são originários de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
-    ]
-  },
-  {
-    // "DE Área Livre de Cancro Cítrico PARA qualquer Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["material de propagação", "mudas", "estacas", "gemas", "plantas"],
-    "exig": [
-      "PTV com a seguinte DA: \"O material de propagação é originário de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
-    ]
-  },
-  {
-    // "DE município não incluído nas áreas livres oficialmente reconhecidas PARA qualquer UF",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
     "part": [
-      "frutos",
-      "material de propagação",
-      "mudas",
-      "estacas",
-      "gemas",
-      "plantas"
-    ],
-    "exig": ["Proibida a emissão de PTV. TRÂNSITO PROIBIDO."]
-  },
-  {
-    // "DE Área Livre de Cancro Cítrico PARA o Estado do Paraná",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos"],
-    "exig": [
-      "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"Os frutos são originários de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
-    ]
-  },
-  {
-    // "DE Área Livre de Cancro Cítrico PARA o Estado do Paraná",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["material de propagação", "mudas", "estacas", "gemas", "plantas"],
-    "exig": [
-      "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"O material de propagação é originário de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
-    ]
-  },
-  {
-    // "DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["material de propagação", "mudas", "estacas", "gemas", "plantas"],
-    "exig": [
-      "PTV com a seguinte DA: \"O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico (Xanthomonas citri subsp. citri) e foi produzido conforme preconiza a legislação específica em vigor\".",
-      "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
-      "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
-    ]
-  },
-  {
-    // "DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["material de propagação", "mudas", "estacas", "gemas", "plantas"],
-    "exig": [
-      "SE A PARTIDA TIVER COMO ORIGEM UM DOS MUNICÍPIOS DE RISCO DESCONHECIDO (Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná): Proibida a emissão de PTV. TRÂNSITO PROIBIDO.",
-      "SE A PARTIDA TIVER COMO ORIGEM OS DEMAIS MUNICÍPIOS, QUE SÃO ÁREAS DE MITIGAÇÃO DE RISCO: PTV com a seguinte DA: \"O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico (Xanthomonas citri subsp. citri) e foi produzido conforme preconiza a legislação específica em vigor\"."
-    ]
-  },
-  {
-    // "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos"],
-    "exig": [
-      "Se a partida contém frutos infestados oriundos de imóvel sob Sistema de Mitigação de Risco (SMR), e tem como destino Indústria de suco, localizada em UF limítrofe, que não está localizada em ALP ou em Área Sem Ocorrência de Cancro Cítrico: \na)PTV com a seguinte DA: \"Frutos contaminados com Cancro Cítrico (Xanthomonas citri subsp. citri) destinados exclusivamente à indústria\". \nb)Os frutos devem ser transportados em veículo fechado ou coberto, e lacrado",
-      "Se a partida NÃO contém frutos infestados e é oriunda de imóvel cadastrado no SMR para o Cancro Cítrico e tem como destino\tUC ou indústria localizada em UF limítrofe:  \na) PTV com uma das seguintes DAs: \n- \"Os frutos foram produzidos em UP, de imóvel cadastrado no SMR para o Cancro Cítrico, que apresentou até um por cento de frutos com sintomas de Cancro Cítrico (Xanthomonas citri subsp. citri) e se destinam a indústria\"; OU \n- \"Os frutos foram produzidos em UP, de imóvel cadastrado no SMR para o Cancro Cítrico, que apresentou até um por cento de frutos com sintomas de Cancro Cítrico (Xanthomonas citri subsp. citri) e se destinam ao beneficiamento em Unidade de Consolidação\". \nb) Os frutos devem ser transportados em veículo fechado ou coberto e lacrado",
-      "Se a partida for formada por frutos oriundos de imóvel sem ocorrência do Cancro Cítrico, localizado em Área sob SMR, com destino para UC ou indústria, localizada em qualquer UF: \t\na) PTV com uma das seguintes DAs: \n- \"Os frutos são provenientes de imóvel sem ocorrência do Cancro Cítrico (Xanthomonas citri subsp. citri), localizado em Área sob SMR, e se destinam a indústria\"; OU \n- \"Os frutos são provenientes de imóvel sem ocorrência do Cancro Cítrico (Xanthomonas citri subsp. citri), localizado em Área sob SMR, e se destinam ao beneficiamento em Unidade de Consolidação\". \nb) Os frutos devem ser transportados em veículo fechado ou coberto",
-      "Para todas as demais situações de produtos oriundos de Área de SMR: \na) PTV com as seguintes DAs: \n- \"Os frutos são originários de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco (SMR) reconhecido oficialmente, foram higienizados por imersão em solução com Hipoclorito de Sódio a duzentos ppm, pH sete, durante dois minutos e se encontram sem sintomas de Cancro Cítrico (Xanthomonas citri subsp. citri)\". \n- Se as embalagens descartáveis ou em caixas plásticas retornáveis forem higienizadas por PULVERIZAÇÃO, adicionar a seguinte DA: \"As caixas plásticas retornáveis foram higienizadas por pulverização em solução de cloreto de benzalcônio (amônio quaternário) 125 (cento e vinte e cinco) gramas/litro, na concentração de 0,1% (um décimo percentual)\". \n- Se as embalagens descartáveis ou em caixas plásticas retornáveis forem higienizadas por IMERSÃO, adicionar a seguinte DA: \"As caixas plásticas retornáveis foram higienizadas por imersão em solução de cloreto de benzalcônio (amônio quaternário) 125 (cento e vinte e cinco) gramas/litro, na concentração de 0,1% (um décimo percentual)\" \nb) Os frutos devem ser transportados em veículo fechado ou coberto, seja para transporte a granel, em embalagens descartáveis ou em caixas plásticas retornáveis"
-    ]
-  },
-  {
-    // "DE Área sob Erradicação de Cancro Cítrico PARA qualquer UF",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["frutos"],
-    "exig": [
-      "PTV com uma das seguintes DAs: \n -\"Os frutos são provenientes de plantas sadias de imóvel sob supervisão oficial, localizado em Área sob Erradicação, foram higienizados com Hipoclorito de Sódio a duzentos ppm, pH sete, durante dois minutos e encontram-se livres de Xanthomonas citri subsp. citri\".\n -\"Os frutos são provenientes de plantas sadias de imóvel sob supervisão oficial, localizado em Área sob Erradicação, e se destinam à indústria\".\n -\"Os frutos são provenientes de imóvel sem ocorrência do Cancro Cítrico (Xanthomonas citri subsp. citri), localizado em Área sob Erradicação\"."
-    ]
-  },
-  {
-    // "DE Área sob Erradicação de Cancro Cítrico PARA qualquer UF",
-    "prag": "Xanthomonas citri subsp. citri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["material de propagação", "mudas", "estacas", "gemas", "plantas"],
-    "exig": [
-      "PTV com a seguinte DA: \"O material de propagação é proveniente de Área sob Erradicação e foi produzido em imóvel sem ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), conforme preconiza a legislação específica vigente\"."
-    ]
-  },
-
-  //MONILÍASE DO CACAUEIRO
-
-  {
-    // "DE Área com ocorrência de Monilíase PARA qualquer UF",
-    "prag": "Moniliophthora roreri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": [
-      "frutos",
-      "material de propagação vegetativa",
-      "polpa in natura (não congelada)"
-    ],
-    "exig": ["TRÂNSITO PROIBIDO", "Obs: Polpa congelada tem trânsito livre"]
-  },
-  {
-    // "DE Área com ocorrência de Monilíase PARA qualquer UF", // amêndoas
-    "prag": "Moniliophthora roreri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["amêndoas"],
-    "exig": [
-      "Se a partida for de amêndoas não fermentadas ou não cumprem os requisitos do item abaixo: TRÂNSITO PROIBIDO",
-      "Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente DE área sob quarentena PARA local sem ocorrência, TRÂNSITO LIVRE obedecendo as seguintes condiçoes: \na) As amêndoas devem estar acondicionadas em sacarias novas;  \nb) Carga deve estar acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc) Verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html ."
-    ]
-  },
-  {
-    // "DE Área sem ocorrência de Monilíase PARA qualquer UF",
-    "prag": "Moniliophthora roreri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": [
-      "amêndoas",
-      "frutos",
-      "material de propagação vegetativa",
-      "polpa in natura (não congelada)"
-    ],
-    "exig": ["TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal."]
-  },
-  {
-    // "DE UF with and sem ocorrência de Monilíase PARA qualquer UF", //Acre
-    "prag": "Moniliophthora roreri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": [
-      "frutos",
-      "material de propagação vegetativa",
-      "polpa in natura (não congelada)"
+      "frutos de manga"
     ],
     "exig": [
-      "Se a partida for proveniente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves: TRÂNSITO PROIBIDO",
-      "Se a partida for proveniente dos demais municípios do Acre: TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal",
-      "Obs: Polpa congelada tem trânsito livre"
-    ]
+      "TRÂNSITO PROIBIDO."
+    ],
+    "leg": "IN MAPA Nº 34/2017, Art. 2º"
   },
   {
-    // "DE UF com e sem ocorrência de Monilíase PARA qualquer UF", //Acre
-    "prag": "Moniliophthora roreri",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["amêndoas"],
+    "prag": "Sternochetus mangiferae",
+    "desc": "De municípios sem ocorrência localizados em UF com Área Com Ocorrência para áreas indenes",
+    "status_origem": [
+      "Área Sem Registro"
+    ],
+    "status_destino": [
+      "UF Sem Registro",
+      "Área Sem Registro"
+    ],
+    "part": [
+      "frutos de manga"
+    ],
     "exig": [
-      "Se a partida for de amêndoas não fermentadas ou que não cumprem os requisitos do item seguinte, e são proveniente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves: TRÂNSITO PROIBIDO",
-      "Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves, TRÂNSITO LIVRE obedecendo as seguintes condiçoes: \na) As amêndoas devem estar acondicionadas em sacarias novas;  \nb) Carga deve estar acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc) Verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html .",
-      "Se a partida for proveniente dos demais municípios do Acre: TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal"
-    ]
+      "Trânsito condicionado à apresentação de Permissão de Trânsito de Vegetais (PTV) embasada em CFO/CFOC com a Declaração Adicional: 'A partida foi produzida fora da zona interditada e encontra-se livre de Sternochetus mangiferae'."
+    ],
+    "leg": "IN MAPA Nº 34/2017, Art. 3º"
   },
-
-  //VASSOURA DE BRUXA DA MANDIOCA
-
+  // 4. BSV e CMV
   {
-    // "DE UF sem presença de Rhizoctonia theobromae (Ceratobasidium theobromae) PARA qualquer UF",
+    "prag": "BSV e CMV",
+    "desc": "Trânsito de mudas de bananeira entre quaisquer áreas",
+    "status_origem": [
+      "Todas as Áreas"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "mudas de bananeira"
+    ],
+    "exig": [
+      "O trânsito de mudas de bananeira só é permitido com a Permissão de Trânsito de Vegetais (PTV).",
+      "A PTV deverá estar embasada em CFO/CFOC contendo a seguinte Declaração Adicional: 'A partida encontra-se livre dos vírus Banana streak virus (BSV) e Cucumber mosaic virus (CMV), de acordo com o laudo laboratorial [nº do laudo], [nome do laboratório] - [município e UF de localização do laboratório]'."
+    ],
+    "leg": "IN MAPA Nº 46/2010, Art. 10 e Art. 13"
+  },
+  // 5. Xanthomonas campestris pv. viticola
+  {
+    "prag": "Xanthomonas campestris pv. viticola",
+    "desc": "De UF com Ocorrência para UF Sem Ocorrência (Mudas)",
+    "status_origem": [
+      "Área Com Ocorrência",
+      "Área Sem Registro"
+    ],
+    "status_destino": [
+      "UF Sem Registro"
+    ],
+    "part": [
+      "mudas do gênero Vitis"
+    ],
+    "exig": [
+      "O trânsito só é permitido quando as mudas forem acompanhadas de Permissão de Trânsito de Vegetais (PTV) com a seguinte Declaração Adicional: 'As mudas foram obtidas por micropropagação e indexadas para Xanthomonas campestris pv. viticola'."
+    ],
+    "leg": "IN MAPA Nº 02/2014, Art. 6º, Inciso I"
+  },
+  {
+    "prag": "Xanthomonas campestris pv. viticola",
+    "desc": "De UF com Ocorrência para UF Sem Ocorrência (Frutos para consumo in natura)",
+    "status_origem": [
+      "Área Com Ocorrência",
+      "Área Sem Registro"
+    ],
+    "status_destino": [
+      "UF Sem Registro"
+    ],
+    "part": [
+      "frutos para consumo in natura do gênero Vitis"
+    ],
+    "exig": [
+      "O trânsito só é permitido quando os frutos forem acompanhados de Permissão de Trânsito de Vegetais (PTV) com a seguinte Declaração Adicional: 'Os frutos foram produzidos em propriedade onde são adotadas as medidas de prevenção e controle do cancro bacteriano da videira, previstas na legislação fitossanitária'."
+    ],
+    "leg": "IN MAPA Nº 02/2014, Art. 6º, Inciso II"
+  },
+  {
+    "prag": "Xanthomonas campestris pv. viticola",
+    "desc": "De UF com Ocorrência para UF Sem Ocorrência (Material para pesquisa)",
+    "status_origem": [
+      "Área Com Ocorrência",
+      "Área Sem Registro"
+    ],
+    "status_destino": [
+      "UF Sem Registro"
+    ],
+    "part": [
+      "material vegetal para pesquisa"
+    ],
+    "exig": [
+      "Permissão de Trânsito de Vegetais (PTV) com a seguinte Declaração Adicional: 'O material foi lacrado na origem, sob número de lacre X, e embalado de maneira a garantir a não dispersão da praga'.",
+      "É necessária a assinatura de Termo de Compromisso pelo pesquisador e comunicação entre Órgãos Estaduais."
+    ],
+    "leg": "IN MAPA Nº 02/2014, Art. 6º, Inciso III"
+  },
+  // 6. Neonectria ditissima (Neonectria galligena)
+  {
+    "prag": "Neonectria ditissima (Neonectria galligena)",
+    "desc": "De UF com Ocorrência para qualquer destino (Frutos)",
+    "status_origem": [
+      "Área Com Ocorrência",
+      "Área Sem Registro"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "frutos de pomáceas"
+    ],
+    "exig": [
+      "Permissão de Trânsito de Vegetais (PTV) embasada em CFO/CFOC com a seguinte Declaração Adicional: 'Na unidade de produção e Unidade de Consolidação - UC foram adotados os procedimentos de controle e prevenção previstos nesta norma e os frutos não apresentam sintomas de Neonectria galligena'."
+    ],
+    "leg": "IN MAPA Nº 20/2013, Art. 7º, § 2º"
+  },
+  {
+    "prag": "Neonectria ditissima (Neonectria galligena)",
+    "desc": "De UF com Ocorrência para qualquer destino (Material propagativo, exceto in vitro)",
+    "status_origem": [
+      "Área Com Ocorrência",
+      "Área Sem Registro"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "material propagativo (exceto material in vitro)"
+    ],
+    "exig": [
+      "Permissão de Trânsito de Vegetais (PTV) embasada em CFO/CFOC com a seguinte Declaração Adicional: 'A Unidade de produção foi inspecionada oficialmente durante o período de produção e não foi constatada a presença de sintomas de infecção pela praga Neonectria galligena'."
+    ],
+    "leg": "IN MAPA Nº 20/2013, Art. 7º, § 3º"
+  },
+  // 7. Candidatus liberibacter americanus e Candidatus liberibacter asiaticus
+  {
+    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+    "desc": "De Municípios com ocorrência ou limítrofes para UF Sem Registro (Frutos)",
+    "status_origem": [
+      "Área Com Ocorrência",
+      "Zona Tampão"
+    ],
+    "status_destino": [
+      "UF Sem Registro"
+    ],
+    "part": [
+      "frutos"
+    ],
+    "exig": [
+      "Permissão de Trânsito de Vegetais (PTV) baseada em CFO/CFOC com a DA: 'Os frutos foram submetidos a beneficiamento primário na origem para retirada de restos vegetais, qual seja, totalmente isentos de folhas e ramos de plantas cítricas.'"
+    ],
+    "leg": "Portaria SDA/MAPA Nº 317/2021, Art. 20"
+  },
+  {
+    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+    "desc": "Trânsito de material de propagação oriundo de UF Sem Registro",
+    "status_origem": [
+      "UF Sem Registro"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "material de propagação vegetativo"
+    ],
+    "exig": [
+      "Permissão de Trânsito de Vegetais (PTV) com a DA: 'O material de propagação é originário de UF sem ocorrência de Candidatus Liberibacter spp.'"
+    ],
+    "leg": "Portaria SDA/MAPA Nº 317/2021, Art. 21"
+  },
+  {
+    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+    "desc": "Trânsito de material de propagação de município sem ocorrência (exceto limítrofes) em UF com Ocorrência",
+    "status_origem": [
+      "Área Sem Registro"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "material de propagação vegetativo"
+    ],
+    "exig": [
+      "Permissão de Trânsito de Vegetais (PTV) baseada em CFO/CFOC com a DA: 'O material de propagação é originário de município sem ocorrência de Candidatus Liberibacter spp., de UF com ocorrência, e encontra-se livre da praga.'"
+    ],
+    "leg": "Portaria SDA/MAPA Nº 317/2021, Art. 22"
+  },
+  {
+    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+    "desc": "Trânsito de material de propagação de município com ocorrência ou limítrofe",
+    "status_origem": [
+      "Área Com Ocorrência",
+      "Zona Tampão"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "material de propagação vegetativo"
+    ],
+    "exig": [
+      "Permissão de Trânsito de Vegetais (PTV) baseada em CFO/CFOC com a DA: 'O material de propagação é originário de UF com ocorrência de Candidatus Liberibacter spp, foi produzido em ambiente protegido e encontra-se livre da praga.'",
+      "Se transitar por UF com ocorrência deve ser em caminhão fechado ou tela antiafídica."
+    ],
+    "leg": "Portaria SDA/MAPA Nº 317/2021, Art. 23 e 24"
+  },
+  // 8. Ralstonia solanacearum raça 2
+  {
+    "prag": "Ralstonia solanacearum raça 2",
+    "desc": "De Área Com Ocorrência para qualquer destino (Mudas)",
+    "status_origem": [
+      "Área Com Ocorrência"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "mudas e rizomas"
+    ],
+    "exig": [
+      "Trânsito PROIBIDO.",
+      "EXCEÇÃO: Permitido se in vitro OU se micropropagadas sem contato com solo.",
+      "Para exceções, exigir PTV fundamentada em CFO com DA: 'As mudas encontram-se livres de Ralstonia solanacearum raça 2.' (veículo deverá ser lacrado)."
+    ],
+    "leg": "IN MAPA Nº 17/2009, Art. 3º e 4º"
+  },
+  {
+    "prag": "Ralstonia solanacearum raça 2",
+    "desc": "De ALP Moko (Área Livre de Praga) para qualquer destino (Mudas)",
+    "status_origem": [
+      "Área Livre de Praga (ALP)",
+      "Área Livre de Praga"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "mudas e rizomas"
+    ],
+    "exig": [
+      "Trânsito PERMITIDO acompanhado de PTV fundamentada em CFO com a DA: 'As mudas foram produzidas em Área Livre de Ralstonia solanacearum raça 2, oficialmente reconhecida pelo Ministério da Agricultura, Pecuária e Abastecimento.' (Carga lacrada)."
+    ],
+    "leg": "IN MAPA Nº 17/2009, Art. 5º"
+  },
+  {
+    "prag": "Ralstonia solanacearum raça 2",
+    "desc": "De Área Com Ocorrência para ALP ou UF sem ocorrência (Frutos)",
+    "status_origem": [
+      "Área Com Ocorrência"
+    ],
+    "status_destino": [
+      "Área Livre de Praga (ALP)",
+      "Área Livre de Praga",
+      "UF Sem Registro"
+    ],
+    "part": [
+      "frutos",
+      "inflorescências"
+    ],
+    "exig": [
+      "Para ALP Moko: PTV + DA 'Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga... (SMR)'.",
+      "Para UF sem ocorrência: PTV embasada em CFO contendo DA de que não foi observada presença na UP nos últimos 12 meses OU produzidos sob SMR."
+    ],
+    "leg": "IN MAPA Nº 17/2009, Art. 7º e 9º"
+  },
+  // 9. Pseudocercospora fijiensis (Mycosphaerella fijiensis)
+  {
+    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+    "desc": "De Área Com Ocorrência para UF Sem Ocorrência ou Área Livre (Frutos)",
+    "status_origem": [
+      "Área Com Ocorrência"
+    ],
+    "status_destino": [
+      "UF Sem Registro",
+      "Área Livre de Praga"
+    ],
+    "part": [
+      "frutos"
+    ],
+    "exig": [
+      "Trânsito PROIBIDO."
+    ],
+    "leg": "IN MAPA Nº 17/2005, Art. 2º"
+  },
+  {
+    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+    "desc": "De Área sob SMR para qualquer destino (Frutos)",
+    "status_origem": [
+      "Área de SMR"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "frutos"
+    ],
+    "exig": [
+      "Trânsito PERMITIDO. PTV embasada em CFO/CFOC com a DA: 'A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra'."
+    ],
+    "leg": "IN MAPA Nº 17/2005, Art. 2º, inc. VI e Anexo II, item 6.5.1"
+  },
+  {
+    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+    "desc": "De Área Com Ocorrência para Área com Ocorrência (Frutos)",
+    "status_origem": [
+      "Área Com Ocorrência"
+    ],
+    "status_destino": [
+      "Área Com Ocorrência"
+    ],
+    "part": [
+      "frutos"
+    ],
+    "exig": [
+      "Trânsito PERMITIDO. Vedada a passagem por Área Livre ou UF sem ocorrência sem carga lacrada garantindo não disseminação."
+    ],
+    "leg": "IN MAPA Nº 17/2005, Art. 2º, inc. V e Anexo I, item 5.4"
+  },
+  {
+    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+    "desc": "Trânsito de mudas não micropropagadas oriundas de áreas infestadas",
+    "status_origem": [
+      "Área Com Ocorrência",
+      "Área de SMR"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "mudas"
+    ],
+    "exig": [
+      "Trânsito PROIBIDO para mudas não micropropagadas que não sejam de Área Livre de Sigatoka.",
+      "EXCEÇÃO para micropropagadas: permitidas se in vitro ou pré-aclimatadas e tratadas com fungicida 10 dias antes da expedição."
+    ],
+    "leg": "IN MAPA Nº 17/2005, Art. 3º e 4º"
+  },
+  // 10. Xanthomonas citri subsp. citri
+  {
+    "prag": "Xanthomonas citri subsp. citri",
+    "desc": "De Área de Status Desconhecido para qualquer destino",
+    "status_origem": [
+      "Área de Status Desconhecido"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "frutos",
+      "material de propagação vegetativo"
+    ],
+    "exig": [
+      "Trânsito PROIBIDO."
+    ],
+    "leg": "IN MAPA Nº 21/2018, Art. 3º, §2º"
+  },
+  {
+    "prag": "Xanthomonas citri subsp. citri",
+    "desc": "De UF Sem Registro, Área Sem Ocorrência ou ALP",
+    "status_origem": [
+      "UF Sem Registro",
+      "Área Sem Ocorrência",
+      "Área Livre de Praga"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "frutos",
+      "material de propagação vegetativo"
+    ],
+    "exig": [
+      "PTV embasada em CFO/CFOC constando DA adequada ao status ('Os frutos/material são originários de Área Sem Ocorrência...' ou 'originários de Área Livre de Praga...')."
+    ],
+    "leg": "IN MAPA Nº 21/2018, Art. 13 e 26"
+  },
+  {
+    "prag": "Xanthomonas citri subsp. citri",
+    "desc": "De Área sob SMR para qualquer destino (Frutos)",
+    "status_origem": [
+      "Área de SMR"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "frutos"
+    ],
+    "exig": [
+      "PTV embasada em CFO/CFOC com DA: 'Os frutos são originários de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco (SMR) reconhecido oficialmente, foram higienizados por imersão em solução com Hipoclorito de Sódio a duzentos ppm, pH sete, durante dois minutos e se encontram sem sintomas de Cancro Cítrico'.",
+      "Veículo fechado ou coberto e caixas higienizadas."
+    ],
+    "leg": "IN MAPA Nº 21/2018, Art. 50 e 51"
+  },
+  {
+    "prag": "Xanthomonas citri subsp. citri",
+    "desc": "De Área sob SMR para qualquer destino (Mudas)",
+    "status_origem": [
+      "Área de SMR"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "material de propagação vegetativo"
+    ],
+    "exig": [
+      "PTV embasada em CFO com DA: 'O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico e foi produzido conforme preconiza a legislação específica em vigor'.",
+      "Material deve ter sido cultivado albergado em ambiente isolado."
+    ],
+    "leg": "IN MAPA Nº 21/2018, Art. 52"
+  },
+  {
+    "prag": "Xanthomonas citri subsp. citri",
+    "desc": "De Área sob Erradicação para qualquer destino",
+    "status_origem": [
+      "Área Sob Erradicação"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "frutos",
+      "material de propagação vegetativo"
+    ],
+    "exig": [
+      "Frutos de imóvel interditado (desde que sadias/higienizados) ou de imóvel sem ocorrência -> Permitido (PTV com DA específica Art. 66/67).",
+      "Mudas SOMENTE de imóvel sem ocorrência (PTV com DA Art. 68)."
+    ],
+    "leg": "IN MAPA Nº 21/2018, Arts. 66, 67 e 68"
+  },
+  // 11. Rhizoctonia theobromae (Ceratobasidium theobromae)
+  {
     "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["Materiais vegetais"],
+    "desc": "De UF Sem Registro para qualquer destino",
+    "status_origem": [
+      "UF Sem Registro"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "plantas",
+      "partes de plantas"
+    ],
     "exig": [
-      "TRÂNSITO LIVRE",
-      "A Permissão de Trânsito de Vegetais - PTV é necessária no caso de a partida de plantas e partes de plantas hospedeiras da praga transitar em áreas com ocorrência, devendo este: \nI - ser transportado em embalagens lacradas; e\nII - ser lacrado pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrital de Defesa Sanitária Vegetal na Unidade Federativa de origem e o número do lacre informado na Permissão de Trânsito de Vegetais - PTV."
-    ]
+      "Certificação de origem (CFO/CFOC) e PTV dispensadas.",
+      "EXCEÇÃO: PTV é necessária se transitar por áreas com ocorrência, exigindo também embalagem lacrada e lacre relatado."
+    ],
+    "leg": "Portaria SDA/MAPA Nº 1257/2025, Art. 5º"
   },
   {
-    // "DE UF com presença de Rhizoctonia theobromae (Ceratobasidium theobromae), oriundo de municípios sem ocorrência, PARA quaquer UF",
     "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["Materiais vegetais"],
+    "desc": "De Municípios sem ocorrência localizados em UF com ocorrência",
+    "status_origem": [
+      "Área Sem Registro"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "plantas",
+      "partes de plantas"
+    ],
     "exig": [
-      "PTV, baseada em CFO ou CFOC, com a seguinte DA: \"A partida é originária de município sem ocorrência de Rhizoctonia theobromae, em Unidade Federativa com ocorrência, e encontra-se livre da praga\".",
-      "No caso da partida de plantas e partes de plantas hospedeiras da praga transitar em áreas com ocorrência, deverá esta: \nI - ser transportada em embalagens lacradas; e \nII - ser lacrada pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrital de Defesa Sanitária Vegetal no município de origem e o número do lacre informado na Permissão de Trânsito de Vegetais - PTV."
-    ]
+      "Trânsito interestadual PERMITIDO com PTV baseada em CFO/CFOC.",
+      "DA obrigatória: 'A partida é originária de município sem ocorrência de Rhizoctonia theobromae, em Unidade Federativa com ocorrência, e encontra-se livre da praga'.",
+      "Se transitar por área com ocorrência: embalagens fechadas e lacradas."
+    ],
+    "leg": "Portaria SDA/MAPA Nº 1257/2025, Art. 6º"
   },
   {
-    // "DE UF com presença de Rhizoctonia theobromae (Ceratobasidium theobromae), oriundo de municípios com ocorrência, PARA qualquer UF",
     "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
-    "status_origem": [],
-    "status_destino": [],
-    "part": ["Materiais vegetais"],
+    "desc": "De Área Com Ocorrência para qualquer destino",
+    "status_origem": [
+      "Área Com Ocorrência"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "plantas",
+      "partes de plantas"
+    ],
     "exig": [
-      "Se a partida tiver como origem os municípios de Oiapoque, Calçoene, Amapá, Pracuúba, Tartarugalzinho e Pedra Branca do Amaparí no estado do Amapá, ou os município de Almeirim, Óbidos e Oriximiná, na área da\nTerra Indígena do Parque do Tumucumaque no Estado do Pará, municípios de Almeirim, Óbidos e Oriximiná, na área da Terra Indígena do Parque do Tumucumaque: TRÂNSITO PROIBIDO."
-    ]
+      "Trânsito PROIBIDO."
+    ],
+    "leg": "Portaria SDA/MAPA Nº 1257/2025, Art. 7º"
+  },
+  // 12. Moniliophthora roreri
+  {
+    "prag": "Moniliophthora roreri",
+    "desc": "Trânsito de amêndoas fermentadas e secas de cacau de Área sob Quarentena (Com Ocorrência)",
+    "status_origem": [
+      "Área Com Ocorrência",
+      "Área Sob Quarentena"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "amêndoas fermentadas e secas de cacau (Tipo I e II)"
+    ],
+    "exig": [
+      "O trânsito é PERMITIDO para amêndoas Tipo I e II, desde que estas sejam acondicionadas em sacarias novas, visando a não disseminação da praga por embalagens contaminadas."
+    ],
+    "leg": "IN MAPA Nº 112/2020, Art. 12, §3º"
+  },
+  {
+    "prag": "Moniliophthora roreri",
+    "desc": "Trânsito de material hospedeiro sensível de Área sob Quarentena (Com Ocorrência)",
+    "status_origem": [
+      "Área Com Ocorrência",
+      "Área Sob Quarentena"
+    ],
+    "status_destino": [
+      "Todas as Áreas"
+    ],
+    "part": [
+      "frutos in natura",
+      "material de propagação vegetativo (mudas)"
+    ],
+    "exig": [
+      "Trânsito PROIBIDO. A propriedade fica interditada e são suspensas atividades que promovam a disseminação da praga. Os artigos regulamentados só podem ser comercializados quando desinfestados oficialmente."
+    ],
+    "leg": "IN MAPA Nº 112/2020, Art. 12, §1º e §2º"
   }
 ]
