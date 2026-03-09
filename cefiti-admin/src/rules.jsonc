@@ -1,17 +1,14 @@
 [
-  // 1. Bactrocera carambolae
+
+  // ----------------------------------------------------------------------
+  // Bactrocera carambolae
+  // ----------------------------------------------------------------------
   {
     "prag": "Bactrocera carambolae",
     "desc": "De Área com Ocorrência (sob quarentena) para qualquer destino",
-    "status_origem": [
-      "Área Com Ocorrência"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "frutos"
-    ],
+    "status_origem": ["Área Com Ocorrência"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos"],
     "exig": [
       "TRÂNSITO PROIBIDO, pois são proibidas a saída e a certificação fitossanitária de origem de frutos hospedeiros de áreas sob quarentena.",
       "EXCEÇÃO 1: Trânsito permitido para frutos oriundos de locais em Sistema de Mitigação de Risco (SMR) reconhecido pelo DSV, acompanhados de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV), desde que aprovado tratamento quarentenário para a praga.",
@@ -23,15 +20,9 @@
   {
     "prag": "Bactrocera carambolae",
     "desc": "De Zona Tampão para qualquer destino",
-    "status_origem": [
-      "Zona Tampão"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "frutos"
-    ],
+    "status_origem": ["Zona Tampão"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos"],
     "exig": [
       "O trânsito é PERMITIDO, por meio de emissão de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV).",
       "O envio que transitar em áreas sob quarentena ou área transiente deverá obedecer o uso de embalagens seguras, veículos fechados ou com tela de 2mm, além da lacração na entrada e deslacração na saída da área sob risco."
@@ -41,15 +32,9 @@
   {
     "prag": "Bactrocera carambolae",
     "desc": "De municípios sem ocorrência/tampão localizados em UFs com ocorrência",
-    "status_origem": [
-      "Área Sem Registro"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "frutos"
-    ],
+    "status_origem": ["Área Sem Registro"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos"],
     "exig": [
       "O trânsito é PERMITIDO, por meio de emissão de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV).",
       "O envio que transitar em áreas sob quarentena ou transiente deverá transitar em embalagens e veículos adequados acompanhados de lacres do Órgão Defesa Sanitária Vegetal."
@@ -59,57 +44,39 @@
   {
     "prag": "Bactrocera carambolae",
     "desc": "De UF sem ocorrência para UF sem ocorrência",
-    "status_origem": [
-      "UF Sem Registro"
-    ],
-    "status_destino": [
-      "UF Sem Registro"
-    ],
-    "part": [
-      "frutos"
-    ],
+    "status_origem": ["UF Sem Registro"],
+    "status_destino": ["UF Sem Registro"],
+    "part": ["frutos"],
     "exig": [
       "TRÂNSITO LIVRE. A certificação fitossanitária de origem (CFO/CFOC) e a PTV são dispensadas, desde que a carga não transite por área com ocorrência da praga.",
-      "Caso transite por área sob risco, será EXIGIDA PTV e o transporte seguro com embalagens/veículos de proteção adequadas (tela 2mm) e controle via lacres do órgão estadual."
+      "Caso transite por área sob risco, será EXIGIDA PTV e o transporte seguro com embalagens/veículos de proteção adequadas (tela 2mm) e controle via lacres do órgão estadual.",
+      "Deverá constar obrigatoriamente na PTV emitida a Declaração Adicional: \"A partida foi produzida em UF sem ocorrência de Bactrocera carambolae\"."
     ],
     "leg": "Portaria MAPA Nº 776/2025, Art. 18; Art. 21"
   },
   {
     "prag": "Bactrocera carambolae",
     "desc": "De UF sem ocorrência para UF com ocorrência",
-    "status_origem": [
-      "UF Sem Registro"
-    ],
-    "status_destino": [
-      "Área Com Ocorrência",
-      "Zona Tampão",
-      "Área Sem Registro"
-    ],
-    "part": [
-      "frutos"
-    ],
+    "status_origem": ["UF Sem Registro"],
+    "status_destino": ["Área Com Ocorrência","Zona Tampão","Área Sem Registro"],
+    "part": ["frutos"],
     "exig": [
       "A CFO/CFOC é dispensada, mas é EXIGIDA PTV por ser lote destinado a Unidade Federativa com ocorrência da praga.",
-      "Se transitar em áreas sob risco severo, exigências de telas e lacres se aplicam."
+      "Se transitar em áreas sob risco severo, exigências de telas e lacres se aplicam.",
+      "Deverá constar obrigatoriamente na PTV emitida a Declaração Adicional: \"A partida foi produzida em UF sem ocorrência de Bactrocera carambolae\"."
     ],
     "leg": "Portaria MAPA Nº 776/2025, Art. 21"
   },
-  // 2. Schizotetranychus hindustanicus
+
+  // ----------------------------------------------------------------------
+  // Schizotetranychus hindustanicus
+  // ----------------------------------------------------------------------
   {
     "prag": "Schizotetranychus hindustanicus",
     "desc": "De Área com Ocorrência para UF Sem Registro (material in vitro, madeira serrada e frutos secos de coco)",
-    "status_origem": [
-      "Área Com Ocorrência"
-    ],
-    "status_destino": [
-      "UF Sem Registro",
-      "Área Sem Registro"
-    ],
-    "part": [
-      "material in vitro",
-      "madeira serrada",
-      "frutos secos e descascados de Cocos nucifera"
-    ],
+    "status_origem": ["Área Com Ocorrência"],
+    "status_destino": ["UF Sem Registro","Área Sem Registro"],
+    "part": ["material in vitro","madeira serrada","frutos secos e descascados de Cocos nucifera"],
     "exig": [
       "TRÂNSITO LIVRE. Estes materiais excetuam-se da proibição de trânsito."
     ],
@@ -118,16 +85,9 @@
   {
     "prag": "Schizotetranychus hindustanicus",
     "desc": "De Área com Ocorrência para UF Sem Registro (frutos de Citrus spp.)",
-    "status_origem": [
-      "Área Com Ocorrência"
-    ],
-    "status_destino": [
-      "UF Sem Registro",
-      "Área Sem Registro"
-    ],
-    "part": [
-      "frutos de Citrus spp."
-    ],
+    "status_origem": ["Área Com Ocorrência"],
+    "status_destino": ["UF Sem Registro","Área Sem Registro"],
+    "part": ["frutos de Citrus spp."],
     "exig": [
       "Trânsito PERMITIDO mediante beneficiamento e inspeção.",
       "Beneficiamento: imersão em hipoclorito de sódio a 200 ppm por 10 min, lavagem com detergente neutro, escovação, secagem e aplicação de cera.",
@@ -139,35 +99,24 @@
   {
     "prag": "Schizotetranychus hindustanicus",
     "desc": "De Área com Ocorrência para UF Sem Registro (outras espécies e partes)",
-    "status_origem": [
-      "Área Com Ocorrência"
-    ],
-    "status_destino": [
-      "UF Sem Registro",
-      "Área Sem Registro"
-    ],
-    "part": [
-      "plantas e partes de Citrus spp. (exceto frutos), Cocos nucifera (exceto frutos secos/descascados), Acacia sp., Azadirachta indica, Melia azedarach e Sorghum bicolor"
-    ],
+    "status_origem": ["Área Com Ocorrência"],
+    "status_destino": ["UF Sem Registro","Área Sem Registro"],
+    "part": ["plantas e partes de Citrus spp. (exceto frutos), Cocos nucifera (exceto frutos secos/descascados), Acacia sp., Azadirachta indica, Melia azedarach e Sorghum bicolor"],
     "exig": [
       "TRÂNSITO PROIBIDO."
     ],
     "leg": "IN MAPA Nº 08/2012, Art. 1º"
   },
-  // 3. Sternochetus mangiferae
+
+  // ----------------------------------------------------------------------
+  // Sternochetus mangiferae
+  // ----------------------------------------------------------------------
   {
     "prag": "Sternochetus mangiferae",
     "desc": "De Área com Ocorrência (Zona Interditada) para áreas indenes",
-    "status_origem": [
-      "Área Com Ocorrência"
-    ],
-    "status_destino": [
-      "UF Sem Registro",
-      "Área Sem Registro"
-    ],
-    "part": [
-      "frutos de manga"
-    ],
+    "status_origem": ["Área Com Ocorrência"],
+    "status_destino": ["UF Sem Registro","Área Sem Registro"],
+    "part": ["frutos de manga"],
     "exig": [
       "TRÂNSITO PROIBIDO."
     ],
@@ -176,54 +125,40 @@
   {
     "prag": "Sternochetus mangiferae",
     "desc": "De municípios sem ocorrência localizados em UF com Área Com Ocorrência para áreas indenes",
-    "status_origem": [
-      "Área Sem Registro"
-    ],
-    "status_destino": [
-      "UF Sem Registro",
-      "Área Sem Registro"
-    ],
-    "part": [
-      "frutos de manga"
-    ],
+    "status_origem": ["Área Sem Registro"],
+    "status_destino": ["UF Sem Registro","Área Sem Registro"],
+    "part": ["frutos de manga"],
     "exig": [
       "Trânsito condicionado à apresentação de Permissão de Trânsito de Vegetais (PTV) embasada em CFO/CFOC com a Declaração Adicional: 'A partida foi produzida fora da zona interditada e encontra-se livre de Sternochetus mangiferae'."
     ],
     "leg": "IN MAPA Nº 34/2017, Art. 3º"
   },
-  // 4. BSV e CMV
+
+  // ----------------------------------------------------------------------
+  // BSV e CMV
+  // ----------------------------------------------------------------------
   {
     "prag": "BSV e CMV",
     "desc": "Trânsito de mudas de bananeira entre quaisquer áreas",
-    "status_origem": [
-      "Todas as Áreas"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "mudas de bananeira"
-    ],
+    "status_origem": ["Todas as Áreas"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["mudas de bananeira"],
     "exig": [
       "O trânsito de mudas de bananeira só é permitido com a Permissão de Trânsito de Vegetais (PTV).",
       "A PTV deverá estar embasada em CFO/CFOC contendo a seguinte Declaração Adicional: 'A partida encontra-se livre dos vírus Banana streak virus (BSV) e Cucumber mosaic virus (CMV), de acordo com o laudo laboratorial [nº do laudo], [nome do laboratório] - [município e UF de localização do laboratório]'."
     ],
     "leg": "IN MAPA Nº 46/2010, Art. 10 e Art. 13"
   },
-  // 5. Xanthomonas campestris pv. viticola
+
+  // ----------------------------------------------------------------------
+  // Xanthomonas campestris pv. viticola
+  // ----------------------------------------------------------------------
   {
     "prag": "Xanthomonas campestris pv. viticola",
     "desc": "De UF com Ocorrência para UF Sem Ocorrência (Mudas)",
-    "status_origem": [
-      "Área Com Ocorrência",
-      "Área Sem Registro"
-    ],
-    "status_destino": [
-      "UF Sem Registro"
-    ],
-    "part": [
-      "mudas do gênero Vitis"
-    ],
+    "status_origem": ["Área Com Ocorrência","Área Sem Registro"],
+    "status_destino": ["UF Sem Registro"],
+    "part": ["mudas do gênero Vitis"],
     "exig": [
       "O trânsito só é permitido quando as mudas forem acompanhadas de Permissão de Trânsito de Vegetais (PTV) com a seguinte Declaração Adicional: 'As mudas foram obtidas por micropropagação e indexadas para Xanthomonas campestris pv. viticola'."
     ],
@@ -232,16 +167,9 @@
   {
     "prag": "Xanthomonas campestris pv. viticola",
     "desc": "De UF com Ocorrência para UF Sem Ocorrência (Frutos para consumo in natura)",
-    "status_origem": [
-      "Área Com Ocorrência",
-      "Área Sem Registro"
-    ],
-    "status_destino": [
-      "UF Sem Registro"
-    ],
-    "part": [
-      "frutos para consumo in natura do gênero Vitis"
-    ],
+    "status_origem": ["Área Com Ocorrência","Área Sem Registro"],
+    "status_destino": ["UF Sem Registro"],
+    "part": ["frutos para consumo in natura do gênero Vitis"],
     "exig": [
       "O trânsito só é permitido quando os frutos forem acompanhados de Permissão de Trânsito de Vegetais (PTV) com a seguinte Declaração Adicional: 'Os frutos foram produzidos em propriedade onde são adotadas as medidas de prevenção e controle do cancro bacteriano da videira, previstas na legislação fitossanitária'."
     ],
@@ -250,36 +178,25 @@
   {
     "prag": "Xanthomonas campestris pv. viticola",
     "desc": "De UF com Ocorrência para UF Sem Ocorrência (Material para pesquisa)",
-    "status_origem": [
-      "Área Com Ocorrência",
-      "Área Sem Registro"
-    ],
-    "status_destino": [
-      "UF Sem Registro"
-    ],
-    "part": [
-      "material vegetal para pesquisa"
-    ],
+    "status_origem": ["Área Com Ocorrência","Área Sem Registro"],
+    "status_destino": ["UF Sem Registro"],
+    "part": ["material vegetal para pesquisa"],
     "exig": [
       "Permissão de Trânsito de Vegetais (PTV) com a seguinte Declaração Adicional: 'O material foi lacrado na origem, sob número de lacre X, e embalado de maneira a garantir a não dispersão da praga'.",
       "É necessária a assinatura de Termo de Compromisso pelo pesquisador e comunicação entre Órgãos Estaduais."
     ],
     "leg": "IN MAPA Nº 02/2014, Art. 6º, Inciso III"
   },
-  // 6. Neonectria ditissima (Neonectria galligena)
+
+  // ----------------------------------------------------------------------
+  // Neonectria ditissima (Neonectria galligena)
+  // ----------------------------------------------------------------------
   {
     "prag": "Neonectria ditissima (Neonectria galligena)",
     "desc": "De UF com Ocorrência para qualquer destino (Frutos)",
-    "status_origem": [
-      "Área Com Ocorrência",
-      "Área Sem Registro"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "frutos de pomáceas"
-    ],
+    "status_origem": ["Área Com Ocorrência","Área Sem Registro"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos de pomáceas"],
     "exig": [
       "Permissão de Trânsito de Vegetais (PTV) embasada em CFO/CFOC com a seguinte Declaração Adicional: 'Na unidade de produção e Unidade de Consolidação - UC foram adotados os procedimentos de controle e prevenção previstos nesta norma e os frutos não apresentam sintomas de Neonectria galligena'."
     ],
@@ -288,35 +205,24 @@
   {
     "prag": "Neonectria ditissima (Neonectria galligena)",
     "desc": "De UF com Ocorrência para qualquer destino (Material propagativo, exceto in vitro)",
-    "status_origem": [
-      "Área Com Ocorrência",
-      "Área Sem Registro"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "material propagativo (exceto material in vitro)"
-    ],
+    "status_origem": ["Área Com Ocorrência","Área Sem Registro"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["material propagativo (exceto material in vitro)"],
     "exig": [
       "Permissão de Trânsito de Vegetais (PTV) embasada em CFO/CFOC com a seguinte Declaração Adicional: 'A Unidade de produção foi inspecionada oficialmente durante o período de produção e não foi constatada a presença de sintomas de infecção pela praga Neonectria galligena'."
     ],
     "leg": "IN MAPA Nº 20/2013, Art. 7º, § 3º"
   },
-  // 7. Candidatus liberibacter americanus e Candidatus liberibacter asiaticus
+
+  // ----------------------------------------------------------------------
+  // Candidatus liberibacter americanus e Candidatus liberibacter asiaticus
+  // ----------------------------------------------------------------------
   {
     "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
     "desc": "De Municípios com ocorrência ou limítrofes para UF Sem Registro (Frutos)",
-    "status_origem": [
-      "Área Com Ocorrência",
-      "Zona Tampão"
-    ],
-    "status_destino": [
-      "UF Sem Registro"
-    ],
-    "part": [
-      "frutos"
-    ],
+    "status_origem": ["Área Com Ocorrência","Zona Tampão"],
+    "status_destino": ["UF Sem Registro"],
+    "part": ["frutos"],
     "exig": [
       "Permissão de Trânsito de Vegetais (PTV) baseada em CFO/CFOC com a DA: 'Os frutos foram submetidos a beneficiamento primário na origem para retirada de restos vegetais, qual seja, totalmente isentos de folhas e ramos de plantas cítricas.'"
     ],
@@ -325,15 +231,9 @@
   {
     "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
     "desc": "Trânsito de material de propagação oriundo de UF Sem Registro",
-    "status_origem": [
-      "UF Sem Registro"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "material de propagação vegetativo"
-    ],
+    "status_origem": ["UF Sem Registro"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["material de propagação vegetativo"],
     "exig": [
       "Permissão de Trânsito de Vegetais (PTV) com a DA: 'O material de propagação é originário de UF sem ocorrência de Candidatus Liberibacter spp.'"
     ],
@@ -342,15 +242,9 @@
   {
     "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
     "desc": "Trânsito de material de propagação de município sem ocorrência (exceto limítrofes) em UF com Ocorrência",
-    "status_origem": [
-      "Área Sem Registro"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "material de propagação vegetativo"
-    ],
+    "status_origem": ["Área Sem Registro"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["material de propagação vegetativo"],
     "exig": [
       "Permissão de Trânsito de Vegetais (PTV) baseada em CFO/CFOC com a DA: 'O material de propagação é originário de município sem ocorrência de Candidatus Liberibacter spp., de UF com ocorrência, e encontra-se livre da praga.'"
     ],
@@ -359,38 +253,29 @@
   {
     "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
     "desc": "Trânsito de material de propagação de município com ocorrência ou limítrofe",
-    "status_origem": [
-      "Área Com Ocorrência",
-      "Zona Tampão"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "material de propagação vegetativo"
-    ],
+    "status_origem": ["Área Com Ocorrência","Zona Tampão"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["material de propagação vegetativo"],
     "exig": [
       "Permissão de Trânsito de Vegetais (PTV) baseada em CFO/CFOC com a DA: 'O material de propagação é originário de UF com ocorrência de Candidatus Liberibacter spp, foi produzido em ambiente protegido e encontra-se livre da praga.'",
       "Se transitar por UF com ocorrência deve ser em caminhão fechado ou tela antiafídica."
     ],
     "leg": "Portaria SDA/MAPA Nº 317/2021, Art. 23 e 24"
   },
-  // 8. Ralstonia solanacearum raça 2
+
+  // ----------------------------------------------------------------------
+  // Ralstonia solanacearum raça 2
+  // ----------------------------------------------------------------------
   {
     "prag": "Ralstonia solanacearum raça 2",
     "desc": "De Área Com Ocorrência para qualquer destino (Mudas)",
-    "status_origem": [
-      "Área Com Ocorrência"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "mudas e rizomas"
-    ],
+    "status_origem": ["Área Com Ocorrência"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["mudas e rizomas"],
     "exig": [
       "Trânsito PROIBIDO.",
       "EXCEÇÃO: Permitido se in vitro OU se micropropagadas sem contato com solo.",
+      "EXCEÇÃO 2: É permitido o trânsito (por exemplo, com fins de pesquisa) condicionado à Autorização da Área de Sanidade Vegetal da Superintendência Federal de Agricultura, Pecuária e Abastecimento (SFA) da UF de origem, sendo a partida obrigatoriamente transportada em recipiente lacrado.",
       "Para exceções, exigir PTV fundamentada em CFO com DA: 'As mudas encontram-se livres de Ralstonia solanacearum raça 2.' (veículo deverá ser lacrado)."
     ],
     "leg": "IN MAPA Nº 17/2009, Art. 3º e 4º"
@@ -398,16 +283,9 @@
   {
     "prag": "Ralstonia solanacearum raça 2",
     "desc": "De ALP Moko (Área Livre de Praga) para qualquer destino (Mudas)",
-    "status_origem": [
-      "Área Livre de Praga (ALP)",
-      "Área Livre de Praga"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "mudas e rizomas"
-    ],
+    "status_origem": ["Área Livre de Praga (ALP)","Área Livre de Praga"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["mudas e rizomas"],
     "exig": [
       "Trânsito PERMITIDO acompanhado de PTV fundamentada em CFO com a DA: 'As mudas foram produzidas em Área Livre de Ralstonia solanacearum raça 2, oficialmente reconhecida pelo Ministério da Agricultura, Pecuária e Abastecimento.' (Carga lacrada)."
     ],
@@ -416,110 +294,78 @@
   {
     "prag": "Ralstonia solanacearum raça 2",
     "desc": "De Área Com Ocorrência para ALP ou UF sem ocorrência (Frutos)",
-    "status_origem": [
-      "Área Com Ocorrência"
-    ],
-    "status_destino": [
-      "Área Livre de Praga (ALP)",
-      "Área Livre de Praga",
-      "UF Sem Registro"
-    ],
-    "part": [
-      "frutos",
-      "inflorescências"
-    ],
+    "status_origem": ["Área Com Ocorrência"],
+    "status_destino": ["Área Livre de Praga (ALP)","Área Livre de Praga","UF Sem Registro"],
+    "part": ["frutos","inflorescências"],
     "exig": [
       "Para ALP Moko: PTV + DA 'Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga... (SMR)'.",
       "Para UF sem ocorrência: PTV embasada em CFO contendo DA de que não foi observada presença na UP nos últimos 12 meses OU produzidos sob SMR."
     ],
     "leg": "IN MAPA Nº 17/2009, Art. 7º e 9º"
   },
-  // 9. Pseudocercospora fijiensis (Mycosphaerella fijiensis)
+
+  // ----------------------------------------------------------------------
+  // Pseudocercospora fijiensis (Mycosphaerella fijiensis)
+  // ----------------------------------------------------------------------
   {
     "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     "desc": "De Área Com Ocorrência para UF Sem Ocorrência ou Área Livre (Frutos)",
-    "status_origem": [
-      "Área Com Ocorrência"
-    ],
-    "status_destino": [
-      "UF Sem Registro",
-      "Área Livre de Praga"
-    ],
-    "part": [
-      "frutos"
-    ],
+    "status_origem": ["Área Com Ocorrência"],
+    "status_destino": ["UF Sem Registro","Área Livre de Praga"],
+    "part": ["frutos"],
     "exig": [
-      "Trânsito PROIBIDO."
+      "Trânsito PROIBIDO.",
+      "Em qualquer caso, as bananas não podem transitar em cacho em todo o território nacional e as partidas devem ser acondicionadas de forma isenta de folhas ou pedaços de folhas da bananeira."
     ],
     "leg": "IN MAPA Nº 17/2005, Art. 2º"
   },
   {
     "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     "desc": "De Área sob SMR para qualquer destino (Frutos)",
-    "status_origem": [
-      "Área de SMR"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "frutos"
-    ],
+    "status_origem": ["Área de SMR"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos"],
     "exig": [
-      "Trânsito PERMITIDO. PTV embasada em CFO/CFOC com a DA: 'A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra'."
+      "Trânsito PERMITIDO. PTV embasada em CFO/CFOC com a DA: 'A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra'.",
+      "Em qualquer caso, as bananas não podem transitar em cacho em todo o território nacional e as partidas devem ser acondicionadas de forma isenta de folhas ou pedaços de folhas da bananeira."
     ],
     "leg": "IN MAPA Nº 17/2005, Art. 2º, inc. VI e Anexo II, item 6.5.1"
   },
   {
     "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     "desc": "De Área Com Ocorrência para Área com Ocorrência (Frutos)",
-    "status_origem": [
-      "Área Com Ocorrência"
-    ],
-    "status_destino": [
-      "Área Com Ocorrência"
-    ],
-    "part": [
-      "frutos"
-    ],
+    "status_origem": ["Área Com Ocorrência"],
+    "status_destino": ["Área Com Ocorrência"],
+    "part": ["frutos"],
     "exig": [
-      "Trânsito PERMITIDO. Vedada a passagem por Área Livre ou UF sem ocorrência sem carga lacrada garantindo não disseminação."
+      "Trânsito PERMITIDO. Vedada a passagem por Área Livre ou UF sem ocorrência sem carga lacrada garantindo não disseminação.",
+      "Em qualquer caso, as bananas não podem transitar em cacho em todo o território nacional e as partidas devem ser acondicionadas de forma isenta de folhas ou pedaços de folhas da bananeira."
     ],
     "leg": "IN MAPA Nº 17/2005, Art. 2º, inc. V e Anexo I, item 5.4"
   },
   {
     "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     "desc": "Trânsito de mudas não micropropagadas oriundas de áreas infestadas",
-    "status_origem": [
-      "Área Com Ocorrência",
-      "Área de SMR"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "mudas"
-    ],
+    "status_origem": ["Área Com Ocorrência","Área de SMR"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["mudas"],
     "exig": [
       "Trânsito PROIBIDO para mudas não micropropagadas que não sejam de Área Livre de Sigatoka.",
-      "EXCEÇÃO para micropropagadas: permitidas se in vitro ou pré-aclimatadas e tratadas com fungicida 10 dias antes da expedição."
+      "EXCEÇÃO para micropropagadas: permitidas se in vitro ou pré-aclimatadas e tratadas com fungicida 10 dias antes da expedição.",
+      "As exigências não se aplicam a mudas das espécies Heliconia rostrata, H. bihai, H. augusta, H. chartacea, H. spathocircinada, H. librata, H. psittacorum cultivar Red Opal e H. stricta."
     ],
     "leg": "IN MAPA Nº 17/2005, Art. 3º e 4º"
   },
-  // 10. Xanthomonas citri subsp. citri
+
+  // ----------------------------------------------------------------------
+  // Xanthomonas citri subsp. citri
+  // ----------------------------------------------------------------------
   {
     "prag": "Xanthomonas citri subsp. citri",
     "desc": "De Área de Status Desconhecido para qualquer destino",
-    "status_origem": [
-      "Área de Status Desconhecido"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "frutos",
-      "material de propagação vegetativo"
-    ],
+    "status_origem": ["Área de Status Desconhecido"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos","material de propagação vegetativo"],
     "exig": [
       "Trânsito PROIBIDO."
     ],
@@ -528,18 +374,9 @@
   {
     "prag": "Xanthomonas citri subsp. citri",
     "desc": "De UF Sem Registro, Área Sem Ocorrência ou ALP",
-    "status_origem": [
-      "UF Sem Registro",
-      "Área Sem Ocorrência",
-      "Área Livre de Praga"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "frutos",
-      "material de propagação vegetativo"
-    ],
+    "status_origem": ["UF Sem Registro","Área Sem Ocorrência","Área Livre de Praga"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos","material de propagação vegetativo"],
     "exig": [
       "PTV embasada em CFO/CFOC constando DA adequada ao status ('Os frutos/material são originários de Área Sem Ocorrência...' ou 'originários de Área Livre de Praga...')."
     ],
@@ -548,15 +385,9 @@
   {
     "prag": "Xanthomonas citri subsp. citri",
     "desc": "De Área sob SMR para qualquer destino (Frutos)",
-    "status_origem": [
-      "Área de SMR"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "frutos"
-    ],
+    "status_origem": ["Área de SMR"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos"],
     "exig": [
       "PTV embasada em CFO/CFOC com DA: 'Os frutos são originários de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco (SMR) reconhecido oficialmente, foram higienizados por imersão em solução com Hipoclorito de Sódio a duzentos ppm, pH sete, durante dois minutos e se encontram sem sintomas de Cancro Cítrico'.",
       "Veículo fechado ou coberto e caixas higienizadas."
@@ -566,15 +397,9 @@
   {
     "prag": "Xanthomonas citri subsp. citri",
     "desc": "De Área sob SMR para qualquer destino (Mudas)",
-    "status_origem": [
-      "Área de SMR"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "material de propagação vegetativo"
-    ],
+    "status_origem": ["Área de SMR"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["material de propagação vegetativo"],
     "exig": [
       "PTV embasada em CFO com DA: 'O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico e foi produzido conforme preconiza a legislação específica em vigor'.",
       "Material deve ter sido cultivado albergado em ambiente isolado."
@@ -584,36 +409,25 @@
   {
     "prag": "Xanthomonas citri subsp. citri",
     "desc": "De Área sob Erradicação para qualquer destino",
-    "status_origem": [
-      "Área Sob Erradicação"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "frutos",
-      "material de propagação vegetativo"
-    ],
+    "status_origem": ["Área Sob Erradicação"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos","material de propagação vegetativo"],
     "exig": [
       "Frutos de imóvel interditado (desde que sadias/higienizados) ou de imóvel sem ocorrência -> Permitido (PTV com DA específica Art. 66/67).",
       "Mudas SOMENTE de imóvel sem ocorrência (PTV com DA Art. 68)."
     ],
     "leg": "IN MAPA Nº 21/2018, Arts. 66, 67 e 68"
   },
-  // 11. Rhizoctonia theobromae (Ceratobasidium theobromae)
+
+  // ----------------------------------------------------------------------
+  // Rhizoctonia theobromae (Ceratobasidium theobromae)
+  // ----------------------------------------------------------------------
   {
     "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
     "desc": "De UF Sem Registro para qualquer destino",
-    "status_origem": [
-      "UF Sem Registro"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "plantas",
-      "partes de plantas"
-    ],
+    "status_origem": ["UF Sem Registro"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["plantas","partes de plantas"],
     "exig": [
       "Certificação de origem (CFO/CFOC) e PTV dispensadas.",
       "EXCEÇÃO: PTV é necessária se transitar por áreas com ocorrência, exigindo também embalagem lacrada e lacre relatado."
@@ -623,16 +437,9 @@
   {
     "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
     "desc": "De Municípios sem ocorrência localizados em UF com ocorrência",
-    "status_origem": [
-      "Área Sem Registro"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "plantas",
-      "partes de plantas"
-    ],
+    "status_origem": ["Área Sem Registro"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["plantas","partes de plantas"],
     "exig": [
       "Trânsito interestadual PERMITIDO com PTV baseada em CFO/CFOC.",
       "DA obrigatória: 'A partida é originária de município sem ocorrência de Rhizoctonia theobromae, em Unidade Federativa com ocorrência, e encontra-se livre da praga'.",
@@ -643,54 +450,35 @@
   {
     "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
     "desc": "De Área Com Ocorrência para qualquer destino",
-    "status_origem": [
-      "Área Com Ocorrência"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "plantas",
-      "partes de plantas"
-    ],
+    "status_origem": ["Área Com Ocorrência"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["plantas","partes de plantas"],
     "exig": [
       "Trânsito PROIBIDO."
     ],
     "leg": "Portaria SDA/MAPA Nº 1257/2025, Art. 7º"
   },
-  // 12. Moniliophthora roreri
+
+  // ----------------------------------------------------------------------
+  // Moniliophthora roreri
+  // ----------------------------------------------------------------------
   {
     "prag": "Moniliophthora roreri",
     "desc": "Trânsito de amêndoas fermentadas e secas de cacau de Área sob Quarentena (Com Ocorrência)",
-    "status_origem": [
-      "Área Com Ocorrência",
-      "Área Sob Quarentena"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "amêndoas fermentadas e secas de cacau (Tipo I e II)"
-    ],
+    "status_origem": ["Área Com Ocorrência","Área Sob Quarentena"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["amêndoas fermentadas e secas de cacau (Tipo I e II)"],
     "exig": [
-      "O trânsito é PERMITIDO para amêndoas Tipo I e II, desde que estas sejam acondicionadas em sacarias novas, visando a não disseminação da praga por embalagens contaminadas."
+      "O trânsito é PERMITIDO para amêndoas Tipo I e II, desde que estas sejam acondicionadas em sacarias novas e acompanhadas por laudo de classificação emitido por classificador credenciado pelo MAPA, visando a não disseminação da praga por embalagens contaminadas."
     ],
     "leg": "IN MAPA Nº 112/2020, Art. 12, §3º"
   },
   {
     "prag": "Moniliophthora roreri",
     "desc": "Trânsito de material hospedeiro sensível de Área sob Quarentena (Com Ocorrência)",
-    "status_origem": [
-      "Área Com Ocorrência",
-      "Área Sob Quarentena"
-    ],
-    "status_destino": [
-      "Todas as Áreas"
-    ],
-    "part": [
-      "frutos in natura",
-      "material de propagação vegetativo (mudas)"
-    ],
+    "status_origem": ["Área Com Ocorrência","Área Sob Quarentena"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["frutos in natura","material de propagação vegetativo (mudas)"],
     "exig": [
       "Trânsito PROIBIDO. A propriedade fica interditada e são suspensas atividades que promovam a disseminação da praga. Os artigos regulamentados só podem ser comercializados quando desinfestados oficialmente."
     ],
