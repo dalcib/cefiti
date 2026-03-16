@@ -215,52 +215,76 @@
   },
 
   // ----------------------------------------------------------------------
-  // Candidatus liberibacter americanus e Candidatus liberibacter asiaticus
+  // Candidatus liberibacter americanus e Candidatus liberibacter asiaticus (HLB)
   // ----------------------------------------------------------------------
   {
     "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
-    "desc": "De Municípios com ocorrência ou limítrofes para UF Sem Registro (Frutos)",
+    "desc": "De municípios com ocorrência de HLB e aqueles limítrofes dentro da mesma UF para município sem registro (Frutos de citros)",
     "status_origem": ["Área Com Ocorrência","Zona Tampão"],
-    "status_destino": ["UF Sem Registro"],
+    "status_destino": ["Área Sem Registro"],
     "part": ["frutos"],
     "exig": [
-      "Permissão de Trânsito de Vegetais (PTV) baseada em CFO/CFOC com a DA: 'Os frutos foram submetidos a beneficiamento primário na origem para retirada de restos vegetais, qual seja, totalmente isentos de folhas e ramos de plantas cítricas.'"
+      "O trânsito interestadual deve ser amparado por PTV (baseado em CFO/CFOC) com a Declaração Adicional: \"Os frutos foram submetidos à escovação e ao beneficiamento primário na origem para retirada de restos vegetais, qual seja, totalmente isentos de folhas e ramos de plantas cítricas\".",
+      "Obs: A etapa de escovação não é obrigatória para frutos de tangerina Ponkan (Citrus reticulata Blanco)."
     ],
-    "leg": "Portaria SDA/MAPA Nº 317/2021, Art. 20"
+    "leg": "Portaria SDA/MAPA Nº 1.326/2025, Art. 21 e Art. 23, inciso I"
   },
   {
     "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
-    "desc": "Trânsito de material de propagação oriundo de UF Sem Registro",
-    "status_origem": ["UF Sem Registro"],
-    "status_destino": ["Todas as Áreas"],
-    "part": ["material de propagação vegetativo"],
+    "desc": "De município sem ocorrência (em UF com ocorrência) para Área Sem Registro (Frutos)",
+    "status_origem": ["Área Sem Registro de UF Com Ocorrência"],  //Atualiar status_município.jsonc
+    "status_destino": ["Área Sem Registro"],
+    "part": ["frutos"],
     "exig": [
-      "Permissão de Trânsito de Vegetais (PTV) com a DA: 'O material de propagação é originário de UF sem ocorrência de Candidatus Liberibacter spp.'"
+      "O trânsito interestadual deve ser amparado por PTV (baseado em CFO/CFOC) com a Declaração Adicional: \"A partida é originária de município sem ocorrência de HLB, em UF com ocorrência, e encontra-se livre da praga\"."
     ],
-    "leg": "Portaria SDA/MAPA Nº 317/2021, Art. 21"
+    "leg": "Portaria SDA/MAPA Nº 1.326/2025, Art. 23, inciso II"
   },
   {
     "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
-    "desc": "Trânsito de material de propagação de município sem ocorrência (exceto limítrofes) em UF com Ocorrência",
-    "status_origem": ["Área Sem Registro"],
+    "desc": "Trânsito de material de propagação oriundo de UF Sem Ocorrência",
+    "status_origem": ["UF Sem Registro"],  //Atualiar status_município.jsonc
     "status_destino": ["Todas as Áreas"],
     "part": ["material de propagação vegetativo"],
     "exig": [
-      "Permissão de Trânsito de Vegetais (PTV) baseada em CFO/CFOC com a DA: 'O material de propagação é originário de município sem ocorrência de Candidatus Liberibacter spp., de UF com ocorrência, e encontra-se livre da praga.'"
+      "O trânsito deve ser amparado por PTV com a Declaração Adicional: \"O material de propagação é originário de UF sem ocorrência de HLB, foi produzido em ambiente protegido e encontra-se livre da praga\".",
+      "O transporte deve ser realizado em caminhão com carroceria fechada ou com tela antiafídica."
     ],
-    "leg": "Portaria SDA/MAPA Nº 317/2021, Art. 22"
+    "leg": "Portaria SDA/MAPA Nº 1.326/2025, Art. 25 e Art. 28"
   },
   {
     "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
-    "desc": "Trânsito de material de propagação de município com ocorrência ou limítrofe",
-    "status_origem": ["Área Com Ocorrência","Zona Tampão"],
+    "desc": "Trânsito de material de propagação de UF com Ocorrência",
+    "status_origem": ["UF Com Ocorrência"], //Atualiar status_município.jsonc
     "status_destino": ["Todas as Áreas"],
     "part": ["material de propagação vegetativo"],
     "exig": [
-      "Permissão de Trânsito de Vegetais (PTV) baseada em CFO/CFOC com a DA: 'O material de propagação é originário de UF com ocorrência de Candidatus Liberibacter spp, foi produzido em ambiente protegido e encontra-se livre da praga.'",
-      "Se transitar por UF com ocorrência deve ser em caminhão fechado ou tela antiafídica."
+      "O trânsito deve ser amparado por PTV (baseado em CFO/CFOC) com a Declaração Adicional: \"O material de propagação é originário de UF com ocorrência de HLB, foi produzido em ambiente protegido e encontra-se livre da praga\".",
+      "O transporte deve ser realizado em caminhão com carroceria fechada ou com tela antiafídica."
     ],
-    "leg": "Portaria SDA/MAPA Nº 317/2021, Art. 23 e 24"
+    "leg": "Portaria SDA/MAPA Nº 1.326/2025, Art. 26 e Art. 28"
+  },
+  {
+    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+    "desc": "Trânsito de Murraya paniculata",
+    "status_origem": ["UF Com Ocorrência"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["Murraya paniculata"],
+    "exig": [
+      "Fica PROIBIDO o trânsito de plantas ou partes de plantas de Murraya paniculata, provenientes de UF com ocorrência de HLB."
+    ],
+    "leg": "Portaria SDA/MAPA Nº 1.326/2025, Art. 24"
+  },
+  {
+    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+    "desc": "Trânsito de Sementes",
+    "status_origem": ["Todas as Áreas"],
+    "status_destino": ["Todas as Áreas"],
+    "part": ["sementes botânicas"],
+    "exig": [
+      "TRÂNSITO LIVRE no território nacional para sementes botânicas de plantas hospedeiras de HLB, inclusive daquelas utilizadas para a produção de porta-enxertos."
+    ],
+    "leg": "Portaria SDA/MAPA Nº 1.326/2025, Art. 27"
   },
 
   // ----------------------------------------------------------------------

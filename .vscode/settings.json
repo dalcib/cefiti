@@ -3,6 +3,7 @@
   //"editor.formatOnPaste": true,
   //"editor.formatOnType": true,
   "biome.enabled": true,
+  "biome.lsp.bin": "./node_modules/@biomejs/cli-win32-x64/biome.exe",
   "editor.codeActionsOnSave": {
     "source.organizeImports.biome": "explicit"
   }

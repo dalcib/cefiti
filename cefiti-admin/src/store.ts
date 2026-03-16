@@ -1,0 +1,283 @@
+import { deepSignal } from './../../cefiti/src/deep-signals.ts'
+import {
+  estados,
+  hospedeiros,
+  legislacoes,
+  pragas,
+  rules,
+  status_municipio,
+} from './../../firebase/public/db-next.js'
+
+declare global {
+  interface Window {
+    gtag(
+      event: string,
+      action_name: string,
+      params: {
+        hospSci: string
+        prod: string
+        orig: string
+        dest: string
+      },
+    ): void
+  }
+}
+
+export interface Dados {
+  hospSci: string
+  hospVul: string
+  prod: string
+  orig: string
+  dest: string
+  municipioOrigem: string
+  municipioDestino: string
+}
+
+const hospedeiroMap = new Map(hospedeiros.map((h) => [h.id, h.nomeSci]))
+
+export const db = rules.map((regra) => {
+  const praga = pragas.find((item) => item.prag === regra.prag)
+  return {
+    ...praga,
+    ...regra,
+    files: praga?.files
+      .map((id) => legislacoes.find((l) => l.id === id))
+      .filter(Boolean),
+  }
+})
+
+export interface Municipio {
+  id: string
+  nome: string
+  uf: string
+}
+
+export class Store {
+  dados: Dados = {
+    hospSci: '',
+    hospVul: '',
+    prod: '',
+    orig: '',
+    dest: '',
+    municipioOrigem: '',
+    municipioDestino: '',
+  }
+  exibeBase: boolean = false
+  searched: boolean = false
+  municipios: Municipio[] = []
+
+  constructor() {
+    this.loadMunicipios()
+  }
+
+  async loadMunicipios() {
+    if (typeof window === 'undefined') return
+    try {
+      const response = await fetch('/municipios.txt')
+      if (response.ok) {
+        const text = await response.text()
+        const ufMap = new Map<string, string>()
+        for (const e of estados) {
+          if (e.ibge) {
+            ufMap.set(String(e.ibge), e.UF)
+          }
+        }
+
+        this.municipios = text
+          .split('\n')
+          .filter((l) => l.trim().length > 6)
+          .map((l) => {
+            const id = l.slice(0, 6)
+            const nome = l.slice(6).trim()
+            const ibgePrefix = id.slice(0, 2)
+            const uf = ufMap.get(ibgePrefix) || ''
+            return { id, nome, uf }
+          })
+      }
+    } catch (error) {
+      console.error('Erro ao carregar municipios', error)
+    }
+  }
+
+  get hospedeirosPragas() {
+    return pragas.flatMap((praga) =>
+      praga.hosp.map((id) => hospedeiroMap.get(id) || ''),
+    )
+  }
+
+  get hospedeirosRegulamentados() {
+    return hospedeiros.filter((hospedeiro) =>
+      this.species(this.hospedeirosPragas, hospedeiro.nomeSci),
+    )
+  }
+
+  get listaNomesSci() {
+    return [
+      '',
+      ...[
+        ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeSci)),
+      ].sort((a, b) => a.localeCompare(b)),
+    ]
+  }
+
+  get listaNomesVul() {
+    return [
+      '',
+      ...[
+        ...new Set(this.hospedeirosRegulamentados.flatMap((v) => v.nomeVul)),
+      ].sort((a, b) => a.localeCompare(b)),
+    ]
+  }
+
+  get empty(): boolean {
+    return this.result.length === 0
+  }
+
+  get origem() {
+    return estados.filter(
+      (estado) => estado.UF !== this.dados.dest || estado.UF === '',
+    )
+  }
+
+  get destino() {
+    return estados.filter(
+      (estado) => estado.UF !== this.dados.orig || estado.UF === '',
+    )
+  }
+
+  get municipiosOrigem() {
+    if (!this.dados.orig) return []
+    return this.municipios.filter((m) => m.uf === this.dados.orig)
+  }
+
+  get municipiosDestino() {
+    if (!this.dados.dest) return []
+    return this.municipios.filter((m) => m.uf === this.dados.dest)
+  }
+
+  get gender() {
+    return this.dados.hospSci.split(' ')[0]
+  }
+
+  species(species: (string | number)[], nomeSci: string): boolean {
+    const speciesNames = species.map((s) =>
+      typeof s === 'number' ? hospedeiroMap.get(s) || '' : s,
+    )
+    return (
+      speciesNames.includes(nomeSci) ||
+      speciesNames.includes(`${nomeSci.split(' ')[0]} sp.`) ||
+      speciesNames.includes(`${nomeSci.split(' ')[0]} spp.`)
+    )
+  }
+
+  get completed(): boolean {
+    return (
+      Boolean(this.dados.hospSci) &&
+      Boolean(this.dados.hospVul) &&
+      Boolean(this.dados.prod) &&
+      Boolean(this.dados.orig) &&
+      Boolean(this.dados.dest)
+    )
+  }
+
+  get partes(): string[] {
+    const p = db
+      .filter((exigen) => this.species(exigen.hosp, this.dados.hospSci))
+      .flatMap((v) => v.part)
+
+    // Ensure empty string is always included
+    return ['', ...new Set(p)].sort((a: string, b: string) =>
+      a.localeCompare(b),
+    )
+  }
+
+  get result() {
+    return db.filter((exigen) => {
+      return (
+        this.species(exigen.hosp, this.dados.hospSci) &&
+        exigen.orig.includes(this.dados.orig) &&
+        exigen.dest.includes(this.dados.dest) &&
+        exigen.part.includes(this.dados.prod)
+      )
+    })
+  }
+
+  clean(): void {
+    this.dados.hospSci = ''
+    this.dados.hospVul = ''
+    this.dados.prod = ''
+    this.dados.orig = ''
+    this.dados.dest = ''
+    this.dados.municipioOrigem = ''
+    this.dados.municipioDestino = ''
+  }
+
+  handleChanges(event: Event) {
+    const target = event.currentTarget as HTMLSelectElement
+    switch (target.name) {
+      case 'hospSci':
+        {
+          const hospVulg = hospedeiros.find(
+            (hosp) => hosp.nomeSci === target.value,
+          )
+          this.dados.prod = ''
+          if (hospVulg) {
+            if (!hospVulg.nomeVul.includes(this.dados.hospVul)) {
+              this.dados.hospVul = hospVulg.nomeVul[0]
+            }
+          } else {
+            this.dados.hospVul = ''
+          }
+        }
+        break
+      case 'hospVul':
+        {
+          const hospSci = hospedeiros.find((hosp) =>
+            hosp.nomeVul.includes(target.value),
+          )
+          this.dados.prod = ''
+          this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
+        }
+        break
+      default:
+        break
+    }
+    this.dados[target.name as keyof Dados] = target.value
+  }
+
+  handleMenu(i: string) {
+    if (i === 'Base') {
+      this.exibeBase = !this.exibeBase
+    }
+    if (i === 'Nova') {
+      this.clean()
+      this.searched = false
+    }
+    if (i === 'Voltar') {
+      this.searched = false
+    }
+    if (i === 'Print') {
+      window.print()
+    }
+  }
+
+  handleSearch(event: Event) {
+    if (!this.completed) {
+      alert('Finalize a seleçao dos critérios para a consulta')
+      event.preventDefault()
+      return
+    }
+    if (process.env.NODE_ENV !== 'development') {
+      window.gtag('event', 'search_hosp', {
+        hospSci: this.dados.hospSci,
+        prod: this.dados.prod,
+        orig: this.dados.orig,
+        dest: this.dados.dest,
+      })
+    }
+    this.searched = true
+    event.preventDefault()
+  }
+}
+
+export const store = deepSignal(new Store())
