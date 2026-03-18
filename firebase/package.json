@@ -6,10 +6,8 @@
   "type": "module",
   "scripts": {
     "publish:prod": "node scripts/publicar-db-legacy.ts && npx firebase-tools deploy --only hosting",
-    "publish:dev": "node scripts/publicar-db.ts && npx firebase-tools deploy --only hosting"
-  },
-  "devDependencies": {
-    "esbuild": "^0.27.3"
+    "publish:dev": "node scripts/publicar-db.ts && npx firebase-tools deploy --only hosting",
+    "publish:next": "node scripts/publicar-db-next.ts && npx firebase-tools deploy --only hosting"
   },
   "dependencies": {
     "firebase-admin": "^13.6.0",

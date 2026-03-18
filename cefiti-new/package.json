@@ -1,0 +1,9 @@
+{
+  "name": "cefiti-new",
+  "version": "10.0.0",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#db": "./src/db.ts"
+  }
+}

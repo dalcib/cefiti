@@ -42,6 +42,12 @@ async function generateDbNext() {
     const data: Record<string, any[]> = {}
     let legTextoData: any[] = []
 
+    // Fetch version
+    console.log('Fetching version from configuracoes/geral...')
+    const configDoc = await db.doc('configuracoes/geral').get()
+    const version = configDoc.exists ? configDoc.data()?.version : 'unknown'
+    console.log(`Version found: ${version}`)
+
     for (const collectionRef of collections) {
       const collName = collectionRef.id
 
@@ -64,7 +70,8 @@ async function generateDbNext() {
     // 1. Generate db-next.js content
     console.log('Generating db-next.js file content...')
     let dbNextContent = '// CEFiTI - Database\n\n'
-    const exportNames: string[] = []
+    dbNextContent += `var dbVersion = ${JSON.stringify(version)};\n`
+    const exportNames: string[] = ['dbVersion']
 
     for (const [key, items] of Object.entries(data)) {
       // Clean up key for variable name - handle hyphens etc

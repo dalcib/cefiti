@@ -1,4 +1,4 @@
-import { deepSignal } from './../../cefiti/src/deep-signals.ts'
+import { deepSignal } from '../../cefiti/src/deep-signals.ts'
 import {
   estados,
   hospedeiros,
@@ -6,7 +6,7 @@ import {
   pragas,
   rules,
   status_municipio,
-} from './../../firebase/public/db-next.js'
+} from '../../firebase/public/db-next.js'
 
 declare global {
   interface Window {
