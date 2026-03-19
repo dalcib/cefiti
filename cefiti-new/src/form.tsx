@@ -14,14 +14,14 @@ interface PropsSelect {
 }
 
 const Select = function Select({ source, name }: PropsSelect) {
-  /* if (name.startsWith('municipio')) {
+  if (name.startsWith('municipio')) {
     const normalize = (s: string) =>
       s
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase()
 
-    const filterText = normalize(store.dados[name] || '')
+    const filterText = normalize((store.dados[name] as string) || '')
     const options = store[source].filter((option) => {
       if (!filterText) return true
       const val =
@@ -48,7 +48,7 @@ const Select = function Select({ source, name }: PropsSelect) {
               value={
                 typeof option === 'string'
                   ? option.toString()
-                  : (option as any).nome || (option as any).UF
+                  : (option as any).id || (option as any).nome || (option as any).UF
               }
               key={
                 typeof option === 'string'
@@ -60,7 +60,7 @@ const Select = function Select({ source, name }: PropsSelect) {
         </datalist>
       </>
     )
-  } */
+  }
 
   return (
     <select
@@ -69,7 +69,7 @@ const Select = function Select({ source, name }: PropsSelect) {
       className={name === 'hospSci' ? 'italic form-select' : 'form-select'}
       value={store.dados[name]}
       name={name}
-      onChange={(e) => store.handleChanges(e)}
+      onChange={(e: Event): void => store.handleChanges(e)}
     >
       {store[source].map((option) => {
         const opt = option as string | Municipio | Estado

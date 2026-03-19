@@ -34,5 +34,5 @@
     "noFallthroughCasesInSwitch": true
   },
   "exclude": ["node_modules", "build", "assets", "firebase"],
-  "include": ["cefiti/src", "cefiti-admin/src", "cefiti/test", "cefiti/public/*.db.js", "cefiti-new/src/store.ts"]
+  "include": ["cefiti/src", "cefiti-admin/src", "cefiti/test", "cefiti/public/*.db.js", "cefiti-new/src", "cefiti-new/test"]
 }
