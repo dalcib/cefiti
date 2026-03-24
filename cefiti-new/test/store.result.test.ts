@@ -1,19 +1,20 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { Store } from './store.ts'
+import { Store } from '../src/store.ts'
 
 describe('Store: rule filtering by status', () => {
   const store = new Store()
 
-  it('should filter rules correctly for Bactrocera carambolae (Zona Tampão -> UF Sem Registro)', () => {
+  it('should filter rules correctly for Bactrocera carambolae (Zona Tampão -> UF Sem Registro)', async () => {
+    await store.loadMunicipios()
     // Setup state
     store.dados.hospSci = 'Mangifera indica'
     store.dados.hospId = 152
     store.dados.prod = 'frutos'
     store.dados.orig = 'PA'
     store.dados.dest = 'SP'
-    store.dados.municipioOrigem = '150140' // Belém, PA (Zona Tampão)
-    store.dados.municipioDestino = '350010' // Adolfo, SP (UF Sem Registro)
+    store.dados.municipioOrigem = 'Belém' // 150140, PA (Zona Tampão)
+    store.dados.municipioDestino = 'Adolfo' // 350010, SP (UF Sem Registro)
     store.searched = true
 
     const results = store.result
@@ -22,11 +23,11 @@ describe('Store: rule filtering by status', () => {
     const carambolaeRules = results.filter(r => r.prag === 'Bactrocera carambolae')
     
     // Based on db-next.js:
-    // Rule 2008: orig=["Zona Tampão"], dest=["Todas as Áreas"] should match.
+    // Rule 1448 should match.
     assert.ok(carambolaeRules.length > 0, 'Should find at least one rule for B. carambolae')
     
-    const rule2008 = carambolaeRules.find(r => r.desc === 'De Zona Tampão para qualquer destino')
-    assert.ok(rule2008, 'Should find the specific rule for Zona Tampão origin')
+    const ruleZonaTampao = carambolaeRules.find(r => r.desc === 'De Zona Tampão para qualquer destino')
+    assert.ok(ruleZonaTampao, 'Should find the specific rule for Zona Tampão origin')
   })
 
   it('should return empty result if no product is selected', () => {
@@ -37,15 +38,16 @@ describe('Store: rule filtering by status', () => {
     assert.equal(store.result.length, 0)
   })
 
-  it('should filter by product type', () => {
+  it('should filter by product type', async () => {
+    await store.loadMunicipios()
     // Setup state
     store.dados.hospSci = 'Mangifera indica'
     store.dados.hospId = 152
     store.dados.prod = 'material de propagação vegetativo'
     store.dados.orig = 'PA'
     store.dados.dest = 'SP'
-    store.dados.municipioOrigem = '150050' // Almeirim, PA (Área Com Ocorrência)
-    store.dados.municipioDestino = '350010' // SP (UF Sem Registro)
+    store.dados.municipioOrigem = 'Almeirim' // 150050, PA (Área Com Ocorrência)
+    store.dados.municipioDestino = 'Adolfo' // 350010, SP (UF Sem Registro)
 
     const results = store.result
     

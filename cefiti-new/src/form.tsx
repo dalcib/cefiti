@@ -48,14 +48,20 @@ const Select = function Select({ source, name }: PropsSelect) {
               value={
                 typeof option === 'string'
                   ? option.toString()
-                  : (option as any).id || (option as any).nome || (option as any).UF
+                  : (option as any).nome ||
+                    (option as any).id ||
+                    (option as any).UF
               }
               key={
                 typeof option === 'string'
                   ? option.toString()
                   : (option as any).id || (option as any).UF
               }
-            />
+            >
+              {typeof option === 'string'
+                ? option.toString()
+                : (option as any).nome || (option as any).id || (option as any).UF}
+            </option>
           ))}
         </datalist>
       </>
@@ -108,9 +114,17 @@ function Form() {
       />
       <FormField label="Parte da Planta:" name="prod" source="partes" />
       <FormField label="Estado de Origem:" name="orig" source="origem" />
-      {/*  <FormField label="Município de Origem:" name="municipioOrigem" source="municipiosOrigem" /> */}
+      <FormField
+        label="Município de Origem:"
+        name="municipioOrigem"
+        source="municipiosOrigem"
+      />
       <FormField label="Estado de Destino:" name="dest" source="destino" />
-      {/*  <FormField label="Município de Destino:" name="municipioDestino" source="municipiosDestino" /> */}
+      <FormField
+        label="Município de Destino:"
+        name="municipioDestino"
+        source="municipiosDestino"
+      />
       <br />
       <div>
         <a

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { Store } from './store.ts'
+import { Store } from '../src/store.ts'
 
 describe('Store: partes getter', () => {
   const store = new Store()

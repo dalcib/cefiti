@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { Store } from './store.ts'
+import { Store } from '../src/store.ts'
 
 describe('Store: phytosanitary status logic', () => {
   const store = new Store()
@@ -67,12 +67,21 @@ describe('Store: phytosanitary status logic', () => {
     assert.deepEqual(statusMG, ['UF Sem Registro'])
   })
 
-  it('should work with the getters', () => {
+  it('should resolve ID from name and UF', async () => {
+    await store.loadMunicipios()
+    const id = (store as any).getMunicipioId('Rio de Janeiro', 'RJ')
+    assert.equal(id, '330455')
+  })
+
+  it('should work with the getters using names', async () => {
+    await store.loadMunicipios()
     // Setup store state
     store.dados.hospSci = 'Mangifera indica' // Mango
     // Sternochetus mangiferae is a pest for Mango
-    store.dados.municipioOrigem = '330455' // Rio de Janeiro
-    store.dados.municipioDestino = '310010' // Abadia dos Dourados
+    store.dados.orig = 'RJ'
+    store.dados.municipioOrigem = 'Rio de Janeiro'
+    store.dados.dest = 'MG'
+    store.dados.municipioDestino = 'Abadia dos Dourados'
 
     const statusOrigem = store.statusOrigemByPraga
     const statusDestino = store.statusDestinoByPraga

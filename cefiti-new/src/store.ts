@@ -38,21 +38,26 @@ export const hospedeiroSciMap = new Map(
   hospedeiros.map((h) => [h.id, h.nomeSci]),
 )
 
-export const db = rules.map((regra) => {
-  const praga = pragas.find((item) => item.prag === regra.prag)
-  return {
-    ...praga,
-    ...regra,
-    files: praga?.files
-      .map((id) => legislacoes.find((l) => l.id === id))
-      .filter(Boolean),
-  }
-})
-
 export interface Municipio {
   id: string
   nome: string
   uf: string
+}
+
+export interface StatusMunicipio {
+  uf: string
+  ibge: number
+  municipios: Record<string, string>
+}
+
+export interface StatusFitossanitario {
+  status_fitossanitário: string
+  estados: StatusMunicipio[]
+}
+
+export interface PestStatusEntry {
+  praga: string
+  status: StatusFitossanitario[]
 }
 
 export class Store {
@@ -75,44 +80,52 @@ export class Store {
   }
 
   async loadMunicipios() {
-    if (typeof window === 'undefined') return
-    try {
-      const response = await fetch('/municipios.txt')
-      if (response.ok) {
-        const text = await response.text()
-        const ufMap = new Map<string, string>()
-        for (const e of estados) {
-          if (e.ibge) {
-            ufMap.set(String(e.ibge), e.UF)
-          }
+    let text = ''
+    if (typeof window !== 'undefined' && window.location?.protocol.startsWith('http')) {
+      try {
+        const response = await fetch('/municipios.txt')
+        if (response.ok) {
+          text = await response.text()
+          console.log('Municipios loaded successfully via fetch')
+        } else {
+          console.error('Failed to load municipios via fetch:', response.status)
         }
-
-        this.municipios = text
-          .split('\n')
-          .filter((l) => l.trim().length > 6)
-          .map((l) => {
-            const id = l.slice(0, 6)
-            const nome = l.slice(6).trim()
-            const ibgePrefix = id.slice(0, 2)
-            const uf = ufMap.get(ibgePrefix) || ''
-            return { id, nome, uf }
-          })
+      } catch (error) {
+        console.error('Erro ao carregar municipios via fetch', error)
       }
-    } catch (error) {
-      console.error('Erro ao carregar municipios', error)
+    } else {
+      try {
+        const fs = await import('node:fs/promises')
+        const path = await import('node:path')
+        const filePath = path.join(
+          process.cwd(),
+          'cefiti-new/public/municipios.txt',
+        )
+        text = await fs.readFile(filePath, 'utf-8')
+      } catch (error) {
+        // Silently fail in tests if file not found, or log if needed
+      }
     }
-  }
 
-  get hospedeirosPragas() {
-    return pragas.flatMap((praga) =>
-      praga.hosp.map((id) => hospedeiroSciMap.get(id) || ''),
-    )
-  }
+    if (text) {
+      const ufMap = new Map<string, string>()
+      for (const e of estados) {
+        if (e.ibge) {
+          ufMap.set(String(e.ibge), e.UF)
+        }
+      }
 
-  get hospedeirosRegulamentados() {
-    return hospedeiros.filter((hospedeiro) =>
-      this.species(this.hospedeirosPragas, hospedeiro.nomeSci),
-    )
+      this.municipios = text
+        .split('\n')
+        .filter((l) => l.trim().length > 6)
+        .map((l) => {
+          const id = l.slice(0, 6)
+          const nome = l.slice(6).trim()
+          const ibgePrefix = id.slice(0, 2)
+          const uf = ufMap.get(ibgePrefix) || ''
+          return { id, nome, uf }
+        })
+    }
   }
 
   get pragasByHospId() {
@@ -122,21 +135,15 @@ export class Store {
   }
 
   get listaNomesSci() {
-    return [
-      '',
-      ...[
-        ...new Set(this.hospedeirosRegulamentados.map((v) => v.nomeSci)),
-      ].sort((a, b) => a.localeCompare(b)),
-    ]
+    return ['', ...hospedeiros.map((v) => v.nomeSci)].sort((a, b) =>
+      a.localeCompare(b),
+    )
   }
 
   get listaNomesVul() {
-    return [
-      '',
-      ...[
-        ...new Set(this.hospedeirosRegulamentados.flatMap((v) => v.nomeVul)),
-      ].sort((a, b) => a.localeCompare(b)),
-    ]
+    return ['', ...hospedeiros.flatMap((v) => v.nomeVul)].sort((a, b) =>
+      a.localeCompare(b),
+    )
   }
 
   get empty(): boolean {
@@ -165,29 +172,26 @@ export class Store {
     return this.municipios.filter((m) => m.uf === this.dados.dest)
   }
 
-  /* get gender() {
-    return this.dados.hospSci.split(' ')[0]
-  }
- */
-  species(hostIds: number[], selectedNomeSci: string): boolean {
-    const pestHostNames = hostIds.map((id) => hospedeiroSciMap.get(id) || '')
-    const selectedGenus = selectedNomeSci.split(' ')[0]
-    const isSelectedGeneral =
-      selectedNomeSci.endsWith(' sp.') || selectedNomeSci.endsWith(' spp.')
+  species(pestHostIds: number[] | undefined, selectedNomeSci: string): boolean {
+    if (!pestHostIds || pestHostIds.length === 0) return true
+    if (!selectedNomeSci) return true
 
-    if (isSelectedGeneral) {
-      // If user selected "Genus sp.", match any pest that affects ANY species in that Genus
-      // or the Genus itself.
-      return pestHostNames.some((name) => name.split(' ')[0] === selectedGenus)
-    } else {
-      // If user selected "Genus species", match if pest affects this specific species
-      // OR if pest affects the whole genus (Genus sp. / Genus spp.)
+    const selectedGenus = selectedNomeSci.split(' ')[0]
+
+    return pestHostIds.some((id) => {
+      const pestHostName = hospedeiroSciMap.get(id)
+      if (!pestHostName) return false
+      const pestGenus = pestHostName.split(' ')[0]
+
       return (
-        pestHostNames.includes(selectedNomeSci) ||
-        pestHostNames.includes(`${selectedGenus} sp.`) ||
-        pestHostNames.includes(`${selectedGenus} spp.`)
+        pestHostName === selectedNomeSci ||
+        ((pestHostName.endsWith(' sp.') || pestHostName.endsWith(' spp.')) &&
+          pestGenus === selectedGenus) ||
+        ((selectedNomeSci.endsWith(' sp.') ||
+          selectedNomeSci.endsWith(' spp.')) &&
+          pestGenus === selectedGenus)
       )
-    }
+    })
   }
 
   get completed(): boolean {
@@ -204,15 +208,15 @@ export class Store {
     const p = rules
       .filter((regra) => this.pragasByHospId.includes(regra.prag))
       .flatMap((regra) => regra.part)
-
-    // Ensure empty string is always included
     return ['', ...new Set(p)].sort((a: string, b: string) =>
       a.localeCompare(b),
     )
   }
 
   get result() {
-    return rules.filter((exigen) => {
+    return rules.filter((exigen: any) => {
+      const hostIds = pragas.find((p) => p.prag === exigen.prag)?.hosp
+
       const statusesOrigem = this.statusOrigemByPraga[exigen.prag] || []
       const statusesDestino = this.statusDestinoByPraga[exigen.prag] || []
 
@@ -224,26 +228,59 @@ export class Store {
         statusesDestino.some((sD) => exigen.status_destino.includes(sD))
 
       return (
-        /* this.species(exigen.hosp, this.dados.hospSci)  && */
-        exigen.part.includes(this.dados.prod) && matchesOrig && matchesDest
+        this.species(hostIds, this.dados.hospSci) &&
+        exigen.part.includes(this.dados.prod) &&
+        matchesOrig &&
+        matchesDest
       )
     })
   }
 
   get statusOrigemByPraga() {
     const res: Record<string, string[]> = {}
+    const id = this.getMunicipioId(this.dados.municipioOrigem, this.dados.orig)
     for (const praga of this.pragasByHospId) {
-      res[praga] = this.resolveStatus(praga, this.dados.municipioOrigem)
+      res[praga] = this.resolveStatus(praga, id)
     }
     return res
   }
 
   get statusDestinoByPraga() {
     const res: Record<string, string[]> = {}
+    const id = this.getMunicipioId(this.dados.municipioDestino, this.dados.dest)
     for (const praga of this.pragasByHospId) {
-      res[praga] = this.resolveStatus(praga, this.dados.municipioDestino)
+      res[praga] = this.resolveStatus(praga, id)
     }
     return res
+  }
+
+  private getMunicipioId(nomeOrId: string, uf: string): string {
+    if (!uf) return ''
+    if (!nomeOrId) return uf + '9999'
+
+    // If it looks like a 6-digit IBGE code already, use it
+    if (/^\d{6}$/.test(nomeOrId)) return nomeOrId
+
+    // Accent-insensitive and case-insensitive matching
+    const normalize = (s: string) =>
+      s
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+    const target = normalize(nomeOrId)
+
+    const muni = this.municipios.find(
+      (m) => normalize(m.nome) === target && m.uf === uf,
+    )
+    const id = muni?.id || (uf + '9999')
+
+    if (!muni && nomeOrId && !['todos', 'qualquer'].includes(target)) {
+      console.warn(
+        `Município não encontrado: "${nomeOrId}" em ${uf}. Usando fallback ${id}`,
+      )
+    }
+
+    return id
   }
 
   private resolveStatus(pragaName: string, municipioId: string): string[] {
@@ -253,7 +290,7 @@ export class Store {
     const muniPart = municipioId.slice(2, 6)
     const stateCodeNum = Number(stateCode)
 
-    const pestEntry = status_municipio.find(
+    const pestEntry = (status_municipio as unknown as PestStatusEntry[]).find(
       (entry) => entry.praga === pragaName,
     )
     if (!pestEntry) return ['Área Sem Registro']
@@ -265,7 +302,7 @@ export class Store {
       const stateMatch = statusObj.estados.find((e) => e.ibge === stateCodeNum)
 
       if (stateMatch) {
-        const municipios = stateMatch.municipios as any
+        const municipios = stateMatch.municipios
         if (municipios['9999'] === 'Todos' || municipios[muniPart]) {
           results.push(statusTitle)
         }
@@ -290,7 +327,7 @@ export class Store {
     this.dados.municipioDestino = ''
   }
 
-  private updateHospedeiro(value: string, name: 'hospSci' | 'hospVul') {
+  updateHospedeiro(value: string, name: 'hospSci' | 'hospVul') {
     const host =
       name === 'hospSci'
         ? hospedeiros.find((hosp) => hosp.nomeSci === value)
@@ -320,7 +357,9 @@ export class Store {
       this.updateHospedeiro(value, name)
     }
 
-    ;(this.dados as any)[name] = value
+    if (name in this.dados && name !== 'hospId') {
+      this.dados[name as keyof Omit<Dados, 'hospId'>] = value
+    }
   }
 
   handleMenu(i: string) {

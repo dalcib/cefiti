@@ -1,5 +1,12 @@
-import type { Db } from './db.ts'
-import { db, store } from './store.ts'
+import {
+  estados,
+  hospedeiros,
+  legislacoes,
+  pragas,
+  rules,
+  status_municipio,
+} from '../../firebase/public/db-next.js'
+import { store } from './store.ts'
 
 const Base = () => {
   //const store = useStore()
@@ -20,26 +27,26 @@ const Base = () => {
           </tr>
         </thead>
         <tbody>
-          {db.map((item: Db, i: number) => {
+          {rules.map((item, i: number) => {
             return (
               <tr key={i}>
                 <td style={{ width: '10%' }}>
                   <span>{item.desc}</span>
                 </td>
-                <td style={{ width: '20%' }} className="italic">
+                {/*                 <td style={{ width: '20%' }} className="italic">
                   <span>{item.hosp.toString()}</span>
-                </td>
+                </td> */}
                 <td style={{ width: '10%' }}>
                   <span>{item.part.toString()}</span>
                 </td>
-                <td style={{ width: '10%' }}>
+                {/*                 <td style={{ width: '10%' }}>
                   <span>{item.orig.toString()}</span>
                 </td>
                 <td style={{ width: '10%' }}>
                   <span>{item.dest.toString()}</span>
-                </td>
+                </td> */}
                 <td style={{ width: '15%' }}>
-                  {item.files.map((file) => (
+                  {/*     {item.files.map((file) => (
                     <a
                       target="_blank"
                       rel="noopener noreferrer"
@@ -48,10 +55,10 @@ const Base = () => {
                     >
                       {file.leg}, de {file.data}
                     </a>
-                  ))}
+                  ))} */}
                   <br />
                   <br />
-                  <span>{item.pragc}</span>
+                  {/*   <span>{item.pragc}</span> */}
                   <br />
                   <br />
                   <span className="italic">{item.prag}</span>

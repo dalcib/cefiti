@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { Store, hospedeiroSciMap } from './store.ts'
+import { Store } from '../src/store.ts'
 
 describe('Store: species selection logic', () => {
   const store = new Store()
@@ -8,7 +8,7 @@ describe('Store: species selection logic', () => {
   it('should match specific species AND genus when specific species is selected', () => {
     // Malus pumila is ID 144
     // Neonectria ditissima (Neonectria galligena) has host [148] (Malus sp.)
-    // species([148], 'Malus pumila') should be true
+    // species(['Malus sp.'], 'Malus pumila') should be true
     assert.strictEqual(store.species([148], 'Malus pumila'), true, 'Malus pumila should match its genus pest (Malus sp.)')
     
     // Testing specific match

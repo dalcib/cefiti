@@ -184,3 +184,19 @@ select {
 .margin-left-100 {
   margin-left: 100px;
 }
+
+option {
+  padding: 0px;
+  margin: 0px;
+  height: 1.25em;
+  line-height: normal;
+  font-size: 0.9em;
+}
+
+datalist, select {
+  line-height: normal;
+}
+
+.form-select {
+  line-height: normal;
+}

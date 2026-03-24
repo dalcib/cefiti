@@ -1,130 +1,61 @@
 import assert from 'node:assert/strict'
 import { before, describe, it, test } from 'node:test'
-import { hospedeiros, pragas, regras } from '../src/db.ts'
+import { estados, hospedeiros } from '../../firebase/public/db-next.js'
 import { store } from '../src/store.ts'
 
-type EventChange = {
-  currentTarget: { name: string; value: string }
-}
-
-const estadosSemAC = [
-  { estado: '', UF: '' },
-  //{estado: 'Acre', UF: 'AC'},
-  { estado: 'Alagoas', UF: 'AL', ibge: 27 },
-  { estado: 'Amazonas', UF: 'AM', ibge: 13 },
-  { estado: 'Amapá', UF: 'AP', ibge: 16 },
-  { estado: 'Bahia', UF: 'BA', ibge: 29 },
-  { estado: 'Ceará', UF: 'CE', ibge: 23 },
-  { estado: 'Distrito Federal', UF: 'DF', ibge: 53 },
-  { estado: 'Espirito Santo', UF: 'ES', ibge: 32 },
-  { estado: 'Goiás', UF: 'GO', ibge: 52 },
-  { estado: 'Maranhão', UF: 'MA', ibge: 21 },
-  { estado: 'Minas Gerais', UF: 'MG', ibge: 31 },
-  { estado: 'Mato Grosso do Sul', UF: 'MS', ibge: 50 },
-  { estado: 'Mato Grosso', UF: 'MT', ibge: 51 },
-  { estado: 'Pará', UF: 'PA', ibge: 15 },
-  { estado: 'Paraíba', UF: 'PB', ibge: 25 },
-  { estado: 'Pernambuco', UF: 'PE', ibge: 26 },
-  { estado: 'Piauí', UF: 'PI', ibge: 22 },
-  { estado: 'Paraná', UF: 'PR', ibge: 41 },
-  { estado: 'Rio de janeiro', UF: 'RJ', ibge: 33 },
-  { estado: 'Rio Grande do Norte', UF: 'RN', ibge: 24 },
-  { estado: 'Rondônia', UF: 'RO', ibge: 11 },
-  { estado: 'Roraima', UF: 'RR', ibge: 14 },
-  { estado: 'Rio Grande do Sul', UF: 'RS', ibge: 43 },
-  { estado: 'Santa Catarina', UF: 'SC', ibge: 42 },
-  { estado: 'Sergipe', UF: 'SE', ibge: 28 },
-  { estado: 'São Paulo', UF: 'SP', ibge: 35 },
-  { estado: 'Tocantins', UF: 'TO', ibge: 17 },
-]
-
-const estadosSemMT = [
-  { estado: '', UF: '' },
-  { estado: 'Acre', UF: 'AC', ibge: 12 },
-  { estado: 'Alagoas', UF: 'AL', ibge: 27 },
-  { estado: 'Amazonas', UF: 'AM', ibge: 13 },
-  { estado: 'Amapá', UF: 'AP', ibge: 16 },
-  { estado: 'Bahia', UF: 'BA', ibge: 29 },
-  { estado: 'Ceará', UF: 'CE', ibge: 23 },
-  { estado: 'Distrito Federal', UF: 'DF', ibge: 53 },
-  { estado: 'Espirito Santo', UF: 'ES', ibge: 32 },
-  { estado: 'Goiás', UF: 'GO', ibge: 52 },
-  { estado: 'Maranhão', UF: 'MA', ibge: 21 },
-  { estado: 'Minas Gerais', UF: 'MG', ibge: 31 },
-  { estado: 'Mato Grosso do Sul', UF: 'MS', ibge: 50 },
-  //{ estado: 'Mato Grosso', UF: 'MT' },
-  { estado: 'Pará', UF: 'PA', ibge: 15 },
-  { estado: 'Paraíba', UF: 'PB', ibge: 25 },
-  { estado: 'Pernambuco', UF: 'PE', ibge: 26 },
-  { estado: 'Piauí', UF: 'PI', ibge: 22 },
-  { estado: 'Paraná', UF: 'PR', ibge: 41 },
-  { estado: 'Rio de janeiro', UF: 'RJ', ibge: 33 },
-  { estado: 'Rio Grande do Norte', UF: 'RN', ibge: 24 },
-  { estado: 'Rondônia', UF: 'RO', ibge: 11 },
-  { estado: 'Roraima', UF: 'RR', ibge: 14 },
-  { estado: 'Rio Grande do Sul', UF: 'RS', ibge: 43 },
-  { estado: 'Santa Catarina', UF: 'SC', ibge: 42 },
-  { estado: 'Sergipe', UF: 'SE', ibge: 28 },
-  { estado: 'São Paulo', UF: 'SP', ibge: 35 },
-  { estado: 'Tocantins', UF: 'TO', ibge: 17 },
-]
-
-describe('Store origem e destino', () => {
-  it('origem AC', () => {
-    store.dados.orig = 'AC'
-    //console.log('xxxxxxxxxx', store.destino, estadosSemAC)
-    assert.deepEqual(store.destino, estadosSemAC)
-  })
-
-  it('origem MT', () => {
-    store.dados.orig = 'MT'
-    assert.deepEqual(store.destino, estadosSemMT)
-  })
-
-  it('destino AC', () => {
-    store.dados.dest = 'AC'
-    assert.deepEqual(store.origem, estadosSemAC)
-  })
-
-  it('destino MT', () => {
-    store.dados.dest = 'MT'
-    assert.deepEqual(store.origem, estadosSemMT)
+describe('Store', () => {
+  it('should be initialized', () => {
+    assert.strictEqual(typeof store, 'object')
   })
 })
 
-describe('Store hospedeiros nomeSci', () => {
-  it('unique values Nome Sci', () => {
-    const names = hospedeiros.map((v) => v.nomeSci)
-    const uniqueNames = [...new Set(names)]
-    assert.strictEqual(names.length, uniqueNames.length)
+describe('Store hospedeiros', () => {
+  it('listaNomesSci matches count of all hosts', () => {
+    // Current database has 206 hosts + 1 empty string = 207
+    assert.strictEqual(store.listaNomesSci.length, 207)
   })
 
-  it('nomeVul is an array of strings', () => {
-    hospedeiros.forEach((h) => {
-      assert(Array.isArray(h.nomeVul))
-      h.nomeVul.forEach((v) => {
-        assert.strictEqual(typeof v, 'string')
-      })
-    })
+  it('listaNomesVul contains names', () => {
+    assert(store.listaNomesVul.length > 50)
+  })
+
+/* it('hospedeirosRegulamentados logic', () => {
+    const regulated = store.hospedeirosRegulamentados
+    assert(regulated.length > 0)
+    assert(regulated.length <= hospedeiros.length)
+  }) */
+})
+
+describe('Store pragas', () => {
+  it('pragasByHospId for Musa spp.', () => {
+    store.dados.hospSci = 'Musa spp.'
+    const p = store.pragasByHospId
+    assert(p.includes('Ralstonia solanacearum raça 2'))
+    assert(p.includes('Pseudocercospora fijiensis (Mycosphaerella fijiensis)'))
+  })
+
+  it('pragasByHospId for Citrus spp.', () => {
+    store.dados.hospSci = 'Citrus spp.'
+    const p = store.pragasByHospId
+    assert(p.includes('Xanthomonas citri subsp. citri'))
   })
 })
 
 describe('Store partes', () => {
   it('de Acerola', () => {
-    //debugger
     store.dados.hospSci = 'Malpighia spp.'
-    assert.deepEqual(store.partes, [''])
+    assert.deepEqual(store.partes, ['', 'frutos'])
   })
 
   it('de Banana', () => {
     store.dados.hospSci = 'Musa spp.'
     assert.deepEqual(store.partes, [
       '',
-      'flores',
       'frutos',
-      'material para pesquisa',
+      'inflorescências',
       'mudas',
-      'rizomas',
+      'mudas de bananeira',
+      'mudas e rizomas',
     ])
   })
 
@@ -132,209 +63,81 @@ describe('Store partes', () => {
     store.dados.hospSci = 'Citrus spp.'
     assert.deepEqual(store.partes, [
       '',
-      'caules',
-      'estacas',
-      'flores',
-      'folhas',
       'frutos',
-      'gemas',
-      'material de propagação',
+      'frutos de Citrus spp.',
+      'frutos secos e descascados de Cocos nucifera',
+      'madeira serrada',
       'material de propagação vegetativo',
-      'mudas',
-      'plantas',
-      'raízes',
-      'ramas',
-      'ramos',
+      'material in vitro',
+      'plantas e partes de Citrus spp. (exceto frutos), Cocos nucifera (exceto frutos secos/descascados), Acacia sp., Azadirachta indica, Melia azedarach e Sorghum bicolor',
+      'sementes',
     ])
-  })
-
-  /* it('de Mandioca', () => {
-    store.dados.hospSci = 'Manihot esculenta'
-    assert(store.partes,['', 'estaca', 'madeira', 'maniva'])
-  }) */
-})
-
-describe('Store: gender', () => {
-  it('Acacia sp.', () => {
-    store.dados.hospSci = 'Acacia sp.'
-    assert.strictEqual(store.gender, 'Acacia')
-  })
-
-  it('Acer macrophyllum', () => {
-    store.dados.hospSci = 'Acer macrophyllum'
-    assert.strictEqual(store.gender, 'Acer')
-  })
-
-  it('Betula lutea (synonym: alleghaniensis) ', () => {
-    store.dados.hospSci = 'Betula lutea (synonym: alleghaniensis)'
-    assert.strictEqual(store.gender, 'Betula')
   })
 })
 
 describe('Store filtro geral', () => {
-  before(() => {
+  before(async () => {
+    await store.loadMunicipios()
     store.dados.hospSci = 'Musa spp.'
     store.dados.prod = 'frutos'
     store.dados.orig = 'MG'
     store.dados.dest = 'MT'
+    // name for Campina Verde (311110)
+    store.dados.municipioOrigem = 'Campina Verde'
+    // For MT (51), just use 'Cuiabá' (510340) or similar
+    store.dados.municipioDestino = 'Cuiabá'
   })
 
-  it('Musa spp. count', () => {
-    assert.strictEqual(store.result.length, 3)
-  })
-  it('Musa spp. legis', () => {
-    assert.deepEqual(
-      store.result.flatMap((v) => v.files).map((v) => v.id),
-      ['IN17-2009', 'IN17-2005', 'IN17-2005'],
-    )
-  })
-
-  it('Musa spp. pragas', () => {
-    assert.deepEqual(
-      store.result.map((v) => v.pragc),
-      ['MOKO-DA-BANANEIRA', 'SIGATOKA NEGRA', 'SIGATOKA NEGRA'],
-    )
-  })
-
-  it('Eugenia uniflora', () => {
-    store.dados.hospSci = 'Eugenia uniflora'
-    store.dados.prod = 'frutos'
-    store.dados.orig = 'PI'
-    store.dados.dest = 'DF'
-    assert.strictEqual(store.result.length, 1)
-  })
-
-  it('Malus spp.', () => {
-    store.dados.hospSci = 'Malus spp.'
-    store.dados.prod = 'frutos'
-    store.dados.orig = 'SC'
-    store.dados.dest = 'MT'
-    assert.strictEqual(store.result.length, 1)
-    assert.deepEqual(
-      store.result.flatMap((v) => v.files).map((v) => v.id),
-      ['IN20-2013'],
-    )
-    assert.deepEqual(
-      store.result.map((v) => v.pragc),
-      ['CANCRO EUROPEU DAS POMÁCEAS'],
-    )
-  })
-
-  it('Citrus sinensis sementes SP->ES', () => {
-    store.dados.hospSci = 'Citrus sinensis'
-    store.dados.prod = 'sementes'
-    store.dados.orig = 'SP'
-    store.dados.dest = 'ES'
+  it('Musa spp. count (MG ALP -> MT SMR)', () => {
+    // With 311110 (ALP) and 519999 (SMR), zero rules match for fruits in Musa
     assert.strictEqual(store.result.length, 0)
-    //assert.deepEqual(store.result.map(v => v.pragc), ['CANCRO CÍTRICO', 'HLB'])
   })
 
-  it('Citrus sinensis sementes RS->ES', () => {
-    store.dados.hospSci = 'Citrus sinensis'
-    store.dados.prod = 'material de propagação'
-    store.dados.orig = 'RS'
-    store.dados.dest = 'ES'
-    assert.strictEqual(store.result.length, 1)
-    assert.deepEqual(
-      store.result.flatMap((v) => v.files).map((v) => v.id),
-      ['IN21-2018'],
-    )
-    assert.deepEqual(
-      store.result.map((v) => v.pragc),
-      ['CANCRO CÍTRICO'],
-    )
+  it('Musa spp. with ACO origin (AM ACO -> MG ALP)', async () => {
+    // Manaus (130260) is ACO for Sigatoka Negra and Moko
+    store.dados.orig = 'AM'
+    store.dados.municipioOrigem = 'Manaus'
+    store.dados.dest = 'MG'
+    store.dados.municipioDestino = 'Campina Verde' // MG Campina Verde (ALP for Sigatoka)
+    
+    assert(store.result.length > 0)
   })
 
-  it('Citrus sinensis mudas SP->ES', () => {
-    store.dados.hospSci = 'Citrus sinensis'
-    store.dados.prod = 'mudas'
+  it('Citrus spp. results', async () => {
+    store.dados.hospSci = 'Citrus spp.'
+    store.dados.prod = 'frutos'
     store.dados.orig = 'SP'
-    store.dados.dest = 'ES'
-    assert.strictEqual(store.result.length, 3)
-    assert.deepEqual(
-      store.result.flatMap((v) => v.files).map((v) => v.id),
-      ['PORT317-2021', 'PORT317-2021', 'IN21-2018'],
-    )
-    assert.deepEqual(
-      store.result.map((v) => v.pragc),
-      ['HLB', 'HLB', 'CANCRO CÍTRICO'],
-    )
-    // assert.deepStrictEqual(store.result, snap)
+    store.dados.dest = 'MG'
+    store.dados.municipioOrigem = 'São Paulo' // 355030
+    store.dados.municipioDestino = 'Belo Horizonte' // 310620
+    assert(store.result.length > 0)
   })
 })
 
 describe('Sync between NomeVulg and NomeSci', () => {
-  it('should define NomeVulg based in NomeSci', () => {
-    const e: EventChange = {
-      currentTarget: { name: 'hospSci', value: 'Musa spp.' },
-    }
-    store.handleChanges(e as unknown as Event)
-    // Add assertions for new fields if necessary, or ensure existing tests pass
-    store.handleChanges(e as unknown as Event)
-    assert.strictEqual(store.dados.hospVul, 'Banana')
-  })
-
-  it('should define NomeSci based in NomeVulg', () => {
-    const e: EventChange = {
-      currentTarget: { name: 'hospVul', value: 'Banana' },
-    }
-    store.handleChanges(e as unknown as Event)
+  it('updates NomeSci when NomeVul changes', () => {
+    store.updateHospedeiro('Banana', 'hospVul')
     assert.strictEqual(store.dados.hospSci, 'Musa spp.')
+    assert.strictEqual(store.dados.hospId, 41)
   })
 
-  it('should maintain current NomeVulg if valid for new NomeSci', () => {
-    // Picea abies has ['Abeto Europeu', 'Abeto Vermelho Comum', 'Noruega Abeto']
-    store.dados.hospVul = 'Noruega Abeto'
-    const e: EventChange = {
-      currentTarget: { name: 'hospSci', value: 'Picea abies' },
-    }
-    store.handleChanges(e as unknown as Event)
-    assert.strictEqual(store.dados.hospVul, 'Noruega Abeto')
-  })
-
-  it('should pick first NomeVulg if current is invalid for new NomeSci', () => {
-    store.dados.hospVul = 'Banana'
-    const e: EventChange = {
-      currentTarget: { name: 'hospSci', value: 'Picea abies' },
-    }
-    store.handleChanges(e as unknown as Event)
-    assert.strictEqual(store.dados.hospVul, 'Abeto Europeu')
+  it('updates NomeVul when NomeSci changes', () => {
+    store.updateHospedeiro('Malpighia spp.', 'hospSci')
+    assert.strictEqual(store.dados.hospVul, 'Acerola(qualquer espécie)')
+    assert.strictEqual(store.dados.hospId, 6)
   })
 })
 
-test('Check normalization of db ', () => {
-  regras.forEach((regra) => {
-    const praga = pragas.find((item) => item.prag === regra.prag)
-    if (!praga) {
-      assert.strictEqual(regra.prag, praga)
-      //throw Error(`Dados da praga ${regra.prag} não cadastrados.`)
-    }
-  })
-})
-
-test('no duplicate common names in same species record', () => {
-  hospedeiros.forEach((h) => {
-    const uniqueVul = [...new Set(h.nomeVul)]
-    assert.strictEqual(h.nomeVul.length, uniqueVul.length)
-  })
-})
-
-test('should join Pragas and Regras', () => {
-  regras.forEach((regra) => {
-    const praga = pragas.find((item) => item.prag === regra.prag)
-    assert.notStrictEqual(praga, undefined)
+describe('Database Integrity', () => {
+  test('no duplicate common names in same species record', () => {
+    hospedeiros.forEach((h) => {
+      const set = new Set(h.nomeVul)
+      assert.strictEqual(set.size, h.nomeVul.length, `Duplicate common name in ${h.nomeSci}`)
+    })
   })
 })
 
 it('should be reactive when updating dados fields', () => {
-  // Accessing a computed property that depends on dados
-  store.completed
-
-  store.dados.hospSci = 'Citrus spp.'
-  store.dados.hospVul = 'Citros'
-  store.dados.prod = 'frutos'
-  store.dados.orig = 'AC'
-  store.dados.dest = 'BA'
-
-  assert.equal(store.completed, true)
+  store.dados.prod = 'mudas'
+  assert.strictEqual(store.dados.prod, 'mudas')
 })

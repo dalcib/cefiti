@@ -3,11 +3,14 @@ import { describe, it } from 'node:test'
 import { Store } from '../src/store.ts'
 
 describe('Store Edge Cases', () => {
-  it('should match species with "spp." suffix', () => {
+  it('should match species with "spp." suffix', async () => {
     const store = new Store()
-    // Citrus sinensis should match "Citrus spp."
-    assert.strictEqual(store.species(['Citrus spp.'], 'Citrus sinensis'), true)
-    assert.strictEqual(store.species(['Citrus sp.'], 'Citrus sinensis'), true)
+    await store.loadMunicipios()
+    // Citrus spp. is ID 103. Citrus sinensis should match it.
+    assert.strictEqual(store.species([103], 'Citrus sinensis'), true)
+    
+    // Sorbus sp. is ID 102. Sorbus species should match it.
+    assert.strictEqual(store.species([102], 'Sorbus aucuparia'), true)
   })
 
   it('should auto-fill vulgar name when scientific name is selected', () => {
@@ -17,6 +20,7 @@ describe('Store Edge Cases', () => {
     } as unknown as Event
     store.handleChanges(event)
     assert.strictEqual(store.dados.hospVul, 'Laranja')
+    assert.strictEqual(store.dados.hospId, 138)
   })
 
   it('should auto-fill scientific name when vulgar name is selected', () => {
@@ -26,44 +30,58 @@ describe('Store Edge Cases', () => {
     } as unknown as Event
     store.handleChanges(event)
     assert.strictEqual(store.dados.hospSci, 'Citrus sinensis')
+    assert.strictEqual(store.dados.hospId, 138)
   })
 
-  it('should correctly filter results for multi-state rules', () => {
+  it('should correctly filter results for multi-state rules', async () => {
     const store = new Store()
+    await store.loadMunicipios()
 
-    // Scenario: Citrus sinensis from AC to AL (matches Mosca-da-carambola Rule 1)
+    // Scenario: Citrus sinensis from AP to AL
+    // Citrus sinensis ID is 138.
+    // AP is ACO for Carambolae (169999).
     store.dados.hospSci = 'Citrus sinensis'
+    store.dados.hospId = 138
     store.dados.prod = 'frutos'
-    store.dados.orig = 'AC'
+    store.dados.orig = 'AP'
     store.dados.dest = 'AL'
+    store.dados.municipioOrigem = '' // AP "All"
+    store.dados.municipioDestino = '' // AL "All"
 
     assert.ok(store.result.length >= 1)
-    assert.strictEqual(store.result[0].prag, 'Bactrocera carambolae')
+    assert.ok(store.result.some(r => r.prag === 'Bactrocera carambolae'))
   })
 
-  it('should return empty result if part does not match', () => {
+  it('should return empty result if part does not match', async () => {
     const store = new Store()
+    await store.loadMunicipios()
 
-    // Eugenia uniflora is host for Mosca-da-carambola but only for 'frutos'
+    // Eugenia uniflora (ID 179) is host for Mosca-da-carambola but only for 'frutos' in many rules
     store.dados.hospSci = 'Eugenia uniflora'
+    store.dados.hospId = 179
     store.dados.prod = 'mudas'
-    store.dados.orig = 'AC'
+    store.dados.orig = 'AP'
     store.dados.dest = 'AL'
+    store.dados.municipioOrigem = ''
+    store.dados.municipioDestino = ''
 
     assert.strictEqual(store.result.length, 0)
   })
 
-  it('should handle specific destination matching', () => {
+  it('should handle specific destination matching', async () => {
     const store = new Store()
+    await store.loadMunicipios()
 
     store.dados.hospSci = 'Citrus sinensis'
+    store.dados.hospId = 138
     store.dados.prod = 'frutos'
-    store.dados.orig = 'AC'
-    store.dados.dest = 'AC' // Destination same as origin
+    store.dados.orig = 'AP'
+    store.dados.dest = 'AP' // Destination same as origin
+    store.dados.municipioOrigem = ''
+    store.dados.municipioDestino = ''
 
-    // By current logic, if dest is the same as orig, it's filtered out from available destinations
-    // BUT if manually set, it matches if it's in the rule list.
-    // Rule 1 includes 'AC' in dest.
+    // Rule 1 matches "Todas as Áreas" as destination, and "Área Com Ocorrência" as origin.
+    // AP matches ACO.
     assert.ok(store.result.length >= 1)
   })
 })
