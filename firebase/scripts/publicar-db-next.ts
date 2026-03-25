@@ -101,6 +101,14 @@ async function generateDbNext() {
     writeFileSync(filePath, dbNextContent, 'utf8')
     console.log(`\nGenerated db-next.js successfully at ${filePath}`)
 
+    // Also save copy to cefiti-new/public
+    const cefitiNewPublicDir = join(__dirname, '..', '..', 'cefiti-new', 'public')
+    if (existsSync(cefitiNewPublicDir)) {
+      const cefitiNewFilePath = join(cefitiNewPublicDir, 'db-next.js')
+      writeFileSync(cefitiNewFilePath, dbNextContent, 'utf8')
+      console.log(`Also saved copy to ${cefitiNewFilePath}`)
+    }
+
     // 2. Generate legislacao.js
     console.log('Generating legislacao.js file content...')
     let legislacaoContent = '// CEFiTI - Legislacao\n\n'

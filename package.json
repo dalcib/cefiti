@@ -23,7 +23,7 @@
       "node": "./cefiti/src/db.ts",
       "default": "./cefiti/public/db.js"
     },
-    "#db-next": "./firebase/public/db-next.js"
+    "#db-next": "./cefiti-new/public/db-next.js"
   },
 
   "scripts": {

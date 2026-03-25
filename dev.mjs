@@ -21,6 +21,12 @@ const externalDbPlugin = {
         external: true,
       }
     })
+    build.onResolve({ filter: /^#db-next$/ }, () => {
+      return {
+        path: './db-next.js',
+        external: true,
+      }
+    })
   },
 }
 
@@ -47,7 +53,10 @@ const appConfig = {
   ...commonConfig,
   entryPoints,
   minify: true,
-  plugins: project === 'cefiti' && isBuild ? [externalDbPlugin] : [],
+  plugins:
+    ['cefiti', 'cefiti-new'].includes(project) && isBuild
+      ? [externalDbPlugin]
+      : [],
 }
 
 if (isBuild) {

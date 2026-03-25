@@ -2,7 +2,7 @@
   "compilerOptions": {
     "paths": {
       "#db": ["./cefiti/src/db.ts"],
-      "#db-next": ["./cefiti-new/src/db-next-bridge.js"]
+      "#db-next": ["./cefiti-new/public/db-next.js"]
     },
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true,
