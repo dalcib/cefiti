@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict'
 import { beforeEach, describe, it, mock } from 'node:test'
-import { estados } from '../src/db.ts'
 import { Store } from '../src/store.ts'
 
 const mockWindow = {
@@ -34,7 +33,7 @@ describe('Store AI Tests', () => {
     assert.strictEqual(store.searched, false)
   })
 
-/* it('should calculate hospedeirosRegulamentados correctly', () => {
+  /* it('should calculate hospedeirosRegulamentados correctly', () => {
     assert.ok(store.hospedeirosRegulamentados.length >= 0)
   }) */
 
@@ -101,7 +100,7 @@ describe('Store AI Tests', () => {
     store.handleSearch(mockEvent)
     assert.strictEqual(store.searched, false)
     assert.strictEqual(preventDefault.mock.callCount() > 0, true)
-    
+
     // Complete the form
     store.dados.hospSci = 'Musa spp.'
     store.dados.hospVul = 'Banana'
@@ -109,7 +108,7 @@ describe('Store AI Tests', () => {
     store.dados.prod = 'frutos'
     store.dados.orig = 'MG'
     store.dados.dest = 'SP'
-    
+
     store.handleSearch(mockEvent)
     assert.strictEqual(store.searched, true)
   })

@@ -78,7 +78,7 @@ async function generateDbNext() {
       let safeKey = key.replace(/[^a-zA-Z0-9_]/g, '')
       // Just in case it starts with a number
       if (/^[0-9]/.test(safeKey)) {
-        safeKey = '_' + safeKey
+        safeKey = `_${safeKey}`
       }
 
       dbNextContent += `var ${safeKey} = ${JSON.stringify(items, null, 2)};\n`

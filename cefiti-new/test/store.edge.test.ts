@@ -8,7 +8,7 @@ describe('Store Edge Cases', () => {
     await store.loadMunicipios()
     // Citrus spp. is ID 103. Citrus sinensis should match it.
     assert.strictEqual(store.species([103], 'Citrus sinensis'), true)
-    
+
     // Sorbus sp. is ID 102. Sorbus species should match it.
     assert.strictEqual(store.species([102], 'Sorbus aucuparia'), true)
   })
@@ -49,7 +49,7 @@ describe('Store Edge Cases', () => {
     store.dados.municipioDestino = '' // AL "All"
 
     assert.ok(store.result.length >= 1)
-    assert.ok(store.result.some(r => r.prag === 'Bactrocera carambolae'))
+    assert.ok(store.result.some((r) => r.prag === 'Bactrocera carambolae'))
   })
 
   it('should return empty result if part does not match', async () => {

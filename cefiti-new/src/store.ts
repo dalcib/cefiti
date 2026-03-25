@@ -1,12 +1,19 @@
-import { deepSignal } from '../../cefiti/src/deep-signals.ts'
 import {
+  type DB_PragaStatus,
+  type DB_StatusFitossanitario,
+  type Estado,
   estados,
+  type Hospedeiro,
   hospedeiros,
+  type Legislacao,
   legislacoes,
+  type Praga,
   pragas,
+  type Rule,
   rules,
   status_municipio,
-} from '../../firebase/public/db-next.js'
+} from '#db-next'
+import { deepSignal } from '../../cefiti/src/deep-signals.ts'
 
 declare global {
   interface Window {
@@ -18,6 +25,7 @@ declare global {
         prod: string
         orig: string
         dest: string
+        pragas: Record<string, string>
       },
     ): void
   }
@@ -34,8 +42,8 @@ export interface Dados {
   municipioDestino: string
 }
 
-export const hospedeiroSciMap = new Map(
-  hospedeiros.map((h) => [h.id, h.nomeSci]),
+export const hospedeiroSciMap = new Map<number, string>(
+  (hospedeiros as Hospedeiro[]).map((h) => [h.id, h.nomeSci]),
 )
 
 export interface Municipio {
@@ -44,20 +52,30 @@ export interface Municipio {
   uf: string
 }
 
-export interface StatusMunicipio {
+export interface PestStatusMunicipio {
   uf: string
   ibge: number
   municipios: Record<string, string>
 }
 
-export interface StatusFitossanitario {
-  status_fitossanitário: string
-  estados: StatusMunicipio[]
+export interface PestStatusQueryResult {
+  status_fitossanitário: DB_StatusFitossanitario
+  estados: PestStatusMunicipio[]
 }
 
 export interface PestStatusEntry {
   praga: string
-  status: StatusFitossanitario[]
+  status: PestStatusQueryResult[]
+}
+
+export interface SearchResult
+  extends Omit<Praga, 'files'>,
+    Omit<Rule, 'status_origem' | 'status_destino'> {
+  files: Legislacao[]
+  status_origem: DB_StatusFitossanitario[]
+  status_destino: DB_StatusFitossanitario[]
+  orig: DB_StatusFitossanitario[]
+  dest: DB_StatusFitossanitario[]
 }
 
 export class Store {
@@ -81,7 +99,10 @@ export class Store {
 
   async loadMunicipios() {
     let text = ''
-    if (typeof window !== 'undefined' && window.location?.protocol.startsWith('http')) {
+    if (
+      typeof window !== 'undefined' &&
+      window.location?.protocol.startsWith('http')
+    ) {
       try {
         const response = await fetch('/municipios.txt')
         if (response.ok) {
@@ -102,7 +123,7 @@ export class Store {
           'cefiti-new/public/municipios.txt',
         )
         text = await fs.readFile(filePath, 'utf-8')
-      } catch (error) {
+      } catch {
         // Silently fail in tests if file not found, or log if needed
       }
     }
@@ -128,22 +149,29 @@ export class Store {
     }
   }
 
-  get pragasByHospId() {
-    return pragas
+  get pragasByHospId(): string[] {
+    return (pragas as Praga[])
       .filter((praga) => this.species(praga.hosp, this.dados.hospSci))
       .map((praga) => praga.prag)
   }
 
+  get hostPragas(): string[] {
+    return Array.from<string>(
+      new Set((rules as Rule[]).map((regra) => regra.prag)),
+    ).sort((a, b) => a.localeCompare(b))
+  }
+
   get listaNomesSci() {
-    return ['', ...hospedeiros.map((v) => v.nomeSci)].sort((a, b) =>
-      a.localeCompare(b),
+    return ['', ...(hospedeiros as Hospedeiro[]).map((v) => v.nomeSci)].sort(
+      (a, b) => a.localeCompare(b),
     )
   }
 
   get listaNomesVul() {
-    return ['', ...hospedeiros.flatMap((v) => v.nomeVul)].sort((a, b) =>
-      a.localeCompare(b),
-    )
+    return [
+      '',
+      ...(hospedeiros as Hospedeiro[]).flatMap((v) => v.nomeVul),
+    ].sort((a, b) => a.localeCompare(b))
   }
 
   get empty(): boolean {
@@ -151,13 +179,13 @@ export class Store {
   }
 
   get origem() {
-    return estados.filter(
+    return (estados as Estado[]).filter(
       (estado) => estado.UF !== this.dados.dest || estado.UF === '',
     )
   }
 
   get destino() {
-    return estados.filter(
+    return (estados as Estado[]).filter(
       (estado) => estado.UF !== this.dados.orig || estado.UF === '',
     )
   }
@@ -179,7 +207,7 @@ export class Store {
     const selectedGenus = selectedNomeSci.split(' ')[0]
 
     return pestHostIds.some((id) => {
-      const pestHostName = hospedeiroSciMap.get(id)
+      const pestHostName = hospedeiroSciMap.get(id) as string
       if (!pestHostName) return false
       const pestGenus = pestHostName.split(' ')[0]
 
@@ -205,35 +233,56 @@ export class Store {
   }
 
   get partes(): string[] {
-    const p = rules
+    const p = (rules as Rule[])
       .filter((regra) => this.pragasByHospId.includes(regra.prag))
       .flatMap((regra) => regra.part)
-    return ['', ...new Set(p)].sort((a: string, b: string) =>
-      a.localeCompare(b),
+    return ['', ...Array.from<string>(new Set(p))].sort(
+      (a: string, b: string) => a.localeCompare(b),
     )
   }
 
-  get result() {
-    return rules.filter((exigen: any) => {
-      const hostIds = pragas.find((p) => p.prag === exigen.prag)?.hosp
+  get result(): SearchResult[] {
+    return (rules as Rule[])
+      .filter((exigen) => {
+        const hostIds = (pragas as Praga[]).find(
+          (p) => p.prag === exigen.prag,
+        )?.hosp
 
-      const statusesOrigem = this.statusOrigemByPraga[exigen.prag] || []
-      const statusesDestino = this.statusDestinoByPraga[exigen.prag] || []
+        const statusesOrigem = this.statusOrigemByPraga[exigen.prag] || []
+        const statusesDestino = this.statusDestinoByPraga[exigen.prag] || []
 
-      const matchesOrig =
-        exigen.status_origem.includes('Todas as Áreas') ||
-        statusesOrigem.some((sO) => exigen.status_origem.includes(sO))
-      const matchesDest =
-        exigen.status_destino.includes('Todas as Áreas') ||
-        statusesDestino.some((sD) => exigen.status_destino.includes(sD))
+        const matchesOrig =
+          exigen.status_origem.includes('Todas as Áreas') ||
+          statusesOrigem.some((sO) => exigen.status_origem.includes(sO as any)) // as any for StatusFitossanitario check safety
+        const matchesDest =
+          exigen.status_destino.includes('Todas as Áreas') ||
+          statusesDestino.some((sD) =>
+            exigen.status_destino.includes(sD as any),
+          )
 
-      return (
-        this.species(hostIds, this.dados.hospSci) &&
-        exigen.part.includes(this.dados.prod) &&
-        matchesOrig &&
-        matchesDest
-      )
-    })
+        return (
+          this.species(hostIds, this.dados.hospSci) &&
+          exigen.part.includes(this.dados.prod) &&
+          matchesOrig &&
+          matchesDest
+        )
+      })
+      .map((exigen) => {
+        const praga = (pragas as Praga[]).find((p) => p.prag === exigen.prag)
+        if (!praga) throw new Error(`Praga not found: ${exigen.prag}`)
+        const files = (praga.files || [])
+          .map((fId: string) =>
+            (legislacoes as Legislacao[]).find((l) => l.id === fId),
+          )
+          .filter((f: Legislacao | undefined): f is Legislacao => !!f)
+        return {
+          ...praga,
+          ...exigen,
+          files,
+          orig: exigen.status_origem,
+          dest: exigen.status_destino,
+        } as SearchResult
+      })
   }
 
   get statusOrigemByPraga() {
@@ -256,7 +305,7 @@ export class Store {
 
   private getMunicipioId(nomeOrId: string, uf: string): string {
     if (!uf) return ''
-    if (!nomeOrId) return uf + '9999'
+    if (!nomeOrId) return `${uf}9999`
 
     // If it looks like a 6-digit IBGE code already, use it
     if (/^\d{6}$/.test(nomeOrId)) return nomeOrId
@@ -272,7 +321,7 @@ export class Store {
     const muni = this.municipios.find(
       (m) => normalize(m.nome) === target && m.uf === uf,
     )
-    const id = muni?.id || (uf + '9999')
+    const id = muni?.id || `${uf}9999`
 
     if (!muni && nomeOrId && !['todos', 'qualquer'].includes(target)) {
       console.warn(
@@ -299,11 +348,20 @@ export class Store {
 
     for (const statusObj of pestEntry.status) {
       const statusTitle = statusObj.status_fitossanitário
-      const stateMatch = statusObj.estados.find((e) => e.ibge === stateCodeNum)
+      const stateMatch = statusObj.estados.find(
+        (e: DB_PragaStatus) => e.ibge === stateCodeNum || e.id === stateCodeNum,
+      )
 
       if (stateMatch) {
         const municipios = stateMatch.municipios
-        if (municipios['9999'] === 'Todos' || municipios[muniPart]) {
+        // Flexible key matching for '9999' and value matching for 'Todos'
+        const isTodos = Object.entries(municipios).some(
+          ([k, v]) =>
+            (k === '9999' || k === 'Todos') &&
+            String(v).toLowerCase().includes('todo'),
+        )
+
+        if (isTodos || municipios[muniPart]) {
           results.push(statusTitle)
         }
       }
@@ -330,8 +388,10 @@ export class Store {
   updateHospedeiro(value: string, name: 'hospSci' | 'hospVul') {
     const host =
       name === 'hospSci'
-        ? hospedeiros.find((hosp) => hosp.nomeSci === value)
-        : hospedeiros.find((hosp) => hosp.nomeVul.includes(value))
+        ? (hospedeiros as Hospedeiro[]).find((hosp) => hosp.nomeSci === value)
+        : (hospedeiros as Hospedeiro[]).find((hosp) =>
+            hosp.nomeVul.includes(value),
+          )
 
     this.dados.hospId = host ? host.id : 0
     this.dados.prod = ''

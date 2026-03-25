@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
-import { before, describe, it, test } from 'node:test'
-import { estados, hospedeiros } from '../../firebase/public/db-next.js'
+import { before, describe, it } from 'node:test'
+// @ts-expect-error
+import { hospedeiros } from '../../firebase/public/db-next.js'
 import { store } from '../src/store.ts'
 
 describe('Store', () => {
@@ -19,7 +20,7 @@ describe('Store hospedeiros', () => {
     assert(store.listaNomesVul.length > 50)
   })
 
-/* it('hospedeirosRegulamentados logic', () => {
+  /* it('hospedeirosRegulamentados logic', () => {
     const regulated = store.hospedeirosRegulamentados
     assert(regulated.length > 0)
     assert(regulated.length <= hospedeiros.length)
@@ -99,7 +100,7 @@ describe('Store filtro geral', () => {
     store.dados.municipioOrigem = 'Manaus'
     store.dados.dest = 'MG'
     store.dados.municipioDestino = 'Campina Verde' // MG Campina Verde (ALP for Sigatoka)
-    
+
     assert(store.result.length > 0)
   })
 
@@ -129,10 +130,14 @@ describe('Sync between NomeVulg and NomeSci', () => {
 })
 
 describe('Database Integrity', () => {
-  test('no duplicate common names in same species record', () => {
-    hospedeiros.forEach((h) => {
+  it('no duplicate common names in same species record', () => {
+    ;(hospedeiros as any[]).forEach((h: any) => {
       const set = new Set(h.nomeVul)
-      assert.strictEqual(set.size, h.nomeVul.length, `Duplicate common name in ${h.nomeSci}`)
+      assert.strictEqual(
+        set.size,
+        h.nomeVul.length,
+        `Duplicate common name in ${h.nomeSci}`,
+      )
     })
   })
 })

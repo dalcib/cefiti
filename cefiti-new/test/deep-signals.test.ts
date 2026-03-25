@@ -22,7 +22,9 @@ describe('deepsignal (preact)', () => {
       render(h('span', null, state.$test), scratch)
 
       // biome-ignore lint/style/noNonNullAssertion: Test setup guarantees existence
-      const text = scratch.firstChild!.firstChild! as unknown as { data: string }
+      const text = scratch.firstChild!.firstChild! as unknown as {
+        data: string
+      }
       assert.strictEqual(text.data, 'test')
 
       act(() => {
@@ -30,7 +32,10 @@ describe('deepsignal (preact)', () => {
       })
 
       // biome-ignore lint/style/noNonNullAssertion: Test setup guarantees existence
-      assert.strictEqual(scratch.firstChild!.firstChild!, text as unknown as ChildNode)
+      assert.strictEqual(
+        scratch.firstChild?.firstChild!,
+        text as unknown as ChildNode,
+      )
       assert.strictEqual(text.data, 'changed')
     })
 
@@ -47,7 +52,9 @@ describe('deepsignal (preact)', () => {
       const initialCallCount = spy.mock.callCount()
 
       // biome-ignore lint/style/noNonNullAssertion: Test setup guarantees existence
-      const text = scratch.firstChild!.firstChild! as unknown as { data: string }
+      const text = scratch.firstChild!.firstChild! as unknown as {
+        data: string
+      }
       assert.strictEqual(text.data, 'test')
 
       act(() => {
@@ -55,7 +62,10 @@ describe('deepsignal (preact)', () => {
       })
 
       // biome-ignore lint/style/noNonNullAssertion: Test setup guarantees existence
-      assert.strictEqual(scratch.firstChild!.firstChild!, text as unknown as ChildNode)
+      assert.strictEqual(
+        scratch.firstChild?.firstChild!,
+        text as unknown as ChildNode,
+      )
       assert.strictEqual(text.data, 'changed')
 
       // Ensure no re-render of App (because signal was passed directly as text content?)
@@ -73,20 +83,29 @@ describe('deepsignal (preact)', () => {
 
       const initialCallCount = spy.mock.callCount()
 
-      assert.strictEqual((scratch.firstChild as unknown as HTMLInputElement).value, 'initial')
+      assert.strictEqual(
+        (scratch.firstChild as unknown as HTMLInputElement).value,
+        'initial',
+      )
 
       act(() => {
         state.test = 'updated'
       })
 
-      assert.strictEqual((scratch.firstChild as unknown as HTMLInputElement).value, 'updated')
+      assert.strictEqual(
+        (scratch.firstChild as unknown as HTMLInputElement).value,
+        'updated',
+      )
       assert.strictEqual(spy.mock.callCount(), initialCallCount)
 
       act(() => {
         state.test = 'second update'
       })
 
-      assert.strictEqual((scratch.firstChild as unknown as HTMLInputElement).value, 'second update')
+      assert.strictEqual(
+        (scratch.firstChild as unknown as HTMLInputElement).value,
+        'second update',
+      )
       assert.strictEqual(spy.mock.callCount(), initialCallCount)
     })
   })

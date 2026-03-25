@@ -60,7 +60,9 @@ const Select = function Select({ source, name }: PropsSelect) {
             >
               {typeof option === 'string'
                 ? option.toString()
-                : (option as any).nome || (option as any).id || (option as any).UF}
+                : (option as any).nome ||
+                  (option as any).id ||
+                  (option as any).UF}
             </option>
           ))}
         </datalist>

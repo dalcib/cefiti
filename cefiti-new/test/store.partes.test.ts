@@ -8,7 +8,7 @@ describe('Store: partes getter', () => {
   it('should return parts for Mangifera indica', () => {
     store.dados.hospSci = 'Mangifera indica'
     const parts = store.partes
-    
+
     // Mangifera indica is host for many pests (Bactrocera carambolae, etc.)
     // We expect some parts like "frutos"
     assert.ok(parts.includes(''), 'Should include empty string')

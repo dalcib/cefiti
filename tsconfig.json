@@ -1,38 +1,29 @@
 {
   "compilerOptions": {
-    //"target": "esnext",
-    //"module": "nodenext",
-    "baseUrl": ".",
     "paths": {
-      "#db": ["./cefiti/src/db.ts"]
+      "#db": ["./cefiti/src/db.ts"],
+      "#db-next": ["./cefiti-new/src/db-next-bridge.js"]
     },
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true,
     "verbatimModuleSyntax": true,
     "erasableSyntaxOnly": true,
-    "target": "es2015",
     "lib": ["esnext", "dom", "dom.iterable"],
     "sourceMap": true,
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "target": "ESNext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "types": ["node"],
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
     "experimentalDecorators": true,
-    //"suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
   },
-  "exclude": ["node_modules", "build", "assets", "firebase"],
-  "include": ["cefiti/src", "cefiti-admin/src", "cefiti/test", "cefiti/public/*.db.js", "cefiti-new/src", "cefiti-new/test"]
+  "exclude": ["node_modules", "build", "assets"],
+  "include": ["cefiti/src", "cefiti-admin/src", "cefiti/test", "cefiti/public/*.db.js", "cefiti-new/src", "cefiti-new/test", "firebase/public/*.js"]
 }

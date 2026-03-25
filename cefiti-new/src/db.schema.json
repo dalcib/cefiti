@@ -56,46 +56,32 @@
       },
       "uniqueItems": true
     },
-    "regras": {
+    "rules": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "idprag": {
-            "type": "integer"
+          "prag": { "type": "string" },
+          "desc": { "type": "string" },
+          "status_origem": {
+            "type": "array",
+            "items": { "type": "string" }
           },
-          "desc": {
-            "type": "string"
+          "status_destino": {
+            "type": "array",
+            "items": { "type": "string" }
           },
           "part": {
             "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "orig": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "dest": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "prag": {
-            "type": "string"
+            "items": { "type": "string" }
           },
           "exig": {
             "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
+            "items": { "type": "string" }
+          },
+          "leg": { "type": "string" }
         },
-        "required": ["idprag", "desc", "part", "orig", "dest", "prag", "exig"]
+        "required": ["prag", "desc", "status_origem", "status_destino", "part", "exig", "leg"]
       }
     },
     "legislacoes": {
@@ -122,19 +108,19 @@
       "items": {
         "type": "object",
         "properties": {
-          "estado": {
-            "type": "string"
-          },
-          "UF": {
-            "type": "string"
-          },
-          "ibge": {
+          "id": {
             "type": "integer"
+          },
+          "uf": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
           }
         },
-        "required": ["estado", "UF"]
+        "required": ["id", "uf", "nome"]
       }
     }
   },
-  "required": ["hospedeiros", "pragas", "regras", "legislacoes", "estados"]
+  "required": ["hospedeiros", "pragas", "rules", "legislacoes", "estados"]
 }

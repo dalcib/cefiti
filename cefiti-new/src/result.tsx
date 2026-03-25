@@ -1,5 +1,4 @@
-import type { Db } from '#db'
-import { store } from './store.ts'
+import { type SearchResult, store } from './store.ts'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
@@ -25,9 +24,9 @@ function Result() {
           <br />
         </div>
 
-        {store.result.map((item: Db, i: number) => {
+        {store.result.map((item: SearchResult, i: number) => {
           return (
-            <div key={`${item.prag}${i}`}>
+            <div key={`${item.id}${i}`}>
               <hr />
               <h4 className="h4" style={{ textAlign: 'left', float: 'left' }}>
                 <i>{item.prag}</i> - {item.pragc}

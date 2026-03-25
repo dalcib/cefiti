@@ -65,7 +65,7 @@ async function migrate() {
 
       const docRef = db.collection('municipios').doc(id)
       batch.set(docRef, {
-        id: parseInt(id),
+        id: parseInt(id, 10),
         nome,
         sigla,
       })

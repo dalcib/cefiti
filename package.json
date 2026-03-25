@@ -22,8 +22,10 @@
     "#db": {
       "node": "./cefiti/src/db.ts",
       "default": "./cefiti/public/db.js"
-    }
+    },
+    "#db-next": "./firebase/public/db-next.js"
   },
+
   "scripts": {
     "start": "node dev.mjs cefiti",
     "start:new": "node dev.mjs cefiti-new",
@@ -49,6 +51,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.4.4",
     "@types/node": "^25.3.0",
-    "esbuild": "^0.27.3"
+    "esbuild": "^0.27.3",
+    "typescript": "^6.0.0"
   }
 }

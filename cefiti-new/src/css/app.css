@@ -193,7 +193,8 @@ option {
   font-size: 0.9em;
 }
 
-datalist, select {
+datalist,
+select {
   line-height: normal;
 }
 

@@ -18,14 +18,8 @@ Table hospedeiros {
   nomeVul String[]
 }
 
-Table regras {
-  id Int [pk, increment]
-  desc String
-  dest String[] [Ref: > estados.uf, note: "each element is a estado uf"]
-  orig String[] [Ref: > estados.uf, note: "each element is a estado uf"]
-  part String[]
-  prag String [Ref: > pragas.prag]
-  }
+// Removed legacy Table regras in favor of Table rules
+
 
 Table legislacoes {
   id String [pk]
@@ -75,6 +69,7 @@ Table EstadoItem {
 
 Table rules {
   prag String [pk, Ref: > pragas.prag]  
+  desc String
   part String[]
   status_origem status[]
   status_destino status[] 
@@ -85,11 +80,40 @@ Table rules {
 enum status { 
  "Área de SMR",
  "Área Com Ocorrência",
- "Área Erradicada",
- "Área Sob Erradicação",
- "Área de Status Desconhecido",
+ "Área Livre de Praga",
+ "Área Sem Registro",
+ "UF Sem Registro",
  "Zona Tampão",
- "Área Livre de Praga (ALP)",
- "Área Sem Registro"
- "UF Sem Registro"
+ "Área de Status Desconhecido",
+ "Área Sob Erradicação",
+ "Todas as Áreas"
 } [note: "Reference to configuracoes.catalogos.status_fitossanitario"]
+
+/*
+### Regras (`rules`)
+
+Defines the requirements for moving products between states based on pest status.
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `prag` | `string` | Scientific name of the pest. |
+| `desc` | `string` | Human-readable description of the rule. |
+| `status_origem` | `string[]` | List of phytosanitary statuses at the origin. |
+| `status_destino` | `string[]` | List of phytosanitary statuses at the destination. |
+| `part` | `string[]` | Plant parts affected (e.g., "frutos", "mudas"). |
+| `exig` | `string[]` | List of requirements/restrictions. |
+| `leg` | `string` | Legal reference (citation). |
+
+### Status Fitossanitário
+
+Common values for `status_origem` and `status_destino`:
+- `Área Com Ocorrência`
+- `Área Livre de Praga`
+- `Área Sem Registro`
+- `UF Sem Registro`
+- `Zona Tampão`
+- `Área de SMR`
+- `Área de Status Desconhecido`
+- `Área Sob Erradicação`
+- `Todas as Áreas`
+*/

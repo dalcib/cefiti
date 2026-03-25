@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "imports": {
-    "#db": "./src/db.ts"
+    "#db": "./src/db.ts",
+    "#db-next": "./src/db-next-bridge.js"
   }
 }
