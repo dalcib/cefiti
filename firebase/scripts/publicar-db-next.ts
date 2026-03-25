@@ -39,8 +39,8 @@ async function generateDbNext() {
       'status_fitossanitário', // User requested exclusion
     ]
 
-    const data: Record<string, any[]> = {}
-    let legTextoData: any[] = []
+    const data: Record<string, Record<string, unknown>[]> = {}
+    let legTextoData: Record<string, unknown>[] = []
 
     // Fetch version
     console.log('Fetching version from configuracoes/geral...')

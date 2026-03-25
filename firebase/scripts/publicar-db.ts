@@ -47,7 +47,7 @@ async function publicar() {
         'legislacoes',
         'estados',
       ]
-      const data: Record<string, any[]> = {}
+      const data: Record<string, Record<string, unknown>[]> = {}
 
       for (const collName of collections) {
         const snapshot = await db.collection(collName).get()
@@ -81,7 +81,7 @@ async function publicar() {
 
     const { nextVersion, data } = result as {
       nextVersion: number
-      data: Record<string, any[]>
+      data: Record<string, Record<string, unknown>[]>
     }
 
     // 5. Generate JS content (ESM format)

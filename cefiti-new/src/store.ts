@@ -1,6 +1,7 @@
 import {
-  type DB_PragaStatus,
+  type DB_PragaEstadoStatus,
   type DB_StatusFitossanitario,
+  type DB_StatusMunicipio,
   type Estado,
   estados,
   type Hospedeiro,
@@ -13,6 +14,7 @@ import {
   rules,
   status_municipio,
 } from '#db-next'
+
 import { deepSignal } from '../../cefiti/src/deep-signals.ts'
 
 declare global {
@@ -253,11 +255,13 @@ export class Store {
 
         const matchesOrig =
           exigen.status_origem.includes('Todas as Áreas') ||
-          statusesOrigem.some((sO) => exigen.status_origem.includes(sO as any)) // as any for StatusFitossanitario check safety
+          statusesOrigem.some((sO) =>
+            exigen.status_origem.includes(sO as DB_StatusFitossanitario),
+          )
         const matchesDest =
           exigen.status_destino.includes('Todas as Áreas') ||
           statusesDestino.some((sD) =>
-            exigen.status_destino.includes(sD as any),
+            exigen.status_destino.includes(sD as DB_StatusFitossanitario),
           )
 
         return (
@@ -332,24 +336,29 @@ export class Store {
     return id
   }
 
-  private resolveStatus(pragaName: string, municipioId: string): string[] {
+  private resolveStatus(
+    pragaName: string,
+    municipioId: string,
+  ): DB_StatusFitossanitario[] {
     if (!municipioId || municipioId.length !== 6) return []
 
     const stateCode = municipioId.slice(0, 2)
     const muniPart = municipioId.slice(2, 6)
     const stateCodeNum = Number(stateCode)
 
-    const pestEntry = (status_municipio as unknown as PestStatusEntry[]).find(
-      (entry) => entry.praga === pragaName,
-    )
+    const pestEntry = (
+      status_municipio as unknown as DB_StatusMunicipio[]
+    ).find((entry) => entry.praga === pragaName)
     if (!pestEntry) return ['Área Sem Registro']
 
-    const results: string[] = []
+    const results: DB_StatusFitossanitario[] = []
 
     for (const statusObj of pestEntry.status) {
-      const statusTitle = statusObj.status_fitossanitário
+      const statusTitle =
+        statusObj.status_fitossanitário as DB_StatusFitossanitario
       const stateMatch = statusObj.estados.find(
-        (e: DB_PragaStatus) => e.ibge === stateCodeNum || e.id === stateCodeNum,
+        (e: DB_PragaEstadoStatus) =>
+          e.ibge === stateCodeNum || e.id === stateCodeNum,
       )
 
       if (stateMatch) {
@@ -358,19 +367,19 @@ export class Store {
         const isTodos = Object.entries(municipios).some(
           ([k, v]) =>
             (k === '9999' || k === 'Todos') &&
-            String(v).toLowerCase().includes('todo'),
+            (v === 'Todos' ||
+              v === 'Tudo' ||
+              v === statusTitle ||
+              v === 'Liberado'),
         )
 
-        if (isTodos || municipios[muniPart]) {
+        if (isTodos || municipios[muniPart] || municipios[municipioId]) {
           results.push(statusTitle)
         }
       }
     }
 
-    if (results.length === 0) {
-      return ['Área Sem Registro']
-    }
-
+    if (results.length === 0) return ['Área Sem Registro']
     return results
   }
 

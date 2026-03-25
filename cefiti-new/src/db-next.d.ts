@@ -48,17 +48,21 @@ declare module '#db-next' {
     leg: string
   }
 
-  export interface DB_PragaStatus {
+  export interface DB_PragaEstadoStatus {
     uf: string
     ibge?: number
     id?: number
-
     municipios: Record<string, string>
+  }
+
+  export interface DB_PragaStatusAction {
+    status_fitossanitário: DB_StatusFitossanitario
+    estados: DB_PragaEstadoStatus[]
   }
 
   export interface DB_StatusMunicipio {
     praga: string
-    status: DB_PragaStatus[]
+    status: DB_PragaStatusAction[]
   }
 
   export const dbVersion: number

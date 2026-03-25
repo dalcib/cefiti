@@ -13,6 +13,8 @@ interface PropsSelect {
   name: keyof Dados
 }
 
+type OptionType = string | Municipio | Estado
+
 const Select = function Select({ source, name }: PropsSelect) {
   if (name.startsWith('municipio')) {
     const normalize = (s: string) =>
@@ -22,12 +24,16 @@ const Select = function Select({ source, name }: PropsSelect) {
         .toLowerCase()
 
     const filterText = normalize((store.dados[name] as string) || '')
-    const options = store[source].filter((option) => {
+    const options = (store[source] as OptionType[]).filter((option) => {
       if (!filterText) return true
-      const val =
-        typeof option === 'string'
-          ? option
-          : (option as any).nome || (option as any).UF
+      let val = ''
+      if (typeof option === 'string') {
+        val = option
+      } else if ('nome' in option) {
+        val = (option as Municipio).nome
+      } else if ('UF' in option) {
+        val = (option as Estado).UF
+      }
       return normalize(val).includes(filterText)
     })
 
@@ -37,34 +43,34 @@ const Select = function Select({ source, name }: PropsSelect) {
           list={`list-${name}`}
           value={store.dados[name]}
           name={name}
-          onChange={(e) => store.handleChanges(e as any)}
+          onChange={(e) => store.handleChanges(e as unknown as Event)}
           placeholder="Digite para filtrar..."
           className="form-select"
           style={{ minWidth: '145px' }}
         />
         <datalist id={`list-${name}`}>
-          {options.map((option) => (
-            <option
-              value={
-                typeof option === 'string'
-                  ? option.toString()
-                  : (option as any).nome ||
-                    (option as any).id ||
-                    (option as any).UF
-              }
-              key={
-                typeof option === 'string'
-                  ? option.toString()
-                  : (option as any).id || (option as any).UF
-              }
-            >
-              {typeof option === 'string'
-                ? option.toString()
-                : (option as any).nome ||
-                  (option as any).id ||
-                  (option as any).UF}
-            </option>
-          ))}
+          {options.map((option) => {
+            const opt = option as OptionType
+            let value = ''
+            let label = ''
+
+            if (typeof opt === 'string') {
+              value = opt
+              label = opt
+            } else if ('id' in opt) {
+              value = opt.id.toString()
+              label = opt.nome
+            } else if ('UF' in opt) {
+              value = opt.UF
+              label = opt.estado
+            }
+
+            return (
+              <option value={value} key={value}>
+                {label}
+              </option>
+            )
+          })}
         </datalist>
       </>
     )
