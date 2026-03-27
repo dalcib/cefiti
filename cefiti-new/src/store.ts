@@ -94,6 +94,7 @@ export class Store {
   exibeBase: boolean = false
   searched: boolean = false
   municipios: Municipio[] = []
+  private municipioLookup: Record<string, string> = {}
 
   constructor() {
     this.loadMunicipios()
@@ -148,6 +149,18 @@ export class Store {
           const uf = ufMap.get(ibgePrefix) || ''
           return { id, nome, uf }
         })
+
+      // Populate lookup map for O(1) access
+      this.municipioLookup = {}
+      const normalize = (s: string) =>
+        s
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+
+      for (const m of this.municipios) {
+        this.municipioLookup[`${normalize(m.nome)}|${m.uf}`] = m.id
+      }
     }
   }
 
@@ -322,12 +335,9 @@ export class Store {
         .toLowerCase()
     const target = normalize(nomeOrId)
 
-    const muni = this.municipios.find(
-      (m) => normalize(m.nome) === target && m.uf === uf,
-    )
-    const id = muni?.id || `${uf}9999`
+    const id = this.municipioLookup[`${target}|${uf}`] || `${uf}9999`
 
-    if (!muni && nomeOrId && !['todos', 'qualquer'].includes(target)) {
+    if (!id.endsWith('9999') === false && nomeOrId && !['todos', 'qualquer'].includes(target)) {
       console.warn(
         `Município não encontrado: "${nomeOrId}" em ${uf}. Usando fallback ${id}`,
       )

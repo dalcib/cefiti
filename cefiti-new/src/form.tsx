@@ -1,4 +1,4 @@
-import type { Estado } from './db'
+import type { Estado } from '#db-next'
 import { type Dados, type Municipio, store } from './store'
 
 interface PropsSelect {
@@ -34,7 +34,7 @@ const Select = function Select({ source, name }: PropsSelect) {
       } else if ('UF' in option) {
         val = (option as Estado).UF
       }
-      return normalize(val).includes(filterText)
+      return normalize(val).startsWith(filterText)
     })
 
     return (
@@ -52,22 +52,25 @@ const Select = function Select({ source, name }: PropsSelect) {
           {options.map((option) => {
             const opt = option as OptionType
             let value = ''
-            let label = ''
+            let display = ''
 
             if (typeof opt === 'string') {
               value = opt
-              label = opt
+              display = opt
             } else if ('id' in opt) {
-              value = opt.id.toString()
-              label = opt.nome
+              value = opt.nome
+              display = opt.nome
             } else if ('UF' in opt) {
               value = opt.UF
-              label = opt.estado
+              display = opt.estado
             }
 
             return (
-              <option value={value} key={value}>
-                {label}
+              <option
+                value={value}
+                key={typeof opt !== 'string' && 'id' in opt ? opt.id : value}
+              >
+                {display}
               </option>
             )
           })}

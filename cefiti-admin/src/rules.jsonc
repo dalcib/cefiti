@@ -147,7 +147,7 @@
     "desc": "De UF com Ocorrência para UF Sem Ocorrência (Mudas)",
     "status_origem": ["Área Com Ocorrência","Área Sem Registro"],
     "status_destino": ["UF Sem Registro"],
-    "part": ["mudas "],
+    "part": ["mudas"],
     "exig": [
       "O trânsito só é permitido quando as mudas forem acompanhadas de Permissão de Trânsito de Vegetais (PTV) com a seguinte Declaração Adicional: 'As mudas foram obtidas por micropropagação e indexadas para Xanthomonas campestris pv. viticola'."
     ],
