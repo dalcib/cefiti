@@ -39,12 +39,12 @@ describe('Store AI Tests', () => {
 
   it('should calculate listaNomesSci correctly', () => {
     assert.ok(store.listaNomesSci.length >= 1)
-    assert.strictEqual(store.listaNomesSci[0], '')
+    assert.strictEqual(store.listaNomesSci[0], 'Acacia spp.')
   })
 
   it('should calculate listaNomesVul correctly', () => {
     assert.ok(store.listaNomesVul.length >= 1)
-    assert.strictEqual(store.listaNomesVul[0], '')
+    assert.strictEqual(store.listaNomesVul[0], 'Abiu (C. cainito)')
   })
 
   it('should correctly determine empty state', () => {
@@ -59,11 +59,12 @@ describe('Store AI Tests', () => {
     assert.strictEqual(store.empty, store.result.length === 0)
   })
 
-  it('should filter origem correctly', () => {
+  it('should return all estados correctly', () => {
     // estados in db-next.js has 27 entries
-    assert.strictEqual(store.origem.length, 27)
+    assert.strictEqual(store.estados.length, 27)
     store.dados.dest = 'SP'
-    assert.ok(store.origem.length < 27)
+    // New logic: no more filtering, should still be 27
+    assert.strictEqual(store.estados.length, 27)
   })
 
   it('should correctly determine completed state', () => {

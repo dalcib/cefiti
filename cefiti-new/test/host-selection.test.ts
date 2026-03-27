@@ -43,32 +43,32 @@ describe('Host Selection Sync', () => {
   })
 
   it('should maintain current NomeVul if valid for new NomeSci', () => {
-    // Picea abies has ['Abeto Europeu', 'Abeto Vermelho Comum', 'Noruega Abeto']
+    // Syzygium aqueum has ["Jambo Branco (S.aqueum)", "Jambo D'água", "Jambosa"]
     const targetHost = (hospedeiros as Hospedeiro[]).find(
-      (h: Hospedeiro) => h.nomeSci === 'Picea abies',
+      (h: Hospedeiro) => h.nomeSci === 'Syzygium aqueum',
     )
-    assert(targetHost, 'Picea abies not found in db')
+    assert(targetHost, 'Syzygium aqueum not found in db')
 
-    store.dados.hospVul = 'Noruega Abeto'
+    store.dados.hospVul = 'Jambosa'
     const e: EventChange = {
-      currentTarget: { name: 'hospSci', value: 'Picea abies' },
+      currentTarget: { name: 'hospSci', value: 'Syzygium aqueum' },
     }
     store.handleChanges(e as unknown as Event)
 
-    assert.strictEqual(store.dados.hospSci, 'Picea abies')
-    assert.strictEqual(store.dados.hospVul, 'Noruega Abeto')
+    assert.strictEqual(store.dados.hospSci, 'Syzygium aqueum')
+    assert.strictEqual(store.dados.hospVul, 'Jambosa')
     assert.strictEqual(store.dados.hospId, targetHost.id)
   })
 
   it('should pick first NomeVulg if current is invalid for new NomeSci', () => {
     store.dados.hospVul = 'Banana'
     const e: EventChange = {
-      currentTarget: { name: 'hospSci', value: 'Picea abies' },
+      currentTarget: { name: 'hospSci', value: 'Syzygium aqueum' },
     }
     store.handleChanges(e as unknown as Event)
 
-    assert.strictEqual(store.dados.hospSci, 'Picea abies')
-    assert.strictEqual(store.dados.hospVul, 'Abeto Europeu') // First one for Picea abies
+    assert.strictEqual(store.dados.hospSci, 'Syzygium aqueum')
+    assert.strictEqual(store.dados.hospVul, 'Jambo Branco (S.aqueum)') // First one for Syzygium aqueum
     assert.notStrictEqual(store.dados.hospId, 0)
   })
 

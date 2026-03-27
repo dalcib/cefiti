@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
 import { Store } from '../src/store.ts'
+import { getMunicipioId } from '../src/municipios.ts'
 
 describe('Store: phytosanitary status logic', () => {
   const store = new Store()
@@ -69,7 +70,7 @@ describe('Store: phytosanitary status logic', () => {
 
   it('should resolve ID from name and UF', async () => {
     await store.loadMunicipios()
-    const id = (store as any).getMunicipioId('Rio de Janeiro', 'RJ')
+    const id = getMunicipioId('Rio de Janeiro', 'RJ', (store as any).municipioLookup)
     assert.equal(id, '330455')
   })
 

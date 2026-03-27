@@ -6,21 +6,21 @@ describe('Store: species selection logic', () => {
   const store = new Store()
 
   it('should match specific species AND genus when specific species is selected', () => {
-    // Malus pumila is ID 144
-    // Neonectria ditissima (Neonectria galligena) has host [148] (Malus sp.)
-    // species(['Malus sp.'], 'Malus pumila') should be true
+    // Citrus sinensis is ID 138
+    // Xanthomonas citri subsp. citri has host [103] (Citrus spp.)
+    // species([103], 'Citrus sinensis') should be true
     assert.strictEqual(
-      store.species([148], 'Malus pumila'),
+      store.species([103], 'Citrus sinensis'),
       true,
-      'Malus pumila should match its genus pest (Malus sp.)',
+      'Citrus sinensis should match its genus pest (Citrus spp.)',
     )
 
     // Testing specific match
-    // If a pest had host [144], it should match Malus pumila
+    // If a pest had host [138], it should match Citrus sinensis
     assert.strictEqual(
-      store.species([144], 'Malus pumila'),
+      store.species([138], 'Citrus sinensis'),
       true,
-      'Malus pumila should match itself',
+      'Citrus sinensis should match itself',
     )
   })
 
@@ -34,25 +34,24 @@ describe('Store: species selection logic', () => {
       'Musa spp. should match its own host ID',
     )
 
-    // If a pest has a specific Musa species (if any existed in DB with ID e.g. 999)
-    // it should match Musa spp.
-    // Let's find a specific Malus in DB. Malus communis is 142.
-    // species([142], 'Malus sp.') should be true
+    // If a pest has a specific Citrus species (e.g. 138)
+    // it should match Citrus spp.
+    // species([138], 'Citrus spp.') should be true
     assert.strictEqual(
-      store.species([142], 'Malus sp.'),
+      store.species([138], 'Citrus spp.'),
       true,
-      'Malus sp. should match specific Malus species like Malus communis',
+      'Citrus spp. should match specific Citrus species like Citrus sinensis',
     )
   })
 
   it('should return pest names via pragasByHospId getter', () => {
-    // Malus pumila (144)
-    store.dados.hospSci = 'Malus pumila'
+    // Citrus sinensis (138)
+    store.dados.hospSci = 'Citrus sinensis'
     const names = store.pragasByHospId
-    // Neonectria ditissima has host [148] (Malus sp.), so it should be included for Malus pumila
+    // Xanthomonas citri subsp. citri has host [103] (Citrus spp.), so it should be included for Citrus sinensis
     assert(
-      names.includes('Neonectria ditissima (Neonectria galligena)'),
-      'Should include Neonectria ditissima for Malus pumila',
+      names.includes('Xanthomonas citri subsp. citri'),
+      'Should include Xanthomonas citri for Citrus sinensis',
     )
 
     // Musa spp. (41)

@@ -48,11 +48,8 @@ export const hospedeiroSciMap = new Map<number, string>(
   (hospedeiros as Hospedeiro[]).map((h) => [h.id, h.nomeSci]),
 )
 
-export interface Municipio {
-  id: string
-  nome: string
-  uf: string
-}
+import { getMunicipioId, loadMunicipiosData, type Municipio } from './municipios.ts'
+export type { Municipio }
 
 export interface PestStatusMunicipio {
   uf: string
@@ -101,67 +98,9 @@ export class Store {
   }
 
   async loadMunicipios() {
-    let text = ''
-    if (
-      typeof window !== 'undefined' &&
-      window.location?.protocol.startsWith('http')
-    ) {
-      try {
-        const response = await fetch('/municipios.txt')
-        if (response.ok) {
-          text = await response.text()
-          console.log('Municipios loaded successfully via fetch')
-        } else {
-          console.error('Failed to load municipios via fetch:', response.status)
-        }
-      } catch (error) {
-        console.error('Erro ao carregar municipios via fetch', error)
-      }
-    } else {
-      try {
-        const fs = await import('node:fs/promises')
-        const path = await import('node:path')
-        const filePath = path.join(
-          process.cwd(),
-          'cefiti-new/public/municipios.txt',
-        )
-        text = await fs.readFile(filePath, 'utf-8')
-      } catch {
-        // Silently fail in tests if file not found, or log if needed
-      }
-    }
-
-    if (text) {
-      const ufMap = new Map<string, string>()
-      for (const e of estados) {
-        if (e.ibge) {
-          ufMap.set(String(e.ibge), e.UF)
-        }
-      }
-
-      this.municipios = text
-        .split('\n')
-        .filter((l) => l.trim().length > 6)
-        .map((l) => {
-          const id = l.slice(0, 6)
-          const nome = l.slice(6).trim()
-          const ibgePrefix = id.slice(0, 2)
-          const uf = ufMap.get(ibgePrefix) || ''
-          return { id, nome, uf }
-        })
-
-      // Populate lookup map for O(1) access
-      this.municipioLookup = {}
-      const normalize = (s: string) =>
-        s
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .toLowerCase()
-
-      for (const m of this.municipios) {
-        this.municipioLookup[`${normalize(m.nome)}|${m.uf}`] = m.id
-      }
-    }
+    const { municipios, municipioLookup } = await loadMunicipiosData()
+    this.municipios = municipios
+    this.municipioLookup = municipioLookup
   }
 
   get pragasByHospId(): string[] {
@@ -177,32 +116,23 @@ export class Store {
   }
 
   get listaNomesSci() {
-    return ['', ...(hospedeiros as Hospedeiro[]).map((v) => v.nomeSci)].sort(
+    return (hospedeiros as Hospedeiro[]).map((v) => v.nomeSci).sort(
       (a, b) => a.localeCompare(b),
     )
   }
 
   get listaNomesVul() {
-    return [
-      '',
-      ...(hospedeiros as Hospedeiro[]).flatMap((v) => v.nomeVul),
-    ].sort((a, b) => a.localeCompare(b))
+    return (hospedeiros as Hospedeiro[]).flatMap((v) => v.nomeVul).sort(
+      (a, b) => a.localeCompare(b),
+    )
   }
 
   get empty(): boolean {
     return this.result.length === 0
   }
 
-  get origem() {
-    return (estados as Estado[]).filter(
-      (estado) => estado.UF !== this.dados.dest || estado.UF === '',
-    )
-  }
-
-  get destino() {
-    return (estados as Estado[]).filter(
-      (estado) => estado.UF !== this.dados.orig || estado.UF === '',
-    )
+  get estados() {
+    return estados as Estado[]
   }
 
   get municipiosOrigem() {
@@ -251,7 +181,7 @@ export class Store {
     const p = (rules as Rule[])
       .filter((regra) => this.pragasByHospId.includes(regra.prag))
       .flatMap((regra) => regra.part)
-    return ['', ...Array.from<string>(new Set(p))].sort(
+    return Array.from<string>(new Set(p)).sort(
       (a: string, b: string) => a.localeCompare(b),
     )
   }
@@ -304,7 +234,11 @@ export class Store {
 
   get statusOrigemByPraga() {
     const res: Record<string, string[]> = {}
-    const id = this.getMunicipioId(this.dados.municipioOrigem, this.dados.orig)
+    const id = getMunicipioId(
+      this.dados.municipioOrigem,
+      this.dados.orig,
+      this.municipioLookup,
+    )
     for (const praga of this.pragasByHospId) {
       res[praga] = this.resolveStatus(praga, id)
     }
@@ -313,37 +247,15 @@ export class Store {
 
   get statusDestinoByPraga() {
     const res: Record<string, string[]> = {}
-    const id = this.getMunicipioId(this.dados.municipioDestino, this.dados.dest)
+    const id = getMunicipioId(
+      this.dados.municipioDestino,
+      this.dados.dest,
+      this.municipioLookup,
+    )
     for (const praga of this.pragasByHospId) {
       res[praga] = this.resolveStatus(praga, id)
     }
     return res
-  }
-
-  private getMunicipioId(nomeOrId: string, uf: string): string {
-    if (!uf) return ''
-    if (!nomeOrId) return `${uf}9999`
-
-    // If it looks like a 6-digit IBGE code already, use it
-    if (/^\d{6}$/.test(nomeOrId)) return nomeOrId
-
-    // Accent-insensitive and case-insensitive matching
-    const normalize = (s: string) =>
-      s
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase()
-    const target = normalize(nomeOrId)
-
-    const id = this.municipioLookup[`${target}|${uf}`] || `${uf}9999`
-
-    if (!id.endsWith('9999') === false && nomeOrId && !['todos', 'qualquer'].includes(target)) {
-      console.warn(
-        `Município não encontrado: "${nomeOrId}" em ${uf}. Usando fallback ${id}`,
-      )
-    }
-
-    return id
   }
 
   private resolveStatus(

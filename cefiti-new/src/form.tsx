@@ -6,8 +6,7 @@ interface PropsSelect {
     | 'listaNomesSci'
     | 'listaNomesVul'
     | 'partes'
-    | 'destino'
-    | 'origem'
+    | 'estados'
     | 'municipiosOrigem'
     | 'municipiosDestino'
   name: keyof Dados
@@ -124,13 +123,13 @@ function Form() {
         source="listaNomesVul"
       />
       <FormField label="Parte da Planta:" name="prod" source="partes" />
-      <FormField label="Estado de Origem:" name="orig" source="origem" />
+      <FormField label="Estado de Origem:" name="orig" source="estados" />
       <FormField
         label="Município de Origem:"
         name="municipioOrigem"
         source="municipiosOrigem"
       />
-      <FormField label="Estado de Destino:" name="dest" source="destino" />
+      <FormField label="Estado de Destino:" name="dest" source="estados" />
       <FormField
         label="Município de Destino:"
         name="municipioDestino"

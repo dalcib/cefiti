@@ -9,8 +9,8 @@ describe('Store Edge Cases', () => {
     // Citrus spp. is ID 103. Citrus sinensis should match it.
     assert.strictEqual(store.species([103], 'Citrus sinensis'), true)
 
-    // Sorbus sp. is ID 102. Sorbus species should match it.
-    assert.strictEqual(store.species([102], 'Sorbus aucuparia'), true)
+    // Licania sp. is ID 139. Licania species should match it.
+    assert.strictEqual(store.species([139], 'Licania rigida'), true)
   })
 
   it('should auto-fill vulgar name when scientific name is selected', () => {

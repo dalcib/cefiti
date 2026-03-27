@@ -12,8 +12,8 @@ describe('Store', () => {
 
 describe('Store hospedeiros', () => {
   it('listaNomesSci matches count of all hosts', () => {
-    // Current database has 206 hosts + 1 empty string = 207
-    assert.strictEqual(store.listaNomesSci.length, 207)
+    // Current database has 56 hosts
+    assert.strictEqual(store.listaNomesSci.length, 56)
   })
 
   it('listaNomesVul contains names', () => {
@@ -45,32 +45,31 @@ describe('Store pragas', () => {
 describe('Store partes', () => {
   it('de Acerola', () => {
     store.dados.hospSci = 'Malpighia spp.'
-    assert.deepEqual(store.partes, ['', 'frutos'])
+    assert.deepEqual(store.partes, ['frutos'])
   })
 
   it('de Banana', () => {
     store.dados.hospSci = 'Musa spp.'
     assert.deepEqual(store.partes, [
-      '',
       'frutos',
       'inflorescências',
       'mudas',
-      'mudas de bananeira',
-      'mudas e rizomas',
+      'rizomas',
     ])
   })
 
   it('de Citrus', () => {
     store.dados.hospSci = 'Citrus spp.'
     assert.deepEqual(store.partes, [
-      '',
+      'caules',
+      'flores',
+      'folhas',
       'frutos',
-      'frutos de Citrus spp.',
-      'frutos secos e descascados de Cocos nucifera',
-      'madeira serrada',
-      'material de propagação vegetativo',
-      'material in vitro',
-      'plantas e partes de Citrus spp. (exceto frutos), Cocos nucifera (exceto frutos secos/descascados), Acacia sp., Azadirachta indica, Melia azedarach e Sorghum bicolor',
+      'material de propagação vegetativa',
+      'mudas',
+      'plantas',
+      'raízes',
+      'ramos',
       'sementes',
     ])
   })
@@ -123,9 +122,9 @@ describe('Sync between NomeVulg and NomeSci', () => {
   })
 
   it('updates NomeVul when NomeSci changes', () => {
-    store.updateHospedeiro('Malpighia spp.', 'hospSci')
-    assert.strictEqual(store.dados.hospVul, 'Acerola(qualquer espécie)')
-    assert.strictEqual(store.dados.hospId, 6)
+    store.updateHospedeiro('Citrus sinensis', 'hospSci')
+    assert.strictEqual(store.dados.hospVul, 'Laranja')
+    assert.strictEqual(store.dados.hospId, 138)
   })
 })
 

@@ -11,7 +11,6 @@ describe('Store: partes getter', () => {
 
     // Mangifera indica is host for many pests (Bactrocera carambolae, etc.)
     // We expect some parts like "frutos"
-    assert.ok(parts.includes(''), 'Should include empty string')
     assert.ok(parts.includes('frutos'), 'Should include frutos')
   })
 
@@ -22,10 +21,10 @@ describe('Store: partes getter', () => {
     assert.equal(parts.length, uniqueParts.length, 'Parts should be unique')
   })
 
-  it('should return empty list (with "") for unknown host', () => {
+  it('should return empty list for unknown host', () => {
     store.clean()
     store.dados.hospSci = 'Unknown species'
     const parts = store.partes
-    assert.deepEqual(parts, [''])
+    assert.deepEqual(parts, [])
   })
 })
