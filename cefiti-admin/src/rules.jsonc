@@ -32,11 +32,11 @@
   {
     "prag": "Bactrocera carambolae",
     "desc": "De municípios sem ocorrência/tampão localizados em UFs com ocorrência",
-    "status_origem": ["Área Sem Registro"],
+    "status_origem": ["Área Sem Registro de UF Com Ocorrência"],
     "status_destino": ["Todas as Áreas"],
     "part": ["frutos"],
     "exig": [
-      "O trânsito é PERMITIDO, por meio de emissão de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV).",
+      "O trânsito é PERMITIDO, por meio de emissão de Certificação Fitossanitária de Origem (CFO) e Permissão de Trânsito de Vegetais (PTV), com Declaração Adicional que os frutos são provenientes de Área Erradicada, Área Transiente Erradicada, Zona Tampão, SMR reconhecido pelo DSV ou Locais Livres reconhecidos pelo DSV.",
       "O envio que transitar em áreas sob quarentena ou transiente deverá transitar em embalagens e veículos adequados acompanhados de lacres do Órgão Defesa Sanitária Vegetal."
     ],
     "leg": "Portaria MAPA Nº 776/2025, Art. 21"
@@ -45,7 +45,7 @@
     "prag": "Bactrocera carambolae",
     "desc": "De UF sem ocorrência para UF sem ocorrência",
     "status_origem": ["UF Sem Registro"],
-    "status_destino": ["UF Sem Registro"],
+    "status_destino": ["Todas as Áreas"],
     "part": ["frutos"],
     "exig": [
       "TRÂNSITO LIVRE. A certificação fitossanitária de origem (CFO/CFOC) e a PTV são dispensadas, desde que a carga não transite por área com ocorrência da praga.",

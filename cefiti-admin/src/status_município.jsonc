@@ -4010,7 +4010,6 @@
             "municipios": {
               "0190": "Itacoatiara",
               "0260": "Manaus",
-              "0353": "Presidente Figueiredo",
               "0356": "Rio Preto da Eva"
             }
           },
@@ -4190,9 +4189,65 @@
               "0410": "Tapauá",
               "0420": "Tefé",
               "0423": "Tonantins",
+              "0353": "Presidente Figueiredo",
               "0426": "Uarini",
               "0430": "Urucará",
               "0440": "Urucurituba"
+            }
+          }
+        ]
+      },
+      {
+        "status_fitossanitário": "Área Sem Registro de UF Com Ocorrência",
+        "estados": [
+          {
+            "uf": "PA",
+            "ibge": 15,
+            "municipios": {
+              "0335": "Itaituba",
+              "0343": "Jacareacanga",
+              "0815": "Trairão",
+              "0275": "Curionópolis",
+              "0277": "Eldorado do Carajás",
+              "0370": "Itupiranga",
+              "0420": "Marabá",
+              "0509": "Nova Ipixuna",
+              "0553": "Parauapebas",
+              "0503": "Novo Progresso",
+              "0405": "Mãe do Rio",
+              "0550": "Paragominas",
+              "0812": "Ulianópolis",
+              "0270": "Conceição do Araguaia",
+              "0276": "Cumaru do Norte",
+              "0545": "Pau D'Arco",
+              "0613": "Redenção",
+              "0660": "Santa Maria das Barreiras",
+              "0670": "Santana do Araguaia",
+              "0013": "Abel Figueiredo",
+              "0157": "Bom Jesus do Tocantins",
+              "0280": "Dom Eliseu",
+              "0618": "Rondon do Pará",
+              "0175": "Brejo Grande do Araguaia",
+              "0549": "Palestina do Pará",
+              "0563": "Piçarra",
+              "0715": "São Domingos do Araguaia",
+              "0745": "São Geraldo do Araguaia",
+              "0750": "São João do Araguaia",
+              "0034": "Água Azul do Norte",
+              "0543": "Ourilândia do Norte",
+              "0730": "São Félix do Xingu",
+              "0808": "Tucumã",
+              "0178": "Breu Branco",
+              "0309": "Goianésia do Pará",
+              "0380": "Jacundá",
+              "0506": "Novo Repartimento",
+              "0810": "Tucuruí",
+              "0125": "Bannach",
+              "0215": "Canaã dos Carajás",
+              "0304": "Floresta do Araguaia",
+              "0616": "Rio Maria",
+              "0775": "Sapucaia",
+              "0840": "Xinguara"
             }
           }
         ]
