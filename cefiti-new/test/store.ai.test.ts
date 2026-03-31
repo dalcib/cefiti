@@ -27,7 +27,9 @@ describe('Store AI Tests', () => {
       orig: '',
       dest: '',
       municipioOrigem: '',
+      municipioOrigemId: '',
       municipioDestino: '',
+      municipioDestinoId: '',
     })
     assert.strictEqual(store.exibeBase, false)
     assert.strictEqual(store.searched, false)
@@ -88,7 +90,9 @@ describe('Store AI Tests', () => {
       orig: '',
       dest: '',
       municipioOrigem: '',
+      municipioOrigemId: '',
       municipioDestino: '',
+      municipioDestinoId: '',
     })
   })
 

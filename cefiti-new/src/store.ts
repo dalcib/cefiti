@@ -41,14 +41,19 @@ export interface Dados {
   orig: string
   dest: string
   municipioOrigem: string
+  municipioOrigemId: string
   municipioDestino: string
+  municipioDestinoId: string
 }
 
 export const hospedeiroSciMap = new Map<number, string>(
   (hospedeiros as Hospedeiro[]).map((h) => [h.id, h.nomeSci]),
 )
 
-import { getMunicipioId, loadMunicipiosData, type Municipio } from './municipios.ts'
+import {
+  loadMunicipiosData,
+  type Municipio,
+} from './municipios.ts'
 export type { Municipio }
 
 export interface PestStatusMunicipio {
@@ -86,21 +91,21 @@ export class Store {
     orig: '',
     dest: '',
     municipioOrigem: '',
+    municipioOrigemId: '',
     municipioDestino: '',
+    municipioDestinoId: '',
   }
   exibeBase: boolean = false
   searched: boolean = false
   municipios: Municipio[] = []
-  private municipioLookup: Record<string, string> = {}
 
   constructor() {
     this.loadMunicipios()
   }
 
   async loadMunicipios() {
-    const { municipios, municipioLookup } = await loadMunicipiosData()
+    const { municipios } = await loadMunicipiosData()
     this.municipios = municipios
-    this.municipioLookup = municipioLookup
   }
 
   get pragasByHospId(): string[] {
@@ -116,15 +121,15 @@ export class Store {
   }
 
   get listaNomesSci() {
-    return (hospedeiros as Hospedeiro[]).map((v) => v.nomeSci).sort(
-      (a, b) => a.localeCompare(b),
-    )
+    return (hospedeiros as Hospedeiro[])
+      .map((v) => v.nomeSci)
+      .sort((a, b) => a.localeCompare(b))
   }
 
   get listaNomesVul() {
-    return (hospedeiros as Hospedeiro[]).flatMap((v) => v.nomeVul).sort(
-      (a, b) => a.localeCompare(b),
-    )
+    return (hospedeiros as Hospedeiro[])
+      .flatMap((v) => v.nomeVul)
+      .sort((a, b) => a.localeCompare(b))
   }
 
   get empty(): boolean {
@@ -135,13 +140,25 @@ export class Store {
     return estados as Estado[]
   }
 
+  updateMunicipioSelection(
+    field: 'municipioOrigem' | 'municipioDestino',
+    name: string,
+    id: string,
+  ) {
+    this.dados[field] = name
+    this.dados[`${field}Id` as 'municipioOrigemId' | 'municipioDestinoId'] = id
+  }
+
   get municipiosOrigem() {
     if (!this.dados.orig) return []
+    // Ensure reactivity for municipality loading
+    this.municipios.length
     return this.municipios.filter((m) => m.uf === this.dados.orig)
   }
 
   get municipiosDestino() {
     if (!this.dados.dest) return []
+    this.municipios.length
     return this.municipios.filter((m) => m.uf === this.dados.dest)
   }
 
@@ -181,8 +198,8 @@ export class Store {
     const p = (rules as Rule[])
       .filter((regra) => this.pragasByHospId.includes(regra.prag))
       .flatMap((regra) => regra.part)
-    return Array.from<string>(new Set(p)).sort(
-      (a: string, b: string) => a.localeCompare(b),
+    return Array.from<string>(new Set(p)).sort((a: string, b: string) =>
+      a.localeCompare(b),
     )
   }
 
@@ -234,11 +251,7 @@ export class Store {
 
   get statusOrigemByPraga() {
     const res: Record<string, string[]> = {}
-    const id = getMunicipioId(
-      this.dados.municipioOrigem,
-      this.dados.orig,
-      this.municipioLookup,
-    )
+    const id = this.dados.municipioOrigemId
     for (const praga of this.pragasByHospId) {
       res[praga] = this.resolveStatus(praga, id)
     }
@@ -247,11 +260,7 @@ export class Store {
 
   get statusDestinoByPraga() {
     const res: Record<string, string[]> = {}
-    const id = getMunicipioId(
-      this.dados.municipioDestino,
-      this.dados.dest,
-      this.municipioLookup,
-    )
+    const id = this.dados.municipioDestinoId
     for (const praga of this.pragasByHospId) {
       res[praga] = this.resolveStatus(praga, id)
     }
@@ -272,6 +281,7 @@ export class Store {
       status_municipio as unknown as DB_StatusMunicipio[]
     ).find((entry) => entry.praga === pragaName)
     if (!pestEntry) return ['Área Sem Registro']
+    console.log('pestEntry:', pragaName, municipioId, pestEntry)
 
     const results: DB_StatusFitossanitario[] = []
 
@@ -313,7 +323,9 @@ export class Store {
     this.dados.orig = ''
     this.dados.dest = ''
     this.dados.municipioOrigem = ''
+    this.dados.municipioOrigemId = ''
     this.dados.municipioDestino = ''
+    this.dados.municipioDestinoId = ''
   }
 
   updateHospedeiro(value: string, name: 'hospSci' | 'hospVul') {
@@ -349,7 +361,19 @@ export class Store {
     }
 
     if (name in this.dados && name !== 'hospId') {
-      this.dados[name as keyof Omit<Dados, 'hospId'>] = value
+      const val = value as string
+      this.dados[name as keyof Omit<Dados, 'hospId'>] = val
+
+      if (name === 'orig') {
+        this.dados.municipioOrigem = ''
+        const state = (estados as Estado[]).find((e) => e.UF === val)
+        this.dados.municipioOrigemId = state ? `${state.ibge}9999` : ''
+      }
+      if (name === 'dest') {
+        this.dados.municipioDestino = ''
+        const state = (estados as Estado[]).find((e) => e.UF === val)
+        this.dados.municipioDestinoId = state ? `${state.ibge}9999` : ''
+      }
     }
   }
 

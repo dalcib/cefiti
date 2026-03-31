@@ -18,6 +18,7 @@ const Select = function Select({ source, name }: PropsSelect) {
   if (name.startsWith('municipio')) {
     const normalize = (s: string) =>
       s
+        .trim()
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase()
@@ -36,13 +37,32 @@ const Select = function Select({ source, name }: PropsSelect) {
       return normalize(val).startsWith(filterText)
     })
 
+    const handleInput = (e: Event) => {
+      const val = (e.target as HTMLInputElement).value
+      const match = (store[source] as Municipio[]).find((m) => m.nome === val)
+      if (match) {
+        store.updateMunicipioSelection(
+          name as 'municipioOrigem' | 'municipioDestino',
+          match.nome,
+          match.id,
+        )
+      } else {
+        // If no match, just update the name in the store (user typing)
+        store.dados[name as 'municipioOrigem' | 'municipioDestino'] = val
+        store.dados[
+          `${name}Id` as 'municipioOrigemId' | 'municipioDestinoId'
+        ] = ''
+      }
+    }
+
     return (
       <>
         <input
           list={`list-${name}`}
           value={store.dados[name]}
           name={name}
-          onChange={(e) => store.handleChanges(e as unknown as Event)}
+          onInput={handleInput}
+          onChange={handleInput}
           placeholder="Digite para filtrar..."
           className="form-select"
           style={{ minWidth: '145px' }}
@@ -57,11 +77,13 @@ const Select = function Select({ source, name }: PropsSelect) {
               value = opt
               display = opt
             } else if ('id' in opt) {
-              value = opt.nome
-              display = opt.nome
+              const m = opt as Municipio
+              value = m.nome
+              display = m.nome
             } else if ('UF' in opt) {
-              value = opt.UF
-              display = opt.estado
+              const s = opt as Estado
+              value = s.UF
+              display = s.estado
             }
 
             return (

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
 import { Store } from '../src/store.ts'
-import { getMunicipioId } from '../src/municipios.ts'
+
 
 describe('Store: phytosanitary status logic', () => {
   const store = new Store()
@@ -40,12 +40,6 @@ describe('Store: phytosanitary status logic', () => {
   })
 
   it('should handle multiple statuses if they exist (hypothetically)', () => {
-    // In db-next.js, some pests might have multiple entries in status array.
-    // Let's check Bactrocera carambolae
-    // It has "Área Com Ocorrência" for AP, RR, and some in AM, PA.
-    // It has "Zona Tampão" for others in PA, AM.
-    // It has "UF Sem Registro" for almost all other states.
-
     // Test for PA (15) municipality Belém (0140) -> should be "Zona Tampão"
     const statusBelem = (store as any).resolveStatus(
       'Bactrocera carambolae',
@@ -60,7 +54,7 @@ describe('Store: phytosanitary status logic', () => {
     )
     assert.deepEqual(statusAlmeirim, ['Área Com Ocorrência'])
 
-    // Test for MG (31) -> should be "UF Sem Registro" (since 9999: Todos is set for MG in the 3rd status object)
+    // Test for MG (31) -> should be "UF Sem Registro"
     const statusMG = (store as any).resolveStatus(
       'Bactrocera carambolae',
       '310010',
@@ -68,21 +62,17 @@ describe('Store: phytosanitary status logic', () => {
     assert.deepEqual(statusMG, ['UF Sem Registro'])
   })
 
-  it('should resolve ID from name and UF', async () => {
+  it('should work with the getters using ID fields', async () => {
     await store.loadMunicipios()
-    const id = getMunicipioId('Rio de Janeiro', 'RJ', (store as any).municipioLookup)
-    assert.equal(id, '330455')
-  })
-
-  it('should work with the getters using names', async () => {
-    await store.loadMunicipios()
-    // Setup store state
-    store.dados.hospSci = 'Mangifera indica' // Mango
-    // Sternochetus mangiferae is a pest for Mango
+    // In actual app, these would be set via the Form's handleInput
+    store.dados.hospSci = 'Mangifera indica' 
     store.dados.orig = 'RJ'
     store.dados.municipioOrigem = 'Rio de Janeiro'
+    store.dados.municipioOrigemId = '330455'
+    
     store.dados.dest = 'MG'
     store.dados.municipioDestino = 'Abadia dos Dourados'
+    store.dados.municipioDestinoId = '310010'
 
     const statusOrigem = store.statusOrigemByPraga
     const statusDestino = store.statusDestinoByPraga
@@ -93,5 +83,13 @@ describe('Store: phytosanitary status logic', () => {
     assert.deepEqual(statusDestino['Sternochetus mangiferae'], [
       'Área Sem Registro',
     ])
+  })
+
+  it('should resolve ID correctly through updateMunicipioSelection', async () => {
+    await store.loadMunicipios()
+    // Simulate user choosing "Alto Alegre" in RR
+    store.updateMunicipioSelection('municipioOrigem', 'Alto Alegre', '140005')
+    assert.equal(store.dados.municipioOrigem, 'Alto Alegre')
+    assert.equal(store.dados.municipioOrigemId, '140005')
   })
 })

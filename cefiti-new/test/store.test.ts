@@ -79,13 +79,14 @@ describe('Store filtro geral', () => {
   before(async () => {
     await store.loadMunicipios()
     store.dados.hospSci = 'Musa spp.'
+    store.dados.hospId = 41
     store.dados.prod = 'frutos'
     store.dados.orig = 'MG'
-    store.dados.dest = 'MT'
-    // name for Campina Verde (311110)
     store.dados.municipioOrigem = 'Campina Verde'
-    // For MT (51), just use 'Cuiabá' (510340) or similar
+    store.dados.municipioOrigemId = '311110'
+    store.dados.dest = 'MT'
     store.dados.municipioDestino = 'Cuiabá'
+    store.dados.municipioDestinoId = '510340'
   })
 
   it('Musa spp. count (MG ALP -> MT SMR)', () => {
@@ -97,19 +98,24 @@ describe('Store filtro geral', () => {
     // Manaus (130260) is ACO for Sigatoka Negra and Moko
     store.dados.orig = 'AM'
     store.dados.municipioOrigem = 'Manaus'
+    store.dados.municipioOrigemId = '130260'
     store.dados.dest = 'MG'
-    store.dados.municipioDestino = 'Campina Verde' // MG Campina Verde (ALP for Sigatoka)
+    store.dados.municipioDestino = 'Campina Verde'
+    store.dados.municipioDestinoId = '311110'
 
     assert(store.result.length > 0)
   })
 
   it('Citrus spp. results', async () => {
     store.dados.hospSci = 'Citrus spp.'
+    store.dados.hospId = 103
     store.dados.prod = 'frutos'
     store.dados.orig = 'SP'
+    store.dados.municipioOrigem = 'São Paulo'
+    store.dados.municipioOrigemId = '355030'
     store.dados.dest = 'MG'
-    store.dados.municipioOrigem = 'São Paulo' // 355030
-    store.dados.municipioDestino = 'Belo Horizonte' // 310620
+    store.dados.municipioDestino = 'Belo Horizonte'
+    store.dados.municipioDestinoId = '310620'
     assert(store.result.length > 0)
   })
 })

@@ -10,8 +10,9 @@ function Result() {
         <br />
         <h3>
           Exigências Fitossanitárias para o trânsito de {store.dados.prod} de{' '}
-          {store.dados.hospVul} <i>({store.dados.hospSci})</i> do{' '}
-          {store.dados.orig} para {store.dados.dest}
+          {store.dados.hospVul} <i>({store.dados.hospSci})</i> de{' '}
+          {store.dados.municipioOrigem} - {store.dados.orig} para{' '}
+          {store.dados.municipioDestino} - {store.dados.dest}
         </h3>
         <div className={store.empty ? '' : 'hidden'}>
           <br />
@@ -58,18 +59,24 @@ function Result() {
                 )
               })}
               <span className="small underline">{item.desc}</span>
+              <br />
+              <span className="small underline">{item.status_origem}</span> para{' '}
+              <span className="small underline">{item.status_destino}</span>
               {item.exig?.map((exig, ii) => {
                 return (
                   <div
                     style={{ margin: '6px' }}
                     key={exig.concat(ii.toString())}
                   >
-                    <span title={`De: ${item.orig} para ${item.dest}`}>
+                    <span /* title={`De: ${item.orig} para ${item.dest}`} */>
                       {ii + 1} - {exig}
                     </span>
                   </div>
                 )
               })}
+              <span className="small underline">
+                Embasamento legal: {item.leg}
+              </span>
               <br />
             </div>
           )
@@ -77,7 +84,7 @@ function Result() {
 
         <div className={store.empty ? 'hidden' : ''}>
           <hr />
-          <h4 className="h4">TRÂNSITO NACIONAL DE PARTIDA IMPORTADA</h4>
+          {/* <h4 className="h4">TRÂNSITO NACIONAL DE PARTIDA IMPORTADA</h4>
           <div style={{ margin: '6px' }}>
             <span>
               1 – SE A PARTIDA AINDA NÃO FOI INTERNALIZADA PELO MAPA E ESTIVER
@@ -136,7 +143,7 @@ function Result() {
             Instrução Normativa MAPA Nº 38, de 01 de outubro de 2018
           </a>
           <br />
-          <hr />
+          <hr /> */}
         </div>
         <div style={{ textAlign: 'center' }}>
           <button

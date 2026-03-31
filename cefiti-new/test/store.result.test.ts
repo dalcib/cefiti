@@ -11,10 +11,10 @@ describe('Store: rule filtering by status', () => {
     store.dados.hospSci = 'Mangifera indica'
     store.dados.hospId = 152
     store.dados.prod = 'frutos'
-    store.dados.orig = 'PA'
-    store.dados.dest = 'SP'
-    store.dados.municipioOrigem = 'Belém' // 150140, PA (Zona Tampão)
-    store.dados.municipioDestino = 'Adolfo' // 350010, SP (UF Sem Registro)
+    store.dados.municipioOrigem = 'Belém'
+    store.dados.municipioOrigemId = '150140'
+    store.dados.municipioDestino = 'Adolfo'
+    store.dados.municipioDestinoId = '350010'
     store.searched = true
 
     const results = store.result
@@ -54,10 +54,10 @@ describe('Store: rule filtering by status', () => {
     store.dados.hospSci = 'Mangifera indica'
     store.dados.hospId = 152
     store.dados.prod = 'material de propagação vegetativo'
-    store.dados.orig = 'PA'
-    store.dados.dest = 'SP'
-    store.dados.municipioOrigem = 'Almeirim' // 150050, PA (Área Com Ocorrência)
-    store.dados.municipioDestino = 'Adolfo' // 350010, SP (UF Sem Registro)
+    store.dados.municipioOrigem = 'Almeirim'
+    store.dados.municipioOrigemId = '150050'
+    store.dados.municipioDestino = 'Adolfo'
+    store.dados.municipioDestinoId = '350010'
 
     const results = store.result
 

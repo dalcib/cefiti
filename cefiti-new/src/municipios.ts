@@ -6,12 +6,13 @@ export interface Municipio {
   uf: string
 }
 
-export function normalize(s: string) {
+/* export function normalize(s: string) {
   return s
+    .trim()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
-}
+} */
 
 export async function loadMunicipiosData() {
   let text = ''
@@ -45,11 +46,10 @@ export async function loadMunicipiosData() {
   }
 
   const municipios: Municipio[] = []
-  const municipioLookup: Record<string, string> = {}
 
   if (text) {
     const ufMap = new Map<string, string>()
-    for (const e of (estados as Estado[])) {
+    for (const e of estados as Estado[]) {
       if (e.ibge) {
         ufMap.set(String(e.ibge), e.UF)
       }
@@ -64,39 +64,9 @@ export async function loadMunicipiosData() {
         const uf = ufMap.get(ibgePrefix) || ''
         const m = { id, nome, uf }
         municipios.push(m)
-        municipioLookup[`${normalize(m.nome)}|${m.uf}`] = m.id
       }
     }
   }
 
-  return { municipios, municipioLookup }
-}
-
-export function getMunicipioId(
-  nomeOrId: string,
-  uf: string,
-  municipioLookup: Record<string, string>,
-): string {
-  if (!uf) return ''
-  if (!nomeOrId) return `${uf}9999`
-
-  // If it looks like a 6-digit IBGE code already, use it
-  if (/^\d{6}$/.test(nomeOrId)) return nomeOrId
-
-  // Accent-insensitive and case-insensitive matching
-  const target = normalize(nomeOrId)
-
-  const id = municipioLookup[`${target}|${uf}`] || `${uf}9999`
-
-  if (
-    !id.endsWith('9999') === false &&
-    nomeOrId &&
-    !['todos', 'qualquer'].includes(target)
-  ) {
-    console.warn(
-      `Município não encontrado: "${nomeOrId}" em ${uf}. Usando fallback ${id}`,
-    )
-  }
-
-  return id
+  return { municipios }
 }

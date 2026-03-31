@@ -44,9 +44,11 @@ describe('Store Edge Cases', () => {
     store.dados.hospId = 138
     store.dados.prod = 'frutos'
     store.dados.orig = 'AP'
+    store.dados.municipioOrigemId = '169999' // AP "All"
     store.dados.dest = 'AL'
-    store.dados.municipioOrigem = '' // AP "All"
-    store.dados.municipioDestino = '' // AL "All"
+    store.dados.municipioDestinoId = '279999' // AL "All"
+    store.dados.municipioOrigem = ''
+    store.dados.municipioDestino = ''
 
     assert.ok(store.result.length >= 1)
     assert.ok(store.result.some((r) => r.prag === 'Bactrocera carambolae'))
@@ -61,7 +63,9 @@ describe('Store Edge Cases', () => {
     store.dados.hospId = 179
     store.dados.prod = 'mudas'
     store.dados.orig = 'AP'
+    store.dados.municipioOrigemId = '169999'
     store.dados.dest = 'AL'
+    store.dados.municipioDestinoId = '279999'
     store.dados.municipioOrigem = ''
     store.dados.municipioDestino = ''
 
@@ -76,7 +80,9 @@ describe('Store Edge Cases', () => {
     store.dados.hospId = 138
     store.dados.prod = 'frutos'
     store.dados.orig = 'AP'
-    store.dados.dest = 'AP' // Destination same as origin
+    store.dados.municipioOrigemId = '169999'
+    store.dados.dest = 'AP' 
+    store.dados.municipioDestinoId = '169999'
     store.dados.municipioOrigem = ''
     store.dados.municipioDestino = ''
 
