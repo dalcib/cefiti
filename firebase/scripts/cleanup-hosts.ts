@@ -29,28 +29,32 @@ async function cleanupHosts() {
     const pragasSnapshot = await db.collection('pragas').get()
     const referencedHostIds = new Set<number>()
 
-    pragasSnapshot.docs.forEach(doc => {
+    pragasSnapshot.docs.forEach((doc) => {
       const data = doc.data()
       if (data.hosp && Array.isArray(data.hosp)) {
         data.hosp.forEach((id: number) => referencedHostIds.add(id))
       }
     })
 
-    console.log(`Found ${referencedHostIds.size} unique host IDs referenced by pests.`)
+    console.log(
+      `Found ${referencedHostIds.size} unique host IDs referenced by pests.`,
+    )
 
     // 2. Get all hosts and identify orphans
     console.log('Fetching all hosts...')
     const hospedeirosSnapshot = await db.collection('hospedeiros').get()
     const orphans: string[] = []
 
-    hospedeirosSnapshot.docs.forEach(doc => {
+    hospedeirosSnapshot.docs.forEach((doc) => {
       const data = doc.data()
       if (!referencedHostIds.has(data.id)) {
         orphans.push(doc.id)
       }
     })
 
-    console.log(`Found ${orphans.length} orphaned hosts out of ${hospedeirosSnapshot.size} total hosts.`)
+    console.log(
+      `Found ${orphans.length} orphaned hosts out of ${hospedeirosSnapshot.size} total hosts.`,
+    )
 
     if (orphans.length === 0) {
       console.log('No orphaned hosts found. Nothing to delete.')
@@ -59,17 +63,19 @@ async function cleanupHosts() {
 
     // 3. Delete orphans in batches
     console.log(`Deleting ${orphans.length} orphaned hosts...`)
-    
+
     // Firestore allows up to 500 operations per batch
     const BATCH_SIZE = 500
     for (let i = 0; i < orphans.length; i += BATCH_SIZE) {
       const batch = db.batch()
       const chunk = orphans.slice(i, i + BATCH_SIZE)
-      chunk.forEach(docId => {
+      chunk.forEach((docId) => {
         batch.delete(db.collection('hospedeiros').doc(docId))
       })
       await batch.commit()
-      console.log(`- Deleted batch of ${chunk.length} hosts (${i + chunk.length}/${orphans.length})`)
+      console.log(
+        `- Deleted batch of ${chunk.length} hosts (${i + chunk.length}/${orphans.length})`,
+      )
     }
 
     console.log('\nCleanup COMPLETED successfully!')

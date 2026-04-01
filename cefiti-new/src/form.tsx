@@ -49,9 +49,8 @@ const Select = function Select({ source, name }: PropsSelect) {
       } else {
         // If no match, just update the name in the store (user typing)
         store.dados[name as 'municipioOrigem' | 'municipioDestino'] = val
-        store.dados[
-          `${name}Id` as 'municipioOrigemId' | 'municipioDestinoId'
-        ] = ''
+        store.dados[`${name}Id` as 'municipioOrigemId' | 'municipioDestinoId'] =
+          ''
       }
     }
 

@@ -102,7 +102,13 @@ async function generateDbNext() {
     console.log(`\nGenerated db-next.js successfully at ${filePath}`)
 
     // Also save copy to cefiti-new/public
-    const cefitiNewPublicDir = join(__dirname, '..', '..', 'cefiti-new', 'public')
+    const cefitiNewPublicDir = join(
+      __dirname,
+      '..',
+      '..',
+      'cefiti-new',
+      'public',
+    )
     if (existsSync(cefitiNewPublicDir)) {
       const cefitiNewFilePath = join(cefitiNewPublicDir, 'db-next.js')
       writeFileSync(cefitiNewFilePath, dbNextContent, 'utf8')

@@ -2,7 +2,6 @@ import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
 import { Store } from '../src/store.ts'
 
-
 describe('Store: phytosanitary status logic', () => {
   const store = new Store()
 
@@ -65,11 +64,11 @@ describe('Store: phytosanitary status logic', () => {
   it('should work with the getters using ID fields', async () => {
     await store.loadMunicipios()
     // In actual app, these would be set via the Form's handleInput
-    store.dados.hospSci = 'Mangifera indica' 
+    store.dados.hospSci = 'Mangifera indica'
     store.dados.orig = 'RJ'
     store.dados.municipioOrigem = 'Rio de Janeiro'
     store.dados.municipioOrigemId = '330455'
-    
+
     store.dados.dest = 'MG'
     store.dados.municipioDestino = 'Abadia dos Dourados'
     store.dados.municipioDestinoId = '310010'

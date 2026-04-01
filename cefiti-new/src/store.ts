@@ -50,10 +50,7 @@ export const hospedeiroSciMap = new Map<number, string>(
   (hospedeiros as Hospedeiro[]).map((h) => [h.id, h.nomeSci]),
 )
 
-import {
-  loadMunicipiosData,
-  type Municipio,
-} from './municipios.ts'
+import { loadMunicipiosData, type Municipio } from './municipios.ts'
 export type { Municipio }
 
 export interface PestStatusMunicipio {

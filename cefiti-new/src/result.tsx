@@ -78,6 +78,7 @@ function Result() {
                 Embasamento legal: {item.leg}
               </span>
               <br />
+              <br />
             </div>
           )
         })}

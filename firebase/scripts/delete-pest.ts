@@ -3,11 +3,15 @@ import { join } from 'node:path'
 import { cert, initializeApp } from 'firebase-admin/app'
 import { getFirestore } from 'firebase-admin/firestore'
 
-const serviceAccountPath = existsSync(join(process.cwd(), 'service-account.json'))
+const serviceAccountPath = existsSync(
+  join(process.cwd(), 'service-account.json'),
+)
   ? join(process.cwd(), 'service-account.json')
   : join(process.cwd(), 'firebase', 'service-account.json')
 
-let appConfig = { credential: cert(JSON.parse(readFileSync(serviceAccountPath, 'utf8'))) }
+const appConfig = {
+  credential: cert(JSON.parse(readFileSync(serviceAccountPath, 'utf8'))),
+}
 initializeApp(appConfig)
 const db = getFirestore()
 
@@ -31,10 +35,11 @@ async function deletePestSurgically(pestDocId: string) {
 
   // Check hosts
   for (const hId of hospIds) {
-    const others = await db.collection('pragas')
+    const others = await db
+      .collection('pragas')
       .where('hosp', 'array-contains', hId)
       .get()
-    
+
     // If only this pest uses it, it's an orphan
     if (others.size === 1 && others.docs[0].id === pestDocId) {
       orphanedHosts.push(String(hId))
@@ -43,7 +48,8 @@ async function deletePestSurgically(pestDocId: string) {
 
   // Check legislations
   for (const lId of legIds) {
-    const others = await db.collection('pragas')
+    const others = await db
+      .collection('pragas')
       .where('files', 'array-contains', lId)
       .get()
 
@@ -54,8 +60,12 @@ async function deletePestSurgically(pestDocId: string) {
 
   console.log('\n--- Summary of resources to be removed ---')
   console.log(`Pest: ${pestDocId}`)
-  console.log(`Orphaned Hosts: ${orphanedHosts.length > 0 ? orphanedHosts.join(', ') : 'None'}`)
-  console.log(`Orphaned Legislations: ${orphanedLegs.length > 0 ? orphanedLegs.join(', ') : 'None'}`)
+  console.log(
+    `Orphaned Hosts: ${orphanedHosts.length > 0 ? orphanedHosts.join(', ') : 'None'}`,
+  )
+  console.log(
+    `Orphaned Legislations: ${orphanedLegs.length > 0 ? orphanedLegs.join(', ') : 'None'}`,
+  )
   console.log('------------------------------------------\n')
 
   try {
