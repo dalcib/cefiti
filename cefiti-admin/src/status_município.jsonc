@@ -2754,6 +2754,7 @@
             }
           },
           { "uf": "CE", "ibge": 23, "municipios": { "9999": "Todos" } },
+          { "uf": "RR", "ibge": 14, "municipios": { "9999": "Todos" } },
           { "uf": "MT", "ibge": 51, "municipios": { "9999": "Todos" } },
           { "uf": "MS", "ibge": 50, "municipios": { "9999": "Todos" } },
           { "uf": "PI", "ibge": 22, "municipios": { "9999": "Todos" } },
