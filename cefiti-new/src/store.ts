@@ -69,14 +69,17 @@ export interface PestStatusEntry {
   status: PestStatusQueryResult[]
 }
 
-export interface SearchResult
-  extends Omit<Praga, 'files'>,
-    Omit<Rule, 'status_origem' | 'status_destino'> {
-  files: Legislacao[]
+export interface RuleResult
+  extends Omit<Rule, 'status_origem' | 'status_destino'> {
   status_origem: DB_StatusFitossanitario[]
   status_destino: DB_StatusFitossanitario[]
   orig: DB_StatusFitossanitario[]
   dest: DB_StatusFitossanitario[]
+}
+
+export interface PestSearchResult extends Omit<Praga, 'files'> {
+  files: Legislacao[]
+  rules: RuleResult[]
 }
 
 export class Store {
@@ -200,35 +203,39 @@ export class Store {
     )
   }
 
-  get result(): SearchResult[] {
-    return (rules as Rule[])
-      .filter((exigen) => {
-        const hostIds = (pragas as Praga[]).find(
-          (p) => p.prag === exigen.prag,
-        )?.hosp
+  get result(): PestSearchResult[] {
+    const filteredRules = (rules as Rule[]).filter((exigen) => {
+      const hostIds = (pragas as Praga[]).find(
+        (p) => p.prag === exigen.prag,
+      )?.hosp
 
-        const statusesOrigem = this.statusOrigemByPraga[exigen.prag] || []
-        const statusesDestino = this.statusDestinoByPraga[exigen.prag] || []
+      const statusesOrigem = this.statusOrigemByPraga[exigen.prag] || []
+      const statusesDestino = this.statusDestinoByPraga[exigen.prag] || []
 
-        const matchesOrig =
-          exigen.status_origem.includes('Todas as Áreas') ||
-          statusesOrigem.some((sO) =>
-            exigen.status_origem.includes(sO as DB_StatusFitossanitario),
-          )
-        const matchesDest =
-          exigen.status_destino.includes('Todas as Áreas') ||
-          statusesDestino.some((sD) =>
-            exigen.status_destino.includes(sD as DB_StatusFitossanitario),
-          )
-
-        return (
-          this.species(hostIds, this.dados.hospSci) &&
-          exigen.part.includes(this.dados.prod) &&
-          matchesOrig &&
-          matchesDest
+      const matchesOrig =
+        exigen.status_origem.includes('Todas as Áreas') ||
+        statusesOrigem.some((sO) =>
+          exigen.status_origem.includes(sO as DB_StatusFitossanitario),
         )
-      })
-      .map((exigen) => {
+      const matchesDest =
+        exigen.status_destino.includes('Todas as Áreas') ||
+        statusesDestino.some((sD) =>
+          exigen.status_destino.includes(sD as DB_StatusFitossanitario),
+        )
+
+      return (
+        this.species(hostIds, this.dados.hospSci) &&
+        exigen.part.includes(this.dados.prod) &&
+        matchesOrig &&
+        matchesDest
+      )
+    })
+
+    const groupedResults: PestSearchResult[] = []
+    const pestMap = new Map<string, PestSearchResult>()
+
+    for (const exigen of filteredRules) {
+      if (!pestMap.has(exigen.prag)) {
         const praga = (pragas as Praga[]).find((p) => p.prag === exigen.prag)
         if (!praga) throw new Error(`Praga not found: ${exigen.prag}`)
         const files = (praga.files || [])
@@ -236,14 +243,24 @@ export class Store {
             (legislacoes as Legislacao[]).find((l) => l.id === fId),
           )
           .filter((f: Legislacao | undefined): f is Legislacao => !!f)
-        return {
+
+        const pestInfo: PestSearchResult = {
           ...praga,
-          ...exigen,
           files,
-          orig: exigen.status_origem,
-          dest: exigen.status_destino,
-        } as SearchResult
-      })
+          rules: [],
+        }
+        pestMap.set(exigen.prag, pestInfo)
+        groupedResults.push(pestInfo)
+      }
+
+      pestMap.get(exigen.prag)!.rules.push({
+        ...exigen,
+        orig: exigen.status_origem,
+        dest: exigen.status_destino,
+      } as RuleResult)
+    }
+
+    return groupedResults
   }
 
   get statusOrigemByPraga() {

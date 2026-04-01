@@ -20,18 +20,22 @@ describe('Store: rule filtering by status', () => {
     const results = store.result
 
     // Check if we found rules for Bactrocera carambolae
-    const carambolaeRules = results.filter(
+    const carambolaePest = results.find(
       (r) => r.prag === 'Bactrocera carambolae',
     )
 
     // Based on db-next.js:
     // Rule 1448 should match.
     assert.ok(
-      carambolaeRules.length > 0,
+      carambolaePest,
+      'Should find at least one entry for B. carambolae',
+    )
+    assert.ok(
+      (carambolaePest.rules.length ?? 0) > 0,
       'Should find at least one rule for B. carambolae',
     )
 
-    const ruleZonaTampao = carambolaeRules.find(
+    const ruleZonaTampao = carambolaePest.rules.find(
       (r) => r.desc === 'De Zona Tampão para qualquer destino',
     )
     assert.ok(
@@ -62,12 +66,11 @@ describe('Store: rule filtering by status', () => {
     const results = store.result
 
     // For Bactrocera carambolae, rules are only for "frutos" (not mudas/material de propagação)
-    const carambolaeRules = results.filter(
+    const carambolaePest = results.find(
       (r) => r.prag === 'Bactrocera carambolae',
     )
-    assert.equal(
-      carambolaeRules.length,
-      0,
+    assert.ok(
+      !carambolaePest || carambolaePest.rules.length === 0,
       'Should not find carambolae rules for mudas',
     )
   })
