@@ -47,7 +47,7 @@ function Result() {
                     <a
                       target="_blank"
                       rel="noopener noreferrer"
-                      href={`leg/${file.id}.pdf`}
+                      href={`leg.html?id=${file.id}`}
                     >
                       {file.leg}, de {file.data}
                     </a>

@@ -27,6 +27,12 @@ const externalDbPlugin = {
         external: true,
       }
     })
+    build.onResolve({ filter: /^#legislacao$/ }, () => {
+      return {
+        path: './legislacao.js',
+        external: true,
+      }
+    })
   },
 }
 
@@ -44,6 +50,9 @@ const commonConfig = {
 }
 
 const entryPoints = [`${baseDir}/src/index.tsx`]
+if (fs.existsSync(`${baseDir}/src/leg.tsx`)) {
+  entryPoints.push(`${baseDir}/src/leg.tsx`)
+}
 if (fs.existsSync(`${baseDir}/src/sw.js`)) {
   entryPoints.push(`${baseDir}/src/sw.js`)
 }

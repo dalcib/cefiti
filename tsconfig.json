@@ -2,7 +2,8 @@
   "compilerOptions": {
     "paths": {
       "#db": ["./cefiti/src/db.ts"],
-      "#db-next": ["./cefiti-new/public/db-next.js"]
+      "#db-next": ["./cefiti-new/src/types.d.ts"],
+      "#legislacao": ["./cefiti-new/src/types.d.ts"]
     },
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true,
