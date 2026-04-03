@@ -32,7 +32,9 @@ async function cleanupHosts() {
     pragasSnapshot.docs.forEach((doc) => {
       const data = doc.data()
       if (data.hosp && Array.isArray(data.hosp)) {
-        data.hosp.forEach((id: number) => referencedHostIds.add(id))
+        data.hosp.forEach((id: number) => {
+          referencedHostIds.add(id)
+        })
       }
     })
 

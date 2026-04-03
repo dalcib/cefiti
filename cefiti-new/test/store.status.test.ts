@@ -7,6 +7,7 @@ describe('Store: phytosanitary status logic', () => {
 
   it('should return "Área Com Ocorrência" for Rio de Janeiro (330455) for Sternochetus mangiferae', () => {
     // 33 is RJ, 0455 is Rio de Janeiro
+    // biome-ignore lint/suspicious/noExplicitAny: Internal method testing
     const status = (store as any).resolveStatus(
       'Sternochetus mangiferae',
       '330455',
@@ -16,6 +17,7 @@ describe('Store: phytosanitary status logic', () => {
 
   it('should return "Área Com Ocorrência" for any municipality in AP (169999) for Sternochetus mangiferae', () => {
     // 16 is AP, 9999 is "Todos" (but any 4 digit should work if 9999 is set)
+    // biome-ignore lint/suspicious/noExplicitAny: Internal method testing
     const status = (store as any).resolveStatus(
       'Sternochetus mangiferae',
       '160010',
@@ -26,6 +28,7 @@ describe('Store: phytosanitary status logic', () => {
   it('should return "Área Sem Registro" for a municipality not listed', () => {
     // 31 is MG, 0010 is Abadia dos Dourados
     // Sternochetus mangiferae is not in MG
+    // biome-ignore lint/suspicious/noExplicitAny: Internal method testing
     const status = (store as any).resolveStatus(
       'Sternochetus mangiferae',
       '310010',
@@ -34,12 +37,14 @@ describe('Store: phytosanitary status logic', () => {
   })
 
   it('should return "Área Sem Registro" for a pest not in status_municipio', () => {
+    // biome-ignore lint/suspicious/noExplicitAny: Internal method testing
     const status = (store as any).resolveStatus('Non Existent Pest', '330455')
     assert.deepEqual(status, ['Área Sem Registro'])
   })
 
   it('should handle multiple statuses if they exist (hypothetically)', () => {
     // Test for PA (15) municipality Belém (0140) -> should be "Zona Tampão"
+    // biome-ignore lint/suspicious/noExplicitAny: Internal method testing
     const statusBelem = (store as any).resolveStatus(
       'Bactrocera carambolae',
       '150140',
@@ -47,6 +52,7 @@ describe('Store: phytosanitary status logic', () => {
     assert.deepEqual(statusBelem, ['Zona Tampão'])
 
     // Test for PA (15) municipality Almeirim (0050) -> should be "Área Com Ocorrência"
+    // biome-ignore lint/suspicious/noExplicitAny: Internal method testing
     const statusAlmeirim = (store as any).resolveStatus(
       'Bactrocera carambolae',
       '150050',
@@ -54,6 +60,7 @@ describe('Store: phytosanitary status logic', () => {
     assert.deepEqual(statusAlmeirim, ['Área Com Ocorrência'])
 
     // Test for MG (31) -> should be "UF Sem Registro"
+    // biome-ignore lint/suspicious/noExplicitAny: Internal method testing
     const statusMG = (store as any).resolveStatus(
       'Bactrocera carambolae',
       '310010',

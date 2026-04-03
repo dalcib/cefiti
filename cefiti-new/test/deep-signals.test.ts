@@ -31,9 +31,8 @@ describe('deepsignal (preact)', () => {
         state.test = 'changed'
       })
 
-      // biome-ignore lint/style/noNonNullAssertion: Test setup guarantees existence
       assert.strictEqual(
-        scratch.firstChild?.firstChild!,
+        scratch.firstChild?.firstChild ?? null,
         text as unknown as ChildNode,
       )
       assert.strictEqual(text.data, 'changed')
@@ -61,9 +60,8 @@ describe('deepsignal (preact)', () => {
         state.test = 'changed'
       })
 
-      // biome-ignore lint/style/noNonNullAssertion: Test setup guarantees existence
       assert.strictEqual(
-        scratch.firstChild?.firstChild!,
+        scratch.firstChild?.firstChild ?? null,
         text as unknown as ChildNode,
       )
       assert.strictEqual(text.data, 'changed')

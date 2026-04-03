@@ -55,7 +55,6 @@ function Result() {
                   </div>
                 )
               })}
-
               {pest.rules.map((rule, ruleIdx) => (
                 <div key={`${pest.id}-rule-${ruleIdx}`}>
                   <span className="small underline">{rule.desc}</span>

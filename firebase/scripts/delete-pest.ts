@@ -26,7 +26,11 @@ async function deletePestSurgically(pestDocId: string) {
     process.exit(1)
   }
 
-  const pestData = pestSnapshot.data()!
+  const pestData = pestSnapshot.data()
+  if (!pestData) {
+    console.error(`Pest document "${pestDocId}" has no data.`)
+    process.exit(1)
+  }
   const hospIds: number[] = pestData.hosp || []
   const legIds: string[] = pestData.files || []
 

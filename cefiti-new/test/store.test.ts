@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict'
 import { before, describe, it } from 'node:test'
-// @ts-expect-error
-import { hospedeiros } from '../../firebase/public/db-next.js'
+import { type Hospedeiro, hospedeiros } from '#db-next'
 import { store } from '../src/store.ts'
 
 describe('Store', () => {
@@ -136,7 +135,7 @@ describe('Sync between NomeVulg and NomeSci', () => {
 
 describe('Database Integrity', () => {
   it('no duplicate common names in same species record', () => {
-    ;(hospedeiros as any[]).forEach((h: any) => {
+    hospedeiros.forEach((h: Hospedeiro) => {
       const set = new Set(h.nomeVul)
       assert.strictEqual(
         set.size,

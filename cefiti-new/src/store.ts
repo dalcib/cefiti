@@ -253,11 +253,14 @@ export class Store {
         groupedResults.push(pestInfo)
       }
 
-      pestMap.get(exigen.prag)!.rules.push({
-        ...exigen,
-        orig: exigen.status_origem,
-        dest: exigen.status_destino,
-      } as RuleResult)
+      const pest = pestMap.get(exigen.prag)
+      if (pest) {
+        pest.rules.push({
+          ...exigen,
+          orig: exigen.status_origem,
+          dest: exigen.status_destino,
+        } as RuleResult)
+      }
     }
 
     return groupedResults

@@ -1,4 +1,4 @@
-import 'preact'
+import type { ComponentChildren } from 'preact'
 
 /**
  * --- Common Database Interfaces ---
@@ -67,13 +67,13 @@ export interface DB_StatusMunicipio {
   status: DB_PragaStatusAction[]
 }
 
-export const dbVersion: number
-export const estados: Estado[]
-export const hospedeiros: Hospedeiro[]
-export const legislacoes: Legislacao[]
-export const pragas: Praga[]
-export const rules: Rule[]
-export const status_municipio: DB_StatusMunicipio[]
+export declare const dbVersion: number
+export declare const estados: Estado[]
+export declare const hospedeiros: Hospedeiro[]
+export declare const legislacoes: Legislacao[]
+export declare const pragas: Praga[]
+export declare const rules: Rule[]
+export declare const status_municipio: DB_StatusMunicipio[]
 
 /**
  * --- Legislation Content (legislacao.js) ---
@@ -83,7 +83,7 @@ export interface LegislacaoText {
   texto: string
 }
 
-export const leg_texto: LegislacaoText[]
+export declare const leg_texto: LegislacaoText[]
 
 /**
  * --- Preact JSX Augmentation ---
@@ -91,7 +91,11 @@ export const leg_texto: LegislacaoText[]
 declare module 'preact' {
   namespace JSX {
     interface IntrinsicElements {
-      'md-block': { children?: any; class?: string; style?: any }
+      'md-block': {
+        children?: ComponentChildren
+        class?: string
+        style?: string | Record<string, string | number>
+      }
     }
   }
 }
