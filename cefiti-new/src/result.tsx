@@ -1,10 +1,11 @@
 import { type PestSearchResult, store } from './store.ts'
 
 function Result() {
+  if (!store.completed) return <div />
+
   return (
     <div>
-      <div className={store.completed && store.searched ? '' : 'hidden'}>
-        <br />
+      <br />
         <h3>
           Exigências Fitossanitárias para o trânsito de {store.dados.prod} de{' '}
           {store.dados.hospVul} <i>({store.dados.hospSci})</i> de{' '}
@@ -106,7 +107,6 @@ function Result() {
             Nova Consulta
           </button>
         </div>
-      </div>
     </div>
   )
 }

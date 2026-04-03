@@ -77,7 +77,10 @@ export interface RuleResult
   dest: DB_StatusFitossanitario[]
 }
 
-export interface PestSearchResult extends Omit<Praga, 'files'> {
+export type AppView = 'home' | 'result' | 'base'
+
+export interface PestSearchResult extends Omit<Praga, 'prag' | 'files'> {
+  prag: string
   files: Legislacao[]
   rules: RuleResult[]
 }
@@ -95,12 +98,47 @@ export class Store {
     municipioDestino: '',
     municipioDestinoId: '',
   }
+  view: AppView = 'home'
   exibeBase: boolean = false
   searched: boolean = false
   municipios: Municipio[] = []
 
   constructor() {
     this.loadMunicipios()
+    this.initRouter()
+  }
+
+  private initRouter() {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('popstate', () => {
+        const hash = window.location.hash.slice(1) || 'home'
+        if (['home', 'result', 'base'].includes(hash)) {
+          this.view = hash as AppView
+          // Sync legacy flags
+          this.searched = hash === 'result'
+          this.exibeBase = hash === 'base'
+        }
+      })
+      // Initial hash check
+      const hash = window.location.hash.slice(1)
+      if (hash && ['home', 'result', 'base'].includes(hash)) {
+        this.view = hash as AppView
+        this.searched = hash === 'result'
+        this.exibeBase = hash === 'base'
+      }
+    }
+  }
+
+  private navigate(v: AppView) {
+    this.view = v
+    this.searched = v === 'result'
+    this.exibeBase = v === 'base'
+    if (typeof window !== 'undefined') {
+      const hash = v === 'home' ? '' : `#${v}`
+      if (window.location.hash !== hash) {
+        window.history.pushState(null, '', hash || window.location.pathname)
+      }
+    }
   }
 
   async loadMunicipios() {
@@ -396,14 +434,14 @@ export class Store {
 
   handleMenu(i: string) {
     if (i === 'Base') {
-      this.exibeBase = !this.exibeBase
+      this.navigate('base')
     }
     if (i === 'Nova') {
       this.clean()
-      this.searched = false
+      this.navigate('home')
     }
     if (i === 'Voltar') {
-      this.searched = false
+      this.navigate('home')
     }
     if (i === 'Print') {
       window.print()
@@ -424,7 +462,7 @@ export class Store {
         dest: this.dados.dest,
       })
     }
-    this.searched = true
+    this.navigate('result')
     event.preventDefault()
   }
 }

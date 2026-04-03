@@ -1,9 +1,7 @@
 import { type Rule, rules } from '#db-next'
 
-import { store } from './store.ts'
-
 const Base = () => {
-  return store.exibeBase ? (
+  return (
     <div>
       <br />
       <table style={{ width: '100%' }} className="table-grid">
@@ -64,8 +62,6 @@ const Base = () => {
         </tfoot>
       </table>
     </div>
-  ) : (
-    <div />
   )
 }
 

@@ -5,6 +5,10 @@ import { Store } from '../src/store.ts'
 const mockWindow = {
   gtag: () => {}, // Empty function for gtag
   print: () => {}, //Empty function for print
+  addEventListener: () => {},
+  removeEventListener: () => {},
+  location: { hash: '', protocol: 'file:' },
+  history: { pushState: () => {} },
 }
 globalThis.window = mockWindow as unknown as Window & typeof globalThis
 globalThis.alert = ((message: string) => console.log(message)) as unknown as (

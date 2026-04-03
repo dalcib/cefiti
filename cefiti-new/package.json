@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "imports": {
-    "#db-next": "./public/db-next.js"
+    "#db-next": "./public/db-next.js",
+    "#legislacao": "./public/legislacao.js"
   }
 }

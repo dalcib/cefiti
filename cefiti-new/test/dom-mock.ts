@@ -134,11 +134,13 @@ globalThis.window = {
   cancelAnimationFrame: clearTimeout,
   console: console,
   history: { replaceState: noop, pushState: noop },
-  location: { href: '', search: '', hash: '' },
+  location: { href: '', search: '', hash: '', protocol: 'file:' },
   navigator: { userAgent: 'Node' },
   Node: Node,
   Element: Element,
   Text: Text,
+  addEventListener: noop,
+  removeEventListener: noop,
   Event: class Event {},
   // biome-ignore lint/suspicious/noExplicitAny: Minimal mock for testing logic
 } as any

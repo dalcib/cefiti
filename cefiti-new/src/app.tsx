@@ -3,15 +3,16 @@ import { Botton } from './botton.tsx'
 import Form from './form.tsx'
 import { Head } from './head.tsx'
 import Result from './result.tsx'
+import { store } from './store.ts'
 
 export const App = () => (
   <div id="resolucao">
     <Head />
     <div id="corpo">
       <div id="conteúdo">
-        <Form />
-        <Result />
-        <Base />
+        {store.view === 'home' && <Form />}
+        {store.view === 'result' && <Result />}
+        {store.view === 'base' && <Base />}
       </div>
     </div>
     <Botton />

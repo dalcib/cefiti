@@ -128,8 +128,6 @@ const Select = function Select({ source, name }: PropsSelect) {
 }
 
 function Form() {
-  //const store = useStore()
-  if (store.searched) return <div />
 
   return (
     <form>
