@@ -77,7 +77,7 @@ export interface RuleResult
   dest: DB_StatusFitossanitario[]
 }
 
-export type AppView = 'home' | 'result' | 'base'
+export type AppView = 'home' | 'result' | 'base' | 'status'
 
 export interface PestSearchResult extends Omit<Praga, 'prag' | 'files'> {
   prag: string
@@ -112,16 +112,17 @@ export class Store {
     if (typeof window !== 'undefined') {
       window.addEventListener('popstate', () => {
         const hash = window.location.hash.slice(1) || 'home'
-        if (['home', 'result', 'base'].includes(hash)) {
+        if (['home', 'result', 'base', 'status'].includes(hash)) {
           this.view = hash as AppView
           // Sync legacy flags
           this.searched = hash === 'result'
           this.exibeBase = hash === 'base'
+          // no special flag for status yet as it's a new separate view
         }
       })
       // Initial hash check
       const hash = window.location.hash.slice(1)
-      if (hash && ['home', 'result', 'base'].includes(hash)) {
+      if (hash && ['home', 'result', 'base', 'status'].includes(hash)) {
         this.view = hash as AppView
         this.searched = hash === 'result'
         this.exibeBase = hash === 'base'
@@ -435,6 +436,9 @@ export class Store {
   handleMenu(i: string) {
     if (i === 'Base') {
       this.navigate('base')
+    }
+    if (i === 'Status') {
+      this.navigate('status')
     }
     if (i === 'Nova') {
       this.clean()

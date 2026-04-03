@@ -8,7 +8,12 @@ const Menu = () => {
         <p>
           <span>
             <button type="button" onClick={() => store.handleMenu('Base')}>
-              Ver Base de Dados
+              Regras
+            </button>
+          </span>
+          <span>
+            <button type="button" onClick={() => store.handleMenu('Status')}>
+              Status
             </button>
           </span>
           <span title="Para salvar o resultado como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como PDF' na página de impressão">

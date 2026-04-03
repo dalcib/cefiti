@@ -3,6 +3,7 @@ import { Botton } from './botton.tsx'
 import Form from './form.tsx'
 import { Head } from './head.tsx'
 import Result from './result.tsx'
+import Status from './status.tsx'
 import { store } from './store.ts'
 
 export const App = () => (
@@ -13,6 +14,7 @@ export const App = () => (
         {store.view === 'home' && <Form />}
         {store.view === 'result' && <Result />}
         {store.view === 'base' && <Base />}
+        {store.view === 'status' && <Status />}
       </div>
     </div>
     <Botton />
