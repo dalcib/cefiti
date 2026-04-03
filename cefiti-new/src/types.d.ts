@@ -15,6 +15,12 @@ export interface Hospedeiro {
   nomeVul: string[]
 }
 
+export interface Municipio {
+  id: string
+  nome: string
+  uf: string
+}
+
 export interface Legislacao {
   id: string
   leg: string
@@ -84,6 +90,74 @@ export interface LegislacaoText {
 }
 
 export declare const leg_texto: LegislacaoText[]
+
+/**
+ * --- Application State & UI Interfaces ---
+ */
+
+export interface Dados {
+  hospSci: string
+  hospVul: string
+  hospId: number
+  prod: string
+  orig: string
+  dest: string
+  municipioOrigem: string
+  municipioOrigemId: string
+  municipioDestino: string
+  municipioDestinoId: string
+}
+
+export type AppView = 'home' | 'result' | 'base' | 'status'
+
+export interface PestStatusMunicipio {
+  uf: string
+  ibge: number
+  municipios: Record<string, string>
+}
+
+export interface PestStatusQueryResult {
+  status_fitossanitário: DB_StatusFitossanitario
+  estados: PestStatusMunicipio[]
+}
+
+export interface PestStatusEntry {
+  praga: string
+  status: PestStatusQueryResult[]
+}
+
+export interface RuleResult
+  extends Omit<Rule, 'status_origem' | 'status_destino'> {
+  status_origem: DB_StatusFitossanitario[]
+  status_destino: DB_StatusFitossanitario[]
+  orig: DB_StatusFitossanitario[]
+  dest: DB_StatusFitossanitario[]
+}
+
+export interface PestSearchResult extends Omit<Praga, 'prag' | 'files'> {
+  prag: string
+  files: Legislacao[]
+  rules: RuleResult[]
+}
+
+/**
+ * --- Global Augmentations ---
+ */
+declare global {
+  interface Window {
+    gtag(
+      event: string,
+      action_name: string,
+      params: {
+        hospSci: string
+        prod: string
+        orig: string
+        dest: string
+        pragas: Record<string, string>
+      },
+    ): void
+  }
+}
 
 /**
  * --- Preact JSX Augmentation ---

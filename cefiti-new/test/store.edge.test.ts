@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { Store } from '../src/store.ts'
+import { StoreDb } from '../src/store-db.ts'
 
 describe('Store Edge Cases', () => {
   it('should match species with "spp." suffix', async () => {
-    const store = new Store()
+    const store = new StoreDb()
     await store.loadMunicipios()
     // Citrus spp. is ID 103. Citrus sinensis should match it.
     assert.strictEqual(store.species([103], 'Citrus sinensis'), true)
@@ -14,7 +14,7 @@ describe('Store Edge Cases', () => {
   })
 
   it('should auto-fill vulgar name when scientific name is selected', () => {
-    const store = new Store()
+    const store = new StoreDb()
     const event = {
       currentTarget: { name: 'hospSci', value: 'Citrus sinensis' },
     } as unknown as Event
@@ -24,7 +24,7 @@ describe('Store Edge Cases', () => {
   })
 
   it('should auto-fill scientific name when vulgar name is selected', () => {
-    const store = new Store()
+    const store = new StoreDb()
     const event = {
       currentTarget: { name: 'hospVul', value: 'Laranja' },
     } as unknown as Event
@@ -34,7 +34,7 @@ describe('Store Edge Cases', () => {
   })
 
   it('should correctly filter results for multi-state rules', async () => {
-    const store = new Store()
+    const store = new StoreDb()
     await store.loadMunicipios()
 
     // Scenario: Citrus sinensis from AP to AL
@@ -55,7 +55,7 @@ describe('Store Edge Cases', () => {
   })
 
   it('should return empty result if part does not match', async () => {
-    const store = new Store()
+    const store = new StoreDb()
     await store.loadMunicipios()
 
     // Eugenia uniflora (ID 179) is host for Mosca-da-carambola but only for 'frutos' in many rules
@@ -73,7 +73,7 @@ describe('Store Edge Cases', () => {
   })
 
   it('should handle specific destination matching', async () => {
-    const store = new Store()
+    const store = new StoreDb()
     await store.loadMunicipios()
 
     store.dados.hospSci = 'Citrus sinensis'

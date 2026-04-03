@@ -14,78 +14,17 @@ import {
   rules,
   status_municipio,
 } from '#db-next'
-
 import { deepSignal } from '../../cefiti/src/deep-signals.ts'
+import { loadMunicipiosData, type Municipio } from './municipios.ts'
+import type { Dados, PestSearchResult, RuleResult } from './types'
 
-declare global {
-  interface Window {
-    gtag(
-      event: string,
-      action_name: string,
-      params: {
-        hospSci: string
-        prod: string
-        orig: string
-        dest: string
-        pragas: Record<string, string>
-      },
-    ): void
-  }
-}
-
-export interface Dados {
-  hospSci: string
-  hospVul: string
-  hospId: number
-  prod: string
-  orig: string
-  dest: string
-  municipioOrigem: string
-  municipioOrigemId: string
-  municipioDestino: string
-  municipioDestinoId: string
-}
+export type { Municipio }
 
 export const hospedeiroSciMap = new Map<number, string>(
   (hospedeiros as Hospedeiro[]).map((h) => [h.id, h.nomeSci]),
 )
 
-import { loadMunicipiosData, type Municipio } from './municipios.ts'
-export type { Municipio }
-
-export interface PestStatusMunicipio {
-  uf: string
-  ibge: number
-  municipios: Record<string, string>
-}
-
-export interface PestStatusQueryResult {
-  status_fitossanitário: DB_StatusFitossanitario
-  estados: PestStatusMunicipio[]
-}
-
-export interface PestStatusEntry {
-  praga: string
-  status: PestStatusQueryResult[]
-}
-
-export interface RuleResult
-  extends Omit<Rule, 'status_origem' | 'status_destino'> {
-  status_origem: DB_StatusFitossanitario[]
-  status_destino: DB_StatusFitossanitario[]
-  orig: DB_StatusFitossanitario[]
-  dest: DB_StatusFitossanitario[]
-}
-
-export type AppView = 'home' | 'result' | 'base' | 'status'
-
-export interface PestSearchResult extends Omit<Praga, 'prag' | 'files'> {
-  prag: string
-  files: Legislacao[]
-  rules: RuleResult[]
-}
-
-export class Store {
+export class StoreDb {
   dados: Dados = {
     hospSci: '',
     hospVul: '',
@@ -98,48 +37,10 @@ export class Store {
     municipioDestino: '',
     municipioDestinoId: '',
   }
-  view: AppView = 'home'
-  exibeBase: boolean = false
-  searched: boolean = false
   municipios: Municipio[] = []
 
   constructor() {
     this.loadMunicipios()
-    this.initRouter()
-  }
-
-  private initRouter() {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('popstate', () => {
-        const hash = window.location.hash.slice(1) || 'home'
-        if (['home', 'result', 'base', 'status'].includes(hash)) {
-          this.view = hash as AppView
-          // Sync legacy flags
-          this.searched = hash === 'result'
-          this.exibeBase = hash === 'base'
-          // no special flag for status yet as it's a new separate view
-        }
-      })
-      // Initial hash check
-      const hash = window.location.hash.slice(1)
-      if (hash && ['home', 'result', 'base', 'status'].includes(hash)) {
-        this.view = hash as AppView
-        this.searched = hash === 'result'
-        this.exibeBase = hash === 'base'
-      }
-    }
-  }
-
-  private navigate(v: AppView) {
-    this.view = v
-    this.searched = v === 'result'
-    this.exibeBase = v === 'base'
-    if (typeof window !== 'undefined') {
-      const hash = v === 'home' ? '' : `#${v}`
-      if (window.location.hash !== hash) {
-        window.history.pushState(null, '', hash || window.location.pathname)
-      }
-    }
   }
 
   async loadMunicipios() {
@@ -190,7 +91,6 @@ export class Store {
 
   get municipiosOrigem() {
     if (!this.dados.orig) return []
-    // Ensure reactivity for municipality loading
     this.municipios.length
     return this.municipios.filter((m) => m.uf === this.dados.orig)
   }
@@ -337,7 +237,6 @@ export class Store {
       status_municipio as unknown as DB_StatusMunicipio[]
     ).find((entry) => entry.praga === pragaName)
     if (!pestEntry) return ['Área Sem Registro']
-    console.log('pestEntry:', pragaName, municipioId, pestEntry)
 
     const results: DB_StatusFitossanitario[] = []
 
@@ -351,7 +250,6 @@ export class Store {
 
       if (stateMatch) {
         const municipios = stateMatch.municipios
-        // Flexible key matching for '9999' and value matching for 'Todos'
         const isTodos = Object.entries(municipios).some(
           ([k, v]) =>
             (k === '9999' || k === 'Todos') &&
@@ -433,42 +331,26 @@ export class Store {
     }
   }
 
-  handleMenu(i: string) {
-    if (i === 'Base') {
-      this.navigate('base')
-    }
-    if (i === 'Status') {
-      this.navigate('status')
-    }
-    if (i === 'Nova') {
-      this.clean()
-      this.navigate('home')
-    }
-    if (i === 'Voltar') {
-      this.navigate('home')
-    }
-    if (i === 'Print') {
-      window.print()
-    }
-  }
-
-  handleSearch(event: Event) {
+  handleSearch(onSuccess: () => void) {
     if (!this.completed) {
-      alert('Finalize a seleçao dos critérios para a consulta')
-      event.preventDefault()
+      alert('Finalize a seleção dos critérios para a consulta')
       return
     }
+
     if (process.env.NODE_ENV !== 'development') {
       window.gtag('event', 'search_hosp', {
         hospSci: this.dados.hospSci,
         prod: this.dados.prod,
         orig: this.dados.orig,
         dest: this.dados.dest,
+        pragas: Object.fromEntries(
+          this.result.map((p) => [p.prag, p.pragc || '']),
+        ),
       })
     }
-    this.navigate('result')
-    event.preventDefault()
+
+    onSuccess()
   }
 }
 
-export const store = deepSignal(new Store())
+export const storeDb = deepSignal(new StoreDb())

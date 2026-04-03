@@ -1,5 +1,7 @@
 import type { Estado } from '#db-next'
-import { type Dados, type Municipio, store } from './store'
+import { storeDb } from './store-db'
+import { storeUi } from './store-ui'
+import type { Dados, Municipio } from './types'
 
 interface PropsSelect {
   source:
@@ -23,8 +25,8 @@ const Select = function Select({ source, name }: PropsSelect) {
         .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase()
 
-    const filterText = normalize((store.dados[name] as string) || '')
-    const options = (store[source] as OptionType[]).filter((option) => {
+    const filterText = normalize((storeDb.dados[name] as string) || '')
+    const options = (storeDb[source] as OptionType[]).filter((option) => {
       if (!filterText) return true
       let val = ''
       if (typeof option === 'string') {
@@ -39,17 +41,17 @@ const Select = function Select({ source, name }: PropsSelect) {
 
     const handleInput = (e: Event) => {
       const val = (e.target as HTMLInputElement).value
-      const match = (store[source] as Municipio[]).find((m) => m.nome === val)
+      const match = (storeDb[source] as Municipio[]).find((m) => m.nome === val)
       if (match) {
-        store.updateMunicipioSelection(
+        storeDb.updateMunicipioSelection(
           name as 'municipioOrigem' | 'municipioDestino',
           match.nome,
           match.id,
         )
       } else {
-        // If no match, just update the name in the store (user typing)
-        store.dados[name as 'municipioOrigem' | 'municipioDestino'] = val
-        store.dados[`${name}Id` as 'municipioOrigemId' | 'municipioDestinoId'] =
+        // If no match, just update the name in the storeDb (user typing)
+        storeDb.dados[name as 'municipioOrigem' | 'municipioDestino'] = val
+        storeDb.dados[`${name}Id` as 'municipioOrigemId' | 'municipioDestinoId'] =
           ''
       }
     }
@@ -58,7 +60,7 @@ const Select = function Select({ source, name }: PropsSelect) {
       <>
         <input
           list={`list-${name}`}
-          value={store.dados[name]}
+          value={storeDb.dados[name]}
           name={name}
           onInput={handleInput}
           onChange={handleInput}
@@ -104,11 +106,11 @@ const Select = function Select({ source, name }: PropsSelect) {
       style={name === 'prod' ? { minWidth: '145px' } : {}}
       id={name}
       className={name === 'hospSci' ? 'italic form-select' : 'form-select'}
-      value={store.dados[name]}
+      value={storeDb.dados[name]}
       name={name}
-      onChange={(e: Event): void => store.handleChanges(e)}
+      onChange={(e: Event): void => storeDb.handleChanges(e)}
     >
-      {store[source].map((option) => {
+      {storeDb[source].map((option) => {
         const opt = option as string | Municipio | Estado
         const value =
           typeof opt === 'string' ? opt : 'nome' in opt ? opt.nome : opt.UF
@@ -160,13 +162,16 @@ function Form() {
           style={{ marginBottom: '10px' }}
           target="_blank"
           rel="noopener noreferrer"
-          href={`https://www.google.com.br/search?site=imghp&tbm=isch&q=${store.dados.hospSci}+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower`}
+          href={`https://www.google.com.br/search?site=imghp&tbm=isch&q=${storeDb.dados.hospSci}+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower`}
         >
           Fotos da Espécie Vegetal
         </a>
         <button
           type="submit"
-          onClick={(e) => store.handleSearch(e)}
+          onClick={(e) => {
+            e.preventDefault()
+            storeDb.handleSearch(() => storeUi.navigate('result'))
+          }}
           className="form-button margin-left-100"
           disabled={false}
         >

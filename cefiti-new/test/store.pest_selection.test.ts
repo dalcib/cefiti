@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { Store } from '../src/store.ts'
+import { StoreDb } from '../src/store-db.ts'
 
 describe('Store: species selection logic', () => {
-  const store = new Store()
+  const store = new StoreDb()
 
   it('should match specific species AND genus when specific species is selected', () => {
     // Citrus sinensis is ID 138

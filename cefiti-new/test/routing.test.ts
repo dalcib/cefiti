@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict'
 import { beforeEach, describe, it } from 'node:test'
-import { Store } from '../src/store.ts'
+import { storeDb } from '../src/store-db.ts'
+import { StoreUi } from '../src/store-ui.ts'
 
 describe('Routing Tests', () => {
-  let store: Store
+  let store: StoreUi
   let currentHash = ''
   let listeners: Record<string, ((e?: unknown) => void)[]> = {}
 
@@ -40,7 +41,8 @@ describe('Routing Tests', () => {
       // biome-ignore lint/suspicious/noExplicitAny: Intentional mock for testing logic
     } as any
 
-    store = new Store()
+    storeDb.clean()
+    store = new StoreUi()
   })
 
   it('should initialize with default view "home"', () => {
@@ -48,16 +50,15 @@ describe('Routing Tests', () => {
   })
 
   it('should navigate to result when search is performed', () => {
-    // Complete form data to allow search
-    store.dados.hospSci = 'Musa spp.'
-    store.dados.hospVul = 'Banana'
-    store.dados.hospId = 41
-    store.dados.prod = 'frutos'
-    store.dados.orig = 'MG'
-    store.dados.dest = 'SP'
+    // Complete form data in storeDb to allow search
+    storeDb.dados.hospSci = 'Musa spp.'
+    storeDb.dados.hospVul = 'Banana'
+    storeDb.dados.hospId = 41
+    storeDb.dados.prod = 'frutos'
+    storeDb.dados.orig = 'MG'
+    storeDb.dados.dest = 'SP'
 
-    // biome-ignore lint/suspicious/noExplicitAny: Mocking Event
-    store.handleSearch({ preventDefault: () => {} } as any)
+    storeDb.handleSearch(() => store.navigate('result'))
     assert.strictEqual(store.view, 'result')
     assert.strictEqual(currentHash, '#result')
   })
@@ -100,7 +101,7 @@ describe('Routing Tests', () => {
 
   it('should initialize with view from hash if present', () => {
     currentHash = '#base'
-    const newStore = new Store()
+    const newStore = new StoreUi()
     assert.strictEqual(newStore.view, 'base')
   })
 })

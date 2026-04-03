@@ -1,18 +1,20 @@
-import { type PestSearchResult, store } from './store.ts'
+import { storeDb } from './store-db.ts'
+import { storeUi } from './store-ui.ts'
+import type { PestSearchResult } from './types'
 
 function Result() {
-  if (!store.completed) return <div />
+  if (!storeDb.completed) return <div />
 
   return (
     <div>
       <br />
         <h3>
-          Exigências Fitossanitárias para o trânsito de {store.dados.prod} de{' '}
-          {store.dados.hospVul} <i>({store.dados.hospSci})</i> de{' '}
-          {store.dados.municipioOrigem} - {store.dados.orig} para{' '}
-          {store.dados.municipioDestino} - {store.dados.dest}
+          Exigências Fitossanitárias para o trânsito de {storeDb.dados.prod} de{' '}
+          {storeDb.dados.hospVul} <i>({storeDb.dados.hospSci})</i> de{' '}
+          {storeDb.dados.municipioOrigem} - {storeDb.dados.orig} para{' '}
+          {storeDb.dados.municipioDestino} - {storeDb.dados.dest}
         </h3>
-        <div className={store.empty ? '' : 'hidden'}>
+        <div className={storeDb.empty ? '' : 'hidden'}>
           <br />
           <br />
           <span className="empty">
@@ -23,7 +25,7 @@ function Result() {
           <br />
         </div>
 
-        {store.result.map((pest: PestSearchResult, i: number) => {
+        {storeDb.result.map((pest: PestSearchResult, i: number) => {
           return (
             <div key={`${pest.id}${i}`}>
               <hr />
@@ -87,12 +89,12 @@ function Result() {
           )
         })}
 
-        <div className={store.empty ? 'hidden' : ''}>
+        <div className={storeDb.empty ? 'hidden' : ''}>
           <hr />
         </div>
         <div style={{ textAlign: 'center' }}>
           <button
-            onClick={() => store.handleMenu('Voltar')}
+            onClick={() => storeUi.handleMenu('Voltar')}
             className="form-button"
             type="button"
           >
@@ -100,7 +102,7 @@ function Result() {
           </button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
-            onClick={() => store.handleMenu('Nova')}
+            onClick={() => storeUi.handleMenu('Nova')}
             className="form-button"
             type="button"
           >

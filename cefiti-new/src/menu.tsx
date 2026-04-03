@@ -1,4 +1,4 @@
-import { store } from './store'
+import { storeUi } from './store-ui'
 
 const Menu = () => {
   //const store = useStore()
@@ -7,22 +7,22 @@ const Menu = () => {
       <div id="navegacao-global">
         <p>
           <span>
-            <button type="button" onClick={() => store.handleMenu('Base')}>
+            <button type="button" onClick={() => storeUi.handleMenu('Base')}>
               Regras
             </button>
           </span>
           <span>
-            <button type="button" onClick={() => store.handleMenu('Status')}>
+            <button type="button" onClick={() => storeUi.handleMenu('Status')}>
               Status
             </button>
           </span>
           <span title="Para salvar o resultado como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como PDF' na página de impressão">
-            <button type="button" onClick={() => store.handleMenu('Print')}>
+            <button type="button" onClick={() => storeUi.handleMenu('Print')}>
               Imprimir
             </button>
           </span>
           <span>
-            <button type="button" onClick={() => store.handleMenu('Nova')}>
+            <button type="button" onClick={() => storeUi.handleMenu('Nova')}>
               NOVA CONSULTA
             </button>
           </span>

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { before, describe, it } from 'node:test'
 import { type Hospedeiro, hospedeiros } from '#db-next'
-import { store } from '../src/store.ts'
+import { storeDb as store } from '../src/store-db.ts'
 
 describe('Store', () => {
   it('should be initialized', () => {

@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { Store } from '../src/store.ts'
+import { StoreDb } from '../src/store-db.ts'
 
 describe('Store: partes getter', () => {
-  const store = new Store()
+  const store = new StoreDb()
 
   it('should return parts for Mangifera indica', () => {
     store.dados.hospSci = 'Mangifera indica'

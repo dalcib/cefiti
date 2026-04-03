@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
 import { type Hospedeiro, hospedeiros } from '#db-next'
-import { store } from '../src/store.ts'
+import { storeDb as store } from '../src/store-db.ts'
 
 type EventChange = {
   currentTarget: { name: string; value: string }

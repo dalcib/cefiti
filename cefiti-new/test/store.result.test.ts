@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { Store } from '../src/store.ts'
+import { StoreDb } from '../src/store-db.ts'
 
 describe('Store: rule filtering by status', () => {
-  const store = new Store()
+  const store = new StoreDb()
 
   it('should filter rules correctly for Bactrocera carambolae (Zona Tampão -> UF Sem Registro)', async () => {
     await store.loadMunicipios()
@@ -15,7 +15,6 @@ describe('Store: rule filtering by status', () => {
     store.dados.municipioOrigemId = '150140'
     store.dados.municipioDestino = 'Adolfo'
     store.dados.municipioDestinoId = '350010'
-    store.searched = true
 
     const results = store.result
 

@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { Store } from '../src/store.ts'
+import { StoreDb } from '../src/store-db.ts'
 
 describe('Store: phytosanitary status logic', () => {
-  const store = new Store()
+  const store = new StoreDb()
 
   it('should return "Área Com Ocorrência" for Rio de Janeiro (330455) for Sternochetus mangiferae', () => {
     // 33 is RJ, 0455 is Rio de Janeiro
