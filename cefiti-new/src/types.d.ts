@@ -19,6 +19,7 @@ export interface Municipio {
   id: string
   nome: string
   uf: string
+  raw: string
 }
 
 export interface Legislacao {
@@ -80,6 +81,7 @@ export declare const legislacoes: Legislacao[]
 export declare const pragas: Praga[]
 export declare const rules: Rule[]
 export declare const status_municipio: DB_StatusMunicipio[]
+export declare const municipiosBrutos: string[]
 
 /**
  * --- Legislation Content (legislacao.js) ---

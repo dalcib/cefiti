@@ -24,7 +24,8 @@
       "default": "./cefiti/public/db.js"
     },
     "#db-next": "./cefiti-new/public/db-next.js",
-    "#legislacao": "./cefiti-new/public/legislacao.js"
+    "#legislacao": "./cefiti-new/public/legislacao.js",
+    "#municipios": "./cefiti-new/public/municipios.js"
   },
 
   "scripts": {
@@ -41,7 +42,7 @@
     "build:new": "node dev.mjs cefiti-new --build",
     "build:admin": "node dev.mjs cefiti-admin --build",
     "build-db": "esbuild cefiti/src/db.ts --bundle --outfile=cefiti/public/db.js --format=esm --target=es2017",
-    "deploy-db": "cd firebase && npx firebase-tools deploy --only hosting",
+    "deploy-db": "cd firebase && npx firebase-tools deploy --only hosting --project cefiti",
     "meta": "esbuild cefiti/src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
   },
   "dependencies": {

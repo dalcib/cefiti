@@ -31,12 +31,13 @@ const Select = function Select({ source, name }: PropsSelect) {
       let val = ''
       if (typeof option === 'string') {
         val = option
-      } else if ('nome' in option) {
-        val = (option as Municipio).nome
+      } else if ('raw' in option) {
+        // Use raw string (code + name) to allow searching by code
+        val = (option as Municipio).raw
       } else if ('UF' in option) {
         val = (option as Estado).UF
       }
-      return normalize(val).startsWith(filterText)
+      return normalize(val).includes(filterText)
     })
 
     const handleInput = (e: Event) => {

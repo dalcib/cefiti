@@ -5,6 +5,7 @@
   "type": "module",
   "imports": {
     "#db-next": "./public/db-next.js",
-    "#legislacao": "./public/legislacao.js"
+    "#legislacao": "./public/legislacao.js",
+    "#municipios": "./public/municipios.js"
   }
 }

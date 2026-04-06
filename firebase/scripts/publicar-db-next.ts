@@ -113,6 +113,15 @@ async function generateDbNext() {
       const cefitiNewFilePath = join(cefitiNewPublicDir, 'db-next.js')
       writeFileSync(cefitiNewFilePath, dbNextContent, 'utf8')
       console.log(`Also saved copy to ${cefitiNewFilePath}`)
+      
+      // Copy municipios.js from cefiti-new/public to firebase/public
+      const municipiosSource = join(cefitiNewPublicDir, 'municipios.js')
+      const municipiosDest = join(publicDir, 'municipios.js')
+      if (existsSync(municipiosSource)) {
+        const municipiosContent = readFileSync(municipiosSource, 'utf8')
+        writeFileSync(municipiosDest, municipiosContent, 'utf8')
+        console.log(`Copied municipios.js to ${municipiosDest}`)
+      }
     }
 
     // 2. Generate legislacao.js

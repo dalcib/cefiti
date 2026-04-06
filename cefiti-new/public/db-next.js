@@ -983,7 +983,7 @@ var rules = [
       "Todas as Áreas"
     ],
     "status_origem": [
-      "Todas as Áreas"
+      "UF Sem Registro"
     ]
   },
   {

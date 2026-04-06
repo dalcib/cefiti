@@ -21,15 +21,21 @@ const externalDbPlugin = {
         external: true,
       }
     })
+    build.onResolve({ filter: /^#municipios$/ }, () => {
+      return {
+        path: 'https://cefiti.web.app/municipios.js',
+        external: true,
+      }
+    })
     build.onResolve({ filter: /^#db-next$/ }, () => {
       return {
-        path: './db-next.js',
+        path: 'https://cefiti.web.app/db-next.js',
         external: true,
       }
     })
     build.onResolve({ filter: /^#legislacao$/ }, () => {
       return {
-        path: './legislacao.js',
+        path: 'https://cefiti.web.app/legislacao.js',
         external: true,
       }
     })
