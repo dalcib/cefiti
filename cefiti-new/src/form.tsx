@@ -37,11 +37,27 @@ const Select = function Select({ source, name }: PropsSelect) {
       } else if ('UF' in option) {
         val = (option as Estado).UF
       }
-      return normalize(val).includes(filterText)
+      const normalizedVal = normalize(val)
+      const matches = normalizedVal.includes(filterText)
+
+      // Se já temos um município selecionado e o texto no input é o nome dele,
+      // não mostramos nada no datalist para que ele desapareça.
+      if (typeof option !== 'string' && 'id' in option) {
+        const m = option as Municipio
+        if (
+          storeDb.dados[`${name}Id` as keyof Dados] === m.id &&
+          storeDb.dados[name as keyof Dados] === m.nome
+        ) {
+          return false
+        }
+      }
+
+      return matches
     })
 
     const handleInput = (e: Event) => {
-      const val = (e.target as HTMLInputElement).value
+      const input = e.target as HTMLInputElement
+      const val = input.value
       const match = (storeDb[source] as Municipio[]).find((m) => m.nome === val)
       if (match) {
         storeDb.updateMunicipioSelection(
@@ -49,6 +65,7 @@ const Select = function Select({ source, name }: PropsSelect) {
           match.nome,
           match.id,
         )
+        input.blur() // Force close datalist
       } else {
         // If no match, just update the name in the storeDb (user typing)
         storeDb.dados[name as 'municipioOrigem' | 'municipioDestino'] = val
