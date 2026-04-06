@@ -51,8 +51,9 @@ const Select = function Select({ source, name }: PropsSelect) {
       } else {
         // If no match, just update the name in the storeDb (user typing)
         storeDb.dados[name as 'municipioOrigem' | 'municipioDestino'] = val
-        storeDb.dados[`${name}Id` as 'municipioOrigemId' | 'municipioDestinoId'] =
-          ''
+        storeDb.dados[
+          `${name}Id` as 'municipioOrigemId' | 'municipioDestinoId'
+        ] = ''
       }
     }
 
@@ -130,7 +131,6 @@ const Select = function Select({ source, name }: PropsSelect) {
 }
 
 function Form() {
-
   return (
     <form>
       <FormField

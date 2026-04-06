@@ -1,9 +1,5 @@
 import { Fragment, type JSX } from 'preact'
-import {
-  type DB_StatusMunicipio,
-  pragas,
-  status_municipio,
-} from '#db-next'
+import { type DB_StatusMunicipio, pragas, status_municipio } from '#db-next'
 
 const Status = () => {
   // Group data by Pest to create separator rows
