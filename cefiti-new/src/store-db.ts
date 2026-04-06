@@ -129,7 +129,9 @@ export class StoreDb {
       Boolean(this.dados.hospVul) &&
       Boolean(this.dados.prod) &&
       Boolean(this.dados.orig) &&
-      Boolean(this.dados.dest)
+      Boolean(this.dados.dest) &&
+      Boolean(this.dados.municipioOrigemId) &&
+      Boolean(this.dados.municipioDestinoId)
     )
   }
 
@@ -320,13 +322,11 @@ export class StoreDb {
 
       if (name === 'orig') {
         this.dados.municipioOrigem = ''
-        const state = (estados as Estado[]).find((e) => e.UF === val)
-        this.dados.municipioOrigemId = state ? `${state.ibge}9999` : ''
+        this.dados.municipioOrigemId = ''
       }
       if (name === 'dest') {
         this.dados.municipioDestino = ''
-        const state = (estados as Estado[]).find((e) => e.UF === val)
-        this.dados.municipioDestinoId = state ? `${state.ibge}9999` : ''
+        this.dados.municipioDestinoId = ''
       }
     }
   }
