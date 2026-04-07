@@ -179,11 +179,6 @@ function Result() {
               Instrução Normativa MAPA Nº 28, de 24 de agosto de 2016
             </a>
             <br />
-            <br />
-            <a target="_blank" href="leg.html?id=IN38-2018" rel="noreferrer">
-              Instrução Normativa MAPA Nº 38, de 01 de outubro de 2018
-            </a>
-            <br />
             <hr />
           </div>
         )}

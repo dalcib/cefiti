@@ -41,6 +41,8 @@ describe('Routing Tests', () => {
       // biome-ignore lint/suspicious/noExplicitAny: Intentional mock for testing logic
     } as any
 
+    globalThis.alert = () => {}
+
     storeDb.clean()
     store = new StoreUi()
   })
@@ -56,7 +58,9 @@ describe('Routing Tests', () => {
     storeDb.dados.hospId = 41
     storeDb.dados.prod = 'frutos'
     storeDb.dados.orig = 'MG'
+    storeDb.dados.municipioOrigemId = '311110'
     storeDb.dados.dest = 'SP'
+    storeDb.dados.municipioDestinoId = '355030'
 
     storeDb.handleSearch(() => store.navigate('result'))
     assert.strictEqual(store.view, 'result')

@@ -83,6 +83,8 @@ describe('Store AI Tests', () => {
     storeDb.dados.prod = 'someProduct'
     storeDb.dados.orig = 'someOrigin'
     storeDb.dados.dest = 'someDestination'
+    storeDb.dados.municipioOrigemId = '123456'
+    storeDb.dados.municipioDestinoId = '654321'
     assert.strictEqual(storeDb.completed, true)
   })
 
@@ -113,7 +115,9 @@ describe('Store AI Tests', () => {
     storeDb.dados.hospId = 41
     storeDb.dados.prod = 'frutos'
     storeDb.dados.orig = 'MG'
+    storeDb.dados.municipioOrigemId = '311110'
     storeDb.dados.dest = 'SP'
+    storeDb.dados.municipioDestinoId = '355030'
 
     storeDb.handleSearch(() => storeUi.navigate('result'))
     assert.strictEqual(storeUi.searched, true)
