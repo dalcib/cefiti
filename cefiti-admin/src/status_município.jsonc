@@ -1,6 +1,6 @@
 [
   {
-    "praga": "Sternochetus mangiferae",
+    "praga": "Sternochetus mangiferae", //ok
     "status": [
       {
         "status_fitossanitário": "Área Com Ocorrência",
@@ -19,14 +19,14 @@
               "0455": "Rio de Janeiro",
               "0555": "Seropédica"
             }
-          }, //IN34-2017
-          { "uf": "AP", "ibge": 16, "municipios": { "9999": "Todos" } }
+          }
+          //{ "uf": "AP", "ibge": 16, "municipios": { "9999": "Todos" } }
         ]
       }
     ]
   },
   {
-    "praga": "Schizotetranychus hindustanicus",
+    "praga": "Schizotetranychus hindustanicus", //ok
     "status": [
       {
         "status_fitossanitário": "Área Com Ocorrência",
@@ -37,7 +37,7 @@
     ]
   },
   {
-    "praga": "Neonectria ditissima (Neonectria galligena)",
+    "praga": "Neonectria ditissima (Neonectria galligena)", //ok
     "status": [
       {
         "status_fitossanitário": "Área Com Ocorrência",
@@ -50,7 +50,7 @@
     ]
   },
   {
-    "praga": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+    "praga": "Rhizoctonia theobromae (Ceratobasidium theobromae)", //ok
     "status": [
       {
         "status_fitossanitário": "Área Com Ocorrência",
@@ -65,7 +65,12 @@
               "0020": "Calçoene",
               "0050": "Oiapoque",
               "0055": "Pracuúba",
-              "0070": "Tartarugalzinho"
+              "0070": "Tartarugalzinho",
+              "0005": "Serra do Navio",
+              "0023": "Ferreira Gomes",
+              "0021": "Cutias",
+              "0053": "Porto Grande",
+              "0030": "Macapá"
             }
           },
           {
@@ -83,7 +88,7 @@
     ]
   },
   {
-    "praga": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+    "praga": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus", //aguardando retorno
     "status": [
       {
         "status_fitossanitário": "Área Com Ocorrência", //hlb_ocorrencia2.pdf (exceto Minas)
@@ -2083,7 +2088,7 @@
     ]
   },
   {
-    "praga": "Xanthomonas campestris pv. viticola",
+    "praga": "Xanthomonas campestris pv. viticola", //ok
     "status": [
       {
         "status_fitossanitário": "Área Com Ocorrência",
@@ -2091,20 +2096,13 @@
           { "uf": "BA", "ibge": 29, "municipios": { "9999": "Todos" } },
           { "uf": "PE", "ibge": 26, "municipios": { "9999": "Todos" } },
           { "uf": "RN", "ibge": 24, "municipios": { "9999": "Todos" } },
-          { "uf": "RR", "ibge": 14, "municipios": { "9999": "Todos" } },
-          {
-            "uf": "GO",
-            "ibge": 52,
-            "municipios": {
-              "0017": "Água Fria de Goiás"
-            }
-          } //Agrodefesa - Status Fitossanitário.xlsx
+          { "uf": "RR", "ibge": 14, "municipios": { "9999": "Todos" } }
         ]
       }
     ]
   },
   {
-    "praga": "Ralstonia solanacearum raça 2",
+    "praga": "Ralstonia solanacearum raça 2", //ok
     "status": [
       {
         "status_fitossanitário": "Área Com Ocorrência",
@@ -2131,7 +2129,7 @@
     ]
   },
   {
-    "praga": "Xanthomonas citri subsp. citri",
+    "praga": "Xanthomonas citri subsp. citri", //aguardando
     "status": [
       {
         "status_fitossanitário": "Área Com Ocorrência",
@@ -2342,11 +2340,11 @@
         ]
       },
       {
-        "status_fitossanitário": "Área de Status Desconhecido", //??????
+        "status_fitossanitário": "Área de Status Desconhecido", //?????
         "estados": [
           { "uf": "AC", "ibge": 12, "municipios": { "9999": "Todos" } },
           { "uf": "AP", "ibge": 16, "municipios": { "9999": "Todos" } },
-          { "uf": "MA", "ibge": 21, "municipios": { "9999": "Todos" } }
+          { "uf": "AM", "ibge": 21, "municipios": { "9999": "Todos" } }
         ]
       },
       {
@@ -2730,11 +2728,13 @@
             "uf": "GO",
             "ibge": 52,
             "municipios": {
+              "0350": "Bom Jesus de Goiás",
               "0410": "Cachoeira Alta",
               "0425": "Cachoeira Dourada",
               "0650": "Cromínia",
               "0915": "Gouvelândia",
               "0993": "Inaciolândia",
+              "1150": "Itumbiara",
               "1210": "Joviânia",
               "1850": "Quirinópolis",
               "1880": "Rio Verde"
@@ -2766,16 +2766,16 @@
     ]
   },
   {
-    "praga": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+    "praga": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)", //ok
     "status": [
       {
         "status_fitossanitário": "Área Com Ocorrência",
         "estados": [
-          { "uf": "AC", "ibge": 12, "municipios": { "9999": "Todos" } },
+          //{ "uf": "AC", "ibge": 12, "municipios": { "9999": "Todos" } },
           { "uf": "AM", "ibge": 13, "municipios": { "9999": "Todos" } },
           { "uf": "AP", "ibge": 16, "municipios": { "9999": "Todos" } },
           { "uf": "PB", "ibge": 25, "municipios": { "9999": "Todos" } },
-          { "uf": "PE", "ibge": 26, "municipios": { "9999": "Todos" } },
+          //{ "uf": "PE", "ibge": 26, "municipios": { "9999": "Todos" } },
           { "uf": "RJ", "ibge": 33, "municipios": { "9999": "Todos" } },
           { "uf": "RO", "ibge": 11, "municipios": { "9999": "Todos" } },
           { "uf": "RR", "ibge": 14, "municipios": { "9999": "Todos" } },
@@ -3052,8 +3052,6 @@
               "3510": "Janaúba",
               "3520": "Januária",
               "3560": "Jequitaí",
-              "3580": "Jequitinhonha",
-              "3600": "Joaíma",
               "3630": "João Pinheiro",
               "3710": "Lagamar",
               "3750": "Lagoa Formosa",
@@ -3125,12 +3123,14 @@
       {
         "status_fitossanitário": "Área de SMR", // 'AL', 'BA', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PI', 'PR', 'RS', 'SC', 'SP', 'TO'
         "estados": [
+          { "uf": "AC", "ibge": 12, "municipios": { "9999": "Todos" } },
           { "uf": "AL", "ibge": 27, "municipios": { "9999": "Todos" } },
           { "uf": "BA", "ibge": 29, "municipios": { "9999": "Todos" } },
           { "uf": "ES", "ibge": 32, "municipios": { "9999": "Todos" } },
           { "uf": "MA", "ibge": 21, "municipios": { "9999": "Todos" } },
           { "uf": "MT", "ibge": 51, "municipios": { "9999": "Todos" } },
           { "uf": "PA", "ibge": 15, "municipios": { "9999": "Todos" } },
+          { "uf": "PE", "ibge": 26, "municipios": { "9999": "Todos" } },
           { "uf": "PI", "ibge": 22, "municipios": { "9999": "Todos" } },
           { "uf": "PR", "ibge": 41, "municipios": { "9999": "Todos" } },
           { "uf": "RS", "ibge": 43, "municipios": { "9999": "Todos" } },
@@ -3527,7 +3527,9 @@
               "3545": "Jenipapo de Minas",
               "3550": "Jequeri",
               "3570": "Jequitibá",
+              "3580": "Jequitinhonha",
               "3590": "Jesuânia",
+              "3600": "Joaíma",
               "3610": "Joanésia",
               "3620": "João Monlevade",
               "3640": "Joaquim Felício",
@@ -3998,7 +4000,7 @@
     ]
   },
   {
-    "praga": "Bactrocera carambolae",
+    "praga": "Bactrocera carambolae", //ok
     "status": [
       {
         "status_fitossanitário": "Área Com Ocorrência", //Área Sob Quarentena
@@ -4135,65 +4137,7 @@
             "uf": "AM",
             "ibge": 13,
             "municipios": {
-              "0002": "Alvarães",
-              "0006": "Amaturá",
-              "0008": "Anamã",
-              "0010": "Anori",
-              "0014": "Apuí",
-              "0020": "Atalaia do Norte",
-              "0030": "Autazes",
-              "0040": "Barcelos",
-              "0050": "Barreirinha",
-              "0060": "Benjamin Constant",
-              "0063": "Beruri",
-              "0068": "Boa Vista do Ramos",
-              "0070": "Boca do Acre",
-              "0080": "Borba",
-              "0083": "Caapiranga",
-              "0090": "Canutama",
-              "0100": "Carauari",
-              "0110": "Careiro",
-              "0115": "Careiro da Várzea",
-              "0120": "Coari",
-              "0130": "Codajás",
-              "0140": "Eirunepé",
-              "0150": "Envira",
-              "0160": "Fonte Boa",
-              "0165": "Guajará",
-              "0170": "Humaitá",
-              "0180": "Ipixuna",
-              "0185": "Iranduba",
-              "0195": "Itamarati",
-              "0200": "Itapiranga",
-              "0210": "Japurá",
-              "0220": "Juruá",
-              "0230": "Jutaí",
-              "0240": "Lábrea",
-              "0250": "Manacapuru",
-              "0255": "Manaquiri",
-              "0270": "Manicoré",
-              "0280": "Maraã",
-              "0290": "Maués",
-              "0300": "Nhamundá",
-              "0310": "Nova Olinda do Norte",
-              "0320": "Novo Airão",
-              "0330": "Novo Aripuanã",
-              "0340": "Parintins",
-              "0350": "Pauini",
-              "0360": "Santa Isabel do Rio Negro",
-              "0370": "Santo Antônio do Içá",
-              "0380": "São Gabriel da Cachoeira",
-              "0390": "São Paulo de Olivença",
-              "0395": "São Sebastião do Uatumã",
-              "0400": "Silves",
-              "0406": "Tabatinga",
-              "0410": "Tapauá",
-              "0420": "Tefé",
-              "0423": "Tonantins",
-              "0353": "Presidente Figueiredo",
-              "0426": "Uarini",
-              "0430": "Urucará",
-              "0440": "Urucurituba"
+              "0353": "Presidente Figueiredo"
             }
           }
         ]
@@ -4201,6 +4145,13 @@
       {
         "status_fitossanitário": "Área Sem Registro de UF Com Ocorrência",
         "estados": [
+          {
+            "uf": "AM",
+            "ibge": 13,
+            "municipios": {
+              "0002": "Alvarães"
+            }
+          },
           {
             "uf": "PA",
             "ibge": 15,
@@ -4258,7 +4209,6 @@
         "estados": [
           { "uf": "RO", "ibge": 11, "municipios": { "9999": "Todos" } },
           { "uf": "AC", "ibge": 12, "municipios": { "9999": "Todos" } },
-          { "uf": "AM", "ibge": 13, "municipios": { "9999": "Todos" } },
           { "uf": "TO", "ibge": 17, "municipios": { "9999": "Todos" } },
           { "uf": "MA", "ibge": 21, "municipios": { "9999": "Todos" } },
           { "uf": "PI", "ibge": 22, "municipios": { "9999": "Todos" } },
