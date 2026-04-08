@@ -1,6 +1,14912 @@
 // CEFiTI - Database
 
 var dbVersion = 4;
+var archive = [
+  {
+    "data": {
+      "pragas": [
+        {
+          "id": 1,
+          "prag": "Bactrocera carambolae",
+          "pragc": "MOSCA-DA-CARAMBOLA",
+          "hosp": [
+            70,
+            125,
+            120,
+            127,
+            52,
+            71,
+            29,
+            177,
+            149,
+            9,
+            137,
+            181,
+            42,
+            138,
+            179,
+            39,
+            202,
+            8,
+            152,
+            30,
+            122,
+            69,
+            68,
+            194,
+            128,
+            129,
+            131,
+            130,
+            26,
+            133,
+            134,
+            155,
+            178,
+            3,
+            28,
+            139,
+            4,
+            106,
+            123,
+            53,
+            23
+          ],
+          "files": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 10,
+          "prag": "Xanthomonas citri subsp. citri",
+          "pragc": "CANCRO CÍTRICO",
+          "hosp": [
+            103,
+            117,
+            182
+          ],
+          "files": [
+            19
+          ]
+        },
+        {
+          "id": 11,
+          "prag": "Moniliophthora roreri",
+          "pragc": "MONILÍASE",
+          "hosp": [
+            200
+          ],
+          "files": [
+            20,
+            21,
+            22
+          ]
+        },
+        {
+          "id": 12,
+          "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+          "pragc": "VASSOURA DE BRUXA DA MANDIOCA",
+          "hosp": [
+            151
+          ],
+          "files": [
+            23,
+            24
+          ]
+        },
+        {
+          "id": 2,
+          "prag": "Schizotetranychus hindustanicus",
+          "pragc": "ÁCARO HINDU",
+          "hosp": [
+            105,
+            158,
+            196,
+            5,
+            100,
+            103
+          ],
+          "files": [
+            11
+          ]
+        },
+        {
+          "id": 3,
+          "prag": "Sternochetus mangiferae",
+          "pragc": "GORGULHO DA MANGA",
+          "hosp": [
+            152
+          ],
+          "files": [
+            12
+          ]
+        },
+        {
+          "id": 4,
+          "prag": "BSV e CMV",
+          "pragc": "BANANA STREAK VIRUS e CUCUMBER MOSAIC VIRUS",
+          "hosp": [
+            41
+          ],
+          "files": [
+            13
+          ]
+        },
+        {
+          "id": 5,
+          "prag": "Xanthomonas campestris pv. viticola",
+          "pragc": "CANCRO-DA-VIDEIRA",
+          "hosp": [
+            205
+          ],
+          "files": [
+            14
+          ]
+        },
+        {
+          "id": 6,
+          "prag": "Neonectria ditissima (Neonectria galligena)",
+          "pragc": "CANCRO EUROPEU DAS POMÁCEAS",
+          "hosp": [
+            148
+          ],
+          "files": [
+            15
+          ]
+        },
+        {
+          "id": 7,
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "pragc": "HLB",
+          "hosp": [
+            103,
+            117,
+            182,
+            156
+          ],
+          "files": [
+            16
+          ]
+        },
+        {
+          "id": 8,
+          "prag": "Ralstonia solanacearum raça 2",
+          "pragc": "MOKO-DA-BANANEIRA",
+          "hosp": [
+            41,
+            126
+          ],
+          "files": [
+            17
+          ]
+        },
+        {
+          "id": 9,
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "pragc": "SIGATOKA NEGRA",
+          "hosp": [
+            41,
+            126
+          ],
+          "files": [
+            18
+          ]
+        }
+      ],
+      "hospedeiros": [
+        {
+          "id": 1,
+          "nomeSci": "Persea gratissima",
+          "nomeVul": [
+            "Abacate (Persea gratissima)"
+          ]
+        },
+        {
+          "id": 10,
+          "nomeSci": "Populus x canadensis",
+          "nomeVul": [
+            "Álamo (Populus x canadensis)",
+            "Choupo(P.x canadensis)"
+          ]
+        },
+        {
+          "id": 100,
+          "nomeSci": "Melia azedarach",
+          "nomeVul": [
+            "Cinamomo"
+          ]
+        },
+        {
+          "id": 101,
+          "nomeSci": "Fraxinus mandshurica var. Japonica",
+          "nomeVul": [
+            "Cinza Japonês"
+          ]
+        },
+        {
+          "id": 102,
+          "nomeSci": "Sorbus sp.",
+          "nomeVul": [
+            "Cinza-da-montanha",
+            "Sorva"
+          ]
+        },
+        {
+          "id": 103,
+          "nomeSci": "Citrus spp.",
+          "nomeVul": [
+            "Citros"
+          ]
+        },
+        {
+          "id": 104,
+          "nomeSci": "Coprosma areolata",
+          "nomeVul": [
+            "Coprosma Frondoso Fino"
+          ]
+        },
+        {
+          "id": 105,
+          "nomeSci": "Cocos nucifera",
+          "nomeVul": [
+            "Coqueiro"
+          ]
+        },
+        {
+          "id": 106,
+          "nomeSci": "Pouteria macrophylla",
+          "nomeVul": [
+            "Cutite"
+          ]
+        },
+        {
+          "id": 107,
+          "nomeSci": "Theobroma grandiflorum",
+          "nomeVul": [
+            "Cupuaçu"
+          ]
+        },
+        {
+          "id": 108,
+          "nomeSci": "Fagus americana",
+          "nomeVul": [
+            "Faia Americana"
+          ]
+        },
+        {
+          "id": 109,
+          "nomeSci": "Fagus sylvantica",
+          "nomeVul": [
+            "Faia Cobre"
+          ]
+        },
+        {
+          "id": 11,
+          "nomeSci": "Tilia americana",
+          "nomeVul": [
+            "Álamo Americano",
+            "Tilo"
+          ]
+        },
+        {
+          "id": 110,
+          "nomeSci": "Fagus orientalis",
+          "nomeVul": [
+            "Faia do Oriente"
+          ]
+        },
+        {
+          "id": 111,
+          "nomeSci": "Fagus crenata f. grandifolia (syn. Americana)",
+          "nomeVul": [
+            "Faia Japonesa"
+          ]
+        },
+        {
+          "id": 112,
+          "nomeSci": "Fagus silvatica f. purpurea",
+          "nomeVul": [
+            "Faia Roxa"
+          ]
+        },
+        {
+          "id": 113,
+          "nomeSci": "Fagus sp.",
+          "nomeVul": [
+            "Faia"
+          ]
+        },
+        {
+          "id": 114,
+          "nomeSci": "Aesculus turbinata",
+          "nomeVul": [
+            "Falso Castanho Japonês"
+          ]
+        },
+        {
+          "id": 115,
+          "nomeSci": "Sorbus aria",
+          "nomeVul": [
+            "Feixe Branco"
+          ]
+        },
+        {
+          "id": 116,
+          "nomeSci": "Delonix regia",
+          "nomeVul": [
+            "Flamboyant"
+          ]
+        },
+        {
+          "id": 117,
+          "nomeSci": "Fortunella spp.",
+          "nomeVul": [
+            "Fortunela"
+          ]
+        },
+        {
+          "id": 118,
+          "nomeSci": "Fraxinus bungeana",
+          "nomeVul": [
+            "Freixo (F.bungeana)"
+          ]
+        },
+        {
+          "id": 119,
+          "nomeSci": "Fraxinus excelsior",
+          "nomeVul": [
+            "Freixo (F.excelsior)"
+          ]
+        },
+        {
+          "id": 12,
+          "nomeSci": "Populus alba",
+          "nomeVul": [
+            "Álamo Branco",
+            "Choupo Branco"
+          ]
+        },
+        {
+          "id": 120,
+          "nomeSci": "Artocarpus altilis",
+          "nomeVul": [
+            "Fruta Pão"
+          ]
+        },
+        {
+          "id": 121,
+          "nomeSci": "Robinia pseudoacacia",
+          "nomeVul": [
+            "Gafanhoto Preto"
+          ]
+        },
+        {
+          "id": 122,
+          "nomeSci": "Psidium guajava",
+          "nomeVul": [
+            "Goiaba"
+          ]
+        },
+        {
+          "id": 123,
+          "nomeSci": "Psidium guineense",
+          "nomeVul": [
+            "Goiaba-araçá"
+          ]
+        },
+        {
+          "id": 124,
+          "nomeSci": "Nyssa sylvatica",
+          "nomeVul": [
+            "Goma Preta",
+            "Tupelo"
+          ]
+        },
+        {
+          "id": 125,
+          "nomeSci": "Arenga pinnata",
+          "nomeVul": [
+            "Gomuto"
+          ]
+        },
+        {
+          "id": 126,
+          "nomeSci": "Heliconia spp.",
+          "nomeVul": [
+            "Helicônia"
+          ]
+        },
+        {
+          "id": 127,
+          "nomeSci": "Artocarpus integrifolia",
+          "nomeVul": [
+            "Jaca"
+          ]
+        },
+        {
+          "id": 128,
+          "nomeSci": "Syzygium aqueum",
+          "nomeVul": [
+            "Jambo Branco (S.aqueum)",
+            "Jambo D'água",
+            "Jambosa"
+          ]
+        },
+        {
+          "id": 129,
+          "nomeSci": "Syzygium jambos",
+          "nomeVul": [
+            "Jambo Amarelo",
+            "Jambo Rosa (S. jambos)"
+          ]
+        },
+        {
+          "id": 13,
+          "nomeSci": "Populus grandidenta",
+          "nomeVul": [
+            "Álamo Grande Dente"
+          ]
+        },
+        {
+          "id": 130,
+          "nomeSci": "Syzygium samarangense",
+          "nomeVul": [
+            "Jambo Branco (S.samarangense)",
+            "Jambo Rosa (S. samarangese)"
+          ]
+        },
+        {
+          "id": 131,
+          "nomeSci": "Syzygium malaccense",
+          "nomeVul": [
+            "Jambo Vermelho"
+          ]
+        },
+        {
+          "id": 132,
+          "nomeSci": "Juglans sp.",
+          "nomeVul": [
+            "Juglans",
+            "Nogueira"
+          ]
+        },
+        {
+          "id": 133,
+          "nomeSci": "Ziziphus jujuba",
+          "nomeVul": [
+            "Jujuba (Z. jujuba)",
+            "Jujuba Chinesa"
+          ]
+        },
+        {
+          "id": 134,
+          "nomeSci": "Ziziphus mauritiana",
+          "nomeVul": [
+            "Jujuba (Z. mauritiana)",
+            "Maçã-de-pobre "
+          ]
+        },
+        {
+          "id": 135,
+          "nomeSci": "Coprosma lucida",
+          "nomeVul": [
+            "Karamu"
+          ]
+        },
+        {
+          "id": 136,
+          "nomeSci": "Sophora microphylla",
+          "nomeVul": [
+            "Kowhai",
+            "Sófora"
+          ]
+        },
+        {
+          "id": 137,
+          "nomeSci": "Citrus aurantium",
+          "nomeVul": [
+            "Laranja Azeda",
+            "Laranja Caipira",
+            "Laranja da Terra"
+          ]
+        },
+        {
+          "id": 138,
+          "nomeSci": "Citrus sinensis",
+          "nomeVul": [
+            "Laranja",
+            "Laranja Doce"
+          ]
+        },
+        {
+          "id": 139,
+          "nomeSci": "Licania sp.",
+          "nomeVul": [
+            "Licania"
+          ]
+        },
+        {
+          "id": 14,
+          "nomeSci": "Populus spp.",
+          "nomeVul": [
+            "Álamo",
+            "Choupo"
+          ]
+        },
+        {
+          "id": 140,
+          "nomeSci": "Rhus typhina",
+          "nomeVul": [
+            "Linda-dos-jardins",
+            "Rustifina Rus",
+            "Sumac Staghorn"
+          ]
+        },
+        {
+          "id": 141,
+          "nomeSci": "Umbelluraria californica",
+          "nomeVul": [
+            "Louro Califórnia"
+          ]
+        },
+        {
+          "id": 142,
+          "nomeSci": "Malus communis",
+          "nomeVul": [
+            "Maçã (M. communis)"
+          ]
+        },
+        {
+          "id": 143,
+          "nomeSci": "Malus pumila var domestica",
+          "nomeVul": [
+            "Maçã (M. pumila var domestica)"
+          ]
+        },
+        {
+          "id": 144,
+          "nomeSci": "Malus pumila",
+          "nomeVul": [
+            "Maçã (M. pumila)"
+          ]
+        },
+        {
+          "id": 145,
+          "nomeSci": "Malus x domestica",
+          "nomeVul": [
+            "Maçã (M. x domestica)"
+          ]
+        },
+        {
+          "id": 146,
+          "nomeSci": "Pyrus malus",
+          "nomeVul": [
+            "Maçã (Pyrus malus)"
+          ]
+        },
+        {
+          "id": 147,
+          "nomeSci": "Malus sylvestris",
+          "nomeVul": [
+            "Maçã Silvestre"
+          ]
+        },
+        {
+          "id": 148,
+          "nomeSci": "Malus sp.",
+          "nomeVul": [
+            "Maça"
+          ]
+        },
+        {
+          "id": 149,
+          "nomeSci": "Carica papaya",
+          "nomeVul": [
+            "Mamão"
+          ]
+        },
+        {
+          "id": 15,
+          "nomeSci": "Albizia lebbeck",
+          "nomeVul": [
+            "Albízia",
+            "Cabeça-de-negro",
+            "Faveiro"
+          ]
+        },
+        {
+          "id": 150,
+          "nomeSci": "Fraxinus mandshurica",
+          "nomeVul": [
+            "Manchu Cinza"
+          ]
+        },
+        {
+          "id": 151,
+          "nomeSci": "Manihot esculenta",
+          "nomeVul": [
+            "Mandioca"
+          ]
+        },
+        {
+          "id": 152,
+          "nomeSci": "Mangifera indica",
+          "nomeVul": [
+            "Manga"
+          ]
+        },
+        {
+          "id": 153,
+          "nomeSci": "Swietenia mahagoni",
+          "nomeVul": [
+            "Mogno Indiano Ocidental"
+          ]
+        },
+        {
+          "id": 154,
+          "nomeSci": "Switenia macrophyla",
+          "nomeVul": [
+            "Mogno"
+          ]
+        },
+        {
+          "id": 155,
+          "nomeSci": "Bysonima crassifolia",
+          "nomeVul": [
+            "Murici ou Muruci"
+          ]
+        },
+        {
+          "id": 156,
+          "nomeSci": "Murraya paniculata",
+          "nomeVul": [
+            "Murta"
+          ]
+        },
+        {
+          "id": 157,
+          "nomeSci": "Eriobotrya japonica",
+          "nomeVul": [
+            "Nespereira"
+          ]
+        },
+        {
+          "id": 158,
+          "nomeSci": "Azadirachta indica",
+          "nomeVul": [
+            "Nim"
+          ]
+        },
+        {
+          "id": 159,
+          "nomeSci": "Carya ovata",
+          "nomeVul": [
+            "Nogueira Amarga Casca de Pelúcia"
+          ]
+        },
+        {
+          "id": 16,
+          "nomeSci": "Alnus incana",
+          "nomeVul": [
+            "Alder Cinza"
+          ]
+        },
+        {
+          "id": 160,
+          "nomeSci": "Carya tomentosa",
+          "nomeVul": [
+            "Nogueira Amarga Coração Branco"
+          ]
+        },
+        {
+          "id": 161,
+          "nomeSci": "Carya glabra",
+          "nomeVul": [
+            "Nogueira Amarga de Porco"
+          ]
+        },
+        {
+          "id": 162,
+          "nomeSci": "Carya spp.",
+          "nomeVul": [
+            "Nogueira Amarga spp"
+          ]
+        },
+        {
+          "id": 163,
+          "nomeSci": "Carya cordiformis",
+          "nomeVul": [
+            "Nogueira Amarga"
+          ]
+        },
+        {
+          "id": 164,
+          "nomeSci": "Juglans cinerea",
+          "nomeVul": [
+            "Nogueira Branca"
+          ]
+        },
+        {
+          "id": 165,
+          "nomeSci": "Juglans regia",
+          "nomeVul": [
+            "Nogueira Comum",
+            "Nogueira europeia"
+          ]
+        },
+        {
+          "id": 166,
+          "nomeSci": "Carya illinoensis",
+          "nomeVul": [
+            "Nogueira Pecã"
+          ]
+        },
+        {
+          "id": 167,
+          "nomeSci": "Juglans nigra",
+          "nomeVul": [
+            "Nogueira Preta"
+          ]
+        },
+        {
+          "id": 168,
+          "nomeSci": "Ulmus americana",
+          "nomeVul": [
+            "Olmo Americano"
+          ]
+        },
+        {
+          "id": 169,
+          "nomeSci": "Ulmus glabra (syn. montana)",
+          "nomeVul": [
+            "Olmo Escocês"
+          ]
+        },
+        {
+          "id": 17,
+          "nomeSci": "Alnus japonica",
+          "nomeVul": [
+            "Alder Japonês"
+          ]
+        },
+        {
+          "id": 170,
+          "nomeSci": "Ulmus sp.",
+          "nomeVul": [
+            "Olmo",
+            "Ulmeiro"
+          ]
+        },
+        {
+          "id": 171,
+          "nomeSci": "Opuntia cochenillifera",
+          "nomeVul": [
+            "Palma forrageira"
+          ]
+        },
+        {
+          "id": 172,
+          "nomeSci": "Cornus muttallii",
+          "nomeVul": [
+            "Pau Cachorro do Pacífico"
+          ]
+        },
+        {
+          "id": 173,
+          "nomeSci": "Cornus sp.",
+          "nomeVul": [
+            "Pau Cachorro"
+          ]
+        },
+        {
+          "id": 174,
+          "nomeSci": "Pyrus pyrifolia",
+          "nomeVul": [
+            "Pera Asiática",
+            "Pera Nashi"
+          ]
+        },
+        {
+          "id": 175,
+          "nomeSci": "Pyrus communis",
+          "nomeVul": [
+            "Pereira Europeia"
+          ]
+        },
+        {
+          "id": 176,
+          "nomeSci": "Pyrus pyrifolia var culta",
+          "nomeVul": [
+            "Pereira Japonesa"
+          ]
+        },
+        {
+          "id": 177,
+          "nomeSci": "Capsicum annuum",
+          "nomeVul": [
+            "Pimenta Picante",
+            "Pimenta-do-diabo"
+          ]
+        },
+        {
+          "id": 178,
+          "nomeSci": "Capsicum chinense",
+          "nomeVul": [
+            "Pimenta-de-Cheiro"
+          ]
+        },
+        {
+          "id": 179,
+          "nomeSci": "Eugenia uniflora",
+          "nomeVul": [
+            "Pitanga Vermelha"
+          ]
+        },
+        {
+          "id": 18,
+          "nomeSci": "Alnus glutinosa",
+          "nomeVul": [
+            "Alder Negro",
+            "Amieiro"
+          ]
+        },
+        {
+          "id": 180,
+          "nomeSci": "Platanus orientalis",
+          "nomeVul": [
+            "Plátano",
+            "Plátano Oriental"
+          ]
+        },
+        {
+          "id": 181,
+          "nomeSci": "Citrus paradisi",
+          "nomeVul": [
+            "Pomelo",
+            "Toranja"
+          ]
+        },
+        {
+          "id": 182,
+          "nomeSci": "Poncirus spp.",
+          "nomeVul": [
+            "Poncirus"
+          ]
+        },
+        {
+          "id": 183,
+          "nomeSci": "Ribes sp.",
+          "nomeVul": [
+            "Ribes"
+          ]
+        },
+        {
+          "id": 184,
+          "nomeSci": "Rosa spp.",
+          "nomeVul": [
+            "Rosa"
+          ]
+        },
+        {
+          "id": 185,
+          "nomeSci": "Salix alba",
+          "nomeVul": [
+            "Salgueiro Branco"
+          ]
+        },
+        {
+          "id": 186,
+          "nomeSci": "Salix cinerea",
+          "nomeVul": [
+            "Salgueiro Cinza"
+          ]
+        },
+        {
+          "id": 187,
+          "nomeSci": "Salix alba var Vitelina",
+          "nomeVul": [
+            "Salgueiro Dourado"
+          ]
+        },
+        {
+          "id": 188,
+          "nomeSci": "Salix nigricans",
+          "nomeVul": [
+            "Salgueiro Preto"
+          ]
+        },
+        {
+          "id": 189,
+          "nomeSci": "Salix purpurea",
+          "nomeVul": [
+            "Salgueiro Púrpura",
+            "Vimeiro Púrpura"
+          ]
+        },
+        {
+          "id": 19,
+          "nomeSci": "Alnus rubra",
+          "nomeVul": [
+            "Alder Vermelha"
+          ]
+        },
+        {
+          "id": 190,
+          "nomeSci": "Salix amygdalina",
+          "nomeVul": [
+            "Salgueiro Velho Mundo"
+          ]
+        },
+        {
+          "id": 191,
+          "nomeSci": "Salix amygdaloides",
+          "nomeVul": [
+            "Salgueiro-folha-de-pêssego"
+          ]
+        },
+        {
+          "id": 192,
+          "nomeSci": "Salix alba L. Coerulea",
+          "nomeVul": [
+            "Salgueiro-taco-de-críquete"
+          ]
+        },
+        {
+          "id": 193,
+          "nomeSci": "Salix spp.",
+          "nomeVul": [
+            "Salix"
+          ]
+        },
+        {
+          "id": 194,
+          "nomeSci": "Spondias purpurea",
+          "nomeVul": [
+            "Seriguela"
+          ]
+        },
+        {
+          "id": 195,
+          "nomeSci": "Hevea brasiliensis",
+          "nomeVul": [
+            "Seringueira"
+          ]
+        },
+        {
+          "id": 196,
+          "nomeSci": "Sorghum bicolor",
+          "nomeVul": [
+            "Sorgo"
+          ]
+        },
+        {
+          "id": 197,
+          "nomeSci": "Sorbus domestica",
+          "nomeVul": [
+            "Sorva (S. domestica)"
+          ]
+        },
+        {
+          "id": 198,
+          "nomeSci": "Tectona grandis",
+          "nomeVul": [
+            "Teca"
+          ]
+        },
+        {
+          "id": 199,
+          "nomeSci": "Tilia cordata",
+          "nomeVul": [
+            "Teja",
+            "Tejo",
+            "Tella",
+            "Texa",
+            "Tilha",
+            "Tillera"
+          ]
+        },
+        {
+          "id": 2,
+          "nomeSci": "Picea abies",
+          "nomeVul": [
+            "Abeto Europeu",
+            "Abeto Vermelho Comum",
+            "Noruega Abeto"
+          ]
+        },
+        {
+          "id": 20,
+          "nomeSci": "Alnus sp.",
+          "nomeVul": [
+            "Alder"
+          ]
+        },
+        {
+          "id": 200,
+          "nomeSci": "Theobroma spp.",
+          "nomeVul": [
+            "Theobroma spp"
+          ]
+        },
+        {
+          "id": 201,
+          "nomeSci": "Tilia sp.",
+          "nomeVul": [
+            "Tília"
+          ]
+        },
+        {
+          "id": 202,
+          "nomeSci": "Licopersicum esculentum",
+          "nomeVul": [
+            "Tomate"
+          ]
+        },
+        {
+          "id": 203,
+          "nomeSci": "Sorbus aucuparia",
+          "nomeVul": [
+            "Tramazeira"
+          ]
+        },
+        {
+          "id": 204,
+          "nomeSci": "Liriodendron tulipifera",
+          "nomeVul": [
+            "Tulipeiro"
+          ]
+        },
+        {
+          "id": 205,
+          "nomeSci": "Vitis spp. e seus híbridos",
+          "nomeVul": [
+            "Uva",
+            "Videira e seus híbridos"
+          ]
+        },
+        {
+          "id": 206,
+          "nomeSci": "Viola sp.",
+          "nomeVul": [
+            "Viola"
+          ]
+        },
+        {
+          "id": 21,
+          "nomeSci": "Populus wislizeni",
+          "nomeVul": [
+            "Algodão Americano"
+          ]
+        },
+        {
+          "id": 22,
+          "nomeSci": "Prunus spp.",
+          "nomeVul": [
+            "Ameixa"
+          ]
+        },
+        {
+          "id": 23,
+          "nomeSci": "Syzygium cumini",
+          "nomeVul": [
+            "Ameixa-roxa"
+          ]
+        },
+        {
+          "id": 24,
+          "nomeSci": "Prunus salicina",
+          "nomeVul": [
+            "Ameixeira-japonesa"
+          ]
+        },
+        {
+          "id": 25,
+          "nomeSci": "Amelanchier laevis",
+          "nomeVul": [
+            "Amelanchier"
+          ]
+        },
+        {
+          "id": 26,
+          "nomeSci": "Terminalia catappa",
+          "nomeVul": [
+            "Amendoeira",
+            "Sete Copas"
+          ]
+        },
+        {
+          "id": 27,
+          "nomeSci": "Frangula almus",
+          "nomeVul": [
+            "Amieiro Negro",
+            "Sanguinho"
+          ]
+        },
+        {
+          "id": 28,
+          "nomeSci": "Eugenia stipitata",
+          "nomeVul": [
+            "Araçá-Boi"
+          ]
+        },
+        {
+          "id": 29,
+          "nomeSci": "Calycolpus goetheanus",
+          "nomeVul": [
+            "Araçapeua"
+          ]
+        },
+        {
+          "id": 3,
+          "nomeSci": "Chrysophyllum cainito",
+          "nomeVul": [
+            "Abiu (C. cainito)",
+            "Bilimbi (C. cainito)",
+            "Caimito",
+            "Carambola amarela (C. cainito)"
+          ]
+        },
+        {
+          "id": 30,
+          "nomeSci": "Manilkara zapota",
+          "nomeVul": [
+            "Arapaju",
+            "Maçaranduba",
+            "Mararaju",
+            "Sapoti",
+            "Sapotilha"
+          ]
+        },
+        {
+          "id": 31,
+          "nomeSci": "Crataegus oxyacanthoides (syn: oxyacantha)",
+          "nomeVul": [
+            "Arbusto Espinheiro do Bosque"
+          ]
+        },
+        {
+          "id": 32,
+          "nomeSci": "Craetaegus monogyna",
+          "nomeVul": [
+            "Arbusto Espinhento",
+            "Espinho Branco"
+          ]
+        },
+        {
+          "id": 33,
+          "nomeSci": "Fraxinus nigra (syn. sambucifolia)",
+          "nomeVul": [
+            "Árvore Preta"
+          ]
+        },
+        {
+          "id": 34,
+          "nomeSci": "Avena sativa",
+          "nomeVul": [
+            "Aveia"
+          ]
+        },
+        {
+          "id": 35,
+          "nomeSci": "Corylus avellana",
+          "nomeVul": [
+            "Avelã"
+          ]
+        },
+        {
+          "id": 36,
+          "nomeSci": "Corylus sieboldiana",
+          "nomeVul": [
+            "Aveleira Japonesa"
+          ]
+        },
+        {
+          "id": 37,
+          "nomeSci": "Corylus heterophylla var. thunbergiii",
+          "nomeVul": [
+            "Aveleira Siberiana"
+          ]
+        },
+        {
+          "id": 38,
+          "nomeSci": "Ilex aquifolium",
+          "nomeVul": [
+            "Azevinho"
+          ]
+        },
+        {
+          "id": 39,
+          "nomeSci": "Garcinia dulcis",
+          "nomeVul": [
+            "Bacupari"
+          ]
+        },
+        {
+          "id": 4,
+          "nomeSci": "Pouteria caimito",
+          "nomeVul": [
+            "Abiu (P. cainito)"
+          ]
+        },
+        {
+          "id": 40,
+          "nomeSci": "Myroxylon balsamum",
+          "nomeVul": [
+            "Bálsamo"
+          ]
+        },
+        {
+          "id": 41,
+          "nomeSci": "Musa spp.",
+          "nomeVul": [
+            "Banana"
+          ]
+        },
+        {
+          "id": 42,
+          "nomeSci": "Citrus reticulata",
+          "nomeVul": [
+            "Bergamota",
+            "Mandarina,",
+            "Mexerica",
+            "Ponkan",
+            "Tangerina"
+          ]
+        },
+        {
+          "id": 43,
+          "nomeSci": "Betula papyrifera",
+          "nomeVul": [
+            "Bétula Branca (B.papyrifera)",
+            "Bétula Papel"
+          ]
+        },
+        {
+          "id": 44,
+          "nomeSci": "Betula pendula (syn:verrucosa)",
+          "nomeVul": [
+            "Bétula Branca (B.pendula)"
+          ]
+        },
+        {
+          "id": 45,
+          "nomeSci": "Betula pubescens",
+          "nomeVul": [
+            "Bétula Branca (B.pubescens)"
+          ]
+        },
+        {
+          "id": 46,
+          "nomeSci": "Betula populifolia",
+          "nomeVul": [
+            "Bétula Cinza"
+          ]
+        },
+        {
+          "id": 47,
+          "nomeSci": "Betula lenta",
+          "nomeVul": [
+            "Bétula Lenta"
+          ]
+        },
+        {
+          "id": 48,
+          "nomeSci": "Betula nigra",
+          "nomeVul": [
+            "Bétula lenta",
+            "Bétula Negra"
+          ]
+        },
+        {
+          "id": 49,
+          "nomeSci": "Betula lutea (synonym: alleghaniensis)",
+          "nomeVul": [
+            "Bétula Lutea"
+          ]
+        },
+        {
+          "id": 5,
+          "nomeSci": "Acacia spp.",
+          "nomeVul": [
+            "Acácia",
+            "Angico",
+            "Jurema",
+            "Unha-de-gato"
+          ]
+        },
+        {
+          "id": 50,
+          "nomeSci": "Betula maximowicziana",
+          "nomeVul": [
+            "Bétula Monarca"
+          ]
+        },
+        {
+          "id": 51,
+          "nomeSci": "Betula sp.",
+          "nomeVul": [
+            "Bétula"
+          ]
+        },
+        {
+          "id": 52,
+          "nomeSci": "Averrhoa bilimbi",
+          "nomeVul": [
+            "Bilimbi (A. bilimbi)",
+            "Carambola Amarela (A. bilimbi)",
+            "Limão Cayena"
+          ]
+        },
+        {
+          "id": 53,
+          "nomeSci": "Rollinia omucosa",
+          "nomeVul": [
+            "Biribá"
+          ]
+        },
+        {
+          "id": 54,
+          "nomeSci": "Acer palmatum",
+          "nomeVul": [
+            "Bordo Japonês"
+          ]
+        },
+        {
+          "id": 55,
+          "nomeSci": "Acer macrophyllum",
+          "nomeVul": [
+            "Bordo Vermelho (A.macrophyllum)"
+          ]
+        },
+        {
+          "id": 56,
+          "nomeSci": "Acer rubrum",
+          "nomeVul": [
+            "Bordo Vermelho (A.rubrum)"
+          ]
+        },
+        {
+          "id": 57,
+          "nomeSci": "Acer mono subsp. Heterophyllum",
+          "nomeVul": [
+            "Bordo (A.mono)"
+          ]
+        },
+        {
+          "id": 58,
+          "nomeSci": "Acer negundo",
+          "nomeVul": [
+            "Bordo (A.negundo)"
+          ]
+        },
+        {
+          "id": 59,
+          "nomeSci": "Acer saccharum",
+          "nomeVul": [
+            "Bordo (A.sacharum)"
+          ]
+        },
+        {
+          "id": 6,
+          "nomeSci": "Malpighia spp.",
+          "nomeVul": [
+            "Acerola(qualquer espécie)"
+          ]
+        },
+        {
+          "id": 60,
+          "nomeSci": "Acer spicatum",
+          "nomeVul": [
+            "Bordo (A.spicatum)"
+          ]
+        },
+        {
+          "id": 61,
+          "nomeSci": "Acer pennsylvanicum",
+          "nomeVul": [
+            "Bordo (Acer pennsylvanicum)"
+          ]
+        },
+        {
+          "id": 62,
+          "nomeSci": "Acer pseudoplatanus",
+          "nomeVul": [
+            "Bordo (Acer pseudoplatanus)",
+            "Padreiro"
+          ]
+        },
+        {
+          "id": 63,
+          "nomeSci": "Acer sp.",
+          "nomeVul": [
+            "Bordo"
+          ]
+        },
+        {
+          "id": 64,
+          "nomeSci": "Acer circinatum",
+          "nomeVul": [
+            "Bordo-da-videira"
+          ]
+        },
+        {
+          "id": 65,
+          "nomeSci": "Cercis canadensis",
+          "nomeVul": [
+            "Broto Vermelho Oriental"
+          ]
+        },
+        {
+          "id": 66,
+          "nomeSci": "Theobroma cacao",
+          "nomeVul": [
+            "Cacau"
+          ]
+        },
+        {
+          "id": 67,
+          "nomeSci": "Theobroma speciosum",
+          "nomeVul": [
+            "Cacauí"
+          ]
+        },
+        {
+          "id": 68,
+          "nomeSci": "Spondias lutea",
+          "nomeVul": [
+            "Cajá (S. lutea)",
+            "Cajá-mirim (S. lutea)",
+            "Cajazeiro (S. lutea)",
+            "Taperebá (S. lutea)"
+          ]
+        },
+        {
+          "id": 69,
+          "nomeSci": "Spondias mombin",
+          "nomeVul": [
+            "Cajá (S. mombin)",
+            "Cajá-mirim (S. mombin)",
+            "Cajazeiro (S. mombin)",
+            "Taperebá (S. mombin)"
+          ]
+        },
+        {
+          "id": 7,
+          "nomeSci": "Malpighia punicifolia",
+          "nomeVul": [
+            "Acerola (M. punicifolia)"
+          ]
+        },
+        {
+          "id": 70,
+          "nomeSci": "Anacardium occidentale",
+          "nomeVul": [
+            "Caju"
+          ]
+        },
+        {
+          "id": 71,
+          "nomeSci": "Averrhoa carambola",
+          "nomeVul": [
+            "Carambola"
+          ]
+        },
+        {
+          "id": 72,
+          "nomeSci": "Carpinus betulas",
+          "nomeVul": [
+            "Cárpino Betulas"
+          ]
+        },
+        {
+          "id": 73,
+          "nomeSci": "Carpinus sp.",
+          "nomeVul": [
+            "Cárpino"
+          ]
+        },
+        {
+          "id": 74,
+          "nomeSci": "Quercus laurifolia",
+          "nomeVul": [
+            "Carvalho Água",
+            "Carvalho Folha Diamante",
+            "Carvalho Glorioso",
+            "Carvalho Glorioso do Brejo",
+            "Carvalho Obtuso"
+          ]
+        },
+        {
+          "id": 75,
+          "nomeSci": "Quercus bicolor",
+          "nomeVul": [
+            "Carvalho Branco do Brejo"
+          ]
+        },
+        {
+          "id": 76,
+          "nomeSci": "Quercus garryana",
+          "nomeVul": [
+            "Carvalho Branco Oregon",
+            "Carvalho Oregon"
+          ]
+        },
+        {
+          "id": 77,
+          "nomeSci": "Quercus alba",
+          "nomeVul": [
+            "Carvalho Branco"
+          ]
+        },
+        {
+          "id": 78,
+          "nomeSci": "Quercus borealis (syn: rubra)",
+          "nomeVul": [
+            "Carvalho Campeão(Q.borealis)",
+            "Carvalho Vermelho do Norte (Q.borealis)"
+          ]
+        },
+        {
+          "id": 79,
+          "nomeSci": "Quercus rubra",
+          "nomeVul": [
+            "Carvalho Campeão(Q.rubra)",
+            "Carvalho Vermelho do Norte (Q.rubra)"
+          ]
+        },
+        {
+          "id": 8,
+          "nomeSci": "Malpighia emarginata",
+          "nomeVul": [
+            "Acerola (M. emarginata)"
+          ]
+        },
+        {
+          "id": 80,
+          "nomeSci": "Quercus montana",
+          "nomeVul": [
+            "Carvalho Castanheiro"
+          ]
+        },
+        {
+          "id": 81,
+          "nomeSci": "Quercus coccinea",
+          "nomeVul": [
+            "Carvalho Escarlata"
+          ]
+        },
+        {
+          "id": 82,
+          "nomeSci": "Quercus glandulifera",
+          "nomeVul": [
+            "Carvalho Konara",
+            "Carvalho Koreano"
+          ]
+        },
+        {
+          "id": 83,
+          "nomeSci": "Quercus mongolica var grosserrata",
+          "nomeVul": [
+            "Carvalho Mongoliano"
+          ]
+        },
+        {
+          "id": 84,
+          "nomeSci": "Quercus velutina",
+          "nomeVul": [
+            "Carvalho Preto"
+          ]
+        },
+        {
+          "id": 85,
+          "nomeSci": "Quercus sp.",
+          "nomeVul": [
+            "Carvalho"
+          ]
+        },
+        {
+          "id": 86,
+          "nomeSci": "Quercus robur",
+          "nomeVul": [
+            "Carvalho-alvarinho",
+            "Carvalho-roble",
+            "Carvalho-vermelho"
+          ]
+        },
+        {
+          "id": 87,
+          "nomeSci": "Aesculus hippocastanum",
+          "nomeVul": [
+            "Castanha-da-Índia(A.hippocastanum)"
+          ]
+        },
+        {
+          "id": 88,
+          "nomeSci": "Aesculus sp.",
+          "nomeVul": [
+            "Castanha-da-Índia"
+          ]
+        },
+        {
+          "id": 89,
+          "nomeSci": "Castanea dentata",
+          "nomeVul": [
+            "Castanheiro Europeu"
+          ]
+        },
+        {
+          "id": 9,
+          "nomeSci": "Chrysobalanus icaco",
+          "nomeVul": [
+            "Ajuru"
+          ]
+        },
+        {
+          "id": 90,
+          "nomeSci": "Prunus virginiana",
+          "nomeVul": [
+            "Cereja de Pássaro Virginia",
+            "Grão Amargo"
+          ]
+        },
+        {
+          "id": 91,
+          "nomeSci": "Prunus ssiori",
+          "nomeVul": [
+            "Cereja de Pássaro"
+          ]
+        },
+        {
+          "id": 92,
+          "nomeSci": "Prunus subhirtella var. pendula",
+          "nomeVul": [
+            "Cerejeira Chorona"
+          ]
+        },
+        {
+          "id": 93,
+          "nomeSci": "Prunus serotina",
+          "nomeVul": [
+            "Cerejeira Negra"
+          ]
+        },
+        {
+          "id": 94,
+          "nomeSci": "Prunus avium",
+          "nomeVul": [
+            "Cerejeira"
+          ]
+        },
+        {
+          "id": 95,
+          "nomeSci": "Camellia sinensis",
+          "nomeVul": [
+            "Chá-da-Índia"
+          ]
+        },
+        {
+          "id": 96,
+          "nomeSci": "Populus tremula",
+          "nomeVul": [
+            "Choupo Tremedor"
+          ]
+        },
+        {
+          "id": 97,
+          "nomeSci": "Populus tremuloides",
+          "nomeVul": [
+            "Choupo Trêmulo"
+          ]
+        },
+        {
+          "id": 98,
+          "nomeSci": "Populus balsamifera",
+          "nomeVul": [
+            "Choupo-bálsamo"
+          ]
+        },
+        {
+          "id": 99,
+          "nomeSci": "Laburnum anagyrioides",
+          "nomeVul": [
+            "Chuva-de-ouro",
+            "Corrente-de-ouro"
+          ]
+        }
+      ],
+      "regras": [
+        {
+          "idprag": 1,
+          "desc": "DE UF sem ocorrência de Mosca-da-carambola PARA UF sem ocorrência de Mosca-da-carambola",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Bactrocera carambolae",
+          "exig": [
+            "Se os frutos  forem destinados a locais sem ocorrência da praga e transitarem em áreas sob quarentena, deverão:  \nI - estar acondicionados em embalagens que não permitam o contato do produto com a praga;  \nII - ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm; e I \nII - estar acompanhados de Permissão de Trânsito de Vegetais - PTV, conforme o disposto no art. 2º, da Instrução Normativa MAPA nº 28, de 24 de agosto de 2016.",
+            "Se o frutos saírem de Unidade da Federação sem ocorrência da praga e transitarem por zona tampão, áreas erradicadas e áreas sem detecção em Unidade da Federação com ocorrência da praga, com destino a outra Unidade da Federação sem ocorrência, deverão: \nI - possuir documento que ateste a origem, podendo ser emitida apenas a PTV, sem a necessidade de CFO/CFOC.  \nII- constará a seguinte DA na PTV:  \"A partida foi produzida em UF sem ocorrência de Bactrocera carambolae”.",
+            "Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções e Portarias acima."
+          ]
+        },
+        {
+          "idprag": 1,
+          "desc": "DE UF com ocorrência de Mosca-da-carambola PARA qualquer UF",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "AP",
+            "AM",
+            "PA",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Bactrocera carambolae",
+          "exig": [
+            "Se a partida for procedente DE área sob quarentena e de área protegida PARA local sem ocorrência: TRÂNSITO PROIBIDO.",
+            "Se a partida for procedente DE zona tampão, de áreas erradicadas e de áreas sem detecção: PTV com a seguinte DA: \"A partida está livre de Bactrocera carambolae”",
+            "Se os frutos  forem destinados a locais sem ocorrência da praga e transitarem em áreas sob quarentena, deverão:  \nI - estar acondicionados em embalagens que não permitam o contato do produto com a praga;  \nII - ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm; e I \nII - estar acompanhados de Permissão de Trânsito de Vegetais - PTV, conforme o disposto no art. 2º, da Instrução Normativa MAPA nº 28, de 24 de agosto de 2016.",
+            "Se o frutos saírem de Unidade da Federação sem ocorrência da praga e transitarem por zona tampão, áreas erradicadas e áreas sem detecção em Unidade da Federação com ocorrência da praga, com destino a outra Unidade da Federação sem ocorrência, deverão: \nI - possuir documento que ateste a origem, podendo ser emitida apenas a PTV, sem a necessidade de CFO/CFOC.  \nII- constará a seguinte DA na PTV:  \"A partida foi produzida em UF sem ocorrência de Bactrocera carambolae”.",
+            "Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções e Portarias acima."
+          ]
+        },
+        {
+          "idprag": 7,
+          "desc": "DE UF com ocorrência de HLB, de município sem ocorrência da praga, exceto aqueles limítrofes às áreas de ocorrência, PARA qualquer UF.",
+          "part": [
+            "mudas",
+            "estacas",
+            "gemas",
+            "ramas",
+            "raízes",
+            "material de propagação vegetativo",
+            "plantas"
+          ],
+          "orig": [
+            "GO",
+            "MG",
+            "MS",
+            "PR",
+            "SC",
+            "SP"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "exig": [
+            "PTV, baseado em Certificado Fitossanitário de Origem - CFO, ou Certificado Fitossanitário de Origem Consolidado - CFOC, com a seguinte Declaração Adicional (DA): \"O material de propagação é originário de município sem ocorrência de Candidatus Liberibacter spp., de UF com ocorrência, e encontra-se livre da praga.\".\n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
+          ]
+        },
+        {
+          "idprag": 7,
+          "desc": "DE UF sem ocorrência de HLB PARA qualquer UF",
+          "part": [
+            "mudas",
+            "estacas",
+            "gemas",
+            "ramas",
+            "raízes",
+            "material de propagação vegetativo",
+            "plantas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "MA",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "exig": [
+            "PTV com a seguinte declaração adicional: “O material de propagação é originário de UF sem ocorrência de Candidatus Liberibacter spp.”; \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
+          ]
+        },
+        {
+          "idprag": 7,
+          "desc": "DE UF com ocorrência de HLB, oriúndos de município com ocorrência da praga e dos municípios limítrofes, PARA UF reconhecida pelo MAPA como sem ocorrência de HLB",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "GO",
+            "MG",
+            "MS",
+            "PR",
+            "SC",
+            "SP"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "MA",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "TO"
+          ],
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "exig": [
+            "PTV com a seguinte declaração adicional: “Os frutos foram submetidos a beneficiamento primário na origem para retirada de restos vegetais, qual seja, totalmente isentos de folhas e ramos de plantas cítricas”."
+          ]
+        },
+        {
+          "idprag": 3,
+          "desc": "DE UF com ocorrência PARA qualquer UF",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "RJ"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Sternochetus mangiferae",
+          "exig": [
+            "PTV com a seguinte Declaração Adicional: \"A partida foi produzida fora da zona interditada e encontra-se livre de Sternochetus mangiferae\"."
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "Material para pesquisa DE qualquer UF PARA UF sem ocorrência ou Área Livre de Moko-da-bananeira.",
+          "part": [
+            "material para pesquisa"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RS",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "Autorização da Superintendência Federal de Agricultura e Pecuária (SFA), da UF de origem da partida;",
+            "A partida deve ser transportada em recipiente lacrado;"
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF com ocorrência de Moko-da-bananeira PARA todas as UFs",
+          "part": [
+            "mudas",
+            "rizomas"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "AP",
+            "PA",
+            "RO",
+            "RR",
+            "SE"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "TRÂNSITO PROIBIDO, exceto para mudas transportadas in vitro ou micropropagadas. \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009",
+            "Para mudas transportadas en vitro ou micropropagadas, será exigido: \na)PTV com a seguinte declaração adicional: \"As mudas encontram- se livres de Ralstonia solanacearum raça 2\". \nb) A carga deverá estar lacrada e o número do lacre constar na PTV. \nc) Na PTV deve constar se as mudas são in vitro ou micropropagadas;"
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE Área Livre de Moko-da-bananeira PARA todas as UFs",
+          "part": [
+            "mudas",
+            "rizomas"
+          ],
+          "orig": [
+            "CE",
+            "PE",
+            "PI",
+            "RN",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV com  a seguinte declaração adicional: \"As mudas foram produzidas em Área Livre de Ralstonia solanacearum raça 2, oficialmente reconhecida pelo Ministério da Agricultura e Pecuária.\".  \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009.",
+            "A carga deverá estar lacrada e o número do lacre constar na PTV."
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF sem ocorrência de Moko-da-bananeira PARA todas as UFs",
+          "part": [
+            "mudas",
+            "rizomas"
+          ],
+          "orig": [
+            "AC",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PR",
+            "RJ",
+            "RS",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV com  a seguinte declaração adicional: \"As mudas se encontram livres de Ralstonia solanacearum raça 2.\".  \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009.",
+            "Quando transitar pelas UFs AM, AP, PA, RO, RR e SE, onde ocorre a praga, a carga deverá estar lacrada e o número do lacre constar na PTV."
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF com ocorrência de Moko-da-bananeira PARA área livre de Moko-da-bananeira",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "AP",
+            "PA",
+            "RO",
+            "RR",
+            "SE"
+          ],
+          "dest": [
+            "CE",
+            "PE",
+            "PI",
+            "RN",
+            "SC"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga Ralstonia solanacearum raça 2\"; \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE área livre de Moko-da-bananeira PARA área livre de Moko-da-bananeira",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "CE",
+            "PE",
+            "PI",
+            "RN",
+            "SC"
+          ],
+          "dest": [
+            "CE",
+            "PE",
+            "PI",
+            "RN",
+            "SC"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"As mudas foram produzidas em área livre de Ralstonia solanacearum raça 2, oficialmente reconhecida pelo Ministério da Agricultura e Pecuária\". \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
+          ]
+        },
+        {
+          "idprag": 2,
+          "desc": "DE UF com ocorrência de Ácaro-hindu-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-hindu-dos-citros",
+          "part": [
+            "plantas",
+            "mudas",
+            "raízes",
+            "caules",
+            "ramos",
+            "folhas",
+            "flores",
+            "frutos"
+          ],
+          "orig": [
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Schizotetranychus hindustanicus",
+          "exig": [
+            "TRÂNSITO PROIBIDO.\nMotivo: Ausência de área livre de ácaro-hindu-dos-citros, na origem da partida.",
+            "Para  frutos de Citrus spp. o trânsito é permitido com PTV com a declaração adicional: \"A partida atende às exigências constantes da Instrução Normativa MAPA nº 8, de 17 de abril de 2012, encontra-se livre do Ácaro Hindu dos Citros\";",
+            "Estas exigências fitossanitárias não se aplicam a material in vitro, madeira serrada e, ainda, frutos de coco (Cocus nucifera) secos e descascados;"
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF sem ocorrência de Moko-da-bananeira PARA todas as UFs",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AC",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RS",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV para comprovar a origem. \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009;"
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF com ocorrência de Moko-da-bananeira PARA UF sem ocorrência de Moko-da-bananeira",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "AP",
+            "PA",
+            "RO",
+            "RR",
+            "SE"
+          ],
+          "dest": [
+            "AC",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PR",
+            "RJ",
+            "RS",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "OU PTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos em UP onde não foi observada a presença de Ralstonia solanacearum raça 2, nos últimos doze meses\"; OU \nPTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga Ralstonia solanacearum raça 2\"; \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "Mudas Micropropagadas DE qualquer UF PARA qualquer UF",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV;",
+            "As mudas deverão ser pré-aclimatadas ou aclimatadas em estufas ou casas de vegetação; e tratadas com fungicidas registrados, 10 (dez) dias antes de sua expedição para as Unidades da Federação;",
+            "As mudas também poderão ser transportadas quando ainda in vitro;",
+            "A exigência de PTV não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a mudas micropropagadas; Para outras mudas que não sejam micropropagadas, o trânsito é proibido, salvo quando provenientes de bananais de Áreas Livres de Sigatoka Negra."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "Material para pesquisa DE qualquer UF PARA qualquer UF",
+          "part": [
+            "material para pesquisa"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "Autorização Declaratória emitida pela Área de Sanidade Vegetal da Superintendência Federal da Agricultura - SFA, na Unidade da Federação de origem do material genético;",
+            "O material genético deve ser transportado em recipiente lacrado, devendo o número do lacre constar da Autorização Declaratória;",
+            "O interessado deve comunicar a SFA de destino da partida, quando do recebimento do material, para inspeção fitossanitária;",
+            "Estas exigências fitossanitárias só se aplicam a material genético;"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "CE",
+            "DF",
+            "RN"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "GO é área livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "MG"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente do municípios livres de Sigatoka Negra em MG: Águas Vermelhas, Alto Rio Doce, Araçaí, Aracitaba, Araçuaí, Araguari, Araporã, Baldim, Barão de Cocais, Barbacena, Belo Horizonte, Belo Vale, Betim, Bocaiúva, Bom Jesus do Amparo, Bonfim, Brumadinho, Buritizeiro, Cachoeira Dourada, Caetanópolis, Caeté, Campina Verde, Campos Altos, Canápolis, Capim Branco, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Confins, Contagem, Cordisburgo, Coronel Pacheco, Desterro do Melo, Divinésia, Dores do Turvo, Engenheiro Navarro, Ervália, Esmeraldas, Espinosa, Estrela do Sul, Florestal, Francisco Sá, Franscisco Dumont, Frutal, Funilândia, Guaraciama, Guarani, Guidoval, Guiricema, Gurinhatã, Ibirité, Igarapé, Indianópolis, Inhaúma, Ipiaçu, Iraí de Minas, Itabira, Itabirito, Itacarambi, Itaobim, Itapagipe, Itatiaiuçú, Ituiutaba, Iturama, Jaboticatubas, Jaíba, Janaúba, Januária, Jequitaí, Jequitibá, Jequitinhonha, Joaíma, João Pinheiro, Juatuba, Juiz de Fora, Lagamar, Lagoa Formosa, Lagoa Santa, Lassance, Limeira do Oeste, Manga, Mário Campos, Mateus Leme, Matias Cardoso, Mato Verde, Matozinhos, Medina, Mercês, Moeda, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Lima, Nova Ponte, Nova Porteirinha, Nova União, Oliveira Fortes, Pai Pedro, Paiva, Paracatu, Paraopeba, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Pedro Leopoldo, Perdizes, Piau, Pirapora, Piraúba, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Prudente de Morais, Raposos, Ribeirão das Neves, Rio Acima, Rio Manso, Rio Paranaíba, Rio Pomba, Rodeiro, Sabará, Sacramento, Santa Bárbara do Tugúrio, Santa Barbara, Santa Luzia, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Geraldo, São Gonçalo do Abaeté, São Gonçalo do Rio Abaixo, São Gotardo, São João das Missões, São Joaquim de Bicas, São José da Lapa, São Sebastião da Vargem Alegre, Sarzedo, Serra do Salitre, Sete Lagoas, Silveirânia, Tapira, Taquaraçú de Minas, Tocantins, Tupaciguara, Ubá, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia, Veríssimo, Vespasiano e Visconde do Rio Branco;",
+            "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "MS"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "GO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de GO, com exceção dos municípios de Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área livre de Sigatoka Negra ",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "dest": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "A partida deve estar lacrada para transitar por AC, AL, AM, AP, MA, MG (exceto pelos municípios listados no item 6.1), MS (exceto pelos municípios listados no item 6.2), MT, PA, PE, PI, PR, RS, RJ, RO, RR, SC, SE, SP, TO e GO (somente nos municípios listados no ítem 7);",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Nas UFs de GO, MG e de MS estas exigências só se aplicam a partida proveniente e destinada a município livre de Sigatoka Negra: \n\n6.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n6.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\";",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Para as UFs de GO, MG e de MS estas exigências só se aplicam a partida destinada a município livre de Sigatoka Negra: \n\n5.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n5.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 4,
+          "desc": "DE qualquer UF PARA qualquer UF",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "BSV e CMV",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"A partida encontra-se livre dos vírus Banana streak virus (BSV) e Cucumber mosaic virus (CMV), de acordo com o laudo laboratorial [nº do laudo], [nome do laboratório] -[município e UF de localização do laboratório]\";",
+            "As mudas de bananeira que transitarem em desrespeito às determinações deste artigo ficam sujeitas à interceptação, caso em que será determinado o retorno das mesmas ao local de origem e comunicado ao órgão fiscalizador da produção e comércio, para adoção das providências cabíveis, conforme o art. 13, § 2º., da Instrução Normativa MAPA nº. 46, de 27 de dezembro de 2010."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "OU Partida isenta de PTV, sendo porém PROIBIDO o trânsito por Área Livre de Sigatoka Negra, listadas no Item 2; OU PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\", sendo permitido o trânsito por Área Livre de Sigatoka Negra;",
+            "ÁREAS LIVRE DE SIGATOKA NEGRA: Unidades da Federação CE, DF, GO, PB, PI, RN, SE, bem como GO, exceto os municípios citados no item 3 e pelos municípios livres de Sigatoka Negra de MG e de MS: \na) Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \nb)Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia.",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "CE",
+            "DF",
+            "GO",
+            "RN"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "MG"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Alto Rio Doce, Araçaí, Aracitaba, Araçuaí, Araguari, Araporã, Baldim, Barão de Cocais, Barbacena, Belo Horizonte, Belo Vale, Betim, Bocaiúva, Bom Jesus do Amparo, Bonfim, Brumadinho, Buritizeiro, Cachoeira Dourada, Caetanópolis, Caeté, Campina Verde, Campos Altos, Canápolis, Capim Branco, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Confins, Contagem, Cordisburgo, Coronel Pacheco, Desterro do Melo, Divinésia, Dores do Turvo, Engenheiro Navarro, Ervália, Esmeraldas, Espinosa, Estrela do Sul, Florestal, Francisco Sá, Franscisco Dumont, Frutal, Funilândia, Guaraciama, Guarani, Guidoval, Guiricema, Gurinhatã, Ibirité, Igarapé, Indianópolis, Inhaúma, Ipiaçu, Iraí de Minas, Itabira, Itabirito, Itacarambi, Itaobim, Itapagipe, Itatiaiuçú, Ituiutaba, Iturama, Jaboticatubas, Jaíba, Janaúba, Januária, Jequitaí, Jequitibá, Jequitinhonha, Joaíma, João Pinheiro, Juatuba, Juiz de Fora, Lagamar, Lagoa Formosa, Lagoa Santa, Lassance, Limeira do Oeste, Manga, Mário Campos, Mateus Leme, Matias Cardoso, Mato Verde, Matozinhos, Medina, Mercês, Moeda, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Lima, Nova Ponte, Nova Porteirinha, Nova União, Oliveira Fortes, Pai Pedro, Paiva, Paracatu, Paraopeba, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Pedro Leopoldo, Perdizes, Piau, Pirapora, Piraúba, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Prudente de Morais, Raposos, Ribeirão das Neves, Rio Acima, Rio Manso, Rio Paranaíba, Rio Pomba, Rodeiro, Sabará, Sacramento, Santa Bárbara do Tugúrio, Santa Barbara, Santa Luzia, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Geraldo, São Gonçalo do Abaeté, São Gonçalo do Rio Abaixo, São Gotardo, São João das Missões, São Joaquim de Bicas, São José da Lapa, São Sebastião da Vargem Alegre, Sarzedo, Serra do Salitre, Sete Lagoas, Silveirânia, Tapira, Taquaraçú de Minas, Tocantins, Tupaciguara, Ubá, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia, Veríssimo, Vespasiano e Visconde do Rio Branco;."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "GO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de GO, com exceção dos municípios de Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "MS"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área livre de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "dest": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra.",
+            "A partida deve estar lacrada para transitar por AC, AM, AP, MA, MG (exceto pelos municípios listados no item 5.1), MS (exceto pelos municípios listados no item 5.2), MT, PA, PR, RS, RJ, RO, RR, SC, SP e TO;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Para as Ufs de MG e MS estas exigências só se aplicam a partida proveniente e destinada a município livre de Sigatoka Negra: \n\n5.1 -  Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba, Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n5.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "Estas exigências só se aplicam a mudas não micropopagadas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;",
+            "Esta proibição não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Para as UFs de MG e MS, esta proibição só se aplica a partida destinada a município livre de Sigatoka Negra:\n\n3.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo;\n\n3.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;",
+            "Esta proibição não se aplica a partida proveniente de município livre de Sigatoka Negra de MG e de MS: \n\na)Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\nb)Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "Esta proibição não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia;",
+            "Esta proibição só se aplica a mudas não micropopagadas;"
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação",
+          "part": [
+            "frutos",
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "AC",
+            "AP",
+            "MA"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Proibida a emissão de PTV. TRÂNSITO PROIBIDO."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação",
+          "part": [
+            "frutos",
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PR"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver origem os municípios de Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: Proibida a emissão de PTV. TRÂNSITO PROIBIDO."
+          ]
+        },
+        {
+          "idprag": 5,
+          "desc": "DE UF com ocorrência de Cancro-da-videira PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-da-videira",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "BA",
+            "PE",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas campestris pv. viticola",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"As mudas foram obtidas por micropropagação e indexadas para Xanthomonas campestris pv. viticola\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Sem Ocorrência de Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco or Área sob Erradicação",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "PB",
+            "PE",
+            "RO",
+            "RJ",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PA",
+            "PI",
+            "PB",
+            "PE",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"Os frutos são originários de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\".",
+            "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
+            "Em GO, os municípios de Itajá, Itarumã, Jataí e Lagoa Santa são Área sob Erradicação.",
+            "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Sem Ocorrência de Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "PB",
+            "PE",
+            "RO",
+            "RJ",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PA",
+            "PI",
+            "PB",
+            "PE",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"O material de propagação é originário de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Sem Ocorrência de Cancro Cítrico PARA o Estado do Paraná",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "PB",
+            "PE",
+            "RO",
+            "RJ",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "PR"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"Os frutos são originários de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\".",
+            "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
+            "Em GO, os municípios de Itajá, Itarumã, Jataí e Lagoa Santa são Área sob Erradicação.",
+            "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Sem Ocorrência de Cancro Cítrico PARA o Estado do Paraná",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "PB",
+            "PE",
+            "RO",
+            "RJ",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "PR"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"O material de propagação é originário de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\".",
+            "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
+            "Em GO, os municípios de Itajá, Itarumã, Jataí e Lagoa Santa são Área sob Erradicação.",
+            "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Livre de Cancro Cítrico PARA qualquer Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PA",
+            "PI",
+            "PB",
+            "PE",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"Os frutos são originários de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Livre de Cancro Cítrico PARA qualquer Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PA",
+            "PI",
+            "PB",
+            "PE",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"O material de propagação é originário de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE município não incluído nas áreas livres oficialmente reconhecidas PARA qualquer UF",
+          "part": [
+            "frutos",
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Proibida a emissão de PTV. TRÂNSITO PROIBIDO."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Livre de Cancro Cítrico PARA o Estado do Paraná",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "PR"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"Os frutos são originários de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Livre de Cancro Cítrico PARA o Estado do Paraná",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "PR"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"O material de propagação é originário de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "CE",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PI",
+            "RS",
+            "SP",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico (Xanthomonas citri subsp. citri) e foi produzido conforme preconiza a legislação específica em vigor\".",
+            "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
+            "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
+          ]
+        },
+        {
+          "idprag": 5,
+          "desc": "DE UF com ocorrência de Cancro-da-videira PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-da-videira",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "BA",
+            "PE",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas campestris pv. viticola",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"Os frutos foram produzidos em propriedade onde são adotadas as medidas de prevenção e controle do cancro bacteriano da videira, previstas na legislação fitossanitária\";",
+            "Estas exigências fitossanitárias só se aplicam a frutos, quando destinados a consumo in natura."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "SE A PARTIDA TIVER COMO ORIGEM UM DOS MUNICÍPIOS DE RISCO DESCONHECIDO (Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná): Proibida a emissão de PTV. TRÂNSITO PROIBIDO.",
+            "SE A PARTIDA TIVER COMO ORIGEM OS DEMAIS MUNICÍPIOS, QUE SÃO ÁREAS DE MITIGAÇÃO DE RISCO: PTV com a seguinte DA: \"O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico (Xanthomonas citri subsp. citri) e foi produzido conforme preconiza a legislação específica em vigor\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "CE",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PI",
+            "RS",
+            "SP",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida contém frutos infestados oriundos de imóvel sob Sistema de Mitigação de Risco (SMR), e tem como destino Indústria de suco, localizada em UF limítrofe, que não está localizada em ALP ou em Área Sem Ocorrência de Cancro Cítrico: \na)PTV com a seguinte DA: \"Frutos contaminados com Cancro Cítrico (Xanthomonas citri subsp. citri) destinados exclusivamente à indústria\". \nb)Os frutos devem ser transportados em veículo fechado ou coberto, e lacrado",
+            "Se a partida NÃO contém frutos infestados e é oriunda de imóvel cadastrado no SMR para o Cancro Cítrico e tem como destino\tUC ou indústria localizada em UF limítrofe:  \na) PTV com uma das seguintes DAs: \n- \"Os frutos foram produzidos em UP, de imóvel cadastrado no SMR para o Cancro Cítrico, que apresentou até um por cento de frutos com sintomas de Cancro Cítrico (Xanthomonas citri subsp. citri) e se destinam a indústria\"; OU \n- \"Os frutos foram produzidos em UP, de imóvel cadastrado no SMR para o Cancro Cítrico, que apresentou até um por cento de frutos com sintomas de Cancro Cítrico (Xanthomonas citri subsp. citri) e se destinam ao beneficiamento em Unidade de Consolidação\". \nb) Os frutos devem ser transportados em veículo fechado ou coberto e lacrado",
+            "Se a partida for formada por frutos oriundos de imóvel sem ocorrência do Cancro Cítrico, localizado em Área sob SMR, com destino para UC ou indústria, localizada em qualquer UF: \t\na) PTV com uma das seguintes DAs: \n- \"Os frutos são provenientes de imóvel sem ocorrência do Cancro Cítrico (Xanthomonas citri subsp. citri), localizado em Área sob SMR, e se destinam a indústria\"; OU \n- \"Os frutos são provenientes de imóvel sem ocorrência do Cancro Cítrico (Xanthomonas citri subsp. citri), localizado em Área sob SMR, e se destinam ao beneficiamento em Unidade de Consolidação\". \nb) Os frutos devem ser transportados em veículo fechado ou coberto",
+            "Para todas as demais situações de produtos oriundos de Área de SMR: \na) PTV com as seguintes DAs: \n- \"Os frutos são originários de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco (SMR) reconhecido oficialmente, foram higienizados por imersão em solução com Hipoclorito de Sódio a duzentos ppm, pH sete, durante dois minutos e se encontram sem sintomas de Cancro Cítrico (Xanthomonas citri subsp. citri)\". \n- Se as embalagens descartáveis ou em caixas plásticas retornáveis forem higienizadas por PULVERIZAÇÃO, adicionar a seguinte DA: \"As caixas plásticas retornáveis foram higienizadas por pulverização em solução de cloreto de benzalcônio (amônio quaternário) 125 (cento e vinte e cinco) gramas/litro, na concentração de 0,1% (um décimo percentual)\". \n- Se as embalagens descartáveis ou em caixas plásticas retornáveis forem higienizadas por IMERSÃO, adicionar a seguinte DA: \"As caixas plásticas retornáveis foram higienizadas por imersão em solução de cloreto de benzalcônio (amônio quaternário) 125 (cento e vinte e cinco) gramas/litro, na concentração de 0,1% (um décimo percentual)\" \nb) Os frutos devem ser transportados em veículo fechado ou coberto, seja para transporte a granel, em embalagens descartáveis ou em caixas plásticas retornáveis"
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área sob Erradicação de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "GO",
+            "RN",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com uma das seguintes DAs: \n -\"Os frutos são provenientes de plantas sadias de imóvel sob supervisão oficial, localizado em Área sob Erradicação, foram higienizados com Hipoclorito de Sódio a duzentos ppm, pH sete, durante dois minutos e encontram-se livres de Xanthomonas citri subsp. citri\".\n -\"Os frutos são provenientes de plantas sadias de imóvel sob supervisão oficial, localizado em Área sob Erradicação, e se destinam à indústria\".\n -\"Os frutos são provenientes de imóvel sem ocorrência do Cancro Cítrico (Xanthomonas citri subsp. citri), localizado em Área sob Erradicação\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área sob Erradicação de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "GO",
+            "RN",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"O material de propagação é proveniente de Área sob Erradicação e foi produzido em imóvel sem ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), conforme preconiza a legislação específica vigente\"."
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE Área com ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "frutos",
+            "material de propagação vegetativa",
+            "polpa in natura (não congelada)"
+          ],
+          "orig": [
+            "AM"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "TRÂNSITO PROIBIDO",
+            "Obs: Polpa congelada tem trânsito livre"
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE Área com ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "amêndoas"
+          ],
+          "orig": [
+            "AM"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "Se a partida for de amêndoas não fermentadas ou não cumprem os requisitos do item abaixo: TRÂNSITO PROIBIDO",
+            "Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente DE área sob quarentena PARA local sem ocorrência, TRÂNSITO LIVRE obedecendo as seguintes condiçoes: \na) As amêndoas devem estar acondicionadas em sacarias novas;  \nb) Carga deve estar acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc) Verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html ."
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE Área sem ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "amêndoas",
+            "frutos",
+            "material de propagação vegetativa",
+            "polpa in natura (não congelada)"
+          ],
+          "orig": [
+            "AL",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal."
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE UF with and sem ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "frutos",
+            "material de propagação vegetativa",
+            "polpa in natura (não congelada)"
+          ],
+          "orig": [
+            "AC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "Se a partida for proveniente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves: TRÂNSITO PROIBIDO",
+            "Se a partida for proveniente dos demais municípios do Acre: TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal",
+            "Obs: Polpa congelada tem trânsito livre"
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE UF com e sem ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "amêndoas"
+          ],
+          "orig": [
+            "AC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "Se a partida for de amêndoas não fermentadas ou que não cumprem os requisitos do item seguinte, e são proveniente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves: TRÂNSITO PROIBIDO",
+            "Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves, TRÂNSITO LIVRE obedecendo as seguintes condiçoes: \na) As amêndoas devem estar acondicionadas em sacarias novas;  \nb) Carga deve estar acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc) Verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html .",
+            "Se a partida for proveniente dos demais municípios do Acre: TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal"
+          ]
+        },
+        {
+          "idprag": 12,
+          "desc": "DE UF sem presença de Rhizoctonia theobromae (Ceratobasidium theobromae) PARA qualquer UF",
+          "part": [
+            "Materiais vegetais"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+          "exig": [
+            "TRÂNSITO LIVRE",
+            "A Permissão de Trânsito de Vegetais - PTV é necessária no caso de a partida de plantas e partes de plantas hospedeiras da praga transitar em áreas com ocorrência, devendo este: \nI - ser transportado em embalagens lacradas; e\nII - ser lacrado pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrital de Defesa Sanitária Vegetal na Unidade Federativa de origem e o número do lacre informado na Permissão de Trânsito de Vegetais - PTV."
+          ]
+        },
+        {
+          "idprag": 5,
+          "desc": "DE UF com ocorrência de Cancro-da-videira PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-da-videira",
+          "part": [
+            "material para pesquisa"
+          ],
+          "orig": [
+            "BA",
+            "PE",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas campestris pv. viticola",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"O material foi lacrado na origem, sob número de lacre X, e embalado de maneira a garantir a não dispersão da praga\"."
+          ]
+        },
+        {
+          "idprag": 12,
+          "desc": "DE UF com presença de Rhizoctonia theobromae (Ceratobasidium theobromae), oriundo de municípios sem ocorrência, PARA quaquer UF",
+          "part": [
+            "Materiais vegetais"
+          ],
+          "orig": [
+            "AP",
+            "PA"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+          "exig": [
+            "PTV, baseada em CFO ou CFOC, com a seguinte DA: \"A partida é originária de município sem ocorrência de Rhizoctonia theobromae, em Unidade Federativa com ocorrência, e encontra-se livre da praga\".",
+            "No caso da partida de plantas e partes de plantas hospedeiras da praga transitar em áreas com ocorrência, deverá esta: \nI - ser transportada em embalagens lacradas; e \nII - ser lacrada pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrital de Defesa Sanitária Vegetal no município de origem e o número do lacre informado na Permissão de Trânsito de Vegetais - PTV."
+          ]
+        },
+        {
+          "idprag": 12,
+          "desc": "DE UF com presença de Rhizoctonia theobromae (Ceratobasidium theobromae), oriundo de municípios com ocorrência, PARA qualquer UF",
+          "part": [
+            "Materiais vegetais"
+          ],
+          "orig": [
+            "AP",
+            "PA"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+          "exig": [
+            "Se a partida tiver como origem os municípios de Oiapoque, Calçoene, Amapá, Pracuúba, Tartarugalzinho e Pedra Branca do Amaparí no estado do Amapá, ou os município de Almeirim, Óbidos e Oriximiná, na área da\nTerra Indígena do Parque do Tumucumaque no Estado do Pará, municípios de Almeirim, Óbidos e Oriximiná, na área da Terra Indígena do Parque do Tumucumaque: TRÂNSITO PROIBIDO."
+          ]
+        },
+        {
+          "idprag": 6,
+          "desc": "DE UF com ocorrência de Cancro-europeu-das-pomáceas PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-europeu-das-pomáceas",
+          "part": [
+            "mudas",
+            "sementes",
+            "estacas",
+            "bulbos",
+            "tubérculos",
+            "manivas",
+            "toletes",
+            "gemas",
+            "ramas",
+            "rizomas",
+            "material de propagação"
+          ],
+          "orig": [
+            "PR",
+            "RS",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Neonectria ditissima (Neonectria galligena)",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"A Unidade de produção foi inspecionada oficialmente durante o período de produção e não foi constatada a presença de sintomas de infecção pela praga Neonectria galligena\";",
+            "Esta exigência fitossanitária não se aplica a material propagativo in vitro."
+          ]
+        },
+        {
+          "idprag": 6,
+          "desc": "DE UF com ocorrência de Cancro-europeu-das-pomáceas PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-europeu-das-pomáceas",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "PR",
+            "RS",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Neonectria ditissima (Neonectria galligena)",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"Na unidade de produção e Unidade de Consolidação - UC foram adotados os procedimentos de controle e prevenção previstos nesta norma (Instrução Normativa nº 20, de 20 de junho de 2013) e os frutos não apresentam sintomas de Neonectria galligena\"."
+          ]
+        },
+        {
+          "idprag": 7,
+          "desc": "DE UF com ocorrência de HLB de município com ocorrência da praga e dos municípios limítrofes PARA qualquer UF",
+          "part": [
+            "mudas",
+            "estacas",
+            "gemas",
+            "ramas",
+            "raízes",
+            "material de propagação vegetativo",
+            "plantas"
+          ],
+          "orig": [
+            "GO",
+            "MG",
+            "MS",
+            "PR",
+            "SC",
+            "SP"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "exig": [
+            "PTV, baseado em Certificado Fitossanitário de Origem - CFO, ou Certificado Fitossanitário de Origem Consolidado - CFOC, com a seguinte Declaração Adicional (DA): \"O material de propagação é originário de UF com ocorrência de Candidatus Liberibacter spp, foi produzido em ambiente protegido e encontra-se livre da praga\". \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
+          ]
+        }
+      ],
+      "legislacoes": [
+        {
+          "id": 1,
+          "leg": "Portaria nº 776, de 12/03/2025",
+          "link": "PORT776-2025.pdf"
+        },
+        {
+          "id": 10,
+          "leg": "Portaria SDA/MAPA n° 1503, de 19/12/2025",
+          "link": "PORT1503-2025.pdf"
+        },
+        {
+          "id": 11,
+          "leg": "Instrução Normativa MAPA nº 8, de 17/04/2012",
+          "link": "IN08-2012.pdf"
+        },
+        {
+          "id": 12,
+          "leg": "Instrução Normativa MAPA/SDA nº. 34, de 05/09/2017",
+          "link": "IN34-2017.pdf"
+        },
+        {
+          "id": 13,
+          "leg": "Instrução Normativa MAPA nº 46, de 27/12/2010",
+          "link": "IN46-2010.pdf"
+        },
+        {
+          "id": 14,
+          "leg": "Instrução Normativa MAPA nº 2, de 06/02/2014",
+          "link": "IN02-2014.pdf"
+        },
+        {
+          "id": 15,
+          "leg": "Instrução Normativa nº 20, de 20/06/2013",
+          "link": "IN20-2013.pdf"
+        },
+        {
+          "id": 16,
+          "leg": "Portaria SDA nº 317, de 21/05/2021",
+          "link": "PORT317-2021.pdf"
+        },
+        {
+          "id": 17,
+          "leg": "Instrução Normativa SDA/MAPA nº 17, de 27/05/2009",
+          "link": "IN17-2009.pdf"
+        },
+        {
+          "id": 18,
+          "leg": "Instrução Normativa SDA/MAPA nº 17, de 31/05/2005",
+          "link": "IN17-2005.pdf"
+        },
+        {
+          "id": 19,
+          "leg": "Instrução Normativa nº 21, de 25/04/2018",
+          "link": "IN21-2018.pdf"
+        },
+        {
+          "id": 2,
+          "leg": "Resolução nº 04, de 29/03/2019",
+          "link": "RES04-2019.pdf"
+        },
+        {
+          "id": 20,
+          "leg": "Portaria SDA nº 703, de 21/11/2022",
+          "link": "PORT703-2022.pdf"
+        },
+        {
+          "id": 21,
+          "leg": "Instrução Normativa nº 112, de 11/12/2020",
+          "link": "IN112-2020.pdf"
+        },
+        {
+          "id": 22,
+          "leg": "Instrução Normativa nº 38, de 23/06/2008",
+          "link": "IN38-2008.pdf"
+        },
+        {
+          "id": 23,
+          "leg": "Portaria SDA/MAPA nº 1.257, de 19/03/2025",
+          "link": "PORT1257-2025.pdf"
+        },
+        {
+          "id": 24,
+          "leg": "Portaria SDA/MAPA nº 1.512, de 07/01/2026",
+          "link": "PORT1512-2026.pdf"
+        },
+        {
+          "id": 3,
+          "leg": "Portaria SDA nº 780, de 06/04/2023",
+          "link": "PORT780-2023.pdf"
+        },
+        {
+          "id": 4,
+          "leg": "Portaria MAPA nº 734, de 13/11/2024",
+          "link": "PORT734-2024.pdf"
+        },
+        {
+          "id": 5,
+          "leg": "Portaria SDA nº 940, de 17/11/2023",
+          "link": "PORT940-2023.pdf"
+        },
+        {
+          "id": 6,
+          "leg": "Portaria MAPA nº 627, de 10/11/2023",
+          "link": "PORT627-2023.pdf"
+        },
+        {
+          "id": 7,
+          "leg": "Portaria SDA/MAPA n° 859, de 19/07/2023",
+          "link": "PORT859-2023.pdf"
+        },
+        {
+          "id": 8,
+          "leg": "Resolução nº 05, de 31/10/2018",
+          "link": "RES05-2018.pdf"
+        },
+        {
+          "id": 9,
+          "leg": "Instrução Normativa SDA n° 2, de 19/01/2018",
+          "link": "IN02-2018.pdf"
+        }
+      ],
+      "estados": [
+        {
+          "estado": "Acre",
+          "UF": "AC",
+          "ibge": 12
+        },
+        {
+          "estado": "Alagoas",
+          "UF": "AL",
+          "ibge": 27
+        },
+        {
+          "estado": "Amazonas",
+          "UF": "AM",
+          "ibge": 13
+        },
+        {
+          "estado": "Amapá",
+          "UF": "AP",
+          "ibge": 16
+        },
+        {
+          "estado": "Bahia",
+          "UF": "BA",
+          "ibge": 29
+        },
+        {
+          "estado": "Ceará",
+          "UF": "CE",
+          "ibge": 23
+        },
+        {
+          "estado": "Distrito Federal",
+          "UF": "DF",
+          "ibge": 53
+        },
+        {
+          "estado": "Espirito Santo",
+          "UF": "ES",
+          "ibge": 32
+        },
+        {
+          "estado": "Goiás",
+          "UF": "GO",
+          "ibge": 52
+        },
+        {
+          "estado": "Maranhão",
+          "UF": "MA",
+          "ibge": 21
+        },
+        {
+          "estado": "Minas Gerais",
+          "UF": "MG",
+          "ibge": 31
+        },
+        {
+          "estado": "Mato Grosso do Sul",
+          "UF": "MS",
+          "ibge": 50
+        },
+        {
+          "estado": "Mato Grosso",
+          "UF": "MT",
+          "ibge": 51
+        },
+        {
+          "estado": "Pará",
+          "UF": "PA",
+          "ibge": 15
+        },
+        {
+          "estado": "Paraíba",
+          "UF": "PB",
+          "ibge": 25
+        },
+        {
+          "estado": "Pernambuco",
+          "UF": "PE",
+          "ibge": 26
+        },
+        {
+          "estado": "Piauí",
+          "UF": "PI",
+          "ibge": 22
+        },
+        {
+          "estado": "Paraná",
+          "UF": "PR",
+          "ibge": 41
+        },
+        {
+          "estado": "Rio de janeiro",
+          "UF": "RJ",
+          "ibge": 33
+        },
+        {
+          "estado": "Rio Grande do Norte",
+          "UF": "RN",
+          "ibge": 24
+        },
+        {
+          "estado": "Rondônia",
+          "UF": "RO",
+          "ibge": 11
+        },
+        {
+          "estado": "Roraima",
+          "UF": "RR",
+          "ibge": 14
+        },
+        {
+          "estado": "Rio Grande do Sul",
+          "UF": "RS",
+          "ibge": 43
+        },
+        {
+          "estado": "Santa Catarina",
+          "UF": "SC",
+          "ibge": 42
+        },
+        {
+          "estado": "Sergipe",
+          "UF": "SE",
+          "ibge": 28
+        },
+        {
+          "estado": "São Paulo",
+          "UF": "SP",
+          "ibge": 35
+        },
+        {
+          "estado": "Tocantins",
+          "UF": "TO",
+          "ibge": 17
+        }
+      ]
+    },
+    "timestamp": {
+      "_seconds": 1769408122,
+      "_nanoseconds": 504000000
+    },
+    "version": 1
+  },
+  {
+    "version": 2,
+    "data": {
+      "pragas": [
+        {
+          "id": 1,
+          "prag": "Bactrocera carambolae",
+          "pragc": "MOSCA-DA-CARAMBOLA",
+          "hosp": [
+            70,
+            125,
+            120,
+            127,
+            52,
+            71,
+            29,
+            177,
+            149,
+            9,
+            137,
+            181,
+            42,
+            138,
+            179,
+            39,
+            202,
+            8,
+            152,
+            30,
+            122,
+            69,
+            68,
+            194,
+            128,
+            129,
+            131,
+            130,
+            26,
+            133,
+            134,
+            155,
+            178,
+            3,
+            28,
+            139,
+            4,
+            106,
+            123,
+            53,
+            23
+          ],
+          "files": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 10,
+          "prag": "Xanthomonas citri subsp. citri",
+          "pragc": "CANCRO CÍTRICO",
+          "hosp": [
+            103,
+            117,
+            182
+          ],
+          "files": [
+            19
+          ]
+        },
+        {
+          "id": 11,
+          "prag": "Moniliophthora roreri",
+          "pragc": "MONILÍASE",
+          "hosp": [
+            200
+          ],
+          "files": [
+            20,
+            21,
+            22
+          ]
+        },
+        {
+          "id": 12,
+          "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+          "pragc": "VASSOURA DE BRUXA DA MANDIOCA",
+          "hosp": [
+            151
+          ],
+          "files": [
+            23,
+            24
+          ]
+        },
+        {
+          "id": 2,
+          "prag": "Schizotetranychus hindustanicus",
+          "pragc": "ÁCARO HINDU",
+          "hosp": [
+            105,
+            158,
+            196,
+            5,
+            100,
+            103
+          ],
+          "files": [
+            11
+          ]
+        },
+        {
+          "id": 3,
+          "prag": "Sternochetus mangiferae",
+          "pragc": "GORGULHO DA MANGA",
+          "hosp": [
+            152
+          ],
+          "files": [
+            12
+          ]
+        },
+        {
+          "id": 4,
+          "prag": "BSV e CMV",
+          "pragc": "BANANA STREAK VIRUS e CUCUMBER MOSAIC VIRUS",
+          "hosp": [
+            41
+          ],
+          "files": [
+            13
+          ]
+        },
+        {
+          "id": 5,
+          "prag": "Xanthomonas campestris pv. viticola",
+          "pragc": "CANCRO-DA-VIDEIRA",
+          "hosp": [
+            205
+          ],
+          "files": [
+            14
+          ]
+        },
+        {
+          "id": 6,
+          "prag": "Neonectria ditissima (Neonectria galligena)",
+          "pragc": "CANCRO EUROPEU DAS POMÁCEAS",
+          "hosp": [
+            148
+          ],
+          "files": [
+            15
+          ]
+        },
+        {
+          "id": 7,
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "pragc": "HLB",
+          "hosp": [
+            103,
+            117,
+            182,
+            156
+          ],
+          "files": [
+            16
+          ]
+        },
+        {
+          "id": 8,
+          "prag": "Ralstonia solanacearum raça 2",
+          "pragc": "MOKO-DA-BANANEIRA",
+          "hosp": [
+            41,
+            126
+          ],
+          "files": [
+            17
+          ]
+        },
+        {
+          "id": 9,
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "pragc": "SIGATOKA NEGRA",
+          "hosp": [
+            41,
+            126
+          ],
+          "files": [
+            18
+          ]
+        }
+      ],
+      "hospedeiros": [
+        {
+          "id": 1,
+          "nomeSci": "Persea gratissima",
+          "nomeVul": [
+            "Abacate (Persea gratissima)"
+          ]
+        },
+        {
+          "id": 10,
+          "nomeSci": "Populus x canadensis",
+          "nomeVul": [
+            "Álamo (Populus x canadensis)",
+            "Choupo(P.x canadensis)"
+          ]
+        },
+        {
+          "id": 100,
+          "nomeSci": "Melia azedarach",
+          "nomeVul": [
+            "Cinamomo"
+          ]
+        },
+        {
+          "id": 101,
+          "nomeSci": "Fraxinus mandshurica var. Japonica",
+          "nomeVul": [
+            "Cinza Japonês"
+          ]
+        },
+        {
+          "id": 102,
+          "nomeSci": "Sorbus sp.",
+          "nomeVul": [
+            "Cinza-da-montanha",
+            "Sorva"
+          ]
+        },
+        {
+          "id": 103,
+          "nomeSci": "Citrus spp.",
+          "nomeVul": [
+            "Citros"
+          ]
+        },
+        {
+          "id": 104,
+          "nomeSci": "Coprosma areolata",
+          "nomeVul": [
+            "Coprosma Frondoso Fino"
+          ]
+        },
+        {
+          "id": 105,
+          "nomeSci": "Cocos nucifera",
+          "nomeVul": [
+            "Coqueiro"
+          ]
+        },
+        {
+          "id": 106,
+          "nomeSci": "Pouteria macrophylla",
+          "nomeVul": [
+            "Cutite"
+          ]
+        },
+        {
+          "id": 107,
+          "nomeSci": "Theobroma grandiflorum",
+          "nomeVul": [
+            "Cupuaçu"
+          ]
+        },
+        {
+          "id": 108,
+          "nomeSci": "Fagus americana",
+          "nomeVul": [
+            "Faia Americana"
+          ]
+        },
+        {
+          "id": 109,
+          "nomeSci": "Fagus sylvantica",
+          "nomeVul": [
+            "Faia Cobre"
+          ]
+        },
+        {
+          "id": 11,
+          "nomeSci": "Tilia americana",
+          "nomeVul": [
+            "Álamo Americano",
+            "Tilo"
+          ]
+        },
+        {
+          "id": 110,
+          "nomeSci": "Fagus orientalis",
+          "nomeVul": [
+            "Faia do Oriente"
+          ]
+        },
+        {
+          "id": 111,
+          "nomeSci": "Fagus crenata f. grandifolia (syn. Americana)",
+          "nomeVul": [
+            "Faia Japonesa"
+          ]
+        },
+        {
+          "id": 112,
+          "nomeSci": "Fagus silvatica f. purpurea",
+          "nomeVul": [
+            "Faia Roxa"
+          ]
+        },
+        {
+          "id": 113,
+          "nomeSci": "Fagus sp.",
+          "nomeVul": [
+            "Faia"
+          ]
+        },
+        {
+          "id": 114,
+          "nomeSci": "Aesculus turbinata",
+          "nomeVul": [
+            "Falso Castanho Japonês"
+          ]
+        },
+        {
+          "id": 115,
+          "nomeSci": "Sorbus aria",
+          "nomeVul": [
+            "Feixe Branco"
+          ]
+        },
+        {
+          "id": 116,
+          "nomeSci": "Delonix regia",
+          "nomeVul": [
+            "Flamboyant"
+          ]
+        },
+        {
+          "id": 117,
+          "nomeSci": "Fortunella spp.",
+          "nomeVul": [
+            "Fortunela"
+          ]
+        },
+        {
+          "id": 118,
+          "nomeSci": "Fraxinus bungeana",
+          "nomeVul": [
+            "Freixo (F.bungeana)"
+          ]
+        },
+        {
+          "id": 119,
+          "nomeSci": "Fraxinus excelsior",
+          "nomeVul": [
+            "Freixo (F.excelsior)"
+          ]
+        },
+        {
+          "id": 12,
+          "nomeSci": "Populus alba",
+          "nomeVul": [
+            "Álamo Branco",
+            "Choupo Branco"
+          ]
+        },
+        {
+          "id": 120,
+          "nomeSci": "Artocarpus altilis",
+          "nomeVul": [
+            "Fruta Pão"
+          ]
+        },
+        {
+          "id": 121,
+          "nomeSci": "Robinia pseudoacacia",
+          "nomeVul": [
+            "Gafanhoto Preto"
+          ]
+        },
+        {
+          "id": 122,
+          "nomeSci": "Psidium guajava",
+          "nomeVul": [
+            "Goiaba"
+          ]
+        },
+        {
+          "id": 123,
+          "nomeSci": "Psidium guineense",
+          "nomeVul": [
+            "Goiaba-araçá"
+          ]
+        },
+        {
+          "id": 124,
+          "nomeSci": "Nyssa sylvatica",
+          "nomeVul": [
+            "Goma Preta",
+            "Tupelo"
+          ]
+        },
+        {
+          "id": 125,
+          "nomeSci": "Arenga pinnata",
+          "nomeVul": [
+            "Gomuto"
+          ]
+        },
+        {
+          "id": 126,
+          "nomeSci": "Heliconia spp.",
+          "nomeVul": [
+            "Helicônia"
+          ]
+        },
+        {
+          "id": 127,
+          "nomeSci": "Artocarpus integrifolia",
+          "nomeVul": [
+            "Jaca"
+          ]
+        },
+        {
+          "id": 128,
+          "nomeSci": "Syzygium aqueum",
+          "nomeVul": [
+            "Jambo Branco (S.aqueum)",
+            "Jambo D'água",
+            "Jambosa"
+          ]
+        },
+        {
+          "id": 129,
+          "nomeSci": "Syzygium jambos",
+          "nomeVul": [
+            "Jambo Amarelo",
+            "Jambo Rosa (S. jambos)"
+          ]
+        },
+        {
+          "id": 13,
+          "nomeSci": "Populus grandidenta",
+          "nomeVul": [
+            "Álamo Grande Dente"
+          ]
+        },
+        {
+          "id": 130,
+          "nomeSci": "Syzygium samarangense",
+          "nomeVul": [
+            "Jambo Branco (S.samarangense)",
+            "Jambo Rosa (S. samarangese)"
+          ]
+        },
+        {
+          "id": 131,
+          "nomeSci": "Syzygium malaccense",
+          "nomeVul": [
+            "Jambo Vermelho"
+          ]
+        },
+        {
+          "id": 132,
+          "nomeSci": "Juglans sp.",
+          "nomeVul": [
+            "Juglans",
+            "Nogueira"
+          ]
+        },
+        {
+          "id": 133,
+          "nomeSci": "Ziziphus jujuba",
+          "nomeVul": [
+            "Jujuba (Z. jujuba)",
+            "Jujuba Chinesa"
+          ]
+        },
+        {
+          "id": 134,
+          "nomeSci": "Ziziphus mauritiana",
+          "nomeVul": [
+            "Jujuba (Z. mauritiana)",
+            "Maçã-de-pobre "
+          ]
+        },
+        {
+          "id": 135,
+          "nomeSci": "Coprosma lucida",
+          "nomeVul": [
+            "Karamu"
+          ]
+        },
+        {
+          "id": 136,
+          "nomeSci": "Sophora microphylla",
+          "nomeVul": [
+            "Kowhai",
+            "Sófora"
+          ]
+        },
+        {
+          "id": 137,
+          "nomeSci": "Citrus aurantium",
+          "nomeVul": [
+            "Laranja Azeda",
+            "Laranja Caipira",
+            "Laranja da Terra"
+          ]
+        },
+        {
+          "id": 138,
+          "nomeSci": "Citrus sinensis",
+          "nomeVul": [
+            "Laranja",
+            "Laranja Doce"
+          ]
+        },
+        {
+          "id": 139,
+          "nomeSci": "Licania sp.",
+          "nomeVul": [
+            "Licania"
+          ]
+        },
+        {
+          "id": 14,
+          "nomeSci": "Populus spp.",
+          "nomeVul": [
+            "Álamo",
+            "Choupo"
+          ]
+        },
+        {
+          "id": 140,
+          "nomeSci": "Rhus typhina",
+          "nomeVul": [
+            "Linda-dos-jardins",
+            "Rustifina Rus",
+            "Sumac Staghorn"
+          ]
+        },
+        {
+          "id": 141,
+          "nomeSci": "Umbelluraria californica",
+          "nomeVul": [
+            "Louro Califórnia"
+          ]
+        },
+        {
+          "id": 142,
+          "nomeSci": "Malus communis",
+          "nomeVul": [
+            "Maçã (M. communis)"
+          ]
+        },
+        {
+          "id": 143,
+          "nomeSci": "Malus pumila var domestica",
+          "nomeVul": [
+            "Maçã (M. pumila var domestica)"
+          ]
+        },
+        {
+          "id": 144,
+          "nomeSci": "Malus pumila",
+          "nomeVul": [
+            "Maçã (M. pumila)"
+          ]
+        },
+        {
+          "id": 145,
+          "nomeSci": "Malus x domestica",
+          "nomeVul": [
+            "Maçã (M. x domestica)"
+          ]
+        },
+        {
+          "id": 146,
+          "nomeSci": "Pyrus malus",
+          "nomeVul": [
+            "Maçã (Pyrus malus)"
+          ]
+        },
+        {
+          "id": 147,
+          "nomeSci": "Malus sylvestris",
+          "nomeVul": [
+            "Maçã Silvestre"
+          ]
+        },
+        {
+          "id": 148,
+          "nomeSci": "Malus sp.",
+          "nomeVul": [
+            "Maça"
+          ]
+        },
+        {
+          "id": 149,
+          "nomeSci": "Carica papaya",
+          "nomeVul": [
+            "Mamão"
+          ]
+        },
+        {
+          "id": 15,
+          "nomeSci": "Albizia lebbeck",
+          "nomeVul": [
+            "Albízia",
+            "Cabeça-de-negro",
+            "Faveiro"
+          ]
+        },
+        {
+          "id": 150,
+          "nomeSci": "Fraxinus mandshurica",
+          "nomeVul": [
+            "Manchu Cinza"
+          ]
+        },
+        {
+          "id": 151,
+          "nomeSci": "Manihot esculenta",
+          "nomeVul": [
+            "Mandioca"
+          ]
+        },
+        {
+          "id": 152,
+          "nomeSci": "Mangifera indica",
+          "nomeVul": [
+            "Manga"
+          ]
+        },
+        {
+          "id": 153,
+          "nomeSci": "Swietenia mahagoni",
+          "nomeVul": [
+            "Mogno Indiano Ocidental"
+          ]
+        },
+        {
+          "id": 154,
+          "nomeSci": "Switenia macrophyla",
+          "nomeVul": [
+            "Mogno"
+          ]
+        },
+        {
+          "id": 155,
+          "nomeSci": "Bysonima crassifolia",
+          "nomeVul": [
+            "Murici ou Muruci"
+          ]
+        },
+        {
+          "id": 156,
+          "nomeSci": "Murraya paniculata",
+          "nomeVul": [
+            "Murta"
+          ]
+        },
+        {
+          "id": 157,
+          "nomeSci": "Eriobotrya japonica",
+          "nomeVul": [
+            "Nespereira"
+          ]
+        },
+        {
+          "id": 158,
+          "nomeSci": "Azadirachta indica",
+          "nomeVul": [
+            "Nim"
+          ]
+        },
+        {
+          "id": 159,
+          "nomeSci": "Carya ovata",
+          "nomeVul": [
+            "Nogueira Amarga Casca de Pelúcia"
+          ]
+        },
+        {
+          "id": 16,
+          "nomeSci": "Alnus incana",
+          "nomeVul": [
+            "Alder Cinza"
+          ]
+        },
+        {
+          "id": 160,
+          "nomeSci": "Carya tomentosa",
+          "nomeVul": [
+            "Nogueira Amarga Coração Branco"
+          ]
+        },
+        {
+          "id": 161,
+          "nomeSci": "Carya glabra",
+          "nomeVul": [
+            "Nogueira Amarga de Porco"
+          ]
+        },
+        {
+          "id": 162,
+          "nomeSci": "Carya spp.",
+          "nomeVul": [
+            "Nogueira Amarga spp"
+          ]
+        },
+        {
+          "id": 163,
+          "nomeSci": "Carya cordiformis",
+          "nomeVul": [
+            "Nogueira Amarga"
+          ]
+        },
+        {
+          "id": 164,
+          "nomeSci": "Juglans cinerea",
+          "nomeVul": [
+            "Nogueira Branca"
+          ]
+        },
+        {
+          "id": 165,
+          "nomeSci": "Juglans regia",
+          "nomeVul": [
+            "Nogueira Comum",
+            "Nogueira europeia"
+          ]
+        },
+        {
+          "id": 166,
+          "nomeSci": "Carya illinoensis",
+          "nomeVul": [
+            "Nogueira Pecã"
+          ]
+        },
+        {
+          "id": 167,
+          "nomeSci": "Juglans nigra",
+          "nomeVul": [
+            "Nogueira Preta"
+          ]
+        },
+        {
+          "id": 168,
+          "nomeSci": "Ulmus americana",
+          "nomeVul": [
+            "Olmo Americano"
+          ]
+        },
+        {
+          "id": 169,
+          "nomeSci": "Ulmus glabra (syn. montana)",
+          "nomeVul": [
+            "Olmo Escocês"
+          ]
+        },
+        {
+          "id": 17,
+          "nomeSci": "Alnus japonica",
+          "nomeVul": [
+            "Alder Japonês"
+          ]
+        },
+        {
+          "id": 170,
+          "nomeSci": "Ulmus sp.",
+          "nomeVul": [
+            "Olmo",
+            "Ulmeiro"
+          ]
+        },
+        {
+          "id": 171,
+          "nomeSci": "Opuntia cochenillifera",
+          "nomeVul": [
+            "Palma forrageira"
+          ]
+        },
+        {
+          "id": 172,
+          "nomeSci": "Cornus muttallii",
+          "nomeVul": [
+            "Pau Cachorro do Pacífico"
+          ]
+        },
+        {
+          "id": 173,
+          "nomeSci": "Cornus sp.",
+          "nomeVul": [
+            "Pau Cachorro"
+          ]
+        },
+        {
+          "id": 174,
+          "nomeSci": "Pyrus pyrifolia",
+          "nomeVul": [
+            "Pera Asiática",
+            "Pera Nashi"
+          ]
+        },
+        {
+          "id": 175,
+          "nomeSci": "Pyrus communis",
+          "nomeVul": [
+            "Pereira Europeia"
+          ]
+        },
+        {
+          "id": 176,
+          "nomeSci": "Pyrus pyrifolia var culta",
+          "nomeVul": [
+            "Pereira Japonesa"
+          ]
+        },
+        {
+          "id": 177,
+          "nomeSci": "Capsicum annuum",
+          "nomeVul": [
+            "Pimenta Picante",
+            "Pimenta-do-diabo"
+          ]
+        },
+        {
+          "id": 178,
+          "nomeSci": "Capsicum chinense",
+          "nomeVul": [
+            "Pimenta-de-Cheiro"
+          ]
+        },
+        {
+          "id": 179,
+          "nomeSci": "Eugenia uniflora",
+          "nomeVul": [
+            "Pitanga Vermelha"
+          ]
+        },
+        {
+          "id": 18,
+          "nomeSci": "Alnus glutinosa",
+          "nomeVul": [
+            "Alder Negro",
+            "Amieiro"
+          ]
+        },
+        {
+          "id": 180,
+          "nomeSci": "Platanus orientalis",
+          "nomeVul": [
+            "Plátano",
+            "Plátano Oriental"
+          ]
+        },
+        {
+          "id": 181,
+          "nomeSci": "Citrus paradisi",
+          "nomeVul": [
+            "Pomelo",
+            "Toranja"
+          ]
+        },
+        {
+          "id": 182,
+          "nomeSci": "Poncirus spp.",
+          "nomeVul": [
+            "Poncirus"
+          ]
+        },
+        {
+          "id": 183,
+          "nomeSci": "Ribes sp.",
+          "nomeVul": [
+            "Ribes"
+          ]
+        },
+        {
+          "id": 184,
+          "nomeSci": "Rosa spp.",
+          "nomeVul": [
+            "Rosa"
+          ]
+        },
+        {
+          "id": 185,
+          "nomeSci": "Salix alba",
+          "nomeVul": [
+            "Salgueiro Branco"
+          ]
+        },
+        {
+          "id": 186,
+          "nomeSci": "Salix cinerea",
+          "nomeVul": [
+            "Salgueiro Cinza"
+          ]
+        },
+        {
+          "id": 187,
+          "nomeSci": "Salix alba var Vitelina",
+          "nomeVul": [
+            "Salgueiro Dourado"
+          ]
+        },
+        {
+          "id": 188,
+          "nomeSci": "Salix nigricans",
+          "nomeVul": [
+            "Salgueiro Preto"
+          ]
+        },
+        {
+          "id": 189,
+          "nomeSci": "Salix purpurea",
+          "nomeVul": [
+            "Salgueiro Púrpura",
+            "Vimeiro Púrpura"
+          ]
+        },
+        {
+          "id": 19,
+          "nomeSci": "Alnus rubra",
+          "nomeVul": [
+            "Alder Vermelha"
+          ]
+        },
+        {
+          "id": 190,
+          "nomeSci": "Salix amygdalina",
+          "nomeVul": [
+            "Salgueiro Velho Mundo"
+          ]
+        },
+        {
+          "id": 191,
+          "nomeSci": "Salix amygdaloides",
+          "nomeVul": [
+            "Salgueiro-folha-de-pêssego"
+          ]
+        },
+        {
+          "id": 192,
+          "nomeSci": "Salix alba L. Coerulea",
+          "nomeVul": [
+            "Salgueiro-taco-de-críquete"
+          ]
+        },
+        {
+          "id": 193,
+          "nomeSci": "Salix spp.",
+          "nomeVul": [
+            "Salix"
+          ]
+        },
+        {
+          "id": 194,
+          "nomeSci": "Spondias purpurea",
+          "nomeVul": [
+            "Seriguela"
+          ]
+        },
+        {
+          "id": 195,
+          "nomeSci": "Hevea brasiliensis",
+          "nomeVul": [
+            "Seringueira"
+          ]
+        },
+        {
+          "id": 196,
+          "nomeSci": "Sorghum bicolor",
+          "nomeVul": [
+            "Sorgo"
+          ]
+        },
+        {
+          "id": 197,
+          "nomeSci": "Sorbus domestica",
+          "nomeVul": [
+            "Sorva (S. domestica)"
+          ]
+        },
+        {
+          "id": 198,
+          "nomeSci": "Tectona grandis",
+          "nomeVul": [
+            "Teca"
+          ]
+        },
+        {
+          "id": 199,
+          "nomeSci": "Tilia cordata",
+          "nomeVul": [
+            "Teja",
+            "Tejo",
+            "Tella",
+            "Texa",
+            "Tilha",
+            "Tillera"
+          ]
+        },
+        {
+          "id": 2,
+          "nomeSci": "Picea abies",
+          "nomeVul": [
+            "Abeto Europeu",
+            "Abeto Vermelho Comum",
+            "Noruega Abeto"
+          ]
+        },
+        {
+          "id": 20,
+          "nomeSci": "Alnus sp.",
+          "nomeVul": [
+            "Alder"
+          ]
+        },
+        {
+          "id": 200,
+          "nomeSci": "Theobroma spp.",
+          "nomeVul": [
+            "Theobroma spp"
+          ]
+        },
+        {
+          "id": 201,
+          "nomeSci": "Tilia sp.",
+          "nomeVul": [
+            "Tília"
+          ]
+        },
+        {
+          "id": 202,
+          "nomeSci": "Licopersicum esculentum",
+          "nomeVul": [
+            "Tomate"
+          ]
+        },
+        {
+          "id": 203,
+          "nomeSci": "Sorbus aucuparia",
+          "nomeVul": [
+            "Tramazeira"
+          ]
+        },
+        {
+          "id": 204,
+          "nomeSci": "Liriodendron tulipifera",
+          "nomeVul": [
+            "Tulipeiro"
+          ]
+        },
+        {
+          "id": 205,
+          "nomeSci": "Vitis spp. e seus híbridos",
+          "nomeVul": [
+            "Uva",
+            "Videira e seus híbridos"
+          ]
+        },
+        {
+          "id": 206,
+          "nomeSci": "Viola sp.",
+          "nomeVul": [
+            "Viola"
+          ]
+        },
+        {
+          "id": 21,
+          "nomeSci": "Populus wislizeni",
+          "nomeVul": [
+            "Algodão Americano"
+          ]
+        },
+        {
+          "id": 22,
+          "nomeSci": "Prunus spp.",
+          "nomeVul": [
+            "Ameixa"
+          ]
+        },
+        {
+          "id": 23,
+          "nomeSci": "Syzygium cumini",
+          "nomeVul": [
+            "Ameixa-roxa"
+          ]
+        },
+        {
+          "id": 24,
+          "nomeSci": "Prunus salicina",
+          "nomeVul": [
+            "Ameixeira-japonesa"
+          ]
+        },
+        {
+          "id": 25,
+          "nomeSci": "Amelanchier laevis",
+          "nomeVul": [
+            "Amelanchier"
+          ]
+        },
+        {
+          "id": 26,
+          "nomeSci": "Terminalia catappa",
+          "nomeVul": [
+            "Amendoeira",
+            "Sete Copas"
+          ]
+        },
+        {
+          "id": 27,
+          "nomeSci": "Frangula almus",
+          "nomeVul": [
+            "Amieiro Negro",
+            "Sanguinho"
+          ]
+        },
+        {
+          "id": 28,
+          "nomeSci": "Eugenia stipitata",
+          "nomeVul": [
+            "Araçá-Boi"
+          ]
+        },
+        {
+          "id": 29,
+          "nomeSci": "Calycolpus goetheanus",
+          "nomeVul": [
+            "Araçapeua"
+          ]
+        },
+        {
+          "id": 3,
+          "nomeSci": "Chrysophyllum cainito",
+          "nomeVul": [
+            "Abiu (C. cainito)",
+            "Bilimbi (C. cainito)",
+            "Caimito",
+            "Carambola amarela (C. cainito)"
+          ]
+        },
+        {
+          "id": 30,
+          "nomeSci": "Manilkara zapota",
+          "nomeVul": [
+            "Arapaju",
+            "Maçaranduba",
+            "Mararaju",
+            "Sapoti",
+            "Sapotilha"
+          ]
+        },
+        {
+          "id": 31,
+          "nomeSci": "Crataegus oxyacanthoides (syn: oxyacantha)",
+          "nomeVul": [
+            "Arbusto Espinheiro do Bosque"
+          ]
+        },
+        {
+          "id": 32,
+          "nomeSci": "Craetaegus monogyna",
+          "nomeVul": [
+            "Arbusto Espinhento",
+            "Espinho Branco"
+          ]
+        },
+        {
+          "id": 33,
+          "nomeSci": "Fraxinus nigra (syn. sambucifolia)",
+          "nomeVul": [
+            "Árvore Preta"
+          ]
+        },
+        {
+          "id": 34,
+          "nomeSci": "Avena sativa",
+          "nomeVul": [
+            "Aveia"
+          ]
+        },
+        {
+          "id": 35,
+          "nomeSci": "Corylus avellana",
+          "nomeVul": [
+            "Avelã"
+          ]
+        },
+        {
+          "id": 36,
+          "nomeSci": "Corylus sieboldiana",
+          "nomeVul": [
+            "Aveleira Japonesa"
+          ]
+        },
+        {
+          "id": 37,
+          "nomeSci": "Corylus heterophylla var. thunbergiii",
+          "nomeVul": [
+            "Aveleira Siberiana"
+          ]
+        },
+        {
+          "id": 38,
+          "nomeSci": "Ilex aquifolium",
+          "nomeVul": [
+            "Azevinho"
+          ]
+        },
+        {
+          "id": 39,
+          "nomeSci": "Garcinia dulcis",
+          "nomeVul": [
+            "Bacupari"
+          ]
+        },
+        {
+          "id": 4,
+          "nomeSci": "Pouteria caimito",
+          "nomeVul": [
+            "Abiu (P. cainito)"
+          ]
+        },
+        {
+          "id": 40,
+          "nomeSci": "Myroxylon balsamum",
+          "nomeVul": [
+            "Bálsamo"
+          ]
+        },
+        {
+          "id": 41,
+          "nomeSci": "Musa spp.",
+          "nomeVul": [
+            "Banana"
+          ]
+        },
+        {
+          "id": 42,
+          "nomeSci": "Citrus reticulata",
+          "nomeVul": [
+            "Bergamota",
+            "Mandarina,",
+            "Mexerica",
+            "Ponkan",
+            "Tangerina"
+          ]
+        },
+        {
+          "id": 43,
+          "nomeSci": "Betula papyrifera",
+          "nomeVul": [
+            "Bétula Branca (B.papyrifera)",
+            "Bétula Papel"
+          ]
+        },
+        {
+          "id": 44,
+          "nomeSci": "Betula pendula (syn:verrucosa)",
+          "nomeVul": [
+            "Bétula Branca (B.pendula)"
+          ]
+        },
+        {
+          "id": 45,
+          "nomeSci": "Betula pubescens",
+          "nomeVul": [
+            "Bétula Branca (B.pubescens)"
+          ]
+        },
+        {
+          "id": 46,
+          "nomeSci": "Betula populifolia",
+          "nomeVul": [
+            "Bétula Cinza"
+          ]
+        },
+        {
+          "id": 47,
+          "nomeSci": "Betula lenta",
+          "nomeVul": [
+            "Bétula Lenta"
+          ]
+        },
+        {
+          "id": 48,
+          "nomeSci": "Betula nigra",
+          "nomeVul": [
+            "Bétula lenta",
+            "Bétula Negra"
+          ]
+        },
+        {
+          "id": 49,
+          "nomeSci": "Betula lutea (synonym: alleghaniensis)",
+          "nomeVul": [
+            "Bétula Lutea"
+          ]
+        },
+        {
+          "id": 5,
+          "nomeSci": "Acacia spp.",
+          "nomeVul": [
+            "Acácia",
+            "Angico",
+            "Jurema",
+            "Unha-de-gato"
+          ]
+        },
+        {
+          "id": 50,
+          "nomeSci": "Betula maximowicziana",
+          "nomeVul": [
+            "Bétula Monarca"
+          ]
+        },
+        {
+          "id": 51,
+          "nomeSci": "Betula sp.",
+          "nomeVul": [
+            "Bétula"
+          ]
+        },
+        {
+          "id": 52,
+          "nomeSci": "Averrhoa bilimbi",
+          "nomeVul": [
+            "Bilimbi (A. bilimbi)",
+            "Carambola Amarela (A. bilimbi)",
+            "Limão Cayena"
+          ]
+        },
+        {
+          "id": 53,
+          "nomeSci": "Rollinia omucosa",
+          "nomeVul": [
+            "Biribá"
+          ]
+        },
+        {
+          "id": 54,
+          "nomeSci": "Acer palmatum",
+          "nomeVul": [
+            "Bordo Japonês"
+          ]
+        },
+        {
+          "id": 55,
+          "nomeSci": "Acer macrophyllum",
+          "nomeVul": [
+            "Bordo Vermelho (A.macrophyllum)"
+          ]
+        },
+        {
+          "id": 56,
+          "nomeSci": "Acer rubrum",
+          "nomeVul": [
+            "Bordo Vermelho (A.rubrum)"
+          ]
+        },
+        {
+          "id": 57,
+          "nomeSci": "Acer mono subsp. Heterophyllum",
+          "nomeVul": [
+            "Bordo (A.mono)"
+          ]
+        },
+        {
+          "id": 58,
+          "nomeSci": "Acer negundo",
+          "nomeVul": [
+            "Bordo (A.negundo)"
+          ]
+        },
+        {
+          "id": 59,
+          "nomeSci": "Acer saccharum",
+          "nomeVul": [
+            "Bordo (A.sacharum)"
+          ]
+        },
+        {
+          "id": 6,
+          "nomeSci": "Malpighia spp.",
+          "nomeVul": [
+            "Acerola(qualquer espécie)"
+          ]
+        },
+        {
+          "id": 60,
+          "nomeSci": "Acer spicatum",
+          "nomeVul": [
+            "Bordo (A.spicatum)"
+          ]
+        },
+        {
+          "id": 61,
+          "nomeSci": "Acer pennsylvanicum",
+          "nomeVul": [
+            "Bordo (Acer pennsylvanicum)"
+          ]
+        },
+        {
+          "id": 62,
+          "nomeSci": "Acer pseudoplatanus",
+          "nomeVul": [
+            "Bordo (Acer pseudoplatanus)",
+            "Padreiro"
+          ]
+        },
+        {
+          "id": 63,
+          "nomeSci": "Acer sp.",
+          "nomeVul": [
+            "Bordo"
+          ]
+        },
+        {
+          "id": 64,
+          "nomeSci": "Acer circinatum",
+          "nomeVul": [
+            "Bordo-da-videira"
+          ]
+        },
+        {
+          "id": 65,
+          "nomeSci": "Cercis canadensis",
+          "nomeVul": [
+            "Broto Vermelho Oriental"
+          ]
+        },
+        {
+          "id": 66,
+          "nomeSci": "Theobroma cacao",
+          "nomeVul": [
+            "Cacau"
+          ]
+        },
+        {
+          "id": 67,
+          "nomeSci": "Theobroma speciosum",
+          "nomeVul": [
+            "Cacauí"
+          ]
+        },
+        {
+          "id": 68,
+          "nomeSci": "Spondias lutea",
+          "nomeVul": [
+            "Cajá (S. lutea)",
+            "Cajá-mirim (S. lutea)",
+            "Cajazeiro (S. lutea)",
+            "Taperebá (S. lutea)"
+          ]
+        },
+        {
+          "id": 69,
+          "nomeSci": "Spondias mombin",
+          "nomeVul": [
+            "Cajá (S. mombin)",
+            "Cajá-mirim (S. mombin)",
+            "Cajazeiro (S. mombin)",
+            "Taperebá (S. mombin)"
+          ]
+        },
+        {
+          "id": 7,
+          "nomeSci": "Malpighia punicifolia",
+          "nomeVul": [
+            "Acerola (M. punicifolia)"
+          ]
+        },
+        {
+          "id": 70,
+          "nomeSci": "Anacardium occidentale",
+          "nomeVul": [
+            "Caju"
+          ]
+        },
+        {
+          "id": 71,
+          "nomeSci": "Averrhoa carambola",
+          "nomeVul": [
+            "Carambola"
+          ]
+        },
+        {
+          "id": 72,
+          "nomeSci": "Carpinus betulas",
+          "nomeVul": [
+            "Cárpino Betulas"
+          ]
+        },
+        {
+          "id": 73,
+          "nomeSci": "Carpinus sp.",
+          "nomeVul": [
+            "Cárpino"
+          ]
+        },
+        {
+          "id": 74,
+          "nomeSci": "Quercus laurifolia",
+          "nomeVul": [
+            "Carvalho Água",
+            "Carvalho Folha Diamante",
+            "Carvalho Glorioso",
+            "Carvalho Glorioso do Brejo",
+            "Carvalho Obtuso"
+          ]
+        },
+        {
+          "id": 75,
+          "nomeSci": "Quercus bicolor",
+          "nomeVul": [
+            "Carvalho Branco do Brejo"
+          ]
+        },
+        {
+          "id": 76,
+          "nomeSci": "Quercus garryana",
+          "nomeVul": [
+            "Carvalho Branco Oregon",
+            "Carvalho Oregon"
+          ]
+        },
+        {
+          "id": 77,
+          "nomeSci": "Quercus alba",
+          "nomeVul": [
+            "Carvalho Branco"
+          ]
+        },
+        {
+          "id": 78,
+          "nomeSci": "Quercus borealis (syn: rubra)",
+          "nomeVul": [
+            "Carvalho Campeão(Q.borealis)",
+            "Carvalho Vermelho do Norte (Q.borealis)"
+          ]
+        },
+        {
+          "id": 79,
+          "nomeSci": "Quercus rubra",
+          "nomeVul": [
+            "Carvalho Campeão(Q.rubra)",
+            "Carvalho Vermelho do Norte (Q.rubra)"
+          ]
+        },
+        {
+          "id": 8,
+          "nomeSci": "Malpighia emarginata",
+          "nomeVul": [
+            "Acerola (M. emarginata)"
+          ]
+        },
+        {
+          "id": 80,
+          "nomeSci": "Quercus montana",
+          "nomeVul": [
+            "Carvalho Castanheiro"
+          ]
+        },
+        {
+          "id": 81,
+          "nomeSci": "Quercus coccinea",
+          "nomeVul": [
+            "Carvalho Escarlata"
+          ]
+        },
+        {
+          "id": 82,
+          "nomeSci": "Quercus glandulifera",
+          "nomeVul": [
+            "Carvalho Konara",
+            "Carvalho Koreano"
+          ]
+        },
+        {
+          "id": 83,
+          "nomeSci": "Quercus mongolica var grosserrata",
+          "nomeVul": [
+            "Carvalho Mongoliano"
+          ]
+        },
+        {
+          "id": 84,
+          "nomeSci": "Quercus velutina",
+          "nomeVul": [
+            "Carvalho Preto"
+          ]
+        },
+        {
+          "id": 85,
+          "nomeSci": "Quercus sp.",
+          "nomeVul": [
+            "Carvalho"
+          ]
+        },
+        {
+          "id": 86,
+          "nomeSci": "Quercus robur",
+          "nomeVul": [
+            "Carvalho-alvarinho",
+            "Carvalho-roble",
+            "Carvalho-vermelho"
+          ]
+        },
+        {
+          "id": 87,
+          "nomeSci": "Aesculus hippocastanum",
+          "nomeVul": [
+            "Castanha-da-Índia(A.hippocastanum)"
+          ]
+        },
+        {
+          "id": 88,
+          "nomeSci": "Aesculus sp.",
+          "nomeVul": [
+            "Castanha-da-Índia"
+          ]
+        },
+        {
+          "id": 89,
+          "nomeSci": "Castanea dentata",
+          "nomeVul": [
+            "Castanheiro Europeu"
+          ]
+        },
+        {
+          "id": 9,
+          "nomeSci": "Chrysobalanus icaco",
+          "nomeVul": [
+            "Ajuru"
+          ]
+        },
+        {
+          "id": 90,
+          "nomeSci": "Prunus virginiana",
+          "nomeVul": [
+            "Cereja de Pássaro Virginia",
+            "Grão Amargo"
+          ]
+        },
+        {
+          "id": 91,
+          "nomeSci": "Prunus ssiori",
+          "nomeVul": [
+            "Cereja de Pássaro"
+          ]
+        },
+        {
+          "id": 92,
+          "nomeSci": "Prunus subhirtella var. pendula",
+          "nomeVul": [
+            "Cerejeira Chorona"
+          ]
+        },
+        {
+          "id": 93,
+          "nomeSci": "Prunus serotina",
+          "nomeVul": [
+            "Cerejeira Negra"
+          ]
+        },
+        {
+          "id": 94,
+          "nomeSci": "Prunus avium",
+          "nomeVul": [
+            "Cerejeira"
+          ]
+        },
+        {
+          "id": 95,
+          "nomeSci": "Camellia sinensis",
+          "nomeVul": [
+            "Chá-da-Índia"
+          ]
+        },
+        {
+          "id": 96,
+          "nomeSci": "Populus tremula",
+          "nomeVul": [
+            "Choupo Tremedor"
+          ]
+        },
+        {
+          "id": 97,
+          "nomeSci": "Populus tremuloides",
+          "nomeVul": [
+            "Choupo Trêmulo"
+          ]
+        },
+        {
+          "id": 98,
+          "nomeSci": "Populus balsamifera",
+          "nomeVul": [
+            "Choupo-bálsamo"
+          ]
+        },
+        {
+          "id": 99,
+          "nomeSci": "Laburnum anagyrioides",
+          "nomeVul": [
+            "Chuva-de-ouro",
+            "Corrente-de-ouro"
+          ]
+        }
+      ],
+      "regras": [
+        {
+          "idprag": 1,
+          "desc": "DE UF sem ocorrência de Mosca-da-carambola PARA UF sem ocorrência de Mosca-da-carambola",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Bactrocera carambolae",
+          "exig": [
+            "Se os frutos  forem destinados a locais sem ocorrência da praga e transitarem em áreas sob quarentena, deverão:  \nI - estar acondicionados em embalagens que não permitam o contato do produto com a praga;  \nII - ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm; e I \nII - estar acompanhados de Permissão de Trânsito de Vegetais - PTV, conforme o disposto no art. 2º, da Instrução Normativa MAPA nº 28, de 24 de agosto de 2016.",
+            "Se o frutos saírem de Unidade da Federação sem ocorrência da praga e transitarem por zona tampão, áreas erradicadas e áreas sem detecção em Unidade da Federação com ocorrência da praga, com destino a outra Unidade da Federação sem ocorrência, deverão: \nI - possuir documento que ateste a origem, podendo ser emitida apenas a PTV, sem a necessidade de CFO/CFOC.  \nII- constará a seguinte DA na PTV:  \"A partida foi produzida em UF sem ocorrência de Bactrocera carambolae”.",
+            "Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções e Portarias acima."
+          ]
+        },
+        {
+          "idprag": 1,
+          "desc": "DE UF com ocorrência de Mosca-da-carambola PARA qualquer UF",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "AP",
+            "AM",
+            "PA",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Bactrocera carambolae",
+          "exig": [
+            "Se a partida for procedente DE área sob quarentena e de área protegida PARA local sem ocorrência: TRÂNSITO PROIBIDO.",
+            "Se a partida for procedente DE zona tampão, de áreas erradicadas e de áreas sem detecção: PTV com a seguinte DA: \"A partida está livre de Bactrocera carambolae”",
+            "Se os frutos  forem destinados a locais sem ocorrência da praga e transitarem em áreas sob quarentena, deverão:  \nI - estar acondicionados em embalagens que não permitam o contato do produto com a praga;  \nII - ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm; e I \nII - estar acompanhados de Permissão de Trânsito de Vegetais - PTV, conforme o disposto no art. 2º, da Instrução Normativa MAPA nº 28, de 24 de agosto de 2016.",
+            "Se o frutos saírem de Unidade da Federação sem ocorrência da praga e transitarem por zona tampão, áreas erradicadas e áreas sem detecção em Unidade da Federação com ocorrência da praga, com destino a outra Unidade da Federação sem ocorrência, deverão: \nI - possuir documento que ateste a origem, podendo ser emitida apenas a PTV, sem a necessidade de CFO/CFOC.  \nII- constará a seguinte DA na PTV:  \"A partida foi produzida em UF sem ocorrência de Bactrocera carambolae”.",
+            "Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções e Portarias acima."
+          ]
+        },
+        {
+          "idprag": 7,
+          "desc": "DE UF com ocorrência de HLB, de município sem ocorrência da praga, exceto aqueles limítrofes às áreas de ocorrência, PARA qualquer UF.",
+          "part": [
+            "mudas",
+            "estacas",
+            "gemas",
+            "ramas",
+            "raízes",
+            "material de propagação vegetativo",
+            "plantas"
+          ],
+          "orig": [
+            "GO",
+            "MG",
+            "MS",
+            "PR",
+            "SC",
+            "SP"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "exig": [
+            "PTV, baseado em Certificado Fitossanitário de Origem - CFO, ou Certificado Fitossanitário de Origem Consolidado - CFOC, com a seguinte Declaração Adicional (DA): \"O material de propagação é originário de município sem ocorrência de Candidatus Liberibacter spp., de UF com ocorrência, e encontra-se livre da praga.\".\n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
+          ]
+        },
+        {
+          "idprag": 7,
+          "desc": "DE UF sem ocorrência de HLB PARA qualquer UF",
+          "part": [
+            "mudas",
+            "estacas",
+            "gemas",
+            "ramas",
+            "raízes",
+            "material de propagação vegetativo",
+            "plantas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "MA",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "exig": [
+            "PTV com a seguinte declaração adicional: “O material de propagação é originário de UF sem ocorrência de Candidatus Liberibacter spp.”; \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
+          ]
+        },
+        {
+          "idprag": 7,
+          "desc": "DE UF com ocorrência de HLB, oriúndos de município com ocorrência da praga e dos municípios limítrofes, PARA UF reconhecida pelo MAPA como sem ocorrência de HLB",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "GO",
+            "MG",
+            "MS",
+            "PR",
+            "SC",
+            "SP"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "MA",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "TO"
+          ],
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "exig": [
+            "PTV com a seguinte declaração adicional: “Os frutos foram submetidos a beneficiamento primário na origem para retirada de restos vegetais, qual seja, totalmente isentos de folhas e ramos de plantas cítricas”."
+          ]
+        },
+        {
+          "idprag": 3,
+          "desc": "DE UF com ocorrência PARA qualquer UF",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "RJ"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Sternochetus mangiferae",
+          "exig": [
+            "PTV com a seguinte Declaração Adicional: \"A partida foi produzida fora da zona interditada e encontra-se livre de Sternochetus mangiferae\"."
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "Material para pesquisa DE qualquer UF PARA UF sem ocorrência ou Área Livre de Moko-da-bananeira.",
+          "part": [
+            "material para pesquisa"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RS",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "Autorização da Superintendência Federal de Agricultura e Pecuária (SFA), da UF de origem da partida;",
+            "A partida deve ser transportada em recipiente lacrado;"
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF com ocorrência de Moko-da-bananeira PARA todas as UFs",
+          "part": [
+            "mudas",
+            "rizomas"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "AP",
+            "PA",
+            "RO",
+            "RR",
+            "SE"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "TRÂNSITO PROIBIDO, exceto para mudas transportadas in vitro ou micropropagadas. \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009",
+            "Para mudas transportadas en vitro ou micropropagadas, será exigido: \na)PTV com a seguinte declaração adicional: \"As mudas encontram- se livres de Ralstonia solanacearum raça 2\". \nb) A carga deverá estar lacrada e o número do lacre constar na PTV. \nc) Na PTV deve constar se as mudas são in vitro ou micropropagadas;"
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE Área Livre de Moko-da-bananeira PARA todas as UFs",
+          "part": [
+            "mudas",
+            "rizomas"
+          ],
+          "orig": [
+            "CE",
+            "PE",
+            "PI",
+            "RN",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV com  a seguinte declaração adicional: \"As mudas foram produzidas em Área Livre de Ralstonia solanacearum raça 2, oficialmente reconhecida pelo Ministério da Agricultura e Pecuária.\".  \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009.",
+            "A carga deverá estar lacrada e o número do lacre constar na PTV."
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF sem ocorrência de Moko-da-bananeira PARA todas as UFs",
+          "part": [
+            "mudas",
+            "rizomas"
+          ],
+          "orig": [
+            "AC",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PR",
+            "RJ",
+            "RS",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV com  a seguinte declaração adicional: \"As mudas se encontram livres de Ralstonia solanacearum raça 2.\".  \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009.",
+            "Quando transitar pelas UFs AM, AP, PA, RO, RR e SE, onde ocorre a praga, a carga deverá estar lacrada e o número do lacre constar na PTV."
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF com ocorrência de Moko-da-bananeira PARA área livre de Moko-da-bananeira",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "AP",
+            "PA",
+            "RO",
+            "RR",
+            "SE"
+          ],
+          "dest": [
+            "CE",
+            "PE",
+            "PI",
+            "RN",
+            "SC"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga Ralstonia solanacearum raça 2\"; \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE área livre de Moko-da-bananeira PARA área livre de Moko-da-bananeira",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "CE",
+            "PE",
+            "PI",
+            "RN",
+            "SC"
+          ],
+          "dest": [
+            "CE",
+            "PE",
+            "PI",
+            "RN",
+            "SC"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"As mudas foram produzidas em área livre de Ralstonia solanacearum raça 2, oficialmente reconhecida pelo Ministério da Agricultura e Pecuária\". \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
+          ]
+        },
+        {
+          "idprag": 2,
+          "desc": "DE UF com ocorrência de Ácaro-hindu-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-hindu-dos-citros",
+          "part": [
+            "plantas",
+            "mudas",
+            "raízes",
+            "caules",
+            "ramos",
+            "folhas",
+            "flores",
+            "frutos"
+          ],
+          "orig": [
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Schizotetranychus hindustanicus",
+          "exig": [
+            "TRÂNSITO PROIBIDO.\nMotivo: Ausência de área livre de ácaro-hindu-dos-citros, na origem da partida.",
+            "Para  frutos de Citrus spp. o trânsito é permitido com PTV com a declaração adicional: \"A partida atende às exigências constantes da Instrução Normativa MAPA nº 8, de 17 de abril de 2012, encontra-se livre do Ácaro Hindu dos Citros\";",
+            "Estas exigências fitossanitárias não se aplicam a material in vitro, madeira serrada e, ainda, frutos de coco (Cocus nucifera) secos e descascados;"
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF sem ocorrência de Moko-da-bananeira PARA todas as UFs",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AC",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RS",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV para comprovar a origem. \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009;"
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF com ocorrência de Moko-da-bananeira PARA UF sem ocorrência de Moko-da-bananeira",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "AP",
+            "PA",
+            "RO",
+            "RR",
+            "SE"
+          ],
+          "dest": [
+            "AC",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PR",
+            "RJ",
+            "RS",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "OU PTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos em UP onde não foi observada a presença de Ralstonia solanacearum raça 2, nos últimos doze meses\"; OU \nPTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga Ralstonia solanacearum raça 2\"; \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "Mudas Micropropagadas DE qualquer UF PARA qualquer UF",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV;",
+            "As mudas deverão ser pré-aclimatadas ou aclimatadas em estufas ou casas de vegetação; e tratadas com fungicidas registrados, 10 (dez) dias antes de sua expedição para as Unidades da Federação;",
+            "As mudas também poderão ser transportadas quando ainda in vitro;",
+            "A exigência de PTV não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a mudas micropropagadas; Para outras mudas que não sejam micropropagadas, o trânsito é proibido, salvo quando provenientes de bananais de Áreas Livres de Sigatoka Negra."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "Material para pesquisa DE qualquer UF PARA qualquer UF",
+          "part": [
+            "material para pesquisa"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "Autorização Declaratória emitida pela Área de Sanidade Vegetal da Superintendência Federal da Agricultura - SFA, na Unidade da Federação de origem do material genético;",
+            "O material genético deve ser transportado em recipiente lacrado, devendo o número do lacre constar da Autorização Declaratória;",
+            "O interessado deve comunicar a SFA de destino da partida, quando do recebimento do material, para inspeção fitossanitária;",
+            "Estas exigências fitossanitárias só se aplicam a material genético;"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "CE",
+            "DF",
+            "RN"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "GO é área livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "MG"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente do municípios livres de Sigatoka Negra em MG: Águas Vermelhas, Alto Rio Doce, Araçaí, Aracitaba, Araçuaí, Araguari, Araporã, Baldim, Barão de Cocais, Barbacena, Belo Horizonte, Belo Vale, Betim, Bocaiúva, Bom Jesus do Amparo, Bonfim, Brumadinho, Buritizeiro, Cachoeira Dourada, Caetanópolis, Caeté, Campina Verde, Campos Altos, Canápolis, Capim Branco, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Confins, Contagem, Cordisburgo, Coronel Pacheco, Desterro do Melo, Divinésia, Dores do Turvo, Engenheiro Navarro, Ervália, Esmeraldas, Espinosa, Estrela do Sul, Florestal, Francisco Sá, Franscisco Dumont, Frutal, Funilândia, Guaraciama, Guarani, Guidoval, Guiricema, Gurinhatã, Ibirité, Igarapé, Indianópolis, Inhaúma, Ipiaçu, Iraí de Minas, Itabira, Itabirito, Itacarambi, Itaobim, Itapagipe, Itatiaiuçú, Ituiutaba, Iturama, Jaboticatubas, Jaíba, Janaúba, Januária, Jequitaí, Jequitibá, Jequitinhonha, Joaíma, João Pinheiro, Juatuba, Juiz de Fora, Lagamar, Lagoa Formosa, Lagoa Santa, Lassance, Limeira do Oeste, Manga, Mário Campos, Mateus Leme, Matias Cardoso, Mato Verde, Matozinhos, Medina, Mercês, Moeda, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Lima, Nova Ponte, Nova Porteirinha, Nova União, Oliveira Fortes, Pai Pedro, Paiva, Paracatu, Paraopeba, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Pedro Leopoldo, Perdizes, Piau, Pirapora, Piraúba, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Prudente de Morais, Raposos, Ribeirão das Neves, Rio Acima, Rio Manso, Rio Paranaíba, Rio Pomba, Rodeiro, Sabará, Sacramento, Santa Bárbara do Tugúrio, Santa Barbara, Santa Luzia, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Geraldo, São Gonçalo do Abaeté, São Gonçalo do Rio Abaixo, São Gotardo, São João das Missões, São Joaquim de Bicas, São José da Lapa, São Sebastião da Vargem Alegre, Sarzedo, Serra do Salitre, Sete Lagoas, Silveirânia, Tapira, Taquaraçú de Minas, Tocantins, Tupaciguara, Ubá, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia, Veríssimo, Vespasiano e Visconde do Rio Branco;",
+            "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "MS"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "GO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de GO, com exceção dos municípios de Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área livre de Sigatoka Negra ",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "dest": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "A partida deve estar lacrada para transitar por AC, AL, AM, AP, MA, MG (exceto pelos municípios listados no item 6.1), MS (exceto pelos municípios listados no item 6.2), MT, PA, PE, PI, PR, RS, RJ, RO, RR, SC, SE, SP, TO e GO (somente nos municípios listados no ítem 7);",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Nas UFs de GO, MG e de MS estas exigências só se aplicam a partida proveniente e destinada a município livre de Sigatoka Negra: \n\n6.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n6.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\";",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Para as UFs de GO, MG e de MS estas exigências só se aplicam a partida destinada a município livre de Sigatoka Negra: \n\n5.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n5.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 4,
+          "desc": "DE qualquer UF PARA qualquer UF",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "BSV e CMV",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"A partida encontra-se livre dos vírus Banana streak virus (BSV) e Cucumber mosaic virus (CMV), de acordo com o laudo laboratorial [nº do laudo], [nome do laboratório] -[município e UF de localização do laboratório]\";",
+            "As mudas de bananeira que transitarem em desrespeito às determinações deste artigo ficam sujeitas à interceptação, caso em que será determinado o retorno das mesmas ao local de origem e comunicado ao órgão fiscalizador da produção e comércio, para adoção das providências cabíveis, conforme o art. 13, § 2º., da Instrução Normativa MAPA nº. 46, de 27 de dezembro de 2010."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "OU Partida isenta de PTV, sendo porém PROIBIDO o trânsito por Área Livre de Sigatoka Negra, listadas no Item 2; OU PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\", sendo permitido o trânsito por Área Livre de Sigatoka Negra;",
+            "ÁREAS LIVRE DE SIGATOKA NEGRA: Unidades da Federação CE, DF, GO, PB, PI, RN, SE, bem como GO, exceto os municípios citados no item 3 e pelos municípios livres de Sigatoka Negra de MG e de MS: \na) Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \nb)Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia.",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "CE",
+            "DF",
+            "GO",
+            "RN"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "MG"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Alto Rio Doce, Araçaí, Aracitaba, Araçuaí, Araguari, Araporã, Baldim, Barão de Cocais, Barbacena, Belo Horizonte, Belo Vale, Betim, Bocaiúva, Bom Jesus do Amparo, Bonfim, Brumadinho, Buritizeiro, Cachoeira Dourada, Caetanópolis, Caeté, Campina Verde, Campos Altos, Canápolis, Capim Branco, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Confins, Contagem, Cordisburgo, Coronel Pacheco, Desterro do Melo, Divinésia, Dores do Turvo, Engenheiro Navarro, Ervália, Esmeraldas, Espinosa, Estrela do Sul, Florestal, Francisco Sá, Franscisco Dumont, Frutal, Funilândia, Guaraciama, Guarani, Guidoval, Guiricema, Gurinhatã, Ibirité, Igarapé, Indianópolis, Inhaúma, Ipiaçu, Iraí de Minas, Itabira, Itabirito, Itacarambi, Itaobim, Itapagipe, Itatiaiuçú, Ituiutaba, Iturama, Jaboticatubas, Jaíba, Janaúba, Januária, Jequitaí, Jequitibá, Jequitinhonha, Joaíma, João Pinheiro, Juatuba, Juiz de Fora, Lagamar, Lagoa Formosa, Lagoa Santa, Lassance, Limeira do Oeste, Manga, Mário Campos, Mateus Leme, Matias Cardoso, Mato Verde, Matozinhos, Medina, Mercês, Moeda, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Lima, Nova Ponte, Nova Porteirinha, Nova União, Oliveira Fortes, Pai Pedro, Paiva, Paracatu, Paraopeba, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Pedro Leopoldo, Perdizes, Piau, Pirapora, Piraúba, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Prudente de Morais, Raposos, Ribeirão das Neves, Rio Acima, Rio Manso, Rio Paranaíba, Rio Pomba, Rodeiro, Sabará, Sacramento, Santa Bárbara do Tugúrio, Santa Barbara, Santa Luzia, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Geraldo, São Gonçalo do Abaeté, São Gonçalo do Rio Abaixo, São Gotardo, São João das Missões, São Joaquim de Bicas, São José da Lapa, São Sebastião da Vargem Alegre, Sarzedo, Serra do Salitre, Sete Lagoas, Silveirânia, Tapira, Taquaraçú de Minas, Tocantins, Tupaciguara, Ubá, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia, Veríssimo, Vespasiano e Visconde do Rio Branco;."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "GO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de GO, com exceção dos municípios de Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "MS"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área livre de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "dest": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra.",
+            "A partida deve estar lacrada para transitar por AC, AM, AP, MA, MG (exceto pelos municípios listados no item 5.1), MS (exceto pelos municípios listados no item 5.2), MT, PA, PR, RS, RJ, RO, RR, SC, SP e TO;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Para as Ufs de MG e MS estas exigências só se aplicam a partida proveniente e destinada a município livre de Sigatoka Negra: \n\n5.1 -  Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba, Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n5.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "Estas exigências só se aplicam a mudas não micropopagadas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;",
+            "Esta proibição não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Para as UFs de MG e MS, esta proibição só se aplica a partida destinada a município livre de Sigatoka Negra:\n\n3.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo;\n\n3.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;",
+            "Esta proibição não se aplica a partida proveniente de município livre de Sigatoka Negra de MG e de MS: \n\na)Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\nb)Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "Esta proibição não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia;",
+            "Esta proibição só se aplica a mudas não micropopagadas;"
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação",
+          "part": [
+            "frutos",
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "AC",
+            "AP",
+            "MA"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Proibida a emissão de PTV. TRÂNSITO PROIBIDO."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação",
+          "part": [
+            "frutos",
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PR"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver origem os municípios de Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: Proibida a emissão de PTV. TRÂNSITO PROIBIDO."
+          ]
+        },
+        {
+          "idprag": 5,
+          "desc": "DE UF com ocorrência de Cancro-da-videira PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-da-videira",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "BA",
+            "PE",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas campestris pv. viticola",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"As mudas foram obtidas por micropropagação e indexadas para Xanthomonas campestris pv. viticola\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Sem Ocorrência de Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco or Área sob Erradicação",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "PB",
+            "PE",
+            "RO",
+            "RJ",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PA",
+            "PI",
+            "PB",
+            "PE",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"Os frutos são originários de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\".",
+            "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
+            "Em GO, os municípios de Itajá, Itarumã, Jataí e Lagoa Santa são Área sob Erradicação.",
+            "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Sem Ocorrência de Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "PB",
+            "PE",
+            "RO",
+            "RJ",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PA",
+            "PI",
+            "PB",
+            "PE",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"O material de propagação é originário de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Sem Ocorrência de Cancro Cítrico PARA o Estado do Paraná",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "PB",
+            "PE",
+            "RO",
+            "RJ",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "PR"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"Os frutos são originários de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\".",
+            "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
+            "Em GO, os municípios de Itajá, Itarumã, Jataí e Lagoa Santa são Área sob Erradicação.",
+            "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Sem Ocorrência de Cancro Cítrico PARA o Estado do Paraná",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "PB",
+            "PE",
+            "RO",
+            "RJ",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "PR"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"O material de propagação é originário de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\".",
+            "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
+            "Em GO, os municípios de Itajá, Itarumã, Jataí e Lagoa Santa são Área sob Erradicação.",
+            "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Livre de Cancro Cítrico PARA qualquer Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PA",
+            "PI",
+            "PB",
+            "PE",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"Os frutos são originários de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Livre de Cancro Cítrico PARA qualquer Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PA",
+            "PI",
+            "PB",
+            "PE",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"O material de propagação é originário de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE município não incluído nas áreas livres oficialmente reconhecidas PARA qualquer UF",
+          "part": [
+            "frutos",
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Proibida a emissão de PTV. TRÂNSITO PROIBIDO."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Livre de Cancro Cítrico PARA o Estado do Paraná",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "PR"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"Os frutos são originários de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Livre de Cancro Cítrico PARA o Estado do Paraná",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "PR"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"O material de propagação é originário de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "CE",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PI",
+            "RS",
+            "SP",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico (Xanthomonas citri subsp. citri) e foi produzido conforme preconiza a legislação específica em vigor\".",
+            "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
+            "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
+          ]
+        },
+        {
+          "idprag": 5,
+          "desc": "DE UF com ocorrência de Cancro-da-videira PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-da-videira",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "BA",
+            "PE",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas campestris pv. viticola",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"Os frutos foram produzidos em propriedade onde são adotadas as medidas de prevenção e controle do cancro bacteriano da videira, previstas na legislação fitossanitária\";",
+            "Estas exigências fitossanitárias só se aplicam a frutos, quando destinados a consumo in natura."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "SE A PARTIDA TIVER COMO ORIGEM UM DOS MUNICÍPIOS DE RISCO DESCONHECIDO (Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná): Proibida a emissão de PTV. TRÂNSITO PROIBIDO.",
+            "SE A PARTIDA TIVER COMO ORIGEM OS DEMAIS MUNICÍPIOS, QUE SÃO ÁREAS DE MITIGAÇÃO DE RISCO: PTV com a seguinte DA: \"O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico (Xanthomonas citri subsp. citri) e foi produzido conforme preconiza a legislação específica em vigor\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "CE",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PI",
+            "RS",
+            "SP",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida contém frutos infestados oriundos de imóvel sob Sistema de Mitigação de Risco (SMR), e tem como destino Indústria de suco, localizada em UF limítrofe, que não está localizada em ALP ou em Área Sem Ocorrência de Cancro Cítrico: \na)PTV com a seguinte DA: \"Frutos contaminados com Cancro Cítrico (Xanthomonas citri subsp. citri) destinados exclusivamente à indústria\". \nb)Os frutos devem ser transportados em veículo fechado ou coberto, e lacrado",
+            "Se a partida NÃO contém frutos infestados e é oriunda de imóvel cadastrado no SMR para o Cancro Cítrico e tem como destino\tUC ou indústria localizada em UF limítrofe:  \na) PTV com uma das seguintes DAs: \n- \"Os frutos foram produzidos em UP, de imóvel cadastrado no SMR para o Cancro Cítrico, que apresentou até um por cento de frutos com sintomas de Cancro Cítrico (Xanthomonas citri subsp. citri) e se destinam a indústria\"; OU \n- \"Os frutos foram produzidos em UP, de imóvel cadastrado no SMR para o Cancro Cítrico, que apresentou até um por cento de frutos com sintomas de Cancro Cítrico (Xanthomonas citri subsp. citri) e se destinam ao beneficiamento em Unidade de Consolidação\". \nb) Os frutos devem ser transportados em veículo fechado ou coberto e lacrado",
+            "Se a partida for formada por frutos oriundos de imóvel sem ocorrência do Cancro Cítrico, localizado em Área sob SMR, com destino para UC ou indústria, localizada em qualquer UF: \t\na) PTV com uma das seguintes DAs: \n- \"Os frutos são provenientes de imóvel sem ocorrência do Cancro Cítrico (Xanthomonas citri subsp. citri), localizado em Área sob SMR, e se destinam a indústria\"; OU \n- \"Os frutos são provenientes de imóvel sem ocorrência do Cancro Cítrico (Xanthomonas citri subsp. citri), localizado em Área sob SMR, e se destinam ao beneficiamento em Unidade de Consolidação\". \nb) Os frutos devem ser transportados em veículo fechado ou coberto",
+            "Para todas as demais situações de produtos oriundos de Área de SMR: \na) PTV com as seguintes DAs: \n- \"Os frutos são originários de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco (SMR) reconhecido oficialmente, foram higienizados por imersão em solução com Hipoclorito de Sódio a duzentos ppm, pH sete, durante dois minutos e se encontram sem sintomas de Cancro Cítrico (Xanthomonas citri subsp. citri)\". \n- Se as embalagens descartáveis ou em caixas plásticas retornáveis forem higienizadas por PULVERIZAÇÃO, adicionar a seguinte DA: \"As caixas plásticas retornáveis foram higienizadas por pulverização em solução de cloreto de benzalcônio (amônio quaternário) 125 (cento e vinte e cinco) gramas/litro, na concentração de 0,1% (um décimo percentual)\". \n- Se as embalagens descartáveis ou em caixas plásticas retornáveis forem higienizadas por IMERSÃO, adicionar a seguinte DA: \"As caixas plásticas retornáveis foram higienizadas por imersão em solução de cloreto de benzalcônio (amônio quaternário) 125 (cento e vinte e cinco) gramas/litro, na concentração de 0,1% (um décimo percentual)\" \nb) Os frutos devem ser transportados em veículo fechado ou coberto, seja para transporte a granel, em embalagens descartáveis ou em caixas plásticas retornáveis"
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área sob Erradicação de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "GO",
+            "RN",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com uma das seguintes DAs: \n -\"Os frutos são provenientes de plantas sadias de imóvel sob supervisão oficial, localizado em Área sob Erradicação, foram higienizados com Hipoclorito de Sódio a duzentos ppm, pH sete, durante dois minutos e encontram-se livres de Xanthomonas citri subsp. citri\".\n -\"Os frutos são provenientes de plantas sadias de imóvel sob supervisão oficial, localizado em Área sob Erradicação, e se destinam à indústria\".\n -\"Os frutos são provenientes de imóvel sem ocorrência do Cancro Cítrico (Xanthomonas citri subsp. citri), localizado em Área sob Erradicação\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área sob Erradicação de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "GO",
+            "RN",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"O material de propagação é proveniente de Área sob Erradicação e foi produzido em imóvel sem ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), conforme preconiza a legislação específica vigente\"."
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE Área com ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "frutos",
+            "material de propagação vegetativa",
+            "polpa in natura (não congelada)"
+          ],
+          "orig": [
+            "AM"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "TRÂNSITO PROIBIDO",
+            "Obs: Polpa congelada tem trânsito livre"
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE Área com ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "amêndoas"
+          ],
+          "orig": [
+            "AM"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "Se a partida for de amêndoas não fermentadas ou não cumprem os requisitos do item abaixo: TRÂNSITO PROIBIDO",
+            "Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente DE área sob quarentena PARA local sem ocorrência, TRÂNSITO LIVRE obedecendo as seguintes condiçoes: \na) As amêndoas devem estar acondicionadas em sacarias novas;  \nb) Carga deve estar acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc) Verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html ."
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE Área sem ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "amêndoas",
+            "frutos",
+            "material de propagação vegetativa",
+            "polpa in natura (não congelada)"
+          ],
+          "orig": [
+            "AL",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal."
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE UF with and sem ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "frutos",
+            "material de propagação vegetativa",
+            "polpa in natura (não congelada)"
+          ],
+          "orig": [
+            "AC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "Se a partida for proveniente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves: TRÂNSITO PROIBIDO",
+            "Se a partida for proveniente dos demais municípios do Acre: TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal",
+            "Obs: Polpa congelada tem trânsito livre"
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE UF com e sem ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "amêndoas"
+          ],
+          "orig": [
+            "AC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "Se a partida for de amêndoas não fermentadas ou que não cumprem os requisitos do item seguinte, e são proveniente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves: TRÂNSITO PROIBIDO",
+            "Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves, TRÂNSITO LIVRE obedecendo as seguintes condiçoes: \na) As amêndoas devem estar acondicionadas em sacarias novas;  \nb) Carga deve estar acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc) Verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html .",
+            "Se a partida for proveniente dos demais municípios do Acre: TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal"
+          ]
+        },
+        {
+          "idprag": 12,
+          "desc": "DE UF sem presença de Rhizoctonia theobromae (Ceratobasidium theobromae) PARA qualquer UF",
+          "part": [
+            "Materiais vegetais"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+          "exig": [
+            "TRÂNSITO LIVRE",
+            "A Permissão de Trânsito de Vegetais - PTV é necessária no caso de a partida de plantas e partes de plantas hospedeiras da praga transitar em áreas com ocorrência, devendo este: \nI - ser transportado em embalagens lacradas; e\nII - ser lacrado pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrital de Defesa Sanitária Vegetal na Unidade Federativa de origem e o número do lacre informado na Permissão de Trânsito de Vegetais - PTV."
+          ]
+        },
+        {
+          "idprag": 5,
+          "desc": "DE UF com ocorrência de Cancro-da-videira PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-da-videira",
+          "part": [
+            "material para pesquisa"
+          ],
+          "orig": [
+            "BA",
+            "PE",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas campestris pv. viticola",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"O material foi lacrado na origem, sob número de lacre X, e embalado de maneira a garantir a não dispersão da praga\"."
+          ]
+        },
+        {
+          "idprag": 12,
+          "desc": "DE UF com presença de Rhizoctonia theobromae (Ceratobasidium theobromae), oriundo de municípios sem ocorrência, PARA quaquer UF",
+          "part": [
+            "Materiais vegetais"
+          ],
+          "orig": [
+            "AP",
+            "PA"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+          "exig": [
+            "PTV, baseada em CFO ou CFOC, com a seguinte DA: \"A partida é originária de município sem ocorrência de Rhizoctonia theobromae, em Unidade Federativa com ocorrência, e encontra-se livre da praga\".",
+            "No caso da partida de plantas e partes de plantas hospedeiras da praga transitar em áreas com ocorrência, deverá esta: \nI - ser transportada em embalagens lacradas; e \nII - ser lacrada pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrital de Defesa Sanitária Vegetal no município de origem e o número do lacre informado na Permissão de Trânsito de Vegetais - PTV."
+          ]
+        },
+        {
+          "idprag": 12,
+          "desc": "DE UF com presença de Rhizoctonia theobromae (Ceratobasidium theobromae), oriundo de municípios com ocorrência, PARA qualquer UF",
+          "part": [
+            "Materiais vegetais"
+          ],
+          "orig": [
+            "AP",
+            "PA"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+          "exig": [
+            "Se a partida tiver como origem os municípios de Oiapoque, Calçoene, Amapá, Pracuúba, Tartarugalzinho e Pedra Branca do Amaparí no estado do Amapá, ou os município de Almeirim, Óbidos e Oriximiná, na área da\nTerra Indígena do Parque do Tumucumaque no Estado do Pará, municípios de Almeirim, Óbidos e Oriximiná, na área da Terra Indígena do Parque do Tumucumaque: TRÂNSITO PROIBIDO."
+          ]
+        },
+        {
+          "idprag": 6,
+          "desc": "DE UF com ocorrência de Cancro-europeu-das-pomáceas PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-europeu-das-pomáceas",
+          "part": [
+            "mudas",
+            "sementes",
+            "estacas",
+            "bulbos",
+            "tubérculos",
+            "manivas",
+            "toletes",
+            "gemas",
+            "ramas",
+            "rizomas",
+            "material de propagação"
+          ],
+          "orig": [
+            "PR",
+            "RS",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Neonectria ditissima (Neonectria galligena)",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"A Unidade de produção foi inspecionada oficialmente durante o período de produção e não foi constatada a presença de sintomas de infecção pela praga Neonectria galligena\";",
+            "Esta exigência fitossanitária não se aplica a material propagativo in vitro."
+          ]
+        },
+        {
+          "idprag": 6,
+          "desc": "DE UF com ocorrência de Cancro-europeu-das-pomáceas PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-europeu-das-pomáceas",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "PR",
+            "RS",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Neonectria ditissima (Neonectria galligena)",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"Na unidade de produção e Unidade de Consolidação - UC foram adotados os procedimentos de controle e prevenção previstos nesta norma (Instrução Normativa nº 20, de 20 de junho de 2013) e os frutos não apresentam sintomas de Neonectria galligena\"."
+          ]
+        },
+        {
+          "idprag": 7,
+          "desc": "DE UF com ocorrência de HLB de município com ocorrência da praga e dos municípios limítrofes PARA qualquer UF",
+          "part": [
+            "mudas",
+            "estacas",
+            "gemas",
+            "ramas",
+            "raízes",
+            "material de propagação vegetativo",
+            "plantas"
+          ],
+          "orig": [
+            "GO",
+            "MG",
+            "MS",
+            "PR",
+            "SC",
+            "SP"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "exig": [
+            "PTV, baseado em Certificado Fitossanitário de Origem - CFO, ou Certificado Fitossanitário de Origem Consolidado - CFOC, com a seguinte Declaração Adicional (DA): \"O material de propagação é originário de UF com ocorrência de Candidatus Liberibacter spp, foi produzido em ambiente protegido e encontra-se livre da praga\". \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
+          ]
+        }
+      ],
+      "legislacoes": [
+        {
+          "id": 1,
+          "leg": "Portaria nº 776, de 12/03/2025",
+          "link": "PORT776-2025.pdf"
+        },
+        {
+          "id": 10,
+          "leg": "Portaria SDA/MAPA n° 1503, de 19/12/2025",
+          "link": "PORT1503-2025.pdf"
+        },
+        {
+          "id": 11,
+          "leg": "Instrução Normativa MAPA nº 8, de 17/04/2012",
+          "link": "IN08-2012.pdf"
+        },
+        {
+          "id": 12,
+          "leg": "Instrução Normativa MAPA/SDA nº. 34, de 05/09/2017",
+          "link": "IN34-2017.pdf"
+        },
+        {
+          "id": 13,
+          "leg": "Instrução Normativa MAPA nº 46, de 27/12/2010",
+          "link": "IN46-2010.pdf"
+        },
+        {
+          "id": 14,
+          "leg": "Instrução Normativa MAPA nº 2, de 06/02/2014",
+          "link": "IN02-2014.pdf"
+        },
+        {
+          "id": 15,
+          "leg": "Instrução Normativa nº 20, de 20/06/2013",
+          "link": "IN20-2013.pdf"
+        },
+        {
+          "id": 16,
+          "leg": "Portaria SDA nº 317, de 21/05/2021",
+          "link": "PORT317-2021.pdf"
+        },
+        {
+          "id": 17,
+          "leg": "Instrução Normativa SDA/MAPA nº 17, de 27/05/2009",
+          "link": "IN17-2009.pdf"
+        },
+        {
+          "id": 18,
+          "leg": "Instrução Normativa SDA/MAPA nº 17, de 31/05/2005",
+          "link": "IN17-2005.pdf"
+        },
+        {
+          "id": 19,
+          "leg": "Instrução Normativa nº 21, de 25/04/2018",
+          "link": "IN21-2018.pdf"
+        },
+        {
+          "id": 2,
+          "leg": "Resolução nº 04, de 29/03/2019",
+          "link": "RES04-2019.pdf"
+        },
+        {
+          "id": 20,
+          "leg": "Portaria SDA nº 703, de 21/11/2022",
+          "link": "PORT703-2022.pdf"
+        },
+        {
+          "id": 21,
+          "leg": "Instrução Normativa nº 112, de 11/12/2020",
+          "link": "IN112-2020.pdf"
+        },
+        {
+          "id": 22,
+          "leg": "Instrução Normativa nº 38, de 23/06/2008",
+          "link": "IN38-2008.pdf"
+        },
+        {
+          "id": 23,
+          "leg": "Portaria SDA/MAPA nº 1.257, de 19/03/2025",
+          "link": "PORT1257-2025.pdf"
+        },
+        {
+          "id": 24,
+          "leg": "Portaria SDA/MAPA nº 1.512, de 07/01/2026",
+          "link": "PORT1512-2026.pdf"
+        },
+        {
+          "id": 3,
+          "leg": "Portaria SDA nº 780, de 06/04/2023",
+          "link": "PORT780-2023.pdf"
+        },
+        {
+          "id": 4,
+          "leg": "Portaria MAPA nº 734, de 13/11/2024",
+          "link": "PORT734-2024.pdf"
+        },
+        {
+          "id": 5,
+          "leg": "Portaria SDA nº 940, de 17/11/2023",
+          "link": "PORT940-2023.pdf"
+        },
+        {
+          "id": 6,
+          "leg": "Portaria MAPA nº 627, de 10/11/2023",
+          "link": "PORT627-2023.pdf"
+        },
+        {
+          "id": 7,
+          "leg": "Portaria SDA/MAPA n° 859, de 19/07/2023",
+          "link": "PORT859-2023.pdf"
+        },
+        {
+          "id": 8,
+          "leg": "Resolução nº 05, de 31/10/2018",
+          "link": "RES05-2018.pdf"
+        },
+        {
+          "id": 9,
+          "leg": "Instrução Normativa SDA n° 2, de 19/01/2018",
+          "link": "IN02-2018.pdf"
+        }
+      ],
+      "estados": [
+        {
+          "estado": "Acre",
+          "UF": "AC",
+          "ibge": 12
+        },
+        {
+          "estado": "Alagoas",
+          "UF": "AL",
+          "ibge": 27
+        },
+        {
+          "estado": "Amazonas",
+          "UF": "AM",
+          "ibge": 13
+        },
+        {
+          "estado": "Amapá",
+          "UF": "AP",
+          "ibge": 16
+        },
+        {
+          "estado": "Bahia",
+          "UF": "BA",
+          "ibge": 29
+        },
+        {
+          "estado": "Ceará",
+          "UF": "CE",
+          "ibge": 23
+        },
+        {
+          "estado": "Distrito Federal",
+          "UF": "DF",
+          "ibge": 53
+        },
+        {
+          "estado": "Espirito Santo",
+          "UF": "ES",
+          "ibge": 32
+        },
+        {
+          "estado": "Goiás",
+          "UF": "GO",
+          "ibge": 52
+        },
+        {
+          "estado": "Maranhão",
+          "UF": "MA",
+          "ibge": 21
+        },
+        {
+          "estado": "Minas Gerais",
+          "UF": "MG",
+          "ibge": 31
+        },
+        {
+          "estado": "Mato Grosso do Sul",
+          "UF": "MS",
+          "ibge": 50
+        },
+        {
+          "estado": "Mato Grosso",
+          "UF": "MT",
+          "ibge": 51
+        },
+        {
+          "estado": "Pará",
+          "UF": "PA",
+          "ibge": 15
+        },
+        {
+          "estado": "Paraíba",
+          "UF": "PB",
+          "ibge": 25
+        },
+        {
+          "estado": "Pernambuco",
+          "UF": "PE",
+          "ibge": 26
+        },
+        {
+          "estado": "Piauí",
+          "UF": "PI",
+          "ibge": 22
+        },
+        {
+          "estado": "Paraná",
+          "UF": "PR",
+          "ibge": 41
+        },
+        {
+          "estado": "Rio de janeiro",
+          "UF": "RJ",
+          "ibge": 33
+        },
+        {
+          "estado": "Rio Grande do Norte",
+          "UF": "RN",
+          "ibge": 24
+        },
+        {
+          "estado": "Rondônia",
+          "UF": "RO",
+          "ibge": 11
+        },
+        {
+          "estado": "Roraima",
+          "UF": "RR",
+          "ibge": 14
+        },
+        {
+          "estado": "Rio Grande do Sul",
+          "UF": "RS",
+          "ibge": 43
+        },
+        {
+          "estado": "Santa Catarina",
+          "UF": "SC",
+          "ibge": 42
+        },
+        {
+          "estado": "Sergipe",
+          "UF": "SE",
+          "ibge": 28
+        },
+        {
+          "estado": "São Paulo",
+          "UF": "SP",
+          "ibge": 35
+        },
+        {
+          "estado": "Tocantins",
+          "UF": "TO",
+          "ibge": 17
+        }
+      ]
+    },
+    "timestamp": {
+      "_seconds": 1769408735,
+      "_nanoseconds": 633000000
+    }
+  },
+  {
+    "version": 3,
+    "data": {
+      "pragas": [
+        {
+          "id": "IN02-2014",
+          "leg": "Instrução Normativa MAPA nº 2",
+          "data": "06/02/2014"
+        },
+        {
+          "id": "IN02-2018",
+          "leg": "Instrução Normativa SDA n° 2",
+          "data": "19/01/2018"
+        },
+        {
+          "id": "IN08-2012",
+          "leg": "Instrução Normativa MAPA nº 8",
+          "data": "17/04/2012"
+        },
+        {
+          "id": "IN112-2020",
+          "leg": "Instrução Normativa nº 112",
+          "data": "11/12/2020"
+        },
+        {
+          "id": "IN17-2005",
+          "leg": "Instrução Normativa SDA/MAPA nº 17",
+          "data": "31/05/2005"
+        },
+        {
+          "id": "IN17-2009",
+          "leg": "Instrução Normativa SDA/MAPA nº 17",
+          "data": "27/05/2009"
+        },
+        {
+          "id": "IN20-2013",
+          "leg": "Instrução Normativa nº 20",
+          "data": "20/06/2013"
+        },
+        {
+          "id": "IN21-2018",
+          "leg": "Instrução Normativa nº 21",
+          "data": "25/04/2018"
+        },
+        {
+          "id": "IN34-2017",
+          "leg": "Instrução Normativa MAPA/SDA nº. 34",
+          "data": "05/09/2017"
+        },
+        {
+          "id": "IN38-2008",
+          "leg": "Instrução Normativa nº 38",
+          "data": "23/06/2008"
+        },
+        {
+          "id": "IN46-2010",
+          "leg": "Instrução Normativa MAPA nº 46",
+          "data": "27/12/2010"
+        },
+        {
+          "id": "PORT1257-2025",
+          "leg": "Portaria SDA/MAPA nº 1.257",
+          "data": "19/03/2025"
+        },
+        {
+          "id": "PORT1503-2025",
+          "leg": "Portaria SDA/MAPA n° 1503",
+          "data": "19/12/2025"
+        },
+        {
+          "id": "PORT1512-2026",
+          "leg": "Portaria SDA/MAPA nº 1.512",
+          "data": "07/01/2026"
+        },
+        {
+          "id": "PORT317-2021",
+          "leg": "Portaria SDA nº 317",
+          "data": "21/05/2021"
+        },
+        {
+          "id": "PORT627-2023",
+          "leg": "Portaria MAPA nº 627",
+          "data": "10/11/2023"
+        },
+        {
+          "id": "PORT703-2022",
+          "leg": "Portaria SDA nº 703",
+          "data": "21/11/2022"
+        },
+        {
+          "id": "PORT734-2024",
+          "leg": "Portaria MAPA nº 734",
+          "data": "13/11/2024"
+        },
+        {
+          "id": "PORT776-2025",
+          "leg": "Portaria nº 776",
+          "data": "12/03/2025"
+        },
+        {
+          "id": "PORT780-2023",
+          "leg": "Portaria SDA nº 780",
+          "data": "06/04/2023"
+        },
+        {
+          "id": "PORT859-2023",
+          "leg": "Portaria SDA/MAPA n° 859",
+          "data": "19/07/2023"
+        },
+        {
+          "id": "PORT940-2023",
+          "leg": "Portaria SDA nº 940",
+          "data": "17/11/2023"
+        },
+        {
+          "id": "RES04-2019",
+          "leg": "Resolução nº 04",
+          "data": "29/03/2019"
+        },
+        {
+          "id": "RES05-2018",
+          "leg": "Resolução nº 05",
+          "data": "31/10/2018"
+        }
+      ],
+      "hospedeiros": [
+        {
+          "id": 1,
+          "nomeSci": "Persea gratissima",
+          "nomeVul": [
+            "Abacate (Persea gratissima)"
+          ]
+        },
+        {
+          "id": 10,
+          "nomeSci": "Populus x canadensis",
+          "nomeVul": [
+            "Álamo (Populus x canadensis)",
+            "Choupo(P.x canadensis)"
+          ]
+        },
+        {
+          "id": 100,
+          "nomeSci": "Melia azedarach",
+          "nomeVul": [
+            "Cinamomo"
+          ]
+        },
+        {
+          "id": 101,
+          "nomeSci": "Fraxinus mandshurica var. Japonica",
+          "nomeVul": [
+            "Cinza Japonês"
+          ]
+        },
+        {
+          "id": 102,
+          "nomeSci": "Sorbus sp.",
+          "nomeVul": [
+            "Cinza-da-montanha",
+            "Sorva"
+          ]
+        },
+        {
+          "id": 103,
+          "nomeSci": "Citrus spp.",
+          "nomeVul": [
+            "Citros"
+          ]
+        },
+        {
+          "id": 104,
+          "nomeSci": "Coprosma areolata",
+          "nomeVul": [
+            "Coprosma Frondoso Fino"
+          ]
+        },
+        {
+          "id": 105,
+          "nomeSci": "Cocos nucifera",
+          "nomeVul": [
+            "Coqueiro"
+          ]
+        },
+        {
+          "id": 106,
+          "nomeSci": "Pouteria macrophylla",
+          "nomeVul": [
+            "Cutite"
+          ]
+        },
+        {
+          "id": 107,
+          "nomeSci": "Theobroma grandiflorum",
+          "nomeVul": [
+            "Cupuaçu"
+          ]
+        },
+        {
+          "id": 108,
+          "nomeSci": "Fagus americana",
+          "nomeVul": [
+            "Faia Americana"
+          ]
+        },
+        {
+          "id": 109,
+          "nomeSci": "Fagus sylvantica",
+          "nomeVul": [
+            "Faia Cobre"
+          ]
+        },
+        {
+          "id": 11,
+          "nomeSci": "Tilia americana",
+          "nomeVul": [
+            "Álamo Americano",
+            "Tilo"
+          ]
+        },
+        {
+          "id": 110,
+          "nomeSci": "Fagus orientalis",
+          "nomeVul": [
+            "Faia do Oriente"
+          ]
+        },
+        {
+          "id": 111,
+          "nomeSci": "Fagus crenata f. grandifolia (syn. Americana)",
+          "nomeVul": [
+            "Faia Japonesa"
+          ]
+        },
+        {
+          "id": 112,
+          "nomeSci": "Fagus silvatica f. purpurea",
+          "nomeVul": [
+            "Faia Roxa"
+          ]
+        },
+        {
+          "id": 113,
+          "nomeSci": "Fagus sp.",
+          "nomeVul": [
+            "Faia"
+          ]
+        },
+        {
+          "id": 114,
+          "nomeSci": "Aesculus turbinata",
+          "nomeVul": [
+            "Falso Castanho Japonês"
+          ]
+        },
+        {
+          "id": 115,
+          "nomeSci": "Sorbus aria",
+          "nomeVul": [
+            "Feixe Branco"
+          ]
+        },
+        {
+          "id": 116,
+          "nomeSci": "Delonix regia",
+          "nomeVul": [
+            "Flamboyant"
+          ]
+        },
+        {
+          "id": 117,
+          "nomeSci": "Fortunella spp.",
+          "nomeVul": [
+            "Fortunela"
+          ]
+        },
+        {
+          "id": 118,
+          "nomeSci": "Fraxinus bungeana",
+          "nomeVul": [
+            "Freixo (F.bungeana)"
+          ]
+        },
+        {
+          "id": 119,
+          "nomeSci": "Fraxinus excelsior",
+          "nomeVul": [
+            "Freixo (F.excelsior)"
+          ]
+        },
+        {
+          "id": 12,
+          "nomeSci": "Populus alba",
+          "nomeVul": [
+            "Álamo Branco",
+            "Choupo Branco"
+          ]
+        },
+        {
+          "id": 120,
+          "nomeSci": "Artocarpus altilis",
+          "nomeVul": [
+            "Fruta Pão"
+          ]
+        },
+        {
+          "id": 121,
+          "nomeSci": "Robinia pseudoacacia",
+          "nomeVul": [
+            "Gafanhoto Preto"
+          ]
+        },
+        {
+          "id": 122,
+          "nomeSci": "Psidium guajava",
+          "nomeVul": [
+            "Goiaba"
+          ]
+        },
+        {
+          "id": 123,
+          "nomeSci": "Psidium guineense",
+          "nomeVul": [
+            "Goiaba-araçá"
+          ]
+        },
+        {
+          "id": 124,
+          "nomeSci": "Nyssa sylvatica",
+          "nomeVul": [
+            "Goma Preta",
+            "Tupelo"
+          ]
+        },
+        {
+          "id": 125,
+          "nomeSci": "Arenga pinnata",
+          "nomeVul": [
+            "Gomuto"
+          ]
+        },
+        {
+          "id": 126,
+          "nomeSci": "Heliconia spp.",
+          "nomeVul": [
+            "Helicônia"
+          ]
+        },
+        {
+          "id": 127,
+          "nomeSci": "Artocarpus integrifolia",
+          "nomeVul": [
+            "Jaca"
+          ]
+        },
+        {
+          "id": 128,
+          "nomeSci": "Syzygium aqueum",
+          "nomeVul": [
+            "Jambo Branco (S.aqueum)",
+            "Jambo D'água",
+            "Jambosa"
+          ]
+        },
+        {
+          "id": 129,
+          "nomeSci": "Syzygium jambos",
+          "nomeVul": [
+            "Jambo Amarelo",
+            "Jambo Rosa (S. jambos)"
+          ]
+        },
+        {
+          "id": 13,
+          "nomeSci": "Populus grandidenta",
+          "nomeVul": [
+            "Álamo Grande Dente"
+          ]
+        },
+        {
+          "id": 130,
+          "nomeSci": "Syzygium samarangense",
+          "nomeVul": [
+            "Jambo Branco (S.samarangense)",
+            "Jambo Rosa (S. samarangese)"
+          ]
+        },
+        {
+          "id": 131,
+          "nomeSci": "Syzygium malaccense",
+          "nomeVul": [
+            "Jambo Vermelho"
+          ]
+        },
+        {
+          "id": 132,
+          "nomeSci": "Juglans sp.",
+          "nomeVul": [
+            "Juglans",
+            "Nogueira"
+          ]
+        },
+        {
+          "id": 133,
+          "nomeSci": "Ziziphus jujuba",
+          "nomeVul": [
+            "Jujuba (Z. jujuba)",
+            "Jujuba Chinesa"
+          ]
+        },
+        {
+          "id": 134,
+          "nomeSci": "Ziziphus mauritiana",
+          "nomeVul": [
+            "Jujuba (Z. mauritiana)",
+            "Maçã-de-pobre "
+          ]
+        },
+        {
+          "id": 135,
+          "nomeSci": "Coprosma lucida",
+          "nomeVul": [
+            "Karamu"
+          ]
+        },
+        {
+          "id": 136,
+          "nomeSci": "Sophora microphylla",
+          "nomeVul": [
+            "Kowhai",
+            "Sófora"
+          ]
+        },
+        {
+          "id": 137,
+          "nomeSci": "Citrus aurantium",
+          "nomeVul": [
+            "Laranja Azeda",
+            "Laranja Caipira",
+            "Laranja da Terra"
+          ]
+        },
+        {
+          "id": 138,
+          "nomeSci": "Citrus sinensis",
+          "nomeVul": [
+            "Laranja",
+            "Laranja Doce"
+          ]
+        },
+        {
+          "id": 139,
+          "nomeSci": "Licania sp.",
+          "nomeVul": [
+            "Licania"
+          ]
+        },
+        {
+          "id": 14,
+          "nomeSci": "Populus spp.",
+          "nomeVul": [
+            "Álamo",
+            "Choupo"
+          ]
+        },
+        {
+          "id": 140,
+          "nomeSci": "Rhus typhina",
+          "nomeVul": [
+            "Linda-dos-jardins",
+            "Rustifina Rus",
+            "Sumac Staghorn"
+          ]
+        },
+        {
+          "id": 141,
+          "nomeSci": "Umbelluraria californica",
+          "nomeVul": [
+            "Louro Califórnia"
+          ]
+        },
+        {
+          "id": 142,
+          "nomeSci": "Malus communis",
+          "nomeVul": [
+            "Maçã (M. communis)"
+          ]
+        },
+        {
+          "id": 143,
+          "nomeSci": "Malus pumila var domestica",
+          "nomeVul": [
+            "Maçã (M. pumila var domestica)"
+          ]
+        },
+        {
+          "id": 144,
+          "nomeSci": "Malus pumila",
+          "nomeVul": [
+            "Maçã (M. pumila)"
+          ]
+        },
+        {
+          "id": 145,
+          "nomeSci": "Malus x domestica",
+          "nomeVul": [
+            "Maçã (M. x domestica)"
+          ]
+        },
+        {
+          "id": 146,
+          "nomeSci": "Pyrus malus",
+          "nomeVul": [
+            "Maçã (Pyrus malus)"
+          ]
+        },
+        {
+          "id": 147,
+          "nomeSci": "Malus sylvestris",
+          "nomeVul": [
+            "Maçã Silvestre"
+          ]
+        },
+        {
+          "id": 148,
+          "nomeSci": "Malus sp.",
+          "nomeVul": [
+            "Maça"
+          ]
+        },
+        {
+          "id": 149,
+          "nomeSci": "Carica papaya",
+          "nomeVul": [
+            "Mamão"
+          ]
+        },
+        {
+          "id": 15,
+          "nomeSci": "Albizia lebbeck",
+          "nomeVul": [
+            "Albízia",
+            "Cabeça-de-negro",
+            "Faveiro"
+          ]
+        },
+        {
+          "id": 150,
+          "nomeSci": "Fraxinus mandshurica",
+          "nomeVul": [
+            "Manchu Cinza"
+          ]
+        },
+        {
+          "id": 151,
+          "nomeSci": "Manihot esculenta",
+          "nomeVul": [
+            "Mandioca"
+          ]
+        },
+        {
+          "id": 152,
+          "nomeSci": "Mangifera indica",
+          "nomeVul": [
+            "Manga"
+          ]
+        },
+        {
+          "id": 153,
+          "nomeSci": "Swietenia mahagoni",
+          "nomeVul": [
+            "Mogno Indiano Ocidental"
+          ]
+        },
+        {
+          "id": 154,
+          "nomeSci": "Switenia macrophyla",
+          "nomeVul": [
+            "Mogno"
+          ]
+        },
+        {
+          "id": 155,
+          "nomeSci": "Bysonima crassifolia",
+          "nomeVul": [
+            "Murici ou Muruci"
+          ]
+        },
+        {
+          "id": 156,
+          "nomeSci": "Murraya paniculata",
+          "nomeVul": [
+            "Murta"
+          ]
+        },
+        {
+          "id": 157,
+          "nomeSci": "Eriobotrya japonica",
+          "nomeVul": [
+            "Nespereira"
+          ]
+        },
+        {
+          "id": 158,
+          "nomeSci": "Azadirachta indica",
+          "nomeVul": [
+            "Nim"
+          ]
+        },
+        {
+          "id": 159,
+          "nomeSci": "Carya ovata",
+          "nomeVul": [
+            "Nogueira Amarga Casca de Pelúcia"
+          ]
+        },
+        {
+          "id": 16,
+          "nomeSci": "Alnus incana",
+          "nomeVul": [
+            "Alder Cinza"
+          ]
+        },
+        {
+          "id": 160,
+          "nomeSci": "Carya tomentosa",
+          "nomeVul": [
+            "Nogueira Amarga Coração Branco"
+          ]
+        },
+        {
+          "id": 161,
+          "nomeSci": "Carya glabra",
+          "nomeVul": [
+            "Nogueira Amarga de Porco"
+          ]
+        },
+        {
+          "id": 162,
+          "nomeSci": "Carya spp.",
+          "nomeVul": [
+            "Nogueira Amarga spp"
+          ]
+        },
+        {
+          "id": 163,
+          "nomeSci": "Carya cordiformis",
+          "nomeVul": [
+            "Nogueira Amarga"
+          ]
+        },
+        {
+          "id": 164,
+          "nomeSci": "Juglans cinerea",
+          "nomeVul": [
+            "Nogueira Branca"
+          ]
+        },
+        {
+          "id": 165,
+          "nomeSci": "Juglans regia",
+          "nomeVul": [
+            "Nogueira Comum",
+            "Nogueira europeia"
+          ]
+        },
+        {
+          "id": 166,
+          "nomeSci": "Carya illinoensis",
+          "nomeVul": [
+            "Nogueira Pecã"
+          ]
+        },
+        {
+          "id": 167,
+          "nomeSci": "Juglans nigra",
+          "nomeVul": [
+            "Nogueira Preta"
+          ]
+        },
+        {
+          "id": 168,
+          "nomeSci": "Ulmus americana",
+          "nomeVul": [
+            "Olmo Americano"
+          ]
+        },
+        {
+          "id": 169,
+          "nomeSci": "Ulmus glabra (syn. montana)",
+          "nomeVul": [
+            "Olmo Escocês"
+          ]
+        },
+        {
+          "id": 17,
+          "nomeSci": "Alnus japonica",
+          "nomeVul": [
+            "Alder Japonês"
+          ]
+        },
+        {
+          "id": 170,
+          "nomeSci": "Ulmus sp.",
+          "nomeVul": [
+            "Olmo",
+            "Ulmeiro"
+          ]
+        },
+        {
+          "id": 171,
+          "nomeSci": "Opuntia cochenillifera",
+          "nomeVul": [
+            "Palma forrageira"
+          ]
+        },
+        {
+          "id": 172,
+          "nomeSci": "Cornus muttallii",
+          "nomeVul": [
+            "Pau Cachorro do Pacífico"
+          ]
+        },
+        {
+          "id": 173,
+          "nomeSci": "Cornus sp.",
+          "nomeVul": [
+            "Pau Cachorro"
+          ]
+        },
+        {
+          "id": 174,
+          "nomeSci": "Pyrus pyrifolia",
+          "nomeVul": [
+            "Pera Asiática",
+            "Pera Nashi"
+          ]
+        },
+        {
+          "id": 175,
+          "nomeSci": "Pyrus communis",
+          "nomeVul": [
+            "Pereira Europeia"
+          ]
+        },
+        {
+          "id": 176,
+          "nomeSci": "Pyrus pyrifolia var culta",
+          "nomeVul": [
+            "Pereira Japonesa"
+          ]
+        },
+        {
+          "id": 177,
+          "nomeSci": "Capsicum annuum",
+          "nomeVul": [
+            "Pimenta Picante",
+            "Pimenta-do-diabo"
+          ]
+        },
+        {
+          "id": 178,
+          "nomeSci": "Capsicum chinense",
+          "nomeVul": [
+            "Pimenta-de-Cheiro"
+          ]
+        },
+        {
+          "id": 179,
+          "nomeSci": "Eugenia uniflora",
+          "nomeVul": [
+            "Pitanga Vermelha"
+          ]
+        },
+        {
+          "id": 18,
+          "nomeSci": "Alnus glutinosa",
+          "nomeVul": [
+            "Alder Negro",
+            "Amieiro"
+          ]
+        },
+        {
+          "id": 180,
+          "nomeSci": "Platanus orientalis",
+          "nomeVul": [
+            "Plátano",
+            "Plátano Oriental"
+          ]
+        },
+        {
+          "id": 181,
+          "nomeSci": "Citrus paradisi",
+          "nomeVul": [
+            "Pomelo",
+            "Toranja"
+          ]
+        },
+        {
+          "id": 182,
+          "nomeSci": "Poncirus spp.",
+          "nomeVul": [
+            "Poncirus"
+          ]
+        },
+        {
+          "id": 183,
+          "nomeSci": "Ribes sp.",
+          "nomeVul": [
+            "Ribes"
+          ]
+        },
+        {
+          "id": 184,
+          "nomeSci": "Rosa spp.",
+          "nomeVul": [
+            "Rosa"
+          ]
+        },
+        {
+          "id": 185,
+          "nomeSci": "Salix alba",
+          "nomeVul": [
+            "Salgueiro Branco"
+          ]
+        },
+        {
+          "id": 186,
+          "nomeSci": "Salix cinerea",
+          "nomeVul": [
+            "Salgueiro Cinza"
+          ]
+        },
+        {
+          "id": 187,
+          "nomeSci": "Salix alba var Vitelina",
+          "nomeVul": [
+            "Salgueiro Dourado"
+          ]
+        },
+        {
+          "id": 188,
+          "nomeSci": "Salix nigricans",
+          "nomeVul": [
+            "Salgueiro Preto"
+          ]
+        },
+        {
+          "id": 189,
+          "nomeSci": "Salix purpurea",
+          "nomeVul": [
+            "Salgueiro Púrpura",
+            "Vimeiro Púrpura"
+          ]
+        },
+        {
+          "id": 19,
+          "nomeSci": "Alnus rubra",
+          "nomeVul": [
+            "Alder Vermelha"
+          ]
+        },
+        {
+          "id": 190,
+          "nomeSci": "Salix amygdalina",
+          "nomeVul": [
+            "Salgueiro Velho Mundo"
+          ]
+        },
+        {
+          "id": 191,
+          "nomeSci": "Salix amygdaloides",
+          "nomeVul": [
+            "Salgueiro-folha-de-pêssego"
+          ]
+        },
+        {
+          "id": 192,
+          "nomeSci": "Salix alba L. Coerulea",
+          "nomeVul": [
+            "Salgueiro-taco-de-críquete"
+          ]
+        },
+        {
+          "id": 193,
+          "nomeSci": "Salix spp.",
+          "nomeVul": [
+            "Salix"
+          ]
+        },
+        {
+          "id": 194,
+          "nomeSci": "Spondias purpurea",
+          "nomeVul": [
+            "Seriguela"
+          ]
+        },
+        {
+          "id": 195,
+          "nomeSci": "Hevea brasiliensis",
+          "nomeVul": [
+            "Seringueira"
+          ]
+        },
+        {
+          "id": 196,
+          "nomeSci": "Sorghum bicolor",
+          "nomeVul": [
+            "Sorgo"
+          ]
+        },
+        {
+          "id": 197,
+          "nomeSci": "Sorbus domestica",
+          "nomeVul": [
+            "Sorva (S. domestica)"
+          ]
+        },
+        {
+          "id": 198,
+          "nomeSci": "Tectona grandis",
+          "nomeVul": [
+            "Teca"
+          ]
+        },
+        {
+          "id": 199,
+          "nomeSci": "Tilia cordata",
+          "nomeVul": [
+            "Teja",
+            "Tejo",
+            "Tella",
+            "Texa",
+            "Tilha",
+            "Tillera"
+          ]
+        },
+        {
+          "id": 2,
+          "nomeSci": "Picea abies",
+          "nomeVul": [
+            "Abeto Europeu",
+            "Abeto Vermelho Comum",
+            "Noruega Abeto"
+          ]
+        },
+        {
+          "id": 20,
+          "nomeSci": "Alnus sp.",
+          "nomeVul": [
+            "Alder"
+          ]
+        },
+        {
+          "id": 200,
+          "nomeSci": "Theobroma spp.",
+          "nomeVul": [
+            "Theobroma spp"
+          ]
+        },
+        {
+          "id": 201,
+          "nomeSci": "Tilia sp.",
+          "nomeVul": [
+            "Tília"
+          ]
+        },
+        {
+          "id": 202,
+          "nomeSci": "Licopersicum esculentum",
+          "nomeVul": [
+            "Tomate"
+          ]
+        },
+        {
+          "id": 203,
+          "nomeSci": "Sorbus aucuparia",
+          "nomeVul": [
+            "Tramazeira"
+          ]
+        },
+        {
+          "id": 204,
+          "nomeSci": "Liriodendron tulipifera",
+          "nomeVul": [
+            "Tulipeiro"
+          ]
+        },
+        {
+          "id": 205,
+          "nomeSci": "Vitis spp. e seus híbridos",
+          "nomeVul": [
+            "Uva",
+            "Videira e seus híbridos"
+          ]
+        },
+        {
+          "id": 206,
+          "nomeSci": "Viola sp.",
+          "nomeVul": [
+            "Viola"
+          ]
+        },
+        {
+          "id": 21,
+          "nomeSci": "Populus wislizeni",
+          "nomeVul": [
+            "Algodão Americano"
+          ]
+        },
+        {
+          "id": 22,
+          "nomeSci": "Prunus spp.",
+          "nomeVul": [
+            "Ameixa"
+          ]
+        },
+        {
+          "id": 23,
+          "nomeSci": "Syzygium cumini",
+          "nomeVul": [
+            "Ameixa-roxa"
+          ]
+        },
+        {
+          "id": 24,
+          "nomeSci": "Prunus salicina",
+          "nomeVul": [
+            "Ameixeira-japonesa"
+          ]
+        },
+        {
+          "id": 25,
+          "nomeSci": "Amelanchier laevis",
+          "nomeVul": [
+            "Amelanchier"
+          ]
+        },
+        {
+          "id": 26,
+          "nomeSci": "Terminalia catappa",
+          "nomeVul": [
+            "Amendoeira",
+            "Sete Copas"
+          ]
+        },
+        {
+          "id": 27,
+          "nomeSci": "Frangula almus",
+          "nomeVul": [
+            "Amieiro Negro",
+            "Sanguinho"
+          ]
+        },
+        {
+          "id": 28,
+          "nomeSci": "Eugenia stipitata",
+          "nomeVul": [
+            "Araçá-Boi"
+          ]
+        },
+        {
+          "id": 29,
+          "nomeSci": "Calycolpus goetheanus",
+          "nomeVul": [
+            "Araçapeua"
+          ]
+        },
+        {
+          "id": 3,
+          "nomeSci": "Chrysophyllum cainito",
+          "nomeVul": [
+            "Abiu (C. cainito)",
+            "Bilimbi (C. cainito)",
+            "Caimito",
+            "Carambola amarela (C. cainito)"
+          ]
+        },
+        {
+          "id": 30,
+          "nomeSci": "Manilkara zapota",
+          "nomeVul": [
+            "Arapaju",
+            "Maçaranduba",
+            "Mararaju",
+            "Sapoti",
+            "Sapotilha"
+          ]
+        },
+        {
+          "id": 31,
+          "nomeSci": "Crataegus oxyacanthoides (syn: oxyacantha)",
+          "nomeVul": [
+            "Arbusto Espinheiro do Bosque"
+          ]
+        },
+        {
+          "id": 32,
+          "nomeSci": "Craetaegus monogyna",
+          "nomeVul": [
+            "Arbusto Espinhento",
+            "Espinho Branco"
+          ]
+        },
+        {
+          "id": 33,
+          "nomeSci": "Fraxinus nigra (syn. sambucifolia)",
+          "nomeVul": [
+            "Árvore Preta"
+          ]
+        },
+        {
+          "id": 34,
+          "nomeSci": "Avena sativa",
+          "nomeVul": [
+            "Aveia"
+          ]
+        },
+        {
+          "id": 35,
+          "nomeSci": "Corylus avellana",
+          "nomeVul": [
+            "Avelã"
+          ]
+        },
+        {
+          "id": 36,
+          "nomeSci": "Corylus sieboldiana",
+          "nomeVul": [
+            "Aveleira Japonesa"
+          ]
+        },
+        {
+          "id": 37,
+          "nomeSci": "Corylus heterophylla var. thunbergiii",
+          "nomeVul": [
+            "Aveleira Siberiana"
+          ]
+        },
+        {
+          "id": 38,
+          "nomeSci": "Ilex aquifolium",
+          "nomeVul": [
+            "Azevinho"
+          ]
+        },
+        {
+          "id": 39,
+          "nomeSci": "Garcinia dulcis",
+          "nomeVul": [
+            "Bacupari"
+          ]
+        },
+        {
+          "id": 4,
+          "nomeSci": "Pouteria caimito",
+          "nomeVul": [
+            "Abiu (P. cainito)"
+          ]
+        },
+        {
+          "id": 40,
+          "nomeSci": "Myroxylon balsamum",
+          "nomeVul": [
+            "Bálsamo"
+          ]
+        },
+        {
+          "id": 41,
+          "nomeSci": "Musa spp.",
+          "nomeVul": [
+            "Banana"
+          ]
+        },
+        {
+          "id": 42,
+          "nomeSci": "Citrus reticulata",
+          "nomeVul": [
+            "Bergamota",
+            "Mandarina,",
+            "Mexerica",
+            "Ponkan",
+            "Tangerina"
+          ]
+        },
+        {
+          "id": 43,
+          "nomeSci": "Betula papyrifera",
+          "nomeVul": [
+            "Bétula Branca (B.papyrifera)",
+            "Bétula Papel"
+          ]
+        },
+        {
+          "id": 44,
+          "nomeSci": "Betula pendula (syn:verrucosa)",
+          "nomeVul": [
+            "Bétula Branca (B.pendula)"
+          ]
+        },
+        {
+          "id": 45,
+          "nomeSci": "Betula pubescens",
+          "nomeVul": [
+            "Bétula Branca (B.pubescens)"
+          ]
+        },
+        {
+          "id": 46,
+          "nomeSci": "Betula populifolia",
+          "nomeVul": [
+            "Bétula Cinza"
+          ]
+        },
+        {
+          "id": 47,
+          "nomeSci": "Betula lenta",
+          "nomeVul": [
+            "Bétula Lenta"
+          ]
+        },
+        {
+          "id": 48,
+          "nomeSci": "Betula nigra",
+          "nomeVul": [
+            "Bétula lenta",
+            "Bétula Negra"
+          ]
+        },
+        {
+          "id": 49,
+          "nomeSci": "Betula lutea (synonym: alleghaniensis)",
+          "nomeVul": [
+            "Bétula Lutea"
+          ]
+        },
+        {
+          "id": 5,
+          "nomeSci": "Acacia spp.",
+          "nomeVul": [
+            "Acácia",
+            "Angico",
+            "Jurema",
+            "Unha-de-gato"
+          ]
+        },
+        {
+          "id": 50,
+          "nomeSci": "Betula maximowicziana",
+          "nomeVul": [
+            "Bétula Monarca"
+          ]
+        },
+        {
+          "id": 51,
+          "nomeSci": "Betula sp.",
+          "nomeVul": [
+            "Bétula"
+          ]
+        },
+        {
+          "id": 52,
+          "nomeSci": "Averrhoa bilimbi",
+          "nomeVul": [
+            "Bilimbi (A. bilimbi)",
+            "Carambola Amarela (A. bilimbi)",
+            "Limão Cayena"
+          ]
+        },
+        {
+          "id": 53,
+          "nomeSci": "Rollinia omucosa",
+          "nomeVul": [
+            "Biribá"
+          ]
+        },
+        {
+          "id": 54,
+          "nomeSci": "Acer palmatum",
+          "nomeVul": [
+            "Bordo Japonês"
+          ]
+        },
+        {
+          "id": 55,
+          "nomeSci": "Acer macrophyllum",
+          "nomeVul": [
+            "Bordo Vermelho (A.macrophyllum)"
+          ]
+        },
+        {
+          "id": 56,
+          "nomeSci": "Acer rubrum",
+          "nomeVul": [
+            "Bordo Vermelho (A.rubrum)"
+          ]
+        },
+        {
+          "id": 57,
+          "nomeSci": "Acer mono subsp. Heterophyllum",
+          "nomeVul": [
+            "Bordo (A.mono)"
+          ]
+        },
+        {
+          "id": 58,
+          "nomeSci": "Acer negundo",
+          "nomeVul": [
+            "Bordo (A.negundo)"
+          ]
+        },
+        {
+          "id": 59,
+          "nomeSci": "Acer saccharum",
+          "nomeVul": [
+            "Bordo (A.sacharum)"
+          ]
+        },
+        {
+          "id": 6,
+          "nomeSci": "Malpighia spp.",
+          "nomeVul": [
+            "Acerola(qualquer espécie)"
+          ]
+        },
+        {
+          "id": 60,
+          "nomeSci": "Acer spicatum",
+          "nomeVul": [
+            "Bordo (A.spicatum)"
+          ]
+        },
+        {
+          "id": 61,
+          "nomeSci": "Acer pennsylvanicum",
+          "nomeVul": [
+            "Bordo (Acer pennsylvanicum)"
+          ]
+        },
+        {
+          "id": 62,
+          "nomeSci": "Acer pseudoplatanus",
+          "nomeVul": [
+            "Bordo (Acer pseudoplatanus)",
+            "Padreiro"
+          ]
+        },
+        {
+          "id": 63,
+          "nomeSci": "Acer sp.",
+          "nomeVul": [
+            "Bordo"
+          ]
+        },
+        {
+          "id": 64,
+          "nomeSci": "Acer circinatum",
+          "nomeVul": [
+            "Bordo-da-videira"
+          ]
+        },
+        {
+          "id": 65,
+          "nomeSci": "Cercis canadensis",
+          "nomeVul": [
+            "Broto Vermelho Oriental"
+          ]
+        },
+        {
+          "id": 66,
+          "nomeSci": "Theobroma cacao",
+          "nomeVul": [
+            "Cacau"
+          ]
+        },
+        {
+          "id": 67,
+          "nomeSci": "Theobroma speciosum",
+          "nomeVul": [
+            "Cacauí"
+          ]
+        },
+        {
+          "id": 68,
+          "nomeSci": "Spondias lutea",
+          "nomeVul": [
+            "Cajá (S. lutea)",
+            "Cajá-mirim (S. lutea)",
+            "Cajazeiro (S. lutea)",
+            "Taperebá (S. lutea)"
+          ]
+        },
+        {
+          "id": 69,
+          "nomeSci": "Spondias mombin",
+          "nomeVul": [
+            "Cajá (S. mombin)",
+            "Cajá-mirim (S. mombin)",
+            "Cajazeiro (S. mombin)",
+            "Taperebá (S. mombin)"
+          ]
+        },
+        {
+          "id": 7,
+          "nomeSci": "Malpighia punicifolia",
+          "nomeVul": [
+            "Acerola (M. punicifolia)"
+          ]
+        },
+        {
+          "id": 70,
+          "nomeSci": "Anacardium occidentale",
+          "nomeVul": [
+            "Caju"
+          ]
+        },
+        {
+          "id": 71,
+          "nomeSci": "Averrhoa carambola",
+          "nomeVul": [
+            "Carambola"
+          ]
+        },
+        {
+          "id": 72,
+          "nomeSci": "Carpinus betulas",
+          "nomeVul": [
+            "Cárpino Betulas"
+          ]
+        },
+        {
+          "id": 73,
+          "nomeSci": "Carpinus sp.",
+          "nomeVul": [
+            "Cárpino"
+          ]
+        },
+        {
+          "id": 74,
+          "nomeSci": "Quercus laurifolia",
+          "nomeVul": [
+            "Carvalho Água",
+            "Carvalho Folha Diamante",
+            "Carvalho Glorioso",
+            "Carvalho Glorioso do Brejo",
+            "Carvalho Obtuso"
+          ]
+        },
+        {
+          "id": 75,
+          "nomeSci": "Quercus bicolor",
+          "nomeVul": [
+            "Carvalho Branco do Brejo"
+          ]
+        },
+        {
+          "id": 76,
+          "nomeSci": "Quercus garryana",
+          "nomeVul": [
+            "Carvalho Branco Oregon",
+            "Carvalho Oregon"
+          ]
+        },
+        {
+          "id": 77,
+          "nomeSci": "Quercus alba",
+          "nomeVul": [
+            "Carvalho Branco"
+          ]
+        },
+        {
+          "id": 78,
+          "nomeSci": "Quercus borealis (syn: rubra)",
+          "nomeVul": [
+            "Carvalho Campeão(Q.borealis)",
+            "Carvalho Vermelho do Norte (Q.borealis)"
+          ]
+        },
+        {
+          "id": 79,
+          "nomeSci": "Quercus rubra",
+          "nomeVul": [
+            "Carvalho Campeão(Q.rubra)",
+            "Carvalho Vermelho do Norte (Q.rubra)"
+          ]
+        },
+        {
+          "id": 8,
+          "nomeSci": "Malpighia emarginata",
+          "nomeVul": [
+            "Acerola (M. emarginata)"
+          ]
+        },
+        {
+          "id": 80,
+          "nomeSci": "Quercus montana",
+          "nomeVul": [
+            "Carvalho Castanheiro"
+          ]
+        },
+        {
+          "id": 81,
+          "nomeSci": "Quercus coccinea",
+          "nomeVul": [
+            "Carvalho Escarlata"
+          ]
+        },
+        {
+          "id": 82,
+          "nomeSci": "Quercus glandulifera",
+          "nomeVul": [
+            "Carvalho Konara",
+            "Carvalho Koreano"
+          ]
+        },
+        {
+          "id": 83,
+          "nomeSci": "Quercus mongolica var grosserrata",
+          "nomeVul": [
+            "Carvalho Mongoliano"
+          ]
+        },
+        {
+          "id": 84,
+          "nomeSci": "Quercus velutina",
+          "nomeVul": [
+            "Carvalho Preto"
+          ]
+        },
+        {
+          "id": 85,
+          "nomeSci": "Quercus sp.",
+          "nomeVul": [
+            "Carvalho"
+          ]
+        },
+        {
+          "id": 86,
+          "nomeSci": "Quercus robur",
+          "nomeVul": [
+            "Carvalho-alvarinho",
+            "Carvalho-roble",
+            "Carvalho-vermelho"
+          ]
+        },
+        {
+          "id": 87,
+          "nomeSci": "Aesculus hippocastanum",
+          "nomeVul": [
+            "Castanha-da-Índia(A.hippocastanum)"
+          ]
+        },
+        {
+          "id": 88,
+          "nomeSci": "Aesculus sp.",
+          "nomeVul": [
+            "Castanha-da-Índia"
+          ]
+        },
+        {
+          "id": 89,
+          "nomeSci": "Castanea dentata",
+          "nomeVul": [
+            "Castanheiro Europeu"
+          ]
+        },
+        {
+          "id": 9,
+          "nomeSci": "Chrysobalanus icaco",
+          "nomeVul": [
+            "Ajuru"
+          ]
+        },
+        {
+          "id": 90,
+          "nomeSci": "Prunus virginiana",
+          "nomeVul": [
+            "Cereja de Pássaro Virginia",
+            "Grão Amargo"
+          ]
+        },
+        {
+          "id": 91,
+          "nomeSci": "Prunus ssiori",
+          "nomeVul": [
+            "Cereja de Pássaro"
+          ]
+        },
+        {
+          "id": 92,
+          "nomeSci": "Prunus subhirtella var. pendula",
+          "nomeVul": [
+            "Cerejeira Chorona"
+          ]
+        },
+        {
+          "id": 93,
+          "nomeSci": "Prunus serotina",
+          "nomeVul": [
+            "Cerejeira Negra"
+          ]
+        },
+        {
+          "id": 94,
+          "nomeSci": "Prunus avium",
+          "nomeVul": [
+            "Cerejeira"
+          ]
+        },
+        {
+          "id": 95,
+          "nomeSci": "Camellia sinensis",
+          "nomeVul": [
+            "Chá-da-Índia"
+          ]
+        },
+        {
+          "id": 96,
+          "nomeSci": "Populus tremula",
+          "nomeVul": [
+            "Choupo Tremedor"
+          ]
+        },
+        {
+          "id": 97,
+          "nomeSci": "Populus tremuloides",
+          "nomeVul": [
+            "Choupo Trêmulo"
+          ]
+        },
+        {
+          "id": 98,
+          "nomeSci": "Populus balsamifera",
+          "nomeVul": [
+            "Choupo-bálsamo"
+          ]
+        },
+        {
+          "id": 99,
+          "nomeSci": "Laburnum anagyrioides",
+          "nomeVul": [
+            "Chuva-de-ouro",
+            "Corrente-de-ouro"
+          ]
+        }
+      ],
+      "regras": [
+        {
+          "idprag": 1,
+          "desc": "DE UF sem ocorrência de Mosca-da-carambola PARA UF sem ocorrência de Mosca-da-carambola",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Bactrocera carambolae",
+          "exig": [
+            "Se os frutos  forem destinados a locais sem ocorrência da praga e transitarem em áreas sob quarentena, deverão:  \nI - estar acondicionados em embalagens que não permitam o contato do produto com a praga;  \nII - ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm; e I \nII - estar acompanhados de Permissão de Trânsito de Vegetais - PTV, conforme o disposto no art. 2º, da Instrução Normativa MAPA nº 28, de 24 de agosto de 2016.",
+            "Se o frutos saírem de Unidade da Federação sem ocorrência da praga e transitarem por zona tampão, áreas erradicadas e áreas sem detecção em Unidade da Federação com ocorrência da praga, com destino a outra Unidade da Federação sem ocorrência, deverão: \nI - possuir documento que ateste a origem, podendo ser emitida apenas a PTV, sem a necessidade de CFO/CFOC.  \nII- constará a seguinte DA na PTV:  \"A partida foi produzida em UF sem ocorrência de Bactrocera carambolae”.",
+            "Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções e Portarias acima."
+          ]
+        },
+        {
+          "idprag": 1,
+          "desc": "DE UF com ocorrência de Mosca-da-carambola PARA qualquer UF",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "AP",
+            "AM",
+            "PA",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Bactrocera carambolae",
+          "exig": [
+            "Se a partida for procedente DE área sob quarentena e de área protegida PARA local sem ocorrência: TRÂNSITO PROIBIDO.",
+            "Se a partida for procedente DE zona tampão, de áreas erradicadas e de áreas sem detecção: PTV com a seguinte DA: \"A partida está livre de Bactrocera carambolae”",
+            "Se os frutos  forem destinados a locais sem ocorrência da praga e transitarem em áreas sob quarentena, deverão:  \nI - estar acondicionados em embalagens que não permitam o contato do produto com a praga;  \nII - ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm; e I \nII - estar acompanhados de Permissão de Trânsito de Vegetais - PTV, conforme o disposto no art. 2º, da Instrução Normativa MAPA nº 28, de 24 de agosto de 2016.",
+            "Se o frutos saírem de Unidade da Federação sem ocorrência da praga e transitarem por zona tampão, áreas erradicadas e áreas sem detecção em Unidade da Federação com ocorrência da praga, com destino a outra Unidade da Federação sem ocorrência, deverão: \nI - possuir documento que ateste a origem, podendo ser emitida apenas a PTV, sem a necessidade de CFO/CFOC.  \nII- constará a seguinte DA na PTV:  \"A partida foi produzida em UF sem ocorrência de Bactrocera carambolae”.",
+            "Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções e Portarias acima."
+          ]
+        },
+        {
+          "idprag": 7,
+          "desc": "DE UF com ocorrência de HLB, de município sem ocorrência da praga, exceto aqueles limítrofes às áreas de ocorrência, PARA qualquer UF.",
+          "part": [
+            "mudas",
+            "estacas",
+            "gemas",
+            "ramas",
+            "raízes",
+            "material de propagação vegetativo",
+            "plantas"
+          ],
+          "orig": [
+            "GO",
+            "MG",
+            "MS",
+            "PR",
+            "SC",
+            "SP"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "exig": [
+            "PTV, baseado em Certificado Fitossanitário de Origem - CFO, ou Certificado Fitossanitário de Origem Consolidado - CFOC, com a seguinte Declaração Adicional (DA): \"O material de propagação é originário de município sem ocorrência de Candidatus Liberibacter spp., de UF com ocorrência, e encontra-se livre da praga.\".\n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
+          ]
+        },
+        {
+          "idprag": 7,
+          "desc": "DE UF sem ocorrência de HLB PARA qualquer UF",
+          "part": [
+            "mudas",
+            "estacas",
+            "gemas",
+            "ramas",
+            "raízes",
+            "material de propagação vegetativo",
+            "plantas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "MA",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "exig": [
+            "PTV com a seguinte declaração adicional: “O material de propagação é originário de UF sem ocorrência de Candidatus Liberibacter spp.”; \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
+          ]
+        },
+        {
+          "idprag": 7,
+          "desc": "DE UF com ocorrência de HLB, oriúndos de município com ocorrência da praga e dos municípios limítrofes, PARA UF reconhecida pelo MAPA como sem ocorrência de HLB",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "GO",
+            "MG",
+            "MS",
+            "PR",
+            "SC",
+            "SP"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "MA",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "TO"
+          ],
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "exig": [
+            "PTV com a seguinte declaração adicional: “Os frutos foram submetidos a beneficiamento primário na origem para retirada de restos vegetais, qual seja, totalmente isentos de folhas e ramos de plantas cítricas”."
+          ]
+        },
+        {
+          "idprag": 3,
+          "desc": "DE UF com ocorrência PARA qualquer UF",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "RJ"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Sternochetus mangiferae",
+          "exig": [
+            "PTV com a seguinte Declaração Adicional: \"A partida foi produzida fora da zona interditada e encontra-se livre de Sternochetus mangiferae\"."
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "Material para pesquisa DE qualquer UF PARA UF sem ocorrência ou Área Livre de Moko-da-bananeira.",
+          "part": [
+            "material para pesquisa"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RS",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "Autorização da Superintendência Federal de Agricultura e Pecuária (SFA), da UF de origem da partida;",
+            "A partida deve ser transportada em recipiente lacrado;"
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF com ocorrência de Moko-da-bananeira PARA todas as UFs",
+          "part": [
+            "mudas",
+            "rizomas"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "AP",
+            "PA",
+            "RO",
+            "RR",
+            "SE"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "TRÂNSITO PROIBIDO, exceto para mudas transportadas in vitro ou micropropagadas. \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009",
+            "Para mudas transportadas en vitro ou micropropagadas, será exigido: \na)PTV com a seguinte declaração adicional: \"As mudas encontram- se livres de Ralstonia solanacearum raça 2\". \nb) A carga deverá estar lacrada e o número do lacre constar na PTV. \nc) Na PTV deve constar se as mudas são in vitro ou micropropagadas;"
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE Área Livre de Moko-da-bananeira PARA todas as UFs",
+          "part": [
+            "mudas",
+            "rizomas"
+          ],
+          "orig": [
+            "CE",
+            "PE",
+            "PI",
+            "RN",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV com  a seguinte declaração adicional: \"As mudas foram produzidas em Área Livre de Ralstonia solanacearum raça 2, oficialmente reconhecida pelo Ministério da Agricultura e Pecuária.\".  \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009.",
+            "A carga deverá estar lacrada e o número do lacre constar na PTV."
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF sem ocorrência de Moko-da-bananeira PARA todas as UFs",
+          "part": [
+            "mudas",
+            "rizomas"
+          ],
+          "orig": [
+            "AC",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PR",
+            "RJ",
+            "RS",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV com  a seguinte declaração adicional: \"As mudas se encontram livres de Ralstonia solanacearum raça 2.\".  \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009.",
+            "Quando transitar pelas UFs AM, AP, PA, RO, RR e SE, onde ocorre a praga, a carga deverá estar lacrada e o número do lacre constar na PTV."
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF com ocorrência de Moko-da-bananeira PARA área livre de Moko-da-bananeira",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "AP",
+            "PA",
+            "RO",
+            "RR",
+            "SE"
+          ],
+          "dest": [
+            "CE",
+            "PE",
+            "PI",
+            "RN",
+            "SC"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga Ralstonia solanacearum raça 2\"; \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE área livre de Moko-da-bananeira PARA área livre de Moko-da-bananeira",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "CE",
+            "PE",
+            "PI",
+            "RN",
+            "SC"
+          ],
+          "dest": [
+            "CE",
+            "PE",
+            "PI",
+            "RN",
+            "SC"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"As mudas foram produzidas em área livre de Ralstonia solanacearum raça 2, oficialmente reconhecida pelo Ministério da Agricultura e Pecuária\". \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
+          ]
+        },
+        {
+          "idprag": 2,
+          "desc": "DE UF com ocorrência de Ácaro-hindu-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-hindu-dos-citros",
+          "part": [
+            "plantas",
+            "mudas",
+            "raízes",
+            "caules",
+            "ramos",
+            "folhas",
+            "flores",
+            "frutos"
+          ],
+          "orig": [
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Schizotetranychus hindustanicus",
+          "exig": [
+            "TRÂNSITO PROIBIDO.\nMotivo: Ausência de área livre de ácaro-hindu-dos-citros, na origem da partida.",
+            "Para  frutos de Citrus spp. o trânsito é permitido com PTV com a declaração adicional: \"A partida atende às exigências constantes da Instrução Normativa MAPA nº 8, de 17 de abril de 2012, encontra-se livre do Ácaro Hindu dos Citros\";",
+            "Estas exigências fitossanitárias não se aplicam a material in vitro, madeira serrada e, ainda, frutos de coco (Cocus nucifera) secos e descascados;"
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF sem ocorrência de Moko-da-bananeira PARA todas as UFs",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AC",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RS",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "PTV para comprovar a origem. \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009;"
+          ]
+        },
+        {
+          "idprag": 8,
+          "desc": "DE UF com ocorrência de Moko-da-bananeira PARA UF sem ocorrência de Moko-da-bananeira",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "AP",
+            "PA",
+            "RO",
+            "RR",
+            "SE"
+          ],
+          "dest": [
+            "AC",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PR",
+            "RJ",
+            "RS",
+            "SP",
+            "TO"
+          ],
+          "prag": "Ralstonia solanacearum raça 2",
+          "exig": [
+            "OU PTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos em UP onde não foi observada a presença de Ralstonia solanacearum raça 2, nos últimos doze meses\"; OU \nPTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga Ralstonia solanacearum raça 2\"; \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "Mudas Micropropagadas DE qualquer UF PARA qualquer UF",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV;",
+            "As mudas deverão ser pré-aclimatadas ou aclimatadas em estufas ou casas de vegetação; e tratadas com fungicidas registrados, 10 (dez) dias antes de sua expedição para as Unidades da Federação;",
+            "As mudas também poderão ser transportadas quando ainda in vitro;",
+            "A exigência de PTV não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a mudas micropropagadas; Para outras mudas que não sejam micropropagadas, o trânsito é proibido, salvo quando provenientes de bananais de Áreas Livres de Sigatoka Negra."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "Material para pesquisa DE qualquer UF PARA qualquer UF",
+          "part": [
+            "material para pesquisa"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "Autorização Declaratória emitida pela Área de Sanidade Vegetal da Superintendência Federal da Agricultura - SFA, na Unidade da Federação de origem do material genético;",
+            "O material genético deve ser transportado em recipiente lacrado, devendo o número do lacre constar da Autorização Declaratória;",
+            "O interessado deve comunicar a SFA de destino da partida, quando do recebimento do material, para inspeção fitossanitária;",
+            "Estas exigências fitossanitárias só se aplicam a material genético;"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "CE",
+            "DF",
+            "RN"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "GO é área livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "MG"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente do municípios livres de Sigatoka Negra em MG: Águas Vermelhas, Alto Rio Doce, Araçaí, Aracitaba, Araçuaí, Araguari, Araporã, Baldim, Barão de Cocais, Barbacena, Belo Horizonte, Belo Vale, Betim, Bocaiúva, Bom Jesus do Amparo, Bonfim, Brumadinho, Buritizeiro, Cachoeira Dourada, Caetanópolis, Caeté, Campina Verde, Campos Altos, Canápolis, Capim Branco, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Confins, Contagem, Cordisburgo, Coronel Pacheco, Desterro do Melo, Divinésia, Dores do Turvo, Engenheiro Navarro, Ervália, Esmeraldas, Espinosa, Estrela do Sul, Florestal, Francisco Sá, Franscisco Dumont, Frutal, Funilândia, Guaraciama, Guarani, Guidoval, Guiricema, Gurinhatã, Ibirité, Igarapé, Indianópolis, Inhaúma, Ipiaçu, Iraí de Minas, Itabira, Itabirito, Itacarambi, Itaobim, Itapagipe, Itatiaiuçú, Ituiutaba, Iturama, Jaboticatubas, Jaíba, Janaúba, Januária, Jequitaí, Jequitibá, Jequitinhonha, Joaíma, João Pinheiro, Juatuba, Juiz de Fora, Lagamar, Lagoa Formosa, Lagoa Santa, Lassance, Limeira do Oeste, Manga, Mário Campos, Mateus Leme, Matias Cardoso, Mato Verde, Matozinhos, Medina, Mercês, Moeda, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Lima, Nova Ponte, Nova Porteirinha, Nova União, Oliveira Fortes, Pai Pedro, Paiva, Paracatu, Paraopeba, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Pedro Leopoldo, Perdizes, Piau, Pirapora, Piraúba, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Prudente de Morais, Raposos, Ribeirão das Neves, Rio Acima, Rio Manso, Rio Paranaíba, Rio Pomba, Rodeiro, Sabará, Sacramento, Santa Bárbara do Tugúrio, Santa Barbara, Santa Luzia, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Geraldo, São Gonçalo do Abaeté, São Gonçalo do Rio Abaixo, São Gotardo, São João das Missões, São Joaquim de Bicas, São José da Lapa, São Sebastião da Vargem Alegre, Sarzedo, Serra do Salitre, Sete Lagoas, Silveirânia, Tapira, Taquaraçú de Minas, Tocantins, Tupaciguara, Ubá, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia, Veríssimo, Vespasiano e Visconde do Rio Branco;",
+            "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "MS"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "GO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de GO, com exceção dos municípios de Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área livre de Sigatoka Negra ",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "dest": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
+            "A partida deve estar lacrada para transitar por AC, AL, AM, AP, MA, MG (exceto pelos municípios listados no item 6.1), MS (exceto pelos municípios listados no item 6.2), MT, PA, PE, PI, PR, RS, RJ, RO, RR, SC, SE, SP, TO e GO (somente nos municípios listados no ítem 7);",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Nas UFs de GO, MG e de MS estas exigências só se aplicam a partida proveniente e destinada a município livre de Sigatoka Negra: \n\n6.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n6.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\";",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Para as UFs de GO, MG e de MS estas exigências só se aplicam a partida destinada a município livre de Sigatoka Negra: \n\n5.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n5.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 4,
+          "desc": "DE qualquer UF PARA qualquer UF",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "BSV e CMV",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"A partida encontra-se livre dos vírus Banana streak virus (BSV) e Cucumber mosaic virus (CMV), de acordo com o laudo laboratorial [nº do laudo], [nome do laboratório] -[município e UF de localização do laboratório]\";",
+            "As mudas de bananeira que transitarem em desrespeito às determinações deste artigo ficam sujeitas à interceptação, caso em que será determinado o retorno das mesmas ao local de origem e comunicado ao órgão fiscalizador da produção e comércio, para adoção das providências cabíveis, conforme o art. 13, § 2º., da Instrução Normativa MAPA nº. 46, de 27 de dezembro de 2010."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "frutos",
+            "flores"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "OU Partida isenta de PTV, sendo porém PROIBIDO o trânsito por Área Livre de Sigatoka Negra, listadas no Item 2; OU PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\", sendo permitido o trânsito por Área Livre de Sigatoka Negra;",
+            "ÁREAS LIVRE DE SIGATOKA NEGRA: Unidades da Federação CE, DF, GO, PB, PI, RN, SE, bem como GO, exceto os municípios citados no item 3 e pelos municípios livres de Sigatoka Negra de MG e de MS: \na) Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \nb)Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia.",
+            "As bananas não podem transitar em cacho, em todo o território nacional;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "CE",
+            "DF",
+            "GO",
+            "RN"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "MG"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Alto Rio Doce, Araçaí, Aracitaba, Araçuaí, Araguari, Araporã, Baldim, Barão de Cocais, Barbacena, Belo Horizonte, Belo Vale, Betim, Bocaiúva, Bom Jesus do Amparo, Bonfim, Brumadinho, Buritizeiro, Cachoeira Dourada, Caetanópolis, Caeté, Campina Verde, Campos Altos, Canápolis, Capim Branco, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Confins, Contagem, Cordisburgo, Coronel Pacheco, Desterro do Melo, Divinésia, Dores do Turvo, Engenheiro Navarro, Ervália, Esmeraldas, Espinosa, Estrela do Sul, Florestal, Francisco Sá, Franscisco Dumont, Frutal, Funilândia, Guaraciama, Guarani, Guidoval, Guiricema, Gurinhatã, Ibirité, Igarapé, Indianópolis, Inhaúma, Ipiaçu, Iraí de Minas, Itabira, Itabirito, Itacarambi, Itaobim, Itapagipe, Itatiaiuçú, Ituiutaba, Iturama, Jaboticatubas, Jaíba, Janaúba, Januária, Jequitaí, Jequitibá, Jequitinhonha, Joaíma, João Pinheiro, Juatuba, Juiz de Fora, Lagamar, Lagoa Formosa, Lagoa Santa, Lassance, Limeira do Oeste, Manga, Mário Campos, Mateus Leme, Matias Cardoso, Mato Verde, Matozinhos, Medina, Mercês, Moeda, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Lima, Nova Ponte, Nova Porteirinha, Nova União, Oliveira Fortes, Pai Pedro, Paiva, Paracatu, Paraopeba, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Pedro Leopoldo, Perdizes, Piau, Pirapora, Piraúba, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Prudente de Morais, Raposos, Ribeirão das Neves, Rio Acima, Rio Manso, Rio Paranaíba, Rio Pomba, Rodeiro, Sabará, Sacramento, Santa Bárbara do Tugúrio, Santa Barbara, Santa Luzia, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Geraldo, São Gonçalo do Abaeté, São Gonçalo do Rio Abaixo, São Gotardo, São João das Missões, São Joaquim de Bicas, São José da Lapa, São Sebastião da Vargem Alegre, Sarzedo, Serra do Salitre, Sete Lagoas, Silveirânia, Tapira, Taquaraçú de Minas, Tocantins, Tupaciguara, Ubá, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia, Veríssimo, Vespasiano e Visconde do Rio Branco;."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "GO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de GO, com exceção dos municípios de Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "MS"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Estas exigências só se aplicam a partida proveniente de municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área livre de Sigatoka Negra PARA área livre de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "dest": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra.",
+            "A partida deve estar lacrada para transitar por AC, AM, AP, MA, MG (exceto pelos municípios listados no item 5.1), MS (exceto pelos municípios listados no item 5.2), MT, PA, PR, RS, RJ, RO, RR, SC, SP e TO;",
+            "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
+            "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Para as Ufs de MG e MS estas exigências só se aplicam a partida proveniente e destinada a município livre de Sigatoka Negra: \n\n5.1 -  Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba, Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n5.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "Estas exigências só se aplicam a mudas não micropopagadas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia"
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "CE",
+            "DF",
+            "GO",
+            "MG",
+            "MS",
+            "RN"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;",
+            "Esta proibição não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Para as UFs de MG e MS, esta proibição só se aplica a partida destinada a município livre de Sigatoka Negra:\n\n3.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo;\n\n3.2 - Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "GO é livre de Sigatoka Negra, EXCETO os seguintes municípios: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia."
+          ]
+        },
+        {
+          "idprag": 9,
+          "desc": "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RS",
+            "RJ",
+            "RO",
+            "RR",
+            "SE",
+            "SC",
+            "SP",
+            "TO"
+          ],
+          "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+          "exig": [
+            "TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;",
+            "Esta proibição não se aplica a partida proveniente de município livre de Sigatoka Negra de MG e de MS: \n\na)Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\nb)Municípios livres de Sigatoka Negra de MS: Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba,   Selvíria, Taquarussú e Três Lagoas;",
+            "Esta proibição não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
+            "Municípios de GO com ocorrência de Sigatoka Negra: Amorinópolis, Aragarças, Arenópolis, Baliza, Bom Jardim de Goiás, Caiapônia, Diorama, Doverlândia, Fazenda Nova, Iporá, Israelândia, Ivolândia, Jaupaci, Jussara, Mineiros, Moiporá, Montes Claros de Goiás, Palestina de Goiás, Piranhas, Santa Fé de Goiás e Santa Rita do Araguaia;",
+            "Esta proibição só se aplica a mudas não micropopagadas;"
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação",
+          "part": [
+            "frutos",
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "AC",
+            "AP",
+            "MA"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Proibida a emissão de PTV. TRÂNSITO PROIBIDO."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação",
+          "part": [
+            "frutos",
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PR"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver origem os municípios de Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: Proibida a emissão de PTV. TRÂNSITO PROIBIDO."
+          ]
+        },
+        {
+          "idprag": 5,
+          "desc": "DE UF com ocorrência de Cancro-da-videira PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-da-videira",
+          "part": [
+            "mudas"
+          ],
+          "orig": [
+            "BA",
+            "PE",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas campestris pv. viticola",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"As mudas foram obtidas por micropropagação e indexadas para Xanthomonas campestris pv. viticola\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Sem Ocorrência de Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco or Área sob Erradicação",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "PB",
+            "PE",
+            "RO",
+            "RJ",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PA",
+            "PI",
+            "PB",
+            "PE",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"Os frutos são originários de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\".",
+            "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
+            "Em GO, os municípios de Itajá, Itarumã, Jataí e Lagoa Santa são Área sob Erradicação.",
+            "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Sem Ocorrência de Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "PB",
+            "PE",
+            "RO",
+            "RJ",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PA",
+            "PI",
+            "PB",
+            "PE",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"O material de propagação é originário de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Sem Ocorrência de Cancro Cítrico PARA o Estado do Paraná",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "PB",
+            "PE",
+            "RO",
+            "RJ",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "PR"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"Os frutos são originários de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\".",
+            "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
+            "Em GO, os municípios de Itajá, Itarumã, Jataí e Lagoa Santa são Área sob Erradicação.",
+            "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Sem Ocorrência de Cancro Cítrico PARA o Estado do Paraná",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "AL",
+            "AM",
+            "BA",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "PB",
+            "PE",
+            "RO",
+            "RJ",
+            "SE",
+            "TO"
+          ],
+          "dest": [
+            "PR"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"O material de propagação é originário de Área Sem Ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), oficialmente reconhecida\".",
+            "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
+            "Em GO, os municípios de Itajá, Itarumã, Jataí e Lagoa Santa são Área sob Erradicação.",
+            "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Livre de Cancro Cítrico PARA qualquer Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PA",
+            "PI",
+            "PB",
+            "PE",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"Os frutos são originários de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Livre de Cancro Cítrico PARA qualquer Área Sem Ocorrência, Área Livre de Praga, Área sob Sistema de Mitigação de Risco ou Área sob Erradicação",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PA",
+            "PI",
+            "PB",
+            "PE",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"O material de propagação é originário de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE município não incluído nas áreas livres oficialmente reconhecidas PARA qualquer UF",
+          "part": [
+            "frutos",
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Proibida a emissão de PTV. TRÂNSITO PROIBIDO."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Livre de Cancro Cítrico PARA o Estado do Paraná",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "PR"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"Os frutos são originários de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área Livre de Cancro Cítrico PARA o Estado do Paraná",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PA"
+          ],
+          "dest": [
+            "PR"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida tiver como destino qualquer  município que NÃO seja Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná: PTV com a seguinte DA: \"O material de propagação é originário de Área Livre de Praga para o Cancro Cítrico (Xanthomonas citri subsp. citri) oficialmente reconhecida\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "CE",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PI",
+            "RS",
+            "SP",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico (Xanthomonas citri subsp. citri) e foi produzido conforme preconiza a legislação específica em vigor\".",
+            "Em GO, os municípios de Cachoeira Dourada, Inaciolândia e Rio Verde são Área sob SMR.",
+            "Em MG, os municípios de Campina Verde, Carneirinho, Formoso, Frutal, Iturama e Planura são Área sob SMR."
+          ]
+        },
+        {
+          "idprag": 5,
+          "desc": "DE UF com ocorrência de Cancro-da-videira PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-da-videira",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "BA",
+            "PE",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas campestris pv. viticola",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"Os frutos foram produzidos em propriedade onde são adotadas as medidas de prevenção e controle do cancro bacteriano da videira, previstas na legislação fitossanitária\";",
+            "Estas exigências fitossanitárias só se aplicam a frutos, quando destinados a consumo in natura."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "PR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "SE A PARTIDA TIVER COMO ORIGEM UM DOS MUNICÍPIOS DE RISCO DESCONHECIDO (Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná): Proibida a emissão de PTV. TRÂNSITO PROIBIDO.",
+            "SE A PARTIDA TIVER COMO ORIGEM OS DEMAIS MUNICÍPIOS, QUE SÃO ÁREAS DE MITIGAÇÃO DE RISCO: PTV com a seguinte DA: \"O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico (Xanthomonas citri subsp. citri) e foi produzido conforme preconiza a legislação específica em vigor\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "CE",
+            "GO",
+            "MG",
+            "MT",
+            "MS",
+            "PI",
+            "RS",
+            "SP",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "Se a partida contém frutos infestados oriundos de imóvel sob Sistema de Mitigação de Risco (SMR), e tem como destino Indústria de suco, localizada em UF limítrofe, que não está localizada em ALP ou em Área Sem Ocorrência de Cancro Cítrico: \na)PTV com a seguinte DA: \"Frutos contaminados com Cancro Cítrico (Xanthomonas citri subsp. citri) destinados exclusivamente à indústria\". \nb)Os frutos devem ser transportados em veículo fechado ou coberto, e lacrado",
+            "Se a partida NÃO contém frutos infestados e é oriunda de imóvel cadastrado no SMR para o Cancro Cítrico e tem como destino\tUC ou indústria localizada em UF limítrofe:  \na) PTV com uma das seguintes DAs: \n- \"Os frutos foram produzidos em UP, de imóvel cadastrado no SMR para o Cancro Cítrico, que apresentou até um por cento de frutos com sintomas de Cancro Cítrico (Xanthomonas citri subsp. citri) e se destinam a indústria\"; OU \n- \"Os frutos foram produzidos em UP, de imóvel cadastrado no SMR para o Cancro Cítrico, que apresentou até um por cento de frutos com sintomas de Cancro Cítrico (Xanthomonas citri subsp. citri) e se destinam ao beneficiamento em Unidade de Consolidação\". \nb) Os frutos devem ser transportados em veículo fechado ou coberto e lacrado",
+            "Se a partida for formada por frutos oriundos de imóvel sem ocorrência do Cancro Cítrico, localizado em Área sob SMR, com destino para UC ou indústria, localizada em qualquer UF: \t\na) PTV com uma das seguintes DAs: \n- \"Os frutos são provenientes de imóvel sem ocorrência do Cancro Cítrico (Xanthomonas citri subsp. citri), localizado em Área sob SMR, e se destinam a indústria\"; OU \n- \"Os frutos são provenientes de imóvel sem ocorrência do Cancro Cítrico (Xanthomonas citri subsp. citri), localizado em Área sob SMR, e se destinam ao beneficiamento em Unidade de Consolidação\". \nb) Os frutos devem ser transportados em veículo fechado ou coberto",
+            "Para todas as demais situações de produtos oriundos de Área de SMR: \na) PTV com as seguintes DAs: \n- \"Os frutos são originários de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco (SMR) reconhecido oficialmente, foram higienizados por imersão em solução com Hipoclorito de Sódio a duzentos ppm, pH sete, durante dois minutos e se encontram sem sintomas de Cancro Cítrico (Xanthomonas citri subsp. citri)\". \n- Se as embalagens descartáveis ou em caixas plásticas retornáveis forem higienizadas por PULVERIZAÇÃO, adicionar a seguinte DA: \"As caixas plásticas retornáveis foram higienizadas por pulverização em solução de cloreto de benzalcônio (amônio quaternário) 125 (cento e vinte e cinco) gramas/litro, na concentração de 0,1% (um décimo percentual)\". \n- Se as embalagens descartáveis ou em caixas plásticas retornáveis forem higienizadas por IMERSÃO, adicionar a seguinte DA: \"As caixas plásticas retornáveis foram higienizadas por imersão em solução de cloreto de benzalcônio (amônio quaternário) 125 (cento e vinte e cinco) gramas/litro, na concentração de 0,1% (um décimo percentual)\" \nb) Os frutos devem ser transportados em veículo fechado ou coberto, seja para transporte a granel, em embalagens descartáveis ou em caixas plásticas retornáveis"
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área sob Erradicação de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "GO",
+            "RN",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com uma das seguintes DAs: \n -\"Os frutos são provenientes de plantas sadias de imóvel sob supervisão oficial, localizado em Área sob Erradicação, foram higienizados com Hipoclorito de Sódio a duzentos ppm, pH sete, durante dois minutos e encontram-se livres de Xanthomonas citri subsp. citri\".\n -\"Os frutos são provenientes de plantas sadias de imóvel sob supervisão oficial, localizado em Área sob Erradicação, e se destinam à indústria\".\n -\"Os frutos são provenientes de imóvel sem ocorrência do Cancro Cítrico (Xanthomonas citri subsp. citri), localizado em Área sob Erradicação\"."
+          ]
+        },
+        {
+          "idprag": 10,
+          "desc": "DE Área sob Erradicação de Cancro Cítrico PARA qualquer UF",
+          "part": [
+            "material de propagação",
+            "mudas",
+            "estacas",
+            "gemas",
+            "plantas"
+          ],
+          "orig": [
+            "GO",
+            "RN",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas citri subsp. citri",
+          "exig": [
+            "PTV com a seguinte DA: \"O material de propagação é proveniente de Área sob Erradicação e foi produzido em imóvel sem ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), conforme preconiza a legislação específica vigente\"."
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE Área com ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "frutos",
+            "material de propagação vegetativa",
+            "polpa in natura (não congelada)"
+          ],
+          "orig": [
+            "AM"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "TRÂNSITO PROIBIDO",
+            "Obs: Polpa congelada tem trânsito livre"
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE Área com ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "amêndoas"
+          ],
+          "orig": [
+            "AM"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "Se a partida for de amêndoas não fermentadas ou não cumprem os requisitos do item abaixo: TRÂNSITO PROIBIDO",
+            "Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente DE área sob quarentena PARA local sem ocorrência, TRÂNSITO LIVRE obedecendo as seguintes condiçoes: \na) As amêndoas devem estar acondicionadas em sacarias novas;  \nb) Carga deve estar acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc) Verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html ."
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE Área sem ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "amêndoas",
+            "frutos",
+            "material de propagação vegetativa",
+            "polpa in natura (não congelada)"
+          ],
+          "orig": [
+            "AL",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal."
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE UF with and sem ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "frutos",
+            "material de propagação vegetativa",
+            "polpa in natura (não congelada)"
+          ],
+          "orig": [
+            "AC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "Se a partida for proveniente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves: TRÂNSITO PROIBIDO",
+            "Se a partida for proveniente dos demais municípios do Acre: TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal",
+            "Obs: Polpa congelada tem trânsito livre"
+          ]
+        },
+        {
+          "idprag": 11,
+          "desc": "DE UF com e sem ocorrência de Monilíase PARA qualquer UF",
+          "part": [
+            "amêndoas"
+          ],
+          "orig": [
+            "AC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Moniliophthora roreri",
+          "exig": [
+            "Se a partida for de amêndoas não fermentadas ou que não cumprem os requisitos do item seguinte, e são proveniente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves: TRÂNSITO PROIBIDO",
+            "Se a partida for de amêndoas fermentadas e secas de cacau, classificadas como Tipo I e II, procedente dos municípios Mâncio Lima, Cruzeiro do Sul, Porto Walter, Marechal Taumaturgo, Rodrigues Alves, TRÂNSITO LIVRE obedecendo as seguintes condiçoes: \na) As amêndoas devem estar acondicionadas em sacarias novas;  \nb) Carga deve estar acompanhada de laudo de classificação emitido por classificador credenciado pelo Mapa; \nc) Verificar lista de classificadores credenciados pelo Mapa - https://mapa-indicadores.agricultura.gov.br/publico/extensions/Qualidade_Vegetal/Qualidade_Vegetal.html .",
+            "Se a partida for proveniente dos demais municípios do Acre: TRÂNSITO LIVRE - Carga deve ser acompanhada de nota fiscal"
+          ]
+        },
+        {
+          "idprag": 12,
+          "desc": "DE UF sem presença de Rhizoctonia theobromae (Ceratobasidium theobromae) PARA qualquer UF",
+          "part": [
+            "Materiais vegetais"
+          ],
+          "orig": [
+            "AC",
+            "AL",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+          "exig": [
+            "TRÂNSITO LIVRE",
+            "A Permissão de Trânsito de Vegetais - PTV é necessária no caso de a partida de plantas e partes de plantas hospedeiras da praga transitar em áreas com ocorrência, devendo este: \nI - ser transportado em embalagens lacradas; e\nII - ser lacrado pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrital de Defesa Sanitária Vegetal na Unidade Federativa de origem e o número do lacre informado na Permissão de Trânsito de Vegetais - PTV."
+          ]
+        },
+        {
+          "idprag": 5,
+          "desc": "DE UF com ocorrência de Cancro-da-videira PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-da-videira",
+          "part": [
+            "material para pesquisa"
+          ],
+          "orig": [
+            "BA",
+            "PE",
+            "RR"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Xanthomonas campestris pv. viticola",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"O material foi lacrado na origem, sob número de lacre X, e embalado de maneira a garantir a não dispersão da praga\"."
+          ]
+        },
+        {
+          "idprag": 12,
+          "desc": "DE UF com presença de Rhizoctonia theobromae (Ceratobasidium theobromae), oriundo de municípios sem ocorrência, PARA quaquer UF",
+          "part": [
+            "Materiais vegetais"
+          ],
+          "orig": [
+            "AP",
+            "PA"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+          "exig": [
+            "PTV, baseada em CFO ou CFOC, com a seguinte DA: \"A partida é originária de município sem ocorrência de Rhizoctonia theobromae, em Unidade Federativa com ocorrência, e encontra-se livre da praga\".",
+            "No caso da partida de plantas e partes de plantas hospedeiras da praga transitar em áreas com ocorrência, deverá esta: \nI - ser transportada em embalagens lacradas; e \nII - ser lacrada pelo Responsável Técnico ou pelo Órgão Estadual, ou Distrital de Defesa Sanitária Vegetal no município de origem e o número do lacre informado na Permissão de Trânsito de Vegetais - PTV."
+          ]
+        },
+        {
+          "idprag": 12,
+          "desc": "DE UF com presença de Rhizoctonia theobromae (Ceratobasidium theobromae), oriundo de municípios com ocorrência, PARA qualquer UF",
+          "part": [
+            "Materiais vegetais"
+          ],
+          "orig": [
+            "AP",
+            "PA"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+          "exig": [
+            "Se a partida tiver como origem os municípios de Oiapoque, Calçoene, Amapá, Pracuúba, Tartarugalzinho e Pedra Branca do Amaparí no estado do Amapá, ou os município de Almeirim, Óbidos e Oriximiná, na área da\nTerra Indígena do Parque do Tumucumaque no Estado do Pará, municípios de Almeirim, Óbidos e Oriximiná, na área da Terra Indígena do Parque do Tumucumaque: TRÂNSITO PROIBIDO."
+          ]
+        },
+        {
+          "idprag": 6,
+          "desc": "DE UF com ocorrência de Cancro-europeu-das-pomáceas PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-europeu-das-pomáceas",
+          "part": [
+            "mudas",
+            "sementes",
+            "estacas",
+            "bulbos",
+            "tubérculos",
+            "manivas",
+            "toletes",
+            "gemas",
+            "ramas",
+            "rizomas",
+            "material de propagação"
+          ],
+          "orig": [
+            "PR",
+            "RS",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Neonectria ditissima (Neonectria galligena)",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"A Unidade de produção foi inspecionada oficialmente durante o período de produção e não foi constatada a presença de sintomas de infecção pela praga Neonectria galligena\";",
+            "Esta exigência fitossanitária não se aplica a material propagativo in vitro."
+          ]
+        },
+        {
+          "idprag": 6,
+          "desc": "DE UF com ocorrência de Cancro-europeu-das-pomáceas PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-europeu-das-pomáceas",
+          "part": [
+            "frutos"
+          ],
+          "orig": [
+            "PR",
+            "RS",
+            "SC"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Neonectria ditissima (Neonectria galligena)",
+          "exig": [
+            "PTV com a seguinte declaração adicional: \"Na unidade de produção e Unidade de Consolidação - UC foram adotados os procedimentos de controle e prevenção previstos nesta norma (Instrução Normativa nº 20, de 20 de junho de 2013) e os frutos não apresentam sintomas de Neonectria galligena\"."
+          ]
+        },
+        {
+          "idprag": 7,
+          "desc": "DE UF com ocorrência de HLB de município com ocorrência da praga e dos municípios limítrofes PARA qualquer UF",
+          "part": [
+            "mudas",
+            "estacas",
+            "gemas",
+            "ramas",
+            "raízes",
+            "material de propagação vegetativo",
+            "plantas"
+          ],
+          "orig": [
+            "GO",
+            "MG",
+            "MS",
+            "PR",
+            "SC",
+            "SP"
+          ],
+          "dest": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+          "exig": [
+            "PTV, baseado em Certificado Fitossanitário de Origem - CFO, ou Certificado Fitossanitário de Origem Consolidado - CFOC, com a seguinte Declaração Adicional (DA): \"O material de propagação é originário de UF com ocorrência de Candidatus Liberibacter spp, foi produzido em ambiente protegido e encontra-se livre da praga\". \n Obs.: O trânsito de material de propagação vegetativo de plantas hospedeiras de Candidatus Liberibacter spp., quando passar por UF com ocorrência da praga, deverá ser realizado em caminhão com carroceria fechada ou com tela antiafidica."
+          ]
+        }
+      ],
+      "legislacoes": [
+        {
+          "id": "IN02-2014",
+          "leg": "Instrução Normativa MAPA nº 2",
+          "data": "06/02/2014"
+        },
+        {
+          "id": "IN02-2018",
+          "leg": "Instrução Normativa SDA n° 2",
+          "data": "19/01/2018"
+        },
+        {
+          "id": "IN08-2012",
+          "leg": "Instrução Normativa MAPA nº 8",
+          "data": "17/04/2012"
+        },
+        {
+          "id": "IN112-2020",
+          "leg": "Instrução Normativa nº 112",
+          "data": "11/12/2020"
+        },
+        {
+          "id": "IN17-2005",
+          "leg": "Instrução Normativa SDA/MAPA nº 17",
+          "data": "31/05/2005"
+        },
+        {
+          "id": "IN17-2009",
+          "leg": "Instrução Normativa SDA/MAPA nº 17",
+          "data": "27/05/2009"
+        },
+        {
+          "id": "IN20-2013",
+          "leg": "Instrução Normativa nº 20",
+          "data": "20/06/2013"
+        },
+        {
+          "id": "IN21-2018",
+          "leg": "Instrução Normativa nº 21",
+          "data": "25/04/2018"
+        },
+        {
+          "id": "IN34-2017",
+          "leg": "Instrução Normativa MAPA/SDA nº. 34",
+          "data": "05/09/2017"
+        },
+        {
+          "id": "IN38-2008",
+          "leg": "Instrução Normativa nº 38",
+          "data": "23/06/2008"
+        },
+        {
+          "id": "IN46-2010",
+          "leg": "Instrução Normativa MAPA nº 46",
+          "data": "27/12/2010"
+        },
+        {
+          "id": "PORT1257-2025",
+          "leg": "Portaria SDA/MAPA nº 1.257",
+          "data": "19/03/2025"
+        },
+        {
+          "id": "PORT1503-2025",
+          "leg": "Portaria SDA/MAPA n° 1503",
+          "data": "19/12/2025"
+        },
+        {
+          "id": "PORT1512-2026",
+          "leg": "Portaria SDA/MAPA nº 1.512",
+          "data": "07/01/2026"
+        },
+        {
+          "id": "PORT317-2021",
+          "leg": "Portaria SDA nº 317",
+          "data": "21/05/2021"
+        },
+        {
+          "id": "PORT627-2023",
+          "leg": "Portaria MAPA nº 627",
+          "data": "10/11/2023"
+        },
+        {
+          "id": "PORT703-2022",
+          "leg": "Portaria SDA nº 703",
+          "data": "21/11/2022"
+        },
+        {
+          "id": "PORT734-2024",
+          "leg": "Portaria MAPA nº 734",
+          "data": "13/11/2024"
+        },
+        {
+          "id": "PORT776-2025",
+          "leg": "Portaria nº 776",
+          "data": "12/03/2025"
+        },
+        {
+          "id": "PORT780-2023",
+          "leg": "Portaria SDA nº 780",
+          "data": "06/04/2023"
+        },
+        {
+          "id": "PORT859-2023",
+          "leg": "Portaria SDA/MAPA n° 859",
+          "data": "19/07/2023"
+        },
+        {
+          "id": "PORT940-2023",
+          "leg": "Portaria SDA nº 940",
+          "data": "17/11/2023"
+        },
+        {
+          "id": "RES04-2019",
+          "leg": "Resolução nº 04",
+          "data": "29/03/2019"
+        },
+        {
+          "id": "RES05-2018",
+          "leg": "Resolução nº 05",
+          "data": "31/10/2018"
+        }
+      ],
+      "estados": [
+        {
+          "estado": "Acre",
+          "UF": "AC",
+          "ibge": 12
+        },
+        {
+          "estado": "Alagoas",
+          "UF": "AL",
+          "ibge": 27
+        },
+        {
+          "estado": "Amazonas",
+          "UF": "AM",
+          "ibge": 13
+        },
+        {
+          "estado": "Amapá",
+          "UF": "AP",
+          "ibge": 16
+        },
+        {
+          "estado": "Bahia",
+          "UF": "BA",
+          "ibge": 29
+        },
+        {
+          "estado": "Ceará",
+          "UF": "CE",
+          "ibge": 23
+        },
+        {
+          "estado": "Distrito Federal",
+          "UF": "DF",
+          "ibge": 53
+        },
+        {
+          "estado": "Espirito Santo",
+          "UF": "ES",
+          "ibge": 32
+        },
+        {
+          "estado": "Goiás",
+          "UF": "GO",
+          "ibge": 52
+        },
+        {
+          "estado": "Maranhão",
+          "UF": "MA",
+          "ibge": 21
+        },
+        {
+          "estado": "Minas Gerais",
+          "UF": "MG",
+          "ibge": 31
+        },
+        {
+          "estado": "Mato Grosso do Sul",
+          "UF": "MS",
+          "ibge": 50
+        },
+        {
+          "estado": "Mato Grosso",
+          "UF": "MT",
+          "ibge": 51
+        },
+        {
+          "estado": "Pará",
+          "UF": "PA",
+          "ibge": 15
+        },
+        {
+          "estado": "Paraíba",
+          "UF": "PB",
+          "ibge": 25
+        },
+        {
+          "estado": "Pernambuco",
+          "UF": "PE",
+          "ibge": 26
+        },
+        {
+          "estado": "Piauí",
+          "UF": "PI",
+          "ibge": 22
+        },
+        {
+          "estado": "Paraná",
+          "UF": "PR",
+          "ibge": 41
+        },
+        {
+          "estado": "Rio de janeiro",
+          "UF": "RJ",
+          "ibge": 33
+        },
+        {
+          "estado": "Rio Grande do Norte",
+          "UF": "RN",
+          "ibge": 24
+        },
+        {
+          "estado": "Rondônia",
+          "UF": "RO",
+          "ibge": 11
+        },
+        {
+          "estado": "Roraima",
+          "UF": "RR",
+          "ibge": 14
+        },
+        {
+          "estado": "Rio Grande do Sul",
+          "UF": "RS",
+          "ibge": 43
+        },
+        {
+          "estado": "Santa Catarina",
+          "UF": "SC",
+          "ibge": 42
+        },
+        {
+          "estado": "Sergipe",
+          "UF": "SE",
+          "ibge": 28
+        },
+        {
+          "estado": "São Paulo",
+          "UF": "SP",
+          "ibge": 35
+        },
+        {
+          "estado": "Tocantins",
+          "UF": "TO",
+          "ibge": 17
+        }
+      ]
+    },
+    "timestamp": {
+      "_seconds": 1772524594,
+      "_nanoseconds": 833000000
+    }
+  }
+];
+var configuracoes = [
+  {
+    "status_fitossanitario": [
+      "Área de SMR",
+      "Área de Status Desconhecido",
+      "Zona Tampão",
+      "Área Com Ocorrência",
+      "Área Erradicada",
+      "Área Livre de Praga",
+      "Área Sem Registro",
+      "Área Sob Erradicação",
+      "Área Sem Registro de UF Com Ocorrência",
+      "UF Sem Registro",
+      "UF Com Ocorrência",
+      "Todas as Áreas"
+    ]
+  },
+  {
+    "lastUpdate": {
+      "_seconds": 1772524594,
+      "_nanoseconds": 833000000
+    },
+    "version": 4
+  }
+];
 var estados = [
   {
     "estado": "Acre",
@@ -697,6 +15603,27863 @@ var legislacoes = [
     "id": "RES05-2018",
     "leg": "Resolução nº 05",
     "data": "31/10/2018"
+  }
+];
+var municipios = [
+  {
+    "id": 110001,
+    "nome": "Alta Floresta D'Oeste",
+    "sigla": "RO"
+  },
+  {
+    "id": 110002,
+    "nome": "Ariquemes",
+    "sigla": "RO"
+  },
+  {
+    "id": 110003,
+    "nome": "Cabixi",
+    "sigla": "RO"
+  },
+  {
+    "id": 110004,
+    "nome": "Cacoal",
+    "sigla": "RO"
+  },
+  {
+    "id": 110005,
+    "nome": "Cerejeiras",
+    "sigla": "RO"
+  },
+  {
+    "id": 110006,
+    "nome": "Colorado do Oeste",
+    "sigla": "RO"
+  },
+  {
+    "id": 110007,
+    "nome": "Corumbiara",
+    "sigla": "RO"
+  },
+  {
+    "id": 110008,
+    "nome": "Costa Marques",
+    "sigla": "RO"
+  },
+  {
+    "id": 110009,
+    "nome": "Espigão D'Oeste",
+    "sigla": "RO"
+  },
+  {
+    "id": 110010,
+    "nome": "Guajará-Mirim",
+    "sigla": "RO"
+  },
+  {
+    "id": 110011,
+    "nome": "Jaru",
+    "sigla": "RO"
+  },
+  {
+    "id": 110012,
+    "nome": "Ji-Paraná",
+    "sigla": "RO"
+  },
+  {
+    "id": 110013,
+    "nome": "Machadinho D'Oeste",
+    "sigla": "RO"
+  },
+  {
+    "id": 110014,
+    "nome": "Nova Brasilândia D'Oeste",
+    "sigla": "RO"
+  },
+  {
+    "id": 110015,
+    "nome": "Ouro Preto do Oeste",
+    "sigla": "RO"
+  },
+  {
+    "id": 110018,
+    "nome": "Pimenta Bueno",
+    "sigla": "RO"
+  },
+  {
+    "id": 110020,
+    "nome": "Porto Velho",
+    "sigla": "RO"
+  },
+  {
+    "id": 110025,
+    "nome": "Presidente Médici",
+    "sigla": "RO"
+  },
+  {
+    "id": 110026,
+    "nome": "Rio Crespo",
+    "sigla": "RO"
+  },
+  {
+    "id": 110028,
+    "nome": "Rolim de Moura",
+    "sigla": "RO"
+  },
+  {
+    "id": 110029,
+    "nome": "Santa Luzia D'Oeste",
+    "sigla": "RO"
+  },
+  {
+    "id": 110030,
+    "nome": "Vilhena",
+    "sigla": "RO"
+  },
+  {
+    "id": 110032,
+    "nome": "São Miguel do Guaporé",
+    "sigla": "RO"
+  },
+  {
+    "id": 110033,
+    "nome": "Nova Mamoré",
+    "sigla": "RO"
+  },
+  {
+    "id": 110034,
+    "nome": "Alvorada D'Oeste",
+    "sigla": "RO"
+  },
+  {
+    "id": 110037,
+    "nome": "Alto Alegre dos Parecis",
+    "sigla": "RO"
+  },
+  {
+    "id": 110040,
+    "nome": "Alto Paraíso",
+    "sigla": "RO"
+  },
+  {
+    "id": 110045,
+    "nome": "Buritis",
+    "sigla": "RO"
+  },
+  {
+    "id": 110050,
+    "nome": "Novo Horizonte do Oeste",
+    "sigla": "RO"
+  },
+  {
+    "id": 110060,
+    "nome": "Cacaulândia",
+    "sigla": "RO"
+  },
+  {
+    "id": 110070,
+    "nome": "Campo Novo de Rondônia",
+    "sigla": "RO"
+  },
+  {
+    "id": 110080,
+    "nome": "Candeias do Jamari",
+    "sigla": "RO"
+  },
+  {
+    "id": 110090,
+    "nome": "Castanheiras",
+    "sigla": "RO"
+  },
+  {
+    "id": 110092,
+    "nome": "Chupinguaia",
+    "sigla": "RO"
+  },
+  {
+    "id": 110094,
+    "nome": "Cujubim",
+    "sigla": "RO"
+  },
+  {
+    "id": 110100,
+    "nome": "Governador Jorge Teixeira",
+    "sigla": "RO"
+  },
+  {
+    "id": 110110,
+    "nome": "Itapuã do Oeste",
+    "sigla": "RO"
+  },
+  {
+    "id": 110120,
+    "nome": "Ministro Andreazza",
+    "sigla": "RO"
+  },
+  {
+    "id": 110130,
+    "nome": "Mirante da Serra",
+    "sigla": "RO"
+  },
+  {
+    "id": 110140,
+    "nome": "Monte Negro",
+    "sigla": "RO"
+  },
+  {
+    "id": 110143,
+    "nome": "Nova União",
+    "sigla": "RO"
+  },
+  {
+    "id": 110145,
+    "nome": "Parecis",
+    "sigla": "RO"
+  },
+  {
+    "id": 110146,
+    "nome": "Pimenteiras do Oeste",
+    "sigla": "RO"
+  },
+  {
+    "id": 110147,
+    "nome": "Primavera de Rondônia",
+    "sigla": "RO"
+  },
+  {
+    "id": 110148,
+    "nome": "São Felipe D'Oeste",
+    "sigla": "RO"
+  },
+  {
+    "id": 110149,
+    "nome": "São Francisco do Guaporé",
+    "sigla": "RO"
+  },
+  {
+    "id": 110150,
+    "nome": "Seringueiras",
+    "sigla": "RO"
+  },
+  {
+    "id": 110155,
+    "nome": "Teixeirópolis",
+    "sigla": "RO"
+  },
+  {
+    "id": 110160,
+    "nome": "Theobroma",
+    "sigla": "RO"
+  },
+  {
+    "id": 110170,
+    "nome": "Urupá",
+    "sigla": "RO"
+  },
+  {
+    "id": 110175,
+    "nome": "Vale do Anari",
+    "sigla": "RO"
+  },
+  {
+    "id": 110180,
+    "nome": "Vale do Paraíso",
+    "sigla": "RO"
+  },
+  {
+    "id": 120001,
+    "nome": "Acrelândia",
+    "sigla": "AC"
+  },
+  {
+    "id": 120005,
+    "nome": "Assis Brasil",
+    "sigla": "AC"
+  },
+  {
+    "id": 120010,
+    "nome": "Brasiléia",
+    "sigla": "AC"
+  },
+  {
+    "id": 120013,
+    "nome": "Bujari",
+    "sigla": "AC"
+  },
+  {
+    "id": 120017,
+    "nome": "Capixaba",
+    "sigla": "AC"
+  },
+  {
+    "id": 120020,
+    "nome": "Cruzeiro do Sul",
+    "sigla": "AC"
+  },
+  {
+    "id": 120025,
+    "nome": "Epitaciolândia",
+    "sigla": "AC"
+  },
+  {
+    "id": 120030,
+    "nome": "Feijó",
+    "sigla": "AC"
+  },
+  {
+    "id": 120032,
+    "nome": "Jordão",
+    "sigla": "AC"
+  },
+  {
+    "id": 120033,
+    "nome": "Mâncio Lima",
+    "sigla": "AC"
+  },
+  {
+    "id": 120034,
+    "nome": "Manoel Urbano",
+    "sigla": "AC"
+  },
+  {
+    "id": 120035,
+    "nome": "Marechal Thaumaturgo",
+    "sigla": "AC"
+  },
+  {
+    "id": 120038,
+    "nome": "Plácido de Castro",
+    "sigla": "AC"
+  },
+  {
+    "id": 120039,
+    "nome": "Porto Walter",
+    "sigla": "AC"
+  },
+  {
+    "id": 120040,
+    "nome": "Rio Branco",
+    "sigla": "AC"
+  },
+  {
+    "id": 120042,
+    "nome": "Rodrigues Alves",
+    "sigla": "AC"
+  },
+  {
+    "id": 120043,
+    "nome": "Santa Rosa do Purus",
+    "sigla": "AC"
+  },
+  {
+    "id": 120045,
+    "nome": "Senador Guiomard",
+    "sigla": "AC"
+  },
+  {
+    "id": 120050,
+    "nome": "Sena Madureira",
+    "sigla": "AC"
+  },
+  {
+    "id": 120060,
+    "nome": "Tarauacá",
+    "sigla": "AC"
+  },
+  {
+    "id": 120070,
+    "nome": "Xapuri",
+    "sigla": "AC"
+  },
+  {
+    "id": 120080,
+    "nome": "Porto Acre",
+    "sigla": "AC"
+  },
+  {
+    "id": 130002,
+    "nome": "Alvarães",
+    "sigla": "AM"
+  },
+  {
+    "id": 130006,
+    "nome": "Amaturá",
+    "sigla": "AM"
+  },
+  {
+    "id": 130008,
+    "nome": "Anamã",
+    "sigla": "AM"
+  },
+  {
+    "id": 130010,
+    "nome": "Anori",
+    "sigla": "AM"
+  },
+  {
+    "id": 130014,
+    "nome": "Apuí",
+    "sigla": "AM"
+  },
+  {
+    "id": 130020,
+    "nome": "Atalaia do Norte",
+    "sigla": "AM"
+  },
+  {
+    "id": 130030,
+    "nome": "Autazes",
+    "sigla": "AM"
+  },
+  {
+    "id": 130040,
+    "nome": "Barcelos",
+    "sigla": "AM"
+  },
+  {
+    "id": 130050,
+    "nome": "Barreirinha",
+    "sigla": "AM"
+  },
+  {
+    "id": 130060,
+    "nome": "Benjamin Constant",
+    "sigla": "AM"
+  },
+  {
+    "id": 130063,
+    "nome": "Beruri",
+    "sigla": "AM"
+  },
+  {
+    "id": 130068,
+    "nome": "Boa Vista do Ramos",
+    "sigla": "AM"
+  },
+  {
+    "id": 130070,
+    "nome": "Boca do Acre",
+    "sigla": "AM"
+  },
+  {
+    "id": 130080,
+    "nome": "Borba",
+    "sigla": "AM"
+  },
+  {
+    "id": 130083,
+    "nome": "Caapiranga",
+    "sigla": "AM"
+  },
+  {
+    "id": 130090,
+    "nome": "Canutama",
+    "sigla": "AM"
+  },
+  {
+    "id": 130100,
+    "nome": "Carauari",
+    "sigla": "AM"
+  },
+  {
+    "id": 130110,
+    "nome": "Careiro",
+    "sigla": "AM"
+  },
+  {
+    "id": 130115,
+    "nome": "Careiro da Várzea",
+    "sigla": "AM"
+  },
+  {
+    "id": 130120,
+    "nome": "Coari",
+    "sigla": "AM"
+  },
+  {
+    "id": 130130,
+    "nome": "Codajás",
+    "sigla": "AM"
+  },
+  {
+    "id": 130140,
+    "nome": "Eirunepé",
+    "sigla": "AM"
+  },
+  {
+    "id": 130150,
+    "nome": "Envira",
+    "sigla": "AM"
+  },
+  {
+    "id": 130160,
+    "nome": "Fonte Boa",
+    "sigla": "AM"
+  },
+  {
+    "id": 130165,
+    "nome": "Guajará",
+    "sigla": "AM"
+  },
+  {
+    "id": 130170,
+    "nome": "Humaitá",
+    "sigla": "AM"
+  },
+  {
+    "id": 130180,
+    "nome": "Ipixuna",
+    "sigla": "AM"
+  },
+  {
+    "id": 130185,
+    "nome": "Iranduba",
+    "sigla": "AM"
+  },
+  {
+    "id": 130190,
+    "nome": "Itacoatiara",
+    "sigla": "AM"
+  },
+  {
+    "id": 130195,
+    "nome": "Itamarati",
+    "sigla": "AM"
+  },
+  {
+    "id": 130200,
+    "nome": "Itapiranga",
+    "sigla": "AM"
+  },
+  {
+    "id": 130210,
+    "nome": "Japurá",
+    "sigla": "AM"
+  },
+  {
+    "id": 130220,
+    "nome": "Juruá",
+    "sigla": "AM"
+  },
+  {
+    "id": 130230,
+    "nome": "Jutaí",
+    "sigla": "AM"
+  },
+  {
+    "id": 130240,
+    "nome": "Lábrea",
+    "sigla": "AM"
+  },
+  {
+    "id": 130250,
+    "nome": "Manacapuru",
+    "sigla": "AM"
+  },
+  {
+    "id": 130255,
+    "nome": "Manaquiri",
+    "sigla": "AM"
+  },
+  {
+    "id": 130260,
+    "nome": "Manaus",
+    "sigla": "AM"
+  },
+  {
+    "id": 130270,
+    "nome": "Manicoré",
+    "sigla": "AM"
+  },
+  {
+    "id": 130280,
+    "nome": "Maraã",
+    "sigla": "AM"
+  },
+  {
+    "id": 130290,
+    "nome": "Maués",
+    "sigla": "AM"
+  },
+  {
+    "id": 130300,
+    "nome": "Nhamundá",
+    "sigla": "AM"
+  },
+  {
+    "id": 130310,
+    "nome": "Nova Olinda do Norte",
+    "sigla": "AM"
+  },
+  {
+    "id": 130320,
+    "nome": "Novo Airão",
+    "sigla": "AM"
+  },
+  {
+    "id": 130330,
+    "nome": "Novo Aripuanã",
+    "sigla": "AM"
+  },
+  {
+    "id": 130340,
+    "nome": "Parintins",
+    "sigla": "AM"
+  },
+  {
+    "id": 130350,
+    "nome": "Pauini",
+    "sigla": "AM"
+  },
+  {
+    "id": 130353,
+    "nome": "Presidente Figueiredo",
+    "sigla": "AM"
+  },
+  {
+    "id": 130356,
+    "nome": "Rio Preto da Eva",
+    "sigla": "AM"
+  },
+  {
+    "id": 130360,
+    "nome": "Santa Isabel do Rio Negro",
+    "sigla": "AM"
+  },
+  {
+    "id": 130370,
+    "nome": "Santo Antônio do Içá",
+    "sigla": "AM"
+  },
+  {
+    "id": 130380,
+    "nome": "São Gabriel da Cachoeira",
+    "sigla": "AM"
+  },
+  {
+    "id": 130390,
+    "nome": "São Paulo de Olivença",
+    "sigla": "AM"
+  },
+  {
+    "id": 130395,
+    "nome": "São Sebastião do Uatumã",
+    "sigla": "AM"
+  },
+  {
+    "id": 130400,
+    "nome": "Silves",
+    "sigla": "AM"
+  },
+  {
+    "id": 130406,
+    "nome": "Tabatinga",
+    "sigla": "AM"
+  },
+  {
+    "id": 130410,
+    "nome": "Tapauá",
+    "sigla": "AM"
+  },
+  {
+    "id": 130420,
+    "nome": "Tefé",
+    "sigla": "AM"
+  },
+  {
+    "id": 130423,
+    "nome": "Tonantins",
+    "sigla": "AM"
+  },
+  {
+    "id": 130426,
+    "nome": "Uarini",
+    "sigla": "AM"
+  },
+  {
+    "id": 130430,
+    "nome": "Urucará",
+    "sigla": "AM"
+  },
+  {
+    "id": 130440,
+    "nome": "Urucurituba",
+    "sigla": "AM"
+  },
+  {
+    "id": 140002,
+    "nome": "Amajari",
+    "sigla": "RR"
+  },
+  {
+    "id": 140005,
+    "nome": "Alto Alegre",
+    "sigla": "RR"
+  },
+  {
+    "id": 140010,
+    "nome": "Boa Vista",
+    "sigla": "RR"
+  },
+  {
+    "id": 140015,
+    "nome": "Bonfim",
+    "sigla": "RR"
+  },
+  {
+    "id": 140017,
+    "nome": "Cantá",
+    "sigla": "RR"
+  },
+  {
+    "id": 140020,
+    "nome": "Caracaraí",
+    "sigla": "RR"
+  },
+  {
+    "id": 140023,
+    "nome": "Caroebe",
+    "sigla": "RR"
+  },
+  {
+    "id": 140028,
+    "nome": "Iracema",
+    "sigla": "RR"
+  },
+  {
+    "id": 140030,
+    "nome": "Mucajaí",
+    "sigla": "RR"
+  },
+  {
+    "id": 140040,
+    "nome": "Normandia",
+    "sigla": "RR"
+  },
+  {
+    "id": 140045,
+    "nome": "Pacaraima",
+    "sigla": "RR"
+  },
+  {
+    "id": 140047,
+    "nome": "Rorainópolis",
+    "sigla": "RR"
+  },
+  {
+    "id": 140050,
+    "nome": "São João da Baliza",
+    "sigla": "RR"
+  },
+  {
+    "id": 140060,
+    "nome": "São Luiz",
+    "sigla": "RR"
+  },
+  {
+    "id": 140070,
+    "nome": "Uiramutã",
+    "sigla": "RR"
+  },
+  {
+    "id": 150010,
+    "nome": "Abaetetuba",
+    "sigla": "PA"
+  },
+  {
+    "id": 150013,
+    "nome": "Abel Figueiredo",
+    "sigla": "PA"
+  },
+  {
+    "id": 150020,
+    "nome": "Acará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150030,
+    "nome": "Afuá",
+    "sigla": "PA"
+  },
+  {
+    "id": 150034,
+    "nome": "Água Azul do Norte",
+    "sigla": "PA"
+  },
+  {
+    "id": 150040,
+    "nome": "Alenquer",
+    "sigla": "PA"
+  },
+  {
+    "id": 150050,
+    "nome": "Almeirim",
+    "sigla": "PA"
+  },
+  {
+    "id": 150060,
+    "nome": "Altamira",
+    "sigla": "PA"
+  },
+  {
+    "id": 150070,
+    "nome": "Anajás",
+    "sigla": "PA"
+  },
+  {
+    "id": 150080,
+    "nome": "Ananindeua",
+    "sigla": "PA"
+  },
+  {
+    "id": 150085,
+    "nome": "Anapu",
+    "sigla": "PA"
+  },
+  {
+    "id": 150090,
+    "nome": "Augusto Corrêa",
+    "sigla": "PA"
+  },
+  {
+    "id": 150095,
+    "nome": "Aurora do Pará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150100,
+    "nome": "Aveiro",
+    "sigla": "PA"
+  },
+  {
+    "id": 150110,
+    "nome": "Bagre",
+    "sigla": "PA"
+  },
+  {
+    "id": 150120,
+    "nome": "Baião",
+    "sigla": "PA"
+  },
+  {
+    "id": 150125,
+    "nome": "Bannach",
+    "sigla": "PA"
+  },
+  {
+    "id": 150130,
+    "nome": "Barcarena",
+    "sigla": "PA"
+  },
+  {
+    "id": 150140,
+    "nome": "Belém",
+    "sigla": "PA"
+  },
+  {
+    "id": 150145,
+    "nome": "Belterra",
+    "sigla": "PA"
+  },
+  {
+    "id": 150150,
+    "nome": "Benevides",
+    "sigla": "PA"
+  },
+  {
+    "id": 150157,
+    "nome": "Bom Jesus do Tocantins",
+    "sigla": "PA"
+  },
+  {
+    "id": 150160,
+    "nome": "Bonito",
+    "sigla": "PA"
+  },
+  {
+    "id": 150170,
+    "nome": "Bragança",
+    "sigla": "PA"
+  },
+  {
+    "id": 150172,
+    "nome": "Brasil Novo",
+    "sigla": "PA"
+  },
+  {
+    "id": 150175,
+    "nome": "Brejo Grande do Araguaia",
+    "sigla": "PA"
+  },
+  {
+    "id": 150178,
+    "nome": "Breu Branco",
+    "sigla": "PA"
+  },
+  {
+    "id": 150180,
+    "nome": "Breves",
+    "sigla": "PA"
+  },
+  {
+    "id": 150190,
+    "nome": "Bujaru",
+    "sigla": "PA"
+  },
+  {
+    "id": 150195,
+    "nome": "Cachoeira do Piriá",
+    "sigla": "PA"
+  },
+  {
+    "id": 150200,
+    "nome": "Cachoeira do Arari",
+    "sigla": "PA"
+  },
+  {
+    "id": 150210,
+    "nome": "Cametá",
+    "sigla": "PA"
+  },
+  {
+    "id": 150215,
+    "nome": "Canaã dos Carajás",
+    "sigla": "PA"
+  },
+  {
+    "id": 150220,
+    "nome": "Capanema",
+    "sigla": "PA"
+  },
+  {
+    "id": 150230,
+    "nome": "Capitão Poço",
+    "sigla": "PA"
+  },
+  {
+    "id": 150240,
+    "nome": "Castanhal",
+    "sigla": "PA"
+  },
+  {
+    "id": 150250,
+    "nome": "Chaves",
+    "sigla": "PA"
+  },
+  {
+    "id": 150260,
+    "nome": "Colares",
+    "sigla": "PA"
+  },
+  {
+    "id": 150270,
+    "nome": "Conceição do Araguaia",
+    "sigla": "PA"
+  },
+  {
+    "id": 150275,
+    "nome": "Concórdia do Pará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150276,
+    "nome": "Cumaru do Norte",
+    "sigla": "PA"
+  },
+  {
+    "id": 150277,
+    "nome": "Curionópolis",
+    "sigla": "PA"
+  },
+  {
+    "id": 150280,
+    "nome": "Curralinho",
+    "sigla": "PA"
+  },
+  {
+    "id": 150285,
+    "nome": "Curuá",
+    "sigla": "PA"
+  },
+  {
+    "id": 150290,
+    "nome": "Curuçá",
+    "sigla": "PA"
+  },
+  {
+    "id": 150293,
+    "nome": "Dom Eliseu",
+    "sigla": "PA"
+  },
+  {
+    "id": 150295,
+    "nome": "Eldorado do Carajás",
+    "sigla": "PA"
+  },
+  {
+    "id": 150300,
+    "nome": "Faro",
+    "sigla": "PA"
+  },
+  {
+    "id": 150304,
+    "nome": "Floresta do Araguaia",
+    "sigla": "PA"
+  },
+  {
+    "id": 150307,
+    "nome": "Garrafão do Norte",
+    "sigla": "PA"
+  },
+  {
+    "id": 150309,
+    "nome": "Goianésia do Pará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150310,
+    "nome": "Gurupá",
+    "sigla": "PA"
+  },
+  {
+    "id": 150320,
+    "nome": "Igarapé-Açu",
+    "sigla": "PA"
+  },
+  {
+    "id": 150330,
+    "nome": "Igarapé-Miri",
+    "sigla": "PA"
+  },
+  {
+    "id": 150340,
+    "nome": "Inhangapi",
+    "sigla": "PA"
+  },
+  {
+    "id": 150345,
+    "nome": "Ipixuna do Pará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150350,
+    "nome": "Irituia",
+    "sigla": "PA"
+  },
+  {
+    "id": 150360,
+    "nome": "Itaituba",
+    "sigla": "PA"
+  },
+  {
+    "id": 150370,
+    "nome": "Itupiranga",
+    "sigla": "PA"
+  },
+  {
+    "id": 150375,
+    "nome": "Jacareacanga",
+    "sigla": "PA"
+  },
+  {
+    "id": 150380,
+    "nome": "Jacundá",
+    "sigla": "PA"
+  },
+  {
+    "id": 150390,
+    "nome": "Juruti",
+    "sigla": "PA"
+  },
+  {
+    "id": 150400,
+    "nome": "Limoeiro do Ajuru",
+    "sigla": "PA"
+  },
+  {
+    "id": 150405,
+    "nome": "Mãe do Rio",
+    "sigla": "PA"
+  },
+  {
+    "id": 150410,
+    "nome": "Magalhães Barata",
+    "sigla": "PA"
+  },
+  {
+    "id": 150420,
+    "nome": "Marabá",
+    "sigla": "PA"
+  },
+  {
+    "id": 150430,
+    "nome": "Maracanã",
+    "sigla": "PA"
+  },
+  {
+    "id": 150440,
+    "nome": "Marapanim",
+    "sigla": "PA"
+  },
+  {
+    "id": 150442,
+    "nome": "Marituba",
+    "sigla": "PA"
+  },
+  {
+    "id": 150445,
+    "nome": "Medicilândia",
+    "sigla": "PA"
+  },
+  {
+    "id": 150450,
+    "nome": "Melgaço",
+    "sigla": "PA"
+  },
+  {
+    "id": 150460,
+    "nome": "Mocajuba",
+    "sigla": "PA"
+  },
+  {
+    "id": 150470,
+    "nome": "Moju",
+    "sigla": "PA"
+  },
+  {
+    "id": 150475,
+    "nome": "Mojuí dos Campos",
+    "sigla": "PA"
+  },
+  {
+    "id": 150480,
+    "nome": "Monte Alegre",
+    "sigla": "PA"
+  },
+  {
+    "id": 150490,
+    "nome": "Muaná",
+    "sigla": "PA"
+  },
+  {
+    "id": 150495,
+    "nome": "Nova Esperança do Piriá",
+    "sigla": "PA"
+  },
+  {
+    "id": 150497,
+    "nome": "Nova Ipixuna",
+    "sigla": "PA"
+  },
+  {
+    "id": 150500,
+    "nome": "Nova Timboteua",
+    "sigla": "PA"
+  },
+  {
+    "id": 150503,
+    "nome": "Novo Progresso",
+    "sigla": "PA"
+  },
+  {
+    "id": 150506,
+    "nome": "Novo Repartimento",
+    "sigla": "PA"
+  },
+  {
+    "id": 150510,
+    "nome": "Óbidos",
+    "sigla": "PA"
+  },
+  {
+    "id": 150520,
+    "nome": "Oeiras do Pará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150530,
+    "nome": "Oriximiná",
+    "sigla": "PA"
+  },
+  {
+    "id": 150540,
+    "nome": "Ourém",
+    "sigla": "PA"
+  },
+  {
+    "id": 150543,
+    "nome": "Ourilândia do Norte",
+    "sigla": "PA"
+  },
+  {
+    "id": 150548,
+    "nome": "Pacajá",
+    "sigla": "PA"
+  },
+  {
+    "id": 150549,
+    "nome": "Palestina do Pará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150550,
+    "nome": "Paragominas",
+    "sigla": "PA"
+  },
+  {
+    "id": 150553,
+    "nome": "Parauapebas",
+    "sigla": "PA"
+  },
+  {
+    "id": 150555,
+    "nome": "Pau D'Arco",
+    "sigla": "PA"
+  },
+  {
+    "id": 150560,
+    "nome": "Peixe-Boi",
+    "sigla": "PA"
+  },
+  {
+    "id": 150563,
+    "nome": "Piçarra",
+    "sigla": "PA"
+  },
+  {
+    "id": 150565,
+    "nome": "Placas",
+    "sigla": "PA"
+  },
+  {
+    "id": 150570,
+    "nome": "Ponta de Pedras",
+    "sigla": "PA"
+  },
+  {
+    "id": 150580,
+    "nome": "Portel",
+    "sigla": "PA"
+  },
+  {
+    "id": 150590,
+    "nome": "Porto de Moz",
+    "sigla": "PA"
+  },
+  {
+    "id": 150600,
+    "nome": "Prainha",
+    "sigla": "PA"
+  },
+  {
+    "id": 150610,
+    "nome": "Primavera",
+    "sigla": "PA"
+  },
+  {
+    "id": 150611,
+    "nome": "Quatipuru",
+    "sigla": "PA"
+  },
+  {
+    "id": 150613,
+    "nome": "Redenção",
+    "sigla": "PA"
+  },
+  {
+    "id": 150616,
+    "nome": "Rio Maria",
+    "sigla": "PA"
+  },
+  {
+    "id": 150618,
+    "nome": "Rondon do Pará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150619,
+    "nome": "Rurópolis",
+    "sigla": "PA"
+  },
+  {
+    "id": 150620,
+    "nome": "Salinópolis",
+    "sigla": "PA"
+  },
+  {
+    "id": 150630,
+    "nome": "Salvaterra",
+    "sigla": "PA"
+  },
+  {
+    "id": 150635,
+    "nome": "Santa Bárbara do Pará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150640,
+    "nome": "Santa Cruz do Arari",
+    "sigla": "PA"
+  },
+  {
+    "id": 150650,
+    "nome": "Santa Izabel do Pará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150655,
+    "nome": "Santa Luzia do Pará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150658,
+    "nome": "Santa Maria das Barreiras",
+    "sigla": "PA"
+  },
+  {
+    "id": 150660,
+    "nome": "Santa Maria do Pará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150670,
+    "nome": "Santana do Araguaia",
+    "sigla": "PA"
+  },
+  {
+    "id": 150680,
+    "nome": "Santarém",
+    "sigla": "PA"
+  },
+  {
+    "id": 150690,
+    "nome": "Santarém Novo",
+    "sigla": "PA"
+  },
+  {
+    "id": 150700,
+    "nome": "Santo Antônio do Tauá",
+    "sigla": "PA"
+  },
+  {
+    "id": 150710,
+    "nome": "São Caetano de Odivelas",
+    "sigla": "PA"
+  },
+  {
+    "id": 150715,
+    "nome": "São Domingos do Araguaia",
+    "sigla": "PA"
+  },
+  {
+    "id": 150720,
+    "nome": "São Domingos do Capim",
+    "sigla": "PA"
+  },
+  {
+    "id": 150730,
+    "nome": "São Félix do Xingu",
+    "sigla": "PA"
+  },
+  {
+    "id": 150740,
+    "nome": "São Francisco do Pará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150745,
+    "nome": "São Geraldo do Araguaia",
+    "sigla": "PA"
+  },
+  {
+    "id": 150746,
+    "nome": "São João da Ponta",
+    "sigla": "PA"
+  },
+  {
+    "id": 150747,
+    "nome": "São João de Pirabas",
+    "sigla": "PA"
+  },
+  {
+    "id": 150750,
+    "nome": "São João do Araguaia",
+    "sigla": "PA"
+  },
+  {
+    "id": 150760,
+    "nome": "São Miguel do Guamá",
+    "sigla": "PA"
+  },
+  {
+    "id": 150770,
+    "nome": "São Sebastião da Boa Vista",
+    "sigla": "PA"
+  },
+  {
+    "id": 150775,
+    "nome": "Sapucaia",
+    "sigla": "PA"
+  },
+  {
+    "id": 150780,
+    "nome": "Senador José Porfírio",
+    "sigla": "PA"
+  },
+  {
+    "id": 150790,
+    "nome": "Soure",
+    "sigla": "PA"
+  },
+  {
+    "id": 150795,
+    "nome": "Tailândia",
+    "sigla": "PA"
+  },
+  {
+    "id": 150796,
+    "nome": "Terra Alta",
+    "sigla": "PA"
+  },
+  {
+    "id": 150797,
+    "nome": "Terra Santa",
+    "sigla": "PA"
+  },
+  {
+    "id": 150800,
+    "nome": "Tomé-Açu",
+    "sigla": "PA"
+  },
+  {
+    "id": 150803,
+    "nome": "Tracuateua",
+    "sigla": "PA"
+  },
+  {
+    "id": 150805,
+    "nome": "Trairão",
+    "sigla": "PA"
+  },
+  {
+    "id": 150808,
+    "nome": "Tucumã",
+    "sigla": "PA"
+  },
+  {
+    "id": 150810,
+    "nome": "Tucuruí",
+    "sigla": "PA"
+  },
+  {
+    "id": 150812,
+    "nome": "Ulianópolis",
+    "sigla": "PA"
+  },
+  {
+    "id": 150815,
+    "nome": "Uruará",
+    "sigla": "PA"
+  },
+  {
+    "id": 150820,
+    "nome": "Vigia",
+    "sigla": "PA"
+  },
+  {
+    "id": 150830,
+    "nome": "Viseu",
+    "sigla": "PA"
+  },
+  {
+    "id": 150835,
+    "nome": "Vitória do Xingu",
+    "sigla": "PA"
+  },
+  {
+    "id": 150840,
+    "nome": "Xinguara",
+    "sigla": "PA"
+  },
+  {
+    "id": 160005,
+    "nome": "Serra do Navio",
+    "sigla": "AP"
+  },
+  {
+    "id": 160010,
+    "nome": "Amapá",
+    "sigla": "AP"
+  },
+  {
+    "id": 160015,
+    "nome": "Pedra Branca do Amapari",
+    "sigla": "AP"
+  },
+  {
+    "id": 160020,
+    "nome": "Calçoene",
+    "sigla": "AP"
+  },
+  {
+    "id": 160021,
+    "nome": "Cutias",
+    "sigla": "AP"
+  },
+  {
+    "id": 160023,
+    "nome": "Ferreira Gomes",
+    "sigla": "AP"
+  },
+  {
+    "id": 160025,
+    "nome": "Itaubal",
+    "sigla": "AP"
+  },
+  {
+    "id": 160027,
+    "nome": "Laranjal do Jari",
+    "sigla": "AP"
+  },
+  {
+    "id": 160030,
+    "nome": "Macapá",
+    "sigla": "AP"
+  },
+  {
+    "id": 160040,
+    "nome": "Mazagão",
+    "sigla": "AP"
+  },
+  {
+    "id": 160050,
+    "nome": "Oiapoque",
+    "sigla": "AP"
+  },
+  {
+    "id": 160053,
+    "nome": "Porto Grande",
+    "sigla": "AP"
+  },
+  {
+    "id": 160055,
+    "nome": "Pracuúba",
+    "sigla": "AP"
+  },
+  {
+    "id": 160060,
+    "nome": "Santana",
+    "sigla": "AP"
+  },
+  {
+    "id": 160070,
+    "nome": "Tartarugalzinho",
+    "sigla": "AP"
+  },
+  {
+    "id": 160080,
+    "nome": "Vitória do Jari",
+    "sigla": "AP"
+  },
+  {
+    "id": 170025,
+    "nome": "Abreulândia",
+    "sigla": "TO"
+  },
+  {
+    "id": 170030,
+    "nome": "Aguiarnópolis",
+    "sigla": "TO"
+  },
+  {
+    "id": 170035,
+    "nome": "Aliança do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170040,
+    "nome": "Almas",
+    "sigla": "TO"
+  },
+  {
+    "id": 170070,
+    "nome": "Alvorada",
+    "sigla": "TO"
+  },
+  {
+    "id": 170100,
+    "nome": "Ananás",
+    "sigla": "TO"
+  },
+  {
+    "id": 170105,
+    "nome": "Angico",
+    "sigla": "TO"
+  },
+  {
+    "id": 170110,
+    "nome": "Aparecida do Rio Negro",
+    "sigla": "TO"
+  },
+  {
+    "id": 170130,
+    "nome": "Aragominas",
+    "sigla": "TO"
+  },
+  {
+    "id": 170190,
+    "nome": "Araguacema",
+    "sigla": "TO"
+  },
+  {
+    "id": 170200,
+    "nome": "Araguaçu",
+    "sigla": "TO"
+  },
+  {
+    "id": 170210,
+    "nome": "Araguaína",
+    "sigla": "TO"
+  },
+  {
+    "id": 170215,
+    "nome": "Araguanã",
+    "sigla": "TO"
+  },
+  {
+    "id": 170220,
+    "nome": "Araguatins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170230,
+    "nome": "Arapoema",
+    "sigla": "TO"
+  },
+  {
+    "id": 170240,
+    "nome": "Arraias",
+    "sigla": "TO"
+  },
+  {
+    "id": 170255,
+    "nome": "Augustinópolis",
+    "sigla": "TO"
+  },
+  {
+    "id": 170270,
+    "nome": "Aurora do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170290,
+    "nome": "Axixá do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170300,
+    "nome": "Babaçulândia",
+    "sigla": "TO"
+  },
+  {
+    "id": 170305,
+    "nome": "Bandeirantes do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170307,
+    "nome": "Barra do Ouro",
+    "sigla": "TO"
+  },
+  {
+    "id": 170310,
+    "nome": "Barrolândia",
+    "sigla": "TO"
+  },
+  {
+    "id": 170320,
+    "nome": "Bernardo Sayão",
+    "sigla": "TO"
+  },
+  {
+    "id": 170330,
+    "nome": "Bom Jesus do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170360,
+    "nome": "Brasilândia do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170370,
+    "nome": "Brejinho de Nazaré",
+    "sigla": "TO"
+  },
+  {
+    "id": 170380,
+    "nome": "Buriti do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170382,
+    "nome": "Cachoeirinha",
+    "sigla": "TO"
+  },
+  {
+    "id": 170384,
+    "nome": "Campos Lindos",
+    "sigla": "TO"
+  },
+  {
+    "id": 170386,
+    "nome": "Cariri do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170388,
+    "nome": "Carmolândia",
+    "sigla": "TO"
+  },
+  {
+    "id": 170389,
+    "nome": "Carrasco Bonito",
+    "sigla": "TO"
+  },
+  {
+    "id": 170390,
+    "nome": "Caseara",
+    "sigla": "TO"
+  },
+  {
+    "id": 170410,
+    "nome": "Centenário",
+    "sigla": "TO"
+  },
+  {
+    "id": 170460,
+    "nome": "Chapada de Areia",
+    "sigla": "TO"
+  },
+  {
+    "id": 170510,
+    "nome": "Chapada da Natividade",
+    "sigla": "TO"
+  },
+  {
+    "id": 170550,
+    "nome": "Colinas do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170555,
+    "nome": "Combinado",
+    "sigla": "TO"
+  },
+  {
+    "id": 170560,
+    "nome": "Conceição do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170600,
+    "nome": "Couto Magalhães",
+    "sigla": "TO"
+  },
+  {
+    "id": 170610,
+    "nome": "Cristalândia",
+    "sigla": "TO"
+  },
+  {
+    "id": 170625,
+    "nome": "Crixás do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170650,
+    "nome": "Darcinópolis",
+    "sigla": "TO"
+  },
+  {
+    "id": 170700,
+    "nome": "Dianópolis",
+    "sigla": "TO"
+  },
+  {
+    "id": 170710,
+    "nome": "Divinópolis do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170720,
+    "nome": "Dois Irmãos do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170730,
+    "nome": "Dueré",
+    "sigla": "TO"
+  },
+  {
+    "id": 170740,
+    "nome": "Esperantina",
+    "sigla": "TO"
+  },
+  {
+    "id": 170755,
+    "nome": "Fátima",
+    "sigla": "TO"
+  },
+  {
+    "id": 170765,
+    "nome": "Figueirópolis",
+    "sigla": "TO"
+  },
+  {
+    "id": 170770,
+    "nome": "Filadélfia",
+    "sigla": "TO"
+  },
+  {
+    "id": 170820,
+    "nome": "Formoso do Araguaia",
+    "sigla": "TO"
+  },
+  {
+    "id": 170825,
+    "nome": "Tabocão",
+    "sigla": "TO"
+  },
+  {
+    "id": 170830,
+    "nome": "Goianorte",
+    "sigla": "TO"
+  },
+  {
+    "id": 170900,
+    "nome": "Goiatins",
+    "sigla": "TO"
+  },
+  {
+    "id": 170930,
+    "nome": "Guaraí",
+    "sigla": "TO"
+  },
+  {
+    "id": 170950,
+    "nome": "Gurupi",
+    "sigla": "TO"
+  },
+  {
+    "id": 170980,
+    "nome": "Ipueiras",
+    "sigla": "TO"
+  },
+  {
+    "id": 171050,
+    "nome": "Itacajá",
+    "sigla": "TO"
+  },
+  {
+    "id": 171070,
+    "nome": "Itaguatins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171090,
+    "nome": "Itapiratins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171110,
+    "nome": "Itaporã do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171150,
+    "nome": "Jaú do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171180,
+    "nome": "Juarina",
+    "sigla": "TO"
+  },
+  {
+    "id": 171190,
+    "nome": "Lagoa da Confusão",
+    "sigla": "TO"
+  },
+  {
+    "id": 171195,
+    "nome": "Lagoa do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171200,
+    "nome": "Lajeado",
+    "sigla": "TO"
+  },
+  {
+    "id": 171215,
+    "nome": "Lavandeira",
+    "sigla": "TO"
+  },
+  {
+    "id": 171240,
+    "nome": "Lizarda",
+    "sigla": "TO"
+  },
+  {
+    "id": 171245,
+    "nome": "Luzinópolis",
+    "sigla": "TO"
+  },
+  {
+    "id": 171250,
+    "nome": "Marianópolis do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171270,
+    "nome": "Mateiros",
+    "sigla": "TO"
+  },
+  {
+    "id": 171280,
+    "nome": "Maurilândia do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171320,
+    "nome": "Miracema do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171330,
+    "nome": "Miranorte",
+    "sigla": "TO"
+  },
+  {
+    "id": 171360,
+    "nome": "Monte do Carmo",
+    "sigla": "TO"
+  },
+  {
+    "id": 171370,
+    "nome": "Monte Santo do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171380,
+    "nome": "Palmeiras do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171395,
+    "nome": "Muricilândia",
+    "sigla": "TO"
+  },
+  {
+    "id": 171420,
+    "nome": "Natividade",
+    "sigla": "TO"
+  },
+  {
+    "id": 171430,
+    "nome": "Nazaré",
+    "sigla": "TO"
+  },
+  {
+    "id": 171488,
+    "nome": "Nova Olinda",
+    "sigla": "TO"
+  },
+  {
+    "id": 171500,
+    "nome": "Nova Rosalândia",
+    "sigla": "TO"
+  },
+  {
+    "id": 171510,
+    "nome": "Novo Acordo",
+    "sigla": "TO"
+  },
+  {
+    "id": 171515,
+    "nome": "Novo Alegre",
+    "sigla": "TO"
+  },
+  {
+    "id": 171525,
+    "nome": "Novo Jardim",
+    "sigla": "TO"
+  },
+  {
+    "id": 171550,
+    "nome": "Oliveira de Fátima",
+    "sigla": "TO"
+  },
+  {
+    "id": 171570,
+    "nome": "Palmeirante",
+    "sigla": "TO"
+  },
+  {
+    "id": 171575,
+    "nome": "Palmeirópolis",
+    "sigla": "TO"
+  },
+  {
+    "id": 171610,
+    "nome": "Paraíso do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171620,
+    "nome": "Paranã",
+    "sigla": "TO"
+  },
+  {
+    "id": 171630,
+    "nome": "Pau D'Arco",
+    "sigla": "TO"
+  },
+  {
+    "id": 171650,
+    "nome": "Pedro Afonso",
+    "sigla": "TO"
+  },
+  {
+    "id": 171660,
+    "nome": "Peixe",
+    "sigla": "TO"
+  },
+  {
+    "id": 171665,
+    "nome": "Pequizeiro",
+    "sigla": "TO"
+  },
+  {
+    "id": 171670,
+    "nome": "Colméia",
+    "sigla": "TO"
+  },
+  {
+    "id": 171700,
+    "nome": "Pindorama do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171720,
+    "nome": "Piraquê",
+    "sigla": "TO"
+  },
+  {
+    "id": 171750,
+    "nome": "Pium",
+    "sigla": "TO"
+  },
+  {
+    "id": 171780,
+    "nome": "Ponte Alta do Bom Jesus",
+    "sigla": "TO"
+  },
+  {
+    "id": 171790,
+    "nome": "Ponte Alta do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171800,
+    "nome": "Porto Alegre do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171820,
+    "nome": "Porto Nacional",
+    "sigla": "TO"
+  },
+  {
+    "id": 171830,
+    "nome": "Praia Norte",
+    "sigla": "TO"
+  },
+  {
+    "id": 171840,
+    "nome": "Presidente Kennedy",
+    "sigla": "TO"
+  },
+  {
+    "id": 171845,
+    "nome": "Pugmil",
+    "sigla": "TO"
+  },
+  {
+    "id": 171850,
+    "nome": "Recursolândia",
+    "sigla": "TO"
+  },
+  {
+    "id": 171855,
+    "nome": "Riachinho",
+    "sigla": "TO"
+  },
+  {
+    "id": 171865,
+    "nome": "Rio da Conceição",
+    "sigla": "TO"
+  },
+  {
+    "id": 171870,
+    "nome": "Rio dos Bois",
+    "sigla": "TO"
+  },
+  {
+    "id": 171875,
+    "nome": "Rio Sono",
+    "sigla": "TO"
+  },
+  {
+    "id": 171880,
+    "nome": "Sampaio",
+    "sigla": "TO"
+  },
+  {
+    "id": 171884,
+    "nome": "Sandolândia",
+    "sigla": "TO"
+  },
+  {
+    "id": 171886,
+    "nome": "Santa Fé do Araguaia",
+    "sigla": "TO"
+  },
+  {
+    "id": 171888,
+    "nome": "Santa Maria do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171889,
+    "nome": "Santa Rita do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171890,
+    "nome": "Santa Rosa do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 171900,
+    "nome": "Santa Tereza do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 172000,
+    "nome": "Santa Terezinha do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 172010,
+    "nome": "São Bento do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 172015,
+    "nome": "São Félix do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 172020,
+    "nome": "São Miguel do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 172025,
+    "nome": "São Salvador do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 172030,
+    "nome": "São Sebastião do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 172049,
+    "nome": "São Valério",
+    "sigla": "TO"
+  },
+  {
+    "id": 172065,
+    "nome": "Silvanópolis",
+    "sigla": "TO"
+  },
+  {
+    "id": 172080,
+    "nome": "Sítio Novo do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 172085,
+    "nome": "Sucupira",
+    "sigla": "TO"
+  },
+  {
+    "id": 172090,
+    "nome": "Taguatinga",
+    "sigla": "TO"
+  },
+  {
+    "id": 172093,
+    "nome": "Taipas do Tocantins",
+    "sigla": "TO"
+  },
+  {
+    "id": 172097,
+    "nome": "Talismã",
+    "sigla": "TO"
+  },
+  {
+    "id": 172100,
+    "nome": "Palmas",
+    "sigla": "TO"
+  },
+  {
+    "id": 172110,
+    "nome": "Tocantínia",
+    "sigla": "TO"
+  },
+  {
+    "id": 172120,
+    "nome": "Tocantinópolis",
+    "sigla": "TO"
+  },
+  {
+    "id": 172125,
+    "nome": "Tupirama",
+    "sigla": "TO"
+  },
+  {
+    "id": 172130,
+    "nome": "Tupiratins",
+    "sigla": "TO"
+  },
+  {
+    "id": 172208,
+    "nome": "Wanderlândia",
+    "sigla": "TO"
+  },
+  {
+    "id": 172210,
+    "nome": "Xambioá",
+    "sigla": "TO"
+  },
+  {
+    "id": 210005,
+    "nome": "Açailândia",
+    "sigla": "MA"
+  },
+  {
+    "id": 210010,
+    "nome": "Afonso Cunha",
+    "sigla": "MA"
+  },
+  {
+    "id": 210015,
+    "nome": "Água Doce do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210020,
+    "nome": "Alcântara",
+    "sigla": "MA"
+  },
+  {
+    "id": 210030,
+    "nome": "Aldeias Altas",
+    "sigla": "MA"
+  },
+  {
+    "id": 210040,
+    "nome": "Altamira do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210043,
+    "nome": "Alto Alegre do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210047,
+    "nome": "Alto Alegre do Pindaré",
+    "sigla": "MA"
+  },
+  {
+    "id": 210050,
+    "nome": "Alto Parnaíba",
+    "sigla": "MA"
+  },
+  {
+    "id": 210055,
+    "nome": "Amapá do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210060,
+    "nome": "Amarante do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210070,
+    "nome": "Anajatuba",
+    "sigla": "MA"
+  },
+  {
+    "id": 210080,
+    "nome": "Anapurus",
+    "sigla": "MA"
+  },
+  {
+    "id": 210083,
+    "nome": "Apicum-Açu",
+    "sigla": "MA"
+  },
+  {
+    "id": 210087,
+    "nome": "Araguanã",
+    "sigla": "MA"
+  },
+  {
+    "id": 210090,
+    "nome": "Araioses",
+    "sigla": "MA"
+  },
+  {
+    "id": 210095,
+    "nome": "Arame",
+    "sigla": "MA"
+  },
+  {
+    "id": 210100,
+    "nome": "Arari",
+    "sigla": "MA"
+  },
+  {
+    "id": 210110,
+    "nome": "Axixá",
+    "sigla": "MA"
+  },
+  {
+    "id": 210120,
+    "nome": "Bacabal",
+    "sigla": "MA"
+  },
+  {
+    "id": 210125,
+    "nome": "Bacabeira",
+    "sigla": "MA"
+  },
+  {
+    "id": 210130,
+    "nome": "Bacuri",
+    "sigla": "MA"
+  },
+  {
+    "id": 210135,
+    "nome": "Bacurituba",
+    "sigla": "MA"
+  },
+  {
+    "id": 210140,
+    "nome": "Balsas",
+    "sigla": "MA"
+  },
+  {
+    "id": 210150,
+    "nome": "Barão de Grajaú",
+    "sigla": "MA"
+  },
+  {
+    "id": 210160,
+    "nome": "Barra do Corda",
+    "sigla": "MA"
+  },
+  {
+    "id": 210170,
+    "nome": "Barreirinhas",
+    "sigla": "MA"
+  },
+  {
+    "id": 210173,
+    "nome": "Belágua",
+    "sigla": "MA"
+  },
+  {
+    "id": 210177,
+    "nome": "Bela Vista do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210180,
+    "nome": "Benedito Leite",
+    "sigla": "MA"
+  },
+  {
+    "id": 210190,
+    "nome": "Bequimão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210193,
+    "nome": "Bernardo do Mearim",
+    "sigla": "MA"
+  },
+  {
+    "id": 210197,
+    "nome": "Boa Vista do Gurupi",
+    "sigla": "MA"
+  },
+  {
+    "id": 210200,
+    "nome": "Bom Jardim",
+    "sigla": "MA"
+  },
+  {
+    "id": 210203,
+    "nome": "Bom Jesus das Selvas",
+    "sigla": "MA"
+  },
+  {
+    "id": 210207,
+    "nome": "Bom Lugar",
+    "sigla": "MA"
+  },
+  {
+    "id": 210210,
+    "nome": "Brejo",
+    "sigla": "MA"
+  },
+  {
+    "id": 210215,
+    "nome": "Brejo de Areia",
+    "sigla": "MA"
+  },
+  {
+    "id": 210220,
+    "nome": "Buriti",
+    "sigla": "MA"
+  },
+  {
+    "id": 210230,
+    "nome": "Buriti Bravo",
+    "sigla": "MA"
+  },
+  {
+    "id": 210232,
+    "nome": "Buriticupu",
+    "sigla": "MA"
+  },
+  {
+    "id": 210235,
+    "nome": "Buritirana",
+    "sigla": "MA"
+  },
+  {
+    "id": 210237,
+    "nome": "Cachoeira Grande",
+    "sigla": "MA"
+  },
+  {
+    "id": 210240,
+    "nome": "Cajapió",
+    "sigla": "MA"
+  },
+  {
+    "id": 210250,
+    "nome": "Cajari",
+    "sigla": "MA"
+  },
+  {
+    "id": 210255,
+    "nome": "Campestre do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210260,
+    "nome": "Cândido Mendes",
+    "sigla": "MA"
+  },
+  {
+    "id": 210270,
+    "nome": "Cantanhede",
+    "sigla": "MA"
+  },
+  {
+    "id": 210275,
+    "nome": "Capinzal do Norte",
+    "sigla": "MA"
+  },
+  {
+    "id": 210280,
+    "nome": "Carolina",
+    "sigla": "MA"
+  },
+  {
+    "id": 210290,
+    "nome": "Carutapera",
+    "sigla": "MA"
+  },
+  {
+    "id": 210300,
+    "nome": "Caxias",
+    "sigla": "MA"
+  },
+  {
+    "id": 210310,
+    "nome": "Cedral",
+    "sigla": "MA"
+  },
+  {
+    "id": 210312,
+    "nome": "Central do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210315,
+    "nome": "Centro do Guilherme",
+    "sigla": "MA"
+  },
+  {
+    "id": 210317,
+    "nome": "Centro Novo do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210320,
+    "nome": "Chapadinha",
+    "sigla": "MA"
+  },
+  {
+    "id": 210325,
+    "nome": "Cidelândia",
+    "sigla": "MA"
+  },
+  {
+    "id": 210330,
+    "nome": "Codó",
+    "sigla": "MA"
+  },
+  {
+    "id": 210340,
+    "nome": "Coelho Neto",
+    "sigla": "MA"
+  },
+  {
+    "id": 210350,
+    "nome": "Colinas",
+    "sigla": "MA"
+  },
+  {
+    "id": 210355,
+    "nome": "Conceição do Lago-Açu",
+    "sigla": "MA"
+  },
+  {
+    "id": 210360,
+    "nome": "Coroatá",
+    "sigla": "MA"
+  },
+  {
+    "id": 210370,
+    "nome": "Cururupu",
+    "sigla": "MA"
+  },
+  {
+    "id": 210375,
+    "nome": "Davinópolis",
+    "sigla": "MA"
+  },
+  {
+    "id": 210380,
+    "nome": "Dom Pedro",
+    "sigla": "MA"
+  },
+  {
+    "id": 210390,
+    "nome": "Duque Bacelar",
+    "sigla": "MA"
+  },
+  {
+    "id": 210400,
+    "nome": "Esperantinópolis",
+    "sigla": "MA"
+  },
+  {
+    "id": 210405,
+    "nome": "Estreito",
+    "sigla": "MA"
+  },
+  {
+    "id": 210407,
+    "nome": "Feira Nova do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210408,
+    "nome": "Fernando Falcão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210409,
+    "nome": "Formosa da Serra Negra",
+    "sigla": "MA"
+  },
+  {
+    "id": 210410,
+    "nome": "Fortaleza dos Nogueiras",
+    "sigla": "MA"
+  },
+  {
+    "id": 210420,
+    "nome": "Fortuna",
+    "sigla": "MA"
+  },
+  {
+    "id": 210430,
+    "nome": "Godofredo Viana",
+    "sigla": "MA"
+  },
+  {
+    "id": 210440,
+    "nome": "Gonçalves Dias",
+    "sigla": "MA"
+  },
+  {
+    "id": 210450,
+    "nome": "Governador Archer",
+    "sigla": "MA"
+  },
+  {
+    "id": 210455,
+    "nome": "Governador Edison Lobão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210460,
+    "nome": "Governador Eugênio Barros",
+    "sigla": "MA"
+  },
+  {
+    "id": 210462,
+    "nome": "Governador Luiz Rocha",
+    "sigla": "MA"
+  },
+  {
+    "id": 210465,
+    "nome": "Governador Newton Bello",
+    "sigla": "MA"
+  },
+  {
+    "id": 210467,
+    "nome": "Governador Nunes Freire",
+    "sigla": "MA"
+  },
+  {
+    "id": 210470,
+    "nome": "Graça Aranha",
+    "sigla": "MA"
+  },
+  {
+    "id": 210480,
+    "nome": "Grajaú",
+    "sigla": "MA"
+  },
+  {
+    "id": 210490,
+    "nome": "Guimarães",
+    "sigla": "MA"
+  },
+  {
+    "id": 210500,
+    "nome": "Humberto de Campos",
+    "sigla": "MA"
+  },
+  {
+    "id": 210510,
+    "nome": "Icatu",
+    "sigla": "MA"
+  },
+  {
+    "id": 210515,
+    "nome": "Igarapé do Meio",
+    "sigla": "MA"
+  },
+  {
+    "id": 210520,
+    "nome": "Igarapé Grande",
+    "sigla": "MA"
+  },
+  {
+    "id": 210530,
+    "nome": "Imperatriz",
+    "sigla": "MA"
+  },
+  {
+    "id": 210535,
+    "nome": "Itaipava do Grajaú",
+    "sigla": "MA"
+  },
+  {
+    "id": 210540,
+    "nome": "Itapecuru Mirim",
+    "sigla": "MA"
+  },
+  {
+    "id": 210542,
+    "nome": "Itinga do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210545,
+    "nome": "Jatobá",
+    "sigla": "MA"
+  },
+  {
+    "id": 210547,
+    "nome": "Jenipapo dos Vieiras",
+    "sigla": "MA"
+  },
+  {
+    "id": 210550,
+    "nome": "João Lisboa",
+    "sigla": "MA"
+  },
+  {
+    "id": 210560,
+    "nome": "Joselândia",
+    "sigla": "MA"
+  },
+  {
+    "id": 210565,
+    "nome": "Junco do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210570,
+    "nome": "Lago da Pedra",
+    "sigla": "MA"
+  },
+  {
+    "id": 210580,
+    "nome": "Lago do Junco",
+    "sigla": "MA"
+  },
+  {
+    "id": 210590,
+    "nome": "Lago Verde",
+    "sigla": "MA"
+  },
+  {
+    "id": 210592,
+    "nome": "Lagoa do Mato",
+    "sigla": "MA"
+  },
+  {
+    "id": 210594,
+    "nome": "Lago dos Rodrigues",
+    "sigla": "MA"
+  },
+  {
+    "id": 210596,
+    "nome": "Lagoa Grande do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210598,
+    "nome": "Lajeado Novo",
+    "sigla": "MA"
+  },
+  {
+    "id": 210600,
+    "nome": "Lima Campos",
+    "sigla": "MA"
+  },
+  {
+    "id": 210610,
+    "nome": "Loreto",
+    "sigla": "MA"
+  },
+  {
+    "id": 210620,
+    "nome": "Luís Domingues",
+    "sigla": "MA"
+  },
+  {
+    "id": 210630,
+    "nome": "Magalhães de Almeida",
+    "sigla": "MA"
+  },
+  {
+    "id": 210632,
+    "nome": "Maracaçumé",
+    "sigla": "MA"
+  },
+  {
+    "id": 210635,
+    "nome": "Marajá do Sena",
+    "sigla": "MA"
+  },
+  {
+    "id": 210637,
+    "nome": "Maranhãozinho",
+    "sigla": "MA"
+  },
+  {
+    "id": 210640,
+    "nome": "Mata Roma",
+    "sigla": "MA"
+  },
+  {
+    "id": 210650,
+    "nome": "Matinha",
+    "sigla": "MA"
+  },
+  {
+    "id": 210660,
+    "nome": "Matões",
+    "sigla": "MA"
+  },
+  {
+    "id": 210663,
+    "nome": "Matões do Norte",
+    "sigla": "MA"
+  },
+  {
+    "id": 210667,
+    "nome": "Milagres do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210670,
+    "nome": "Mirador",
+    "sigla": "MA"
+  },
+  {
+    "id": 210675,
+    "nome": "Miranda do Norte",
+    "sigla": "MA"
+  },
+  {
+    "id": 210680,
+    "nome": "Mirinzal",
+    "sigla": "MA"
+  },
+  {
+    "id": 210690,
+    "nome": "Monção",
+    "sigla": "MA"
+  },
+  {
+    "id": 210700,
+    "nome": "Montes Altos",
+    "sigla": "MA"
+  },
+  {
+    "id": 210710,
+    "nome": "Morros",
+    "sigla": "MA"
+  },
+  {
+    "id": 210720,
+    "nome": "Nina Rodrigues",
+    "sigla": "MA"
+  },
+  {
+    "id": 210725,
+    "nome": "Nova Colinas",
+    "sigla": "MA"
+  },
+  {
+    "id": 210730,
+    "nome": "Nova Iorque",
+    "sigla": "MA"
+  },
+  {
+    "id": 210735,
+    "nome": "Nova Olinda do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210740,
+    "nome": "Olho d'Água das Cunhãs",
+    "sigla": "MA"
+  },
+  {
+    "id": 210745,
+    "nome": "Olinda Nova do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210750,
+    "nome": "Paço do Lumiar",
+    "sigla": "MA"
+  },
+  {
+    "id": 210760,
+    "nome": "Palmeirândia",
+    "sigla": "MA"
+  },
+  {
+    "id": 210770,
+    "nome": "Paraibano",
+    "sigla": "MA"
+  },
+  {
+    "id": 210780,
+    "nome": "Parnarama",
+    "sigla": "MA"
+  },
+  {
+    "id": 210790,
+    "nome": "Passagem Franca",
+    "sigla": "MA"
+  },
+  {
+    "id": 210800,
+    "nome": "Pastos Bons",
+    "sigla": "MA"
+  },
+  {
+    "id": 210805,
+    "nome": "Paulino Neves",
+    "sigla": "MA"
+  },
+  {
+    "id": 210810,
+    "nome": "Paulo Ramos",
+    "sigla": "MA"
+  },
+  {
+    "id": 210820,
+    "nome": "Pedreiras",
+    "sigla": "MA"
+  },
+  {
+    "id": 210825,
+    "nome": "Pedro do Rosário",
+    "sigla": "MA"
+  },
+  {
+    "id": 210830,
+    "nome": "Penalva",
+    "sigla": "MA"
+  },
+  {
+    "id": 210840,
+    "nome": "Peri Mirim",
+    "sigla": "MA"
+  },
+  {
+    "id": 210845,
+    "nome": "Peritoró",
+    "sigla": "MA"
+  },
+  {
+    "id": 210850,
+    "nome": "Pindaré-Mirim",
+    "sigla": "MA"
+  },
+  {
+    "id": 210860,
+    "nome": "Pinheiro",
+    "sigla": "MA"
+  },
+  {
+    "id": 210870,
+    "nome": "Pio XII",
+    "sigla": "MA"
+  },
+  {
+    "id": 210880,
+    "nome": "Pirapemas",
+    "sigla": "MA"
+  },
+  {
+    "id": 210890,
+    "nome": "Poção de Pedras",
+    "sigla": "MA"
+  },
+  {
+    "id": 210900,
+    "nome": "Porto Franco",
+    "sigla": "MA"
+  },
+  {
+    "id": 210905,
+    "nome": "Porto Rico do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210910,
+    "nome": "Presidente Dutra",
+    "sigla": "MA"
+  },
+  {
+    "id": 210920,
+    "nome": "Presidente Juscelino",
+    "sigla": "MA"
+  },
+  {
+    "id": 210923,
+    "nome": "Presidente Médici",
+    "sigla": "MA"
+  },
+  {
+    "id": 210927,
+    "nome": "Presidente Sarney",
+    "sigla": "MA"
+  },
+  {
+    "id": 210930,
+    "nome": "Presidente Vargas",
+    "sigla": "MA"
+  },
+  {
+    "id": 210940,
+    "nome": "Primeira Cruz",
+    "sigla": "MA"
+  },
+  {
+    "id": 210945,
+    "nome": "Raposa",
+    "sigla": "MA"
+  },
+  {
+    "id": 210950,
+    "nome": "Riachão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210955,
+    "nome": "Ribamar Fiquene",
+    "sigla": "MA"
+  },
+  {
+    "id": 210960,
+    "nome": "Rosário",
+    "sigla": "MA"
+  },
+  {
+    "id": 210970,
+    "nome": "Sambaíba",
+    "sigla": "MA"
+  },
+  {
+    "id": 210975,
+    "nome": "Santa Filomena do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 210980,
+    "nome": "Santa Helena",
+    "sigla": "MA"
+  },
+  {
+    "id": 210990,
+    "nome": "Santa Inês",
+    "sigla": "MA"
+  },
+  {
+    "id": 211000,
+    "nome": "Santa Luzia",
+    "sigla": "MA"
+  },
+  {
+    "id": 211003,
+    "nome": "Santa Luzia do Paruá",
+    "sigla": "MA"
+  },
+  {
+    "id": 211010,
+    "nome": "Santa Quitéria do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 211020,
+    "nome": "Santa Rita",
+    "sigla": "MA"
+  },
+  {
+    "id": 211023,
+    "nome": "Santana do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 211027,
+    "nome": "Santo Amaro do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 211030,
+    "nome": "Santo Antônio dos Lopes",
+    "sigla": "MA"
+  },
+  {
+    "id": 211040,
+    "nome": "São Benedito do Rio Preto",
+    "sigla": "MA"
+  },
+  {
+    "id": 211050,
+    "nome": "São Bento",
+    "sigla": "MA"
+  },
+  {
+    "id": 211060,
+    "nome": "São Bernardo",
+    "sigla": "MA"
+  },
+  {
+    "id": 211065,
+    "nome": "São Domingos do Azeitão",
+    "sigla": "MA"
+  },
+  {
+    "id": 211070,
+    "nome": "São Domingos do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 211080,
+    "nome": "São Félix de Balsas",
+    "sigla": "MA"
+  },
+  {
+    "id": 211085,
+    "nome": "São Francisco do Brejão",
+    "sigla": "MA"
+  },
+  {
+    "id": 211090,
+    "nome": "São Francisco do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 211100,
+    "nome": "São João Batista",
+    "sigla": "MA"
+  },
+  {
+    "id": 211102,
+    "nome": "São João do Carú",
+    "sigla": "MA"
+  },
+  {
+    "id": 211105,
+    "nome": "São João do Paraíso",
+    "sigla": "MA"
+  },
+  {
+    "id": 211107,
+    "nome": "São João do Soter",
+    "sigla": "MA"
+  },
+  {
+    "id": 211110,
+    "nome": "São João dos Patos",
+    "sigla": "MA"
+  },
+  {
+    "id": 211120,
+    "nome": "São José de Ribamar",
+    "sigla": "MA"
+  },
+  {
+    "id": 211125,
+    "nome": "São José dos Basílios",
+    "sigla": "MA"
+  },
+  {
+    "id": 211130,
+    "nome": "São Luís",
+    "sigla": "MA"
+  },
+  {
+    "id": 211140,
+    "nome": "São Luís Gonzaga do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 211150,
+    "nome": "São Mateus do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 211153,
+    "nome": "São Pedro da Água Branca",
+    "sigla": "MA"
+  },
+  {
+    "id": 211157,
+    "nome": "São Pedro dos Crentes",
+    "sigla": "MA"
+  },
+  {
+    "id": 211160,
+    "nome": "São Raimundo das Mangabeiras",
+    "sigla": "MA"
+  },
+  {
+    "id": 211163,
+    "nome": "São Raimundo do Doca Bezerra",
+    "sigla": "MA"
+  },
+  {
+    "id": 211167,
+    "nome": "São Roberto",
+    "sigla": "MA"
+  },
+  {
+    "id": 211170,
+    "nome": "São Vicente Ferrer",
+    "sigla": "MA"
+  },
+  {
+    "id": 211172,
+    "nome": "Satubinha",
+    "sigla": "MA"
+  },
+  {
+    "id": 211174,
+    "nome": "Senador Alexandre Costa",
+    "sigla": "MA"
+  },
+  {
+    "id": 211176,
+    "nome": "Senador La Rocque",
+    "sigla": "MA"
+  },
+  {
+    "id": 211178,
+    "nome": "Serrano do Maranhão",
+    "sigla": "MA"
+  },
+  {
+    "id": 211180,
+    "nome": "Sítio Novo",
+    "sigla": "MA"
+  },
+  {
+    "id": 211190,
+    "nome": "Sucupira do Norte",
+    "sigla": "MA"
+  },
+  {
+    "id": 211195,
+    "nome": "Sucupira do Riachão",
+    "sigla": "MA"
+  },
+  {
+    "id": 211200,
+    "nome": "Tasso Fragoso",
+    "sigla": "MA"
+  },
+  {
+    "id": 211210,
+    "nome": "Timbiras",
+    "sigla": "MA"
+  },
+  {
+    "id": 211220,
+    "nome": "Timon",
+    "sigla": "MA"
+  },
+  {
+    "id": 211223,
+    "nome": "Trizidela do Vale",
+    "sigla": "MA"
+  },
+  {
+    "id": 211227,
+    "nome": "Tufilândia",
+    "sigla": "MA"
+  },
+  {
+    "id": 211230,
+    "nome": "Tuntum",
+    "sigla": "MA"
+  },
+  {
+    "id": 211240,
+    "nome": "Turiaçu",
+    "sigla": "MA"
+  },
+  {
+    "id": 211245,
+    "nome": "Turilândia",
+    "sigla": "MA"
+  },
+  {
+    "id": 211250,
+    "nome": "Tutóia",
+    "sigla": "MA"
+  },
+  {
+    "id": 211260,
+    "nome": "Urbano Santos",
+    "sigla": "MA"
+  },
+  {
+    "id": 211270,
+    "nome": "Vargem Grande",
+    "sigla": "MA"
+  },
+  {
+    "id": 211280,
+    "nome": "Viana",
+    "sigla": "MA"
+  },
+  {
+    "id": 211285,
+    "nome": "Vila Nova dos Martírios",
+    "sigla": "MA"
+  },
+  {
+    "id": 211290,
+    "nome": "Vitória do Mearim",
+    "sigla": "MA"
+  },
+  {
+    "id": 211300,
+    "nome": "Vitorino Freire",
+    "sigla": "MA"
+  },
+  {
+    "id": 211400,
+    "nome": "Zé Doca",
+    "sigla": "MA"
+  },
+  {
+    "id": 220005,
+    "nome": "Acauã",
+    "sigla": "PI"
+  },
+  {
+    "id": 220010,
+    "nome": "Agricolândia",
+    "sigla": "PI"
+  },
+  {
+    "id": 220020,
+    "nome": "Água Branca",
+    "sigla": "PI"
+  },
+  {
+    "id": 220025,
+    "nome": "Alagoinha do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220027,
+    "nome": "Alegrete do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220030,
+    "nome": "Alto Longá",
+    "sigla": "PI"
+  },
+  {
+    "id": 220040,
+    "nome": "Altos",
+    "sigla": "PI"
+  },
+  {
+    "id": 220045,
+    "nome": "Alvorada do Gurguéia",
+    "sigla": "PI"
+  },
+  {
+    "id": 220050,
+    "nome": "Amarante",
+    "sigla": "PI"
+  },
+  {
+    "id": 220060,
+    "nome": "Angical do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220070,
+    "nome": "Anísio de Abreu",
+    "sigla": "PI"
+  },
+  {
+    "id": 220080,
+    "nome": "Antônio Almeida",
+    "sigla": "PI"
+  },
+  {
+    "id": 220090,
+    "nome": "Aroazes",
+    "sigla": "PI"
+  },
+  {
+    "id": 220095,
+    "nome": "Aroeiras do Itaim",
+    "sigla": "PI"
+  },
+  {
+    "id": 220100,
+    "nome": "Arraial",
+    "sigla": "PI"
+  },
+  {
+    "id": 220105,
+    "nome": "Assunção do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220110,
+    "nome": "Avelino Lopes",
+    "sigla": "PI"
+  },
+  {
+    "id": 220115,
+    "nome": "Baixa Grande do Ribeiro",
+    "sigla": "PI"
+  },
+  {
+    "id": 220117,
+    "nome": "Barra D'Alcântara",
+    "sigla": "PI"
+  },
+  {
+    "id": 220120,
+    "nome": "Barras",
+    "sigla": "PI"
+  },
+  {
+    "id": 220130,
+    "nome": "Barreiras do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220140,
+    "nome": "Barro Duro",
+    "sigla": "PI"
+  },
+  {
+    "id": 220150,
+    "nome": "Batalha",
+    "sigla": "PI"
+  },
+  {
+    "id": 220155,
+    "nome": "Bela Vista do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220157,
+    "nome": "Belém do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220160,
+    "nome": "Beneditinos",
+    "sigla": "PI"
+  },
+  {
+    "id": 220170,
+    "nome": "Bertolínia",
+    "sigla": "PI"
+  },
+  {
+    "id": 220173,
+    "nome": "Betânia do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220177,
+    "nome": "Boa Hora",
+    "sigla": "PI"
+  },
+  {
+    "id": 220180,
+    "nome": "Bocaina",
+    "sigla": "PI"
+  },
+  {
+    "id": 220190,
+    "nome": "Bom Jesus",
+    "sigla": "PI"
+  },
+  {
+    "id": 220191,
+    "nome": "Bom Princípio do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220192,
+    "nome": "Bonfim do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220194,
+    "nome": "Boqueirão do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220196,
+    "nome": "Brasileira",
+    "sigla": "PI"
+  },
+  {
+    "id": 220198,
+    "nome": "Brejo do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220200,
+    "nome": "Buriti dos Lopes",
+    "sigla": "PI"
+  },
+  {
+    "id": 220202,
+    "nome": "Buriti dos Montes",
+    "sigla": "PI"
+  },
+  {
+    "id": 220205,
+    "nome": "Cabeceiras do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220207,
+    "nome": "Cajazeiras do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220208,
+    "nome": "Cajueiro da Praia",
+    "sigla": "PI"
+  },
+  {
+    "id": 220209,
+    "nome": "Caldeirão Grande do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220210,
+    "nome": "Campinas do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220211,
+    "nome": "Campo Alegre do Fidalgo",
+    "sigla": "PI"
+  },
+  {
+    "id": 220213,
+    "nome": "Campo Grande do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220217,
+    "nome": "Campo Largo do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220220,
+    "nome": "Campo Maior",
+    "sigla": "PI"
+  },
+  {
+    "id": 220225,
+    "nome": "Canavieira",
+    "sigla": "PI"
+  },
+  {
+    "id": 220230,
+    "nome": "Canto do Buriti",
+    "sigla": "PI"
+  },
+  {
+    "id": 220240,
+    "nome": "Capitão de Campos",
+    "sigla": "PI"
+  },
+  {
+    "id": 220245,
+    "nome": "Capitão Gervásio Oliveira",
+    "sigla": "PI"
+  },
+  {
+    "id": 220250,
+    "nome": "Caracol",
+    "sigla": "PI"
+  },
+  {
+    "id": 220253,
+    "nome": "Caraúbas do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220255,
+    "nome": "Caridade do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220260,
+    "nome": "Castelo do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220265,
+    "nome": "Caxingó",
+    "sigla": "PI"
+  },
+  {
+    "id": 220270,
+    "nome": "Cocal",
+    "sigla": "PI"
+  },
+  {
+    "id": 220271,
+    "nome": "Cocal de Telha",
+    "sigla": "PI"
+  },
+  {
+    "id": 220272,
+    "nome": "Cocal dos Alves",
+    "sigla": "PI"
+  },
+  {
+    "id": 220273,
+    "nome": "Coivaras",
+    "sigla": "PI"
+  },
+  {
+    "id": 220275,
+    "nome": "Colônia do Gurguéia",
+    "sigla": "PI"
+  },
+  {
+    "id": 220277,
+    "nome": "Colônia do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220280,
+    "nome": "Conceição do Canindé",
+    "sigla": "PI"
+  },
+  {
+    "id": 220285,
+    "nome": "Coronel José Dias",
+    "sigla": "PI"
+  },
+  {
+    "id": 220290,
+    "nome": "Corrente",
+    "sigla": "PI"
+  },
+  {
+    "id": 220300,
+    "nome": "Cristalândia do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220310,
+    "nome": "Cristino Castro",
+    "sigla": "PI"
+  },
+  {
+    "id": 220320,
+    "nome": "Curimatá",
+    "sigla": "PI"
+  },
+  {
+    "id": 220323,
+    "nome": "Currais",
+    "sigla": "PI"
+  },
+  {
+    "id": 220325,
+    "nome": "Curralinhos",
+    "sigla": "PI"
+  },
+  {
+    "id": 220327,
+    "nome": "Curral Novo do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220330,
+    "nome": "Demerval Lobão",
+    "sigla": "PI"
+  },
+  {
+    "id": 220335,
+    "nome": "Dirceu Arcoverde",
+    "sigla": "PI"
+  },
+  {
+    "id": 220340,
+    "nome": "Dom Expedito Lopes",
+    "sigla": "PI"
+  },
+  {
+    "id": 220342,
+    "nome": "Domingos Mourão",
+    "sigla": "PI"
+  },
+  {
+    "id": 220345,
+    "nome": "Dom Inocêncio",
+    "sigla": "PI"
+  },
+  {
+    "id": 220350,
+    "nome": "Elesbão Veloso",
+    "sigla": "PI"
+  },
+  {
+    "id": 220360,
+    "nome": "Eliseu Martins",
+    "sigla": "PI"
+  },
+  {
+    "id": 220370,
+    "nome": "Esperantina",
+    "sigla": "PI"
+  },
+  {
+    "id": 220375,
+    "nome": "Fartura do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220380,
+    "nome": "Flores do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220385,
+    "nome": "Floresta do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220390,
+    "nome": "Floriano",
+    "sigla": "PI"
+  },
+  {
+    "id": 220400,
+    "nome": "Francinópolis",
+    "sigla": "PI"
+  },
+  {
+    "id": 220410,
+    "nome": "Francisco Ayres",
+    "sigla": "PI"
+  },
+  {
+    "id": 220415,
+    "nome": "Francisco Macedo",
+    "sigla": "PI"
+  },
+  {
+    "id": 220420,
+    "nome": "Francisco Santos",
+    "sigla": "PI"
+  },
+  {
+    "id": 220430,
+    "nome": "Fronteiras",
+    "sigla": "PI"
+  },
+  {
+    "id": 220435,
+    "nome": "Geminiano",
+    "sigla": "PI"
+  },
+  {
+    "id": 220440,
+    "nome": "Gilbués",
+    "sigla": "PI"
+  },
+  {
+    "id": 220450,
+    "nome": "Guadalupe",
+    "sigla": "PI"
+  },
+  {
+    "id": 220455,
+    "nome": "Guaribas",
+    "sigla": "PI"
+  },
+  {
+    "id": 220460,
+    "nome": "Hugo Napoleão",
+    "sigla": "PI"
+  },
+  {
+    "id": 220465,
+    "nome": "Ilha Grande",
+    "sigla": "PI"
+  },
+  {
+    "id": 220470,
+    "nome": "Inhuma",
+    "sigla": "PI"
+  },
+  {
+    "id": 220480,
+    "nome": "Ipiranga do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220490,
+    "nome": "Isaías Coelho",
+    "sigla": "PI"
+  },
+  {
+    "id": 220500,
+    "nome": "Itainópolis",
+    "sigla": "PI"
+  },
+  {
+    "id": 220510,
+    "nome": "Itaueira",
+    "sigla": "PI"
+  },
+  {
+    "id": 220515,
+    "nome": "Jacobina do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220520,
+    "nome": "Jaicós",
+    "sigla": "PI"
+  },
+  {
+    "id": 220525,
+    "nome": "Jardim do Mulato",
+    "sigla": "PI"
+  },
+  {
+    "id": 220527,
+    "nome": "Jatobá do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220530,
+    "nome": "Jerumenha",
+    "sigla": "PI"
+  },
+  {
+    "id": 220535,
+    "nome": "João Costa",
+    "sigla": "PI"
+  },
+  {
+    "id": 220540,
+    "nome": "Joaquim Pires",
+    "sigla": "PI"
+  },
+  {
+    "id": 220545,
+    "nome": "Joca Marques",
+    "sigla": "PI"
+  },
+  {
+    "id": 220550,
+    "nome": "José de Freitas",
+    "sigla": "PI"
+  },
+  {
+    "id": 220551,
+    "nome": "Juazeiro do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220552,
+    "nome": "Júlio Borges",
+    "sigla": "PI"
+  },
+  {
+    "id": 220553,
+    "nome": "Jurema",
+    "sigla": "PI"
+  },
+  {
+    "id": 220554,
+    "nome": "Lagoinha do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220555,
+    "nome": "Lagoa Alegre",
+    "sigla": "PI"
+  },
+  {
+    "id": 220556,
+    "nome": "Lagoa do Barro do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220557,
+    "nome": "Lagoa de São Francisco",
+    "sigla": "PI"
+  },
+  {
+    "id": 220558,
+    "nome": "Lagoa do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220559,
+    "nome": "Lagoa do Sítio",
+    "sigla": "PI"
+  },
+  {
+    "id": 220560,
+    "nome": "Landri Sales",
+    "sigla": "PI"
+  },
+  {
+    "id": 220570,
+    "nome": "Luís Correia",
+    "sigla": "PI"
+  },
+  {
+    "id": 220580,
+    "nome": "Luzilândia",
+    "sigla": "PI"
+  },
+  {
+    "id": 220585,
+    "nome": "Madeiro",
+    "sigla": "PI"
+  },
+  {
+    "id": 220590,
+    "nome": "Manoel Emídio",
+    "sigla": "PI"
+  },
+  {
+    "id": 220595,
+    "nome": "Marcolândia",
+    "sigla": "PI"
+  },
+  {
+    "id": 220600,
+    "nome": "Marcos Parente",
+    "sigla": "PI"
+  },
+  {
+    "id": 220605,
+    "nome": "Massapê do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220610,
+    "nome": "Matias Olímpio",
+    "sigla": "PI"
+  },
+  {
+    "id": 220620,
+    "nome": "Miguel Alves",
+    "sigla": "PI"
+  },
+  {
+    "id": 220630,
+    "nome": "Miguel Leão",
+    "sigla": "PI"
+  },
+  {
+    "id": 220635,
+    "nome": "Milton Brandão",
+    "sigla": "PI"
+  },
+  {
+    "id": 220640,
+    "nome": "Monsenhor Gil",
+    "sigla": "PI"
+  },
+  {
+    "id": 220650,
+    "nome": "Monsenhor Hipólito",
+    "sigla": "PI"
+  },
+  {
+    "id": 220660,
+    "nome": "Monte Alegre do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220665,
+    "nome": "Morro Cabeça no Tempo",
+    "sigla": "PI"
+  },
+  {
+    "id": 220667,
+    "nome": "Morro do Chapéu do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220669,
+    "nome": "Murici dos Portelas",
+    "sigla": "PI"
+  },
+  {
+    "id": 220670,
+    "nome": "Nazaré do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220672,
+    "nome": "Nazária",
+    "sigla": "PI"
+  },
+  {
+    "id": 220675,
+    "nome": "Nossa Senhora de Nazaré",
+    "sigla": "PI"
+  },
+  {
+    "id": 220680,
+    "nome": "Nossa Senhora dos Remédios",
+    "sigla": "PI"
+  },
+  {
+    "id": 220690,
+    "nome": "Novo Oriente do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220695,
+    "nome": "Novo Santo Antônio",
+    "sigla": "PI"
+  },
+  {
+    "id": 220700,
+    "nome": "Oeiras",
+    "sigla": "PI"
+  },
+  {
+    "id": 220710,
+    "nome": "Olho D'Água do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220720,
+    "nome": "Padre Marcos",
+    "sigla": "PI"
+  },
+  {
+    "id": 220730,
+    "nome": "Paes Landim",
+    "sigla": "PI"
+  },
+  {
+    "id": 220735,
+    "nome": "Pajeú do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220740,
+    "nome": "Palmeira do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220750,
+    "nome": "Palmeirais",
+    "sigla": "PI"
+  },
+  {
+    "id": 220755,
+    "nome": "Paquetá",
+    "sigla": "PI"
+  },
+  {
+    "id": 220760,
+    "nome": "Parnaguá",
+    "sigla": "PI"
+  },
+  {
+    "id": 220770,
+    "nome": "Parnaíba",
+    "sigla": "PI"
+  },
+  {
+    "id": 220775,
+    "nome": "Passagem Franca do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220777,
+    "nome": "Patos do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220779,
+    "nome": "Pau D'Arco do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220780,
+    "nome": "Paulistana",
+    "sigla": "PI"
+  },
+  {
+    "id": 220785,
+    "nome": "Pavussu",
+    "sigla": "PI"
+  },
+  {
+    "id": 220790,
+    "nome": "Pedro II",
+    "sigla": "PI"
+  },
+  {
+    "id": 220793,
+    "nome": "Pedro Laurentino",
+    "sigla": "PI"
+  },
+  {
+    "id": 220795,
+    "nome": "Nova Santa Rita",
+    "sigla": "PI"
+  },
+  {
+    "id": 220800,
+    "nome": "Picos",
+    "sigla": "PI"
+  },
+  {
+    "id": 220810,
+    "nome": "Pimenteiras",
+    "sigla": "PI"
+  },
+  {
+    "id": 220820,
+    "nome": "Pio IX",
+    "sigla": "PI"
+  },
+  {
+    "id": 220830,
+    "nome": "Piracuruca",
+    "sigla": "PI"
+  },
+  {
+    "id": 220840,
+    "nome": "Piripiri",
+    "sigla": "PI"
+  },
+  {
+    "id": 220850,
+    "nome": "Porto",
+    "sigla": "PI"
+  },
+  {
+    "id": 220855,
+    "nome": "Porto Alegre do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220860,
+    "nome": "Prata do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220865,
+    "nome": "Queimada Nova",
+    "sigla": "PI"
+  },
+  {
+    "id": 220870,
+    "nome": "Redenção do Gurguéia",
+    "sigla": "PI"
+  },
+  {
+    "id": 220880,
+    "nome": "Regeneração",
+    "sigla": "PI"
+  },
+  {
+    "id": 220885,
+    "nome": "Riacho Frio",
+    "sigla": "PI"
+  },
+  {
+    "id": 220887,
+    "nome": "Ribeira do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220890,
+    "nome": "Ribeiro Gonçalves",
+    "sigla": "PI"
+  },
+  {
+    "id": 220900,
+    "nome": "Rio Grande do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220910,
+    "nome": "Santa Cruz do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220915,
+    "nome": "Santa Cruz dos Milagres",
+    "sigla": "PI"
+  },
+  {
+    "id": 220920,
+    "nome": "Santa Filomena",
+    "sigla": "PI"
+  },
+  {
+    "id": 220930,
+    "nome": "Santa Luz",
+    "sigla": "PI"
+  },
+  {
+    "id": 220935,
+    "nome": "Santana do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220937,
+    "nome": "Santa Rosa do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220940,
+    "nome": "Santo Antônio de Lisboa",
+    "sigla": "PI"
+  },
+  {
+    "id": 220945,
+    "nome": "Santo Antônio dos Milagres",
+    "sigla": "PI"
+  },
+  {
+    "id": 220950,
+    "nome": "Santo Inácio do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220955,
+    "nome": "São Braz do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220960,
+    "nome": "São Félix do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220965,
+    "nome": "São Francisco de Assis do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220970,
+    "nome": "São Francisco do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220975,
+    "nome": "São Gonçalo do Gurguéia",
+    "sigla": "PI"
+  },
+  {
+    "id": 220980,
+    "nome": "São Gonçalo do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 220985,
+    "nome": "São João da Canabrava",
+    "sigla": "PI"
+  },
+  {
+    "id": 220987,
+    "nome": "São João da Fronteira",
+    "sigla": "PI"
+  },
+  {
+    "id": 220990,
+    "nome": "São João da Serra",
+    "sigla": "PI"
+  },
+  {
+    "id": 220995,
+    "nome": "São João da Varjota",
+    "sigla": "PI"
+  },
+  {
+    "id": 220997,
+    "nome": "São João do Arraial",
+    "sigla": "PI"
+  },
+  {
+    "id": 221000,
+    "nome": "São João do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 221005,
+    "nome": "São José do Divino",
+    "sigla": "PI"
+  },
+  {
+    "id": 221010,
+    "nome": "São José do Peixe",
+    "sigla": "PI"
+  },
+  {
+    "id": 221020,
+    "nome": "São José do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 221030,
+    "nome": "São Julião",
+    "sigla": "PI"
+  },
+  {
+    "id": 221035,
+    "nome": "São Lourenço do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 221037,
+    "nome": "São Luis do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 221038,
+    "nome": "São Miguel da Baixa Grande",
+    "sigla": "PI"
+  },
+  {
+    "id": 221039,
+    "nome": "São Miguel do Fidalgo",
+    "sigla": "PI"
+  },
+  {
+    "id": 221040,
+    "nome": "São Miguel do Tapuio",
+    "sigla": "PI"
+  },
+  {
+    "id": 221050,
+    "nome": "São Pedro do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 221060,
+    "nome": "São Raimundo Nonato",
+    "sigla": "PI"
+  },
+  {
+    "id": 221062,
+    "nome": "Sebastião Barros",
+    "sigla": "PI"
+  },
+  {
+    "id": 221063,
+    "nome": "Sebastião Leal",
+    "sigla": "PI"
+  },
+  {
+    "id": 221065,
+    "nome": "Sigefredo Pacheco",
+    "sigla": "PI"
+  },
+  {
+    "id": 221070,
+    "nome": "Simões",
+    "sigla": "PI"
+  },
+  {
+    "id": 221080,
+    "nome": "Simplício Mendes",
+    "sigla": "PI"
+  },
+  {
+    "id": 221090,
+    "nome": "Socorro do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 221093,
+    "nome": "Sussuapara",
+    "sigla": "PI"
+  },
+  {
+    "id": 221095,
+    "nome": "Tamboril do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 221097,
+    "nome": "Tanque do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 221100,
+    "nome": "Teresina",
+    "sigla": "PI"
+  },
+  {
+    "id": 221110,
+    "nome": "União",
+    "sigla": "PI"
+  },
+  {
+    "id": 221120,
+    "nome": "Uruçuí",
+    "sigla": "PI"
+  },
+  {
+    "id": 221130,
+    "nome": "Valença do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 221135,
+    "nome": "Várzea Branca",
+    "sigla": "PI"
+  },
+  {
+    "id": 221140,
+    "nome": "Várzea Grande",
+    "sigla": "PI"
+  },
+  {
+    "id": 221150,
+    "nome": "Vera Mendes",
+    "sigla": "PI"
+  },
+  {
+    "id": 221160,
+    "nome": "Vila Nova do Piauí",
+    "sigla": "PI"
+  },
+  {
+    "id": 221170,
+    "nome": "Wall Ferraz",
+    "sigla": "PI"
+  },
+  {
+    "id": 230010,
+    "nome": "Abaiara",
+    "sigla": "CE"
+  },
+  {
+    "id": 230015,
+    "nome": "Acarape",
+    "sigla": "CE"
+  },
+  {
+    "id": 230020,
+    "nome": "Acaraú",
+    "sigla": "CE"
+  },
+  {
+    "id": 230030,
+    "nome": "Acopiara",
+    "sigla": "CE"
+  },
+  {
+    "id": 230040,
+    "nome": "Aiuaba",
+    "sigla": "CE"
+  },
+  {
+    "id": 230050,
+    "nome": "Alcântaras",
+    "sigla": "CE"
+  },
+  {
+    "id": 230060,
+    "nome": "Altaneira",
+    "sigla": "CE"
+  },
+  {
+    "id": 230070,
+    "nome": "Alto Santo",
+    "sigla": "CE"
+  },
+  {
+    "id": 230075,
+    "nome": "Amontada",
+    "sigla": "CE"
+  },
+  {
+    "id": 230080,
+    "nome": "Antonina do Norte",
+    "sigla": "CE"
+  },
+  {
+    "id": 230090,
+    "nome": "Apuiarés",
+    "sigla": "CE"
+  },
+  {
+    "id": 230100,
+    "nome": "Aquiraz",
+    "sigla": "CE"
+  },
+  {
+    "id": 230110,
+    "nome": "Aracati",
+    "sigla": "CE"
+  },
+  {
+    "id": 230120,
+    "nome": "Aracoiaba",
+    "sigla": "CE"
+  },
+  {
+    "id": 230125,
+    "nome": "Ararendá",
+    "sigla": "CE"
+  },
+  {
+    "id": 230130,
+    "nome": "Araripe",
+    "sigla": "CE"
+  },
+  {
+    "id": 230140,
+    "nome": "Aratuba",
+    "sigla": "CE"
+  },
+  {
+    "id": 230150,
+    "nome": "Arneiroz",
+    "sigla": "CE"
+  },
+  {
+    "id": 230160,
+    "nome": "Assaré",
+    "sigla": "CE"
+  },
+  {
+    "id": 230170,
+    "nome": "Aurora",
+    "sigla": "CE"
+  },
+  {
+    "id": 230180,
+    "nome": "Baixio",
+    "sigla": "CE"
+  },
+  {
+    "id": 230185,
+    "nome": "Banabuiú",
+    "sigla": "CE"
+  },
+  {
+    "id": 230190,
+    "nome": "Barbalha",
+    "sigla": "CE"
+  },
+  {
+    "id": 230195,
+    "nome": "Barreira",
+    "sigla": "CE"
+  },
+  {
+    "id": 230200,
+    "nome": "Barro",
+    "sigla": "CE"
+  },
+  {
+    "id": 230205,
+    "nome": "Barroquinha",
+    "sigla": "CE"
+  },
+  {
+    "id": 230210,
+    "nome": "Baturité",
+    "sigla": "CE"
+  },
+  {
+    "id": 230220,
+    "nome": "Beberibe",
+    "sigla": "CE"
+  },
+  {
+    "id": 230230,
+    "nome": "Bela Cruz",
+    "sigla": "CE"
+  },
+  {
+    "id": 230240,
+    "nome": "Boa Viagem",
+    "sigla": "CE"
+  },
+  {
+    "id": 230250,
+    "nome": "Brejo Santo",
+    "sigla": "CE"
+  },
+  {
+    "id": 230260,
+    "nome": "Camocim",
+    "sigla": "CE"
+  },
+  {
+    "id": 230270,
+    "nome": "Campos Sales",
+    "sigla": "CE"
+  },
+  {
+    "id": 230280,
+    "nome": "Canindé",
+    "sigla": "CE"
+  },
+  {
+    "id": 230290,
+    "nome": "Capistrano",
+    "sigla": "CE"
+  },
+  {
+    "id": 230300,
+    "nome": "Caridade",
+    "sigla": "CE"
+  },
+  {
+    "id": 230310,
+    "nome": "Cariré",
+    "sigla": "CE"
+  },
+  {
+    "id": 230320,
+    "nome": "Caririaçu",
+    "sigla": "CE"
+  },
+  {
+    "id": 230330,
+    "nome": "Cariús",
+    "sigla": "CE"
+  },
+  {
+    "id": 230340,
+    "nome": "Carnaubal",
+    "sigla": "CE"
+  },
+  {
+    "id": 230350,
+    "nome": "Cascavel",
+    "sigla": "CE"
+  },
+  {
+    "id": 230360,
+    "nome": "Catarina",
+    "sigla": "CE"
+  },
+  {
+    "id": 230365,
+    "nome": "Catunda",
+    "sigla": "CE"
+  },
+  {
+    "id": 230370,
+    "nome": "Caucaia",
+    "sigla": "CE"
+  },
+  {
+    "id": 230380,
+    "nome": "Cedro",
+    "sigla": "CE"
+  },
+  {
+    "id": 230390,
+    "nome": "Chaval",
+    "sigla": "CE"
+  },
+  {
+    "id": 230393,
+    "nome": "Choró",
+    "sigla": "CE"
+  },
+  {
+    "id": 230395,
+    "nome": "Chorozinho",
+    "sigla": "CE"
+  },
+  {
+    "id": 230400,
+    "nome": "Coreaú",
+    "sigla": "CE"
+  },
+  {
+    "id": 230410,
+    "nome": "Crateús",
+    "sigla": "CE"
+  },
+  {
+    "id": 230420,
+    "nome": "Crato",
+    "sigla": "CE"
+  },
+  {
+    "id": 230423,
+    "nome": "Croatá",
+    "sigla": "CE"
+  },
+  {
+    "id": 230425,
+    "nome": "Cruz",
+    "sigla": "CE"
+  },
+  {
+    "id": 230426,
+    "nome": "Deputado Irapuan Pinheiro",
+    "sigla": "CE"
+  },
+  {
+    "id": 230427,
+    "nome": "Ereré",
+    "sigla": "CE"
+  },
+  {
+    "id": 230428,
+    "nome": "Eusébio",
+    "sigla": "CE"
+  },
+  {
+    "id": 230430,
+    "nome": "Farias Brito",
+    "sigla": "CE"
+  },
+  {
+    "id": 230435,
+    "nome": "Forquilha",
+    "sigla": "CE"
+  },
+  {
+    "id": 230440,
+    "nome": "Fortaleza",
+    "sigla": "CE"
+  },
+  {
+    "id": 230445,
+    "nome": "Fortim",
+    "sigla": "CE"
+  },
+  {
+    "id": 230450,
+    "nome": "Frecheirinha",
+    "sigla": "CE"
+  },
+  {
+    "id": 230460,
+    "nome": "General Sampaio",
+    "sigla": "CE"
+  },
+  {
+    "id": 230465,
+    "nome": "Graça",
+    "sigla": "CE"
+  },
+  {
+    "id": 230470,
+    "nome": "Granja",
+    "sigla": "CE"
+  },
+  {
+    "id": 230480,
+    "nome": "Granjeiro",
+    "sigla": "CE"
+  },
+  {
+    "id": 230490,
+    "nome": "Groaíras",
+    "sigla": "CE"
+  },
+  {
+    "id": 230495,
+    "nome": "Guaiúba",
+    "sigla": "CE"
+  },
+  {
+    "id": 230500,
+    "nome": "Guaraciaba do Norte",
+    "sigla": "CE"
+  },
+  {
+    "id": 230510,
+    "nome": "Guaramiranga",
+    "sigla": "CE"
+  },
+  {
+    "id": 230520,
+    "nome": "Hidrolândia",
+    "sigla": "CE"
+  },
+  {
+    "id": 230523,
+    "nome": "Horizonte",
+    "sigla": "CE"
+  },
+  {
+    "id": 230526,
+    "nome": "Ibaretama",
+    "sigla": "CE"
+  },
+  {
+    "id": 230530,
+    "nome": "Ibiapina",
+    "sigla": "CE"
+  },
+  {
+    "id": 230533,
+    "nome": "Ibicuitinga",
+    "sigla": "CE"
+  },
+  {
+    "id": 230535,
+    "nome": "Icapuí",
+    "sigla": "CE"
+  },
+  {
+    "id": 230540,
+    "nome": "Icó",
+    "sigla": "CE"
+  },
+  {
+    "id": 230550,
+    "nome": "Iguatu",
+    "sigla": "CE"
+  },
+  {
+    "id": 230560,
+    "nome": "Independência",
+    "sigla": "CE"
+  },
+  {
+    "id": 230565,
+    "nome": "Ipaporanga",
+    "sigla": "CE"
+  },
+  {
+    "id": 230570,
+    "nome": "Ipaumirim",
+    "sigla": "CE"
+  },
+  {
+    "id": 230580,
+    "nome": "Ipu",
+    "sigla": "CE"
+  },
+  {
+    "id": 230590,
+    "nome": "Ipueiras",
+    "sigla": "CE"
+  },
+  {
+    "id": 230600,
+    "nome": "Iracema",
+    "sigla": "CE"
+  },
+  {
+    "id": 230610,
+    "nome": "Irauçuba",
+    "sigla": "CE"
+  },
+  {
+    "id": 230620,
+    "nome": "Itaiçaba",
+    "sigla": "CE"
+  },
+  {
+    "id": 230625,
+    "nome": "Itaitinga",
+    "sigla": "CE"
+  },
+  {
+    "id": 230630,
+    "nome": "Itapajé",
+    "sigla": "CE"
+  },
+  {
+    "id": 230640,
+    "nome": "Itapipoca",
+    "sigla": "CE"
+  },
+  {
+    "id": 230650,
+    "nome": "Itapiúna",
+    "sigla": "CE"
+  },
+  {
+    "id": 230655,
+    "nome": "Itarema",
+    "sigla": "CE"
+  },
+  {
+    "id": 230660,
+    "nome": "Itatira",
+    "sigla": "CE"
+  },
+  {
+    "id": 230670,
+    "nome": "Jaguaretama",
+    "sigla": "CE"
+  },
+  {
+    "id": 230680,
+    "nome": "Jaguaribara",
+    "sigla": "CE"
+  },
+  {
+    "id": 230690,
+    "nome": "Jaguaribe",
+    "sigla": "CE"
+  },
+  {
+    "id": 230700,
+    "nome": "Jaguaruana",
+    "sigla": "CE"
+  },
+  {
+    "id": 230710,
+    "nome": "Jardim",
+    "sigla": "CE"
+  },
+  {
+    "id": 230720,
+    "nome": "Jati",
+    "sigla": "CE"
+  },
+  {
+    "id": 230725,
+    "nome": "Jijoca de Jericoacoara",
+    "sigla": "CE"
+  },
+  {
+    "id": 230730,
+    "nome": "Juazeiro do Norte",
+    "sigla": "CE"
+  },
+  {
+    "id": 230740,
+    "nome": "Jucás",
+    "sigla": "CE"
+  },
+  {
+    "id": 230750,
+    "nome": "Lavras da Mangabeira",
+    "sigla": "CE"
+  },
+  {
+    "id": 230760,
+    "nome": "Limoeiro do Norte",
+    "sigla": "CE"
+  },
+  {
+    "id": 230763,
+    "nome": "Madalena",
+    "sigla": "CE"
+  },
+  {
+    "id": 230765,
+    "nome": "Maracanaú",
+    "sigla": "CE"
+  },
+  {
+    "id": 230770,
+    "nome": "Maranguape",
+    "sigla": "CE"
+  },
+  {
+    "id": 230780,
+    "nome": "Marco",
+    "sigla": "CE"
+  },
+  {
+    "id": 230790,
+    "nome": "Martinópole",
+    "sigla": "CE"
+  },
+  {
+    "id": 230800,
+    "nome": "Massapê",
+    "sigla": "CE"
+  },
+  {
+    "id": 230810,
+    "nome": "Mauriti",
+    "sigla": "CE"
+  },
+  {
+    "id": 230820,
+    "nome": "Meruoca",
+    "sigla": "CE"
+  },
+  {
+    "id": 230830,
+    "nome": "Milagres",
+    "sigla": "CE"
+  },
+  {
+    "id": 230835,
+    "nome": "Milhã",
+    "sigla": "CE"
+  },
+  {
+    "id": 230837,
+    "nome": "Miraíma",
+    "sigla": "CE"
+  },
+  {
+    "id": 230840,
+    "nome": "Missão Velha",
+    "sigla": "CE"
+  },
+  {
+    "id": 230850,
+    "nome": "Mombaça",
+    "sigla": "CE"
+  },
+  {
+    "id": 230860,
+    "nome": "Monsenhor Tabosa",
+    "sigla": "CE"
+  },
+  {
+    "id": 230870,
+    "nome": "Morada Nova",
+    "sigla": "CE"
+  },
+  {
+    "id": 230880,
+    "nome": "Moraújo",
+    "sigla": "CE"
+  },
+  {
+    "id": 230890,
+    "nome": "Morrinhos",
+    "sigla": "CE"
+  },
+  {
+    "id": 230900,
+    "nome": "Mucambo",
+    "sigla": "CE"
+  },
+  {
+    "id": 230910,
+    "nome": "Mulungu",
+    "sigla": "CE"
+  },
+  {
+    "id": 230920,
+    "nome": "Nova Olinda",
+    "sigla": "CE"
+  },
+  {
+    "id": 230930,
+    "nome": "Nova Russas",
+    "sigla": "CE"
+  },
+  {
+    "id": 230940,
+    "nome": "Novo Oriente",
+    "sigla": "CE"
+  },
+  {
+    "id": 230945,
+    "nome": "Ocara",
+    "sigla": "CE"
+  },
+  {
+    "id": 230950,
+    "nome": "Orós",
+    "sigla": "CE"
+  },
+  {
+    "id": 230960,
+    "nome": "Pacajus",
+    "sigla": "CE"
+  },
+  {
+    "id": 230970,
+    "nome": "Pacatuba",
+    "sigla": "CE"
+  },
+  {
+    "id": 230980,
+    "nome": "Pacoti",
+    "sigla": "CE"
+  },
+  {
+    "id": 230990,
+    "nome": "Pacujá",
+    "sigla": "CE"
+  },
+  {
+    "id": 231000,
+    "nome": "Palhano",
+    "sigla": "CE"
+  },
+  {
+    "id": 231010,
+    "nome": "Palmácia",
+    "sigla": "CE"
+  },
+  {
+    "id": 231020,
+    "nome": "Paracuru",
+    "sigla": "CE"
+  },
+  {
+    "id": 231025,
+    "nome": "Paraipaba",
+    "sigla": "CE"
+  },
+  {
+    "id": 231030,
+    "nome": "Parambu",
+    "sigla": "CE"
+  },
+  {
+    "id": 231040,
+    "nome": "Paramoti",
+    "sigla": "CE"
+  },
+  {
+    "id": 231050,
+    "nome": "Pedra Branca",
+    "sigla": "CE"
+  },
+  {
+    "id": 231060,
+    "nome": "Penaforte",
+    "sigla": "CE"
+  },
+  {
+    "id": 231070,
+    "nome": "Pentecoste",
+    "sigla": "CE"
+  },
+  {
+    "id": 231080,
+    "nome": "Pereiro",
+    "sigla": "CE"
+  },
+  {
+    "id": 231085,
+    "nome": "Pindoretama",
+    "sigla": "CE"
+  },
+  {
+    "id": 231090,
+    "nome": "Piquet Carneiro",
+    "sigla": "CE"
+  },
+  {
+    "id": 231095,
+    "nome": "Pires Ferreira",
+    "sigla": "CE"
+  },
+  {
+    "id": 231100,
+    "nome": "Poranga",
+    "sigla": "CE"
+  },
+  {
+    "id": 231110,
+    "nome": "Porteiras",
+    "sigla": "CE"
+  },
+  {
+    "id": 231120,
+    "nome": "Potengi",
+    "sigla": "CE"
+  },
+  {
+    "id": 231123,
+    "nome": "Potiretama",
+    "sigla": "CE"
+  },
+  {
+    "id": 231126,
+    "nome": "Quiterianópolis",
+    "sigla": "CE"
+  },
+  {
+    "id": 231130,
+    "nome": "Quixadá",
+    "sigla": "CE"
+  },
+  {
+    "id": 231135,
+    "nome": "Quixelô",
+    "sigla": "CE"
+  },
+  {
+    "id": 231140,
+    "nome": "Quixeramobim",
+    "sigla": "CE"
+  },
+  {
+    "id": 231150,
+    "nome": "Quixeré",
+    "sigla": "CE"
+  },
+  {
+    "id": 231160,
+    "nome": "Redenção",
+    "sigla": "CE"
+  },
+  {
+    "id": 231170,
+    "nome": "Reriutaba",
+    "sigla": "CE"
+  },
+  {
+    "id": 231180,
+    "nome": "Russas",
+    "sigla": "CE"
+  },
+  {
+    "id": 231190,
+    "nome": "Saboeiro",
+    "sigla": "CE"
+  },
+  {
+    "id": 231195,
+    "nome": "Salitre",
+    "sigla": "CE"
+  },
+  {
+    "id": 231200,
+    "nome": "Santana do Acaraú",
+    "sigla": "CE"
+  },
+  {
+    "id": 231210,
+    "nome": "Santana do Cariri",
+    "sigla": "CE"
+  },
+  {
+    "id": 231220,
+    "nome": "Santa Quitéria",
+    "sigla": "CE"
+  },
+  {
+    "id": 231230,
+    "nome": "São Benedito",
+    "sigla": "CE"
+  },
+  {
+    "id": 231240,
+    "nome": "São Gonçalo do Amarante",
+    "sigla": "CE"
+  },
+  {
+    "id": 231250,
+    "nome": "São João do Jaguaribe",
+    "sigla": "CE"
+  },
+  {
+    "id": 231260,
+    "nome": "São Luís do Curu",
+    "sigla": "CE"
+  },
+  {
+    "id": 231270,
+    "nome": "Senador Pompeu",
+    "sigla": "CE"
+  },
+  {
+    "id": 231280,
+    "nome": "Senador Sá",
+    "sigla": "CE"
+  },
+  {
+    "id": 231290,
+    "nome": "Sobral",
+    "sigla": "CE"
+  },
+  {
+    "id": 231300,
+    "nome": "Solonópole",
+    "sigla": "CE"
+  },
+  {
+    "id": 231310,
+    "nome": "Tabuleiro do Norte",
+    "sigla": "CE"
+  },
+  {
+    "id": 231320,
+    "nome": "Tamboril",
+    "sigla": "CE"
+  },
+  {
+    "id": 231325,
+    "nome": "Tarrafas",
+    "sigla": "CE"
+  },
+  {
+    "id": 231330,
+    "nome": "Tauá",
+    "sigla": "CE"
+  },
+  {
+    "id": 231335,
+    "nome": "Tejuçuoca",
+    "sigla": "CE"
+  },
+  {
+    "id": 231340,
+    "nome": "Tianguá",
+    "sigla": "CE"
+  },
+  {
+    "id": 231350,
+    "nome": "Trairi",
+    "sigla": "CE"
+  },
+  {
+    "id": 231355,
+    "nome": "Tururu",
+    "sigla": "CE"
+  },
+  {
+    "id": 231360,
+    "nome": "Ubajara",
+    "sigla": "CE"
+  },
+  {
+    "id": 231370,
+    "nome": "Umari",
+    "sigla": "CE"
+  },
+  {
+    "id": 231375,
+    "nome": "Umirim",
+    "sigla": "CE"
+  },
+  {
+    "id": 231380,
+    "nome": "Uruburetama",
+    "sigla": "CE"
+  },
+  {
+    "id": 231390,
+    "nome": "Uruoca",
+    "sigla": "CE"
+  },
+  {
+    "id": 231395,
+    "nome": "Varjota",
+    "sigla": "CE"
+  },
+  {
+    "id": 231400,
+    "nome": "Várzea Alegre",
+    "sigla": "CE"
+  },
+  {
+    "id": 231410,
+    "nome": "Viçosa do Ceará",
+    "sigla": "CE"
+  },
+  {
+    "id": 240010,
+    "nome": "Acari",
+    "sigla": "RN"
+  },
+  {
+    "id": 240020,
+    "nome": "Açu",
+    "sigla": "RN"
+  },
+  {
+    "id": 240030,
+    "nome": "Afonso Bezerra",
+    "sigla": "RN"
+  },
+  {
+    "id": 240040,
+    "nome": "Água Nova",
+    "sigla": "RN"
+  },
+  {
+    "id": 240050,
+    "nome": "Alexandria",
+    "sigla": "RN"
+  },
+  {
+    "id": 240060,
+    "nome": "Almino Afonso",
+    "sigla": "RN"
+  },
+  {
+    "id": 240070,
+    "nome": "Alto do Rodrigues",
+    "sigla": "RN"
+  },
+  {
+    "id": 240080,
+    "nome": "Angicos",
+    "sigla": "RN"
+  },
+  {
+    "id": 240090,
+    "nome": "Antônio Martins",
+    "sigla": "RN"
+  },
+  {
+    "id": 240100,
+    "nome": "Apodi",
+    "sigla": "RN"
+  },
+  {
+    "id": 240110,
+    "nome": "Areia Branca",
+    "sigla": "RN"
+  },
+  {
+    "id": 240120,
+    "nome": "Arês",
+    "sigla": "RN"
+  },
+  {
+    "id": 240130,
+    "nome": "Campo Grande",
+    "sigla": "RN"
+  },
+  {
+    "id": 240140,
+    "nome": "Baía Formosa",
+    "sigla": "RN"
+  },
+  {
+    "id": 240145,
+    "nome": "Baraúna",
+    "sigla": "RN"
+  },
+  {
+    "id": 240150,
+    "nome": "Barcelona",
+    "sigla": "RN"
+  },
+  {
+    "id": 240160,
+    "nome": "Bento Fernandes",
+    "sigla": "RN"
+  },
+  {
+    "id": 240165,
+    "nome": "Bodó",
+    "sigla": "RN"
+  },
+  {
+    "id": 240170,
+    "nome": "Bom Jesus",
+    "sigla": "RN"
+  },
+  {
+    "id": 240180,
+    "nome": "Brejinho",
+    "sigla": "RN"
+  },
+  {
+    "id": 240185,
+    "nome": "Caiçara do Norte",
+    "sigla": "RN"
+  },
+  {
+    "id": 240190,
+    "nome": "Caiçara do Rio do Vento",
+    "sigla": "RN"
+  },
+  {
+    "id": 240200,
+    "nome": "Caicó",
+    "sigla": "RN"
+  },
+  {
+    "id": 240210,
+    "nome": "Campo Redondo",
+    "sigla": "RN"
+  },
+  {
+    "id": 240220,
+    "nome": "Canguaretama",
+    "sigla": "RN"
+  },
+  {
+    "id": 240230,
+    "nome": "Caraúbas",
+    "sigla": "RN"
+  },
+  {
+    "id": 240240,
+    "nome": "Carnaúba dos Dantas",
+    "sigla": "RN"
+  },
+  {
+    "id": 240250,
+    "nome": "Carnaubais",
+    "sigla": "RN"
+  },
+  {
+    "id": 240260,
+    "nome": "Ceará-Mirim",
+    "sigla": "RN"
+  },
+  {
+    "id": 240270,
+    "nome": "Cerro Corá",
+    "sigla": "RN"
+  },
+  {
+    "id": 240280,
+    "nome": "Coronel Ezequiel",
+    "sigla": "RN"
+  },
+  {
+    "id": 240290,
+    "nome": "Coronel João Pessoa",
+    "sigla": "RN"
+  },
+  {
+    "id": 240300,
+    "nome": "Cruzeta",
+    "sigla": "RN"
+  },
+  {
+    "id": 240310,
+    "nome": "Currais Novos",
+    "sigla": "RN"
+  },
+  {
+    "id": 240320,
+    "nome": "Doutor Severiano",
+    "sigla": "RN"
+  },
+  {
+    "id": 240325,
+    "nome": "Parnamirim",
+    "sigla": "RN"
+  },
+  {
+    "id": 240330,
+    "nome": "Encanto",
+    "sigla": "RN"
+  },
+  {
+    "id": 240340,
+    "nome": "Equador",
+    "sigla": "RN"
+  },
+  {
+    "id": 240350,
+    "nome": "Espírito Santo",
+    "sigla": "RN"
+  },
+  {
+    "id": 240360,
+    "nome": "Extremoz",
+    "sigla": "RN"
+  },
+  {
+    "id": 240370,
+    "nome": "Felipe Guerra",
+    "sigla": "RN"
+  },
+  {
+    "id": 240375,
+    "nome": "Fernando Pedroza",
+    "sigla": "RN"
+  },
+  {
+    "id": 240380,
+    "nome": "Florânia",
+    "sigla": "RN"
+  },
+  {
+    "id": 240390,
+    "nome": "Francisco Dantas",
+    "sigla": "RN"
+  },
+  {
+    "id": 240400,
+    "nome": "Frutuoso Gomes",
+    "sigla": "RN"
+  },
+  {
+    "id": 240410,
+    "nome": "Galinhos",
+    "sigla": "RN"
+  },
+  {
+    "id": 240420,
+    "nome": "Goianinha",
+    "sigla": "RN"
+  },
+  {
+    "id": 240430,
+    "nome": "Governador Dix-Sept Rosado",
+    "sigla": "RN"
+  },
+  {
+    "id": 240440,
+    "nome": "Grossos",
+    "sigla": "RN"
+  },
+  {
+    "id": 240450,
+    "nome": "Guamaré",
+    "sigla": "RN"
+  },
+  {
+    "id": 240460,
+    "nome": "Ielmo Marinho",
+    "sigla": "RN"
+  },
+  {
+    "id": 240470,
+    "nome": "Ipanguaçu",
+    "sigla": "RN"
+  },
+  {
+    "id": 240480,
+    "nome": "Ipueira",
+    "sigla": "RN"
+  },
+  {
+    "id": 240485,
+    "nome": "Itajá",
+    "sigla": "RN"
+  },
+  {
+    "id": 240490,
+    "nome": "Itaú",
+    "sigla": "RN"
+  },
+  {
+    "id": 240500,
+    "nome": "Jaçanã",
+    "sigla": "RN"
+  },
+  {
+    "id": 240510,
+    "nome": "Jandaíra",
+    "sigla": "RN"
+  },
+  {
+    "id": 240520,
+    "nome": "Janduís",
+    "sigla": "RN"
+  },
+  {
+    "id": 240530,
+    "nome": "Januário Cicco",
+    "sigla": "RN"
+  },
+  {
+    "id": 240540,
+    "nome": "Japi",
+    "sigla": "RN"
+  },
+  {
+    "id": 240550,
+    "nome": "Jardim de Angicos",
+    "sigla": "RN"
+  },
+  {
+    "id": 240560,
+    "nome": "Jardim de Piranhas",
+    "sigla": "RN"
+  },
+  {
+    "id": 240570,
+    "nome": "Jardim do Seridó",
+    "sigla": "RN"
+  },
+  {
+    "id": 240580,
+    "nome": "João Câmara",
+    "sigla": "RN"
+  },
+  {
+    "id": 240590,
+    "nome": "João Dias",
+    "sigla": "RN"
+  },
+  {
+    "id": 240600,
+    "nome": "José da Penha",
+    "sigla": "RN"
+  },
+  {
+    "id": 240610,
+    "nome": "Jucurutu",
+    "sigla": "RN"
+  },
+  {
+    "id": 240615,
+    "nome": "Jundiá",
+    "sigla": "RN"
+  },
+  {
+    "id": 240620,
+    "nome": "Lagoa d'Anta",
+    "sigla": "RN"
+  },
+  {
+    "id": 240630,
+    "nome": "Lagoa de Pedras",
+    "sigla": "RN"
+  },
+  {
+    "id": 240640,
+    "nome": "Lagoa de Velhos",
+    "sigla": "RN"
+  },
+  {
+    "id": 240650,
+    "nome": "Lagoa Nova",
+    "sigla": "RN"
+  },
+  {
+    "id": 240660,
+    "nome": "Lagoa Salgada",
+    "sigla": "RN"
+  },
+  {
+    "id": 240670,
+    "nome": "Lajes",
+    "sigla": "RN"
+  },
+  {
+    "id": 240680,
+    "nome": "Lajes Pintadas",
+    "sigla": "RN"
+  },
+  {
+    "id": 240690,
+    "nome": "Lucrécia",
+    "sigla": "RN"
+  },
+  {
+    "id": 240700,
+    "nome": "Luís Gomes",
+    "sigla": "RN"
+  },
+  {
+    "id": 240710,
+    "nome": "Macaíba",
+    "sigla": "RN"
+  },
+  {
+    "id": 240720,
+    "nome": "Macau",
+    "sigla": "RN"
+  },
+  {
+    "id": 240725,
+    "nome": "Major Sales",
+    "sigla": "RN"
+  },
+  {
+    "id": 240730,
+    "nome": "Marcelino Vieira",
+    "sigla": "RN"
+  },
+  {
+    "id": 240740,
+    "nome": "Martins",
+    "sigla": "RN"
+  },
+  {
+    "id": 240750,
+    "nome": "Maxaranguape",
+    "sigla": "RN"
+  },
+  {
+    "id": 240760,
+    "nome": "Messias Targino",
+    "sigla": "RN"
+  },
+  {
+    "id": 240770,
+    "nome": "Montanhas",
+    "sigla": "RN"
+  },
+  {
+    "id": 240780,
+    "nome": "Monte Alegre",
+    "sigla": "RN"
+  },
+  {
+    "id": 240790,
+    "nome": "Monte das Gameleiras",
+    "sigla": "RN"
+  },
+  {
+    "id": 240800,
+    "nome": "Mossoró",
+    "sigla": "RN"
+  },
+  {
+    "id": 240810,
+    "nome": "Natal",
+    "sigla": "RN"
+  },
+  {
+    "id": 240820,
+    "nome": "Nísia Floresta",
+    "sigla": "RN"
+  },
+  {
+    "id": 240830,
+    "nome": "Nova Cruz",
+    "sigla": "RN"
+  },
+  {
+    "id": 240840,
+    "nome": "Olho d'Água do Borges",
+    "sigla": "RN"
+  },
+  {
+    "id": 240850,
+    "nome": "Ouro Branco",
+    "sigla": "RN"
+  },
+  {
+    "id": 240860,
+    "nome": "Paraná",
+    "sigla": "RN"
+  },
+  {
+    "id": 240870,
+    "nome": "Paraú",
+    "sigla": "RN"
+  },
+  {
+    "id": 240880,
+    "nome": "Parazinho",
+    "sigla": "RN"
+  },
+  {
+    "id": 240890,
+    "nome": "Parelhas",
+    "sigla": "RN"
+  },
+  {
+    "id": 240895,
+    "nome": "Rio do Fogo",
+    "sigla": "RN"
+  },
+  {
+    "id": 240910,
+    "nome": "Passa e Fica",
+    "sigla": "RN"
+  },
+  {
+    "id": 240920,
+    "nome": "Passagem",
+    "sigla": "RN"
+  },
+  {
+    "id": 240930,
+    "nome": "Patu",
+    "sigla": "RN"
+  },
+  {
+    "id": 240933,
+    "nome": "Santa Maria",
+    "sigla": "RN"
+  },
+  {
+    "id": 240940,
+    "nome": "Pau dos Ferros",
+    "sigla": "RN"
+  },
+  {
+    "id": 240950,
+    "nome": "Pedra Grande",
+    "sigla": "RN"
+  },
+  {
+    "id": 240960,
+    "nome": "Pedra Preta",
+    "sigla": "RN"
+  },
+  {
+    "id": 240970,
+    "nome": "Pedro Avelino",
+    "sigla": "RN"
+  },
+  {
+    "id": 240980,
+    "nome": "Pedro Velho",
+    "sigla": "RN"
+  },
+  {
+    "id": 240990,
+    "nome": "Pendências",
+    "sigla": "RN"
+  },
+  {
+    "id": 241000,
+    "nome": "Pilões",
+    "sigla": "RN"
+  },
+  {
+    "id": 241010,
+    "nome": "Poço Branco",
+    "sigla": "RN"
+  },
+  {
+    "id": 241020,
+    "nome": "Portalegre",
+    "sigla": "RN"
+  },
+  {
+    "id": 241025,
+    "nome": "Porto do Mangue",
+    "sigla": "RN"
+  },
+  {
+    "id": 241030,
+    "nome": "Serra Caiada",
+    "sigla": "RN"
+  },
+  {
+    "id": 241040,
+    "nome": "Pureza",
+    "sigla": "RN"
+  },
+  {
+    "id": 241050,
+    "nome": "Rafael Fernandes",
+    "sigla": "RN"
+  },
+  {
+    "id": 241060,
+    "nome": "Rafael Godeiro",
+    "sigla": "RN"
+  },
+  {
+    "id": 241070,
+    "nome": "Riacho da Cruz",
+    "sigla": "RN"
+  },
+  {
+    "id": 241080,
+    "nome": "Riacho de Santana",
+    "sigla": "RN"
+  },
+  {
+    "id": 241090,
+    "nome": "Riachuelo",
+    "sigla": "RN"
+  },
+  {
+    "id": 241100,
+    "nome": "Rodolfo Fernandes",
+    "sigla": "RN"
+  },
+  {
+    "id": 241105,
+    "nome": "Tibau",
+    "sigla": "RN"
+  },
+  {
+    "id": 241110,
+    "nome": "Ruy Barbosa",
+    "sigla": "RN"
+  },
+  {
+    "id": 241120,
+    "nome": "Santa Cruz",
+    "sigla": "RN"
+  },
+  {
+    "id": 241140,
+    "nome": "Santana do Matos",
+    "sigla": "RN"
+  },
+  {
+    "id": 241142,
+    "nome": "Santana do Seridó",
+    "sigla": "RN"
+  },
+  {
+    "id": 241150,
+    "nome": "Santo Antônio",
+    "sigla": "RN"
+  },
+  {
+    "id": 241160,
+    "nome": "São Bento do Norte",
+    "sigla": "RN"
+  },
+  {
+    "id": 241170,
+    "nome": "São Bento do Trairí",
+    "sigla": "RN"
+  },
+  {
+    "id": 241180,
+    "nome": "São Fernando",
+    "sigla": "RN"
+  },
+  {
+    "id": 241190,
+    "nome": "São Francisco do Oeste",
+    "sigla": "RN"
+  },
+  {
+    "id": 241200,
+    "nome": "São Gonçalo do Amarante",
+    "sigla": "RN"
+  },
+  {
+    "id": 241210,
+    "nome": "São João do Sabugi",
+    "sigla": "RN"
+  },
+  {
+    "id": 241220,
+    "nome": "São José de Mipibu",
+    "sigla": "RN"
+  },
+  {
+    "id": 241230,
+    "nome": "São José do Campestre",
+    "sigla": "RN"
+  },
+  {
+    "id": 241240,
+    "nome": "São José do Seridó",
+    "sigla": "RN"
+  },
+  {
+    "id": 241250,
+    "nome": "São Miguel",
+    "sigla": "RN"
+  },
+  {
+    "id": 241255,
+    "nome": "São Miguel do Gostoso",
+    "sigla": "RN"
+  },
+  {
+    "id": 241260,
+    "nome": "São Paulo do Potengi",
+    "sigla": "RN"
+  },
+  {
+    "id": 241270,
+    "nome": "São Pedro",
+    "sigla": "RN"
+  },
+  {
+    "id": 241280,
+    "nome": "São Rafael",
+    "sigla": "RN"
+  },
+  {
+    "id": 241290,
+    "nome": "São Tomé",
+    "sigla": "RN"
+  },
+  {
+    "id": 241300,
+    "nome": "São Vicente",
+    "sigla": "RN"
+  },
+  {
+    "id": 241310,
+    "nome": "Senador Elói de Souza",
+    "sigla": "RN"
+  },
+  {
+    "id": 241320,
+    "nome": "Senador Georgino Avelino",
+    "sigla": "RN"
+  },
+  {
+    "id": 241330,
+    "nome": "Serra de São Bento",
+    "sigla": "RN"
+  },
+  {
+    "id": 241335,
+    "nome": "Serra do Mel",
+    "sigla": "RN"
+  },
+  {
+    "id": 241340,
+    "nome": "Serra Negra do Norte",
+    "sigla": "RN"
+  },
+  {
+    "id": 241350,
+    "nome": "Serrinha",
+    "sigla": "RN"
+  },
+  {
+    "id": 241355,
+    "nome": "Serrinha dos Pintos",
+    "sigla": "RN"
+  },
+  {
+    "id": 241360,
+    "nome": "Severiano Melo",
+    "sigla": "RN"
+  },
+  {
+    "id": 241370,
+    "nome": "Sítio Novo",
+    "sigla": "RN"
+  },
+  {
+    "id": 241380,
+    "nome": "Taboleiro Grande",
+    "sigla": "RN"
+  },
+  {
+    "id": 241390,
+    "nome": "Taipu",
+    "sigla": "RN"
+  },
+  {
+    "id": 241400,
+    "nome": "Tangará",
+    "sigla": "RN"
+  },
+  {
+    "id": 241410,
+    "nome": "Tenente Ananias",
+    "sigla": "RN"
+  },
+  {
+    "id": 241415,
+    "nome": "Tenente Laurentino Cruz",
+    "sigla": "RN"
+  },
+  {
+    "id": 241420,
+    "nome": "Tibau do Sul",
+    "sigla": "RN"
+  },
+  {
+    "id": 241430,
+    "nome": "Timbaúba dos Batistas",
+    "sigla": "RN"
+  },
+  {
+    "id": 241440,
+    "nome": "Touros",
+    "sigla": "RN"
+  },
+  {
+    "id": 241445,
+    "nome": "Triunfo Potiguar",
+    "sigla": "RN"
+  },
+  {
+    "id": 241450,
+    "nome": "Umarizal",
+    "sigla": "RN"
+  },
+  {
+    "id": 241460,
+    "nome": "Upanema",
+    "sigla": "RN"
+  },
+  {
+    "id": 241470,
+    "nome": "Várzea",
+    "sigla": "RN"
+  },
+  {
+    "id": 241475,
+    "nome": "Venha-Ver",
+    "sigla": "RN"
+  },
+  {
+    "id": 241480,
+    "nome": "Vera Cruz",
+    "sigla": "RN"
+  },
+  {
+    "id": 241490,
+    "nome": "Viçosa",
+    "sigla": "RN"
+  },
+  {
+    "id": 241500,
+    "nome": "Vila Flor",
+    "sigla": "RN"
+  },
+  {
+    "id": 250010,
+    "nome": "Água Branca",
+    "sigla": "PB"
+  },
+  {
+    "id": 250020,
+    "nome": "Aguiar",
+    "sigla": "PB"
+  },
+  {
+    "id": 250030,
+    "nome": "Alagoa Grande",
+    "sigla": "PB"
+  },
+  {
+    "id": 250040,
+    "nome": "Alagoa Nova",
+    "sigla": "PB"
+  },
+  {
+    "id": 250050,
+    "nome": "Alagoinha",
+    "sigla": "PB"
+  },
+  {
+    "id": 250053,
+    "nome": "Alcantil",
+    "sigla": "PB"
+  },
+  {
+    "id": 250057,
+    "nome": "Algodão de Jandaíra",
+    "sigla": "PB"
+  },
+  {
+    "id": 250060,
+    "nome": "Alhandra",
+    "sigla": "PB"
+  },
+  {
+    "id": 250070,
+    "nome": "São João do Rio do Peixe",
+    "sigla": "PB"
+  },
+  {
+    "id": 250073,
+    "nome": "Amparo",
+    "sigla": "PB"
+  },
+  {
+    "id": 250077,
+    "nome": "Aparecida",
+    "sigla": "PB"
+  },
+  {
+    "id": 250080,
+    "nome": "Araçagi",
+    "sigla": "PB"
+  },
+  {
+    "id": 250090,
+    "nome": "Arara",
+    "sigla": "PB"
+  },
+  {
+    "id": 250100,
+    "nome": "Araruna",
+    "sigla": "PB"
+  },
+  {
+    "id": 250110,
+    "nome": "Areia",
+    "sigla": "PB"
+  },
+  {
+    "id": 250115,
+    "nome": "Areia de Baraúnas",
+    "sigla": "PB"
+  },
+  {
+    "id": 250120,
+    "nome": "Areial",
+    "sigla": "PB"
+  },
+  {
+    "id": 250130,
+    "nome": "Aroeiras",
+    "sigla": "PB"
+  },
+  {
+    "id": 250135,
+    "nome": "Assunção",
+    "sigla": "PB"
+  },
+  {
+    "id": 250140,
+    "nome": "Baía da Traição",
+    "sigla": "PB"
+  },
+  {
+    "id": 250150,
+    "nome": "Bananeiras",
+    "sigla": "PB"
+  },
+  {
+    "id": 250153,
+    "nome": "Baraúna",
+    "sigla": "PB"
+  },
+  {
+    "id": 250157,
+    "nome": "Barra de Santana",
+    "sigla": "PB"
+  },
+  {
+    "id": 250160,
+    "nome": "Barra de Santa Rosa",
+    "sigla": "PB"
+  },
+  {
+    "id": 250170,
+    "nome": "Barra de São Miguel",
+    "sigla": "PB"
+  },
+  {
+    "id": 250180,
+    "nome": "Bayeux",
+    "sigla": "PB"
+  },
+  {
+    "id": 250190,
+    "nome": "Belém",
+    "sigla": "PB"
+  },
+  {
+    "id": 250200,
+    "nome": "Bel��m do Brejo do Cruz",
+    "sigla": "PB"
+  },
+  {
+    "id": 250205,
+    "nome": "Bernardino Batista",
+    "sigla": "PB"
+  },
+  {
+    "id": 250210,
+    "nome": "Boa Ventura",
+    "sigla": "PB"
+  },
+  {
+    "id": 250215,
+    "nome": "Boa Vista",
+    "sigla": "PB"
+  },
+  {
+    "id": 250220,
+    "nome": "Bom Jesus",
+    "sigla": "PB"
+  },
+  {
+    "id": 250230,
+    "nome": "Bom Sucesso",
+    "sigla": "PB"
+  },
+  {
+    "id": 250240,
+    "nome": "Bonito de Santa Fé",
+    "sigla": "PB"
+  },
+  {
+    "id": 250250,
+    "nome": "Boqueirão",
+    "sigla": "PB"
+  },
+  {
+    "id": 250260,
+    "nome": "Igaracy",
+    "sigla": "PB"
+  },
+  {
+    "id": 250270,
+    "nome": "Borborema",
+    "sigla": "PB"
+  },
+  {
+    "id": 250280,
+    "nome": "Brejo do Cruz",
+    "sigla": "PB"
+  },
+  {
+    "id": 250290,
+    "nome": "Brejo dos Santos",
+    "sigla": "PB"
+  },
+  {
+    "id": 250300,
+    "nome": "Caaporã",
+    "sigla": "PB"
+  },
+  {
+    "id": 250310,
+    "nome": "Cabaceiras",
+    "sigla": "PB"
+  },
+  {
+    "id": 250320,
+    "nome": "Cabedelo",
+    "sigla": "PB"
+  },
+  {
+    "id": 250330,
+    "nome": "Cachoeira dos Índios",
+    "sigla": "PB"
+  },
+  {
+    "id": 250340,
+    "nome": "Cacimba de Areia",
+    "sigla": "PB"
+  },
+  {
+    "id": 250350,
+    "nome": "Cacimba de Dentro",
+    "sigla": "PB"
+  },
+  {
+    "id": 250355,
+    "nome": "Cacimbas",
+    "sigla": "PB"
+  },
+  {
+    "id": 250360,
+    "nome": "Caiçara",
+    "sigla": "PB"
+  },
+  {
+    "id": 250370,
+    "nome": "Cajazeiras",
+    "sigla": "PB"
+  },
+  {
+    "id": 250375,
+    "nome": "Cajazeirinhas",
+    "sigla": "PB"
+  },
+  {
+    "id": 250380,
+    "nome": "Caldas Brandão",
+    "sigla": "PB"
+  },
+  {
+    "id": 250390,
+    "nome": "Camalaú",
+    "sigla": "PB"
+  },
+  {
+    "id": 250400,
+    "nome": "Campina Grande",
+    "sigla": "PB"
+  },
+  {
+    "id": 250403,
+    "nome": "Capim",
+    "sigla": "PB"
+  },
+  {
+    "id": 250407,
+    "nome": "Caraúbas",
+    "sigla": "PB"
+  },
+  {
+    "id": 250410,
+    "nome": "Carrapateira",
+    "sigla": "PB"
+  },
+  {
+    "id": 250415,
+    "nome": "Casserengue",
+    "sigla": "PB"
+  },
+  {
+    "id": 250420,
+    "nome": "Catingueira",
+    "sigla": "PB"
+  },
+  {
+    "id": 250430,
+    "nome": "Catolé do Rocha",
+    "sigla": "PB"
+  },
+  {
+    "id": 250435,
+    "nome": "Caturité",
+    "sigla": "PB"
+  },
+  {
+    "id": 250440,
+    "nome": "Conceição",
+    "sigla": "PB"
+  },
+  {
+    "id": 250450,
+    "nome": "Condado",
+    "sigla": "PB"
+  },
+  {
+    "id": 250460,
+    "nome": "Conde",
+    "sigla": "PB"
+  },
+  {
+    "id": 250470,
+    "nome": "Congo",
+    "sigla": "PB"
+  },
+  {
+    "id": 250480,
+    "nome": "Coremas",
+    "sigla": "PB"
+  },
+  {
+    "id": 250485,
+    "nome": "Coxixola",
+    "sigla": "PB"
+  },
+  {
+    "id": 250490,
+    "nome": "Cruz do Espírito Santo",
+    "sigla": "PB"
+  },
+  {
+    "id": 250500,
+    "nome": "Cubati",
+    "sigla": "PB"
+  },
+  {
+    "id": 250510,
+    "nome": "Cuité",
+    "sigla": "PB"
+  },
+  {
+    "id": 250520,
+    "nome": "Cuitegi",
+    "sigla": "PB"
+  },
+  {
+    "id": 250523,
+    "nome": "Cuité de Mamanguape",
+    "sigla": "PB"
+  },
+  {
+    "id": 250527,
+    "nome": "Curral de Cima",
+    "sigla": "PB"
+  },
+  {
+    "id": 250530,
+    "nome": "Curral Velho",
+    "sigla": "PB"
+  },
+  {
+    "id": 250535,
+    "nome": "Damião",
+    "sigla": "PB"
+  },
+  {
+    "id": 250540,
+    "nome": "Desterro",
+    "sigla": "PB"
+  },
+  {
+    "id": 250550,
+    "nome": "Vista Serrana",
+    "sigla": "PB"
+  },
+  {
+    "id": 250560,
+    "nome": "Diamante",
+    "sigla": "PB"
+  },
+  {
+    "id": 250570,
+    "nome": "Dona Inês",
+    "sigla": "PB"
+  },
+  {
+    "id": 250580,
+    "nome": "Duas Estradas",
+    "sigla": "PB"
+  },
+  {
+    "id": 250590,
+    "nome": "Emas",
+    "sigla": "PB"
+  },
+  {
+    "id": 250600,
+    "nome": "Esperança",
+    "sigla": "PB"
+  },
+  {
+    "id": 250610,
+    "nome": "Fagundes",
+    "sigla": "PB"
+  },
+  {
+    "id": 250620,
+    "nome": "Frei Martinho",
+    "sigla": "PB"
+  },
+  {
+    "id": 250625,
+    "nome": "Gado Bravo",
+    "sigla": "PB"
+  },
+  {
+    "id": 250630,
+    "nome": "Guarabira",
+    "sigla": "PB"
+  },
+  {
+    "id": 250640,
+    "nome": "Gurinhém",
+    "sigla": "PB"
+  },
+  {
+    "id": 250650,
+    "nome": "Gurjão",
+    "sigla": "PB"
+  },
+  {
+    "id": 250660,
+    "nome": "Ibiara",
+    "sigla": "PB"
+  },
+  {
+    "id": 250670,
+    "nome": "Imaculada",
+    "sigla": "PB"
+  },
+  {
+    "id": 250680,
+    "nome": "Ingá",
+    "sigla": "PB"
+  },
+  {
+    "id": 250690,
+    "nome": "Itabaiana",
+    "sigla": "PB"
+  },
+  {
+    "id": 250700,
+    "nome": "Itaporanga",
+    "sigla": "PB"
+  },
+  {
+    "id": 250710,
+    "nome": "Itapororoca",
+    "sigla": "PB"
+  },
+  {
+    "id": 250720,
+    "nome": "Itatuba",
+    "sigla": "PB"
+  },
+  {
+    "id": 250730,
+    "nome": "Jacaraú",
+    "sigla": "PB"
+  },
+  {
+    "id": 250740,
+    "nome": "Jericó",
+    "sigla": "PB"
+  },
+  {
+    "id": 250750,
+    "nome": "João Pessoa",
+    "sigla": "PB"
+  },
+  {
+    "id": 250760,
+    "nome": "Juarez Távora",
+    "sigla": "PB"
+  },
+  {
+    "id": 250770,
+    "nome": "Juazeirinho",
+    "sigla": "PB"
+  },
+  {
+    "id": 250780,
+    "nome": "Junco do Seridó",
+    "sigla": "PB"
+  },
+  {
+    "id": 250790,
+    "nome": "Juripiranga",
+    "sigla": "PB"
+  },
+  {
+    "id": 250800,
+    "nome": "Juru",
+    "sigla": "PB"
+  },
+  {
+    "id": 250810,
+    "nome": "Lagoa",
+    "sigla": "PB"
+  },
+  {
+    "id": 250820,
+    "nome": "Lagoa de Dentro",
+    "sigla": "PB"
+  },
+  {
+    "id": 250830,
+    "nome": "Lagoa Seca",
+    "sigla": "PB"
+  },
+  {
+    "id": 250840,
+    "nome": "Lastro",
+    "sigla": "PB"
+  },
+  {
+    "id": 250850,
+    "nome": "Livramento",
+    "sigla": "PB"
+  },
+  {
+    "id": 250855,
+    "nome": "Logradouro",
+    "sigla": "PB"
+  },
+  {
+    "id": 250860,
+    "nome": "Lucena",
+    "sigla": "PB"
+  },
+  {
+    "id": 250870,
+    "nome": "Mãe d'Água",
+    "sigla": "PB"
+  },
+  {
+    "id": 250880,
+    "nome": "Malta",
+    "sigla": "PB"
+  },
+  {
+    "id": 250890,
+    "nome": "Mamanguape",
+    "sigla": "PB"
+  },
+  {
+    "id": 250900,
+    "nome": "Manaíra",
+    "sigla": "PB"
+  },
+  {
+    "id": 250905,
+    "nome": "Marcação",
+    "sigla": "PB"
+  },
+  {
+    "id": 250910,
+    "nome": "Mari",
+    "sigla": "PB"
+  },
+  {
+    "id": 250915,
+    "nome": "Marizópolis",
+    "sigla": "PB"
+  },
+  {
+    "id": 250920,
+    "nome": "Massaranduba",
+    "sigla": "PB"
+  },
+  {
+    "id": 250930,
+    "nome": "Mataraca",
+    "sigla": "PB"
+  },
+  {
+    "id": 250933,
+    "nome": "Matinhas",
+    "sigla": "PB"
+  },
+  {
+    "id": 250937,
+    "nome": "Mato Grosso",
+    "sigla": "PB"
+  },
+  {
+    "id": 250939,
+    "nome": "Maturéia",
+    "sigla": "PB"
+  },
+  {
+    "id": 250940,
+    "nome": "Mogeiro",
+    "sigla": "PB"
+  },
+  {
+    "id": 250950,
+    "nome": "Montadas",
+    "sigla": "PB"
+  },
+  {
+    "id": 250960,
+    "nome": "Monte Horebe",
+    "sigla": "PB"
+  },
+  {
+    "id": 250970,
+    "nome": "Monteiro",
+    "sigla": "PB"
+  },
+  {
+    "id": 250980,
+    "nome": "Mulungu",
+    "sigla": "PB"
+  },
+  {
+    "id": 250990,
+    "nome": "Natuba",
+    "sigla": "PB"
+  },
+  {
+    "id": 251000,
+    "nome": "Nazarezinho",
+    "sigla": "PB"
+  },
+  {
+    "id": 251010,
+    "nome": "Nova Floresta",
+    "sigla": "PB"
+  },
+  {
+    "id": 251020,
+    "nome": "Nova Olinda",
+    "sigla": "PB"
+  },
+  {
+    "id": 251030,
+    "nome": "Nova Palmeira",
+    "sigla": "PB"
+  },
+  {
+    "id": 251040,
+    "nome": "Olho d'Água",
+    "sigla": "PB"
+  },
+  {
+    "id": 251050,
+    "nome": "Olivedos",
+    "sigla": "PB"
+  },
+  {
+    "id": 251060,
+    "nome": "Ouro Velho",
+    "sigla": "PB"
+  },
+  {
+    "id": 251065,
+    "nome": "Parari",
+    "sigla": "PB"
+  },
+  {
+    "id": 251070,
+    "nome": "Passagem",
+    "sigla": "PB"
+  },
+  {
+    "id": 251080,
+    "nome": "Patos",
+    "sigla": "PB"
+  },
+  {
+    "id": 251090,
+    "nome": "Paulista",
+    "sigla": "PB"
+  },
+  {
+    "id": 251100,
+    "nome": "Pedra Branca",
+    "sigla": "PB"
+  },
+  {
+    "id": 251110,
+    "nome": "Pedra Lavrada",
+    "sigla": "PB"
+  },
+  {
+    "id": 251120,
+    "nome": "Pedras de Fogo",
+    "sigla": "PB"
+  },
+  {
+    "id": 251130,
+    "nome": "Piancó",
+    "sigla": "PB"
+  },
+  {
+    "id": 251140,
+    "nome": "Picuí",
+    "sigla": "PB"
+  },
+  {
+    "id": 251150,
+    "nome": "Pilar",
+    "sigla": "PB"
+  },
+  {
+    "id": 251160,
+    "nome": "Pilões",
+    "sigla": "PB"
+  },
+  {
+    "id": 251170,
+    "nome": "Pilõezinhos",
+    "sigla": "PB"
+  },
+  {
+    "id": 251180,
+    "nome": "Pirpirituba",
+    "sigla": "PB"
+  },
+  {
+    "id": 251190,
+    "nome": "Pitimbu",
+    "sigla": "PB"
+  },
+  {
+    "id": 251200,
+    "nome": "Pocinhos",
+    "sigla": "PB"
+  },
+  {
+    "id": 251203,
+    "nome": "Poço Dantas",
+    "sigla": "PB"
+  },
+  {
+    "id": 251207,
+    "nome": "Poço de José de Moura",
+    "sigla": "PB"
+  },
+  {
+    "id": 251210,
+    "nome": "Pombal",
+    "sigla": "PB"
+  },
+  {
+    "id": 251220,
+    "nome": "Prata",
+    "sigla": "PB"
+  },
+  {
+    "id": 251230,
+    "nome": "Princesa Isabel",
+    "sigla": "PB"
+  },
+  {
+    "id": 251240,
+    "nome": "Puxinanã",
+    "sigla": "PB"
+  },
+  {
+    "id": 251250,
+    "nome": "Queimadas",
+    "sigla": "PB"
+  },
+  {
+    "id": 251260,
+    "nome": "Quixaba",
+    "sigla": "PB"
+  },
+  {
+    "id": 251270,
+    "nome": "Remígio",
+    "sigla": "PB"
+  },
+  {
+    "id": 251272,
+    "nome": "Pedro Régis",
+    "sigla": "PB"
+  },
+  {
+    "id": 251274,
+    "nome": "Riachão",
+    "sigla": "PB"
+  },
+  {
+    "id": 251275,
+    "nome": "Riachão do Bacamarte",
+    "sigla": "PB"
+  },
+  {
+    "id": 251276,
+    "nome": "Riachão do Poço",
+    "sigla": "PB"
+  },
+  {
+    "id": 251278,
+    "nome": "Riacho de Santo Antônio",
+    "sigla": "PB"
+  },
+  {
+    "id": 251280,
+    "nome": "Riacho dos Cavalos",
+    "sigla": "PB"
+  },
+  {
+    "id": 251290,
+    "nome": "Rio Tinto",
+    "sigla": "PB"
+  },
+  {
+    "id": 251300,
+    "nome": "Salgadinho",
+    "sigla": "PB"
+  },
+  {
+    "id": 251310,
+    "nome": "Salgado de São Félix",
+    "sigla": "PB"
+  },
+  {
+    "id": 251315,
+    "nome": "Santa Cecília",
+    "sigla": "PB"
+  },
+  {
+    "id": 251320,
+    "nome": "Santa Cruz",
+    "sigla": "PB"
+  },
+  {
+    "id": 251330,
+    "nome": "Santa Helena",
+    "sigla": "PB"
+  },
+  {
+    "id": 251335,
+    "nome": "Santa Inês",
+    "sigla": "PB"
+  },
+  {
+    "id": 251340,
+    "nome": "Santa Luzia",
+    "sigla": "PB"
+  },
+  {
+    "id": 251350,
+    "nome": "Santana de Mangueira",
+    "sigla": "PB"
+  },
+  {
+    "id": 251360,
+    "nome": "Santana dos Garrotes",
+    "sigla": "PB"
+  },
+  {
+    "id": 251365,
+    "nome": "Joca Claudino",
+    "sigla": "PB"
+  },
+  {
+    "id": 251370,
+    "nome": "Santa Rita",
+    "sigla": "PB"
+  },
+  {
+    "id": 251380,
+    "nome": "Santa Teresinha",
+    "sigla": "PB"
+  },
+  {
+    "id": 251385,
+    "nome": "Santo André",
+    "sigla": "PB"
+  },
+  {
+    "id": 251390,
+    "nome": "São Bento",
+    "sigla": "PB"
+  },
+  {
+    "id": 251392,
+    "nome": "São Bentinho",
+    "sigla": "PB"
+  },
+  {
+    "id": 251394,
+    "nome": "São Domingos do Cariri",
+    "sigla": "PB"
+  },
+  {
+    "id": 251396,
+    "nome": "São Domingos",
+    "sigla": "PB"
+  },
+  {
+    "id": 251398,
+    "nome": "São Francisco",
+    "sigla": "PB"
+  },
+  {
+    "id": 251400,
+    "nome": "São João do Cariri",
+    "sigla": "PB"
+  },
+  {
+    "id": 251410,
+    "nome": "São João do Tigre",
+    "sigla": "PB"
+  },
+  {
+    "id": 251420,
+    "nome": "São José da Lagoa Tapada",
+    "sigla": "PB"
+  },
+  {
+    "id": 251430,
+    "nome": "São José de Caiana",
+    "sigla": "PB"
+  },
+  {
+    "id": 251440,
+    "nome": "São José de Espinharas",
+    "sigla": "PB"
+  },
+  {
+    "id": 251445,
+    "nome": "São José dos Ramos",
+    "sigla": "PB"
+  },
+  {
+    "id": 251450,
+    "nome": "São José de Piranhas",
+    "sigla": "PB"
+  },
+  {
+    "id": 251455,
+    "nome": "São José de Princesa",
+    "sigla": "PB"
+  },
+  {
+    "id": 251460,
+    "nome": "São José do Bonfim",
+    "sigla": "PB"
+  },
+  {
+    "id": 251465,
+    "nome": "São José do Brejo do Cruz",
+    "sigla": "PB"
+  },
+  {
+    "id": 251470,
+    "nome": "São José do Sabugi",
+    "sigla": "PB"
+  },
+  {
+    "id": 251480,
+    "nome": "São José dos Cordeiros",
+    "sigla": "PB"
+  },
+  {
+    "id": 251490,
+    "nome": "São Mamede",
+    "sigla": "PB"
+  },
+  {
+    "id": 251500,
+    "nome": "São Miguel de Taipu",
+    "sigla": "PB"
+  },
+  {
+    "id": 251510,
+    "nome": "São Sebastião de Lagoa de Roça",
+    "sigla": "PB"
+  },
+  {
+    "id": 251520,
+    "nome": "São Sebastião do Umbuzeiro",
+    "sigla": "PB"
+  },
+  {
+    "id": 251530,
+    "nome": "Sapé",
+    "sigla": "PB"
+  },
+  {
+    "id": 251540,
+    "nome": "São Vicente do Seridó",
+    "sigla": "PB"
+  },
+  {
+    "id": 251550,
+    "nome": "Serra Branca",
+    "sigla": "PB"
+  },
+  {
+    "id": 251560,
+    "nome": "Serra da Raiz",
+    "sigla": "PB"
+  },
+  {
+    "id": 251570,
+    "nome": "Serra Grande",
+    "sigla": "PB"
+  },
+  {
+    "id": 251580,
+    "nome": "Serra Redonda",
+    "sigla": "PB"
+  },
+  {
+    "id": 251590,
+    "nome": "Serraria",
+    "sigla": "PB"
+  },
+  {
+    "id": 251593,
+    "nome": "Sertãozinho",
+    "sigla": "PB"
+  },
+  {
+    "id": 251597,
+    "nome": "Sobrado",
+    "sigla": "PB"
+  },
+  {
+    "id": 251600,
+    "nome": "Solânea",
+    "sigla": "PB"
+  },
+  {
+    "id": 251610,
+    "nome": "Soledade",
+    "sigla": "PB"
+  },
+  {
+    "id": 251615,
+    "nome": "Sossêgo",
+    "sigla": "PB"
+  },
+  {
+    "id": 251620,
+    "nome": "Sousa",
+    "sigla": "PB"
+  },
+  {
+    "id": 251630,
+    "nome": "Sumé",
+    "sigla": "PB"
+  },
+  {
+    "id": 251640,
+    "nome": "Tacima",
+    "sigla": "PB"
+  },
+  {
+    "id": 251650,
+    "nome": "Taperoá",
+    "sigla": "PB"
+  },
+  {
+    "id": 251660,
+    "nome": "Tavares",
+    "sigla": "PB"
+  },
+  {
+    "id": 251670,
+    "nome": "Teixeira",
+    "sigla": "PB"
+  },
+  {
+    "id": 251675,
+    "nome": "Tenório",
+    "sigla": "PB"
+  },
+  {
+    "id": 251680,
+    "nome": "Triunfo",
+    "sigla": "PB"
+  },
+  {
+    "id": 251690,
+    "nome": "Uiraúna",
+    "sigla": "PB"
+  },
+  {
+    "id": 251700,
+    "nome": "Umbuzeiro",
+    "sigla": "PB"
+  },
+  {
+    "id": 251710,
+    "nome": "Várzea",
+    "sigla": "PB"
+  },
+  {
+    "id": 251720,
+    "nome": "Vieirópolis",
+    "sigla": "PB"
+  },
+  {
+    "id": 251740,
+    "nome": "Zabelê",
+    "sigla": "PB"
+  },
+  {
+    "id": 260005,
+    "nome": "Abreu e Lima",
+    "sigla": "PE"
+  },
+  {
+    "id": 260010,
+    "nome": "Afogados da Ingazeira",
+    "sigla": "PE"
+  },
+  {
+    "id": 260020,
+    "nome": "Afrânio",
+    "sigla": "PE"
+  },
+  {
+    "id": 260030,
+    "nome": "Agrestina",
+    "sigla": "PE"
+  },
+  {
+    "id": 260040,
+    "nome": "Água Preta",
+    "sigla": "PE"
+  },
+  {
+    "id": 260050,
+    "nome": "Águas Belas",
+    "sigla": "PE"
+  },
+  {
+    "id": 260060,
+    "nome": "Alagoinha",
+    "sigla": "PE"
+  },
+  {
+    "id": 260070,
+    "nome": "Aliança",
+    "sigla": "PE"
+  },
+  {
+    "id": 260080,
+    "nome": "Altinho",
+    "sigla": "PE"
+  },
+  {
+    "id": 260090,
+    "nome": "Amaraji",
+    "sigla": "PE"
+  },
+  {
+    "id": 260100,
+    "nome": "Angelim",
+    "sigla": "PE"
+  },
+  {
+    "id": 260105,
+    "nome": "Araçoiaba",
+    "sigla": "PE"
+  },
+  {
+    "id": 260110,
+    "nome": "Araripina",
+    "sigla": "PE"
+  },
+  {
+    "id": 260120,
+    "nome": "Arcoverde",
+    "sigla": "PE"
+  },
+  {
+    "id": 260130,
+    "nome": "Barra de Guabiraba",
+    "sigla": "PE"
+  },
+  {
+    "id": 260140,
+    "nome": "Barreiros",
+    "sigla": "PE"
+  },
+  {
+    "id": 260150,
+    "nome": "Belém de Maria",
+    "sigla": "PE"
+  },
+  {
+    "id": 260160,
+    "nome": "Belém do São Francisco",
+    "sigla": "PE"
+  },
+  {
+    "id": 260170,
+    "nome": "Belo Jardim",
+    "sigla": "PE"
+  },
+  {
+    "id": 260180,
+    "nome": "Betânia",
+    "sigla": "PE"
+  },
+  {
+    "id": 260190,
+    "nome": "Bezerros",
+    "sigla": "PE"
+  },
+  {
+    "id": 260200,
+    "nome": "Bodocó",
+    "sigla": "PE"
+  },
+  {
+    "id": 260210,
+    "nome": "Bom Conselho",
+    "sigla": "PE"
+  },
+  {
+    "id": 260220,
+    "nome": "Bom Jardim",
+    "sigla": "PE"
+  },
+  {
+    "id": 260230,
+    "nome": "Bonito",
+    "sigla": "PE"
+  },
+  {
+    "id": 260240,
+    "nome": "Brejão",
+    "sigla": "PE"
+  },
+  {
+    "id": 260250,
+    "nome": "Brejinho",
+    "sigla": "PE"
+  },
+  {
+    "id": 260260,
+    "nome": "Brejo da Madre de Deus",
+    "sigla": "PE"
+  },
+  {
+    "id": 260270,
+    "nome": "Buenos Aires",
+    "sigla": "PE"
+  },
+  {
+    "id": 260280,
+    "nome": "Buíque",
+    "sigla": "PE"
+  },
+  {
+    "id": 260290,
+    "nome": "Cabo de Santo Agostinho",
+    "sigla": "PE"
+  },
+  {
+    "id": 260300,
+    "nome": "Cabrobó",
+    "sigla": "PE"
+  },
+  {
+    "id": 260310,
+    "nome": "Cachoeirinha",
+    "sigla": "PE"
+  },
+  {
+    "id": 260320,
+    "nome": "Caetés",
+    "sigla": "PE"
+  },
+  {
+    "id": 260330,
+    "nome": "Calçado",
+    "sigla": "PE"
+  },
+  {
+    "id": 260340,
+    "nome": "Calumbi",
+    "sigla": "PE"
+  },
+  {
+    "id": 260345,
+    "nome": "Camaragibe",
+    "sigla": "PE"
+  },
+  {
+    "id": 260350,
+    "nome": "Camocim de São Félix",
+    "sigla": "PE"
+  },
+  {
+    "id": 260360,
+    "nome": "Camutanga",
+    "sigla": "PE"
+  },
+  {
+    "id": 260370,
+    "nome": "Canhotinho",
+    "sigla": "PE"
+  },
+  {
+    "id": 260380,
+    "nome": "Capoeiras",
+    "sigla": "PE"
+  },
+  {
+    "id": 260390,
+    "nome": "Carnaíba",
+    "sigla": "PE"
+  },
+  {
+    "id": 260392,
+    "nome": "Carnaubeira da Penha",
+    "sigla": "PE"
+  },
+  {
+    "id": 260400,
+    "nome": "Carpina",
+    "sigla": "PE"
+  },
+  {
+    "id": 260410,
+    "nome": "Caruaru",
+    "sigla": "PE"
+  },
+  {
+    "id": 260415,
+    "nome": "Casinhas",
+    "sigla": "PE"
+  },
+  {
+    "id": 260420,
+    "nome": "Catende",
+    "sigla": "PE"
+  },
+  {
+    "id": 260430,
+    "nome": "Cedro",
+    "sigla": "PE"
+  },
+  {
+    "id": 260440,
+    "nome": "Chã de Alegria",
+    "sigla": "PE"
+  },
+  {
+    "id": 260450,
+    "nome": "Chã Grande",
+    "sigla": "PE"
+  },
+  {
+    "id": 260460,
+    "nome": "Condado",
+    "sigla": "PE"
+  },
+  {
+    "id": 260470,
+    "nome": "Correntes",
+    "sigla": "PE"
+  },
+  {
+    "id": 260480,
+    "nome": "Cortês",
+    "sigla": "PE"
+  },
+  {
+    "id": 260490,
+    "nome": "Cumaru",
+    "sigla": "PE"
+  },
+  {
+    "id": 260500,
+    "nome": "Cupira",
+    "sigla": "PE"
+  },
+  {
+    "id": 260510,
+    "nome": "Custódia",
+    "sigla": "PE"
+  },
+  {
+    "id": 260515,
+    "nome": "Dormentes",
+    "sigla": "PE"
+  },
+  {
+    "id": 260520,
+    "nome": "Escada",
+    "sigla": "PE"
+  },
+  {
+    "id": 260530,
+    "nome": "Exu",
+    "sigla": "PE"
+  },
+  {
+    "id": 260540,
+    "nome": "Feira Nova",
+    "sigla": "PE"
+  },
+  {
+    "id": 260545,
+    "nome": "Fernando de Noronha",
+    "sigla": "PE"
+  },
+  {
+    "id": 260550,
+    "nome": "Ferreiros",
+    "sigla": "PE"
+  },
+  {
+    "id": 260560,
+    "nome": "Flores",
+    "sigla": "PE"
+  },
+  {
+    "id": 260570,
+    "nome": "Floresta",
+    "sigla": "PE"
+  },
+  {
+    "id": 260580,
+    "nome": "Frei Miguelinho",
+    "sigla": "PE"
+  },
+  {
+    "id": 260590,
+    "nome": "Gameleira",
+    "sigla": "PE"
+  },
+  {
+    "id": 260600,
+    "nome": "Garanhuns",
+    "sigla": "PE"
+  },
+  {
+    "id": 260610,
+    "nome": "Glória do Goitá",
+    "sigla": "PE"
+  },
+  {
+    "id": 260620,
+    "nome": "Goiana",
+    "sigla": "PE"
+  },
+  {
+    "id": 260630,
+    "nome": "Granito",
+    "sigla": "PE"
+  },
+  {
+    "id": 260640,
+    "nome": "Gravatá",
+    "sigla": "PE"
+  },
+  {
+    "id": 260650,
+    "nome": "Iati",
+    "sigla": "PE"
+  },
+  {
+    "id": 260660,
+    "nome": "Ibimirim",
+    "sigla": "PE"
+  },
+  {
+    "id": 260670,
+    "nome": "Ibirajuba",
+    "sigla": "PE"
+  },
+  {
+    "id": 260680,
+    "nome": "Igarassu",
+    "sigla": "PE"
+  },
+  {
+    "id": 260690,
+    "nome": "Iguaracy",
+    "sigla": "PE"
+  },
+  {
+    "id": 260700,
+    "nome": "Inajá",
+    "sigla": "PE"
+  },
+  {
+    "id": 260710,
+    "nome": "Ingazeira",
+    "sigla": "PE"
+  },
+  {
+    "id": 260720,
+    "nome": "Ipojuca",
+    "sigla": "PE"
+  },
+  {
+    "id": 260730,
+    "nome": "Ipubi",
+    "sigla": "PE"
+  },
+  {
+    "id": 260740,
+    "nome": "Itacuruba",
+    "sigla": "PE"
+  },
+  {
+    "id": 260750,
+    "nome": "Itaíba",
+    "sigla": "PE"
+  },
+  {
+    "id": 260760,
+    "nome": "Ilha de Itamaracá",
+    "sigla": "PE"
+  },
+  {
+    "id": 260765,
+    "nome": "Itambé",
+    "sigla": "PE"
+  },
+  {
+    "id": 260770,
+    "nome": "Itapetim",
+    "sigla": "PE"
+  },
+  {
+    "id": 260775,
+    "nome": "Itapissuma",
+    "sigla": "PE"
+  },
+  {
+    "id": 260780,
+    "nome": "Itaquitinga",
+    "sigla": "PE"
+  },
+  {
+    "id": 260790,
+    "nome": "Jaboatão dos Guararapes",
+    "sigla": "PE"
+  },
+  {
+    "id": 260795,
+    "nome": "Jaqueira",
+    "sigla": "PE"
+  },
+  {
+    "id": 260800,
+    "nome": "Jataúba",
+    "sigla": "PE"
+  },
+  {
+    "id": 260805,
+    "nome": "Jatobá",
+    "sigla": "PE"
+  },
+  {
+    "id": 260810,
+    "nome": "João Alfredo",
+    "sigla": "PE"
+  },
+  {
+    "id": 260820,
+    "nome": "Joaquim Nabuco",
+    "sigla": "PE"
+  },
+  {
+    "id": 260825,
+    "nome": "Jucati",
+    "sigla": "PE"
+  },
+  {
+    "id": 260830,
+    "nome": "Jupi",
+    "sigla": "PE"
+  },
+  {
+    "id": 260840,
+    "nome": "Jurema",
+    "sigla": "PE"
+  },
+  {
+    "id": 260845,
+    "nome": "Lagoa do Carro",
+    "sigla": "PE"
+  },
+  {
+    "id": 260850,
+    "nome": "Lagoa de Itaenga",
+    "sigla": "PE"
+  },
+  {
+    "id": 260860,
+    "nome": "Lagoa do Ouro",
+    "sigla": "PE"
+  },
+  {
+    "id": 260870,
+    "nome": "Lagoa dos Gatos",
+    "sigla": "PE"
+  },
+  {
+    "id": 260875,
+    "nome": "Lagoa Grande",
+    "sigla": "PE"
+  },
+  {
+    "id": 260880,
+    "nome": "Lajedo",
+    "sigla": "PE"
+  },
+  {
+    "id": 260890,
+    "nome": "Limoeiro",
+    "sigla": "PE"
+  },
+  {
+    "id": 260900,
+    "nome": "Macaparana",
+    "sigla": "PE"
+  },
+  {
+    "id": 260910,
+    "nome": "Machados",
+    "sigla": "PE"
+  },
+  {
+    "id": 260915,
+    "nome": "Manari",
+    "sigla": "PE"
+  },
+  {
+    "id": 260920,
+    "nome": "Maraial",
+    "sigla": "PE"
+  },
+  {
+    "id": 260930,
+    "nome": "Mirandiba",
+    "sigla": "PE"
+  },
+  {
+    "id": 260940,
+    "nome": "Moreno",
+    "sigla": "PE"
+  },
+  {
+    "id": 260950,
+    "nome": "Nazaré da Mata",
+    "sigla": "PE"
+  },
+  {
+    "id": 260960,
+    "nome": "Olinda",
+    "sigla": "PE"
+  },
+  {
+    "id": 260970,
+    "nome": "Orobó",
+    "sigla": "PE"
+  },
+  {
+    "id": 260980,
+    "nome": "Orocó",
+    "sigla": "PE"
+  },
+  {
+    "id": 260990,
+    "nome": "Ouricuri",
+    "sigla": "PE"
+  },
+  {
+    "id": 261000,
+    "nome": "Palmares",
+    "sigla": "PE"
+  },
+  {
+    "id": 261010,
+    "nome": "Palmeirina",
+    "sigla": "PE"
+  },
+  {
+    "id": 261020,
+    "nome": "Panelas",
+    "sigla": "PE"
+  },
+  {
+    "id": 261030,
+    "nome": "Paranatama",
+    "sigla": "PE"
+  },
+  {
+    "id": 261040,
+    "nome": "Parnamirim",
+    "sigla": "PE"
+  },
+  {
+    "id": 261050,
+    "nome": "Passira",
+    "sigla": "PE"
+  },
+  {
+    "id": 261060,
+    "nome": "Paudalho",
+    "sigla": "PE"
+  },
+  {
+    "id": 261070,
+    "nome": "Paulista",
+    "sigla": "PE"
+  },
+  {
+    "id": 261080,
+    "nome": "Pedra",
+    "sigla": "PE"
+  },
+  {
+    "id": 261090,
+    "nome": "Pesqueira",
+    "sigla": "PE"
+  },
+  {
+    "id": 261100,
+    "nome": "Petrolândia",
+    "sigla": "PE"
+  },
+  {
+    "id": 261110,
+    "nome": "Petrolina",
+    "sigla": "PE"
+  },
+  {
+    "id": 261120,
+    "nome": "Poção",
+    "sigla": "PE"
+  },
+  {
+    "id": 261130,
+    "nome": "Pombos",
+    "sigla": "PE"
+  },
+  {
+    "id": 261140,
+    "nome": "Primavera",
+    "sigla": "PE"
+  },
+  {
+    "id": 261150,
+    "nome": "Quipapá",
+    "sigla": "PE"
+  },
+  {
+    "id": 261153,
+    "nome": "Quixaba",
+    "sigla": "PE"
+  },
+  {
+    "id": 261160,
+    "nome": "Recife",
+    "sigla": "PE"
+  },
+  {
+    "id": 261170,
+    "nome": "Riacho das Almas",
+    "sigla": "PE"
+  },
+  {
+    "id": 261180,
+    "nome": "Ribeirão",
+    "sigla": "PE"
+  },
+  {
+    "id": 261190,
+    "nome": "Rio Formoso",
+    "sigla": "PE"
+  },
+  {
+    "id": 261200,
+    "nome": "Sairé",
+    "sigla": "PE"
+  },
+  {
+    "id": 261210,
+    "nome": "Salgadinho",
+    "sigla": "PE"
+  },
+  {
+    "id": 261220,
+    "nome": "Salgueiro",
+    "sigla": "PE"
+  },
+  {
+    "id": 261230,
+    "nome": "Saloá",
+    "sigla": "PE"
+  },
+  {
+    "id": 261240,
+    "nome": "Sanharó",
+    "sigla": "PE"
+  },
+  {
+    "id": 261245,
+    "nome": "Santa Cruz",
+    "sigla": "PE"
+  },
+  {
+    "id": 261247,
+    "nome": "Santa Cruz da Baixa Verde",
+    "sigla": "PE"
+  },
+  {
+    "id": 261250,
+    "nome": "Santa Cruz do Capibaribe",
+    "sigla": "PE"
+  },
+  {
+    "id": 261255,
+    "nome": "Santa Filomena",
+    "sigla": "PE"
+  },
+  {
+    "id": 261260,
+    "nome": "Santa Maria da Boa Vista",
+    "sigla": "PE"
+  },
+  {
+    "id": 261270,
+    "nome": "Santa Maria do Cambucá",
+    "sigla": "PE"
+  },
+  {
+    "id": 261280,
+    "nome": "Santa Terezinha",
+    "sigla": "PE"
+  },
+  {
+    "id": 261290,
+    "nome": "São Benedito do Sul",
+    "sigla": "PE"
+  },
+  {
+    "id": 261300,
+    "nome": "São Bento do Una",
+    "sigla": "PE"
+  },
+  {
+    "id": 261310,
+    "nome": "São Caitano",
+    "sigla": "PE"
+  },
+  {
+    "id": 261320,
+    "nome": "São João",
+    "sigla": "PE"
+  },
+  {
+    "id": 261330,
+    "nome": "São Joaquim do Monte",
+    "sigla": "PE"
+  },
+  {
+    "id": 261340,
+    "nome": "São José da Coroa Grande",
+    "sigla": "PE"
+  },
+  {
+    "id": 261350,
+    "nome": "São José do Belmonte",
+    "sigla": "PE"
+  },
+  {
+    "id": 261360,
+    "nome": "São José do Egito",
+    "sigla": "PE"
+  },
+  {
+    "id": 261370,
+    "nome": "São Lourenço da Mata",
+    "sigla": "PE"
+  },
+  {
+    "id": 261380,
+    "nome": "São Vicente Férrer",
+    "sigla": "PE"
+  },
+  {
+    "id": 261390,
+    "nome": "Serra Talhada",
+    "sigla": "PE"
+  },
+  {
+    "id": 261400,
+    "nome": "Serrita",
+    "sigla": "PE"
+  },
+  {
+    "id": 261410,
+    "nome": "Sertânia",
+    "sigla": "PE"
+  },
+  {
+    "id": 261420,
+    "nome": "Sirinhaém",
+    "sigla": "PE"
+  },
+  {
+    "id": 261430,
+    "nome": "Moreilândia",
+    "sigla": "PE"
+  },
+  {
+    "id": 261440,
+    "nome": "Solidão",
+    "sigla": "PE"
+  },
+  {
+    "id": 261450,
+    "nome": "Surubim",
+    "sigla": "PE"
+  },
+  {
+    "id": 261460,
+    "nome": "Tabira",
+    "sigla": "PE"
+  },
+  {
+    "id": 261470,
+    "nome": "Tacaimbó",
+    "sigla": "PE"
+  },
+  {
+    "id": 261480,
+    "nome": "Tacaratu",
+    "sigla": "PE"
+  },
+  {
+    "id": 261485,
+    "nome": "Tamandaré",
+    "sigla": "PE"
+  },
+  {
+    "id": 261500,
+    "nome": "Taquaritinga do Norte",
+    "sigla": "PE"
+  },
+  {
+    "id": 261510,
+    "nome": "Terezinha",
+    "sigla": "PE"
+  },
+  {
+    "id": 261520,
+    "nome": "Terra Nova",
+    "sigla": "PE"
+  },
+  {
+    "id": 261530,
+    "nome": "Timbaúba",
+    "sigla": "PE"
+  },
+  {
+    "id": 261540,
+    "nome": "Toritama",
+    "sigla": "PE"
+  },
+  {
+    "id": 261550,
+    "nome": "Tracunhaém",
+    "sigla": "PE"
+  },
+  {
+    "id": 261560,
+    "nome": "Trindade",
+    "sigla": "PE"
+  },
+  {
+    "id": 261570,
+    "nome": "Triunfo",
+    "sigla": "PE"
+  },
+  {
+    "id": 261580,
+    "nome": "Tupanatinga",
+    "sigla": "PE"
+  },
+  {
+    "id": 261590,
+    "nome": "Tuparetama",
+    "sigla": "PE"
+  },
+  {
+    "id": 261600,
+    "nome": "Venturosa",
+    "sigla": "PE"
+  },
+  {
+    "id": 261610,
+    "nome": "Verdejante",
+    "sigla": "PE"
+  },
+  {
+    "id": 261618,
+    "nome": "Vertente do Lério",
+    "sigla": "PE"
+  },
+  {
+    "id": 261620,
+    "nome": "Vertentes",
+    "sigla": "PE"
+  },
+  {
+    "id": 261630,
+    "nome": "Vicência",
+    "sigla": "PE"
+  },
+  {
+    "id": 261640,
+    "nome": "Vitória de Santo Antão",
+    "sigla": "PE"
+  },
+  {
+    "id": 261650,
+    "nome": "Xexéu",
+    "sigla": "PE"
+  },
+  {
+    "id": 270010,
+    "nome": "Água Branca",
+    "sigla": "AL"
+  },
+  {
+    "id": 270020,
+    "nome": "Anadia",
+    "sigla": "AL"
+  },
+  {
+    "id": 270030,
+    "nome": "Arapiraca",
+    "sigla": "AL"
+  },
+  {
+    "id": 270040,
+    "nome": "Atalaia",
+    "sigla": "AL"
+  },
+  {
+    "id": 270050,
+    "nome": "Barra de Santo Antônio",
+    "sigla": "AL"
+  },
+  {
+    "id": 270060,
+    "nome": "Barra de São Miguel",
+    "sigla": "AL"
+  },
+  {
+    "id": 270070,
+    "nome": "Batalha",
+    "sigla": "AL"
+  },
+  {
+    "id": 270080,
+    "nome": "Belém",
+    "sigla": "AL"
+  },
+  {
+    "id": 270090,
+    "nome": "Belo Monte",
+    "sigla": "AL"
+  },
+  {
+    "id": 270100,
+    "nome": "Boca da Mata",
+    "sigla": "AL"
+  },
+  {
+    "id": 270110,
+    "nome": "Branquinha",
+    "sigla": "AL"
+  },
+  {
+    "id": 270120,
+    "nome": "Cacimbinhas",
+    "sigla": "AL"
+  },
+  {
+    "id": 270130,
+    "nome": "Cajueiro",
+    "sigla": "AL"
+  },
+  {
+    "id": 270135,
+    "nome": "Campestre",
+    "sigla": "AL"
+  },
+  {
+    "id": 270140,
+    "nome": "Campo Alegre",
+    "sigla": "AL"
+  },
+  {
+    "id": 270150,
+    "nome": "Campo Grande",
+    "sigla": "AL"
+  },
+  {
+    "id": 270160,
+    "nome": "Canapi",
+    "sigla": "AL"
+  },
+  {
+    "id": 270170,
+    "nome": "Capela",
+    "sigla": "AL"
+  },
+  {
+    "id": 270180,
+    "nome": "Carneiros",
+    "sigla": "AL"
+  },
+  {
+    "id": 270190,
+    "nome": "Chã Preta",
+    "sigla": "AL"
+  },
+  {
+    "id": 270200,
+    "nome": "Coité do Nóia",
+    "sigla": "AL"
+  },
+  {
+    "id": 270210,
+    "nome": "Colônia Leopoldina",
+    "sigla": "AL"
+  },
+  {
+    "id": 270220,
+    "nome": "Coqueiro Seco",
+    "sigla": "AL"
+  },
+  {
+    "id": 270230,
+    "nome": "Coruripe",
+    "sigla": "AL"
+  },
+  {
+    "id": 270235,
+    "nome": "Craíbas",
+    "sigla": "AL"
+  },
+  {
+    "id": 270240,
+    "nome": "Delmiro Gouveia",
+    "sigla": "AL"
+  },
+  {
+    "id": 270250,
+    "nome": "Dois Riachos",
+    "sigla": "AL"
+  },
+  {
+    "id": 270255,
+    "nome": "Estrela de Alagoas",
+    "sigla": "AL"
+  },
+  {
+    "id": 270260,
+    "nome": "Feira Grande",
+    "sigla": "AL"
+  },
+  {
+    "id": 270270,
+    "nome": "Feliz Deserto",
+    "sigla": "AL"
+  },
+  {
+    "id": 270280,
+    "nome": "Flexeiras",
+    "sigla": "AL"
+  },
+  {
+    "id": 270290,
+    "nome": "Girau do Ponciano",
+    "sigla": "AL"
+  },
+  {
+    "id": 270300,
+    "nome": "Ibateguara",
+    "sigla": "AL"
+  },
+  {
+    "id": 270310,
+    "nome": "Igaci",
+    "sigla": "AL"
+  },
+  {
+    "id": 270320,
+    "nome": "Igreja Nova",
+    "sigla": "AL"
+  },
+  {
+    "id": 270330,
+    "nome": "Inhapi",
+    "sigla": "AL"
+  },
+  {
+    "id": 270340,
+    "nome": "Jacaré dos Homens",
+    "sigla": "AL"
+  },
+  {
+    "id": 270350,
+    "nome": "Jacuípe",
+    "sigla": "AL"
+  },
+  {
+    "id": 270360,
+    "nome": "Japaratinga",
+    "sigla": "AL"
+  },
+  {
+    "id": 270370,
+    "nome": "Jaramataia",
+    "sigla": "AL"
+  },
+  {
+    "id": 270375,
+    "nome": "Jequiá da Praia",
+    "sigla": "AL"
+  },
+  {
+    "id": 270380,
+    "nome": "Joaquim Gomes",
+    "sigla": "AL"
+  },
+  {
+    "id": 270390,
+    "nome": "Jundiá",
+    "sigla": "AL"
+  },
+  {
+    "id": 270400,
+    "nome": "Junqueiro",
+    "sigla": "AL"
+  },
+  {
+    "id": 270410,
+    "nome": "Lagoa da Canoa",
+    "sigla": "AL"
+  },
+  {
+    "id": 270420,
+    "nome": "Limoeiro de Anadia",
+    "sigla": "AL"
+  },
+  {
+    "id": 270430,
+    "nome": "Maceió",
+    "sigla": "AL"
+  },
+  {
+    "id": 270440,
+    "nome": "Major Isidoro",
+    "sigla": "AL"
+  },
+  {
+    "id": 270450,
+    "nome": "Maragogi",
+    "sigla": "AL"
+  },
+  {
+    "id": 270460,
+    "nome": "Maravilha",
+    "sigla": "AL"
+  },
+  {
+    "id": 270470,
+    "nome": "Marechal Deodoro",
+    "sigla": "AL"
+  },
+  {
+    "id": 270480,
+    "nome": "Maribondo",
+    "sigla": "AL"
+  },
+  {
+    "id": 270490,
+    "nome": "Mar Vermelho",
+    "sigla": "AL"
+  },
+  {
+    "id": 270500,
+    "nome": "Mata Grande",
+    "sigla": "AL"
+  },
+  {
+    "id": 270510,
+    "nome": "Matriz de Camaragibe",
+    "sigla": "AL"
+  },
+  {
+    "id": 270520,
+    "nome": "Messias",
+    "sigla": "AL"
+  },
+  {
+    "id": 270530,
+    "nome": "Minador do Negrão",
+    "sigla": "AL"
+  },
+  {
+    "id": 270540,
+    "nome": "Monteirópolis",
+    "sigla": "AL"
+  },
+  {
+    "id": 270550,
+    "nome": "Murici",
+    "sigla": "AL"
+  },
+  {
+    "id": 270560,
+    "nome": "Novo Lino",
+    "sigla": "AL"
+  },
+  {
+    "id": 270570,
+    "nome": "Olho d'Água das Flores",
+    "sigla": "AL"
+  },
+  {
+    "id": 270580,
+    "nome": "Olho d'Água do Casado",
+    "sigla": "AL"
+  },
+  {
+    "id": 270590,
+    "nome": "Olho d'Água Grande",
+    "sigla": "AL"
+  },
+  {
+    "id": 270600,
+    "nome": "Olivença",
+    "sigla": "AL"
+  },
+  {
+    "id": 270610,
+    "nome": "Ouro Branco",
+    "sigla": "AL"
+  },
+  {
+    "id": 270620,
+    "nome": "Palestina",
+    "sigla": "AL"
+  },
+  {
+    "id": 270630,
+    "nome": "Palmeira dos Índios",
+    "sigla": "AL"
+  },
+  {
+    "id": 270640,
+    "nome": "Pão de Açúcar",
+    "sigla": "AL"
+  },
+  {
+    "id": 270642,
+    "nome": "Pariconha",
+    "sigla": "AL"
+  },
+  {
+    "id": 270644,
+    "nome": "Paripueira",
+    "sigla": "AL"
+  },
+  {
+    "id": 270650,
+    "nome": "Passo de Camaragibe",
+    "sigla": "AL"
+  },
+  {
+    "id": 270660,
+    "nome": "Paulo Jacinto",
+    "sigla": "AL"
+  },
+  {
+    "id": 270670,
+    "nome": "Penedo",
+    "sigla": "AL"
+  },
+  {
+    "id": 270680,
+    "nome": "Piaçabuçu",
+    "sigla": "AL"
+  },
+  {
+    "id": 270690,
+    "nome": "Pilar",
+    "sigla": "AL"
+  },
+  {
+    "id": 270700,
+    "nome": "Pindoba",
+    "sigla": "AL"
+  },
+  {
+    "id": 270710,
+    "nome": "Piranhas",
+    "sigla": "AL"
+  },
+  {
+    "id": 270720,
+    "nome": "Poço das Trincheiras",
+    "sigla": "AL"
+  },
+  {
+    "id": 270730,
+    "nome": "Porto Calvo",
+    "sigla": "AL"
+  },
+  {
+    "id": 270740,
+    "nome": "Porto de Pedras",
+    "sigla": "AL"
+  },
+  {
+    "id": 270750,
+    "nome": "Porto Real do Colégio",
+    "sigla": "AL"
+  },
+  {
+    "id": 270760,
+    "nome": "Quebrangulo",
+    "sigla": "AL"
+  },
+  {
+    "id": 270770,
+    "nome": "Rio Largo",
+    "sigla": "AL"
+  },
+  {
+    "id": 270780,
+    "nome": "Roteiro",
+    "sigla": "AL"
+  },
+  {
+    "id": 270790,
+    "nome": "Santa Luzia do Norte",
+    "sigla": "AL"
+  },
+  {
+    "id": 270800,
+    "nome": "Santana do Ipanema",
+    "sigla": "AL"
+  },
+  {
+    "id": 270810,
+    "nome": "Santana do Mundaú",
+    "sigla": "AL"
+  },
+  {
+    "id": 270820,
+    "nome": "São Brás",
+    "sigla": "AL"
+  },
+  {
+    "id": 270830,
+    "nome": "São José da Laje",
+    "sigla": "AL"
+  },
+  {
+    "id": 270840,
+    "nome": "São José da Tapera",
+    "sigla": "AL"
+  },
+  {
+    "id": 270850,
+    "nome": "São Luís do Quitunde",
+    "sigla": "AL"
+  },
+  {
+    "id": 270860,
+    "nome": "São Miguel dos Campos",
+    "sigla": "AL"
+  },
+  {
+    "id": 270870,
+    "nome": "São Miguel dos Milagres",
+    "sigla": "AL"
+  },
+  {
+    "id": 270880,
+    "nome": "São Sebastião",
+    "sigla": "AL"
+  },
+  {
+    "id": 270890,
+    "nome": "Satuba",
+    "sigla": "AL"
+  },
+  {
+    "id": 270895,
+    "nome": "Senador Rui Palmeira",
+    "sigla": "AL"
+  },
+  {
+    "id": 270900,
+    "nome": "Tanque d'Arca",
+    "sigla": "AL"
+  },
+  {
+    "id": 270910,
+    "nome": "Taquarana",
+    "sigla": "AL"
+  },
+  {
+    "id": 270915,
+    "nome": "Teotônio Vilela",
+    "sigla": "AL"
+  },
+  {
+    "id": 270920,
+    "nome": "Traipu",
+    "sigla": "AL"
+  },
+  {
+    "id": 270930,
+    "nome": "União dos Palmares",
+    "sigla": "AL"
+  },
+  {
+    "id": 270940,
+    "nome": "Viçosa",
+    "sigla": "AL"
+  },
+  {
+    "id": 280010,
+    "nome": "Amparo do São Francisco",
+    "sigla": "SE"
+  },
+  {
+    "id": 280020,
+    "nome": "Aquidabã",
+    "sigla": "SE"
+  },
+  {
+    "id": 280030,
+    "nome": "Aracaju",
+    "sigla": "SE"
+  },
+  {
+    "id": 280040,
+    "nome": "Arauá",
+    "sigla": "SE"
+  },
+  {
+    "id": 280050,
+    "nome": "Areia Branca",
+    "sigla": "SE"
+  },
+  {
+    "id": 280060,
+    "nome": "Barra dos Coqueiros",
+    "sigla": "SE"
+  },
+  {
+    "id": 280067,
+    "nome": "Boquim",
+    "sigla": "SE"
+  },
+  {
+    "id": 280070,
+    "nome": "Brejo Grande",
+    "sigla": "SE"
+  },
+  {
+    "id": 280100,
+    "nome": "Campo do Brito",
+    "sigla": "SE"
+  },
+  {
+    "id": 280110,
+    "nome": "Canhoba",
+    "sigla": "SE"
+  },
+  {
+    "id": 280120,
+    "nome": "Canindé de São Francisco",
+    "sigla": "SE"
+  },
+  {
+    "id": 280130,
+    "nome": "Capela",
+    "sigla": "SE"
+  },
+  {
+    "id": 280140,
+    "nome": "Carira",
+    "sigla": "SE"
+  },
+  {
+    "id": 280150,
+    "nome": "Carmópolis",
+    "sigla": "SE"
+  },
+  {
+    "id": 280160,
+    "nome": "Cedro de São João",
+    "sigla": "SE"
+  },
+  {
+    "id": 280170,
+    "nome": "Cristinápolis",
+    "sigla": "SE"
+  },
+  {
+    "id": 280190,
+    "nome": "Cumbe",
+    "sigla": "SE"
+  },
+  {
+    "id": 280200,
+    "nome": "Divina Pastora",
+    "sigla": "SE"
+  },
+  {
+    "id": 280210,
+    "nome": "Estância",
+    "sigla": "SE"
+  },
+  {
+    "id": 280220,
+    "nome": "Feira Nova",
+    "sigla": "SE"
+  },
+  {
+    "id": 280230,
+    "nome": "Frei Paulo",
+    "sigla": "SE"
+  },
+  {
+    "id": 280240,
+    "nome": "Gararu",
+    "sigla": "SE"
+  },
+  {
+    "id": 280250,
+    "nome": "General Maynard",
+    "sigla": "SE"
+  },
+  {
+    "id": 280260,
+    "nome": "Graccho Cardoso",
+    "sigla": "SE"
+  },
+  {
+    "id": 280270,
+    "nome": "Ilha das Flores",
+    "sigla": "SE"
+  },
+  {
+    "id": 280280,
+    "nome": "Indiaroba",
+    "sigla": "SE"
+  },
+  {
+    "id": 280290,
+    "nome": "Itabaiana",
+    "sigla": "SE"
+  },
+  {
+    "id": 280300,
+    "nome": "Itabaianinha",
+    "sigla": "SE"
+  },
+  {
+    "id": 280310,
+    "nome": "Itabi",
+    "sigla": "SE"
+  },
+  {
+    "id": 280320,
+    "nome": "Itaporanga d'Ajuda",
+    "sigla": "SE"
+  },
+  {
+    "id": 280330,
+    "nome": "Japaratuba",
+    "sigla": "SE"
+  },
+  {
+    "id": 280340,
+    "nome": "Japoatã",
+    "sigla": "SE"
+  },
+  {
+    "id": 280350,
+    "nome": "Lagarto",
+    "sigla": "SE"
+  },
+  {
+    "id": 280360,
+    "nome": "Laranjeiras",
+    "sigla": "SE"
+  },
+  {
+    "id": 280370,
+    "nome": "Macambira",
+    "sigla": "SE"
+  },
+  {
+    "id": 280380,
+    "nome": "Malhada dos Bois",
+    "sigla": "SE"
+  },
+  {
+    "id": 280390,
+    "nome": "Malhador",
+    "sigla": "SE"
+  },
+  {
+    "id": 280400,
+    "nome": "Maruim",
+    "sigla": "SE"
+  },
+  {
+    "id": 280410,
+    "nome": "Moita Bonita",
+    "sigla": "SE"
+  },
+  {
+    "id": 280420,
+    "nome": "Monte Alegre de Sergipe",
+    "sigla": "SE"
+  },
+  {
+    "id": 280430,
+    "nome": "Muribeca",
+    "sigla": "SE"
+  },
+  {
+    "id": 280440,
+    "nome": "Neópolis",
+    "sigla": "SE"
+  },
+  {
+    "id": 280445,
+    "nome": "Nossa Senhora Aparecida",
+    "sigla": "SE"
+  },
+  {
+    "id": 280450,
+    "nome": "Nossa Senhora da Glória",
+    "sigla": "SE"
+  },
+  {
+    "id": 280460,
+    "nome": "Nossa Senhora das Dores",
+    "sigla": "SE"
+  },
+  {
+    "id": 280470,
+    "nome": "Nossa Senhora de Lourdes",
+    "sigla": "SE"
+  },
+  {
+    "id": 280480,
+    "nome": "Nossa Senhora do Socorro",
+    "sigla": "SE"
+  },
+  {
+    "id": 280490,
+    "nome": "Pacatuba",
+    "sigla": "SE"
+  },
+  {
+    "id": 280500,
+    "nome": "Pedra Mole",
+    "sigla": "SE"
+  },
+  {
+    "id": 280510,
+    "nome": "Pedrinhas",
+    "sigla": "SE"
+  },
+  {
+    "id": 280520,
+    "nome": "Pinhão",
+    "sigla": "SE"
+  },
+  {
+    "id": 280530,
+    "nome": "Pirambu",
+    "sigla": "SE"
+  },
+  {
+    "id": 280540,
+    "nome": "Poço Redondo",
+    "sigla": "SE"
+  },
+  {
+    "id": 280550,
+    "nome": "Poço Verde",
+    "sigla": "SE"
+  },
+  {
+    "id": 280560,
+    "nome": "Porto da Folha",
+    "sigla": "SE"
+  },
+  {
+    "id": 280570,
+    "nome": "Propriá",
+    "sigla": "SE"
+  },
+  {
+    "id": 280580,
+    "nome": "Riachão do Dantas",
+    "sigla": "SE"
+  },
+  {
+    "id": 280590,
+    "nome": "Riachuelo",
+    "sigla": "SE"
+  },
+  {
+    "id": 280600,
+    "nome": "Ribeirópolis",
+    "sigla": "SE"
+  },
+  {
+    "id": 280610,
+    "nome": "Rosário do Catete",
+    "sigla": "SE"
+  },
+  {
+    "id": 280620,
+    "nome": "Salgado",
+    "sigla": "SE"
+  },
+  {
+    "id": 280630,
+    "nome": "Santa Luzia do Itanhy",
+    "sigla": "SE"
+  },
+  {
+    "id": 280640,
+    "nome": "Santana do São Francisco",
+    "sigla": "SE"
+  },
+  {
+    "id": 280650,
+    "nome": "Santa Rosa de Lima",
+    "sigla": "SE"
+  },
+  {
+    "id": 280660,
+    "nome": "Santo Amaro das Brotas",
+    "sigla": "SE"
+  },
+  {
+    "id": 280670,
+    "nome": "São Cristóvão",
+    "sigla": "SE"
+  },
+  {
+    "id": 280680,
+    "nome": "São Domingos",
+    "sigla": "SE"
+  },
+  {
+    "id": 280690,
+    "nome": "São Francisco",
+    "sigla": "SE"
+  },
+  {
+    "id": 280700,
+    "nome": "São Miguel do Aleixo",
+    "sigla": "SE"
+  },
+  {
+    "id": 280710,
+    "nome": "Simão Dias",
+    "sigla": "SE"
+  },
+  {
+    "id": 280720,
+    "nome": "Siriri",
+    "sigla": "SE"
+  },
+  {
+    "id": 280730,
+    "nome": "Telha",
+    "sigla": "SE"
+  },
+  {
+    "id": 280740,
+    "nome": "Tobias Barreto",
+    "sigla": "SE"
+  },
+  {
+    "id": 280750,
+    "nome": "Tomar do Geru",
+    "sigla": "SE"
+  },
+  {
+    "id": 280760,
+    "nome": "Umbaúba",
+    "sigla": "SE"
+  },
+  {
+    "id": 290010,
+    "nome": "Abaíra",
+    "sigla": "BA"
+  },
+  {
+    "id": 290020,
+    "nome": "Abaré",
+    "sigla": "BA"
+  },
+  {
+    "id": 290030,
+    "nome": "Acajutiba",
+    "sigla": "BA"
+  },
+  {
+    "id": 290035,
+    "nome": "Adustina",
+    "sigla": "BA"
+  },
+  {
+    "id": 290040,
+    "nome": "Água Fria",
+    "sigla": "BA"
+  },
+  {
+    "id": 290050,
+    "nome": "Érico Cardoso",
+    "sigla": "BA"
+  },
+  {
+    "id": 290060,
+    "nome": "Aiquara",
+    "sigla": "BA"
+  },
+  {
+    "id": 290070,
+    "nome": "Alagoinhas",
+    "sigla": "BA"
+  },
+  {
+    "id": 290080,
+    "nome": "Alcobaça",
+    "sigla": "BA"
+  },
+  {
+    "id": 290090,
+    "nome": "Almadina",
+    "sigla": "BA"
+  },
+  {
+    "id": 290100,
+    "nome": "Amargosa",
+    "sigla": "BA"
+  },
+  {
+    "id": 290110,
+    "nome": "Amélia Rodrigues",
+    "sigla": "BA"
+  },
+  {
+    "id": 290115,
+    "nome": "América Dourada",
+    "sigla": "BA"
+  },
+  {
+    "id": 290120,
+    "nome": "Anagé",
+    "sigla": "BA"
+  },
+  {
+    "id": 290130,
+    "nome": "Andaraí",
+    "sigla": "BA"
+  },
+  {
+    "id": 290135,
+    "nome": "Andorinha",
+    "sigla": "BA"
+  },
+  {
+    "id": 290140,
+    "nome": "Angical",
+    "sigla": "BA"
+  },
+  {
+    "id": 290150,
+    "nome": "Anguera",
+    "sigla": "BA"
+  },
+  {
+    "id": 290160,
+    "nome": "Antas",
+    "sigla": "BA"
+  },
+  {
+    "id": 290170,
+    "nome": "Antônio Cardoso",
+    "sigla": "BA"
+  },
+  {
+    "id": 290180,
+    "nome": "Antônio Gonçalves",
+    "sigla": "BA"
+  },
+  {
+    "id": 290190,
+    "nome": "Aporá",
+    "sigla": "BA"
+  },
+  {
+    "id": 290195,
+    "nome": "Apuarema",
+    "sigla": "BA"
+  },
+  {
+    "id": 290200,
+    "nome": "Aracatu",
+    "sigla": "BA"
+  },
+  {
+    "id": 290205,
+    "nome": "Araçás",
+    "sigla": "BA"
+  },
+  {
+    "id": 290210,
+    "nome": "Araci",
+    "sigla": "BA"
+  },
+  {
+    "id": 290220,
+    "nome": "Aramari",
+    "sigla": "BA"
+  },
+  {
+    "id": 290225,
+    "nome": "Arataca",
+    "sigla": "BA"
+  },
+  {
+    "id": 290230,
+    "nome": "Aratuípe",
+    "sigla": "BA"
+  },
+  {
+    "id": 290240,
+    "nome": "Aurelino Leal",
+    "sigla": "BA"
+  },
+  {
+    "id": 290250,
+    "nome": "Baianópolis",
+    "sigla": "BA"
+  },
+  {
+    "id": 290260,
+    "nome": "Baixa Grande",
+    "sigla": "BA"
+  },
+  {
+    "id": 290265,
+    "nome": "Banzaê",
+    "sigla": "BA"
+  },
+  {
+    "id": 290270,
+    "nome": "Barra",
+    "sigla": "BA"
+  },
+  {
+    "id": 290280,
+    "nome": "Barra da Estiva",
+    "sigla": "BA"
+  },
+  {
+    "id": 290290,
+    "nome": "Barra do Choça",
+    "sigla": "BA"
+  },
+  {
+    "id": 290300,
+    "nome": "Barra do Mendes",
+    "sigla": "BA"
+  },
+  {
+    "id": 290310,
+    "nome": "Barra do Rocha",
+    "sigla": "BA"
+  },
+  {
+    "id": 290320,
+    "nome": "Barreiras",
+    "sigla": "BA"
+  },
+  {
+    "id": 290323,
+    "nome": "Barro Alto",
+    "sigla": "BA"
+  },
+  {
+    "id": 290327,
+    "nome": "Barrocas",
+    "sigla": "BA"
+  },
+  {
+    "id": 290330,
+    "nome": "Barro Preto",
+    "sigla": "BA"
+  },
+  {
+    "id": 290340,
+    "nome": "Belmonte",
+    "sigla": "BA"
+  },
+  {
+    "id": 290350,
+    "nome": "Belo Campo",
+    "sigla": "BA"
+  },
+  {
+    "id": 290360,
+    "nome": "Biritinga",
+    "sigla": "BA"
+  },
+  {
+    "id": 290370,
+    "nome": "Boa Nova",
+    "sigla": "BA"
+  },
+  {
+    "id": 290380,
+    "nome": "Boa Vista do Tupim",
+    "sigla": "BA"
+  },
+  {
+    "id": 290390,
+    "nome": "Bom Jesus da Lapa",
+    "sigla": "BA"
+  },
+  {
+    "id": 290395,
+    "nome": "Bom Jesus da Serra",
+    "sigla": "BA"
+  },
+  {
+    "id": 290400,
+    "nome": "Boninal",
+    "sigla": "BA"
+  },
+  {
+    "id": 290405,
+    "nome": "Bonito",
+    "sigla": "BA"
+  },
+  {
+    "id": 290410,
+    "nome": "Boquira",
+    "sigla": "BA"
+  },
+  {
+    "id": 290420,
+    "nome": "Botuporã",
+    "sigla": "BA"
+  },
+  {
+    "id": 290430,
+    "nome": "Brejões",
+    "sigla": "BA"
+  },
+  {
+    "id": 290440,
+    "nome": "Brejolândia",
+    "sigla": "BA"
+  },
+  {
+    "id": 290450,
+    "nome": "Brotas de Macaúbas",
+    "sigla": "BA"
+  },
+  {
+    "id": 290460,
+    "nome": "Brumado",
+    "sigla": "BA"
+  },
+  {
+    "id": 290470,
+    "nome": "Buerarema",
+    "sigla": "BA"
+  },
+  {
+    "id": 290475,
+    "nome": "Buritirama",
+    "sigla": "BA"
+  },
+  {
+    "id": 290480,
+    "nome": "Caatiba",
+    "sigla": "BA"
+  },
+  {
+    "id": 290485,
+    "nome": "Cabaceiras do Paraguaçu",
+    "sigla": "BA"
+  },
+  {
+    "id": 290490,
+    "nome": "Cachoeira",
+    "sigla": "BA"
+  },
+  {
+    "id": 290500,
+    "nome": "Caculé",
+    "sigla": "BA"
+  },
+  {
+    "id": 290510,
+    "nome": "Caém",
+    "sigla": "BA"
+  },
+  {
+    "id": 290515,
+    "nome": "Caetanos",
+    "sigla": "BA"
+  },
+  {
+    "id": 290520,
+    "nome": "Caetité",
+    "sigla": "BA"
+  },
+  {
+    "id": 290530,
+    "nome": "Cafarnaum",
+    "sigla": "BA"
+  },
+  {
+    "id": 290540,
+    "nome": "Cairu",
+    "sigla": "BA"
+  },
+  {
+    "id": 290550,
+    "nome": "Caldeirão Grande",
+    "sigla": "BA"
+  },
+  {
+    "id": 290560,
+    "nome": "Camacan",
+    "sigla": "BA"
+  },
+  {
+    "id": 290570,
+    "nome": "Camaçari",
+    "sigla": "BA"
+  },
+  {
+    "id": 290580,
+    "nome": "Camamu",
+    "sigla": "BA"
+  },
+  {
+    "id": 290590,
+    "nome": "Campo Alegre de Lourdes",
+    "sigla": "BA"
+  },
+  {
+    "id": 290600,
+    "nome": "Campo Formoso",
+    "sigla": "BA"
+  },
+  {
+    "id": 290610,
+    "nome": "Canápolis",
+    "sigla": "BA"
+  },
+  {
+    "id": 290620,
+    "nome": "Canarana",
+    "sigla": "BA"
+  },
+  {
+    "id": 290630,
+    "nome": "Canavieiras",
+    "sigla": "BA"
+  },
+  {
+    "id": 290640,
+    "nome": "Candeal",
+    "sigla": "BA"
+  },
+  {
+    "id": 290650,
+    "nome": "Candeias",
+    "sigla": "BA"
+  },
+  {
+    "id": 290660,
+    "nome": "Candiba",
+    "sigla": "BA"
+  },
+  {
+    "id": 290670,
+    "nome": "Cândido Sales",
+    "sigla": "BA"
+  },
+  {
+    "id": 290680,
+    "nome": "Cansanção",
+    "sigla": "BA"
+  },
+  {
+    "id": 290682,
+    "nome": "Canudos",
+    "sigla": "BA"
+  },
+  {
+    "id": 290685,
+    "nome": "Capela do Alto Alegre",
+    "sigla": "BA"
+  },
+  {
+    "id": 290687,
+    "nome": "Capim Grosso",
+    "sigla": "BA"
+  },
+  {
+    "id": 290689,
+    "nome": "Caraíbas",
+    "sigla": "BA"
+  },
+  {
+    "id": 290690,
+    "nome": "Caravelas",
+    "sigla": "BA"
+  },
+  {
+    "id": 290700,
+    "nome": "Cardeal da Silva",
+    "sigla": "BA"
+  },
+  {
+    "id": 290710,
+    "nome": "Carinhanha",
+    "sigla": "BA"
+  },
+  {
+    "id": 290720,
+    "nome": "Casa Nova",
+    "sigla": "BA"
+  },
+  {
+    "id": 290730,
+    "nome": "Castro Alves",
+    "sigla": "BA"
+  },
+  {
+    "id": 290740,
+    "nome": "Catolândia",
+    "sigla": "BA"
+  },
+  {
+    "id": 290750,
+    "nome": "Catu",
+    "sigla": "BA"
+  },
+  {
+    "id": 290755,
+    "nome": "Caturama",
+    "sigla": "BA"
+  },
+  {
+    "id": 290760,
+    "nome": "Central",
+    "sigla": "BA"
+  },
+  {
+    "id": 290770,
+    "nome": "Chorrochó",
+    "sigla": "BA"
+  },
+  {
+    "id": 290780,
+    "nome": "Cícero Dantas",
+    "sigla": "BA"
+  },
+  {
+    "id": 290790,
+    "nome": "Cipó",
+    "sigla": "BA"
+  },
+  {
+    "id": 290800,
+    "nome": "Coaraci",
+    "sigla": "BA"
+  },
+  {
+    "id": 290810,
+    "nome": "Cocos",
+    "sigla": "BA"
+  },
+  {
+    "id": 290820,
+    "nome": "Conceição da Feira",
+    "sigla": "BA"
+  },
+  {
+    "id": 290830,
+    "nome": "Conceição do Almeida",
+    "sigla": "BA"
+  },
+  {
+    "id": 290840,
+    "nome": "Conceição do Coité",
+    "sigla": "BA"
+  },
+  {
+    "id": 290850,
+    "nome": "Conceição do Jacuípe",
+    "sigla": "BA"
+  },
+  {
+    "id": 290860,
+    "nome": "Conde",
+    "sigla": "BA"
+  },
+  {
+    "id": 290870,
+    "nome": "Condeúba",
+    "sigla": "BA"
+  },
+  {
+    "id": 290880,
+    "nome": "Contendas do Sincorá",
+    "sigla": "BA"
+  },
+  {
+    "id": 290890,
+    "nome": "Coração de Maria",
+    "sigla": "BA"
+  },
+  {
+    "id": 290900,
+    "nome": "Cordeiros",
+    "sigla": "BA"
+  },
+  {
+    "id": 290910,
+    "nome": "Coribe",
+    "sigla": "BA"
+  },
+  {
+    "id": 290920,
+    "nome": "Coronel João Sá",
+    "sigla": "BA"
+  },
+  {
+    "id": 290930,
+    "nome": "Correntina",
+    "sigla": "BA"
+  },
+  {
+    "id": 290940,
+    "nome": "Cotegipe",
+    "sigla": "BA"
+  },
+  {
+    "id": 290950,
+    "nome": "Cravolândia",
+    "sigla": "BA"
+  },
+  {
+    "id": 290960,
+    "nome": "Crisópolis",
+    "sigla": "BA"
+  },
+  {
+    "id": 290970,
+    "nome": "Cristópolis",
+    "sigla": "BA"
+  },
+  {
+    "id": 290980,
+    "nome": "Cruz das Almas",
+    "sigla": "BA"
+  },
+  {
+    "id": 290990,
+    "nome": "Curaçá",
+    "sigla": "BA"
+  },
+  {
+    "id": 291000,
+    "nome": "Dário Meira",
+    "sigla": "BA"
+  },
+  {
+    "id": 291005,
+    "nome": "Dias d'Ávila",
+    "sigla": "BA"
+  },
+  {
+    "id": 291010,
+    "nome": "Dom Basílio",
+    "sigla": "BA"
+  },
+  {
+    "id": 291020,
+    "nome": "Dom Macedo Costa",
+    "sigla": "BA"
+  },
+  {
+    "id": 291030,
+    "nome": "Elísio Medrado",
+    "sigla": "BA"
+  },
+  {
+    "id": 291040,
+    "nome": "Encruzilhada",
+    "sigla": "BA"
+  },
+  {
+    "id": 291050,
+    "nome": "Entre Rios",
+    "sigla": "BA"
+  },
+  {
+    "id": 291060,
+    "nome": "Esplanada",
+    "sigla": "BA"
+  },
+  {
+    "id": 291070,
+    "nome": "Euclides da Cunha",
+    "sigla": "BA"
+  },
+  {
+    "id": 291072,
+    "nome": "Eunápolis",
+    "sigla": "BA"
+  },
+  {
+    "id": 291075,
+    "nome": "Fátima",
+    "sigla": "BA"
+  },
+  {
+    "id": 291077,
+    "nome": "Feira da Mata",
+    "sigla": "BA"
+  },
+  {
+    "id": 291080,
+    "nome": "Feira de Santana",
+    "sigla": "BA"
+  },
+  {
+    "id": 291085,
+    "nome": "Filadélfia",
+    "sigla": "BA"
+  },
+  {
+    "id": 291090,
+    "nome": "Firmino Alves",
+    "sigla": "BA"
+  },
+  {
+    "id": 291100,
+    "nome": "Floresta Azul",
+    "sigla": "BA"
+  },
+  {
+    "id": 291110,
+    "nome": "Formosa do Rio Preto",
+    "sigla": "BA"
+  },
+  {
+    "id": 291120,
+    "nome": "Gandu",
+    "sigla": "BA"
+  },
+  {
+    "id": 291125,
+    "nome": "Gavião",
+    "sigla": "BA"
+  },
+  {
+    "id": 291130,
+    "nome": "Gentio do Ouro",
+    "sigla": "BA"
+  },
+  {
+    "id": 291140,
+    "nome": "Glória",
+    "sigla": "BA"
+  },
+  {
+    "id": 291150,
+    "nome": "Gongogi",
+    "sigla": "BA"
+  },
+  {
+    "id": 291160,
+    "nome": "Governador Mangabeira",
+    "sigla": "BA"
+  },
+  {
+    "id": 291165,
+    "nome": "Guajeru",
+    "sigla": "BA"
+  },
+  {
+    "id": 291170,
+    "nome": "Guanambi",
+    "sigla": "BA"
+  },
+  {
+    "id": 291180,
+    "nome": "Guaratinga",
+    "sigla": "BA"
+  },
+  {
+    "id": 291185,
+    "nome": "Heliópolis",
+    "sigla": "BA"
+  },
+  {
+    "id": 291190,
+    "nome": "Iaçu",
+    "sigla": "BA"
+  },
+  {
+    "id": 291200,
+    "nome": "Ibiassucê",
+    "sigla": "BA"
+  },
+  {
+    "id": 291210,
+    "nome": "Ibicaraí",
+    "sigla": "BA"
+  },
+  {
+    "id": 291220,
+    "nome": "Ibicoara",
+    "sigla": "BA"
+  },
+  {
+    "id": 291230,
+    "nome": "Ibicuí",
+    "sigla": "BA"
+  },
+  {
+    "id": 291240,
+    "nome": "Ibipeba",
+    "sigla": "BA"
+  },
+  {
+    "id": 291250,
+    "nome": "Ibipitanga",
+    "sigla": "BA"
+  },
+  {
+    "id": 291260,
+    "nome": "Ibiquera",
+    "sigla": "BA"
+  },
+  {
+    "id": 291270,
+    "nome": "Ibirapitanga",
+    "sigla": "BA"
+  },
+  {
+    "id": 291280,
+    "nome": "Ibirapuã",
+    "sigla": "BA"
+  },
+  {
+    "id": 291290,
+    "nome": "Ibirataia",
+    "sigla": "BA"
+  },
+  {
+    "id": 291300,
+    "nome": "Ibitiara",
+    "sigla": "BA"
+  },
+  {
+    "id": 291310,
+    "nome": "Ibititá",
+    "sigla": "BA"
+  },
+  {
+    "id": 291320,
+    "nome": "Ibotirama",
+    "sigla": "BA"
+  },
+  {
+    "id": 291330,
+    "nome": "Ichu",
+    "sigla": "BA"
+  },
+  {
+    "id": 291340,
+    "nome": "Igaporã",
+    "sigla": "BA"
+  },
+  {
+    "id": 291345,
+    "nome": "Igrapiúna",
+    "sigla": "BA"
+  },
+  {
+    "id": 291350,
+    "nome": "Iguaí",
+    "sigla": "BA"
+  },
+  {
+    "id": 291360,
+    "nome": "Ilhéus",
+    "sigla": "BA"
+  },
+  {
+    "id": 291370,
+    "nome": "Inhambupe",
+    "sigla": "BA"
+  },
+  {
+    "id": 291380,
+    "nome": "Ipecaetá",
+    "sigla": "BA"
+  },
+  {
+    "id": 291390,
+    "nome": "Ipiaú",
+    "sigla": "BA"
+  },
+  {
+    "id": 291400,
+    "nome": "Ipirá",
+    "sigla": "BA"
+  },
+  {
+    "id": 291410,
+    "nome": "Ipupiara",
+    "sigla": "BA"
+  },
+  {
+    "id": 291420,
+    "nome": "Irajuba",
+    "sigla": "BA"
+  },
+  {
+    "id": 291430,
+    "nome": "Iramaia",
+    "sigla": "BA"
+  },
+  {
+    "id": 291440,
+    "nome": "Iraquara",
+    "sigla": "BA"
+  },
+  {
+    "id": 291450,
+    "nome": "Irará",
+    "sigla": "BA"
+  },
+  {
+    "id": 291460,
+    "nome": "Irecê",
+    "sigla": "BA"
+  },
+  {
+    "id": 291465,
+    "nome": "Itabela",
+    "sigla": "BA"
+  },
+  {
+    "id": 291470,
+    "nome": "Itaberaba",
+    "sigla": "BA"
+  },
+  {
+    "id": 291480,
+    "nome": "Itabuna",
+    "sigla": "BA"
+  },
+  {
+    "id": 291490,
+    "nome": "Itacaré",
+    "sigla": "BA"
+  },
+  {
+    "id": 291500,
+    "nome": "Itaeté",
+    "sigla": "BA"
+  },
+  {
+    "id": 291510,
+    "nome": "Itagi",
+    "sigla": "BA"
+  },
+  {
+    "id": 291520,
+    "nome": "Itagibá",
+    "sigla": "BA"
+  },
+  {
+    "id": 291530,
+    "nome": "Itagimirim",
+    "sigla": "BA"
+  },
+  {
+    "id": 291535,
+    "nome": "Itaguaçu da Bahia",
+    "sigla": "BA"
+  },
+  {
+    "id": 291540,
+    "nome": "Itaju do Colônia",
+    "sigla": "BA"
+  },
+  {
+    "id": 291550,
+    "nome": "Itajuípe",
+    "sigla": "BA"
+  },
+  {
+    "id": 291560,
+    "nome": "Itamaraju",
+    "sigla": "BA"
+  },
+  {
+    "id": 291570,
+    "nome": "Itamari",
+    "sigla": "BA"
+  },
+  {
+    "id": 291580,
+    "nome": "Itambé",
+    "sigla": "BA"
+  },
+  {
+    "id": 291590,
+    "nome": "Itanagra",
+    "sigla": "BA"
+  },
+  {
+    "id": 291600,
+    "nome": "Itanhém",
+    "sigla": "BA"
+  },
+  {
+    "id": 291610,
+    "nome": "Itaparica",
+    "sigla": "BA"
+  },
+  {
+    "id": 291620,
+    "nome": "Itapé",
+    "sigla": "BA"
+  },
+  {
+    "id": 291630,
+    "nome": "Itapebi",
+    "sigla": "BA"
+  },
+  {
+    "id": 291640,
+    "nome": "Itapetinga",
+    "sigla": "BA"
+  },
+  {
+    "id": 291650,
+    "nome": "Itapicuru",
+    "sigla": "BA"
+  },
+  {
+    "id": 291660,
+    "nome": "Itapitanga",
+    "sigla": "BA"
+  },
+  {
+    "id": 291670,
+    "nome": "Itaquara",
+    "sigla": "BA"
+  },
+  {
+    "id": 291680,
+    "nome": "Itarantim",
+    "sigla": "BA"
+  },
+  {
+    "id": 291685,
+    "nome": "Itatim",
+    "sigla": "BA"
+  },
+  {
+    "id": 291690,
+    "nome": "Itiruçu",
+    "sigla": "BA"
+  },
+  {
+    "id": 291700,
+    "nome": "Itiúba",
+    "sigla": "BA"
+  },
+  {
+    "id": 291710,
+    "nome": "Itororó",
+    "sigla": "BA"
+  },
+  {
+    "id": 291720,
+    "nome": "Ituaçu",
+    "sigla": "BA"
+  },
+  {
+    "id": 291730,
+    "nome": "Ituberá",
+    "sigla": "BA"
+  },
+  {
+    "id": 291733,
+    "nome": "Iuiu",
+    "sigla": "BA"
+  },
+  {
+    "id": 291735,
+    "nome": "Jaborandi",
+    "sigla": "BA"
+  },
+  {
+    "id": 291740,
+    "nome": "Jacaraci",
+    "sigla": "BA"
+  },
+  {
+    "id": 291750,
+    "nome": "Jacobina",
+    "sigla": "BA"
+  },
+  {
+    "id": 291760,
+    "nome": "Jaguaquara",
+    "sigla": "BA"
+  },
+  {
+    "id": 291770,
+    "nome": "Jaguarari",
+    "sigla": "BA"
+  },
+  {
+    "id": 291780,
+    "nome": "Jaguaripe",
+    "sigla": "BA"
+  },
+  {
+    "id": 291790,
+    "nome": "Jandaíra",
+    "sigla": "BA"
+  },
+  {
+    "id": 291800,
+    "nome": "Jequié",
+    "sigla": "BA"
+  },
+  {
+    "id": 291810,
+    "nome": "Jeremoabo",
+    "sigla": "BA"
+  },
+  {
+    "id": 291820,
+    "nome": "Jiquiriçá",
+    "sigla": "BA"
+  },
+  {
+    "id": 291830,
+    "nome": "Jitaúna",
+    "sigla": "BA"
+  },
+  {
+    "id": 291835,
+    "nome": "João Dourado",
+    "sigla": "BA"
+  },
+  {
+    "id": 291840,
+    "nome": "Juazeiro",
+    "sigla": "BA"
+  },
+  {
+    "id": 291845,
+    "nome": "Jucuruçu",
+    "sigla": "BA"
+  },
+  {
+    "id": 291850,
+    "nome": "Jussara",
+    "sigla": "BA"
+  },
+  {
+    "id": 291855,
+    "nome": "Jussari",
+    "sigla": "BA"
+  },
+  {
+    "id": 291860,
+    "nome": "Jussiape",
+    "sigla": "BA"
+  },
+  {
+    "id": 291870,
+    "nome": "Lafaiete Coutinho",
+    "sigla": "BA"
+  },
+  {
+    "id": 291875,
+    "nome": "Lagoa Real",
+    "sigla": "BA"
+  },
+  {
+    "id": 291880,
+    "nome": "Laje",
+    "sigla": "BA"
+  },
+  {
+    "id": 291890,
+    "nome": "Lajedão",
+    "sigla": "BA"
+  },
+  {
+    "id": 291900,
+    "nome": "Lajedinho",
+    "sigla": "BA"
+  },
+  {
+    "id": 291905,
+    "nome": "Lajedo do Tabocal",
+    "sigla": "BA"
+  },
+  {
+    "id": 291910,
+    "nome": "Lamarão",
+    "sigla": "BA"
+  },
+  {
+    "id": 291915,
+    "nome": "Lapão",
+    "sigla": "BA"
+  },
+  {
+    "id": 291920,
+    "nome": "Lauro de Freitas",
+    "sigla": "BA"
+  },
+  {
+    "id": 291930,
+    "nome": "Lençóis",
+    "sigla": "BA"
+  },
+  {
+    "id": 291940,
+    "nome": "Licínio de Almeida",
+    "sigla": "BA"
+  },
+  {
+    "id": 291950,
+    "nome": "Livramento de Nossa Senhora",
+    "sigla": "BA"
+  },
+  {
+    "id": 291955,
+    "nome": "Luís Eduardo Magalhães",
+    "sigla": "BA"
+  },
+  {
+    "id": 291960,
+    "nome": "Macajuba",
+    "sigla": "BA"
+  },
+  {
+    "id": 291970,
+    "nome": "Macarani",
+    "sigla": "BA"
+  },
+  {
+    "id": 291980,
+    "nome": "Macaúbas",
+    "sigla": "BA"
+  },
+  {
+    "id": 291990,
+    "nome": "Macururé",
+    "sigla": "BA"
+  },
+  {
+    "id": 291992,
+    "nome": "Madre de Deus",
+    "sigla": "BA"
+  },
+  {
+    "id": 291995,
+    "nome": "Maetinga",
+    "sigla": "BA"
+  },
+  {
+    "id": 292000,
+    "nome": "Maiquinique",
+    "sigla": "BA"
+  },
+  {
+    "id": 292010,
+    "nome": "Mairi",
+    "sigla": "BA"
+  },
+  {
+    "id": 292020,
+    "nome": "Malhada",
+    "sigla": "BA"
+  },
+  {
+    "id": 292030,
+    "nome": "Malhada de Pedras",
+    "sigla": "BA"
+  },
+  {
+    "id": 292040,
+    "nome": "Manoel Vitorino",
+    "sigla": "BA"
+  },
+  {
+    "id": 292045,
+    "nome": "Mansidão",
+    "sigla": "BA"
+  },
+  {
+    "id": 292050,
+    "nome": "Maracás",
+    "sigla": "BA"
+  },
+  {
+    "id": 292060,
+    "nome": "Maragogipe",
+    "sigla": "BA"
+  },
+  {
+    "id": 292070,
+    "nome": "Maraú",
+    "sigla": "BA"
+  },
+  {
+    "id": 292080,
+    "nome": "Marcionílio Souza",
+    "sigla": "BA"
+  },
+  {
+    "id": 292090,
+    "nome": "Mascote",
+    "sigla": "BA"
+  },
+  {
+    "id": 292100,
+    "nome": "Mata de São João",
+    "sigla": "BA"
+  },
+  {
+    "id": 292105,
+    "nome": "Matina",
+    "sigla": "BA"
+  },
+  {
+    "id": 292110,
+    "nome": "Medeiros Neto",
+    "sigla": "BA"
+  },
+  {
+    "id": 292120,
+    "nome": "Miguel Calmon",
+    "sigla": "BA"
+  },
+  {
+    "id": 292130,
+    "nome": "Milagres",
+    "sigla": "BA"
+  },
+  {
+    "id": 292140,
+    "nome": "Mirangaba",
+    "sigla": "BA"
+  },
+  {
+    "id": 292145,
+    "nome": "Mirante",
+    "sigla": "BA"
+  },
+  {
+    "id": 292150,
+    "nome": "Monte Santo",
+    "sigla": "BA"
+  },
+  {
+    "id": 292160,
+    "nome": "Morpará",
+    "sigla": "BA"
+  },
+  {
+    "id": 292170,
+    "nome": "Morro do Chapéu",
+    "sigla": "BA"
+  },
+  {
+    "id": 292180,
+    "nome": "Mortugaba",
+    "sigla": "BA"
+  },
+  {
+    "id": 292190,
+    "nome": "Mucugê",
+    "sigla": "BA"
+  },
+  {
+    "id": 292200,
+    "nome": "Mucuri",
+    "sigla": "BA"
+  },
+  {
+    "id": 292205,
+    "nome": "Mulungu do Morro",
+    "sigla": "BA"
+  },
+  {
+    "id": 292210,
+    "nome": "Mundo Novo",
+    "sigla": "BA"
+  },
+  {
+    "id": 292220,
+    "nome": "Muniz Ferreira",
+    "sigla": "BA"
+  },
+  {
+    "id": 292225,
+    "nome": "Muquém do São Francisco",
+    "sigla": "BA"
+  },
+  {
+    "id": 292230,
+    "nome": "Muritiba",
+    "sigla": "BA"
+  },
+  {
+    "id": 292240,
+    "nome": "Mutuípe",
+    "sigla": "BA"
+  },
+  {
+    "id": 292250,
+    "nome": "Nazaré",
+    "sigla": "BA"
+  },
+  {
+    "id": 292260,
+    "nome": "Nilo Peçanha",
+    "sigla": "BA"
+  },
+  {
+    "id": 292265,
+    "nome": "Nordestina",
+    "sigla": "BA"
+  },
+  {
+    "id": 292270,
+    "nome": "Nova Canaã",
+    "sigla": "BA"
+  },
+  {
+    "id": 292273,
+    "nome": "Nova Fátima",
+    "sigla": "BA"
+  },
+  {
+    "id": 292275,
+    "nome": "Nova Ibiá",
+    "sigla": "BA"
+  },
+  {
+    "id": 292280,
+    "nome": "Nova Itarana",
+    "sigla": "BA"
+  },
+  {
+    "id": 292285,
+    "nome": "Nova Redenção",
+    "sigla": "BA"
+  },
+  {
+    "id": 292290,
+    "nome": "Nova Soure",
+    "sigla": "BA"
+  },
+  {
+    "id": 292300,
+    "nome": "Nova Viçosa",
+    "sigla": "BA"
+  },
+  {
+    "id": 292303,
+    "nome": "Novo Horizonte",
+    "sigla": "BA"
+  },
+  {
+    "id": 292305,
+    "nome": "Novo Triunfo",
+    "sigla": "BA"
+  },
+  {
+    "id": 292310,
+    "nome": "Olindina",
+    "sigla": "BA"
+  },
+  {
+    "id": 292320,
+    "nome": "Oliveira dos Brejinhos",
+    "sigla": "BA"
+  },
+  {
+    "id": 292330,
+    "nome": "Ouriçangas",
+    "sigla": "BA"
+  },
+  {
+    "id": 292335,
+    "nome": "Ourolândia",
+    "sigla": "BA"
+  },
+  {
+    "id": 292340,
+    "nome": "Palmas de Monte Alto",
+    "sigla": "BA"
+  },
+  {
+    "id": 292350,
+    "nome": "Palmeiras",
+    "sigla": "BA"
+  },
+  {
+    "id": 292360,
+    "nome": "Paramirim",
+    "sigla": "BA"
+  },
+  {
+    "id": 292370,
+    "nome": "Paratinga",
+    "sigla": "BA"
+  },
+  {
+    "id": 292380,
+    "nome": "Paripiranga",
+    "sigla": "BA"
+  },
+  {
+    "id": 292390,
+    "nome": "Pau Brasil",
+    "sigla": "BA"
+  },
+  {
+    "id": 292400,
+    "nome": "Paulo Afonso",
+    "sigla": "BA"
+  },
+  {
+    "id": 292405,
+    "nome": "Pé de Serra",
+    "sigla": "BA"
+  },
+  {
+    "id": 292410,
+    "nome": "Pedrão",
+    "sigla": "BA"
+  },
+  {
+    "id": 292420,
+    "nome": "Pedro Alexandre",
+    "sigla": "BA"
+  },
+  {
+    "id": 292430,
+    "nome": "Piatã",
+    "sigla": "BA"
+  },
+  {
+    "id": 292440,
+    "nome": "Pilão Arcado",
+    "sigla": "BA"
+  },
+  {
+    "id": 292450,
+    "nome": "Pindaí",
+    "sigla": "BA"
+  },
+  {
+    "id": 292460,
+    "nome": "Pindobaçu",
+    "sigla": "BA"
+  },
+  {
+    "id": 292465,
+    "nome": "Pintadas",
+    "sigla": "BA"
+  },
+  {
+    "id": 292467,
+    "nome": "Piraí do Norte",
+    "sigla": "BA"
+  },
+  {
+    "id": 292470,
+    "nome": "Piripá",
+    "sigla": "BA"
+  },
+  {
+    "id": 292480,
+    "nome": "Piritiba",
+    "sigla": "BA"
+  },
+  {
+    "id": 292490,
+    "nome": "Planaltino",
+    "sigla": "BA"
+  },
+  {
+    "id": 292500,
+    "nome": "Planalto",
+    "sigla": "BA"
+  },
+  {
+    "id": 292510,
+    "nome": "Poções",
+    "sigla": "BA"
+  },
+  {
+    "id": 292520,
+    "nome": "Pojuca",
+    "sigla": "BA"
+  },
+  {
+    "id": 292525,
+    "nome": "Ponto Novo",
+    "sigla": "BA"
+  },
+  {
+    "id": 292530,
+    "nome": "Porto Seguro",
+    "sigla": "BA"
+  },
+  {
+    "id": 292540,
+    "nome": "Potiraguá",
+    "sigla": "BA"
+  },
+  {
+    "id": 292550,
+    "nome": "Prado",
+    "sigla": "BA"
+  },
+  {
+    "id": 292560,
+    "nome": "Presidente Dutra",
+    "sigla": "BA"
+  },
+  {
+    "id": 292570,
+    "nome": "Presidente Jânio Quadros",
+    "sigla": "BA"
+  },
+  {
+    "id": 292575,
+    "nome": "Presidente Tancredo Neves",
+    "sigla": "BA"
+  },
+  {
+    "id": 292580,
+    "nome": "Queimadas",
+    "sigla": "BA"
+  },
+  {
+    "id": 292590,
+    "nome": "Quijingue",
+    "sigla": "BA"
+  },
+  {
+    "id": 292593,
+    "nome": "Quixabeira",
+    "sigla": "BA"
+  },
+  {
+    "id": 292595,
+    "nome": "Rafael Jambeiro",
+    "sigla": "BA"
+  },
+  {
+    "id": 292600,
+    "nome": "Remanso",
+    "sigla": "BA"
+  },
+  {
+    "id": 292610,
+    "nome": "Retirolândia",
+    "sigla": "BA"
+  },
+  {
+    "id": 292620,
+    "nome": "Riachão das Neves",
+    "sigla": "BA"
+  },
+  {
+    "id": 292630,
+    "nome": "Riachão do Jacuípe",
+    "sigla": "BA"
+  },
+  {
+    "id": 292640,
+    "nome": "Riacho de Santana",
+    "sigla": "BA"
+  },
+  {
+    "id": 292650,
+    "nome": "Ribeira do Amparo",
+    "sigla": "BA"
+  },
+  {
+    "id": 292660,
+    "nome": "Ribeira do Pombal",
+    "sigla": "BA"
+  },
+  {
+    "id": 292665,
+    "nome": "Ribeirão do Largo",
+    "sigla": "BA"
+  },
+  {
+    "id": 292670,
+    "nome": "Rio de Contas",
+    "sigla": "BA"
+  },
+  {
+    "id": 292680,
+    "nome": "Rio do Antônio",
+    "sigla": "BA"
+  },
+  {
+    "id": 292690,
+    "nome": "Rio do Pires",
+    "sigla": "BA"
+  },
+  {
+    "id": 292700,
+    "nome": "Rio Real",
+    "sigla": "BA"
+  },
+  {
+    "id": 292710,
+    "nome": "Rodelas",
+    "sigla": "BA"
+  },
+  {
+    "id": 292720,
+    "nome": "Ruy Barbosa",
+    "sigla": "BA"
+  },
+  {
+    "id": 292730,
+    "nome": "Salinas da Margarida",
+    "sigla": "BA"
+  },
+  {
+    "id": 292740,
+    "nome": "Salvador",
+    "sigla": "BA"
+  },
+  {
+    "id": 292750,
+    "nome": "Santa Bárbara",
+    "sigla": "BA"
+  },
+  {
+    "id": 292760,
+    "nome": "Santa Brígida",
+    "sigla": "BA"
+  },
+  {
+    "id": 292770,
+    "nome": "Santa Cruz Cabrália",
+    "sigla": "BA"
+  },
+  {
+    "id": 292780,
+    "nome": "Santa Cruz da Vitória",
+    "sigla": "BA"
+  },
+  {
+    "id": 292790,
+    "nome": "Santa Inês",
+    "sigla": "BA"
+  },
+  {
+    "id": 292800,
+    "nome": "Santaluz",
+    "sigla": "BA"
+  },
+  {
+    "id": 292805,
+    "nome": "Santa Luzia",
+    "sigla": "BA"
+  },
+  {
+    "id": 292810,
+    "nome": "Santa Maria da Vitória",
+    "sigla": "BA"
+  },
+  {
+    "id": 292820,
+    "nome": "Santana",
+    "sigla": "BA"
+  },
+  {
+    "id": 292830,
+    "nome": "Santanópolis",
+    "sigla": "BA"
+  },
+  {
+    "id": 292840,
+    "nome": "Santa Rita de Cássia",
+    "sigla": "BA"
+  },
+  {
+    "id": 292850,
+    "nome": "Santa Terezinha",
+    "sigla": "BA"
+  },
+  {
+    "id": 292860,
+    "nome": "Santo Amaro",
+    "sigla": "BA"
+  },
+  {
+    "id": 292870,
+    "nome": "Santo Antônio de Jesus",
+    "sigla": "BA"
+  },
+  {
+    "id": 292880,
+    "nome": "Santo Estêvão",
+    "sigla": "BA"
+  },
+  {
+    "id": 292890,
+    "nome": "São Desidério",
+    "sigla": "BA"
+  },
+  {
+    "id": 292895,
+    "nome": "São Domingos",
+    "sigla": "BA"
+  },
+  {
+    "id": 292900,
+    "nome": "São Félix",
+    "sigla": "BA"
+  },
+  {
+    "id": 292905,
+    "nome": "São Félix do Coribe",
+    "sigla": "BA"
+  },
+  {
+    "id": 292910,
+    "nome": "São Felipe",
+    "sigla": "BA"
+  },
+  {
+    "id": 292920,
+    "nome": "São Francisco do Conde",
+    "sigla": "BA"
+  },
+  {
+    "id": 292925,
+    "nome": "São Gabriel",
+    "sigla": "BA"
+  },
+  {
+    "id": 292930,
+    "nome": "São Gonçalo dos Campos",
+    "sigla": "BA"
+  },
+  {
+    "id": 292935,
+    "nome": "São José da Vitória",
+    "sigla": "BA"
+  },
+  {
+    "id": 292937,
+    "nome": "São José do Jacuípe",
+    "sigla": "BA"
+  },
+  {
+    "id": 292940,
+    "nome": "São Miguel das Matas",
+    "sigla": "BA"
+  },
+  {
+    "id": 292950,
+    "nome": "São Sebastião do Passé",
+    "sigla": "BA"
+  },
+  {
+    "id": 292960,
+    "nome": "Sapeaçu",
+    "sigla": "BA"
+  },
+  {
+    "id": 292970,
+    "nome": "Sátiro Dias",
+    "sigla": "BA"
+  },
+  {
+    "id": 292975,
+    "nome": "Saubara",
+    "sigla": "BA"
+  },
+  {
+    "id": 292980,
+    "nome": "Saúde",
+    "sigla": "BA"
+  },
+  {
+    "id": 292990,
+    "nome": "Seabra",
+    "sigla": "BA"
+  },
+  {
+    "id": 293000,
+    "nome": "Sebastião Laranjeiras",
+    "sigla": "BA"
+  },
+  {
+    "id": 293010,
+    "nome": "Senhor do Bonfim",
+    "sigla": "BA"
+  },
+  {
+    "id": 293015,
+    "nome": "Serra do Ramalho",
+    "sigla": "BA"
+  },
+  {
+    "id": 293020,
+    "nome": "Sento Sé",
+    "sigla": "BA"
+  },
+  {
+    "id": 293030,
+    "nome": "Serra Dourada",
+    "sigla": "BA"
+  },
+  {
+    "id": 293040,
+    "nome": "Serra Preta",
+    "sigla": "BA"
+  },
+  {
+    "id": 293050,
+    "nome": "Serrinha",
+    "sigla": "BA"
+  },
+  {
+    "id": 293060,
+    "nome": "Serrolândia",
+    "sigla": "BA"
+  },
+  {
+    "id": 293070,
+    "nome": "Simões Filho",
+    "sigla": "BA"
+  },
+  {
+    "id": 293075,
+    "nome": "Sítio do Mato",
+    "sigla": "BA"
+  },
+  {
+    "id": 293076,
+    "nome": "Sítio do Quinto",
+    "sigla": "BA"
+  },
+  {
+    "id": 293077,
+    "nome": "Sobradinho",
+    "sigla": "BA"
+  },
+  {
+    "id": 293080,
+    "nome": "Souto Soares",
+    "sigla": "BA"
+  },
+  {
+    "id": 293090,
+    "nome": "Tabocas do Brejo Velho",
+    "sigla": "BA"
+  },
+  {
+    "id": 293100,
+    "nome": "Tanhaçu",
+    "sigla": "BA"
+  },
+  {
+    "id": 293105,
+    "nome": "Tanque Novo",
+    "sigla": "BA"
+  },
+  {
+    "id": 293110,
+    "nome": "Tanquinho",
+    "sigla": "BA"
+  },
+  {
+    "id": 293120,
+    "nome": "Taperoá",
+    "sigla": "BA"
+  },
+  {
+    "id": 293130,
+    "nome": "Tapiramutá",
+    "sigla": "BA"
+  },
+  {
+    "id": 293135,
+    "nome": "Teixeira de Freitas",
+    "sigla": "BA"
+  },
+  {
+    "id": 293140,
+    "nome": "Teodoro Sampaio",
+    "sigla": "BA"
+  },
+  {
+    "id": 293150,
+    "nome": "Teofilândia",
+    "sigla": "BA"
+  },
+  {
+    "id": 293160,
+    "nome": "Teolândia",
+    "sigla": "BA"
+  },
+  {
+    "id": 293170,
+    "nome": "Terra Nova",
+    "sigla": "BA"
+  },
+  {
+    "id": 293180,
+    "nome": "Tremedal",
+    "sigla": "BA"
+  },
+  {
+    "id": 293190,
+    "nome": "Tucano",
+    "sigla": "BA"
+  },
+  {
+    "id": 293200,
+    "nome": "Uauá",
+    "sigla": "BA"
+  },
+  {
+    "id": 293210,
+    "nome": "Ubaíra",
+    "sigla": "BA"
+  },
+  {
+    "id": 293220,
+    "nome": "Ubaitaba",
+    "sigla": "BA"
+  },
+  {
+    "id": 293230,
+    "nome": "Ubatã",
+    "sigla": "BA"
+  },
+  {
+    "id": 293240,
+    "nome": "Uibaí",
+    "sigla": "BA"
+  },
+  {
+    "id": 293245,
+    "nome": "Umburanas",
+    "sigla": "BA"
+  },
+  {
+    "id": 293250,
+    "nome": "Una",
+    "sigla": "BA"
+  },
+  {
+    "id": 293260,
+    "nome": "Urandi",
+    "sigla": "BA"
+  },
+  {
+    "id": 293270,
+    "nome": "Uruçuca",
+    "sigla": "BA"
+  },
+  {
+    "id": 293280,
+    "nome": "Utinga",
+    "sigla": "BA"
+  },
+  {
+    "id": 293290,
+    "nome": "Valença",
+    "sigla": "BA"
+  },
+  {
+    "id": 293300,
+    "nome": "Valente",
+    "sigla": "BA"
+  },
+  {
+    "id": 293305,
+    "nome": "Várzea da Roça",
+    "sigla": "BA"
+  },
+  {
+    "id": 293310,
+    "nome": "Várzea do Poço",
+    "sigla": "BA"
+  },
+  {
+    "id": 293315,
+    "nome": "Várzea Nova",
+    "sigla": "BA"
+  },
+  {
+    "id": 293317,
+    "nome": "Varzedo",
+    "sigla": "BA"
+  },
+  {
+    "id": 293320,
+    "nome": "Vera Cruz",
+    "sigla": "BA"
+  },
+  {
+    "id": 293325,
+    "nome": "Vereda",
+    "sigla": "BA"
+  },
+  {
+    "id": 293330,
+    "nome": "Vitória da Conquista",
+    "sigla": "BA"
+  },
+  {
+    "id": 293340,
+    "nome": "Wagner",
+    "sigla": "BA"
+  },
+  {
+    "id": 293345,
+    "nome": "Wanderley",
+    "sigla": "BA"
+  },
+  {
+    "id": 293350,
+    "nome": "Wenceslau Guimarães",
+    "sigla": "BA"
+  },
+  {
+    "id": 293360,
+    "nome": "Xique-Xique",
+    "sigla": "BA"
+  },
+  {
+    "id": 310010,
+    "nome": "Abadia dos Dourados",
+    "sigla": "MG"
+  },
+  {
+    "id": 310020,
+    "nome": "Abaeté",
+    "sigla": "MG"
+  },
+  {
+    "id": 310030,
+    "nome": "Abre Campo",
+    "sigla": "MG"
+  },
+  {
+    "id": 310040,
+    "nome": "Acaiaca",
+    "sigla": "MG"
+  },
+  {
+    "id": 310050,
+    "nome": "Açucena",
+    "sigla": "MG"
+  },
+  {
+    "id": 310060,
+    "nome": "Água Boa",
+    "sigla": "MG"
+  },
+  {
+    "id": 310070,
+    "nome": "Água Comprida",
+    "sigla": "MG"
+  },
+  {
+    "id": 310080,
+    "nome": "Aguanil",
+    "sigla": "MG"
+  },
+  {
+    "id": 310090,
+    "nome": "Águas Formosas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310100,
+    "nome": "Águas Vermelhas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310110,
+    "nome": "Aimorés",
+    "sigla": "MG"
+  },
+  {
+    "id": 310120,
+    "nome": "Aiuruoca",
+    "sigla": "MG"
+  },
+  {
+    "id": 310130,
+    "nome": "Alagoa",
+    "sigla": "MG"
+  },
+  {
+    "id": 310140,
+    "nome": "Albertina",
+    "sigla": "MG"
+  },
+  {
+    "id": 310150,
+    "nome": "Além Paraíba",
+    "sigla": "MG"
+  },
+  {
+    "id": 310160,
+    "nome": "Alfenas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310163,
+    "nome": "Alfredo Vasconcelos",
+    "sigla": "MG"
+  },
+  {
+    "id": 310170,
+    "nome": "Almenara",
+    "sigla": "MG"
+  },
+  {
+    "id": 310180,
+    "nome": "Alpercata",
+    "sigla": "MG"
+  },
+  {
+    "id": 310190,
+    "nome": "Alpinópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 310200,
+    "nome": "Alterosa",
+    "sigla": "MG"
+  },
+  {
+    "id": 310205,
+    "nome": "Alto Caparaó",
+    "sigla": "MG"
+  },
+  {
+    "id": 310210,
+    "nome": "Alto Rio Doce",
+    "sigla": "MG"
+  },
+  {
+    "id": 310220,
+    "nome": "Alvarenga",
+    "sigla": "MG"
+  },
+  {
+    "id": 310230,
+    "nome": "Alvinópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 310240,
+    "nome": "Alvorada de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310250,
+    "nome": "Amparo do Serra",
+    "sigla": "MG"
+  },
+  {
+    "id": 310260,
+    "nome": "Andradas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310270,
+    "nome": "Cachoeira de Pajeú",
+    "sigla": "MG"
+  },
+  {
+    "id": 310280,
+    "nome": "Andrelândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 310285,
+    "nome": "Angelândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 310290,
+    "nome": "Antônio Carlos",
+    "sigla": "MG"
+  },
+  {
+    "id": 310300,
+    "nome": "Antônio Dias",
+    "sigla": "MG"
+  },
+  {
+    "id": 310310,
+    "nome": "Antônio Prado de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310320,
+    "nome": "Araçaí",
+    "sigla": "MG"
+  },
+  {
+    "id": 310330,
+    "nome": "Aracitaba",
+    "sigla": "MG"
+  },
+  {
+    "id": 310340,
+    "nome": "Araçuaí",
+    "sigla": "MG"
+  },
+  {
+    "id": 310350,
+    "nome": "Araguari",
+    "sigla": "MG"
+  },
+  {
+    "id": 310360,
+    "nome": "Arantina",
+    "sigla": "MG"
+  },
+  {
+    "id": 310370,
+    "nome": "Araponga",
+    "sigla": "MG"
+  },
+  {
+    "id": 310375,
+    "nome": "Araporã",
+    "sigla": "MG"
+  },
+  {
+    "id": 310380,
+    "nome": "Arapuá",
+    "sigla": "MG"
+  },
+  {
+    "id": 310390,
+    "nome": "Araújos",
+    "sigla": "MG"
+  },
+  {
+    "id": 310400,
+    "nome": "Araxá",
+    "sigla": "MG"
+  },
+  {
+    "id": 310410,
+    "nome": "Arceburgo",
+    "sigla": "MG"
+  },
+  {
+    "id": 310420,
+    "nome": "Arcos",
+    "sigla": "MG"
+  },
+  {
+    "id": 310430,
+    "nome": "Areado",
+    "sigla": "MG"
+  },
+  {
+    "id": 310440,
+    "nome": "Argirita",
+    "sigla": "MG"
+  },
+  {
+    "id": 310445,
+    "nome": "Aricanduva",
+    "sigla": "MG"
+  },
+  {
+    "id": 310450,
+    "nome": "Arinos",
+    "sigla": "MG"
+  },
+  {
+    "id": 310460,
+    "nome": "Astolfo Dutra",
+    "sigla": "MG"
+  },
+  {
+    "id": 310470,
+    "nome": "Ataléia",
+    "sigla": "MG"
+  },
+  {
+    "id": 310480,
+    "nome": "Augusto de Lima",
+    "sigla": "MG"
+  },
+  {
+    "id": 310490,
+    "nome": "Baependi",
+    "sigla": "MG"
+  },
+  {
+    "id": 310500,
+    "nome": "Baldim",
+    "sigla": "MG"
+  },
+  {
+    "id": 310510,
+    "nome": "Bambuí",
+    "sigla": "MG"
+  },
+  {
+    "id": 310520,
+    "nome": "Bandeira",
+    "sigla": "MG"
+  },
+  {
+    "id": 310530,
+    "nome": "Bandeira do Sul",
+    "sigla": "MG"
+  },
+  {
+    "id": 310540,
+    "nome": "Barão de Cocais",
+    "sigla": "MG"
+  },
+  {
+    "id": 310550,
+    "nome": "Barão do Monte Alto",
+    "sigla": "MG"
+  },
+  {
+    "id": 310560,
+    "nome": "Barbacena",
+    "sigla": "MG"
+  },
+  {
+    "id": 310570,
+    "nome": "Barra Longa",
+    "sigla": "MG"
+  },
+  {
+    "id": 310590,
+    "nome": "Barroso",
+    "sigla": "MG"
+  },
+  {
+    "id": 310600,
+    "nome": "Bela Vista de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310610,
+    "nome": "Belmiro Braga",
+    "sigla": "MG"
+  },
+  {
+    "id": 310620,
+    "nome": "Belo Horizonte",
+    "sigla": "MG"
+  },
+  {
+    "id": 310630,
+    "nome": "Belo Oriente",
+    "sigla": "MG"
+  },
+  {
+    "id": 310640,
+    "nome": "Belo Vale",
+    "sigla": "MG"
+  },
+  {
+    "id": 310650,
+    "nome": "Berilo",
+    "sigla": "MG"
+  },
+  {
+    "id": 310660,
+    "nome": "Bertópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 310665,
+    "nome": "Berizal",
+    "sigla": "MG"
+  },
+  {
+    "id": 310670,
+    "nome": "Betim",
+    "sigla": "MG"
+  },
+  {
+    "id": 310680,
+    "nome": "Bias Fortes",
+    "sigla": "MG"
+  },
+  {
+    "id": 310690,
+    "nome": "Bicas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310700,
+    "nome": "Biquinhas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310710,
+    "nome": "Boa Esperança",
+    "sigla": "MG"
+  },
+  {
+    "id": 310720,
+    "nome": "Bocaina de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310730,
+    "nome": "Bocaiúva",
+    "sigla": "MG"
+  },
+  {
+    "id": 310740,
+    "nome": "Bom Despacho",
+    "sigla": "MG"
+  },
+  {
+    "id": 310750,
+    "nome": "Bom Jardim de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310760,
+    "nome": "Bom Jesus da Penha",
+    "sigla": "MG"
+  },
+  {
+    "id": 310770,
+    "nome": "Bom Jesus do Amparo",
+    "sigla": "MG"
+  },
+  {
+    "id": 310780,
+    "nome": "Bom Jesus do Galho",
+    "sigla": "MG"
+  },
+  {
+    "id": 310790,
+    "nome": "Bom Repouso",
+    "sigla": "MG"
+  },
+  {
+    "id": 310800,
+    "nome": "Bom Sucesso",
+    "sigla": "MG"
+  },
+  {
+    "id": 310810,
+    "nome": "Bonfim",
+    "sigla": "MG"
+  },
+  {
+    "id": 310820,
+    "nome": "Bonfinópolis de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310825,
+    "nome": "Bonito de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310830,
+    "nome": "Borda da Mata",
+    "sigla": "MG"
+  },
+  {
+    "id": 310840,
+    "nome": "Botelhos",
+    "sigla": "MG"
+  },
+  {
+    "id": 310850,
+    "nome": "Botumirim",
+    "sigla": "MG"
+  },
+  {
+    "id": 310855,
+    "nome": "Brasilândia de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310860,
+    "nome": "Brasília de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310870,
+    "nome": "Brás Pires",
+    "sigla": "MG"
+  },
+  {
+    "id": 310880,
+    "nome": "Braúnas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310890,
+    "nome": "Brazópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 310900,
+    "nome": "Brumadinho",
+    "sigla": "MG"
+  },
+  {
+    "id": 310910,
+    "nome": "Bueno Brandão",
+    "sigla": "MG"
+  },
+  {
+    "id": 310920,
+    "nome": "Buenópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 310925,
+    "nome": "Bugre",
+    "sigla": "MG"
+  },
+  {
+    "id": 310930,
+    "nome": "Buritis",
+    "sigla": "MG"
+  },
+  {
+    "id": 310940,
+    "nome": "Buritizeiro",
+    "sigla": "MG"
+  },
+  {
+    "id": 310945,
+    "nome": "Cabeceira Grande",
+    "sigla": "MG"
+  },
+  {
+    "id": 310950,
+    "nome": "Cabo Verde",
+    "sigla": "MG"
+  },
+  {
+    "id": 310960,
+    "nome": "Cachoeira da Prata",
+    "sigla": "MG"
+  },
+  {
+    "id": 310970,
+    "nome": "Cachoeira de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 310980,
+    "nome": "Cachoeira Dourada",
+    "sigla": "MG"
+  },
+  {
+    "id": 310990,
+    "nome": "Caetanópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 311000,
+    "nome": "Caeté",
+    "sigla": "MG"
+  },
+  {
+    "id": 311010,
+    "nome": "Caiana",
+    "sigla": "MG"
+  },
+  {
+    "id": 311020,
+    "nome": "Cajuri",
+    "sigla": "MG"
+  },
+  {
+    "id": 311030,
+    "nome": "Caldas",
+    "sigla": "MG"
+  },
+  {
+    "id": 311040,
+    "nome": "Camacho",
+    "sigla": "MG"
+  },
+  {
+    "id": 311050,
+    "nome": "Camanducaia",
+    "sigla": "MG"
+  },
+  {
+    "id": 311060,
+    "nome": "Cambuí",
+    "sigla": "MG"
+  },
+  {
+    "id": 311070,
+    "nome": "Cambuquira",
+    "sigla": "MG"
+  },
+  {
+    "id": 311080,
+    "nome": "Campanário",
+    "sigla": "MG"
+  },
+  {
+    "id": 311090,
+    "nome": "Campanha",
+    "sigla": "MG"
+  },
+  {
+    "id": 311100,
+    "nome": "Campestre",
+    "sigla": "MG"
+  },
+  {
+    "id": 311110,
+    "nome": "Campina Verde",
+    "sigla": "MG"
+  },
+  {
+    "id": 311115,
+    "nome": "Campo Azul",
+    "sigla": "MG"
+  },
+  {
+    "id": 311120,
+    "nome": "Campo Belo",
+    "sigla": "MG"
+  },
+  {
+    "id": 311130,
+    "nome": "Campo do Meio",
+    "sigla": "MG"
+  },
+  {
+    "id": 311140,
+    "nome": "Campo Florido",
+    "sigla": "MG"
+  },
+  {
+    "id": 311150,
+    "nome": "Campos Altos",
+    "sigla": "MG"
+  },
+  {
+    "id": 311160,
+    "nome": "Campos Gerais",
+    "sigla": "MG"
+  },
+  {
+    "id": 311170,
+    "nome": "Canaã",
+    "sigla": "MG"
+  },
+  {
+    "id": 311180,
+    "nome": "Canápolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 311190,
+    "nome": "Cana Verde",
+    "sigla": "MG"
+  },
+  {
+    "id": 311200,
+    "nome": "Candeias",
+    "sigla": "MG"
+  },
+  {
+    "id": 311205,
+    "nome": "Cantagalo",
+    "sigla": "MG"
+  },
+  {
+    "id": 311210,
+    "nome": "Caparaó",
+    "sigla": "MG"
+  },
+  {
+    "id": 311220,
+    "nome": "Capela Nova",
+    "sigla": "MG"
+  },
+  {
+    "id": 311230,
+    "nome": "Capelinha",
+    "sigla": "MG"
+  },
+  {
+    "id": 311240,
+    "nome": "Capetinga",
+    "sigla": "MG"
+  },
+  {
+    "id": 311250,
+    "nome": "Capim Branco",
+    "sigla": "MG"
+  },
+  {
+    "id": 311260,
+    "nome": "Capinópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 311265,
+    "nome": "Capitão Andrade",
+    "sigla": "MG"
+  },
+  {
+    "id": 311270,
+    "nome": "Capitão Enéas",
+    "sigla": "MG"
+  },
+  {
+    "id": 311280,
+    "nome": "Capitólio",
+    "sigla": "MG"
+  },
+  {
+    "id": 311290,
+    "nome": "Caputira",
+    "sigla": "MG"
+  },
+  {
+    "id": 311300,
+    "nome": "Caraí",
+    "sigla": "MG"
+  },
+  {
+    "id": 311310,
+    "nome": "Caranaíba",
+    "sigla": "MG"
+  },
+  {
+    "id": 311320,
+    "nome": "Carandaí",
+    "sigla": "MG"
+  },
+  {
+    "id": 311330,
+    "nome": "Carangola",
+    "sigla": "MG"
+  },
+  {
+    "id": 311340,
+    "nome": "Caratinga",
+    "sigla": "MG"
+  },
+  {
+    "id": 311350,
+    "nome": "Carbonita",
+    "sigla": "MG"
+  },
+  {
+    "id": 311360,
+    "nome": "Careaçu",
+    "sigla": "MG"
+  },
+  {
+    "id": 311370,
+    "nome": "Carlos Chagas",
+    "sigla": "MG"
+  },
+  {
+    "id": 311380,
+    "nome": "Carmésia",
+    "sigla": "MG"
+  },
+  {
+    "id": 311390,
+    "nome": "Carmo da Cachoeira",
+    "sigla": "MG"
+  },
+  {
+    "id": 311400,
+    "nome": "Carmo da Mata",
+    "sigla": "MG"
+  },
+  {
+    "id": 311410,
+    "nome": "Carmo de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 311420,
+    "nome": "Carmo do Cajuru",
+    "sigla": "MG"
+  },
+  {
+    "id": 311430,
+    "nome": "Carmo do Paranaíba",
+    "sigla": "MG"
+  },
+  {
+    "id": 311440,
+    "nome": "Carmo do Rio Claro",
+    "sigla": "MG"
+  },
+  {
+    "id": 311450,
+    "nome": "Carmópolis de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 311455,
+    "nome": "Carneirinho",
+    "sigla": "MG"
+  },
+  {
+    "id": 311460,
+    "nome": "Carrancas",
+    "sigla": "MG"
+  },
+  {
+    "id": 311470,
+    "nome": "Carvalhópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 311480,
+    "nome": "Carvalhos",
+    "sigla": "MG"
+  },
+  {
+    "id": 311490,
+    "nome": "Casa Grande",
+    "sigla": "MG"
+  },
+  {
+    "id": 311500,
+    "nome": "Cascalho Rico",
+    "sigla": "MG"
+  },
+  {
+    "id": 311510,
+    "nome": "Cássia",
+    "sigla": "MG"
+  },
+  {
+    "id": 311520,
+    "nome": "Conceição da Barra de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 311530,
+    "nome": "Cataguases",
+    "sigla": "MG"
+  },
+  {
+    "id": 311535,
+    "nome": "Catas Altas",
+    "sigla": "MG"
+  },
+  {
+    "id": 311540,
+    "nome": "Catas Altas da Noruega",
+    "sigla": "MG"
+  },
+  {
+    "id": 311545,
+    "nome": "Catuji",
+    "sigla": "MG"
+  },
+  {
+    "id": 311547,
+    "nome": "Catuti",
+    "sigla": "MG"
+  },
+  {
+    "id": 311550,
+    "nome": "Caxambu",
+    "sigla": "MG"
+  },
+  {
+    "id": 311560,
+    "nome": "Cedro do Abaeté",
+    "sigla": "MG"
+  },
+  {
+    "id": 311570,
+    "nome": "Central de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 311580,
+    "nome": "Centralina",
+    "sigla": "MG"
+  },
+  {
+    "id": 311590,
+    "nome": "Chácara",
+    "sigla": "MG"
+  },
+  {
+    "id": 311600,
+    "nome": "Chalé",
+    "sigla": "MG"
+  },
+  {
+    "id": 311610,
+    "nome": "Chapada do Norte",
+    "sigla": "MG"
+  },
+  {
+    "id": 311615,
+    "nome": "Chapada Gaúcha",
+    "sigla": "MG"
+  },
+  {
+    "id": 311620,
+    "nome": "Chiador",
+    "sigla": "MG"
+  },
+  {
+    "id": 311630,
+    "nome": "Cipotânea",
+    "sigla": "MG"
+  },
+  {
+    "id": 311640,
+    "nome": "Claraval",
+    "sigla": "MG"
+  },
+  {
+    "id": 311650,
+    "nome": "Claro dos Poções",
+    "sigla": "MG"
+  },
+  {
+    "id": 311660,
+    "nome": "Cláudio",
+    "sigla": "MG"
+  },
+  {
+    "id": 311670,
+    "nome": "Coimbra",
+    "sigla": "MG"
+  },
+  {
+    "id": 311680,
+    "nome": "Coluna",
+    "sigla": "MG"
+  },
+  {
+    "id": 311690,
+    "nome": "Comendador Gomes",
+    "sigla": "MG"
+  },
+  {
+    "id": 311700,
+    "nome": "Comercinho",
+    "sigla": "MG"
+  },
+  {
+    "id": 311710,
+    "nome": "Conceição da Aparecida",
+    "sigla": "MG"
+  },
+  {
+    "id": 311720,
+    "nome": "Conceição das Pedras",
+    "sigla": "MG"
+  },
+  {
+    "id": 311730,
+    "nome": "Conceição das Alagoas",
+    "sigla": "MG"
+  },
+  {
+    "id": 311740,
+    "nome": "Conceição de Ipanema",
+    "sigla": "MG"
+  },
+  {
+    "id": 311750,
+    "nome": "Conceição do Mato Dentro",
+    "sigla": "MG"
+  },
+  {
+    "id": 311760,
+    "nome": "Conceição do Pará",
+    "sigla": "MG"
+  },
+  {
+    "id": 311770,
+    "nome": "Conceição do Rio Verde",
+    "sigla": "MG"
+  },
+  {
+    "id": 311780,
+    "nome": "Conceição dos Ouros",
+    "sigla": "MG"
+  },
+  {
+    "id": 311783,
+    "nome": "Cônego Marinho",
+    "sigla": "MG"
+  },
+  {
+    "id": 311787,
+    "nome": "Confins",
+    "sigla": "MG"
+  },
+  {
+    "id": 311790,
+    "nome": "Congonhal",
+    "sigla": "MG"
+  },
+  {
+    "id": 311800,
+    "nome": "Congonhas",
+    "sigla": "MG"
+  },
+  {
+    "id": 311810,
+    "nome": "Congonhas do Norte",
+    "sigla": "MG"
+  },
+  {
+    "id": 311820,
+    "nome": "Conquista",
+    "sigla": "MG"
+  },
+  {
+    "id": 311830,
+    "nome": "Conselheiro Lafaiete",
+    "sigla": "MG"
+  },
+  {
+    "id": 311840,
+    "nome": "Conselheiro Pena",
+    "sigla": "MG"
+  },
+  {
+    "id": 311850,
+    "nome": "Consolação",
+    "sigla": "MG"
+  },
+  {
+    "id": 311860,
+    "nome": "Contagem",
+    "sigla": "MG"
+  },
+  {
+    "id": 311870,
+    "nome": "Coqueiral",
+    "sigla": "MG"
+  },
+  {
+    "id": 311880,
+    "nome": "Coração de Jesus",
+    "sigla": "MG"
+  },
+  {
+    "id": 311890,
+    "nome": "Cordisburgo",
+    "sigla": "MG"
+  },
+  {
+    "id": 311900,
+    "nome": "Cordislândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 311910,
+    "nome": "Corinto",
+    "sigla": "MG"
+  },
+  {
+    "id": 311920,
+    "nome": "Coroaci",
+    "sigla": "MG"
+  },
+  {
+    "id": 311930,
+    "nome": "Coromandel",
+    "sigla": "MG"
+  },
+  {
+    "id": 311940,
+    "nome": "Coronel Fabriciano",
+    "sigla": "MG"
+  },
+  {
+    "id": 311950,
+    "nome": "Coronel Murta",
+    "sigla": "MG"
+  },
+  {
+    "id": 311960,
+    "nome": "Coronel Pacheco",
+    "sigla": "MG"
+  },
+  {
+    "id": 311970,
+    "nome": "Coronel Xavier Chaves",
+    "sigla": "MG"
+  },
+  {
+    "id": 311980,
+    "nome": "Córrego Danta",
+    "sigla": "MG"
+  },
+  {
+    "id": 311990,
+    "nome": "Córrego do Bom Jesus",
+    "sigla": "MG"
+  },
+  {
+    "id": 311995,
+    "nome": "Córrego Fundo",
+    "sigla": "MG"
+  },
+  {
+    "id": 312000,
+    "nome": "Córrego Novo",
+    "sigla": "MG"
+  },
+  {
+    "id": 312010,
+    "nome": "Couto de Magalhães de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 312015,
+    "nome": "Crisólita",
+    "sigla": "MG"
+  },
+  {
+    "id": 312020,
+    "nome": "Cristais",
+    "sigla": "MG"
+  },
+  {
+    "id": 312030,
+    "nome": "Cristália",
+    "sigla": "MG"
+  },
+  {
+    "id": 312040,
+    "nome": "Cristiano Otoni",
+    "sigla": "MG"
+  },
+  {
+    "id": 312050,
+    "nome": "Cristina",
+    "sigla": "MG"
+  },
+  {
+    "id": 312060,
+    "nome": "Crucilândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 312070,
+    "nome": "Cruzeiro da Fortaleza",
+    "sigla": "MG"
+  },
+  {
+    "id": 312080,
+    "nome": "Cruzília",
+    "sigla": "MG"
+  },
+  {
+    "id": 312083,
+    "nome": "Cuparaque",
+    "sigla": "MG"
+  },
+  {
+    "id": 312087,
+    "nome": "Curral de Dentro",
+    "sigla": "MG"
+  },
+  {
+    "id": 312090,
+    "nome": "Curvelo",
+    "sigla": "MG"
+  },
+  {
+    "id": 312100,
+    "nome": "Datas",
+    "sigla": "MG"
+  },
+  {
+    "id": 312110,
+    "nome": "Delfim Moreira",
+    "sigla": "MG"
+  },
+  {
+    "id": 312120,
+    "nome": "Delfinópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 312125,
+    "nome": "Delta",
+    "sigla": "MG"
+  },
+  {
+    "id": 312130,
+    "nome": "Descoberto",
+    "sigla": "MG"
+  },
+  {
+    "id": 312140,
+    "nome": "Desterro de Entre Rios",
+    "sigla": "MG"
+  },
+  {
+    "id": 312150,
+    "nome": "Desterro do Melo",
+    "sigla": "MG"
+  },
+  {
+    "id": 312160,
+    "nome": "Diamantina",
+    "sigla": "MG"
+  },
+  {
+    "id": 312170,
+    "nome": "Diogo de Vasconcelos",
+    "sigla": "MG"
+  },
+  {
+    "id": 312180,
+    "nome": "Dionísio",
+    "sigla": "MG"
+  },
+  {
+    "id": 312190,
+    "nome": "Divinésia",
+    "sigla": "MG"
+  },
+  {
+    "id": 312200,
+    "nome": "Divino",
+    "sigla": "MG"
+  },
+  {
+    "id": 312210,
+    "nome": "Divino das Laranjeiras",
+    "sigla": "MG"
+  },
+  {
+    "id": 312220,
+    "nome": "Divinolândia de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 312230,
+    "nome": "Divinópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 312235,
+    "nome": "Divisa Alegre",
+    "sigla": "MG"
+  },
+  {
+    "id": 312240,
+    "nome": "Divisa Nova",
+    "sigla": "MG"
+  },
+  {
+    "id": 312245,
+    "nome": "Divisópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 312247,
+    "nome": "Dom Bosco",
+    "sigla": "MG"
+  },
+  {
+    "id": 312250,
+    "nome": "Dom Cavati",
+    "sigla": "MG"
+  },
+  {
+    "id": 312260,
+    "nome": "Dom Joaquim",
+    "sigla": "MG"
+  },
+  {
+    "id": 312270,
+    "nome": "Dom Silvério",
+    "sigla": "MG"
+  },
+  {
+    "id": 312280,
+    "nome": "Dom Viçoso",
+    "sigla": "MG"
+  },
+  {
+    "id": 312290,
+    "nome": "Dona Euzébia",
+    "sigla": "MG"
+  },
+  {
+    "id": 312300,
+    "nome": "Dores de Campos",
+    "sigla": "MG"
+  },
+  {
+    "id": 312310,
+    "nome": "Dores de Guanhães",
+    "sigla": "MG"
+  },
+  {
+    "id": 312320,
+    "nome": "Dores do Indaiá",
+    "sigla": "MG"
+  },
+  {
+    "id": 312330,
+    "nome": "Dores do Turvo",
+    "sigla": "MG"
+  },
+  {
+    "id": 312340,
+    "nome": "Doresópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 312350,
+    "nome": "Douradoquara",
+    "sigla": "MG"
+  },
+  {
+    "id": 312352,
+    "nome": "Durandé",
+    "sigla": "MG"
+  },
+  {
+    "id": 312360,
+    "nome": "Elói Mendes",
+    "sigla": "MG"
+  },
+  {
+    "id": 312370,
+    "nome": "Engenheiro Caldas",
+    "sigla": "MG"
+  },
+  {
+    "id": 312380,
+    "nome": "Engenheiro Navarro",
+    "sigla": "MG"
+  },
+  {
+    "id": 312385,
+    "nome": "Entre Folhas",
+    "sigla": "MG"
+  },
+  {
+    "id": 312390,
+    "nome": "Entre Rios de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 312400,
+    "nome": "Ervália",
+    "sigla": "MG"
+  },
+  {
+    "id": 312410,
+    "nome": "Esmeraldas",
+    "sigla": "MG"
+  },
+  {
+    "id": 312420,
+    "nome": "Espera Feliz",
+    "sigla": "MG"
+  },
+  {
+    "id": 312430,
+    "nome": "Espinosa",
+    "sigla": "MG"
+  },
+  {
+    "id": 312440,
+    "nome": "Espírito Santo do Dourado",
+    "sigla": "MG"
+  },
+  {
+    "id": 312450,
+    "nome": "Estiva",
+    "sigla": "MG"
+  },
+  {
+    "id": 312460,
+    "nome": "Estrela Dalva",
+    "sigla": "MG"
+  },
+  {
+    "id": 312470,
+    "nome": "Estrela do Indaiá",
+    "sigla": "MG"
+  },
+  {
+    "id": 312480,
+    "nome": "Estrela do Sul",
+    "sigla": "MG"
+  },
+  {
+    "id": 312490,
+    "nome": "Eugenópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 312500,
+    "nome": "Ewbank da Câmara",
+    "sigla": "MG"
+  },
+  {
+    "id": 312510,
+    "nome": "Extrema",
+    "sigla": "MG"
+  },
+  {
+    "id": 312520,
+    "nome": "Fama",
+    "sigla": "MG"
+  },
+  {
+    "id": 312530,
+    "nome": "Faria Lemos",
+    "sigla": "MG"
+  },
+  {
+    "id": 312540,
+    "nome": "Felício dos Santos",
+    "sigla": "MG"
+  },
+  {
+    "id": 312550,
+    "nome": "São Gonçalo do Rio Preto",
+    "sigla": "MG"
+  },
+  {
+    "id": 312560,
+    "nome": "Felisburgo",
+    "sigla": "MG"
+  },
+  {
+    "id": 312570,
+    "nome": "Felixlândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 312580,
+    "nome": "Fernandes Tourinho",
+    "sigla": "MG"
+  },
+  {
+    "id": 312590,
+    "nome": "Ferros",
+    "sigla": "MG"
+  },
+  {
+    "id": 312595,
+    "nome": "Fervedouro",
+    "sigla": "MG"
+  },
+  {
+    "id": 312600,
+    "nome": "Florestal",
+    "sigla": "MG"
+  },
+  {
+    "id": 312610,
+    "nome": "Formiga",
+    "sigla": "MG"
+  },
+  {
+    "id": 312620,
+    "nome": "Formoso",
+    "sigla": "MG"
+  },
+  {
+    "id": 312630,
+    "nome": "Fortaleza de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 312640,
+    "nome": "Fortuna de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 312650,
+    "nome": "Francisco Badaró",
+    "sigla": "MG"
+  },
+  {
+    "id": 312660,
+    "nome": "Francisco Dumont",
+    "sigla": "MG"
+  },
+  {
+    "id": 312670,
+    "nome": "Francisco Sá",
+    "sigla": "MG"
+  },
+  {
+    "id": 312675,
+    "nome": "Franciscópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 312680,
+    "nome": "Frei Gaspar",
+    "sigla": "MG"
+  },
+  {
+    "id": 312690,
+    "nome": "Frei Inocêncio",
+    "sigla": "MG"
+  },
+  {
+    "id": 312695,
+    "nome": "Frei Lagonegro",
+    "sigla": "MG"
+  },
+  {
+    "id": 312700,
+    "nome": "Fronteira",
+    "sigla": "MG"
+  },
+  {
+    "id": 312705,
+    "nome": "Fronteira dos Vales",
+    "sigla": "MG"
+  },
+  {
+    "id": 312707,
+    "nome": "Fruta de Leite",
+    "sigla": "MG"
+  },
+  {
+    "id": 312710,
+    "nome": "Frutal",
+    "sigla": "MG"
+  },
+  {
+    "id": 312720,
+    "nome": "Funilândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 312730,
+    "nome": "Galiléia",
+    "sigla": "MG"
+  },
+  {
+    "id": 312733,
+    "nome": "Gameleiras",
+    "sigla": "MG"
+  },
+  {
+    "id": 312735,
+    "nome": "Glaucilândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 312737,
+    "nome": "Goiabeira",
+    "sigla": "MG"
+  },
+  {
+    "id": 312738,
+    "nome": "Goianá",
+    "sigla": "MG"
+  },
+  {
+    "id": 312740,
+    "nome": "Gonçalves",
+    "sigla": "MG"
+  },
+  {
+    "id": 312750,
+    "nome": "Gonzaga",
+    "sigla": "MG"
+  },
+  {
+    "id": 312760,
+    "nome": "Gouveia",
+    "sigla": "MG"
+  },
+  {
+    "id": 312770,
+    "nome": "Governador Valadares",
+    "sigla": "MG"
+  },
+  {
+    "id": 312780,
+    "nome": "Grão Mogol",
+    "sigla": "MG"
+  },
+  {
+    "id": 312790,
+    "nome": "Grupiara",
+    "sigla": "MG"
+  },
+  {
+    "id": 312800,
+    "nome": "Guanhães",
+    "sigla": "MG"
+  },
+  {
+    "id": 312810,
+    "nome": "Guapé",
+    "sigla": "MG"
+  },
+  {
+    "id": 312820,
+    "nome": "Guaraciaba",
+    "sigla": "MG"
+  },
+  {
+    "id": 312825,
+    "nome": "Guaraciama",
+    "sigla": "MG"
+  },
+  {
+    "id": 312830,
+    "nome": "Guaranésia",
+    "sigla": "MG"
+  },
+  {
+    "id": 312840,
+    "nome": "Guarani",
+    "sigla": "MG"
+  },
+  {
+    "id": 312850,
+    "nome": "Guarará",
+    "sigla": "MG"
+  },
+  {
+    "id": 312860,
+    "nome": "Guarda-Mor",
+    "sigla": "MG"
+  },
+  {
+    "id": 312870,
+    "nome": "Guaxupé",
+    "sigla": "MG"
+  },
+  {
+    "id": 312880,
+    "nome": "Guidoval",
+    "sigla": "MG"
+  },
+  {
+    "id": 312890,
+    "nome": "Guimarânia",
+    "sigla": "MG"
+  },
+  {
+    "id": 312900,
+    "nome": "Guiricema",
+    "sigla": "MG"
+  },
+  {
+    "id": 312910,
+    "nome": "Gurinhatã",
+    "sigla": "MG"
+  },
+  {
+    "id": 312920,
+    "nome": "Heliodora",
+    "sigla": "MG"
+  },
+  {
+    "id": 312930,
+    "nome": "Iapu",
+    "sigla": "MG"
+  },
+  {
+    "id": 312940,
+    "nome": "Ibertioga",
+    "sigla": "MG"
+  },
+  {
+    "id": 312950,
+    "nome": "Ibiá",
+    "sigla": "MG"
+  },
+  {
+    "id": 312960,
+    "nome": "Ibiaí",
+    "sigla": "MG"
+  },
+  {
+    "id": 312965,
+    "nome": "Ibiracatu",
+    "sigla": "MG"
+  },
+  {
+    "id": 312970,
+    "nome": "Ibiraci",
+    "sigla": "MG"
+  },
+  {
+    "id": 312980,
+    "nome": "Ibirité",
+    "sigla": "MG"
+  },
+  {
+    "id": 312990,
+    "nome": "Ibitiúra de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 313000,
+    "nome": "Ibituruna",
+    "sigla": "MG"
+  },
+  {
+    "id": 313005,
+    "nome": "Icaraí de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 313010,
+    "nome": "Igarapé",
+    "sigla": "MG"
+  },
+  {
+    "id": 313020,
+    "nome": "Igaratinga",
+    "sigla": "MG"
+  },
+  {
+    "id": 313030,
+    "nome": "Iguatama",
+    "sigla": "MG"
+  },
+  {
+    "id": 313040,
+    "nome": "Ijaci",
+    "sigla": "MG"
+  },
+  {
+    "id": 313050,
+    "nome": "Ilicínea",
+    "sigla": "MG"
+  },
+  {
+    "id": 313055,
+    "nome": "Imbé de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 313060,
+    "nome": "Inconfidentes",
+    "sigla": "MG"
+  },
+  {
+    "id": 313065,
+    "nome": "Indaiabira",
+    "sigla": "MG"
+  },
+  {
+    "id": 313070,
+    "nome": "Indianópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 313080,
+    "nome": "Ingaí",
+    "sigla": "MG"
+  },
+  {
+    "id": 313090,
+    "nome": "Inhapim",
+    "sigla": "MG"
+  },
+  {
+    "id": 313100,
+    "nome": "Inhaúma",
+    "sigla": "MG"
+  },
+  {
+    "id": 313110,
+    "nome": "Inimutaba",
+    "sigla": "MG"
+  },
+  {
+    "id": 313115,
+    "nome": "Ipaba",
+    "sigla": "MG"
+  },
+  {
+    "id": 313120,
+    "nome": "Ipanema",
+    "sigla": "MG"
+  },
+  {
+    "id": 313130,
+    "nome": "Ipatinga",
+    "sigla": "MG"
+  },
+  {
+    "id": 313140,
+    "nome": "Ipiaçu",
+    "sigla": "MG"
+  },
+  {
+    "id": 313150,
+    "nome": "Ipuiúna",
+    "sigla": "MG"
+  },
+  {
+    "id": 313160,
+    "nome": "Iraí de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 313170,
+    "nome": "Itabira",
+    "sigla": "MG"
+  },
+  {
+    "id": 313180,
+    "nome": "Itabirinha",
+    "sigla": "MG"
+  },
+  {
+    "id": 313190,
+    "nome": "Itabirito",
+    "sigla": "MG"
+  },
+  {
+    "id": 313200,
+    "nome": "Itacambira",
+    "sigla": "MG"
+  },
+  {
+    "id": 313210,
+    "nome": "Itacarambi",
+    "sigla": "MG"
+  },
+  {
+    "id": 313220,
+    "nome": "Itaguara",
+    "sigla": "MG"
+  },
+  {
+    "id": 313230,
+    "nome": "Itaipé",
+    "sigla": "MG"
+  },
+  {
+    "id": 313240,
+    "nome": "Itajubá",
+    "sigla": "MG"
+  },
+  {
+    "id": 313250,
+    "nome": "Itamarandiba",
+    "sigla": "MG"
+  },
+  {
+    "id": 313260,
+    "nome": "Itamarati de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 313270,
+    "nome": "Itambacuri",
+    "sigla": "MG"
+  },
+  {
+    "id": 313280,
+    "nome": "Itambé do Mato Dentro",
+    "sigla": "MG"
+  },
+  {
+    "id": 313290,
+    "nome": "Itamogi",
+    "sigla": "MG"
+  },
+  {
+    "id": 313300,
+    "nome": "Itamonte",
+    "sigla": "MG"
+  },
+  {
+    "id": 313310,
+    "nome": "Itanhandu",
+    "sigla": "MG"
+  },
+  {
+    "id": 313320,
+    "nome": "Itanhomi",
+    "sigla": "MG"
+  },
+  {
+    "id": 313330,
+    "nome": "Itaobim",
+    "sigla": "MG"
+  },
+  {
+    "id": 313340,
+    "nome": "Itapagipe",
+    "sigla": "MG"
+  },
+  {
+    "id": 313350,
+    "nome": "Itapecerica",
+    "sigla": "MG"
+  },
+  {
+    "id": 313360,
+    "nome": "Itapeva",
+    "sigla": "MG"
+  },
+  {
+    "id": 313370,
+    "nome": "Itatiaiuçu",
+    "sigla": "MG"
+  },
+  {
+    "id": 313375,
+    "nome": "Itaú de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 313380,
+    "nome": "Itaúna",
+    "sigla": "MG"
+  },
+  {
+    "id": 313390,
+    "nome": "Itaverava",
+    "sigla": "MG"
+  },
+  {
+    "id": 313400,
+    "nome": "Itinga",
+    "sigla": "MG"
+  },
+  {
+    "id": 313410,
+    "nome": "Itueta",
+    "sigla": "MG"
+  },
+  {
+    "id": 313420,
+    "nome": "Ituiutaba",
+    "sigla": "MG"
+  },
+  {
+    "id": 313430,
+    "nome": "Itumirim",
+    "sigla": "MG"
+  },
+  {
+    "id": 313440,
+    "nome": "Iturama",
+    "sigla": "MG"
+  },
+  {
+    "id": 313450,
+    "nome": "Itutinga",
+    "sigla": "MG"
+  },
+  {
+    "id": 313460,
+    "nome": "Jaboticatubas",
+    "sigla": "MG"
+  },
+  {
+    "id": 313470,
+    "nome": "Jacinto",
+    "sigla": "MG"
+  },
+  {
+    "id": 313480,
+    "nome": "Jacuí",
+    "sigla": "MG"
+  },
+  {
+    "id": 313490,
+    "nome": "Jacutinga",
+    "sigla": "MG"
+  },
+  {
+    "id": 313500,
+    "nome": "Jaguaraçu",
+    "sigla": "MG"
+  },
+  {
+    "id": 313505,
+    "nome": "Jaíba",
+    "sigla": "MG"
+  },
+  {
+    "id": 313507,
+    "nome": "Jampruca",
+    "sigla": "MG"
+  },
+  {
+    "id": 313510,
+    "nome": "Janaúba",
+    "sigla": "MG"
+  },
+  {
+    "id": 313520,
+    "nome": "Januária",
+    "sigla": "MG"
+  },
+  {
+    "id": 313530,
+    "nome": "Japaraíba",
+    "sigla": "MG"
+  },
+  {
+    "id": 313535,
+    "nome": "Japonvar",
+    "sigla": "MG"
+  },
+  {
+    "id": 313540,
+    "nome": "Jeceaba",
+    "sigla": "MG"
+  },
+  {
+    "id": 313545,
+    "nome": "Jenipapo de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 313550,
+    "nome": "Jequeri",
+    "sigla": "MG"
+  },
+  {
+    "id": 313560,
+    "nome": "Jequitaí",
+    "sigla": "MG"
+  },
+  {
+    "id": 313570,
+    "nome": "Jequitibá",
+    "sigla": "MG"
+  },
+  {
+    "id": 313580,
+    "nome": "Jequitinhonha",
+    "sigla": "MG"
+  },
+  {
+    "id": 313590,
+    "nome": "Jesuânia",
+    "sigla": "MG"
+  },
+  {
+    "id": 313600,
+    "nome": "Joaíma",
+    "sigla": "MG"
+  },
+  {
+    "id": 313610,
+    "nome": "Joanésia",
+    "sigla": "MG"
+  },
+  {
+    "id": 313620,
+    "nome": "João Monlevade",
+    "sigla": "MG"
+  },
+  {
+    "id": 313630,
+    "nome": "João Pinheiro",
+    "sigla": "MG"
+  },
+  {
+    "id": 313640,
+    "nome": "Joaquim Felício",
+    "sigla": "MG"
+  },
+  {
+    "id": 313650,
+    "nome": "Jordânia",
+    "sigla": "MG"
+  },
+  {
+    "id": 313652,
+    "nome": "José Gonçalves de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 313655,
+    "nome": "José Raydan",
+    "sigla": "MG"
+  },
+  {
+    "id": 313657,
+    "nome": "Josenópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 313660,
+    "nome": "Nova União",
+    "sigla": "MG"
+  },
+  {
+    "id": 313665,
+    "nome": "Juatuba",
+    "sigla": "MG"
+  },
+  {
+    "id": 313670,
+    "nome": "Juiz de Fora",
+    "sigla": "MG"
+  },
+  {
+    "id": 313680,
+    "nome": "Juramento",
+    "sigla": "MG"
+  },
+  {
+    "id": 313690,
+    "nome": "Juruaia",
+    "sigla": "MG"
+  },
+  {
+    "id": 313695,
+    "nome": "Juvenília",
+    "sigla": "MG"
+  },
+  {
+    "id": 313700,
+    "nome": "Ladainha",
+    "sigla": "MG"
+  },
+  {
+    "id": 313710,
+    "nome": "Lagamar",
+    "sigla": "MG"
+  },
+  {
+    "id": 313720,
+    "nome": "Lagoa da Prata",
+    "sigla": "MG"
+  },
+  {
+    "id": 313730,
+    "nome": "Lagoa dos Patos",
+    "sigla": "MG"
+  },
+  {
+    "id": 313740,
+    "nome": "Lagoa Dourada",
+    "sigla": "MG"
+  },
+  {
+    "id": 313750,
+    "nome": "Lagoa Formosa",
+    "sigla": "MG"
+  },
+  {
+    "id": 313753,
+    "nome": "Lagoa Grande",
+    "sigla": "MG"
+  },
+  {
+    "id": 313760,
+    "nome": "Lagoa Santa",
+    "sigla": "MG"
+  },
+  {
+    "id": 313770,
+    "nome": "Lajinha",
+    "sigla": "MG"
+  },
+  {
+    "id": 313780,
+    "nome": "Lambari",
+    "sigla": "MG"
+  },
+  {
+    "id": 313790,
+    "nome": "Lamim",
+    "sigla": "MG"
+  },
+  {
+    "id": 313800,
+    "nome": "Laranjal",
+    "sigla": "MG"
+  },
+  {
+    "id": 313810,
+    "nome": "Lassance",
+    "sigla": "MG"
+  },
+  {
+    "id": 313820,
+    "nome": "Lavras",
+    "sigla": "MG"
+  },
+  {
+    "id": 313830,
+    "nome": "Leandro Ferreira",
+    "sigla": "MG"
+  },
+  {
+    "id": 313835,
+    "nome": "Leme do Prado",
+    "sigla": "MG"
+  },
+  {
+    "id": 313840,
+    "nome": "Leopoldina",
+    "sigla": "MG"
+  },
+  {
+    "id": 313850,
+    "nome": "Liberdade",
+    "sigla": "MG"
+  },
+  {
+    "id": 313860,
+    "nome": "Lima Duarte",
+    "sigla": "MG"
+  },
+  {
+    "id": 313862,
+    "nome": "Limeira do Oeste",
+    "sigla": "MG"
+  },
+  {
+    "id": 313865,
+    "nome": "Lontra",
+    "sigla": "MG"
+  },
+  {
+    "id": 313867,
+    "nome": "Luisburgo",
+    "sigla": "MG"
+  },
+  {
+    "id": 313868,
+    "nome": "Luislândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 313870,
+    "nome": "Luminárias",
+    "sigla": "MG"
+  },
+  {
+    "id": 313880,
+    "nome": "Luz",
+    "sigla": "MG"
+  },
+  {
+    "id": 313890,
+    "nome": "Machacalis",
+    "sigla": "MG"
+  },
+  {
+    "id": 313900,
+    "nome": "Machado",
+    "sigla": "MG"
+  },
+  {
+    "id": 313910,
+    "nome": "Madre de Deus de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 313920,
+    "nome": "Malacacheta",
+    "sigla": "MG"
+  },
+  {
+    "id": 313925,
+    "nome": "Mamonas",
+    "sigla": "MG"
+  },
+  {
+    "id": 313930,
+    "nome": "Manga",
+    "sigla": "MG"
+  },
+  {
+    "id": 313940,
+    "nome": "Manhuaçu",
+    "sigla": "MG"
+  },
+  {
+    "id": 313950,
+    "nome": "Manhumirim",
+    "sigla": "MG"
+  },
+  {
+    "id": 313960,
+    "nome": "Mantena",
+    "sigla": "MG"
+  },
+  {
+    "id": 313970,
+    "nome": "Maravilhas",
+    "sigla": "MG"
+  },
+  {
+    "id": 313980,
+    "nome": "Mar de Espanha",
+    "sigla": "MG"
+  },
+  {
+    "id": 313990,
+    "nome": "Maria da Fé",
+    "sigla": "MG"
+  },
+  {
+    "id": 314000,
+    "nome": "Mariana",
+    "sigla": "MG"
+  },
+  {
+    "id": 314010,
+    "nome": "Marilac",
+    "sigla": "MG"
+  },
+  {
+    "id": 314015,
+    "nome": "Mário Campos",
+    "sigla": "MG"
+  },
+  {
+    "id": 314020,
+    "nome": "Maripá de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 314030,
+    "nome": "Marliéria",
+    "sigla": "MG"
+  },
+  {
+    "id": 314040,
+    "nome": "Marmelópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 314050,
+    "nome": "Martinho Campos",
+    "sigla": "MG"
+  },
+  {
+    "id": 314053,
+    "nome": "Martins Soares",
+    "sigla": "MG"
+  },
+  {
+    "id": 314055,
+    "nome": "Mata Verde",
+    "sigla": "MG"
+  },
+  {
+    "id": 314060,
+    "nome": "Materlândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 314070,
+    "nome": "Mateus Leme",
+    "sigla": "MG"
+  },
+  {
+    "id": 314080,
+    "nome": "Matias Barbosa",
+    "sigla": "MG"
+  },
+  {
+    "id": 314085,
+    "nome": "Matias Cardoso",
+    "sigla": "MG"
+  },
+  {
+    "id": 314090,
+    "nome": "Matipó",
+    "sigla": "MG"
+  },
+  {
+    "id": 314100,
+    "nome": "Mato Verde",
+    "sigla": "MG"
+  },
+  {
+    "id": 314110,
+    "nome": "Matozinhos",
+    "sigla": "MG"
+  },
+  {
+    "id": 314120,
+    "nome": "Matutina",
+    "sigla": "MG"
+  },
+  {
+    "id": 314130,
+    "nome": "Medeiros",
+    "sigla": "MG"
+  },
+  {
+    "id": 314140,
+    "nome": "Medina",
+    "sigla": "MG"
+  },
+  {
+    "id": 314150,
+    "nome": "Mendes Pimentel",
+    "sigla": "MG"
+  },
+  {
+    "id": 314160,
+    "nome": "Mercês",
+    "sigla": "MG"
+  },
+  {
+    "id": 314170,
+    "nome": "Mesquita",
+    "sigla": "MG"
+  },
+  {
+    "id": 314180,
+    "nome": "Minas Novas",
+    "sigla": "MG"
+  },
+  {
+    "id": 314190,
+    "nome": "Minduri",
+    "sigla": "MG"
+  },
+  {
+    "id": 314200,
+    "nome": "Mirabela",
+    "sigla": "MG"
+  },
+  {
+    "id": 314210,
+    "nome": "Miradouro",
+    "sigla": "MG"
+  },
+  {
+    "id": 314220,
+    "nome": "Miraí",
+    "sigla": "MG"
+  },
+  {
+    "id": 314225,
+    "nome": "Miravânia",
+    "sigla": "MG"
+  },
+  {
+    "id": 314230,
+    "nome": "Moeda",
+    "sigla": "MG"
+  },
+  {
+    "id": 314240,
+    "nome": "Moema",
+    "sigla": "MG"
+  },
+  {
+    "id": 314250,
+    "nome": "Monjolos",
+    "sigla": "MG"
+  },
+  {
+    "id": 314260,
+    "nome": "Monsenhor Paulo",
+    "sigla": "MG"
+  },
+  {
+    "id": 314270,
+    "nome": "Montalvânia",
+    "sigla": "MG"
+  },
+  {
+    "id": 314280,
+    "nome": "Monte Alegre de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 314290,
+    "nome": "Monte Azul",
+    "sigla": "MG"
+  },
+  {
+    "id": 314300,
+    "nome": "Monte Belo",
+    "sigla": "MG"
+  },
+  {
+    "id": 314310,
+    "nome": "Monte Carmelo",
+    "sigla": "MG"
+  },
+  {
+    "id": 314315,
+    "nome": "Monte Formoso",
+    "sigla": "MG"
+  },
+  {
+    "id": 314320,
+    "nome": "Monte Santo de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 314330,
+    "nome": "Montes Claros",
+    "sigla": "MG"
+  },
+  {
+    "id": 314340,
+    "nome": "Monte Sião",
+    "sigla": "MG"
+  },
+  {
+    "id": 314345,
+    "nome": "Montezuma",
+    "sigla": "MG"
+  },
+  {
+    "id": 314350,
+    "nome": "Morada Nova de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 314360,
+    "nome": "Morro da Garça",
+    "sigla": "MG"
+  },
+  {
+    "id": 314370,
+    "nome": "Morro do Pilar",
+    "sigla": "MG"
+  },
+  {
+    "id": 314380,
+    "nome": "Munhoz",
+    "sigla": "MG"
+  },
+  {
+    "id": 314390,
+    "nome": "Muriaé",
+    "sigla": "MG"
+  },
+  {
+    "id": 314400,
+    "nome": "Mutum",
+    "sigla": "MG"
+  },
+  {
+    "id": 314410,
+    "nome": "Muzambinho",
+    "sigla": "MG"
+  },
+  {
+    "id": 314420,
+    "nome": "Nacip Raydan",
+    "sigla": "MG"
+  },
+  {
+    "id": 314430,
+    "nome": "Nanuque",
+    "sigla": "MG"
+  },
+  {
+    "id": 314435,
+    "nome": "Naque",
+    "sigla": "MG"
+  },
+  {
+    "id": 314437,
+    "nome": "Natalândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 314440,
+    "nome": "Natércia",
+    "sigla": "MG"
+  },
+  {
+    "id": 314450,
+    "nome": "Nazareno",
+    "sigla": "MG"
+  },
+  {
+    "id": 314460,
+    "nome": "Nepomuceno",
+    "sigla": "MG"
+  },
+  {
+    "id": 314465,
+    "nome": "Ninheira",
+    "sigla": "MG"
+  },
+  {
+    "id": 314467,
+    "nome": "Nova Belém",
+    "sigla": "MG"
+  },
+  {
+    "id": 314470,
+    "nome": "Nova Era",
+    "sigla": "MG"
+  },
+  {
+    "id": 314480,
+    "nome": "Nova Lima",
+    "sigla": "MG"
+  },
+  {
+    "id": 314490,
+    "nome": "Nova Módica",
+    "sigla": "MG"
+  },
+  {
+    "id": 314500,
+    "nome": "Nova Ponte",
+    "sigla": "MG"
+  },
+  {
+    "id": 314505,
+    "nome": "Nova Porteirinha",
+    "sigla": "MG"
+  },
+  {
+    "id": 314510,
+    "nome": "Nova Resende",
+    "sigla": "MG"
+  },
+  {
+    "id": 314520,
+    "nome": "Nova Serrana",
+    "sigla": "MG"
+  },
+  {
+    "id": 314530,
+    "nome": "Novo Cruzeiro",
+    "sigla": "MG"
+  },
+  {
+    "id": 314535,
+    "nome": "Novo Oriente de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 314537,
+    "nome": "Novorizonte",
+    "sigla": "MG"
+  },
+  {
+    "id": 314540,
+    "nome": "Olaria",
+    "sigla": "MG"
+  },
+  {
+    "id": 314545,
+    "nome": "Olhos-d'Água",
+    "sigla": "MG"
+  },
+  {
+    "id": 314550,
+    "nome": "Olímpio Noronha",
+    "sigla": "MG"
+  },
+  {
+    "id": 314560,
+    "nome": "Oliveira",
+    "sigla": "MG"
+  },
+  {
+    "id": 314570,
+    "nome": "Oliveira Fortes",
+    "sigla": "MG"
+  },
+  {
+    "id": 314580,
+    "nome": "Onça de Pitangui",
+    "sigla": "MG"
+  },
+  {
+    "id": 314585,
+    "nome": "Oratórios",
+    "sigla": "MG"
+  },
+  {
+    "id": 314587,
+    "nome": "Orizânia",
+    "sigla": "MG"
+  },
+  {
+    "id": 314590,
+    "nome": "Ouro Branco",
+    "sigla": "MG"
+  },
+  {
+    "id": 314600,
+    "nome": "Ouro Fino",
+    "sigla": "MG"
+  },
+  {
+    "id": 314610,
+    "nome": "Ouro Preto",
+    "sigla": "MG"
+  },
+  {
+    "id": 314620,
+    "nome": "Ouro Verde de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 314625,
+    "nome": "Padre Carvalho",
+    "sigla": "MG"
+  },
+  {
+    "id": 314630,
+    "nome": "Padre Paraíso",
+    "sigla": "MG"
+  },
+  {
+    "id": 314640,
+    "nome": "Paineiras",
+    "sigla": "MG"
+  },
+  {
+    "id": 314650,
+    "nome": "Pains",
+    "sigla": "MG"
+  },
+  {
+    "id": 314655,
+    "nome": "Pai Pedro",
+    "sigla": "MG"
+  },
+  {
+    "id": 314660,
+    "nome": "Paiva",
+    "sigla": "MG"
+  },
+  {
+    "id": 314670,
+    "nome": "Palma",
+    "sigla": "MG"
+  },
+  {
+    "id": 314675,
+    "nome": "Palmópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 314690,
+    "nome": "Papagaios",
+    "sigla": "MG"
+  },
+  {
+    "id": 314700,
+    "nome": "Paracatu",
+    "sigla": "MG"
+  },
+  {
+    "id": 314710,
+    "nome": "Pará de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 314720,
+    "nome": "Paraguaçu",
+    "sigla": "MG"
+  },
+  {
+    "id": 314730,
+    "nome": "Paraisópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 314740,
+    "nome": "Paraopeba",
+    "sigla": "MG"
+  },
+  {
+    "id": 314750,
+    "nome": "Passabém",
+    "sigla": "MG"
+  },
+  {
+    "id": 314760,
+    "nome": "Passa Quatro",
+    "sigla": "MG"
+  },
+  {
+    "id": 314770,
+    "nome": "Passa Tempo",
+    "sigla": "MG"
+  },
+  {
+    "id": 314780,
+    "nome": "Passa Vinte",
+    "sigla": "MG"
+  },
+  {
+    "id": 314790,
+    "nome": "Passos",
+    "sigla": "MG"
+  },
+  {
+    "id": 314795,
+    "nome": "Patis",
+    "sigla": "MG"
+  },
+  {
+    "id": 314800,
+    "nome": "Patos de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 314810,
+    "nome": "Patrocínio",
+    "sigla": "MG"
+  },
+  {
+    "id": 314820,
+    "nome": "Patrocínio do Muriaé",
+    "sigla": "MG"
+  },
+  {
+    "id": 314830,
+    "nome": "Paula Cândido",
+    "sigla": "MG"
+  },
+  {
+    "id": 314840,
+    "nome": "Paulistas",
+    "sigla": "MG"
+  },
+  {
+    "id": 314850,
+    "nome": "Pavão",
+    "sigla": "MG"
+  },
+  {
+    "id": 314860,
+    "nome": "Peçanha",
+    "sigla": "MG"
+  },
+  {
+    "id": 314870,
+    "nome": "Pedra Azul",
+    "sigla": "MG"
+  },
+  {
+    "id": 314875,
+    "nome": "Pedra Bonita",
+    "sigla": "MG"
+  },
+  {
+    "id": 314880,
+    "nome": "Pedra do Anta",
+    "sigla": "MG"
+  },
+  {
+    "id": 314890,
+    "nome": "Pedra do Indaiá",
+    "sigla": "MG"
+  },
+  {
+    "id": 314900,
+    "nome": "Pedra Dourada",
+    "sigla": "MG"
+  },
+  {
+    "id": 314910,
+    "nome": "Pedralva",
+    "sigla": "MG"
+  },
+  {
+    "id": 314915,
+    "nome": "Pedras de Maria da Cruz",
+    "sigla": "MG"
+  },
+  {
+    "id": 314920,
+    "nome": "Pedrinópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 314930,
+    "nome": "Pedro Leopoldo",
+    "sigla": "MG"
+  },
+  {
+    "id": 314940,
+    "nome": "Pedro Teixeira",
+    "sigla": "MG"
+  },
+  {
+    "id": 314950,
+    "nome": "Pequeri",
+    "sigla": "MG"
+  },
+  {
+    "id": 314960,
+    "nome": "Pequi",
+    "sigla": "MG"
+  },
+  {
+    "id": 314970,
+    "nome": "Perdigão",
+    "sigla": "MG"
+  },
+  {
+    "id": 314980,
+    "nome": "Perdizes",
+    "sigla": "MG"
+  },
+  {
+    "id": 314990,
+    "nome": "Perdões",
+    "sigla": "MG"
+  },
+  {
+    "id": 314995,
+    "nome": "Periquito",
+    "sigla": "MG"
+  },
+  {
+    "id": 315000,
+    "nome": "Pescador",
+    "sigla": "MG"
+  },
+  {
+    "id": 315010,
+    "nome": "Piau",
+    "sigla": "MG"
+  },
+  {
+    "id": 315015,
+    "nome": "Piedade de Caratinga",
+    "sigla": "MG"
+  },
+  {
+    "id": 315020,
+    "nome": "Piedade de Ponte Nova",
+    "sigla": "MG"
+  },
+  {
+    "id": 315030,
+    "nome": "Piedade do Rio Grande",
+    "sigla": "MG"
+  },
+  {
+    "id": 315040,
+    "nome": "Piedade dos Gerais",
+    "sigla": "MG"
+  },
+  {
+    "id": 315050,
+    "nome": "Pimenta",
+    "sigla": "MG"
+  },
+  {
+    "id": 315053,
+    "nome": "Pingo-d'Água",
+    "sigla": "MG"
+  },
+  {
+    "id": 315057,
+    "nome": "Pintópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 315060,
+    "nome": "Piracema",
+    "sigla": "MG"
+  },
+  {
+    "id": 315070,
+    "nome": "Pirajuba",
+    "sigla": "MG"
+  },
+  {
+    "id": 315080,
+    "nome": "Piranga",
+    "sigla": "MG"
+  },
+  {
+    "id": 315090,
+    "nome": "Piranguçu",
+    "sigla": "MG"
+  },
+  {
+    "id": 315100,
+    "nome": "Piranguinho",
+    "sigla": "MG"
+  },
+  {
+    "id": 315110,
+    "nome": "Pirapetinga",
+    "sigla": "MG"
+  },
+  {
+    "id": 315120,
+    "nome": "Pirapora",
+    "sigla": "MG"
+  },
+  {
+    "id": 315130,
+    "nome": "Piraúba",
+    "sigla": "MG"
+  },
+  {
+    "id": 315140,
+    "nome": "Pitangui",
+    "sigla": "MG"
+  },
+  {
+    "id": 315150,
+    "nome": "Piumhi",
+    "sigla": "MG"
+  },
+  {
+    "id": 315160,
+    "nome": "Planura",
+    "sigla": "MG"
+  },
+  {
+    "id": 315170,
+    "nome": "Poço Fundo",
+    "sigla": "MG"
+  },
+  {
+    "id": 315180,
+    "nome": "Poços de Caldas",
+    "sigla": "MG"
+  },
+  {
+    "id": 315190,
+    "nome": "Pocrane",
+    "sigla": "MG"
+  },
+  {
+    "id": 315200,
+    "nome": "Pompéu",
+    "sigla": "MG"
+  },
+  {
+    "id": 315210,
+    "nome": "Ponte Nova",
+    "sigla": "MG"
+  },
+  {
+    "id": 315213,
+    "nome": "Ponto Chique",
+    "sigla": "MG"
+  },
+  {
+    "id": 315217,
+    "nome": "Ponto dos Volantes",
+    "sigla": "MG"
+  },
+  {
+    "id": 315220,
+    "nome": "Porteirinha",
+    "sigla": "MG"
+  },
+  {
+    "id": 315230,
+    "nome": "Porto Firme",
+    "sigla": "MG"
+  },
+  {
+    "id": 315240,
+    "nome": "Poté",
+    "sigla": "MG"
+  },
+  {
+    "id": 315250,
+    "nome": "Pouso Alegre",
+    "sigla": "MG"
+  },
+  {
+    "id": 315260,
+    "nome": "Pouso Alto",
+    "sigla": "MG"
+  },
+  {
+    "id": 315270,
+    "nome": "Prados",
+    "sigla": "MG"
+  },
+  {
+    "id": 315280,
+    "nome": "Prata",
+    "sigla": "MG"
+  },
+  {
+    "id": 315290,
+    "nome": "Pratápolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 315300,
+    "nome": "Pratinha",
+    "sigla": "MG"
+  },
+  {
+    "id": 315310,
+    "nome": "Presidente Bernardes",
+    "sigla": "MG"
+  },
+  {
+    "id": 315320,
+    "nome": "Presidente Juscelino",
+    "sigla": "MG"
+  },
+  {
+    "id": 315330,
+    "nome": "Presidente Kubitschek",
+    "sigla": "MG"
+  },
+  {
+    "id": 315340,
+    "nome": "Presidente Olegário",
+    "sigla": "MG"
+  },
+  {
+    "id": 315350,
+    "nome": "Alto Jequitibá",
+    "sigla": "MG"
+  },
+  {
+    "id": 315360,
+    "nome": "Prudente de Morais",
+    "sigla": "MG"
+  },
+  {
+    "id": 315370,
+    "nome": "Quartel Geral",
+    "sigla": "MG"
+  },
+  {
+    "id": 315380,
+    "nome": "Queluzito",
+    "sigla": "MG"
+  },
+  {
+    "id": 315390,
+    "nome": "Raposos",
+    "sigla": "MG"
+  },
+  {
+    "id": 315400,
+    "nome": "Raul Soares",
+    "sigla": "MG"
+  },
+  {
+    "id": 315410,
+    "nome": "Recreio",
+    "sigla": "MG"
+  },
+  {
+    "id": 315415,
+    "nome": "Reduto",
+    "sigla": "MG"
+  },
+  {
+    "id": 315420,
+    "nome": "Resende Costa",
+    "sigla": "MG"
+  },
+  {
+    "id": 315430,
+    "nome": "Resplendor",
+    "sigla": "MG"
+  },
+  {
+    "id": 315440,
+    "nome": "Ressaquinha",
+    "sigla": "MG"
+  },
+  {
+    "id": 315445,
+    "nome": "Riachinho",
+    "sigla": "MG"
+  },
+  {
+    "id": 315450,
+    "nome": "Riacho dos Machados",
+    "sigla": "MG"
+  },
+  {
+    "id": 315460,
+    "nome": "Ribeirão das Neves",
+    "sigla": "MG"
+  },
+  {
+    "id": 315470,
+    "nome": "Ribeirão Vermelho",
+    "sigla": "MG"
+  },
+  {
+    "id": 315480,
+    "nome": "Rio Acima",
+    "sigla": "MG"
+  },
+  {
+    "id": 315490,
+    "nome": "Rio Casca",
+    "sigla": "MG"
+  },
+  {
+    "id": 315500,
+    "nome": "Rio Doce",
+    "sigla": "MG"
+  },
+  {
+    "id": 315510,
+    "nome": "Rio do Prado",
+    "sigla": "MG"
+  },
+  {
+    "id": 315520,
+    "nome": "Rio Espera",
+    "sigla": "MG"
+  },
+  {
+    "id": 315530,
+    "nome": "Rio Manso",
+    "sigla": "MG"
+  },
+  {
+    "id": 315540,
+    "nome": "Rio Novo",
+    "sigla": "MG"
+  },
+  {
+    "id": 315550,
+    "nome": "Rio Paranaíba",
+    "sigla": "MG"
+  },
+  {
+    "id": 315560,
+    "nome": "Rio Pardo de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 315570,
+    "nome": "Rio Piracicaba",
+    "sigla": "MG"
+  },
+  {
+    "id": 315580,
+    "nome": "Rio Pomba",
+    "sigla": "MG"
+  },
+  {
+    "id": 315590,
+    "nome": "Rio Preto",
+    "sigla": "MG"
+  },
+  {
+    "id": 315600,
+    "nome": "Rio Vermelho",
+    "sigla": "MG"
+  },
+  {
+    "id": 315610,
+    "nome": "Ritápolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 315620,
+    "nome": "Rochedo de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 315630,
+    "nome": "Rodeiro",
+    "sigla": "MG"
+  },
+  {
+    "id": 315640,
+    "nome": "Romaria",
+    "sigla": "MG"
+  },
+  {
+    "id": 315645,
+    "nome": "Rosário da Limeira",
+    "sigla": "MG"
+  },
+  {
+    "id": 315650,
+    "nome": "Rubelita",
+    "sigla": "MG"
+  },
+  {
+    "id": 315660,
+    "nome": "Rubim",
+    "sigla": "MG"
+  },
+  {
+    "id": 315670,
+    "nome": "Sabará",
+    "sigla": "MG"
+  },
+  {
+    "id": 315680,
+    "nome": "Sabinópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 315690,
+    "nome": "Sacramento",
+    "sigla": "MG"
+  },
+  {
+    "id": 315700,
+    "nome": "Salinas",
+    "sigla": "MG"
+  },
+  {
+    "id": 315710,
+    "nome": "Salto da Divisa",
+    "sigla": "MG"
+  },
+  {
+    "id": 315720,
+    "nome": "Santa Bárbara",
+    "sigla": "MG"
+  },
+  {
+    "id": 315725,
+    "nome": "Santa Bárbara do Leste",
+    "sigla": "MG"
+  },
+  {
+    "id": 315727,
+    "nome": "Santa Bárbara do Monte Verde",
+    "sigla": "MG"
+  },
+  {
+    "id": 315730,
+    "nome": "Santa Bárbara do Tugúrio",
+    "sigla": "MG"
+  },
+  {
+    "id": 315733,
+    "nome": "Santa Cruz de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 315737,
+    "nome": "Santa Cruz de Salinas",
+    "sigla": "MG"
+  },
+  {
+    "id": 315740,
+    "nome": "Santa Cruz do Escalvado",
+    "sigla": "MG"
+  },
+  {
+    "id": 315750,
+    "nome": "Santa Efigênia de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 315760,
+    "nome": "Santa Fé de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 315765,
+    "nome": "Santa Helena de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 315770,
+    "nome": "Santa Juliana",
+    "sigla": "MG"
+  },
+  {
+    "id": 315780,
+    "nome": "Santa Luzia",
+    "sigla": "MG"
+  },
+  {
+    "id": 315790,
+    "nome": "Santa Margarida",
+    "sigla": "MG"
+  },
+  {
+    "id": 315800,
+    "nome": "Santa Maria de Itabira",
+    "sigla": "MG"
+  },
+  {
+    "id": 315810,
+    "nome": "Santa Maria do Salto",
+    "sigla": "MG"
+  },
+  {
+    "id": 315820,
+    "nome": "Santa Maria do Suaçuí",
+    "sigla": "MG"
+  },
+  {
+    "id": 315830,
+    "nome": "Santana da Vargem",
+    "sigla": "MG"
+  },
+  {
+    "id": 315840,
+    "nome": "Santana de Cataguases",
+    "sigla": "MG"
+  },
+  {
+    "id": 315850,
+    "nome": "Santana de Pirapama",
+    "sigla": "MG"
+  },
+  {
+    "id": 315860,
+    "nome": "Santana do Deserto",
+    "sigla": "MG"
+  },
+  {
+    "id": 315870,
+    "nome": "Santana do Garambéu",
+    "sigla": "MG"
+  },
+  {
+    "id": 315880,
+    "nome": "Santana do Jacaré",
+    "sigla": "MG"
+  },
+  {
+    "id": 315890,
+    "nome": "Santana do Manhuaçu",
+    "sigla": "MG"
+  },
+  {
+    "id": 315895,
+    "nome": "Santana do Paraíso",
+    "sigla": "MG"
+  },
+  {
+    "id": 315900,
+    "nome": "Santana do Riacho",
+    "sigla": "MG"
+  },
+  {
+    "id": 315910,
+    "nome": "Santana dos Montes",
+    "sigla": "MG"
+  },
+  {
+    "id": 315920,
+    "nome": "Santa Rita de Caldas",
+    "sigla": "MG"
+  },
+  {
+    "id": 315930,
+    "nome": "Santa Rita de Jacutinga",
+    "sigla": "MG"
+  },
+  {
+    "id": 315935,
+    "nome": "Santa Rita de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 315940,
+    "nome": "Santa Rita de Ibitipoca",
+    "sigla": "MG"
+  },
+  {
+    "id": 315950,
+    "nome": "Santa Rita do Itueto",
+    "sigla": "MG"
+  },
+  {
+    "id": 315960,
+    "nome": "Santa Rita do Sapucaí",
+    "sigla": "MG"
+  },
+  {
+    "id": 315970,
+    "nome": "Santa Rosa da Serra",
+    "sigla": "MG"
+  },
+  {
+    "id": 315980,
+    "nome": "Santa Vitória",
+    "sigla": "MG"
+  },
+  {
+    "id": 315990,
+    "nome": "Santo Antônio do Amparo",
+    "sigla": "MG"
+  },
+  {
+    "id": 316000,
+    "nome": "Santo Antônio do Aventureiro",
+    "sigla": "MG"
+  },
+  {
+    "id": 316010,
+    "nome": "Santo Antônio do Grama",
+    "sigla": "MG"
+  },
+  {
+    "id": 316020,
+    "nome": "Santo Antônio do Itambé",
+    "sigla": "MG"
+  },
+  {
+    "id": 316030,
+    "nome": "Santo Antônio do Jacinto",
+    "sigla": "MG"
+  },
+  {
+    "id": 316040,
+    "nome": "Santo Antônio do Monte",
+    "sigla": "MG"
+  },
+  {
+    "id": 316045,
+    "nome": "Santo Antônio do Retiro",
+    "sigla": "MG"
+  },
+  {
+    "id": 316050,
+    "nome": "Santo Antônio do Rio Abaixo",
+    "sigla": "MG"
+  },
+  {
+    "id": 316060,
+    "nome": "Santo Hipólito",
+    "sigla": "MG"
+  },
+  {
+    "id": 316070,
+    "nome": "Santos Dumont",
+    "sigla": "MG"
+  },
+  {
+    "id": 316080,
+    "nome": "São Bento Abade",
+    "sigla": "MG"
+  },
+  {
+    "id": 316090,
+    "nome": "São Brás do Suaçuí",
+    "sigla": "MG"
+  },
+  {
+    "id": 316095,
+    "nome": "São Domingos das Dores",
+    "sigla": "MG"
+  },
+  {
+    "id": 316100,
+    "nome": "São Domingos do Prata",
+    "sigla": "MG"
+  },
+  {
+    "id": 316105,
+    "nome": "São Félix de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 316110,
+    "nome": "São Francisco",
+    "sigla": "MG"
+  },
+  {
+    "id": 316120,
+    "nome": "São Francisco de Paula",
+    "sigla": "MG"
+  },
+  {
+    "id": 316130,
+    "nome": "São Francisco de Sales",
+    "sigla": "MG"
+  },
+  {
+    "id": 316140,
+    "nome": "São Francisco do Glória",
+    "sigla": "MG"
+  },
+  {
+    "id": 316150,
+    "nome": "São Geraldo",
+    "sigla": "MG"
+  },
+  {
+    "id": 316160,
+    "nome": "São Geraldo da Piedade",
+    "sigla": "MG"
+  },
+  {
+    "id": 316165,
+    "nome": "São Geraldo do Baixio",
+    "sigla": "MG"
+  },
+  {
+    "id": 316170,
+    "nome": "São Gonçalo do Abaeté",
+    "sigla": "MG"
+  },
+  {
+    "id": 316180,
+    "nome": "São Gonçalo do Pará",
+    "sigla": "MG"
+  },
+  {
+    "id": 316190,
+    "nome": "São Gonçalo do Rio Abaixo",
+    "sigla": "MG"
+  },
+  {
+    "id": 316200,
+    "nome": "São Gonçalo do Sapucaí",
+    "sigla": "MG"
+  },
+  {
+    "id": 316210,
+    "nome": "São Gotardo",
+    "sigla": "MG"
+  },
+  {
+    "id": 316220,
+    "nome": "São João Batista do Glória",
+    "sigla": "MG"
+  },
+  {
+    "id": 316225,
+    "nome": "São João da Lagoa",
+    "sigla": "MG"
+  },
+  {
+    "id": 316230,
+    "nome": "São João da Mata",
+    "sigla": "MG"
+  },
+  {
+    "id": 316240,
+    "nome": "São João da Ponte",
+    "sigla": "MG"
+  },
+  {
+    "id": 316245,
+    "nome": "São João das Missões",
+    "sigla": "MG"
+  },
+  {
+    "id": 316250,
+    "nome": "São João del Rei",
+    "sigla": "MG"
+  },
+  {
+    "id": 316255,
+    "nome": "São João do Manhuaçu",
+    "sigla": "MG"
+  },
+  {
+    "id": 316257,
+    "nome": "São João do Manteninha",
+    "sigla": "MG"
+  },
+  {
+    "id": 316260,
+    "nome": "São João do Oriente",
+    "sigla": "MG"
+  },
+  {
+    "id": 316265,
+    "nome": "São João do Pacuí",
+    "sigla": "MG"
+  },
+  {
+    "id": 316270,
+    "nome": "São João do Paraíso",
+    "sigla": "MG"
+  },
+  {
+    "id": 316280,
+    "nome": "São João Evangelista",
+    "sigla": "MG"
+  },
+  {
+    "id": 316290,
+    "nome": "São João Nepomuceno",
+    "sigla": "MG"
+  },
+  {
+    "id": 316292,
+    "nome": "São Joaquim de Bicas",
+    "sigla": "MG"
+  },
+  {
+    "id": 316294,
+    "nome": "São José da Barra",
+    "sigla": "MG"
+  },
+  {
+    "id": 316295,
+    "nome": "São José da Lapa",
+    "sigla": "MG"
+  },
+  {
+    "id": 316300,
+    "nome": "São José da Safira",
+    "sigla": "MG"
+  },
+  {
+    "id": 316310,
+    "nome": "São José da Varginha",
+    "sigla": "MG"
+  },
+  {
+    "id": 316320,
+    "nome": "São José do Alegre",
+    "sigla": "MG"
+  },
+  {
+    "id": 316330,
+    "nome": "São José do Divino",
+    "sigla": "MG"
+  },
+  {
+    "id": 316340,
+    "nome": "São José do Goiabal",
+    "sigla": "MG"
+  },
+  {
+    "id": 316350,
+    "nome": "São José do Jacuri",
+    "sigla": "MG"
+  },
+  {
+    "id": 316360,
+    "nome": "São José do Mantimento",
+    "sigla": "MG"
+  },
+  {
+    "id": 316370,
+    "nome": "São Lourenço",
+    "sigla": "MG"
+  },
+  {
+    "id": 316380,
+    "nome": "São Miguel do Anta",
+    "sigla": "MG"
+  },
+  {
+    "id": 316390,
+    "nome": "São Pedro da União",
+    "sigla": "MG"
+  },
+  {
+    "id": 316400,
+    "nome": "São Pedro dos Ferros",
+    "sigla": "MG"
+  },
+  {
+    "id": 316410,
+    "nome": "São Pedro do Suaçuí",
+    "sigla": "MG"
+  },
+  {
+    "id": 316420,
+    "nome": "São Romão",
+    "sigla": "MG"
+  },
+  {
+    "id": 316430,
+    "nome": "São Roque de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 316440,
+    "nome": "São Sebastião da Bela Vista",
+    "sigla": "MG"
+  },
+  {
+    "id": 316443,
+    "nome": "São Sebastião da Vargem Alegre",
+    "sigla": "MG"
+  },
+  {
+    "id": 316447,
+    "nome": "São Sebastião do Anta",
+    "sigla": "MG"
+  },
+  {
+    "id": 316450,
+    "nome": "São Sebastião do Maranhão",
+    "sigla": "MG"
+  },
+  {
+    "id": 316460,
+    "nome": "São Sebastião do Oeste",
+    "sigla": "MG"
+  },
+  {
+    "id": 316470,
+    "nome": "São Sebastião do Paraíso",
+    "sigla": "MG"
+  },
+  {
+    "id": 316480,
+    "nome": "São Sebastião do Rio Preto",
+    "sigla": "MG"
+  },
+  {
+    "id": 316490,
+    "nome": "São Sebastião do Rio Verde",
+    "sigla": "MG"
+  },
+  {
+    "id": 316500,
+    "nome": "São Tiago",
+    "sigla": "MG"
+  },
+  {
+    "id": 316510,
+    "nome": "São Tomás de Aquino",
+    "sigla": "MG"
+  },
+  {
+    "id": 316520,
+    "nome": "São Tomé das Letras",
+    "sigla": "MG"
+  },
+  {
+    "id": 316530,
+    "nome": "São Vicente de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 316540,
+    "nome": "Sapucaí-Mirim",
+    "sigla": "MG"
+  },
+  {
+    "id": 316550,
+    "nome": "Sardoá",
+    "sigla": "MG"
+  },
+  {
+    "id": 316553,
+    "nome": "Sarzedo",
+    "sigla": "MG"
+  },
+  {
+    "id": 316555,
+    "nome": "Setubinha",
+    "sigla": "MG"
+  },
+  {
+    "id": 316556,
+    "nome": "Sem-Peixe",
+    "sigla": "MG"
+  },
+  {
+    "id": 316557,
+    "nome": "Senador Amaral",
+    "sigla": "MG"
+  },
+  {
+    "id": 316560,
+    "nome": "Senador Cortes",
+    "sigla": "MG"
+  },
+  {
+    "id": 316570,
+    "nome": "Senador Firmino",
+    "sigla": "MG"
+  },
+  {
+    "id": 316580,
+    "nome": "Senador José Bento",
+    "sigla": "MG"
+  },
+  {
+    "id": 316590,
+    "nome": "Senador Modestino Gonçalves",
+    "sigla": "MG"
+  },
+  {
+    "id": 316600,
+    "nome": "Senhora de Oliveira",
+    "sigla": "MG"
+  },
+  {
+    "id": 316610,
+    "nome": "Senhora do Porto",
+    "sigla": "MG"
+  },
+  {
+    "id": 316620,
+    "nome": "Senhora dos Remédios",
+    "sigla": "MG"
+  },
+  {
+    "id": 316630,
+    "nome": "Sericita",
+    "sigla": "MG"
+  },
+  {
+    "id": 316640,
+    "nome": "Seritinga",
+    "sigla": "MG"
+  },
+  {
+    "id": 316650,
+    "nome": "Serra Azul de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 316660,
+    "nome": "Serra da Saudade",
+    "sigla": "MG"
+  },
+  {
+    "id": 316670,
+    "nome": "Serra dos Aimorés",
+    "sigla": "MG"
+  },
+  {
+    "id": 316680,
+    "nome": "Serra do Salitre",
+    "sigla": "MG"
+  },
+  {
+    "id": 316690,
+    "nome": "Serrania",
+    "sigla": "MG"
+  },
+  {
+    "id": 316695,
+    "nome": "Serranópolis de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 316700,
+    "nome": "Serranos",
+    "sigla": "MG"
+  },
+  {
+    "id": 316710,
+    "nome": "Serro",
+    "sigla": "MG"
+  },
+  {
+    "id": 316720,
+    "nome": "Sete Lagoas",
+    "sigla": "MG"
+  },
+  {
+    "id": 316730,
+    "nome": "Silveirânia",
+    "sigla": "MG"
+  },
+  {
+    "id": 316740,
+    "nome": "Silvianópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 316750,
+    "nome": "Simão Pereira",
+    "sigla": "MG"
+  },
+  {
+    "id": 316760,
+    "nome": "Simonésia",
+    "sigla": "MG"
+  },
+  {
+    "id": 316770,
+    "nome": "Sobrália",
+    "sigla": "MG"
+  },
+  {
+    "id": 316780,
+    "nome": "Soledade de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 316790,
+    "nome": "Tabuleiro",
+    "sigla": "MG"
+  },
+  {
+    "id": 316800,
+    "nome": "Taiobeiras",
+    "sigla": "MG"
+  },
+  {
+    "id": 316805,
+    "nome": "Taparuba",
+    "sigla": "MG"
+  },
+  {
+    "id": 316810,
+    "nome": "Tapira",
+    "sigla": "MG"
+  },
+  {
+    "id": 316820,
+    "nome": "Tapiraí",
+    "sigla": "MG"
+  },
+  {
+    "id": 316830,
+    "nome": "Taquaraçu de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 316840,
+    "nome": "Tarumirim",
+    "sigla": "MG"
+  },
+  {
+    "id": 316850,
+    "nome": "Teixeiras",
+    "sigla": "MG"
+  },
+  {
+    "id": 316860,
+    "nome": "Teófilo Otoni",
+    "sigla": "MG"
+  },
+  {
+    "id": 316870,
+    "nome": "Timóteo",
+    "sigla": "MG"
+  },
+  {
+    "id": 316880,
+    "nome": "Tiradentes",
+    "sigla": "MG"
+  },
+  {
+    "id": 316890,
+    "nome": "Tiros",
+    "sigla": "MG"
+  },
+  {
+    "id": 316900,
+    "nome": "Tocantins",
+    "sigla": "MG"
+  },
+  {
+    "id": 316905,
+    "nome": "Tocos do Moji",
+    "sigla": "MG"
+  },
+  {
+    "id": 316910,
+    "nome": "Toledo",
+    "sigla": "MG"
+  },
+  {
+    "id": 316920,
+    "nome": "Tombos",
+    "sigla": "MG"
+  },
+  {
+    "id": 316930,
+    "nome": "Três Corações",
+    "sigla": "MG"
+  },
+  {
+    "id": 316935,
+    "nome": "Três Marias",
+    "sigla": "MG"
+  },
+  {
+    "id": 316940,
+    "nome": "Três Pontas",
+    "sigla": "MG"
+  },
+  {
+    "id": 316950,
+    "nome": "Tumiritinga",
+    "sigla": "MG"
+  },
+  {
+    "id": 316960,
+    "nome": "Tupaciguara",
+    "sigla": "MG"
+  },
+  {
+    "id": 316970,
+    "nome": "Turmalina",
+    "sigla": "MG"
+  },
+  {
+    "id": 316980,
+    "nome": "Turvolândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 316990,
+    "nome": "Ubá",
+    "sigla": "MG"
+  },
+  {
+    "id": 317000,
+    "nome": "Ubaí",
+    "sigla": "MG"
+  },
+  {
+    "id": 317005,
+    "nome": "Ubaporanga",
+    "sigla": "MG"
+  },
+  {
+    "id": 317010,
+    "nome": "Uberaba",
+    "sigla": "MG"
+  },
+  {
+    "id": 317020,
+    "nome": "Uberlândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 317030,
+    "nome": "Umburatiba",
+    "sigla": "MG"
+  },
+  {
+    "id": 317040,
+    "nome": "Unaí",
+    "sigla": "MG"
+  },
+  {
+    "id": 317043,
+    "nome": "União de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 317047,
+    "nome": "Uruana de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 317050,
+    "nome": "Urucânia",
+    "sigla": "MG"
+  },
+  {
+    "id": 317052,
+    "nome": "Urucuia",
+    "sigla": "MG"
+  },
+  {
+    "id": 317057,
+    "nome": "Vargem Alegre",
+    "sigla": "MG"
+  },
+  {
+    "id": 317060,
+    "nome": "Vargem Bonita",
+    "sigla": "MG"
+  },
+  {
+    "id": 317065,
+    "nome": "Vargem Grande do Rio Pardo",
+    "sigla": "MG"
+  },
+  {
+    "id": 317070,
+    "nome": "Varginha",
+    "sigla": "MG"
+  },
+  {
+    "id": 317075,
+    "nome": "Varjão de Minas",
+    "sigla": "MG"
+  },
+  {
+    "id": 317080,
+    "nome": "Várzea da Palma",
+    "sigla": "MG"
+  },
+  {
+    "id": 317090,
+    "nome": "Varzelândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 317100,
+    "nome": "Vazante",
+    "sigla": "MG"
+  },
+  {
+    "id": 317103,
+    "nome": "Verdelândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 317107,
+    "nome": "Veredinha",
+    "sigla": "MG"
+  },
+  {
+    "id": 317110,
+    "nome": "Veríssimo",
+    "sigla": "MG"
+  },
+  {
+    "id": 317115,
+    "nome": "Vermelho Novo",
+    "sigla": "MG"
+  },
+  {
+    "id": 317120,
+    "nome": "Vespasiano",
+    "sigla": "MG"
+  },
+  {
+    "id": 317130,
+    "nome": "Viçosa",
+    "sigla": "MG"
+  },
+  {
+    "id": 317140,
+    "nome": "Vieiras",
+    "sigla": "MG"
+  },
+  {
+    "id": 317150,
+    "nome": "Mathias Lobato",
+    "sigla": "MG"
+  },
+  {
+    "id": 317160,
+    "nome": "Virgem da Lapa",
+    "sigla": "MG"
+  },
+  {
+    "id": 317170,
+    "nome": "Virgínia",
+    "sigla": "MG"
+  },
+  {
+    "id": 317180,
+    "nome": "Virginópolis",
+    "sigla": "MG"
+  },
+  {
+    "id": 317190,
+    "nome": "Virgolândia",
+    "sigla": "MG"
+  },
+  {
+    "id": 317200,
+    "nome": "Visconde do Rio Branco",
+    "sigla": "MG"
+  },
+  {
+    "id": 317210,
+    "nome": "Volta Grande",
+    "sigla": "MG"
+  },
+  {
+    "id": 317220,
+    "nome": "Wenceslau Braz",
+    "sigla": "MG"
+  },
+  {
+    "id": 320010,
+    "nome": "Afonso Cláudio",
+    "sigla": "ES"
+  },
+  {
+    "id": 320013,
+    "nome": "Águia Branca",
+    "sigla": "ES"
+  },
+  {
+    "id": 320016,
+    "nome": "Água Doce do Norte",
+    "sigla": "ES"
+  },
+  {
+    "id": 320020,
+    "nome": "Alegre",
+    "sigla": "ES"
+  },
+  {
+    "id": 320030,
+    "nome": "Alfredo Chaves",
+    "sigla": "ES"
+  },
+  {
+    "id": 320035,
+    "nome": "Alto Rio Novo",
+    "sigla": "ES"
+  },
+  {
+    "id": 320040,
+    "nome": "Anchieta",
+    "sigla": "ES"
+  },
+  {
+    "id": 320050,
+    "nome": "Apiacá",
+    "sigla": "ES"
+  },
+  {
+    "id": 320060,
+    "nome": "Aracruz",
+    "sigla": "ES"
+  },
+  {
+    "id": 320070,
+    "nome": "Atílio Vivácqua",
+    "sigla": "ES"
+  },
+  {
+    "id": 320080,
+    "nome": "Baixo Guandu",
+    "sigla": "ES"
+  },
+  {
+    "id": 320090,
+    "nome": "Barra de São Francisco",
+    "sigla": "ES"
+  },
+  {
+    "id": 320100,
+    "nome": "Boa Esperança",
+    "sigla": "ES"
+  },
+  {
+    "id": 320110,
+    "nome": "Bom Jesus do Norte",
+    "sigla": "ES"
+  },
+  {
+    "id": 320115,
+    "nome": "Brejetuba",
+    "sigla": "ES"
+  },
+  {
+    "id": 320120,
+    "nome": "Cachoeiro de Itapemirim",
+    "sigla": "ES"
+  },
+  {
+    "id": 320130,
+    "nome": "Cariacica",
+    "sigla": "ES"
+  },
+  {
+    "id": 320140,
+    "nome": "Castelo",
+    "sigla": "ES"
+  },
+  {
+    "id": 320150,
+    "nome": "Colatina",
+    "sigla": "ES"
+  },
+  {
+    "id": 320160,
+    "nome": "Conceição da Barra",
+    "sigla": "ES"
+  },
+  {
+    "id": 320170,
+    "nome": "Conceição do Castelo",
+    "sigla": "ES"
+  },
+  {
+    "id": 320180,
+    "nome": "Divino de São Lourenço",
+    "sigla": "ES"
+  },
+  {
+    "id": 320190,
+    "nome": "Domingos Martins",
+    "sigla": "ES"
+  },
+  {
+    "id": 320200,
+    "nome": "Dores do Rio Preto",
+    "sigla": "ES"
+  },
+  {
+    "id": 320210,
+    "nome": "Ecoporanga",
+    "sigla": "ES"
+  },
+  {
+    "id": 320220,
+    "nome": "Fundão",
+    "sigla": "ES"
+  },
+  {
+    "id": 320225,
+    "nome": "Governador Lindenberg",
+    "sigla": "ES"
+  },
+  {
+    "id": 320230,
+    "nome": "Guaçuí",
+    "sigla": "ES"
+  },
+  {
+    "id": 320240,
+    "nome": "Guarapari",
+    "sigla": "ES"
+  },
+  {
+    "id": 320245,
+    "nome": "Ibatiba",
+    "sigla": "ES"
+  },
+  {
+    "id": 320250,
+    "nome": "Ibiraçu",
+    "sigla": "ES"
+  },
+  {
+    "id": 320255,
+    "nome": "Ibitirama",
+    "sigla": "ES"
+  },
+  {
+    "id": 320260,
+    "nome": "Iconha",
+    "sigla": "ES"
+  },
+  {
+    "id": 320265,
+    "nome": "Irupi",
+    "sigla": "ES"
+  },
+  {
+    "id": 320270,
+    "nome": "Itaguaçu",
+    "sigla": "ES"
+  },
+  {
+    "id": 320280,
+    "nome": "Itapemirim",
+    "sigla": "ES"
+  },
+  {
+    "id": 320290,
+    "nome": "Itarana",
+    "sigla": "ES"
+  },
+  {
+    "id": 320300,
+    "nome": "Iúna",
+    "sigla": "ES"
+  },
+  {
+    "id": 320305,
+    "nome": "Jaguaré",
+    "sigla": "ES"
+  },
+  {
+    "id": 320310,
+    "nome": "Jerônimo Monteiro",
+    "sigla": "ES"
+  },
+  {
+    "id": 320313,
+    "nome": "João Neiva",
+    "sigla": "ES"
+  },
+  {
+    "id": 320316,
+    "nome": "Laranja da Terra",
+    "sigla": "ES"
+  },
+  {
+    "id": 320320,
+    "nome": "Linhares",
+    "sigla": "ES"
+  },
+  {
+    "id": 320330,
+    "nome": "Mantenópolis",
+    "sigla": "ES"
+  },
+  {
+    "id": 320332,
+    "nome": "Marataízes",
+    "sigla": "ES"
+  },
+  {
+    "id": 320334,
+    "nome": "Marechal Floriano",
+    "sigla": "ES"
+  },
+  {
+    "id": 320335,
+    "nome": "Marilândia",
+    "sigla": "ES"
+  },
+  {
+    "id": 320340,
+    "nome": "Mimoso do Sul",
+    "sigla": "ES"
+  },
+  {
+    "id": 320350,
+    "nome": "Montanha",
+    "sigla": "ES"
+  },
+  {
+    "id": 320360,
+    "nome": "Mucurici",
+    "sigla": "ES"
+  },
+  {
+    "id": 320370,
+    "nome": "Muniz Freire",
+    "sigla": "ES"
+  },
+  {
+    "id": 320380,
+    "nome": "Muqui",
+    "sigla": "ES"
+  },
+  {
+    "id": 320390,
+    "nome": "Nova Venécia",
+    "sigla": "ES"
+  },
+  {
+    "id": 320400,
+    "nome": "Pancas",
+    "sigla": "ES"
+  },
+  {
+    "id": 320405,
+    "nome": "Pedro Canário",
+    "sigla": "ES"
+  },
+  {
+    "id": 320410,
+    "nome": "Pinheiros",
+    "sigla": "ES"
+  },
+  {
+    "id": 320420,
+    "nome": "Piúma",
+    "sigla": "ES"
+  },
+  {
+    "id": 320425,
+    "nome": "Ponto Belo",
+    "sigla": "ES"
+  },
+  {
+    "id": 320430,
+    "nome": "Presidente Kennedy",
+    "sigla": "ES"
+  },
+  {
+    "id": 320435,
+    "nome": "Rio Bananal",
+    "sigla": "ES"
+  },
+  {
+    "id": 320440,
+    "nome": "Rio Novo do Sul",
+    "sigla": "ES"
+  },
+  {
+    "id": 320450,
+    "nome": "Santa Leopoldina",
+    "sigla": "ES"
+  },
+  {
+    "id": 320455,
+    "nome": "Santa Maria de Jetibá",
+    "sigla": "ES"
+  },
+  {
+    "id": 320460,
+    "nome": "Santa Teresa",
+    "sigla": "ES"
+  },
+  {
+    "id": 320465,
+    "nome": "São Domingos do Norte",
+    "sigla": "ES"
+  },
+  {
+    "id": 320470,
+    "nome": "São Gabriel da Palha",
+    "sigla": "ES"
+  },
+  {
+    "id": 320480,
+    "nome": "São José do Calçado",
+    "sigla": "ES"
+  },
+  {
+    "id": 320490,
+    "nome": "São Mateus",
+    "sigla": "ES"
+  },
+  {
+    "id": 320495,
+    "nome": "São Roque do Canaã",
+    "sigla": "ES"
+  },
+  {
+    "id": 320500,
+    "nome": "Serra",
+    "sigla": "ES"
+  },
+  {
+    "id": 320501,
+    "nome": "Sooretama",
+    "sigla": "ES"
+  },
+  {
+    "id": 320503,
+    "nome": "Vargem Alta",
+    "sigla": "ES"
+  },
+  {
+    "id": 320506,
+    "nome": "Venda Nova do Imigrante",
+    "sigla": "ES"
+  },
+  {
+    "id": 320510,
+    "nome": "Viana",
+    "sigla": "ES"
+  },
+  {
+    "id": 320515,
+    "nome": "Vila Pavão",
+    "sigla": "ES"
+  },
+  {
+    "id": 320517,
+    "nome": "Vila Valério",
+    "sigla": "ES"
+  },
+  {
+    "id": 320520,
+    "nome": "Vila Velha",
+    "sigla": "ES"
+  },
+  {
+    "id": 320530,
+    "nome": "Vitória",
+    "sigla": "ES"
+  },
+  {
+    "id": 330010,
+    "nome": "Angra dos Reis",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330015,
+    "nome": "Aperibé",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330020,
+    "nome": "Araruama",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330022,
+    "nome": "Areal",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330023,
+    "nome": "Armação dos Búzios",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330025,
+    "nome": "Arraial do Cabo",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330030,
+    "nome": "Barra do Piraí",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330040,
+    "nome": "Barra Mansa",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330045,
+    "nome": "Belford Roxo",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330050,
+    "nome": "Bom Jardim",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330060,
+    "nome": "Bom Jesus do Itabapoana",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330070,
+    "nome": "Cabo Frio",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330080,
+    "nome": "Cachoeiras de Macacu",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330090,
+    "nome": "Cambuci",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330093,
+    "nome": "Carapebus",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330095,
+    "nome": "Comendador Levy Gasparian",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330100,
+    "nome": "Campos dos Goytacazes",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330110,
+    "nome": "Cantagalo",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330115,
+    "nome": "Cardoso Moreira",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330120,
+    "nome": "Carmo",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330130,
+    "nome": "Casimiro de Abreu",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330140,
+    "nome": "Conceição de Macabu",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330150,
+    "nome": "Cordeiro",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330160,
+    "nome": "Duas Barras",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330170,
+    "nome": "Duque de Caxias",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330180,
+    "nome": "Engenheiro Paulo de Frontin",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330185,
+    "nome": "Guapimirim",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330187,
+    "nome": "Iguaba Grande",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330190,
+    "nome": "Itaboraí",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330200,
+    "nome": "Itaguaí",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330205,
+    "nome": "Italva",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330210,
+    "nome": "Itaocara",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330220,
+    "nome": "Itaperuna",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330225,
+    "nome": "Itatiaia",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330227,
+    "nome": "Japeri",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330230,
+    "nome": "Laje do Muriaé",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330240,
+    "nome": "Macaé",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330245,
+    "nome": "Macuco",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330250,
+    "nome": "Magé",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330260,
+    "nome": "Mangaratiba",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330270,
+    "nome": "Maricá",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330280,
+    "nome": "Mendes",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330285,
+    "nome": "Mesquita",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330290,
+    "nome": "Miguel Pereira",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330300,
+    "nome": "Miracema",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330310,
+    "nome": "Natividade",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330320,
+    "nome": "Nilópolis",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330330,
+    "nome": "Niterói",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330340,
+    "nome": "Nova Friburgo",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330350,
+    "nome": "Nova Iguaçu",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330360,
+    "nome": "Paracambi",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330370,
+    "nome": "Paraíba do Sul",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330380,
+    "nome": "Paraty",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330385,
+    "nome": "Paty do Alferes",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330390,
+    "nome": "Petrópolis",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330395,
+    "nome": "Pinheiral",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330400,
+    "nome": "Piraí",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330410,
+    "nome": "Porciúncula",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330411,
+    "nome": "Porto Real",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330412,
+    "nome": "Quatis",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330414,
+    "nome": "Queimados",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330415,
+    "nome": "Quissamã",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330420,
+    "nome": "Resende",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330430,
+    "nome": "Rio Bonito",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330440,
+    "nome": "Rio Claro",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330450,
+    "nome": "Rio das Flores",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330452,
+    "nome": "Rio das Ostras",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330455,
+    "nome": "Rio de Janeiro",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330460,
+    "nome": "Santa Maria Madalena",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330470,
+    "nome": "Santo Antônio de Pádua",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330475,
+    "nome": "São Francisco de Itabapoana",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330480,
+    "nome": "São Fidélis",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330490,
+    "nome": "São Gonçalo",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330500,
+    "nome": "São João da Barra",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330510,
+    "nome": "São João de Meriti",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330513,
+    "nome": "São José de Ubá",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330515,
+    "nome": "São José do Vale do Rio Preto",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330520,
+    "nome": "São Pedro da Aldeia",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330530,
+    "nome": "São Sebastião do Alto",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330540,
+    "nome": "Sapucaia",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330550,
+    "nome": "Saquarema",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330555,
+    "nome": "Seropédica",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330560,
+    "nome": "Silva Jardim",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330570,
+    "nome": "Sumidouro",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330575,
+    "nome": "Tanguá",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330580,
+    "nome": "Teresópolis",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330590,
+    "nome": "Trajano de Moraes",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330600,
+    "nome": "Três Rios",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330610,
+    "nome": "Valença",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330615,
+    "nome": "Varre-Sai",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330620,
+    "nome": "Vassouras",
+    "sigla": "RJ"
+  },
+  {
+    "id": 330630,
+    "nome": "Volta Redonda",
+    "sigla": "RJ"
+  },
+  {
+    "id": 350010,
+    "nome": "Adamantina",
+    "sigla": "SP"
+  },
+  {
+    "id": 350020,
+    "nome": "Adolfo",
+    "sigla": "SP"
+  },
+  {
+    "id": 350030,
+    "nome": "Aguaí",
+    "sigla": "SP"
+  },
+  {
+    "id": 350040,
+    "nome": "Águas da Prata",
+    "sigla": "SP"
+  },
+  {
+    "id": 350050,
+    "nome": "Águas de Lindóia",
+    "sigla": "SP"
+  },
+  {
+    "id": 350055,
+    "nome": "Águas de Santa Bárbara",
+    "sigla": "SP"
+  },
+  {
+    "id": 350060,
+    "nome": "Águas de São Pedro",
+    "sigla": "SP"
+  },
+  {
+    "id": 350070,
+    "nome": "Agudos",
+    "sigla": "SP"
+  },
+  {
+    "id": 350075,
+    "nome": "Alambari",
+    "sigla": "SP"
+  },
+  {
+    "id": 350080,
+    "nome": "Alfredo Marcondes",
+    "sigla": "SP"
+  },
+  {
+    "id": 350090,
+    "nome": "Altair",
+    "sigla": "SP"
+  },
+  {
+    "id": 350100,
+    "nome": "Altinópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 350110,
+    "nome": "Alto Alegre",
+    "sigla": "SP"
+  },
+  {
+    "id": 350115,
+    "nome": "Alumínio",
+    "sigla": "SP"
+  },
+  {
+    "id": 350120,
+    "nome": "Álvares Florence",
+    "sigla": "SP"
+  },
+  {
+    "id": 350130,
+    "nome": "Álvares Machado",
+    "sigla": "SP"
+  },
+  {
+    "id": 350140,
+    "nome": "Álvaro de Carvalho",
+    "sigla": "SP"
+  },
+  {
+    "id": 350150,
+    "nome": "Alvinlândia",
+    "sigla": "SP"
+  },
+  {
+    "id": 350160,
+    "nome": "Americana",
+    "sigla": "SP"
+  },
+  {
+    "id": 350170,
+    "nome": "Américo Brasiliense",
+    "sigla": "SP"
+  },
+  {
+    "id": 350180,
+    "nome": "Américo de Campos",
+    "sigla": "SP"
+  },
+  {
+    "id": 350190,
+    "nome": "Amparo",
+    "sigla": "SP"
+  },
+  {
+    "id": 350200,
+    "nome": "Analândia",
+    "sigla": "SP"
+  },
+  {
+    "id": 350210,
+    "nome": "Andradina",
+    "sigla": "SP"
+  },
+  {
+    "id": 350220,
+    "nome": "Angatuba",
+    "sigla": "SP"
+  },
+  {
+    "id": 350230,
+    "nome": "Anhembi",
+    "sigla": "SP"
+  },
+  {
+    "id": 350240,
+    "nome": "Anhumas",
+    "sigla": "SP"
+  },
+  {
+    "id": 350250,
+    "nome": "Aparecida",
+    "sigla": "SP"
+  },
+  {
+    "id": 350260,
+    "nome": "Aparecida d'Oeste",
+    "sigla": "SP"
+  },
+  {
+    "id": 350270,
+    "nome": "Apiaí",
+    "sigla": "SP"
+  },
+  {
+    "id": 350275,
+    "nome": "Araçariguama",
+    "sigla": "SP"
+  },
+  {
+    "id": 350280,
+    "nome": "Araçatuba",
+    "sigla": "SP"
+  },
+  {
+    "id": 350290,
+    "nome": "Araçoiaba da Serra",
+    "sigla": "SP"
+  },
+  {
+    "id": 350300,
+    "nome": "Aramina",
+    "sigla": "SP"
+  },
+  {
+    "id": 350310,
+    "nome": "Arandu",
+    "sigla": "SP"
+  },
+  {
+    "id": 350315,
+    "nome": "Arapeí",
+    "sigla": "SP"
+  },
+  {
+    "id": 350320,
+    "nome": "Araraquara",
+    "sigla": "SP"
+  },
+  {
+    "id": 350330,
+    "nome": "Araras",
+    "sigla": "SP"
+  },
+  {
+    "id": 350335,
+    "nome": "Arco-Íris",
+    "sigla": "SP"
+  },
+  {
+    "id": 350340,
+    "nome": "Arealva",
+    "sigla": "SP"
+  },
+  {
+    "id": 350350,
+    "nome": "Areias",
+    "sigla": "SP"
+  },
+  {
+    "id": 350360,
+    "nome": "Areiópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 350370,
+    "nome": "Ariranha",
+    "sigla": "SP"
+  },
+  {
+    "id": 350380,
+    "nome": "Artur Nogueira",
+    "sigla": "SP"
+  },
+  {
+    "id": 350390,
+    "nome": "Arujá",
+    "sigla": "SP"
+  },
+  {
+    "id": 350395,
+    "nome": "Aspásia",
+    "sigla": "SP"
+  },
+  {
+    "id": 350400,
+    "nome": "Assis",
+    "sigla": "SP"
+  },
+  {
+    "id": 350410,
+    "nome": "Atibaia",
+    "sigla": "SP"
+  },
+  {
+    "id": 350420,
+    "nome": "Auriflama",
+    "sigla": "SP"
+  },
+  {
+    "id": 350430,
+    "nome": "Avaí",
+    "sigla": "SP"
+  },
+  {
+    "id": 350440,
+    "nome": "Avanhandava",
+    "sigla": "SP"
+  },
+  {
+    "id": 350450,
+    "nome": "Avaré",
+    "sigla": "SP"
+  },
+  {
+    "id": 350460,
+    "nome": "Bady Bassitt",
+    "sigla": "SP"
+  },
+  {
+    "id": 350470,
+    "nome": "Balbinos",
+    "sigla": "SP"
+  },
+  {
+    "id": 350480,
+    "nome": "Bálsamo",
+    "sigla": "SP"
+  },
+  {
+    "id": 350490,
+    "nome": "Bananal",
+    "sigla": "SP"
+  },
+  {
+    "id": 350500,
+    "nome": "Barão de Antonina",
+    "sigla": "SP"
+  },
+  {
+    "id": 350510,
+    "nome": "Barbosa",
+    "sigla": "SP"
+  },
+  {
+    "id": 350520,
+    "nome": "Bariri",
+    "sigla": "SP"
+  },
+  {
+    "id": 350530,
+    "nome": "Barra Bonita",
+    "sigla": "SP"
+  },
+  {
+    "id": 350535,
+    "nome": "Barra do Chapéu",
+    "sigla": "SP"
+  },
+  {
+    "id": 350540,
+    "nome": "Barra do Turvo",
+    "sigla": "SP"
+  },
+  {
+    "id": 350550,
+    "nome": "Barretos",
+    "sigla": "SP"
+  },
+  {
+    "id": 350560,
+    "nome": "Barrinha",
+    "sigla": "SP"
+  },
+  {
+    "id": 350570,
+    "nome": "Barueri",
+    "sigla": "SP"
+  },
+  {
+    "id": 350580,
+    "nome": "Bastos",
+    "sigla": "SP"
+  },
+  {
+    "id": 350590,
+    "nome": "Batatais",
+    "sigla": "SP"
+  },
+  {
+    "id": 350600,
+    "nome": "Bauru",
+    "sigla": "SP"
+  },
+  {
+    "id": 350610,
+    "nome": "Bebedouro",
+    "sigla": "SP"
+  },
+  {
+    "id": 350620,
+    "nome": "Bento de Abreu",
+    "sigla": "SP"
+  },
+  {
+    "id": 350630,
+    "nome": "Bernardino de Campos",
+    "sigla": "SP"
+  },
+  {
+    "id": 350635,
+    "nome": "Bertioga",
+    "sigla": "SP"
+  },
+  {
+    "id": 350640,
+    "nome": "Bilac",
+    "sigla": "SP"
+  },
+  {
+    "id": 350650,
+    "nome": "Birigui",
+    "sigla": "SP"
+  },
+  {
+    "id": 350660,
+    "nome": "Biritiba Mirim",
+    "sigla": "SP"
+  },
+  {
+    "id": 350670,
+    "nome": "Boa Esperança do Sul",
+    "sigla": "SP"
+  },
+  {
+    "id": 350680,
+    "nome": "Bocaina",
+    "sigla": "SP"
+  },
+  {
+    "id": 350690,
+    "nome": "Bofete",
+    "sigla": "SP"
+  },
+  {
+    "id": 350700,
+    "nome": "Boituva",
+    "sigla": "SP"
+  },
+  {
+    "id": 350710,
+    "nome": "Bom Jesus dos Perdões",
+    "sigla": "SP"
+  },
+  {
+    "id": 350715,
+    "nome": "Bom Sucesso de Itararé",
+    "sigla": "SP"
+  },
+  {
+    "id": 350720,
+    "nome": "Borá",
+    "sigla": "SP"
+  },
+  {
+    "id": 350730,
+    "nome": "Boracéia",
+    "sigla": "SP"
+  },
+  {
+    "id": 350740,
+    "nome": "Borborema",
+    "sigla": "SP"
+  },
+  {
+    "id": 350745,
+    "nome": "Borebi",
+    "sigla": "SP"
+  },
+  {
+    "id": 350750,
+    "nome": "Botucatu",
+    "sigla": "SP"
+  },
+  {
+    "id": 350760,
+    "nome": "Bragança Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 350770,
+    "nome": "Braúna",
+    "sigla": "SP"
+  },
+  {
+    "id": 350775,
+    "nome": "Brejo Alegre",
+    "sigla": "SP"
+  },
+  {
+    "id": 350780,
+    "nome": "Brodowski",
+    "sigla": "SP"
+  },
+  {
+    "id": 350790,
+    "nome": "Brotas",
+    "sigla": "SP"
+  },
+  {
+    "id": 350800,
+    "nome": "Buri",
+    "sigla": "SP"
+  },
+  {
+    "id": 350810,
+    "nome": "Buritama",
+    "sigla": "SP"
+  },
+  {
+    "id": 350820,
+    "nome": "Buritizal",
+    "sigla": "SP"
+  },
+  {
+    "id": 350830,
+    "nome": "Cabrália Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 350840,
+    "nome": "Cabreúva",
+    "sigla": "SP"
+  },
+  {
+    "id": 350850,
+    "nome": "Caçapava",
+    "sigla": "SP"
+  },
+  {
+    "id": 350860,
+    "nome": "Cachoeira Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 350870,
+    "nome": "Caconde",
+    "sigla": "SP"
+  },
+  {
+    "id": 350880,
+    "nome": "Cafelândia",
+    "sigla": "SP"
+  },
+  {
+    "id": 350890,
+    "nome": "Caiabu",
+    "sigla": "SP"
+  },
+  {
+    "id": 350900,
+    "nome": "Caieiras",
+    "sigla": "SP"
+  },
+  {
+    "id": 350910,
+    "nome": "Caiuá",
+    "sigla": "SP"
+  },
+  {
+    "id": 350920,
+    "nome": "Cajamar",
+    "sigla": "SP"
+  },
+  {
+    "id": 350925,
+    "nome": "Cajati",
+    "sigla": "SP"
+  },
+  {
+    "id": 350930,
+    "nome": "Cajobi",
+    "sigla": "SP"
+  },
+  {
+    "id": 350940,
+    "nome": "Cajuru",
+    "sigla": "SP"
+  },
+  {
+    "id": 350945,
+    "nome": "Campina do Monte Alegre",
+    "sigla": "SP"
+  },
+  {
+    "id": 350950,
+    "nome": "Campinas",
+    "sigla": "SP"
+  },
+  {
+    "id": 350960,
+    "nome": "Campo Limpo Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 350970,
+    "nome": "Campos do Jordão",
+    "sigla": "SP"
+  },
+  {
+    "id": 350980,
+    "nome": "Campos Novos Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 350990,
+    "nome": "Cananéia",
+    "sigla": "SP"
+  },
+  {
+    "id": 350995,
+    "nome": "Canas",
+    "sigla": "SP"
+  },
+  {
+    "id": 351000,
+    "nome": "Cândido Mota",
+    "sigla": "SP"
+  },
+  {
+    "id": 351010,
+    "nome": "Cândido Rodrigues",
+    "sigla": "SP"
+  },
+  {
+    "id": 351015,
+    "nome": "Canitar",
+    "sigla": "SP"
+  },
+  {
+    "id": 351020,
+    "nome": "Capão Bonito",
+    "sigla": "SP"
+  },
+  {
+    "id": 351030,
+    "nome": "Capela do Alto",
+    "sigla": "SP"
+  },
+  {
+    "id": 351040,
+    "nome": "Capivari",
+    "sigla": "SP"
+  },
+  {
+    "id": 351050,
+    "nome": "Caraguatatuba",
+    "sigla": "SP"
+  },
+  {
+    "id": 351060,
+    "nome": "Carapicuíba",
+    "sigla": "SP"
+  },
+  {
+    "id": 351070,
+    "nome": "Cardoso",
+    "sigla": "SP"
+  },
+  {
+    "id": 351080,
+    "nome": "Casa Branca",
+    "sigla": "SP"
+  },
+  {
+    "id": 351090,
+    "nome": "Cássia dos Coqueiros",
+    "sigla": "SP"
+  },
+  {
+    "id": 351100,
+    "nome": "Castilho",
+    "sigla": "SP"
+  },
+  {
+    "id": 351110,
+    "nome": "Catanduva",
+    "sigla": "SP"
+  },
+  {
+    "id": 351120,
+    "nome": "Catiguá",
+    "sigla": "SP"
+  },
+  {
+    "id": 351130,
+    "nome": "Cedral",
+    "sigla": "SP"
+  },
+  {
+    "id": 351140,
+    "nome": "Cerqueira César",
+    "sigla": "SP"
+  },
+  {
+    "id": 351150,
+    "nome": "Cerquilho",
+    "sigla": "SP"
+  },
+  {
+    "id": 351160,
+    "nome": "Cesário Lange",
+    "sigla": "SP"
+  },
+  {
+    "id": 351170,
+    "nome": "Charqueada",
+    "sigla": "SP"
+  },
+  {
+    "id": 351190,
+    "nome": "Clementina",
+    "sigla": "SP"
+  },
+  {
+    "id": 351200,
+    "nome": "Colina",
+    "sigla": "SP"
+  },
+  {
+    "id": 351210,
+    "nome": "Colômbia",
+    "sigla": "SP"
+  },
+  {
+    "id": 351220,
+    "nome": "Conchal",
+    "sigla": "SP"
+  },
+  {
+    "id": 351230,
+    "nome": "Conchas",
+    "sigla": "SP"
+  },
+  {
+    "id": 351240,
+    "nome": "Cordeirópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 351250,
+    "nome": "Coroados",
+    "sigla": "SP"
+  },
+  {
+    "id": 351260,
+    "nome": "Coronel Macedo",
+    "sigla": "SP"
+  },
+  {
+    "id": 351270,
+    "nome": "Corumbataí",
+    "sigla": "SP"
+  },
+  {
+    "id": 351280,
+    "nome": "Cosmópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 351290,
+    "nome": "Cosmorama",
+    "sigla": "SP"
+  },
+  {
+    "id": 351300,
+    "nome": "Cotia",
+    "sigla": "SP"
+  },
+  {
+    "id": 351310,
+    "nome": "Cravinhos",
+    "sigla": "SP"
+  },
+  {
+    "id": 351320,
+    "nome": "Cristais Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 351330,
+    "nome": "Cruzália",
+    "sigla": "SP"
+  },
+  {
+    "id": 351340,
+    "nome": "Cruzeiro",
+    "sigla": "SP"
+  },
+  {
+    "id": 351350,
+    "nome": "Cubatão",
+    "sigla": "SP"
+  },
+  {
+    "id": 351360,
+    "nome": "Cunha",
+    "sigla": "SP"
+  },
+  {
+    "id": 351370,
+    "nome": "Descalvado",
+    "sigla": "SP"
+  },
+  {
+    "id": 351380,
+    "nome": "Diadema",
+    "sigla": "SP"
+  },
+  {
+    "id": 351385,
+    "nome": "Dirce Reis",
+    "sigla": "SP"
+  },
+  {
+    "id": 351390,
+    "nome": "Divinolândia",
+    "sigla": "SP"
+  },
+  {
+    "id": 351400,
+    "nome": "Dobrada",
+    "sigla": "SP"
+  },
+  {
+    "id": 351410,
+    "nome": "Dois Córregos",
+    "sigla": "SP"
+  },
+  {
+    "id": 351420,
+    "nome": "Dolcinópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 351430,
+    "nome": "Dourado",
+    "sigla": "SP"
+  },
+  {
+    "id": 351440,
+    "nome": "Dracena",
+    "sigla": "SP"
+  },
+  {
+    "id": 351450,
+    "nome": "Duartina",
+    "sigla": "SP"
+  },
+  {
+    "id": 351460,
+    "nome": "Dumont",
+    "sigla": "SP"
+  },
+  {
+    "id": 351470,
+    "nome": "Echaporã",
+    "sigla": "SP"
+  },
+  {
+    "id": 351480,
+    "nome": "Eldorado",
+    "sigla": "SP"
+  },
+  {
+    "id": 351490,
+    "nome": "Elias Fausto",
+    "sigla": "SP"
+  },
+  {
+    "id": 351492,
+    "nome": "Elisiário",
+    "sigla": "SP"
+  },
+  {
+    "id": 351495,
+    "nome": "Embaúba",
+    "sigla": "SP"
+  },
+  {
+    "id": 351500,
+    "nome": "Embu das Artes",
+    "sigla": "SP"
+  },
+  {
+    "id": 351510,
+    "nome": "Embu-Guaçu",
+    "sigla": "SP"
+  },
+  {
+    "id": 351512,
+    "nome": "Emilianópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 351515,
+    "nome": "Engenheiro Coelho",
+    "sigla": "SP"
+  },
+  {
+    "id": 351518,
+    "nome": "Espírito Santo do Pinhal",
+    "sigla": "SP"
+  },
+  {
+    "id": 351519,
+    "nome": "Espírito Santo do Turvo",
+    "sigla": "SP"
+  },
+  {
+    "id": 351520,
+    "nome": "Estrela d'Oeste",
+    "sigla": "SP"
+  },
+  {
+    "id": 351530,
+    "nome": "Estrela do Norte",
+    "sigla": "SP"
+  },
+  {
+    "id": 351535,
+    "nome": "Euclides da Cunha Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 351540,
+    "nome": "Fartura",
+    "sigla": "SP"
+  },
+  {
+    "id": 351550,
+    "nome": "Fernandópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 351560,
+    "nome": "Fernando Prestes",
+    "sigla": "SP"
+  },
+  {
+    "id": 351565,
+    "nome": "Fernão",
+    "sigla": "SP"
+  },
+  {
+    "id": 351570,
+    "nome": "Ferraz de Vasconcelos",
+    "sigla": "SP"
+  },
+  {
+    "id": 351580,
+    "nome": "Flora Rica",
+    "sigla": "SP"
+  },
+  {
+    "id": 351590,
+    "nome": "Floreal",
+    "sigla": "SP"
+  },
+  {
+    "id": 351600,
+    "nome": "Flórida Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 351610,
+    "nome": "Florínea",
+    "sigla": "SP"
+  },
+  {
+    "id": 351620,
+    "nome": "Franca",
+    "sigla": "SP"
+  },
+  {
+    "id": 351630,
+    "nome": "Francisco Morato",
+    "sigla": "SP"
+  },
+  {
+    "id": 351640,
+    "nome": "Franco da Rocha",
+    "sigla": "SP"
+  },
+  {
+    "id": 351650,
+    "nome": "Gabriel Monteiro",
+    "sigla": "SP"
+  },
+  {
+    "id": 351660,
+    "nome": "Gália",
+    "sigla": "SP"
+  },
+  {
+    "id": 351670,
+    "nome": "Garça",
+    "sigla": "SP"
+  },
+  {
+    "id": 351680,
+    "nome": "Gastão Vidigal",
+    "sigla": "SP"
+  },
+  {
+    "id": 351685,
+    "nome": "Gavião Peixoto",
+    "sigla": "SP"
+  },
+  {
+    "id": 351690,
+    "nome": "General Salgado",
+    "sigla": "SP"
+  },
+  {
+    "id": 351700,
+    "nome": "Getulina",
+    "sigla": "SP"
+  },
+  {
+    "id": 351710,
+    "nome": "Glicério",
+    "sigla": "SP"
+  },
+  {
+    "id": 351720,
+    "nome": "Guaiçara",
+    "sigla": "SP"
+  },
+  {
+    "id": 351730,
+    "nome": "Guaimbê",
+    "sigla": "SP"
+  },
+  {
+    "id": 351740,
+    "nome": "Guaíra",
+    "sigla": "SP"
+  },
+  {
+    "id": 351750,
+    "nome": "Guapiaçu",
+    "sigla": "SP"
+  },
+  {
+    "id": 351760,
+    "nome": "Guapiara",
+    "sigla": "SP"
+  },
+  {
+    "id": 351770,
+    "nome": "Guará",
+    "sigla": "SP"
+  },
+  {
+    "id": 351780,
+    "nome": "Guaraçaí",
+    "sigla": "SP"
+  },
+  {
+    "id": 351790,
+    "nome": "Guaraci",
+    "sigla": "SP"
+  },
+  {
+    "id": 351800,
+    "nome": "Guarani d'Oeste",
+    "sigla": "SP"
+  },
+  {
+    "id": 351810,
+    "nome": "Guarantã",
+    "sigla": "SP"
+  },
+  {
+    "id": 351820,
+    "nome": "Guararapes",
+    "sigla": "SP"
+  },
+  {
+    "id": 351830,
+    "nome": "Guararema",
+    "sigla": "SP"
+  },
+  {
+    "id": 351840,
+    "nome": "Guaratinguetá",
+    "sigla": "SP"
+  },
+  {
+    "id": 351850,
+    "nome": "Guareí",
+    "sigla": "SP"
+  },
+  {
+    "id": 351860,
+    "nome": "Guariba",
+    "sigla": "SP"
+  },
+  {
+    "id": 351870,
+    "nome": "Guarujá",
+    "sigla": "SP"
+  },
+  {
+    "id": 351880,
+    "nome": "Guarulhos",
+    "sigla": "SP"
+  },
+  {
+    "id": 351885,
+    "nome": "Guatapará",
+    "sigla": "SP"
+  },
+  {
+    "id": 351890,
+    "nome": "Guzolândia",
+    "sigla": "SP"
+  },
+  {
+    "id": 351900,
+    "nome": "Herculândia",
+    "sigla": "SP"
+  },
+  {
+    "id": 351905,
+    "nome": "Holambra",
+    "sigla": "SP"
+  },
+  {
+    "id": 351907,
+    "nome": "Hortolândia",
+    "sigla": "SP"
+  },
+  {
+    "id": 351910,
+    "nome": "Iacanga",
+    "sigla": "SP"
+  },
+  {
+    "id": 351920,
+    "nome": "Iacri",
+    "sigla": "SP"
+  },
+  {
+    "id": 351925,
+    "nome": "Iaras",
+    "sigla": "SP"
+  },
+  {
+    "id": 351930,
+    "nome": "Ibaté",
+    "sigla": "SP"
+  },
+  {
+    "id": 351940,
+    "nome": "Ibirá",
+    "sigla": "SP"
+  },
+  {
+    "id": 351950,
+    "nome": "Ibirarema",
+    "sigla": "SP"
+  },
+  {
+    "id": 351960,
+    "nome": "Ibitinga",
+    "sigla": "SP"
+  },
+  {
+    "id": 351970,
+    "nome": "Ibiúna",
+    "sigla": "SP"
+  },
+  {
+    "id": 351980,
+    "nome": "Icém",
+    "sigla": "SP"
+  },
+  {
+    "id": 351990,
+    "nome": "Iepê",
+    "sigla": "SP"
+  },
+  {
+    "id": 352000,
+    "nome": "Igaraçu do Tietê",
+    "sigla": "SP"
+  },
+  {
+    "id": 352010,
+    "nome": "Igarapava",
+    "sigla": "SP"
+  },
+  {
+    "id": 352020,
+    "nome": "Igaratá",
+    "sigla": "SP"
+  },
+  {
+    "id": 352030,
+    "nome": "Iguape",
+    "sigla": "SP"
+  },
+  {
+    "id": 352040,
+    "nome": "Ilhabela",
+    "sigla": "SP"
+  },
+  {
+    "id": 352042,
+    "nome": "Ilha Comprida",
+    "sigla": "SP"
+  },
+  {
+    "id": 352044,
+    "nome": "Ilha Solteira",
+    "sigla": "SP"
+  },
+  {
+    "id": 352050,
+    "nome": "Indaiatuba",
+    "sigla": "SP"
+  },
+  {
+    "id": 352060,
+    "nome": "Indiana",
+    "sigla": "SP"
+  },
+  {
+    "id": 352070,
+    "nome": "Indiaporã",
+    "sigla": "SP"
+  },
+  {
+    "id": 352080,
+    "nome": "Inúbia Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 352090,
+    "nome": "Ipaussu",
+    "sigla": "SP"
+  },
+  {
+    "id": 352100,
+    "nome": "Iperó",
+    "sigla": "SP"
+  },
+  {
+    "id": 352110,
+    "nome": "Ipeúna",
+    "sigla": "SP"
+  },
+  {
+    "id": 352115,
+    "nome": "Ipiguá",
+    "sigla": "SP"
+  },
+  {
+    "id": 352120,
+    "nome": "Iporanga",
+    "sigla": "SP"
+  },
+  {
+    "id": 352130,
+    "nome": "Ipuã",
+    "sigla": "SP"
+  },
+  {
+    "id": 352140,
+    "nome": "Iracemápolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 352150,
+    "nome": "Irapuã",
+    "sigla": "SP"
+  },
+  {
+    "id": 352160,
+    "nome": "Irapuru",
+    "sigla": "SP"
+  },
+  {
+    "id": 352170,
+    "nome": "Itaberá",
+    "sigla": "SP"
+  },
+  {
+    "id": 352180,
+    "nome": "Itaí",
+    "sigla": "SP"
+  },
+  {
+    "id": 352190,
+    "nome": "Itajobi",
+    "sigla": "SP"
+  },
+  {
+    "id": 352200,
+    "nome": "Itaju",
+    "sigla": "SP"
+  },
+  {
+    "id": 352210,
+    "nome": "Itanhaém",
+    "sigla": "SP"
+  },
+  {
+    "id": 352215,
+    "nome": "Itaoca",
+    "sigla": "SP"
+  },
+  {
+    "id": 352220,
+    "nome": "Itapecerica da Serra",
+    "sigla": "SP"
+  },
+  {
+    "id": 352230,
+    "nome": "Itapetininga",
+    "sigla": "SP"
+  },
+  {
+    "id": 352240,
+    "nome": "Itapeva",
+    "sigla": "SP"
+  },
+  {
+    "id": 352250,
+    "nome": "Itapevi",
+    "sigla": "SP"
+  },
+  {
+    "id": 352260,
+    "nome": "Itapira",
+    "sigla": "SP"
+  },
+  {
+    "id": 352265,
+    "nome": "Itapirapuã Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 352270,
+    "nome": "Itápolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 352280,
+    "nome": "Itaporanga",
+    "sigla": "SP"
+  },
+  {
+    "id": 352290,
+    "nome": "Itapuí",
+    "sigla": "SP"
+  },
+  {
+    "id": 352300,
+    "nome": "Itapura",
+    "sigla": "SP"
+  },
+  {
+    "id": 352310,
+    "nome": "Itaquaquecetuba",
+    "sigla": "SP"
+  },
+  {
+    "id": 352320,
+    "nome": "Itararé",
+    "sigla": "SP"
+  },
+  {
+    "id": 352330,
+    "nome": "Itariri",
+    "sigla": "SP"
+  },
+  {
+    "id": 352340,
+    "nome": "Itatiba",
+    "sigla": "SP"
+  },
+  {
+    "id": 352350,
+    "nome": "Itatinga",
+    "sigla": "SP"
+  },
+  {
+    "id": 352360,
+    "nome": "Itirapina",
+    "sigla": "SP"
+  },
+  {
+    "id": 352370,
+    "nome": "Itirapuã",
+    "sigla": "SP"
+  },
+  {
+    "id": 352380,
+    "nome": "Itobi",
+    "sigla": "SP"
+  },
+  {
+    "id": 352390,
+    "nome": "Itu",
+    "sigla": "SP"
+  },
+  {
+    "id": 352400,
+    "nome": "Itupeva",
+    "sigla": "SP"
+  },
+  {
+    "id": 352410,
+    "nome": "Ituverava",
+    "sigla": "SP"
+  },
+  {
+    "id": 352420,
+    "nome": "Jaborandi",
+    "sigla": "SP"
+  },
+  {
+    "id": 352430,
+    "nome": "Jaboticabal",
+    "sigla": "SP"
+  },
+  {
+    "id": 352440,
+    "nome": "Jacareí",
+    "sigla": "SP"
+  },
+  {
+    "id": 352450,
+    "nome": "Jaci",
+    "sigla": "SP"
+  },
+  {
+    "id": 352460,
+    "nome": "Jacupiranga",
+    "sigla": "SP"
+  },
+  {
+    "id": 352470,
+    "nome": "Jaguariúna",
+    "sigla": "SP"
+  },
+  {
+    "id": 352480,
+    "nome": "Jales",
+    "sigla": "SP"
+  },
+  {
+    "id": 352490,
+    "nome": "Jambeiro",
+    "sigla": "SP"
+  },
+  {
+    "id": 352500,
+    "nome": "Jandira",
+    "sigla": "SP"
+  },
+  {
+    "id": 352510,
+    "nome": "Jardinópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 352520,
+    "nome": "Jarinu",
+    "sigla": "SP"
+  },
+  {
+    "id": 352530,
+    "nome": "Jaú",
+    "sigla": "SP"
+  },
+  {
+    "id": 352540,
+    "nome": "Jeriquara",
+    "sigla": "SP"
+  },
+  {
+    "id": 352550,
+    "nome": "Joanópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 352560,
+    "nome": "João Ramalho",
+    "sigla": "SP"
+  },
+  {
+    "id": 352570,
+    "nome": "José Bonifácio",
+    "sigla": "SP"
+  },
+  {
+    "id": 352580,
+    "nome": "Júlio Mesquita",
+    "sigla": "SP"
+  },
+  {
+    "id": 352585,
+    "nome": "Jumirim",
+    "sigla": "SP"
+  },
+  {
+    "id": 352590,
+    "nome": "Jundiaí",
+    "sigla": "SP"
+  },
+  {
+    "id": 352600,
+    "nome": "Junqueirópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 352610,
+    "nome": "Juquiá",
+    "sigla": "SP"
+  },
+  {
+    "id": 352620,
+    "nome": "Juquitiba",
+    "sigla": "SP"
+  },
+  {
+    "id": 352630,
+    "nome": "Lagoinha",
+    "sigla": "SP"
+  },
+  {
+    "id": 352640,
+    "nome": "Laranjal Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 352650,
+    "nome": "Lavínia",
+    "sigla": "SP"
+  },
+  {
+    "id": 352660,
+    "nome": "Lavrinhas",
+    "sigla": "SP"
+  },
+  {
+    "id": 352670,
+    "nome": "Leme",
+    "sigla": "SP"
+  },
+  {
+    "id": 352680,
+    "nome": "Lençóis Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 352690,
+    "nome": "Limeira",
+    "sigla": "SP"
+  },
+  {
+    "id": 352700,
+    "nome": "Lindóia",
+    "sigla": "SP"
+  },
+  {
+    "id": 352710,
+    "nome": "Lins",
+    "sigla": "SP"
+  },
+  {
+    "id": 352720,
+    "nome": "Lorena",
+    "sigla": "SP"
+  },
+  {
+    "id": 352725,
+    "nome": "Lourdes",
+    "sigla": "SP"
+  },
+  {
+    "id": 352730,
+    "nome": "Louveira",
+    "sigla": "SP"
+  },
+  {
+    "id": 352740,
+    "nome": "Lucélia",
+    "sigla": "SP"
+  },
+  {
+    "id": 352750,
+    "nome": "Lucianópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 352760,
+    "nome": "Luís Antônio",
+    "sigla": "SP"
+  },
+  {
+    "id": 352770,
+    "nome": "Luiziânia",
+    "sigla": "SP"
+  },
+  {
+    "id": 352780,
+    "nome": "Lupércio",
+    "sigla": "SP"
+  },
+  {
+    "id": 352790,
+    "nome": "Lutécia",
+    "sigla": "SP"
+  },
+  {
+    "id": 352800,
+    "nome": "Macatuba",
+    "sigla": "SP"
+  },
+  {
+    "id": 352810,
+    "nome": "Macaubal",
+    "sigla": "SP"
+  },
+  {
+    "id": 352820,
+    "nome": "Macedônia",
+    "sigla": "SP"
+  },
+  {
+    "id": 352830,
+    "nome": "Magda",
+    "sigla": "SP"
+  },
+  {
+    "id": 352840,
+    "nome": "Mairinque",
+    "sigla": "SP"
+  },
+  {
+    "id": 352850,
+    "nome": "Mairiporã",
+    "sigla": "SP"
+  },
+  {
+    "id": 352860,
+    "nome": "Manduri",
+    "sigla": "SP"
+  },
+  {
+    "id": 352870,
+    "nome": "Marabá Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 352880,
+    "nome": "Maracaí",
+    "sigla": "SP"
+  },
+  {
+    "id": 352885,
+    "nome": "Marapoama",
+    "sigla": "SP"
+  },
+  {
+    "id": 352890,
+    "nome": "Mariápolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 352900,
+    "nome": "Marília",
+    "sigla": "SP"
+  },
+  {
+    "id": 352910,
+    "nome": "Marinópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 352920,
+    "nome": "Martinópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 352930,
+    "nome": "Matão",
+    "sigla": "SP"
+  },
+  {
+    "id": 352940,
+    "nome": "Mauá",
+    "sigla": "SP"
+  },
+  {
+    "id": 352950,
+    "nome": "Mendonça",
+    "sigla": "SP"
+  },
+  {
+    "id": 352960,
+    "nome": "Meridiano",
+    "sigla": "SP"
+  },
+  {
+    "id": 352965,
+    "nome": "Mesópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 352970,
+    "nome": "Miguelópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 352980,
+    "nome": "Mineiros do Tietê",
+    "sigla": "SP"
+  },
+  {
+    "id": 352990,
+    "nome": "Miracatu",
+    "sigla": "SP"
+  },
+  {
+    "id": 353000,
+    "nome": "Mira Estrela",
+    "sigla": "SP"
+  },
+  {
+    "id": 353010,
+    "nome": "Mirandópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 353020,
+    "nome": "Mirante do Paranapanema",
+    "sigla": "SP"
+  },
+  {
+    "id": 353030,
+    "nome": "Mirassol",
+    "sigla": "SP"
+  },
+  {
+    "id": 353040,
+    "nome": "Mirassolândia",
+    "sigla": "SP"
+  },
+  {
+    "id": 353050,
+    "nome": "Mococa",
+    "sigla": "SP"
+  },
+  {
+    "id": 353060,
+    "nome": "Mogi das Cruzes",
+    "sigla": "SP"
+  },
+  {
+    "id": 353070,
+    "nome": "Mogi Guaçu",
+    "sigla": "SP"
+  },
+  {
+    "id": 353080,
+    "nome": "Mogi Mirim",
+    "sigla": "SP"
+  },
+  {
+    "id": 353090,
+    "nome": "Mombuca",
+    "sigla": "SP"
+  },
+  {
+    "id": 353100,
+    "nome": "Monções",
+    "sigla": "SP"
+  },
+  {
+    "id": 353110,
+    "nome": "Mongaguá",
+    "sigla": "SP"
+  },
+  {
+    "id": 353120,
+    "nome": "Monte Alegre do Sul",
+    "sigla": "SP"
+  },
+  {
+    "id": 353130,
+    "nome": "Monte Alto",
+    "sigla": "SP"
+  },
+  {
+    "id": 353140,
+    "nome": "Monte Aprazível",
+    "sigla": "SP"
+  },
+  {
+    "id": 353150,
+    "nome": "Monte Azul Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 353160,
+    "nome": "Monte Castelo",
+    "sigla": "SP"
+  },
+  {
+    "id": 353170,
+    "nome": "Monteiro Lobato",
+    "sigla": "SP"
+  },
+  {
+    "id": 353180,
+    "nome": "Monte Mor",
+    "sigla": "SP"
+  },
+  {
+    "id": 353190,
+    "nome": "Morro Agudo",
+    "sigla": "SP"
+  },
+  {
+    "id": 353200,
+    "nome": "Morungaba",
+    "sigla": "SP"
+  },
+  {
+    "id": 353205,
+    "nome": "Motuca",
+    "sigla": "SP"
+  },
+  {
+    "id": 353210,
+    "nome": "Murutinga do Sul",
+    "sigla": "SP"
+  },
+  {
+    "id": 353215,
+    "nome": "Nantes",
+    "sigla": "SP"
+  },
+  {
+    "id": 353220,
+    "nome": "Narandiba",
+    "sigla": "SP"
+  },
+  {
+    "id": 353230,
+    "nome": "Natividade da Serra",
+    "sigla": "SP"
+  },
+  {
+    "id": 353240,
+    "nome": "Nazaré Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 353250,
+    "nome": "Neves Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 353260,
+    "nome": "Nhandeara",
+    "sigla": "SP"
+  },
+  {
+    "id": 353270,
+    "nome": "Nipoã",
+    "sigla": "SP"
+  },
+  {
+    "id": 353280,
+    "nome": "Nova Aliança",
+    "sigla": "SP"
+  },
+  {
+    "id": 353282,
+    "nome": "Nova Campina",
+    "sigla": "SP"
+  },
+  {
+    "id": 353284,
+    "nome": "Nova Canaã Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 353286,
+    "nome": "Nova Castilho",
+    "sigla": "SP"
+  },
+  {
+    "id": 353290,
+    "nome": "Nova Europa",
+    "sigla": "SP"
+  },
+  {
+    "id": 353300,
+    "nome": "Nova Granada",
+    "sigla": "SP"
+  },
+  {
+    "id": 353310,
+    "nome": "Nova Guataporanga",
+    "sigla": "SP"
+  },
+  {
+    "id": 353320,
+    "nome": "Nova Independência",
+    "sigla": "SP"
+  },
+  {
+    "id": 353325,
+    "nome": "Novais",
+    "sigla": "SP"
+  },
+  {
+    "id": 353330,
+    "nome": "Nova Luzitânia",
+    "sigla": "SP"
+  },
+  {
+    "id": 353340,
+    "nome": "Nova Odessa",
+    "sigla": "SP"
+  },
+  {
+    "id": 353350,
+    "nome": "Novo Horizonte",
+    "sigla": "SP"
+  },
+  {
+    "id": 353360,
+    "nome": "Nuporanga",
+    "sigla": "SP"
+  },
+  {
+    "id": 353370,
+    "nome": "Ocauçu",
+    "sigla": "SP"
+  },
+  {
+    "id": 353380,
+    "nome": "Óleo",
+    "sigla": "SP"
+  },
+  {
+    "id": 353390,
+    "nome": "Olímpia",
+    "sigla": "SP"
+  },
+  {
+    "id": 353400,
+    "nome": "Onda Verde",
+    "sigla": "SP"
+  },
+  {
+    "id": 353410,
+    "nome": "Oriente",
+    "sigla": "SP"
+  },
+  {
+    "id": 353420,
+    "nome": "Orindiúva",
+    "sigla": "SP"
+  },
+  {
+    "id": 353430,
+    "nome": "Orlândia",
+    "sigla": "SP"
+  },
+  {
+    "id": 353440,
+    "nome": "Osasco",
+    "sigla": "SP"
+  },
+  {
+    "id": 353450,
+    "nome": "Oscar Bressane",
+    "sigla": "SP"
+  },
+  {
+    "id": 353460,
+    "nome": "Osvaldo Cruz",
+    "sigla": "SP"
+  },
+  {
+    "id": 353470,
+    "nome": "Ourinhos",
+    "sigla": "SP"
+  },
+  {
+    "id": 353475,
+    "nome": "Ouroeste",
+    "sigla": "SP"
+  },
+  {
+    "id": 353480,
+    "nome": "Ouro Verde",
+    "sigla": "SP"
+  },
+  {
+    "id": 353490,
+    "nome": "Pacaembu",
+    "sigla": "SP"
+  },
+  {
+    "id": 353500,
+    "nome": "Palestina",
+    "sigla": "SP"
+  },
+  {
+    "id": 353510,
+    "nome": "Palmares Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 353520,
+    "nome": "Palmeira d'Oeste",
+    "sigla": "SP"
+  },
+  {
+    "id": 353530,
+    "nome": "Palmital",
+    "sigla": "SP"
+  },
+  {
+    "id": 353540,
+    "nome": "Panorama",
+    "sigla": "SP"
+  },
+  {
+    "id": 353550,
+    "nome": "Paraguaçu Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 353560,
+    "nome": "Paraibuna",
+    "sigla": "SP"
+  },
+  {
+    "id": 353570,
+    "nome": "Paraíso",
+    "sigla": "SP"
+  },
+  {
+    "id": 353580,
+    "nome": "Paranapanema",
+    "sigla": "SP"
+  },
+  {
+    "id": 353590,
+    "nome": "Paranapuã",
+    "sigla": "SP"
+  },
+  {
+    "id": 353600,
+    "nome": "Parapuã",
+    "sigla": "SP"
+  },
+  {
+    "id": 353610,
+    "nome": "Pardinho",
+    "sigla": "SP"
+  },
+  {
+    "id": 353620,
+    "nome": "Pariquera-Açu",
+    "sigla": "SP"
+  },
+  {
+    "id": 353625,
+    "nome": "Parisi",
+    "sigla": "SP"
+  },
+  {
+    "id": 353630,
+    "nome": "Patrocínio Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 353640,
+    "nome": "Paulicéia",
+    "sigla": "SP"
+  },
+  {
+    "id": 353650,
+    "nome": "Paulínia",
+    "sigla": "SP"
+  },
+  {
+    "id": 353657,
+    "nome": "Paulistânia",
+    "sigla": "SP"
+  },
+  {
+    "id": 353660,
+    "nome": "Paulo de Faria",
+    "sigla": "SP"
+  },
+  {
+    "id": 353670,
+    "nome": "Pederneiras",
+    "sigla": "SP"
+  },
+  {
+    "id": 353680,
+    "nome": "Pedra Bela",
+    "sigla": "SP"
+  },
+  {
+    "id": 353690,
+    "nome": "Pedranópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 353700,
+    "nome": "Pedregulho",
+    "sigla": "SP"
+  },
+  {
+    "id": 353710,
+    "nome": "Pedreira",
+    "sigla": "SP"
+  },
+  {
+    "id": 353715,
+    "nome": "Pedrinhas Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 353720,
+    "nome": "Pedro de Toledo",
+    "sigla": "SP"
+  },
+  {
+    "id": 353730,
+    "nome": "Penápolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 353740,
+    "nome": "Pereira Barreto",
+    "sigla": "SP"
+  },
+  {
+    "id": 353750,
+    "nome": "Pereiras",
+    "sigla": "SP"
+  },
+  {
+    "id": 353760,
+    "nome": "Peruíbe",
+    "sigla": "SP"
+  },
+  {
+    "id": 353770,
+    "nome": "Piacatu",
+    "sigla": "SP"
+  },
+  {
+    "id": 353780,
+    "nome": "Piedade",
+    "sigla": "SP"
+  },
+  {
+    "id": 353790,
+    "nome": "Pilar do Sul",
+    "sigla": "SP"
+  },
+  {
+    "id": 353800,
+    "nome": "Pindamonhangaba",
+    "sigla": "SP"
+  },
+  {
+    "id": 353810,
+    "nome": "Pindorama",
+    "sigla": "SP"
+  },
+  {
+    "id": 353820,
+    "nome": "Pinhalzinho",
+    "sigla": "SP"
+  },
+  {
+    "id": 353830,
+    "nome": "Piquerobi",
+    "sigla": "SP"
+  },
+  {
+    "id": 353850,
+    "nome": "Piquete",
+    "sigla": "SP"
+  },
+  {
+    "id": 353860,
+    "nome": "Piracaia",
+    "sigla": "SP"
+  },
+  {
+    "id": 353870,
+    "nome": "Piracicaba",
+    "sigla": "SP"
+  },
+  {
+    "id": 353880,
+    "nome": "Piraju",
+    "sigla": "SP"
+  },
+  {
+    "id": 353890,
+    "nome": "Pirajuí",
+    "sigla": "SP"
+  },
+  {
+    "id": 353900,
+    "nome": "Pirangi",
+    "sigla": "SP"
+  },
+  {
+    "id": 353910,
+    "nome": "Pirapora do Bom Jesus",
+    "sigla": "SP"
+  },
+  {
+    "id": 353920,
+    "nome": "Pirapozinho",
+    "sigla": "SP"
+  },
+  {
+    "id": 353930,
+    "nome": "Pirassununga",
+    "sigla": "SP"
+  },
+  {
+    "id": 353940,
+    "nome": "Piratininga",
+    "sigla": "SP"
+  },
+  {
+    "id": 353950,
+    "nome": "Pitangueiras",
+    "sigla": "SP"
+  },
+  {
+    "id": 353960,
+    "nome": "Planalto",
+    "sigla": "SP"
+  },
+  {
+    "id": 353970,
+    "nome": "Platina",
+    "sigla": "SP"
+  },
+  {
+    "id": 353980,
+    "nome": "Poá",
+    "sigla": "SP"
+  },
+  {
+    "id": 353990,
+    "nome": "Poloni",
+    "sigla": "SP"
+  },
+  {
+    "id": 354000,
+    "nome": "Pompéia",
+    "sigla": "SP"
+  },
+  {
+    "id": 354010,
+    "nome": "Pongaí",
+    "sigla": "SP"
+  },
+  {
+    "id": 354020,
+    "nome": "Pontal",
+    "sigla": "SP"
+  },
+  {
+    "id": 354025,
+    "nome": "Pontalinda",
+    "sigla": "SP"
+  },
+  {
+    "id": 354030,
+    "nome": "Pontes Gestal",
+    "sigla": "SP"
+  },
+  {
+    "id": 354040,
+    "nome": "Populina",
+    "sigla": "SP"
+  },
+  {
+    "id": 354050,
+    "nome": "Porangaba",
+    "sigla": "SP"
+  },
+  {
+    "id": 354060,
+    "nome": "Porto Feliz",
+    "sigla": "SP"
+  },
+  {
+    "id": 354070,
+    "nome": "Porto Ferreira",
+    "sigla": "SP"
+  },
+  {
+    "id": 354075,
+    "nome": "Potim",
+    "sigla": "SP"
+  },
+  {
+    "id": 354080,
+    "nome": "Potirendaba",
+    "sigla": "SP"
+  },
+  {
+    "id": 354085,
+    "nome": "Pracinha",
+    "sigla": "SP"
+  },
+  {
+    "id": 354090,
+    "nome": "Pradópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 354100,
+    "nome": "Praia Grande",
+    "sigla": "SP"
+  },
+  {
+    "id": 354105,
+    "nome": "Pratânia",
+    "sigla": "SP"
+  },
+  {
+    "id": 354110,
+    "nome": "Presidente Alves",
+    "sigla": "SP"
+  },
+  {
+    "id": 354120,
+    "nome": "Presidente Bernardes",
+    "sigla": "SP"
+  },
+  {
+    "id": 354130,
+    "nome": "Presidente Epitácio",
+    "sigla": "SP"
+  },
+  {
+    "id": 354140,
+    "nome": "Presidente Prudente",
+    "sigla": "SP"
+  },
+  {
+    "id": 354150,
+    "nome": "Presidente Venceslau",
+    "sigla": "SP"
+  },
+  {
+    "id": 354160,
+    "nome": "Promissão",
+    "sigla": "SP"
+  },
+  {
+    "id": 354165,
+    "nome": "Quadra",
+    "sigla": "SP"
+  },
+  {
+    "id": 354170,
+    "nome": "Quatá",
+    "sigla": "SP"
+  },
+  {
+    "id": 354180,
+    "nome": "Queiroz",
+    "sigla": "SP"
+  },
+  {
+    "id": 354190,
+    "nome": "Queluz",
+    "sigla": "SP"
+  },
+  {
+    "id": 354200,
+    "nome": "Quintana",
+    "sigla": "SP"
+  },
+  {
+    "id": 354210,
+    "nome": "Rafard",
+    "sigla": "SP"
+  },
+  {
+    "id": 354220,
+    "nome": "Rancharia",
+    "sigla": "SP"
+  },
+  {
+    "id": 354230,
+    "nome": "Redenção da Serra",
+    "sigla": "SP"
+  },
+  {
+    "id": 354240,
+    "nome": "Regente Feijó",
+    "sigla": "SP"
+  },
+  {
+    "id": 354250,
+    "nome": "Reginópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 354260,
+    "nome": "Registro",
+    "sigla": "SP"
+  },
+  {
+    "id": 354270,
+    "nome": "Restinga",
+    "sigla": "SP"
+  },
+  {
+    "id": 354280,
+    "nome": "Ribeira",
+    "sigla": "SP"
+  },
+  {
+    "id": 354290,
+    "nome": "Ribeirão Bonito",
+    "sigla": "SP"
+  },
+  {
+    "id": 354300,
+    "nome": "Ribeirão Branco",
+    "sigla": "SP"
+  },
+  {
+    "id": 354310,
+    "nome": "Ribeirão Corrente",
+    "sigla": "SP"
+  },
+  {
+    "id": 354320,
+    "nome": "Ribeirão do Sul",
+    "sigla": "SP"
+  },
+  {
+    "id": 354323,
+    "nome": "Ribeirão dos Índios",
+    "sigla": "SP"
+  },
+  {
+    "id": 354325,
+    "nome": "Ribeirão Grande",
+    "sigla": "SP"
+  },
+  {
+    "id": 354330,
+    "nome": "Ribeirão Pires",
+    "sigla": "SP"
+  },
+  {
+    "id": 354340,
+    "nome": "Ribeirão Preto",
+    "sigla": "SP"
+  },
+  {
+    "id": 354350,
+    "nome": "Riversul",
+    "sigla": "SP"
+  },
+  {
+    "id": 354360,
+    "nome": "Rifaina",
+    "sigla": "SP"
+  },
+  {
+    "id": 354370,
+    "nome": "Rincão",
+    "sigla": "SP"
+  },
+  {
+    "id": 354380,
+    "nome": "Rinópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 354390,
+    "nome": "Rio Claro",
+    "sigla": "SP"
+  },
+  {
+    "id": 354400,
+    "nome": "Rio das Pedras",
+    "sigla": "SP"
+  },
+  {
+    "id": 354410,
+    "nome": "Rio Grande da Serra",
+    "sigla": "SP"
+  },
+  {
+    "id": 354420,
+    "nome": "Riolândia",
+    "sigla": "SP"
+  },
+  {
+    "id": 354425,
+    "nome": "Rosana",
+    "sigla": "SP"
+  },
+  {
+    "id": 354430,
+    "nome": "Roseira",
+    "sigla": "SP"
+  },
+  {
+    "id": 354440,
+    "nome": "Rubiácea",
+    "sigla": "SP"
+  },
+  {
+    "id": 354450,
+    "nome": "Rubinéia",
+    "sigla": "SP"
+  },
+  {
+    "id": 354460,
+    "nome": "Sabino",
+    "sigla": "SP"
+  },
+  {
+    "id": 354470,
+    "nome": "Sagres",
+    "sigla": "SP"
+  },
+  {
+    "id": 354480,
+    "nome": "Sales",
+    "sigla": "SP"
+  },
+  {
+    "id": 354490,
+    "nome": "Sales Oliveira",
+    "sigla": "SP"
+  },
+  {
+    "id": 354500,
+    "nome": "Salesópolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 354510,
+    "nome": "Salmourão",
+    "sigla": "SP"
+  },
+  {
+    "id": 354515,
+    "nome": "Saltinho",
+    "sigla": "SP"
+  },
+  {
+    "id": 354520,
+    "nome": "Salto",
+    "sigla": "SP"
+  },
+  {
+    "id": 354530,
+    "nome": "Salto de Pirapora",
+    "sigla": "SP"
+  },
+  {
+    "id": 354540,
+    "nome": "Salto Grande",
+    "sigla": "SP"
+  },
+  {
+    "id": 354550,
+    "nome": "Sandovalina",
+    "sigla": "SP"
+  },
+  {
+    "id": 354560,
+    "nome": "Santa Adélia",
+    "sigla": "SP"
+  },
+  {
+    "id": 354570,
+    "nome": "Santa Albertina",
+    "sigla": "SP"
+  },
+  {
+    "id": 354580,
+    "nome": "Santa Bárbara d'Oeste",
+    "sigla": "SP"
+  },
+  {
+    "id": 354600,
+    "nome": "Santa Branca",
+    "sigla": "SP"
+  },
+  {
+    "id": 354610,
+    "nome": "Santa Clara d'Oeste",
+    "sigla": "SP"
+  },
+  {
+    "id": 354620,
+    "nome": "Santa Cruz da Conceição",
+    "sigla": "SP"
+  },
+  {
+    "id": 354625,
+    "nome": "Santa Cruz da Esperança",
+    "sigla": "SP"
+  },
+  {
+    "id": 354630,
+    "nome": "Santa Cruz das Palmeiras",
+    "sigla": "SP"
+  },
+  {
+    "id": 354640,
+    "nome": "Santa Cruz do Rio Pardo",
+    "sigla": "SP"
+  },
+  {
+    "id": 354650,
+    "nome": "Santa Ernestina",
+    "sigla": "SP"
+  },
+  {
+    "id": 354660,
+    "nome": "Santa Fé do Sul",
+    "sigla": "SP"
+  },
+  {
+    "id": 354670,
+    "nome": "Santa Gertrudes",
+    "sigla": "SP"
+  },
+  {
+    "id": 354680,
+    "nome": "Santa Isabel",
+    "sigla": "SP"
+  },
+  {
+    "id": 354690,
+    "nome": "Santa Lúcia",
+    "sigla": "SP"
+  },
+  {
+    "id": 354700,
+    "nome": "Santa Maria da Serra",
+    "sigla": "SP"
+  },
+  {
+    "id": 354710,
+    "nome": "Santa Mercedes",
+    "sigla": "SP"
+  },
+  {
+    "id": 354720,
+    "nome": "Santana da Ponte Pensa",
+    "sigla": "SP"
+  },
+  {
+    "id": 354730,
+    "nome": "Santana de Parnaíba",
+    "sigla": "SP"
+  },
+  {
+    "id": 354740,
+    "nome": "Santa Rita d'Oeste",
+    "sigla": "SP"
+  },
+  {
+    "id": 354750,
+    "nome": "Santa Rita do Passa Quatro",
+    "sigla": "SP"
+  },
+  {
+    "id": 354760,
+    "nome": "Santa Rosa de Viterbo",
+    "sigla": "SP"
+  },
+  {
+    "id": 354765,
+    "nome": "Santa Salete",
+    "sigla": "SP"
+  },
+  {
+    "id": 354770,
+    "nome": "Santo Anastácio",
+    "sigla": "SP"
+  },
+  {
+    "id": 354780,
+    "nome": "Santo André",
+    "sigla": "SP"
+  },
+  {
+    "id": 354790,
+    "nome": "Santo Antônio da Alegria",
+    "sigla": "SP"
+  },
+  {
+    "id": 354800,
+    "nome": "Santo Antônio de Posse",
+    "sigla": "SP"
+  },
+  {
+    "id": 354805,
+    "nome": "Santo Antônio do Aracanguá",
+    "sigla": "SP"
+  },
+  {
+    "id": 354810,
+    "nome": "Santo Antônio do Jardim",
+    "sigla": "SP"
+  },
+  {
+    "id": 354820,
+    "nome": "Santo Antônio do Pinhal",
+    "sigla": "SP"
+  },
+  {
+    "id": 354830,
+    "nome": "Santo Expedito",
+    "sigla": "SP"
+  },
+  {
+    "id": 354840,
+    "nome": "Santópolis do Aguapeí",
+    "sigla": "SP"
+  },
+  {
+    "id": 354850,
+    "nome": "Santos",
+    "sigla": "SP"
+  },
+  {
+    "id": 354860,
+    "nome": "São Bento do Sapucaí",
+    "sigla": "SP"
+  },
+  {
+    "id": 354870,
+    "nome": "São Bernardo do Campo",
+    "sigla": "SP"
+  },
+  {
+    "id": 354880,
+    "nome": "São Caetano do Sul",
+    "sigla": "SP"
+  },
+  {
+    "id": 354890,
+    "nome": "São Carlos",
+    "sigla": "SP"
+  },
+  {
+    "id": 354900,
+    "nome": "São Francisco",
+    "sigla": "SP"
+  },
+  {
+    "id": 354910,
+    "nome": "São João da Boa Vista",
+    "sigla": "SP"
+  },
+  {
+    "id": 354920,
+    "nome": "São João das Duas Pontes",
+    "sigla": "SP"
+  },
+  {
+    "id": 354925,
+    "nome": "São João de Iracema",
+    "sigla": "SP"
+  },
+  {
+    "id": 354930,
+    "nome": "São João do Pau d'Alho",
+    "sigla": "SP"
+  },
+  {
+    "id": 354940,
+    "nome": "São Joaquim da Barra",
+    "sigla": "SP"
+  },
+  {
+    "id": 354950,
+    "nome": "São José da Bela Vista",
+    "sigla": "SP"
+  },
+  {
+    "id": 354960,
+    "nome": "São José do Barreiro",
+    "sigla": "SP"
+  },
+  {
+    "id": 354970,
+    "nome": "São José do Rio Pardo",
+    "sigla": "SP"
+  },
+  {
+    "id": 354980,
+    "nome": "São José do Rio Preto",
+    "sigla": "SP"
+  },
+  {
+    "id": 354990,
+    "nome": "São José dos Campos",
+    "sigla": "SP"
+  },
+  {
+    "id": 354995,
+    "nome": "São Lourenço da Serra",
+    "sigla": "SP"
+  },
+  {
+    "id": 355000,
+    "nome": "São Luiz do Paraitinga",
+    "sigla": "SP"
+  },
+  {
+    "id": 355010,
+    "nome": "São Manuel",
+    "sigla": "SP"
+  },
+  {
+    "id": 355020,
+    "nome": "São Miguel Arcanjo",
+    "sigla": "SP"
+  },
+  {
+    "id": 355030,
+    "nome": "São Paulo",
+    "sigla": "SP"
+  },
+  {
+    "id": 355040,
+    "nome": "São Pedro",
+    "sigla": "SP"
+  },
+  {
+    "id": 355050,
+    "nome": "São Pedro do Turvo",
+    "sigla": "SP"
+  },
+  {
+    "id": 355060,
+    "nome": "São Roque",
+    "sigla": "SP"
+  },
+  {
+    "id": 355070,
+    "nome": "São Sebastião",
+    "sigla": "SP"
+  },
+  {
+    "id": 355080,
+    "nome": "São Sebastião da Grama",
+    "sigla": "SP"
+  },
+  {
+    "id": 355090,
+    "nome": "São Simão",
+    "sigla": "SP"
+  },
+  {
+    "id": 355100,
+    "nome": "São Vicente",
+    "sigla": "SP"
+  },
+  {
+    "id": 355110,
+    "nome": "Sarapuí",
+    "sigla": "SP"
+  },
+  {
+    "id": 355120,
+    "nome": "Sarutaiá",
+    "sigla": "SP"
+  },
+  {
+    "id": 355130,
+    "nome": "Sebastianópolis do Sul",
+    "sigla": "SP"
+  },
+  {
+    "id": 355140,
+    "nome": "Serra Azul",
+    "sigla": "SP"
+  },
+  {
+    "id": 355150,
+    "nome": "Serrana",
+    "sigla": "SP"
+  },
+  {
+    "id": 355160,
+    "nome": "Serra Negra",
+    "sigla": "SP"
+  },
+  {
+    "id": 355170,
+    "nome": "Sertãozinho",
+    "sigla": "SP"
+  },
+  {
+    "id": 355180,
+    "nome": "Sete Barras",
+    "sigla": "SP"
+  },
+  {
+    "id": 355190,
+    "nome": "Severínia",
+    "sigla": "SP"
+  },
+  {
+    "id": 355200,
+    "nome": "Silveiras",
+    "sigla": "SP"
+  },
+  {
+    "id": 355210,
+    "nome": "Socorro",
+    "sigla": "SP"
+  },
+  {
+    "id": 355220,
+    "nome": "Sorocaba",
+    "sigla": "SP"
+  },
+  {
+    "id": 355230,
+    "nome": "Sud Mennucci",
+    "sigla": "SP"
+  },
+  {
+    "id": 355240,
+    "nome": "Sumaré",
+    "sigla": "SP"
+  },
+  {
+    "id": 355250,
+    "nome": "Suzano",
+    "sigla": "SP"
+  },
+  {
+    "id": 355255,
+    "nome": "Suzanápolis",
+    "sigla": "SP"
+  },
+  {
+    "id": 355260,
+    "nome": "Tabapuã",
+    "sigla": "SP"
+  },
+  {
+    "id": 355270,
+    "nome": "Tabatinga",
+    "sigla": "SP"
+  },
+  {
+    "id": 355280,
+    "nome": "Taboão da Serra",
+    "sigla": "SP"
+  },
+  {
+    "id": 355290,
+    "nome": "Taciba",
+    "sigla": "SP"
+  },
+  {
+    "id": 355300,
+    "nome": "Taguaí",
+    "sigla": "SP"
+  },
+  {
+    "id": 355310,
+    "nome": "Taiaçu",
+    "sigla": "SP"
+  },
+  {
+    "id": 355320,
+    "nome": "Taiúva",
+    "sigla": "SP"
+  },
+  {
+    "id": 355330,
+    "nome": "Tambaú",
+    "sigla": "SP"
+  },
+  {
+    "id": 355340,
+    "nome": "Tanabi",
+    "sigla": "SP"
+  },
+  {
+    "id": 355350,
+    "nome": "Tapiraí",
+    "sigla": "SP"
+  },
+  {
+    "id": 355360,
+    "nome": "Tapiratiba",
+    "sigla": "SP"
+  },
+  {
+    "id": 355365,
+    "nome": "Taquaral",
+    "sigla": "SP"
+  },
+  {
+    "id": 355370,
+    "nome": "Taquaritinga",
+    "sigla": "SP"
+  },
+  {
+    "id": 355380,
+    "nome": "Taquarituba",
+    "sigla": "SP"
+  },
+  {
+    "id": 355385,
+    "nome": "Taquarivaí",
+    "sigla": "SP"
+  },
+  {
+    "id": 355390,
+    "nome": "Tarabai",
+    "sigla": "SP"
+  },
+  {
+    "id": 355395,
+    "nome": "Tarumã",
+    "sigla": "SP"
+  },
+  {
+    "id": 355400,
+    "nome": "Tatuí",
+    "sigla": "SP"
+  },
+  {
+    "id": 355410,
+    "nome": "Taubaté",
+    "sigla": "SP"
+  },
+  {
+    "id": 355420,
+    "nome": "Tejupá",
+    "sigla": "SP"
+  },
+  {
+    "id": 355430,
+    "nome": "Teodoro Sampaio",
+    "sigla": "SP"
+  },
+  {
+    "id": 355440,
+    "nome": "Terra Roxa",
+    "sigla": "SP"
+  },
+  {
+    "id": 355450,
+    "nome": "Tietê",
+    "sigla": "SP"
+  },
+  {
+    "id": 355460,
+    "nome": "Timburi",
+    "sigla": "SP"
+  },
+  {
+    "id": 355465,
+    "nome": "Torre de Pedra",
+    "sigla": "SP"
+  },
+  {
+    "id": 355470,
+    "nome": "Torrinha",
+    "sigla": "SP"
+  },
+  {
+    "id": 355475,
+    "nome": "Trabiju",
+    "sigla": "SP"
+  },
+  {
+    "id": 355480,
+    "nome": "Tremembé",
+    "sigla": "SP"
+  },
+  {
+    "id": 355490,
+    "nome": "Três Fronteiras",
+    "sigla": "SP"
+  },
+  {
+    "id": 355495,
+    "nome": "Tuiuti",
+    "sigla": "SP"
+  },
+  {
+    "id": 355500,
+    "nome": "Tupã",
+    "sigla": "SP"
+  },
+  {
+    "id": 355510,
+    "nome": "Tupi Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 355520,
+    "nome": "Turiúba",
+    "sigla": "SP"
+  },
+  {
+    "id": 355530,
+    "nome": "Turmalina",
+    "sigla": "SP"
+  },
+  {
+    "id": 355535,
+    "nome": "Ubarana",
+    "sigla": "SP"
+  },
+  {
+    "id": 355540,
+    "nome": "Ubatuba",
+    "sigla": "SP"
+  },
+  {
+    "id": 355550,
+    "nome": "Ubirajara",
+    "sigla": "SP"
+  },
+  {
+    "id": 355560,
+    "nome": "Uchoa",
+    "sigla": "SP"
+  },
+  {
+    "id": 355570,
+    "nome": "União Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 355580,
+    "nome": "Urânia",
+    "sigla": "SP"
+  },
+  {
+    "id": 355590,
+    "nome": "Uru",
+    "sigla": "SP"
+  },
+  {
+    "id": 355600,
+    "nome": "Urupês",
+    "sigla": "SP"
+  },
+  {
+    "id": 355610,
+    "nome": "Valentim Gentil",
+    "sigla": "SP"
+  },
+  {
+    "id": 355620,
+    "nome": "Valinhos",
+    "sigla": "SP"
+  },
+  {
+    "id": 355630,
+    "nome": "Valparaíso",
+    "sigla": "SP"
+  },
+  {
+    "id": 355635,
+    "nome": "Vargem",
+    "sigla": "SP"
+  },
+  {
+    "id": 355640,
+    "nome": "Vargem Grande do Sul",
+    "sigla": "SP"
+  },
+  {
+    "id": 355645,
+    "nome": "Vargem Grande Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 355650,
+    "nome": "Várzea Paulista",
+    "sigla": "SP"
+  },
+  {
+    "id": 355660,
+    "nome": "Vera Cruz",
+    "sigla": "SP"
+  },
+  {
+    "id": 355670,
+    "nome": "Vinhedo",
+    "sigla": "SP"
+  },
+  {
+    "id": 355680,
+    "nome": "Viradouro",
+    "sigla": "SP"
+  },
+  {
+    "id": 355690,
+    "nome": "Vista Alegre do Alto",
+    "sigla": "SP"
+  },
+  {
+    "id": 355695,
+    "nome": "Vitória Brasil",
+    "sigla": "SP"
+  },
+  {
+    "id": 355700,
+    "nome": "Votorantim",
+    "sigla": "SP"
+  },
+  {
+    "id": 355710,
+    "nome": "Votuporanga",
+    "sigla": "SP"
+  },
+  {
+    "id": 355715,
+    "nome": "Zacarias",
+    "sigla": "SP"
+  },
+  {
+    "id": 355720,
+    "nome": "Chavantes",
+    "sigla": "SP"
+  },
+  {
+    "id": 355730,
+    "nome": "Estiva Gerbi",
+    "sigla": "SP"
+  },
+  {
+    "id": 410010,
+    "nome": "Abatiá",
+    "sigla": "PR"
+  },
+  {
+    "id": 410020,
+    "nome": "Adrianópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 410030,
+    "nome": "Agudos do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410040,
+    "nome": "Almirante Tamandaré",
+    "sigla": "PR"
+  },
+  {
+    "id": 410045,
+    "nome": "Altamira do Paraná",
+    "sigla": "PR"
+  },
+  {
+    "id": 410050,
+    "nome": "Altônia",
+    "sigla": "PR"
+  },
+  {
+    "id": 410060,
+    "nome": "Alto Paraná",
+    "sigla": "PR"
+  },
+  {
+    "id": 410070,
+    "nome": "Alto Piquiri",
+    "sigla": "PR"
+  },
+  {
+    "id": 410080,
+    "nome": "Alvorada do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410090,
+    "nome": "Amaporã",
+    "sigla": "PR"
+  },
+  {
+    "id": 410100,
+    "nome": "Ampére",
+    "sigla": "PR"
+  },
+  {
+    "id": 410105,
+    "nome": "Anahy",
+    "sigla": "PR"
+  },
+  {
+    "id": 410110,
+    "nome": "Andirá",
+    "sigla": "PR"
+  },
+  {
+    "id": 410115,
+    "nome": "Ângulo",
+    "sigla": "PR"
+  },
+  {
+    "id": 410120,
+    "nome": "Antonina",
+    "sigla": "PR"
+  },
+  {
+    "id": 410130,
+    "nome": "Antônio Olinto",
+    "sigla": "PR"
+  },
+  {
+    "id": 410140,
+    "nome": "Apucarana",
+    "sigla": "PR"
+  },
+  {
+    "id": 410150,
+    "nome": "Arapongas",
+    "sigla": "PR"
+  },
+  {
+    "id": 410160,
+    "nome": "Arapoti",
+    "sigla": "PR"
+  },
+  {
+    "id": 410165,
+    "nome": "Arapuã",
+    "sigla": "PR"
+  },
+  {
+    "id": 410170,
+    "nome": "Araruna",
+    "sigla": "PR"
+  },
+  {
+    "id": 410180,
+    "nome": "Araucária",
+    "sigla": "PR"
+  },
+  {
+    "id": 410185,
+    "nome": "Ariranha do Ivaí",
+    "sigla": "PR"
+  },
+  {
+    "id": 410190,
+    "nome": "Assaí",
+    "sigla": "PR"
+  },
+  {
+    "id": 410200,
+    "nome": "Assis Chateaubriand",
+    "sigla": "PR"
+  },
+  {
+    "id": 410210,
+    "nome": "Astorga",
+    "sigla": "PR"
+  },
+  {
+    "id": 410220,
+    "nome": "Atalaia",
+    "sigla": "PR"
+  },
+  {
+    "id": 410230,
+    "nome": "Balsa Nova",
+    "sigla": "PR"
+  },
+  {
+    "id": 410240,
+    "nome": "Bandeirantes",
+    "sigla": "PR"
+  },
+  {
+    "id": 410250,
+    "nome": "Barbosa Ferraz",
+    "sigla": "PR"
+  },
+  {
+    "id": 410260,
+    "nome": "Barracão",
+    "sigla": "PR"
+  },
+  {
+    "id": 410270,
+    "nome": "Barra do Jacaré",
+    "sigla": "PR"
+  },
+  {
+    "id": 410275,
+    "nome": "Bela Vista da Caroba",
+    "sigla": "PR"
+  },
+  {
+    "id": 410280,
+    "nome": "Bela Vista do Paraíso",
+    "sigla": "PR"
+  },
+  {
+    "id": 410290,
+    "nome": "Bituruna",
+    "sigla": "PR"
+  },
+  {
+    "id": 410300,
+    "nome": "Boa Esperança",
+    "sigla": "PR"
+  },
+  {
+    "id": 410302,
+    "nome": "Boa Esperança do Iguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 410304,
+    "nome": "Boa Ventura de São Roque",
+    "sigla": "PR"
+  },
+  {
+    "id": 410305,
+    "nome": "Boa Vista da Aparecida",
+    "sigla": "PR"
+  },
+  {
+    "id": 410310,
+    "nome": "Bocaiúva do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410315,
+    "nome": "Bom Jesus do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410320,
+    "nome": "Bom Sucesso",
+    "sigla": "PR"
+  },
+  {
+    "id": 410322,
+    "nome": "Bom Sucesso do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410330,
+    "nome": "Borrazópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 410335,
+    "nome": "Braganey",
+    "sigla": "PR"
+  },
+  {
+    "id": 410337,
+    "nome": "Brasilândia do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410340,
+    "nome": "Cafeara",
+    "sigla": "PR"
+  },
+  {
+    "id": 410345,
+    "nome": "Cafelândia",
+    "sigla": "PR"
+  },
+  {
+    "id": 410347,
+    "nome": "Cafezal do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410350,
+    "nome": "Califórnia",
+    "sigla": "PR"
+  },
+  {
+    "id": 410360,
+    "nome": "Cambará",
+    "sigla": "PR"
+  },
+  {
+    "id": 410370,
+    "nome": "Cambé",
+    "sigla": "PR"
+  },
+  {
+    "id": 410380,
+    "nome": "Cambira",
+    "sigla": "PR"
+  },
+  {
+    "id": 410390,
+    "nome": "Campina da Lagoa",
+    "sigla": "PR"
+  },
+  {
+    "id": 410395,
+    "nome": "Campina do Simão",
+    "sigla": "PR"
+  },
+  {
+    "id": 410400,
+    "nome": "Campina Grande do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410405,
+    "nome": "Campo Bonito",
+    "sigla": "PR"
+  },
+  {
+    "id": 410410,
+    "nome": "Campo do Tenente",
+    "sigla": "PR"
+  },
+  {
+    "id": 410420,
+    "nome": "Campo Largo",
+    "sigla": "PR"
+  },
+  {
+    "id": 410425,
+    "nome": "Campo Magro",
+    "sigla": "PR"
+  },
+  {
+    "id": 410430,
+    "nome": "Campo Mourão",
+    "sigla": "PR"
+  },
+  {
+    "id": 410440,
+    "nome": "Cândido de Abreu",
+    "sigla": "PR"
+  },
+  {
+    "id": 410442,
+    "nome": "Candói",
+    "sigla": "PR"
+  },
+  {
+    "id": 410445,
+    "nome": "Cantagalo",
+    "sigla": "PR"
+  },
+  {
+    "id": 410450,
+    "nome": "Capanema",
+    "sigla": "PR"
+  },
+  {
+    "id": 410460,
+    "nome": "Capitão Leônidas Marques",
+    "sigla": "PR"
+  },
+  {
+    "id": 410465,
+    "nome": "Carambeí",
+    "sigla": "PR"
+  },
+  {
+    "id": 410470,
+    "nome": "Carlópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 410480,
+    "nome": "Cascavel",
+    "sigla": "PR"
+  },
+  {
+    "id": 410490,
+    "nome": "Castro",
+    "sigla": "PR"
+  },
+  {
+    "id": 410500,
+    "nome": "Catanduvas",
+    "sigla": "PR"
+  },
+  {
+    "id": 410510,
+    "nome": "Centenário do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410520,
+    "nome": "Cerro Azul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410530,
+    "nome": "Céu Azul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410540,
+    "nome": "Chopinzinho",
+    "sigla": "PR"
+  },
+  {
+    "id": 410550,
+    "nome": "Cianorte",
+    "sigla": "PR"
+  },
+  {
+    "id": 410560,
+    "nome": "Cidade Gaúcha",
+    "sigla": "PR"
+  },
+  {
+    "id": 410570,
+    "nome": "Clevelândia",
+    "sigla": "PR"
+  },
+  {
+    "id": 410580,
+    "nome": "Colombo",
+    "sigla": "PR"
+  },
+  {
+    "id": 410590,
+    "nome": "Colorado",
+    "sigla": "PR"
+  },
+  {
+    "id": 410600,
+    "nome": "Congonhinhas",
+    "sigla": "PR"
+  },
+  {
+    "id": 410610,
+    "nome": "Conselheiro Mairinck",
+    "sigla": "PR"
+  },
+  {
+    "id": 410620,
+    "nome": "Contenda",
+    "sigla": "PR"
+  },
+  {
+    "id": 410630,
+    "nome": "Corbélia",
+    "sigla": "PR"
+  },
+  {
+    "id": 410640,
+    "nome": "Cornélio Procópio",
+    "sigla": "PR"
+  },
+  {
+    "id": 410645,
+    "nome": "Coronel Domingos Soares",
+    "sigla": "PR"
+  },
+  {
+    "id": 410650,
+    "nome": "Coronel Vivida",
+    "sigla": "PR"
+  },
+  {
+    "id": 410655,
+    "nome": "Corumbataí do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410657,
+    "nome": "Cruzeiro do Iguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 410660,
+    "nome": "Cruzeiro do Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 410670,
+    "nome": "Cruzeiro do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410680,
+    "nome": "Cruz Machado",
+    "sigla": "PR"
+  },
+  {
+    "id": 410685,
+    "nome": "Cruzmaltina",
+    "sigla": "PR"
+  },
+  {
+    "id": 410690,
+    "nome": "Curitiba",
+    "sigla": "PR"
+  },
+  {
+    "id": 410700,
+    "nome": "Curiúva",
+    "sigla": "PR"
+  },
+  {
+    "id": 410710,
+    "nome": "Diamante do Norte",
+    "sigla": "PR"
+  },
+  {
+    "id": 410712,
+    "nome": "Diamante do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410715,
+    "nome": "Diamante D'Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 410720,
+    "nome": "Dois Vizinhos",
+    "sigla": "PR"
+  },
+  {
+    "id": 410725,
+    "nome": "Douradina",
+    "sigla": "PR"
+  },
+  {
+    "id": 410730,
+    "nome": "Doutor Camargo",
+    "sigla": "PR"
+  },
+  {
+    "id": 410740,
+    "nome": "Enéas Marques",
+    "sigla": "PR"
+  },
+  {
+    "id": 410750,
+    "nome": "Engenheiro Beltrão",
+    "sigla": "PR"
+  },
+  {
+    "id": 410752,
+    "nome": "Esperança Nova",
+    "sigla": "PR"
+  },
+  {
+    "id": 410753,
+    "nome": "Entre Rios do Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 410754,
+    "nome": "Espigão Alto do Iguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 410755,
+    "nome": "Farol",
+    "sigla": "PR"
+  },
+  {
+    "id": 410760,
+    "nome": "Faxinal",
+    "sigla": "PR"
+  },
+  {
+    "id": 410765,
+    "nome": "Fazenda Rio Grande",
+    "sigla": "PR"
+  },
+  {
+    "id": 410770,
+    "nome": "Fênix",
+    "sigla": "PR"
+  },
+  {
+    "id": 410773,
+    "nome": "Fernandes Pinheiro",
+    "sigla": "PR"
+  },
+  {
+    "id": 410775,
+    "nome": "Figueira",
+    "sigla": "PR"
+  },
+  {
+    "id": 410780,
+    "nome": "Floraí",
+    "sigla": "PR"
+  },
+  {
+    "id": 410785,
+    "nome": "Flor da Serra do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 410790,
+    "nome": "Floresta",
+    "sigla": "PR"
+  },
+  {
+    "id": 410800,
+    "nome": "Florestópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 410810,
+    "nome": "Flórida",
+    "sigla": "PR"
+  },
+  {
+    "id": 410820,
+    "nome": "Formosa do Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 410830,
+    "nome": "Foz do Iguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 410832,
+    "nome": "Francisco Alves",
+    "sigla": "PR"
+  },
+  {
+    "id": 410840,
+    "nome": "Francisco Beltrão",
+    "sigla": "PR"
+  },
+  {
+    "id": 410845,
+    "nome": "Foz do Jordão",
+    "sigla": "PR"
+  },
+  {
+    "id": 410850,
+    "nome": "General Carneiro",
+    "sigla": "PR"
+  },
+  {
+    "id": 410855,
+    "nome": "Godoy Moreira",
+    "sigla": "PR"
+  },
+  {
+    "id": 410860,
+    "nome": "Goioerê",
+    "sigla": "PR"
+  },
+  {
+    "id": 410865,
+    "nome": "Goioxim",
+    "sigla": "PR"
+  },
+  {
+    "id": 410870,
+    "nome": "Grandes Rios",
+    "sigla": "PR"
+  },
+  {
+    "id": 410880,
+    "nome": "Guaíra",
+    "sigla": "PR"
+  },
+  {
+    "id": 410890,
+    "nome": "Guairaçá",
+    "sigla": "PR"
+  },
+  {
+    "id": 410895,
+    "nome": "Guamiranga",
+    "sigla": "PR"
+  },
+  {
+    "id": 410900,
+    "nome": "Guapirama",
+    "sigla": "PR"
+  },
+  {
+    "id": 410910,
+    "nome": "Guaporema",
+    "sigla": "PR"
+  },
+  {
+    "id": 410920,
+    "nome": "Guaraci",
+    "sigla": "PR"
+  },
+  {
+    "id": 410930,
+    "nome": "Guaraniaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 410940,
+    "nome": "Guarapuava",
+    "sigla": "PR"
+  },
+  {
+    "id": 410950,
+    "nome": "Guaraqueçaba",
+    "sigla": "PR"
+  },
+  {
+    "id": 410960,
+    "nome": "Guaratuba",
+    "sigla": "PR"
+  },
+  {
+    "id": 410965,
+    "nome": "Honório Serpa",
+    "sigla": "PR"
+  },
+  {
+    "id": 410970,
+    "nome": "Ibaiti",
+    "sigla": "PR"
+  },
+  {
+    "id": 410975,
+    "nome": "Ibema",
+    "sigla": "PR"
+  },
+  {
+    "id": 410980,
+    "nome": "Ibiporã",
+    "sigla": "PR"
+  },
+  {
+    "id": 410990,
+    "nome": "Icaraíma",
+    "sigla": "PR"
+  },
+  {
+    "id": 411000,
+    "nome": "Iguaraçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 411005,
+    "nome": "Iguatu",
+    "sigla": "PR"
+  },
+  {
+    "id": 411007,
+    "nome": "Imbaú",
+    "sigla": "PR"
+  },
+  {
+    "id": 411010,
+    "nome": "Imbituva",
+    "sigla": "PR"
+  },
+  {
+    "id": 411020,
+    "nome": "Inácio Martins",
+    "sigla": "PR"
+  },
+  {
+    "id": 411030,
+    "nome": "Inajá",
+    "sigla": "PR"
+  },
+  {
+    "id": 411040,
+    "nome": "Indianópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 411050,
+    "nome": "Ipiranga",
+    "sigla": "PR"
+  },
+  {
+    "id": 411060,
+    "nome": "Iporã",
+    "sigla": "PR"
+  },
+  {
+    "id": 411065,
+    "nome": "Iracema do Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 411070,
+    "nome": "Irati",
+    "sigla": "PR"
+  },
+  {
+    "id": 411080,
+    "nome": "Iretama",
+    "sigla": "PR"
+  },
+  {
+    "id": 411090,
+    "nome": "Itaguajé",
+    "sigla": "PR"
+  },
+  {
+    "id": 411095,
+    "nome": "Itaipulândia",
+    "sigla": "PR"
+  },
+  {
+    "id": 411100,
+    "nome": "Itambaracá",
+    "sigla": "PR"
+  },
+  {
+    "id": 411110,
+    "nome": "Itambé",
+    "sigla": "PR"
+  },
+  {
+    "id": 411120,
+    "nome": "Itapejara d'Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 411125,
+    "nome": "Itaperuçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 411130,
+    "nome": "Itaúna do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 411140,
+    "nome": "Ivaí",
+    "sigla": "PR"
+  },
+  {
+    "id": 411150,
+    "nome": "Ivaiporã",
+    "sigla": "PR"
+  },
+  {
+    "id": 411155,
+    "nome": "Ivaté",
+    "sigla": "PR"
+  },
+  {
+    "id": 411160,
+    "nome": "Ivatuba",
+    "sigla": "PR"
+  },
+  {
+    "id": 411170,
+    "nome": "Jaboti",
+    "sigla": "PR"
+  },
+  {
+    "id": 411180,
+    "nome": "Jacarezinho",
+    "sigla": "PR"
+  },
+  {
+    "id": 411190,
+    "nome": "Jaguapitã",
+    "sigla": "PR"
+  },
+  {
+    "id": 411200,
+    "nome": "Jaguariaíva",
+    "sigla": "PR"
+  },
+  {
+    "id": 411210,
+    "nome": "Jandaia do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 411220,
+    "nome": "Janiópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 411230,
+    "nome": "Japira",
+    "sigla": "PR"
+  },
+  {
+    "id": 411240,
+    "nome": "Japurá",
+    "sigla": "PR"
+  },
+  {
+    "id": 411250,
+    "nome": "Jardim Alegre",
+    "sigla": "PR"
+  },
+  {
+    "id": 411260,
+    "nome": "Jardim Olinda",
+    "sigla": "PR"
+  },
+  {
+    "id": 411270,
+    "nome": "Jataizinho",
+    "sigla": "PR"
+  },
+  {
+    "id": 411275,
+    "nome": "Jesuítas",
+    "sigla": "PR"
+  },
+  {
+    "id": 411280,
+    "nome": "Joaquim Távora",
+    "sigla": "PR"
+  },
+  {
+    "id": 411290,
+    "nome": "Jundiaí do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 411295,
+    "nome": "Juranda",
+    "sigla": "PR"
+  },
+  {
+    "id": 411300,
+    "nome": "Jussara",
+    "sigla": "PR"
+  },
+  {
+    "id": 411310,
+    "nome": "Kaloré",
+    "sigla": "PR"
+  },
+  {
+    "id": 411320,
+    "nome": "Lapa",
+    "sigla": "PR"
+  },
+  {
+    "id": 411325,
+    "nome": "Laranjal",
+    "sigla": "PR"
+  },
+  {
+    "id": 411330,
+    "nome": "Laranjeiras do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 411340,
+    "nome": "Leópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 411342,
+    "nome": "Lidianópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 411345,
+    "nome": "Lindoeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 411350,
+    "nome": "Loanda",
+    "sigla": "PR"
+  },
+  {
+    "id": 411360,
+    "nome": "Lobato",
+    "sigla": "PR"
+  },
+  {
+    "id": 411370,
+    "nome": "Londrina",
+    "sigla": "PR"
+  },
+  {
+    "id": 411373,
+    "nome": "Luiziana",
+    "sigla": "PR"
+  },
+  {
+    "id": 411375,
+    "nome": "Lunardelli",
+    "sigla": "PR"
+  },
+  {
+    "id": 411380,
+    "nome": "Lupionópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 411390,
+    "nome": "Mallet",
+    "sigla": "PR"
+  },
+  {
+    "id": 411400,
+    "nome": "Mamborê",
+    "sigla": "PR"
+  },
+  {
+    "id": 411410,
+    "nome": "Mandaguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 411420,
+    "nome": "Mandaguari",
+    "sigla": "PR"
+  },
+  {
+    "id": 411430,
+    "nome": "Mandirituba",
+    "sigla": "PR"
+  },
+  {
+    "id": 411435,
+    "nome": "Manfrinópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 411440,
+    "nome": "Mangueirinha",
+    "sigla": "PR"
+  },
+  {
+    "id": 411450,
+    "nome": "Manoel Ribas",
+    "sigla": "PR"
+  },
+  {
+    "id": 411460,
+    "nome": "Marechal Cândido Rondon",
+    "sigla": "PR"
+  },
+  {
+    "id": 411470,
+    "nome": "Maria Helena",
+    "sigla": "PR"
+  },
+  {
+    "id": 411480,
+    "nome": "Marialva",
+    "sigla": "PR"
+  },
+  {
+    "id": 411490,
+    "nome": "Marilândia do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 411500,
+    "nome": "Marilena",
+    "sigla": "PR"
+  },
+  {
+    "id": 411510,
+    "nome": "Mariluz",
+    "sigla": "PR"
+  },
+  {
+    "id": 411520,
+    "nome": "Maringá",
+    "sigla": "PR"
+  },
+  {
+    "id": 411530,
+    "nome": "Mariópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 411535,
+    "nome": "Maripá",
+    "sigla": "PR"
+  },
+  {
+    "id": 411540,
+    "nome": "Marmeleiro",
+    "sigla": "PR"
+  },
+  {
+    "id": 411545,
+    "nome": "Marquinho",
+    "sigla": "PR"
+  },
+  {
+    "id": 411550,
+    "nome": "Marumbi",
+    "sigla": "PR"
+  },
+  {
+    "id": 411560,
+    "nome": "Matelândia",
+    "sigla": "PR"
+  },
+  {
+    "id": 411570,
+    "nome": "Matinhos",
+    "sigla": "PR"
+  },
+  {
+    "id": 411573,
+    "nome": "Mato Rico",
+    "sigla": "PR"
+  },
+  {
+    "id": 411575,
+    "nome": "Mauá da Serra",
+    "sigla": "PR"
+  },
+  {
+    "id": 411580,
+    "nome": "Medianeira",
+    "sigla": "PR"
+  },
+  {
+    "id": 411585,
+    "nome": "Mercedes",
+    "sigla": "PR"
+  },
+  {
+    "id": 411590,
+    "nome": "Mirador",
+    "sigla": "PR"
+  },
+  {
+    "id": 411600,
+    "nome": "Miraselva",
+    "sigla": "PR"
+  },
+  {
+    "id": 411605,
+    "nome": "Missal",
+    "sigla": "PR"
+  },
+  {
+    "id": 411610,
+    "nome": "Moreira Sales",
+    "sigla": "PR"
+  },
+  {
+    "id": 411620,
+    "nome": "Morretes",
+    "sigla": "PR"
+  },
+  {
+    "id": 411630,
+    "nome": "Munhoz de Melo",
+    "sigla": "PR"
+  },
+  {
+    "id": 411640,
+    "nome": "Nossa Senhora das Graças",
+    "sigla": "PR"
+  },
+  {
+    "id": 411650,
+    "nome": "Nova Aliança do Ivaí",
+    "sigla": "PR"
+  },
+  {
+    "id": 411660,
+    "nome": "Nova América da Colina",
+    "sigla": "PR"
+  },
+  {
+    "id": 411670,
+    "nome": "Nova Aurora",
+    "sigla": "PR"
+  },
+  {
+    "id": 411680,
+    "nome": "Nova Cantu",
+    "sigla": "PR"
+  },
+  {
+    "id": 411690,
+    "nome": "Nova Esperança",
+    "sigla": "PR"
+  },
+  {
+    "id": 411695,
+    "nome": "Nova Esperança do Sudoeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 411700,
+    "nome": "Nova Fátima",
+    "sigla": "PR"
+  },
+  {
+    "id": 411705,
+    "nome": "Nova Laranjeiras",
+    "sigla": "PR"
+  },
+  {
+    "id": 411710,
+    "nome": "Nova Londrina",
+    "sigla": "PR"
+  },
+  {
+    "id": 411720,
+    "nome": "Nova Olímpia",
+    "sigla": "PR"
+  },
+  {
+    "id": 411721,
+    "nome": "Nova Santa Bárbara",
+    "sigla": "PR"
+  },
+  {
+    "id": 411722,
+    "nome": "Nova Santa Rosa",
+    "sigla": "PR"
+  },
+  {
+    "id": 411725,
+    "nome": "Nova Prata do Iguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 411727,
+    "nome": "Nova Tebas",
+    "sigla": "PR"
+  },
+  {
+    "id": 411729,
+    "nome": "Novo Itacolomi",
+    "sigla": "PR"
+  },
+  {
+    "id": 411730,
+    "nome": "Ortigueira",
+    "sigla": "PR"
+  },
+  {
+    "id": 411740,
+    "nome": "Ourizona",
+    "sigla": "PR"
+  },
+  {
+    "id": 411745,
+    "nome": "Ouro Verde do Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 411750,
+    "nome": "Paiçandu",
+    "sigla": "PR"
+  },
+  {
+    "id": 411760,
+    "nome": "Palmas",
+    "sigla": "PR"
+  },
+  {
+    "id": 411770,
+    "nome": "Palmeira",
+    "sigla": "PR"
+  },
+  {
+    "id": 411780,
+    "nome": "Palmital",
+    "sigla": "PR"
+  },
+  {
+    "id": 411790,
+    "nome": "Palotina",
+    "sigla": "PR"
+  },
+  {
+    "id": 411800,
+    "nome": "Paraíso do Norte",
+    "sigla": "PR"
+  },
+  {
+    "id": 411810,
+    "nome": "Paranacity",
+    "sigla": "PR"
+  },
+  {
+    "id": 411820,
+    "nome": "Paranaguá",
+    "sigla": "PR"
+  },
+  {
+    "id": 411830,
+    "nome": "Paranapoema",
+    "sigla": "PR"
+  },
+  {
+    "id": 411840,
+    "nome": "Paranavaí",
+    "sigla": "PR"
+  },
+  {
+    "id": 411845,
+    "nome": "Pato Bragado",
+    "sigla": "PR"
+  },
+  {
+    "id": 411850,
+    "nome": "Pato Branco",
+    "sigla": "PR"
+  },
+  {
+    "id": 411860,
+    "nome": "Paula Freitas",
+    "sigla": "PR"
+  },
+  {
+    "id": 411870,
+    "nome": "Paulo Frontin",
+    "sigla": "PR"
+  },
+  {
+    "id": 411880,
+    "nome": "Peabiru",
+    "sigla": "PR"
+  },
+  {
+    "id": 411885,
+    "nome": "Perobal",
+    "sigla": "PR"
+  },
+  {
+    "id": 411890,
+    "nome": "Pérola",
+    "sigla": "PR"
+  },
+  {
+    "id": 411900,
+    "nome": "Pérola d'Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 411910,
+    "nome": "Piên",
+    "sigla": "PR"
+  },
+  {
+    "id": 411915,
+    "nome": "Pinhais",
+    "sigla": "PR"
+  },
+  {
+    "id": 411920,
+    "nome": "Pinhalão",
+    "sigla": "PR"
+  },
+  {
+    "id": 411925,
+    "nome": "Pinhal de São Bento",
+    "sigla": "PR"
+  },
+  {
+    "id": 411930,
+    "nome": "Pinhão",
+    "sigla": "PR"
+  },
+  {
+    "id": 411940,
+    "nome": "Piraí do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 411950,
+    "nome": "Piraquara",
+    "sigla": "PR"
+  },
+  {
+    "id": 411960,
+    "nome": "Pitanga",
+    "sigla": "PR"
+  },
+  {
+    "id": 411965,
+    "nome": "Pitangueiras",
+    "sigla": "PR"
+  },
+  {
+    "id": 411970,
+    "nome": "Planaltina do Paraná",
+    "sigla": "PR"
+  },
+  {
+    "id": 411980,
+    "nome": "Planalto",
+    "sigla": "PR"
+  },
+  {
+    "id": 411990,
+    "nome": "Ponta Grossa",
+    "sigla": "PR"
+  },
+  {
+    "id": 411995,
+    "nome": "Pontal do Paraná",
+    "sigla": "PR"
+  },
+  {
+    "id": 412000,
+    "nome": "Porecatu",
+    "sigla": "PR"
+  },
+  {
+    "id": 412010,
+    "nome": "Porto Amazonas",
+    "sigla": "PR"
+  },
+  {
+    "id": 412015,
+    "nome": "Porto Barreiro",
+    "sigla": "PR"
+  },
+  {
+    "id": 412020,
+    "nome": "Porto Rico",
+    "sigla": "PR"
+  },
+  {
+    "id": 412030,
+    "nome": "Porto Vitória",
+    "sigla": "PR"
+  },
+  {
+    "id": 412033,
+    "nome": "Prado Ferreira",
+    "sigla": "PR"
+  },
+  {
+    "id": 412035,
+    "nome": "Pranchita",
+    "sigla": "PR"
+  },
+  {
+    "id": 412040,
+    "nome": "Presidente Castelo Branco",
+    "sigla": "PR"
+  },
+  {
+    "id": 412050,
+    "nome": "Primeiro de Maio",
+    "sigla": "PR"
+  },
+  {
+    "id": 412060,
+    "nome": "Prudentópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 412065,
+    "nome": "Quarto Centenário",
+    "sigla": "PR"
+  },
+  {
+    "id": 412070,
+    "nome": "Quatiguá",
+    "sigla": "PR"
+  },
+  {
+    "id": 412080,
+    "nome": "Quatro Barras",
+    "sigla": "PR"
+  },
+  {
+    "id": 412085,
+    "nome": "Quatro Pontes",
+    "sigla": "PR"
+  },
+  {
+    "id": 412090,
+    "nome": "Quedas do Iguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 412100,
+    "nome": "Querência do Norte",
+    "sigla": "PR"
+  },
+  {
+    "id": 412110,
+    "nome": "Quinta do Sol",
+    "sigla": "PR"
+  },
+  {
+    "id": 412120,
+    "nome": "Quitandinha",
+    "sigla": "PR"
+  },
+  {
+    "id": 412125,
+    "nome": "Ramilândia",
+    "sigla": "PR"
+  },
+  {
+    "id": 412130,
+    "nome": "Rancho Alegre",
+    "sigla": "PR"
+  },
+  {
+    "id": 412135,
+    "nome": "Rancho Alegre D'Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 412140,
+    "nome": "Realeza",
+    "sigla": "PR"
+  },
+  {
+    "id": 412150,
+    "nome": "Rebouças",
+    "sigla": "PR"
+  },
+  {
+    "id": 412160,
+    "nome": "Renascença",
+    "sigla": "PR"
+  },
+  {
+    "id": 412170,
+    "nome": "Reserva",
+    "sigla": "PR"
+  },
+  {
+    "id": 412175,
+    "nome": "Reserva do Iguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 412180,
+    "nome": "Ribeirão Claro",
+    "sigla": "PR"
+  },
+  {
+    "id": 412190,
+    "nome": "Ribeirão do Pinhal",
+    "sigla": "PR"
+  },
+  {
+    "id": 412200,
+    "nome": "Rio Azul",
+    "sigla": "PR"
+  },
+  {
+    "id": 412210,
+    "nome": "Rio Bom",
+    "sigla": "PR"
+  },
+  {
+    "id": 412215,
+    "nome": "Rio Bonito do Iguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 412217,
+    "nome": "Rio Branco do Ivaí",
+    "sigla": "PR"
+  },
+  {
+    "id": 412220,
+    "nome": "Rio Branco do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 412230,
+    "nome": "Rio Negro",
+    "sigla": "PR"
+  },
+  {
+    "id": 412240,
+    "nome": "Rolândia",
+    "sigla": "PR"
+  },
+  {
+    "id": 412250,
+    "nome": "Roncador",
+    "sigla": "PR"
+  },
+  {
+    "id": 412260,
+    "nome": "Rondon",
+    "sigla": "PR"
+  },
+  {
+    "id": 412265,
+    "nome": "Rosário do Ivaí",
+    "sigla": "PR"
+  },
+  {
+    "id": 412270,
+    "nome": "Sabáudia",
+    "sigla": "PR"
+  },
+  {
+    "id": 412280,
+    "nome": "Salgado Filho",
+    "sigla": "PR"
+  },
+  {
+    "id": 412290,
+    "nome": "Salto do Itararé",
+    "sigla": "PR"
+  },
+  {
+    "id": 412300,
+    "nome": "Salto do Lontra",
+    "sigla": "PR"
+  },
+  {
+    "id": 412310,
+    "nome": "Santa Amélia",
+    "sigla": "PR"
+  },
+  {
+    "id": 412320,
+    "nome": "Santa Cecília do Pavão",
+    "sigla": "PR"
+  },
+  {
+    "id": 412330,
+    "nome": "Santa Cruz de Monte Castelo",
+    "sigla": "PR"
+  },
+  {
+    "id": 412340,
+    "nome": "Santa Fé",
+    "sigla": "PR"
+  },
+  {
+    "id": 412350,
+    "nome": "Santa Helena",
+    "sigla": "PR"
+  },
+  {
+    "id": 412360,
+    "nome": "Santa Inês",
+    "sigla": "PR"
+  },
+  {
+    "id": 412370,
+    "nome": "Santa Isabel do Ivaí",
+    "sigla": "PR"
+  },
+  {
+    "id": 412380,
+    "nome": "Santa Izabel do Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 412382,
+    "nome": "Santa Lúcia",
+    "sigla": "PR"
+  },
+  {
+    "id": 412385,
+    "nome": "Santa Maria do Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 412390,
+    "nome": "Santa Mariana",
+    "sigla": "PR"
+  },
+  {
+    "id": 412395,
+    "nome": "Santa Mônica",
+    "sigla": "PR"
+  },
+  {
+    "id": 412400,
+    "nome": "Santana do Itararé",
+    "sigla": "PR"
+  },
+  {
+    "id": 412402,
+    "nome": "Santa Tereza do Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 412405,
+    "nome": "Santa Terezinha de Itaipu",
+    "sigla": "PR"
+  },
+  {
+    "id": 412410,
+    "nome": "Santo Antônio da Platina",
+    "sigla": "PR"
+  },
+  {
+    "id": 412420,
+    "nome": "Santo Antônio do Caiuá",
+    "sigla": "PR"
+  },
+  {
+    "id": 412430,
+    "nome": "Santo Antônio do Paraíso",
+    "sigla": "PR"
+  },
+  {
+    "id": 412440,
+    "nome": "Santo Antônio do Sudoeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 412450,
+    "nome": "Santo Inácio",
+    "sigla": "PR"
+  },
+  {
+    "id": 412460,
+    "nome": "São Carlos do Ivaí",
+    "sigla": "PR"
+  },
+  {
+    "id": 412470,
+    "nome": "São Jerônimo da Serra",
+    "sigla": "PR"
+  },
+  {
+    "id": 412480,
+    "nome": "São João",
+    "sigla": "PR"
+  },
+  {
+    "id": 412490,
+    "nome": "São João do Caiuá",
+    "sigla": "PR"
+  },
+  {
+    "id": 412500,
+    "nome": "São João do Ivaí",
+    "sigla": "PR"
+  },
+  {
+    "id": 412510,
+    "nome": "São João do Triunfo",
+    "sigla": "PR"
+  },
+  {
+    "id": 412520,
+    "nome": "São Jorge d'Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 412530,
+    "nome": "São Jorge do Ivaí",
+    "sigla": "PR"
+  },
+  {
+    "id": 412535,
+    "nome": "São Jorge do Patrocínio",
+    "sigla": "PR"
+  },
+  {
+    "id": 412540,
+    "nome": "São José da Boa Vista",
+    "sigla": "PR"
+  },
+  {
+    "id": 412545,
+    "nome": "São José das Palmeiras",
+    "sigla": "PR"
+  },
+  {
+    "id": 412550,
+    "nome": "São José dos Pinhais",
+    "sigla": "PR"
+  },
+  {
+    "id": 412555,
+    "nome": "São Manoel do Paraná",
+    "sigla": "PR"
+  },
+  {
+    "id": 412560,
+    "nome": "São Mateus do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 412570,
+    "nome": "São Miguel do Iguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 412575,
+    "nome": "São Pedro do Iguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 412580,
+    "nome": "São Pedro do Ivaí",
+    "sigla": "PR"
+  },
+  {
+    "id": 412590,
+    "nome": "São Pedro do Paraná",
+    "sigla": "PR"
+  },
+  {
+    "id": 412600,
+    "nome": "São Sebastião da Amoreira",
+    "sigla": "PR"
+  },
+  {
+    "id": 412610,
+    "nome": "São Tomé",
+    "sigla": "PR"
+  },
+  {
+    "id": 412620,
+    "nome": "Sapopema",
+    "sigla": "PR"
+  },
+  {
+    "id": 412625,
+    "nome": "Sarandi",
+    "sigla": "PR"
+  },
+  {
+    "id": 412627,
+    "nome": "Saudade do Iguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 412630,
+    "nome": "Sengés",
+    "sigla": "PR"
+  },
+  {
+    "id": 412635,
+    "nome": "Serranópolis do Iguaçu",
+    "sigla": "PR"
+  },
+  {
+    "id": 412640,
+    "nome": "Sertaneja",
+    "sigla": "PR"
+  },
+  {
+    "id": 412650,
+    "nome": "Sertanópolis",
+    "sigla": "PR"
+  },
+  {
+    "id": 412660,
+    "nome": "Siqueira Campos",
+    "sigla": "PR"
+  },
+  {
+    "id": 412665,
+    "nome": "Sulina",
+    "sigla": "PR"
+  },
+  {
+    "id": 412667,
+    "nome": "Tamarana",
+    "sigla": "PR"
+  },
+  {
+    "id": 412670,
+    "nome": "Tamboara",
+    "sigla": "PR"
+  },
+  {
+    "id": 412680,
+    "nome": "Tapejara",
+    "sigla": "PR"
+  },
+  {
+    "id": 412690,
+    "nome": "Tapira",
+    "sigla": "PR"
+  },
+  {
+    "id": 412700,
+    "nome": "Teixeira Soares",
+    "sigla": "PR"
+  },
+  {
+    "id": 412710,
+    "nome": "Telêmaco Borba",
+    "sigla": "PR"
+  },
+  {
+    "id": 412720,
+    "nome": "Terra Boa",
+    "sigla": "PR"
+  },
+  {
+    "id": 412730,
+    "nome": "Terra Rica",
+    "sigla": "PR"
+  },
+  {
+    "id": 412740,
+    "nome": "Terra Roxa",
+    "sigla": "PR"
+  },
+  {
+    "id": 412750,
+    "nome": "Tibagi",
+    "sigla": "PR"
+  },
+  {
+    "id": 412760,
+    "nome": "Tijucas do Sul",
+    "sigla": "PR"
+  },
+  {
+    "id": 412770,
+    "nome": "Toledo",
+    "sigla": "PR"
+  },
+  {
+    "id": 412780,
+    "nome": "Tomazina",
+    "sigla": "PR"
+  },
+  {
+    "id": 412785,
+    "nome": "Três Barras do Paraná",
+    "sigla": "PR"
+  },
+  {
+    "id": 412788,
+    "nome": "Tunas do Paraná",
+    "sigla": "PR"
+  },
+  {
+    "id": 412790,
+    "nome": "Tuneiras do Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 412795,
+    "nome": "Tupãssi",
+    "sigla": "PR"
+  },
+  {
+    "id": 412796,
+    "nome": "Turvo",
+    "sigla": "PR"
+  },
+  {
+    "id": 412800,
+    "nome": "Ubiratã",
+    "sigla": "PR"
+  },
+  {
+    "id": 412810,
+    "nome": "Umuarama",
+    "sigla": "PR"
+  },
+  {
+    "id": 412820,
+    "nome": "União da Vitória",
+    "sigla": "PR"
+  },
+  {
+    "id": 412830,
+    "nome": "Uniflor",
+    "sigla": "PR"
+  },
+  {
+    "id": 412840,
+    "nome": "Uraí",
+    "sigla": "PR"
+  },
+  {
+    "id": 412850,
+    "nome": "Wenceslau Braz",
+    "sigla": "PR"
+  },
+  {
+    "id": 412853,
+    "nome": "Ventania",
+    "sigla": "PR"
+  },
+  {
+    "id": 412855,
+    "nome": "Vera Cruz do Oeste",
+    "sigla": "PR"
+  },
+  {
+    "id": 412860,
+    "nome": "Verê",
+    "sigla": "PR"
+  },
+  {
+    "id": 412862,
+    "nome": "Alto Paraíso",
+    "sigla": "PR"
+  },
+  {
+    "id": 412863,
+    "nome": "Doutor Ulysses",
+    "sigla": "PR"
+  },
+  {
+    "id": 412865,
+    "nome": "Virmond",
+    "sigla": "PR"
+  },
+  {
+    "id": 412870,
+    "nome": "Vitorino",
+    "sigla": "PR"
+  },
+  {
+    "id": 412880,
+    "nome": "Xambrê",
+    "sigla": "PR"
+  },
+  {
+    "id": 420005,
+    "nome": "Abdon Batista",
+    "sigla": "SC"
+  },
+  {
+    "id": 420010,
+    "nome": "Abelardo Luz",
+    "sigla": "SC"
+  },
+  {
+    "id": 420020,
+    "nome": "Agrolândia",
+    "sigla": "SC"
+  },
+  {
+    "id": 420030,
+    "nome": "Agronômica",
+    "sigla": "SC"
+  },
+  {
+    "id": 420040,
+    "nome": "Água Doce",
+    "sigla": "SC"
+  },
+  {
+    "id": 420050,
+    "nome": "Águas de Chapecó",
+    "sigla": "SC"
+  },
+  {
+    "id": 420055,
+    "nome": "Águas Frias",
+    "sigla": "SC"
+  },
+  {
+    "id": 420060,
+    "nome": "Águas Mornas",
+    "sigla": "SC"
+  },
+  {
+    "id": 420070,
+    "nome": "Alfredo Wagner",
+    "sigla": "SC"
+  },
+  {
+    "id": 420075,
+    "nome": "Alto Bela Vista",
+    "sigla": "SC"
+  },
+  {
+    "id": 420080,
+    "nome": "Anchieta",
+    "sigla": "SC"
+  },
+  {
+    "id": 420090,
+    "nome": "Angelina",
+    "sigla": "SC"
+  },
+  {
+    "id": 420100,
+    "nome": "Anita Garibaldi",
+    "sigla": "SC"
+  },
+  {
+    "id": 420110,
+    "nome": "Anitápolis",
+    "sigla": "SC"
+  },
+  {
+    "id": 420120,
+    "nome": "Antônio Carlos",
+    "sigla": "SC"
+  },
+  {
+    "id": 420125,
+    "nome": "Apiúna",
+    "sigla": "SC"
+  },
+  {
+    "id": 420127,
+    "nome": "Arabutã",
+    "sigla": "SC"
+  },
+  {
+    "id": 420130,
+    "nome": "Araquari",
+    "sigla": "SC"
+  },
+  {
+    "id": 420140,
+    "nome": "Araranguá",
+    "sigla": "SC"
+  },
+  {
+    "id": 420150,
+    "nome": "Armazém",
+    "sigla": "SC"
+  },
+  {
+    "id": 420160,
+    "nome": "Arroio Trinta",
+    "sigla": "SC"
+  },
+  {
+    "id": 420165,
+    "nome": "Arvoredo",
+    "sigla": "SC"
+  },
+  {
+    "id": 420170,
+    "nome": "Ascurra",
+    "sigla": "SC"
+  },
+  {
+    "id": 420180,
+    "nome": "Atalanta",
+    "sigla": "SC"
+  },
+  {
+    "id": 420190,
+    "nome": "Aurora",
+    "sigla": "SC"
+  },
+  {
+    "id": 420195,
+    "nome": "Balneário Arroio do Silva",
+    "sigla": "SC"
+  },
+  {
+    "id": 420200,
+    "nome": "Balneário Camboriú",
+    "sigla": "SC"
+  },
+  {
+    "id": 420205,
+    "nome": "Balneário Barra do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 420207,
+    "nome": "Balneário Gaivota",
+    "sigla": "SC"
+  },
+  {
+    "id": 420208,
+    "nome": "Bandeirante",
+    "sigla": "SC"
+  },
+  {
+    "id": 420209,
+    "nome": "Barra Bonita",
+    "sigla": "SC"
+  },
+  {
+    "id": 420210,
+    "nome": "Barra Velha",
+    "sigla": "SC"
+  },
+  {
+    "id": 420213,
+    "nome": "Bela Vista do Toldo",
+    "sigla": "SC"
+  },
+  {
+    "id": 420215,
+    "nome": "Belmonte",
+    "sigla": "SC"
+  },
+  {
+    "id": 420220,
+    "nome": "Benedito Novo",
+    "sigla": "SC"
+  },
+  {
+    "id": 420230,
+    "nome": "Biguaçu",
+    "sigla": "SC"
+  },
+  {
+    "id": 420240,
+    "nome": "Blumenau",
+    "sigla": "SC"
+  },
+  {
+    "id": 420243,
+    "nome": "Bocaina do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 420245,
+    "nome": "Bombinhas",
+    "sigla": "SC"
+  },
+  {
+    "id": 420250,
+    "nome": "Bom Jardim da Serra",
+    "sigla": "SC"
+  },
+  {
+    "id": 420253,
+    "nome": "Bom Jesus",
+    "sigla": "SC"
+  },
+  {
+    "id": 420257,
+    "nome": "Bom Jesus do Oeste",
+    "sigla": "SC"
+  },
+  {
+    "id": 420260,
+    "nome": "Bom Retiro",
+    "sigla": "SC"
+  },
+  {
+    "id": 420270,
+    "nome": "Botuverá",
+    "sigla": "SC"
+  },
+  {
+    "id": 420280,
+    "nome": "Braço do Norte",
+    "sigla": "SC"
+  },
+  {
+    "id": 420285,
+    "nome": "Braço do Trombudo",
+    "sigla": "SC"
+  },
+  {
+    "id": 420287,
+    "nome": "Brunópolis",
+    "sigla": "SC"
+  },
+  {
+    "id": 420290,
+    "nome": "Brusque",
+    "sigla": "SC"
+  },
+  {
+    "id": 420300,
+    "nome": "Caçador",
+    "sigla": "SC"
+  },
+  {
+    "id": 420310,
+    "nome": "Caibi",
+    "sigla": "SC"
+  },
+  {
+    "id": 420315,
+    "nome": "Calmon",
+    "sigla": "SC"
+  },
+  {
+    "id": 420320,
+    "nome": "Camboriú",
+    "sigla": "SC"
+  },
+  {
+    "id": 420325,
+    "nome": "Capão Alto",
+    "sigla": "SC"
+  },
+  {
+    "id": 420330,
+    "nome": "Campo Alegre",
+    "sigla": "SC"
+  },
+  {
+    "id": 420340,
+    "nome": "Campo Belo do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 420350,
+    "nome": "Campo Erê",
+    "sigla": "SC"
+  },
+  {
+    "id": 420360,
+    "nome": "Campos Novos",
+    "sigla": "SC"
+  },
+  {
+    "id": 420370,
+    "nome": "Canelinha",
+    "sigla": "SC"
+  },
+  {
+    "id": 420380,
+    "nome": "Canoinhas",
+    "sigla": "SC"
+  },
+  {
+    "id": 420390,
+    "nome": "Capinzal",
+    "sigla": "SC"
+  },
+  {
+    "id": 420395,
+    "nome": "Capivari de Baixo",
+    "sigla": "SC"
+  },
+  {
+    "id": 420400,
+    "nome": "Catanduvas",
+    "sigla": "SC"
+  },
+  {
+    "id": 420410,
+    "nome": "Caxambu do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 420415,
+    "nome": "Celso Ramos",
+    "sigla": "SC"
+  },
+  {
+    "id": 420417,
+    "nome": "Cerro Negro",
+    "sigla": "SC"
+  },
+  {
+    "id": 420419,
+    "nome": "Chapadão do Lageado",
+    "sigla": "SC"
+  },
+  {
+    "id": 420420,
+    "nome": "Chapecó",
+    "sigla": "SC"
+  },
+  {
+    "id": 420425,
+    "nome": "Cocal do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 420430,
+    "nome": "Concórdia",
+    "sigla": "SC"
+  },
+  {
+    "id": 420435,
+    "nome": "Cordilheira Alta",
+    "sigla": "SC"
+  },
+  {
+    "id": 420440,
+    "nome": "Coronel Freitas",
+    "sigla": "SC"
+  },
+  {
+    "id": 420445,
+    "nome": "Coronel Martins",
+    "sigla": "SC"
+  },
+  {
+    "id": 420450,
+    "nome": "Corupá",
+    "sigla": "SC"
+  },
+  {
+    "id": 420455,
+    "nome": "Correia Pinto",
+    "sigla": "SC"
+  },
+  {
+    "id": 420460,
+    "nome": "Criciúma",
+    "sigla": "SC"
+  },
+  {
+    "id": 420470,
+    "nome": "Cunha Porã",
+    "sigla": "SC"
+  },
+  {
+    "id": 420475,
+    "nome": "Cunhataí",
+    "sigla": "SC"
+  },
+  {
+    "id": 420480,
+    "nome": "Curitibanos",
+    "sigla": "SC"
+  },
+  {
+    "id": 420490,
+    "nome": "Descanso",
+    "sigla": "SC"
+  },
+  {
+    "id": 420500,
+    "nome": "Dionísio Cerqueira",
+    "sigla": "SC"
+  },
+  {
+    "id": 420510,
+    "nome": "Dona Emma",
+    "sigla": "SC"
+  },
+  {
+    "id": 420515,
+    "nome": "Doutor Pedrinho",
+    "sigla": "SC"
+  },
+  {
+    "id": 420517,
+    "nome": "Entre Rios",
+    "sigla": "SC"
+  },
+  {
+    "id": 420519,
+    "nome": "Ermo",
+    "sigla": "SC"
+  },
+  {
+    "id": 420520,
+    "nome": "Erval Velho",
+    "sigla": "SC"
+  },
+  {
+    "id": 420530,
+    "nome": "Faxinal dos Guedes",
+    "sigla": "SC"
+  },
+  {
+    "id": 420535,
+    "nome": "Flor do Sertão",
+    "sigla": "SC"
+  },
+  {
+    "id": 420540,
+    "nome": "Florianópolis",
+    "sigla": "SC"
+  },
+  {
+    "id": 420543,
+    "nome": "Formosa do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 420545,
+    "nome": "Forquilhinha",
+    "sigla": "SC"
+  },
+  {
+    "id": 420550,
+    "nome": "Fraiburgo",
+    "sigla": "SC"
+  },
+  {
+    "id": 420555,
+    "nome": "Frei Rogério",
+    "sigla": "SC"
+  },
+  {
+    "id": 420560,
+    "nome": "Galvão",
+    "sigla": "SC"
+  },
+  {
+    "id": 420570,
+    "nome": "Garopaba",
+    "sigla": "SC"
+  },
+  {
+    "id": 420580,
+    "nome": "Garuva",
+    "sigla": "SC"
+  },
+  {
+    "id": 420590,
+    "nome": "Gaspar",
+    "sigla": "SC"
+  },
+  {
+    "id": 420600,
+    "nome": "Governador Celso Ramos",
+    "sigla": "SC"
+  },
+  {
+    "id": 420610,
+    "nome": "Grão-Pará",
+    "sigla": "SC"
+  },
+  {
+    "id": 420620,
+    "nome": "Gravatal",
+    "sigla": "SC"
+  },
+  {
+    "id": 420630,
+    "nome": "Guabiruba",
+    "sigla": "SC"
+  },
+  {
+    "id": 420640,
+    "nome": "Guaraciaba",
+    "sigla": "SC"
+  },
+  {
+    "id": 420650,
+    "nome": "Guaramirim",
+    "sigla": "SC"
+  },
+  {
+    "id": 420660,
+    "nome": "Guarujá do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 420665,
+    "nome": "Guatambú",
+    "sigla": "SC"
+  },
+  {
+    "id": 420670,
+    "nome": "Herval d'Oeste",
+    "sigla": "SC"
+  },
+  {
+    "id": 420675,
+    "nome": "Ibiam",
+    "sigla": "SC"
+  },
+  {
+    "id": 420680,
+    "nome": "Ibicaré",
+    "sigla": "SC"
+  },
+  {
+    "id": 420690,
+    "nome": "Ibirama",
+    "sigla": "SC"
+  },
+  {
+    "id": 420700,
+    "nome": "Içara",
+    "sigla": "SC"
+  },
+  {
+    "id": 420710,
+    "nome": "Ilhota",
+    "sigla": "SC"
+  },
+  {
+    "id": 420720,
+    "nome": "Imaruí",
+    "sigla": "SC"
+  },
+  {
+    "id": 420730,
+    "nome": "Imbituba",
+    "sigla": "SC"
+  },
+  {
+    "id": 420740,
+    "nome": "Imbuia",
+    "sigla": "SC"
+  },
+  {
+    "id": 420750,
+    "nome": "Indaial",
+    "sigla": "SC"
+  },
+  {
+    "id": 420757,
+    "nome": "Iomerê",
+    "sigla": "SC"
+  },
+  {
+    "id": 420760,
+    "nome": "Ipira",
+    "sigla": "SC"
+  },
+  {
+    "id": 420765,
+    "nome": "Iporã do Oeste",
+    "sigla": "SC"
+  },
+  {
+    "id": 420768,
+    "nome": "Ipuaçu",
+    "sigla": "SC"
+  },
+  {
+    "id": 420770,
+    "nome": "Ipumirim",
+    "sigla": "SC"
+  },
+  {
+    "id": 420775,
+    "nome": "Iraceminha",
+    "sigla": "SC"
+  },
+  {
+    "id": 420780,
+    "nome": "Irani",
+    "sigla": "SC"
+  },
+  {
+    "id": 420785,
+    "nome": "Irati",
+    "sigla": "SC"
+  },
+  {
+    "id": 420790,
+    "nome": "Irineópolis",
+    "sigla": "SC"
+  },
+  {
+    "id": 420800,
+    "nome": "Itá",
+    "sigla": "SC"
+  },
+  {
+    "id": 420810,
+    "nome": "Itaiópolis",
+    "sigla": "SC"
+  },
+  {
+    "id": 420820,
+    "nome": "Itajaí",
+    "sigla": "SC"
+  },
+  {
+    "id": 420830,
+    "nome": "Itapema",
+    "sigla": "SC"
+  },
+  {
+    "id": 420840,
+    "nome": "Itapiranga",
+    "sigla": "SC"
+  },
+  {
+    "id": 420845,
+    "nome": "Itapoá",
+    "sigla": "SC"
+  },
+  {
+    "id": 420850,
+    "nome": "Ituporanga",
+    "sigla": "SC"
+  },
+  {
+    "id": 420860,
+    "nome": "Jaborá",
+    "sigla": "SC"
+  },
+  {
+    "id": 420870,
+    "nome": "Jacinto Machado",
+    "sigla": "SC"
+  },
+  {
+    "id": 420880,
+    "nome": "Jaguaruna",
+    "sigla": "SC"
+  },
+  {
+    "id": 420890,
+    "nome": "Jaraguá do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 420895,
+    "nome": "Jardinópolis",
+    "sigla": "SC"
+  },
+  {
+    "id": 420900,
+    "nome": "Joaçaba",
+    "sigla": "SC"
+  },
+  {
+    "id": 420910,
+    "nome": "Joinville",
+    "sigla": "SC"
+  },
+  {
+    "id": 420915,
+    "nome": "José Boiteux",
+    "sigla": "SC"
+  },
+  {
+    "id": 420917,
+    "nome": "Jupiá",
+    "sigla": "SC"
+  },
+  {
+    "id": 420920,
+    "nome": "Lacerdópolis",
+    "sigla": "SC"
+  },
+  {
+    "id": 420930,
+    "nome": "Lages",
+    "sigla": "SC"
+  },
+  {
+    "id": 420940,
+    "nome": "Laguna",
+    "sigla": "SC"
+  },
+  {
+    "id": 420945,
+    "nome": "Lajeado Grande",
+    "sigla": "SC"
+  },
+  {
+    "id": 420950,
+    "nome": "Laurentino",
+    "sigla": "SC"
+  },
+  {
+    "id": 420960,
+    "nome": "Lauro Müller",
+    "sigla": "SC"
+  },
+  {
+    "id": 420970,
+    "nome": "Lebon Régis",
+    "sigla": "SC"
+  },
+  {
+    "id": 420980,
+    "nome": "Leoberto Leal",
+    "sigla": "SC"
+  },
+  {
+    "id": 420985,
+    "nome": "Lindóia do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 420990,
+    "nome": "Lontras",
+    "sigla": "SC"
+  },
+  {
+    "id": 421000,
+    "nome": "Luiz Alves",
+    "sigla": "SC"
+  },
+  {
+    "id": 421003,
+    "nome": "Luzerna",
+    "sigla": "SC"
+  },
+  {
+    "id": 421005,
+    "nome": "Macieira",
+    "sigla": "SC"
+  },
+  {
+    "id": 421010,
+    "nome": "Mafra",
+    "sigla": "SC"
+  },
+  {
+    "id": 421020,
+    "nome": "Major Gercino",
+    "sigla": "SC"
+  },
+  {
+    "id": 421030,
+    "nome": "Major Vieira",
+    "sigla": "SC"
+  },
+  {
+    "id": 421040,
+    "nome": "Maracajá",
+    "sigla": "SC"
+  },
+  {
+    "id": 421050,
+    "nome": "Maravilha",
+    "sigla": "SC"
+  },
+  {
+    "id": 421055,
+    "nome": "Marema",
+    "sigla": "SC"
+  },
+  {
+    "id": 421060,
+    "nome": "Massaranduba",
+    "sigla": "SC"
+  },
+  {
+    "id": 421070,
+    "nome": "Matos Costa",
+    "sigla": "SC"
+  },
+  {
+    "id": 421080,
+    "nome": "Meleiro",
+    "sigla": "SC"
+  },
+  {
+    "id": 421085,
+    "nome": "Mirim Doce",
+    "sigla": "SC"
+  },
+  {
+    "id": 421090,
+    "nome": "Modelo",
+    "sigla": "SC"
+  },
+  {
+    "id": 421100,
+    "nome": "Mondaí",
+    "sigla": "SC"
+  },
+  {
+    "id": 421105,
+    "nome": "Monte Carlo",
+    "sigla": "SC"
+  },
+  {
+    "id": 421110,
+    "nome": "Monte Castelo",
+    "sigla": "SC"
+  },
+  {
+    "id": 421120,
+    "nome": "Morro da Fumaça",
+    "sigla": "SC"
+  },
+  {
+    "id": 421125,
+    "nome": "Morro Grande",
+    "sigla": "SC"
+  },
+  {
+    "id": 421130,
+    "nome": "Navegantes",
+    "sigla": "SC"
+  },
+  {
+    "id": 421140,
+    "nome": "Nova Erechim",
+    "sigla": "SC"
+  },
+  {
+    "id": 421145,
+    "nome": "Nova Itaberaba",
+    "sigla": "SC"
+  },
+  {
+    "id": 421150,
+    "nome": "Nova Trento",
+    "sigla": "SC"
+  },
+  {
+    "id": 421160,
+    "nome": "Nova Veneza",
+    "sigla": "SC"
+  },
+  {
+    "id": 421165,
+    "nome": "Novo Horizonte",
+    "sigla": "SC"
+  },
+  {
+    "id": 421170,
+    "nome": "Orleans",
+    "sigla": "SC"
+  },
+  {
+    "id": 421175,
+    "nome": "Otacílio Costa",
+    "sigla": "SC"
+  },
+  {
+    "id": 421180,
+    "nome": "Ouro",
+    "sigla": "SC"
+  },
+  {
+    "id": 421185,
+    "nome": "Ouro Verde",
+    "sigla": "SC"
+  },
+  {
+    "id": 421187,
+    "nome": "Paial",
+    "sigla": "SC"
+  },
+  {
+    "id": 421189,
+    "nome": "Painel",
+    "sigla": "SC"
+  },
+  {
+    "id": 421190,
+    "nome": "Palhoça",
+    "sigla": "SC"
+  },
+  {
+    "id": 421200,
+    "nome": "Palma Sola",
+    "sigla": "SC"
+  },
+  {
+    "id": 421205,
+    "nome": "Palmeira",
+    "sigla": "SC"
+  },
+  {
+    "id": 421210,
+    "nome": "Palmitos",
+    "sigla": "SC"
+  },
+  {
+    "id": 421220,
+    "nome": "Papanduva",
+    "sigla": "SC"
+  },
+  {
+    "id": 421223,
+    "nome": "Paraíso",
+    "sigla": "SC"
+  },
+  {
+    "id": 421225,
+    "nome": "Passo de Torres",
+    "sigla": "SC"
+  },
+  {
+    "id": 421227,
+    "nome": "Passos Maia",
+    "sigla": "SC"
+  },
+  {
+    "id": 421230,
+    "nome": "Paulo Lopes",
+    "sigla": "SC"
+  },
+  {
+    "id": 421240,
+    "nome": "Pedras Grandes",
+    "sigla": "SC"
+  },
+  {
+    "id": 421250,
+    "nome": "Penha",
+    "sigla": "SC"
+  },
+  {
+    "id": 421260,
+    "nome": "Peritiba",
+    "sigla": "SC"
+  },
+  {
+    "id": 421265,
+    "nome": "Pescaria Brava",
+    "sigla": "SC"
+  },
+  {
+    "id": 421270,
+    "nome": "Petrolândia",
+    "sigla": "SC"
+  },
+  {
+    "id": 421280,
+    "nome": "Balneário Piçarras",
+    "sigla": "SC"
+  },
+  {
+    "id": 421290,
+    "nome": "Pinhalzinho",
+    "sigla": "SC"
+  },
+  {
+    "id": 421300,
+    "nome": "Pinheiro Preto",
+    "sigla": "SC"
+  },
+  {
+    "id": 421310,
+    "nome": "Piratuba",
+    "sigla": "SC"
+  },
+  {
+    "id": 421315,
+    "nome": "Planalto Alegre",
+    "sigla": "SC"
+  },
+  {
+    "id": 421320,
+    "nome": "Pomerode",
+    "sigla": "SC"
+  },
+  {
+    "id": 421330,
+    "nome": "Ponte Alta",
+    "sigla": "SC"
+  },
+  {
+    "id": 421335,
+    "nome": "Ponte Alta do Norte",
+    "sigla": "SC"
+  },
+  {
+    "id": 421340,
+    "nome": "Ponte Serrada",
+    "sigla": "SC"
+  },
+  {
+    "id": 421350,
+    "nome": "Porto Belo",
+    "sigla": "SC"
+  },
+  {
+    "id": 421360,
+    "nome": "Porto União",
+    "sigla": "SC"
+  },
+  {
+    "id": 421370,
+    "nome": "Pouso Redondo",
+    "sigla": "SC"
+  },
+  {
+    "id": 421380,
+    "nome": "Praia Grande",
+    "sigla": "SC"
+  },
+  {
+    "id": 421390,
+    "nome": "Presidente Castello Branco",
+    "sigla": "SC"
+  },
+  {
+    "id": 421400,
+    "nome": "Presidente Getúlio",
+    "sigla": "SC"
+  },
+  {
+    "id": 421410,
+    "nome": "Presidente Nereu",
+    "sigla": "SC"
+  },
+  {
+    "id": 421415,
+    "nome": "Princesa",
+    "sigla": "SC"
+  },
+  {
+    "id": 421420,
+    "nome": "Quilombo",
+    "sigla": "SC"
+  },
+  {
+    "id": 421430,
+    "nome": "Rancho Queimado",
+    "sigla": "SC"
+  },
+  {
+    "id": 421440,
+    "nome": "Rio das Antas",
+    "sigla": "SC"
+  },
+  {
+    "id": 421450,
+    "nome": "Rio do Campo",
+    "sigla": "SC"
+  },
+  {
+    "id": 421460,
+    "nome": "Rio do Oeste",
+    "sigla": "SC"
+  },
+  {
+    "id": 421470,
+    "nome": "Rio dos Cedros",
+    "sigla": "SC"
+  },
+  {
+    "id": 421480,
+    "nome": "Rio do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 421490,
+    "nome": "Rio Fortuna",
+    "sigla": "SC"
+  },
+  {
+    "id": 421500,
+    "nome": "Rio Negrinho",
+    "sigla": "SC"
+  },
+  {
+    "id": 421505,
+    "nome": "Rio Rufino",
+    "sigla": "SC"
+  },
+  {
+    "id": 421507,
+    "nome": "Riqueza",
+    "sigla": "SC"
+  },
+  {
+    "id": 421510,
+    "nome": "Rodeio",
+    "sigla": "SC"
+  },
+  {
+    "id": 421520,
+    "nome": "Romelândia",
+    "sigla": "SC"
+  },
+  {
+    "id": 421530,
+    "nome": "Salete",
+    "sigla": "SC"
+  },
+  {
+    "id": 421535,
+    "nome": "Saltinho",
+    "sigla": "SC"
+  },
+  {
+    "id": 421540,
+    "nome": "Salto Veloso",
+    "sigla": "SC"
+  },
+  {
+    "id": 421545,
+    "nome": "Sangão",
+    "sigla": "SC"
+  },
+  {
+    "id": 421550,
+    "nome": "Santa Cecília",
+    "sigla": "SC"
+  },
+  {
+    "id": 421555,
+    "nome": "Santa Helena",
+    "sigla": "SC"
+  },
+  {
+    "id": 421560,
+    "nome": "Santa Rosa de Lima",
+    "sigla": "SC"
+  },
+  {
+    "id": 421565,
+    "nome": "Santa Rosa do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 421567,
+    "nome": "Santa Terezinha",
+    "sigla": "SC"
+  },
+  {
+    "id": 421568,
+    "nome": "Santa Terezinha do Progresso",
+    "sigla": "SC"
+  },
+  {
+    "id": 421569,
+    "nome": "Santiago do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 421570,
+    "nome": "Santo Amaro da Imperatriz",
+    "sigla": "SC"
+  },
+  {
+    "id": 421575,
+    "nome": "São Bernardino",
+    "sigla": "SC"
+  },
+  {
+    "id": 421580,
+    "nome": "São Bento do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 421590,
+    "nome": "São Bonifácio",
+    "sigla": "SC"
+  },
+  {
+    "id": 421600,
+    "nome": "São Carlos",
+    "sigla": "SC"
+  },
+  {
+    "id": 421605,
+    "nome": "São Cristóvão do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 421610,
+    "nome": "São Domingos",
+    "sigla": "SC"
+  },
+  {
+    "id": 421620,
+    "nome": "São Francisco do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 421625,
+    "nome": "São João do Oeste",
+    "sigla": "SC"
+  },
+  {
+    "id": 421630,
+    "nome": "São João Batista",
+    "sigla": "SC"
+  },
+  {
+    "id": 421635,
+    "nome": "São João do Itaperiú",
+    "sigla": "SC"
+  },
+  {
+    "id": 421640,
+    "nome": "São João do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 421650,
+    "nome": "São Joaquim",
+    "sigla": "SC"
+  },
+  {
+    "id": 421660,
+    "nome": "São José",
+    "sigla": "SC"
+  },
+  {
+    "id": 421670,
+    "nome": "São José do Cedro",
+    "sigla": "SC"
+  },
+  {
+    "id": 421680,
+    "nome": "São José do Cerrito",
+    "sigla": "SC"
+  },
+  {
+    "id": 421690,
+    "nome": "São Lourenço do Oeste",
+    "sigla": "SC"
+  },
+  {
+    "id": 421700,
+    "nome": "São Ludgero",
+    "sigla": "SC"
+  },
+  {
+    "id": 421710,
+    "nome": "São Martinho",
+    "sigla": "SC"
+  },
+  {
+    "id": 421715,
+    "nome": "São Miguel da Boa Vista",
+    "sigla": "SC"
+  },
+  {
+    "id": 421720,
+    "nome": "São Miguel do Oeste",
+    "sigla": "SC"
+  },
+  {
+    "id": 421725,
+    "nome": "São Pedro de Alcântara",
+    "sigla": "SC"
+  },
+  {
+    "id": 421730,
+    "nome": "Saudades",
+    "sigla": "SC"
+  },
+  {
+    "id": 421740,
+    "nome": "Schroeder",
+    "sigla": "SC"
+  },
+  {
+    "id": 421750,
+    "nome": "Seara",
+    "sigla": "SC"
+  },
+  {
+    "id": 421755,
+    "nome": "Serra Alta",
+    "sigla": "SC"
+  },
+  {
+    "id": 421760,
+    "nome": "Siderópolis",
+    "sigla": "SC"
+  },
+  {
+    "id": 421770,
+    "nome": "Sombrio",
+    "sigla": "SC"
+  },
+  {
+    "id": 421775,
+    "nome": "Sul Brasil",
+    "sigla": "SC"
+  },
+  {
+    "id": 421780,
+    "nome": "Taió",
+    "sigla": "SC"
+  },
+  {
+    "id": 421790,
+    "nome": "Tangará",
+    "sigla": "SC"
+  },
+  {
+    "id": 421795,
+    "nome": "Tigrinhos",
+    "sigla": "SC"
+  },
+  {
+    "id": 421800,
+    "nome": "Tijucas",
+    "sigla": "SC"
+  },
+  {
+    "id": 421810,
+    "nome": "Timbé do Sul",
+    "sigla": "SC"
+  },
+  {
+    "id": 421820,
+    "nome": "Timbó",
+    "sigla": "SC"
+  },
+  {
+    "id": 421825,
+    "nome": "Timbó Grande",
+    "sigla": "SC"
+  },
+  {
+    "id": 421830,
+    "nome": "Três Barras",
+    "sigla": "SC"
+  },
+  {
+    "id": 421835,
+    "nome": "Treviso",
+    "sigla": "SC"
+  },
+  {
+    "id": 421840,
+    "nome": "Treze de Maio",
+    "sigla": "SC"
+  },
+  {
+    "id": 421850,
+    "nome": "Treze Tílias",
+    "sigla": "SC"
+  },
+  {
+    "id": 421860,
+    "nome": "Trombudo Central",
+    "sigla": "SC"
+  },
+  {
+    "id": 421870,
+    "nome": "Tubarão",
+    "sigla": "SC"
+  },
+  {
+    "id": 421875,
+    "nome": "Tunápolis",
+    "sigla": "SC"
+  },
+  {
+    "id": 421880,
+    "nome": "Turvo",
+    "sigla": "SC"
+  },
+  {
+    "id": 421885,
+    "nome": "União do Oeste",
+    "sigla": "SC"
+  },
+  {
+    "id": 421890,
+    "nome": "Urubici",
+    "sigla": "SC"
+  },
+  {
+    "id": 421895,
+    "nome": "Urupema",
+    "sigla": "SC"
+  },
+  {
+    "id": 421900,
+    "nome": "Urussanga",
+    "sigla": "SC"
+  },
+  {
+    "id": 421910,
+    "nome": "Vargeão",
+    "sigla": "SC"
+  },
+  {
+    "id": 421915,
+    "nome": "Vargem",
+    "sigla": "SC"
+  },
+  {
+    "id": 421917,
+    "nome": "Vargem Bonita",
+    "sigla": "SC"
+  },
+  {
+    "id": 421920,
+    "nome": "Vidal Ramos",
+    "sigla": "SC"
+  },
+  {
+    "id": 421930,
+    "nome": "Videira",
+    "sigla": "SC"
+  },
+  {
+    "id": 421935,
+    "nome": "Vitor Meireles",
+    "sigla": "SC"
+  },
+  {
+    "id": 421940,
+    "nome": "Witmarsum",
+    "sigla": "SC"
+  },
+  {
+    "id": 421950,
+    "nome": "Xanxerê",
+    "sigla": "SC"
+  },
+  {
+    "id": 421960,
+    "nome": "Xavantina",
+    "sigla": "SC"
+  },
+  {
+    "id": 421970,
+    "nome": "Xaxim",
+    "sigla": "SC"
+  },
+  {
+    "id": 421985,
+    "nome": "Zortéa",
+    "sigla": "SC"
+  },
+  {
+    "id": 422000,
+    "nome": "Balneário Rincão",
+    "sigla": "SC"
+  },
+  {
+    "id": 430003,
+    "nome": "Aceguá",
+    "sigla": "RS"
+  },
+  {
+    "id": 430005,
+    "nome": "Água Santa",
+    "sigla": "RS"
+  },
+  {
+    "id": 430010,
+    "nome": "Agudo",
+    "sigla": "RS"
+  },
+  {
+    "id": 430020,
+    "nome": "Ajuricaba",
+    "sigla": "RS"
+  },
+  {
+    "id": 430030,
+    "nome": "Alecrim",
+    "sigla": "RS"
+  },
+  {
+    "id": 430040,
+    "nome": "Alegrete",
+    "sigla": "RS"
+  },
+  {
+    "id": 430045,
+    "nome": "Alegria",
+    "sigla": "RS"
+  },
+  {
+    "id": 430047,
+    "nome": "Almirante Tamandaré do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430050,
+    "nome": "Alpestre",
+    "sigla": "RS"
+  },
+  {
+    "id": 430055,
+    "nome": "Alto Alegre",
+    "sigla": "RS"
+  },
+  {
+    "id": 430057,
+    "nome": "Alto Feliz",
+    "sigla": "RS"
+  },
+  {
+    "id": 430060,
+    "nome": "Alvorada",
+    "sigla": "RS"
+  },
+  {
+    "id": 430063,
+    "nome": "Amaral Ferrador",
+    "sigla": "RS"
+  },
+  {
+    "id": 430064,
+    "nome": "Ametista do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430066,
+    "nome": "André da Rocha",
+    "sigla": "RS"
+  },
+  {
+    "id": 430070,
+    "nome": "Anta Gorda",
+    "sigla": "RS"
+  },
+  {
+    "id": 430080,
+    "nome": "Antônio Prado",
+    "sigla": "RS"
+  },
+  {
+    "id": 430085,
+    "nome": "Arambaré",
+    "sigla": "RS"
+  },
+  {
+    "id": 430087,
+    "nome": "Araricá",
+    "sigla": "RS"
+  },
+  {
+    "id": 430090,
+    "nome": "Aratiba",
+    "sigla": "RS"
+  },
+  {
+    "id": 430100,
+    "nome": "Arroio do Meio",
+    "sigla": "RS"
+  },
+  {
+    "id": 430105,
+    "nome": "Arroio do Sal",
+    "sigla": "RS"
+  },
+  {
+    "id": 430107,
+    "nome": "Arroio do Padre",
+    "sigla": "RS"
+  },
+  {
+    "id": 430110,
+    "nome": "Arroio dos Ratos",
+    "sigla": "RS"
+  },
+  {
+    "id": 430120,
+    "nome": "Arroio do Tigre",
+    "sigla": "RS"
+  },
+  {
+    "id": 430130,
+    "nome": "Arroio Grande",
+    "sigla": "RS"
+  },
+  {
+    "id": 430140,
+    "nome": "Arvorezinha",
+    "sigla": "RS"
+  },
+  {
+    "id": 430150,
+    "nome": "Augusto Pestana",
+    "sigla": "RS"
+  },
+  {
+    "id": 430155,
+    "nome": "Áurea",
+    "sigla": "RS"
+  },
+  {
+    "id": 430160,
+    "nome": "Bagé",
+    "sigla": "RS"
+  },
+  {
+    "id": 430163,
+    "nome": "Balneário Pinhal",
+    "sigla": "RS"
+  },
+  {
+    "id": 430165,
+    "nome": "Barão",
+    "sigla": "RS"
+  },
+  {
+    "id": 430170,
+    "nome": "Barão de Cotegipe",
+    "sigla": "RS"
+  },
+  {
+    "id": 430175,
+    "nome": "Barão do Triunfo",
+    "sigla": "RS"
+  },
+  {
+    "id": 430180,
+    "nome": "Barracão",
+    "sigla": "RS"
+  },
+  {
+    "id": 430185,
+    "nome": "Barra do Guarita",
+    "sigla": "RS"
+  },
+  {
+    "id": 430187,
+    "nome": "Barra do Quaraí",
+    "sigla": "RS"
+  },
+  {
+    "id": 430190,
+    "nome": "Barra do Ribeiro",
+    "sigla": "RS"
+  },
+  {
+    "id": 430192,
+    "nome": "Barra do Rio Azul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430195,
+    "nome": "Barra Funda",
+    "sigla": "RS"
+  },
+  {
+    "id": 430200,
+    "nome": "Barros Cassal",
+    "sigla": "RS"
+  },
+  {
+    "id": 430205,
+    "nome": "Benjamin Constant do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430210,
+    "nome": "Bento Gonçalves",
+    "sigla": "RS"
+  },
+  {
+    "id": 430215,
+    "nome": "Boa Vista das Missões",
+    "sigla": "RS"
+  },
+  {
+    "id": 430220,
+    "nome": "Boa Vista do Buricá",
+    "sigla": "RS"
+  },
+  {
+    "id": 430222,
+    "nome": "Boa Vista do Cadeado",
+    "sigla": "RS"
+  },
+  {
+    "id": 430223,
+    "nome": "Boa Vista do Incra",
+    "sigla": "RS"
+  },
+  {
+    "id": 430225,
+    "nome": "Boa Vista do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430230,
+    "nome": "Bom Jesus",
+    "sigla": "RS"
+  },
+  {
+    "id": 430235,
+    "nome": "Bom Princípio",
+    "sigla": "RS"
+  },
+  {
+    "id": 430237,
+    "nome": "Bom Progresso",
+    "sigla": "RS"
+  },
+  {
+    "id": 430240,
+    "nome": "Bom Retiro do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430245,
+    "nome": "Boqueirão do Leão",
+    "sigla": "RS"
+  },
+  {
+    "id": 430250,
+    "nome": "Bossoroca",
+    "sigla": "RS"
+  },
+  {
+    "id": 430258,
+    "nome": "Bozano",
+    "sigla": "RS"
+  },
+  {
+    "id": 430260,
+    "nome": "Braga",
+    "sigla": "RS"
+  },
+  {
+    "id": 430265,
+    "nome": "Brochier",
+    "sigla": "RS"
+  },
+  {
+    "id": 430270,
+    "nome": "Butiá",
+    "sigla": "RS"
+  },
+  {
+    "id": 430280,
+    "nome": "Caçapava do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430290,
+    "nome": "Cacequi",
+    "sigla": "RS"
+  },
+  {
+    "id": 430300,
+    "nome": "Cachoeira do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430310,
+    "nome": "Cachoeirinha",
+    "sigla": "RS"
+  },
+  {
+    "id": 430320,
+    "nome": "Cacique Doble",
+    "sigla": "RS"
+  },
+  {
+    "id": 430330,
+    "nome": "Caibaté",
+    "sigla": "RS"
+  },
+  {
+    "id": 430340,
+    "nome": "Caiçara",
+    "sigla": "RS"
+  },
+  {
+    "id": 430350,
+    "nome": "Camaquã",
+    "sigla": "RS"
+  },
+  {
+    "id": 430355,
+    "nome": "Camargo",
+    "sigla": "RS"
+  },
+  {
+    "id": 430360,
+    "nome": "Cambará do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430367,
+    "nome": "Campestre da Serra",
+    "sigla": "RS"
+  },
+  {
+    "id": 430370,
+    "nome": "Campina das Missões",
+    "sigla": "RS"
+  },
+  {
+    "id": 430380,
+    "nome": "Campinas do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430390,
+    "nome": "Campo Bom",
+    "sigla": "RS"
+  },
+  {
+    "id": 430400,
+    "nome": "Campo Novo",
+    "sigla": "RS"
+  },
+  {
+    "id": 430410,
+    "nome": "Campos Borges",
+    "sigla": "RS"
+  },
+  {
+    "id": 430420,
+    "nome": "Candelária",
+    "sigla": "RS"
+  },
+  {
+    "id": 430430,
+    "nome": "Cândido Godói",
+    "sigla": "RS"
+  },
+  {
+    "id": 430435,
+    "nome": "Candiota",
+    "sigla": "RS"
+  },
+  {
+    "id": 430440,
+    "nome": "Canela",
+    "sigla": "RS"
+  },
+  {
+    "id": 430450,
+    "nome": "Canguçu",
+    "sigla": "RS"
+  },
+  {
+    "id": 430460,
+    "nome": "Canoas",
+    "sigla": "RS"
+  },
+  {
+    "id": 430461,
+    "nome": "Canudos do Vale",
+    "sigla": "RS"
+  },
+  {
+    "id": 430462,
+    "nome": "Capão Bonito do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430463,
+    "nome": "Capão da Canoa",
+    "sigla": "RS"
+  },
+  {
+    "id": 430465,
+    "nome": "Capão do Cipó",
+    "sigla": "RS"
+  },
+  {
+    "id": 430466,
+    "nome": "Capão do Leão",
+    "sigla": "RS"
+  },
+  {
+    "id": 430467,
+    "nome": "Capivari do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430468,
+    "nome": "Capela de Santana",
+    "sigla": "RS"
+  },
+  {
+    "id": 430469,
+    "nome": "Capitão",
+    "sigla": "RS"
+  },
+  {
+    "id": 430470,
+    "nome": "Carazinho",
+    "sigla": "RS"
+  },
+  {
+    "id": 430471,
+    "nome": "Caraá",
+    "sigla": "RS"
+  },
+  {
+    "id": 430480,
+    "nome": "Carlos Barbosa",
+    "sigla": "RS"
+  },
+  {
+    "id": 430485,
+    "nome": "Carlos Gomes",
+    "sigla": "RS"
+  },
+  {
+    "id": 430490,
+    "nome": "Casca",
+    "sigla": "RS"
+  },
+  {
+    "id": 430495,
+    "nome": "Caseiros",
+    "sigla": "RS"
+  },
+  {
+    "id": 430500,
+    "nome": "Catuípe",
+    "sigla": "RS"
+  },
+  {
+    "id": 430510,
+    "nome": "Caxias do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430511,
+    "nome": "Centenário",
+    "sigla": "RS"
+  },
+  {
+    "id": 430512,
+    "nome": "Cerrito",
+    "sigla": "RS"
+  },
+  {
+    "id": 430513,
+    "nome": "Cerro Branco",
+    "sigla": "RS"
+  },
+  {
+    "id": 430515,
+    "nome": "Cerro Grande",
+    "sigla": "RS"
+  },
+  {
+    "id": 430517,
+    "nome": "Cerro Grande do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430520,
+    "nome": "Cerro Largo",
+    "sigla": "RS"
+  },
+  {
+    "id": 430530,
+    "nome": "Chapada",
+    "sigla": "RS"
+  },
+  {
+    "id": 430535,
+    "nome": "Charqueadas",
+    "sigla": "RS"
+  },
+  {
+    "id": 430537,
+    "nome": "Charrua",
+    "sigla": "RS"
+  },
+  {
+    "id": 430540,
+    "nome": "Chiapetta",
+    "sigla": "RS"
+  },
+  {
+    "id": 430543,
+    "nome": "Chuí",
+    "sigla": "RS"
+  },
+  {
+    "id": 430544,
+    "nome": "Chuvisca",
+    "sigla": "RS"
+  },
+  {
+    "id": 430545,
+    "nome": "Cidreira",
+    "sigla": "RS"
+  },
+  {
+    "id": 430550,
+    "nome": "Ciríaco",
+    "sigla": "RS"
+  },
+  {
+    "id": 430558,
+    "nome": "Colinas",
+    "sigla": "RS"
+  },
+  {
+    "id": 430560,
+    "nome": "Colorado",
+    "sigla": "RS"
+  },
+  {
+    "id": 430570,
+    "nome": "Condor",
+    "sigla": "RS"
+  },
+  {
+    "id": 430580,
+    "nome": "Constantina",
+    "sigla": "RS"
+  },
+  {
+    "id": 430583,
+    "nome": "Coqueiro Baixo",
+    "sigla": "RS"
+  },
+  {
+    "id": 430585,
+    "nome": "Coqueiros do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430587,
+    "nome": "Coronel Barros",
+    "sigla": "RS"
+  },
+  {
+    "id": 430590,
+    "nome": "Coronel Bicaco",
+    "sigla": "RS"
+  },
+  {
+    "id": 430593,
+    "nome": "Coronel Pilar",
+    "sigla": "RS"
+  },
+  {
+    "id": 430595,
+    "nome": "Cotiporã",
+    "sigla": "RS"
+  },
+  {
+    "id": 430597,
+    "nome": "Coxilha",
+    "sigla": "RS"
+  },
+  {
+    "id": 430600,
+    "nome": "Crissiumal",
+    "sigla": "RS"
+  },
+  {
+    "id": 430605,
+    "nome": "Cristal",
+    "sigla": "RS"
+  },
+  {
+    "id": 430607,
+    "nome": "Cristal do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430610,
+    "nome": "Cruz Alta",
+    "sigla": "RS"
+  },
+  {
+    "id": 430613,
+    "nome": "Cruzaltense",
+    "sigla": "RS"
+  },
+  {
+    "id": 430620,
+    "nome": "Cruzeiro do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430630,
+    "nome": "David Canabarro",
+    "sigla": "RS"
+  },
+  {
+    "id": 430632,
+    "nome": "Derrubadas",
+    "sigla": "RS"
+  },
+  {
+    "id": 430635,
+    "nome": "Dezesseis de Novembro",
+    "sigla": "RS"
+  },
+  {
+    "id": 430637,
+    "nome": "Dilermando de Aguiar",
+    "sigla": "RS"
+  },
+  {
+    "id": 430640,
+    "nome": "Dois Irmãos",
+    "sigla": "RS"
+  },
+  {
+    "id": 430642,
+    "nome": "Dois Irmãos das Missões",
+    "sigla": "RS"
+  },
+  {
+    "id": 430645,
+    "nome": "Dois Lajeados",
+    "sigla": "RS"
+  },
+  {
+    "id": 430650,
+    "nome": "Dom Feliciano",
+    "sigla": "RS"
+  },
+  {
+    "id": 430655,
+    "nome": "Dom Pedro de Alcântara",
+    "sigla": "RS"
+  },
+  {
+    "id": 430660,
+    "nome": "Dom Pedrito",
+    "sigla": "RS"
+  },
+  {
+    "id": 430670,
+    "nome": "Dona Francisca",
+    "sigla": "RS"
+  },
+  {
+    "id": 430673,
+    "nome": "Doutor Maurício Cardoso",
+    "sigla": "RS"
+  },
+  {
+    "id": 430675,
+    "nome": "Doutor Ricardo",
+    "sigla": "RS"
+  },
+  {
+    "id": 430676,
+    "nome": "Eldorado do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430680,
+    "nome": "Encantado",
+    "sigla": "RS"
+  },
+  {
+    "id": 430690,
+    "nome": "Encruzilhada do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430692,
+    "nome": "Engenho Velho",
+    "sigla": "RS"
+  },
+  {
+    "id": 430693,
+    "nome": "Entre-Ijuís",
+    "sigla": "RS"
+  },
+  {
+    "id": 430695,
+    "nome": "Entre Rios do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430697,
+    "nome": "Erebango",
+    "sigla": "RS"
+  },
+  {
+    "id": 430700,
+    "nome": "Erechim",
+    "sigla": "RS"
+  },
+  {
+    "id": 430705,
+    "nome": "Ernestina",
+    "sigla": "RS"
+  },
+  {
+    "id": 430710,
+    "nome": "Herval",
+    "sigla": "RS"
+  },
+  {
+    "id": 430720,
+    "nome": "Erval Grande",
+    "sigla": "RS"
+  },
+  {
+    "id": 430730,
+    "nome": "Erval Seco",
+    "sigla": "RS"
+  },
+  {
+    "id": 430740,
+    "nome": "Esmeralda",
+    "sigla": "RS"
+  },
+  {
+    "id": 430745,
+    "nome": "Esperança do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 430750,
+    "nome": "Espumoso",
+    "sigla": "RS"
+  },
+  {
+    "id": 430755,
+    "nome": "Estação",
+    "sigla": "RS"
+  },
+  {
+    "id": 430760,
+    "nome": "Estância Velha",
+    "sigla": "RS"
+  },
+  {
+    "id": 430770,
+    "nome": "Esteio",
+    "sigla": "RS"
+  },
+  {
+    "id": 430780,
+    "nome": "Estrela",
+    "sigla": "RS"
+  },
+  {
+    "id": 430781,
+    "nome": "Estrela Velha",
+    "sigla": "RS"
+  },
+  {
+    "id": 430783,
+    "nome": "Eugênio de Castro",
+    "sigla": "RS"
+  },
+  {
+    "id": 430786,
+    "nome": "Fagundes Varela",
+    "sigla": "RS"
+  },
+  {
+    "id": 430790,
+    "nome": "Farroupilha",
+    "sigla": "RS"
+  },
+  {
+    "id": 430800,
+    "nome": "Faxinal do Soturno",
+    "sigla": "RS"
+  },
+  {
+    "id": 430805,
+    "nome": "Faxinalzinho",
+    "sigla": "RS"
+  },
+  {
+    "id": 430807,
+    "nome": "Fazenda Vilanova",
+    "sigla": "RS"
+  },
+  {
+    "id": 430810,
+    "nome": "Feliz",
+    "sigla": "RS"
+  },
+  {
+    "id": 430820,
+    "nome": "Flores da Cunha",
+    "sigla": "RS"
+  },
+  {
+    "id": 430825,
+    "nome": "Floriano Peixoto",
+    "sigla": "RS"
+  },
+  {
+    "id": 430830,
+    "nome": "Fontoura Xavier",
+    "sigla": "RS"
+  },
+  {
+    "id": 430840,
+    "nome": "Formigueiro",
+    "sigla": "RS"
+  },
+  {
+    "id": 430843,
+    "nome": "Forquetinha",
+    "sigla": "RS"
+  },
+  {
+    "id": 430845,
+    "nome": "Fortaleza dos Valos",
+    "sigla": "RS"
+  },
+  {
+    "id": 430850,
+    "nome": "Frederico Westphalen",
+    "sigla": "RS"
+  },
+  {
+    "id": 430860,
+    "nome": "Garibaldi",
+    "sigla": "RS"
+  },
+  {
+    "id": 430865,
+    "nome": "Garruchos",
+    "sigla": "RS"
+  },
+  {
+    "id": 430870,
+    "nome": "Gaurama",
+    "sigla": "RS"
+  },
+  {
+    "id": 430880,
+    "nome": "General Câmara",
+    "sigla": "RS"
+  },
+  {
+    "id": 430885,
+    "nome": "Gentil",
+    "sigla": "RS"
+  },
+  {
+    "id": 430890,
+    "nome": "Getúlio Vargas",
+    "sigla": "RS"
+  },
+  {
+    "id": 430900,
+    "nome": "Giruá",
+    "sigla": "RS"
+  },
+  {
+    "id": 430905,
+    "nome": "Glorinha",
+    "sigla": "RS"
+  },
+  {
+    "id": 430910,
+    "nome": "Gramado",
+    "sigla": "RS"
+  },
+  {
+    "id": 430912,
+    "nome": "Gramado dos Loureiros",
+    "sigla": "RS"
+  },
+  {
+    "id": 430915,
+    "nome": "Gramado Xavier",
+    "sigla": "RS"
+  },
+  {
+    "id": 430920,
+    "nome": "Gravataí",
+    "sigla": "RS"
+  },
+  {
+    "id": 430925,
+    "nome": "Guabiju",
+    "sigla": "RS"
+  },
+  {
+    "id": 430930,
+    "nome": "Guaíba",
+    "sigla": "RS"
+  },
+  {
+    "id": 430940,
+    "nome": "Guaporé",
+    "sigla": "RS"
+  },
+  {
+    "id": 430950,
+    "nome": "Guarani das Missões",
+    "sigla": "RS"
+  },
+  {
+    "id": 430955,
+    "nome": "Harmonia",
+    "sigla": "RS"
+  },
+  {
+    "id": 430957,
+    "nome": "Herveiras",
+    "sigla": "RS"
+  },
+  {
+    "id": 430960,
+    "nome": "Horizontina",
+    "sigla": "RS"
+  },
+  {
+    "id": 430965,
+    "nome": "Hulha Negra",
+    "sigla": "RS"
+  },
+  {
+    "id": 430970,
+    "nome": "Humaitá",
+    "sigla": "RS"
+  },
+  {
+    "id": 430975,
+    "nome": "Ibarama",
+    "sigla": "RS"
+  },
+  {
+    "id": 430980,
+    "nome": "Ibiaçá",
+    "sigla": "RS"
+  },
+  {
+    "id": 430990,
+    "nome": "Ibiraiaras",
+    "sigla": "RS"
+  },
+  {
+    "id": 430995,
+    "nome": "Ibirapuitã",
+    "sigla": "RS"
+  },
+  {
+    "id": 431000,
+    "nome": "Ibirubá",
+    "sigla": "RS"
+  },
+  {
+    "id": 431010,
+    "nome": "Igrejinha",
+    "sigla": "RS"
+  },
+  {
+    "id": 431020,
+    "nome": "Ijuí",
+    "sigla": "RS"
+  },
+  {
+    "id": 431030,
+    "nome": "Ilópolis",
+    "sigla": "RS"
+  },
+  {
+    "id": 431033,
+    "nome": "Imbé",
+    "sigla": "RS"
+  },
+  {
+    "id": 431036,
+    "nome": "Imigrante",
+    "sigla": "RS"
+  },
+  {
+    "id": 431040,
+    "nome": "Independência",
+    "sigla": "RS"
+  },
+  {
+    "id": 431041,
+    "nome": "Inhacorá",
+    "sigla": "RS"
+  },
+  {
+    "id": 431043,
+    "nome": "Ipê",
+    "sigla": "RS"
+  },
+  {
+    "id": 431046,
+    "nome": "Ipiranga do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431050,
+    "nome": "Iraí",
+    "sigla": "RS"
+  },
+  {
+    "id": 431053,
+    "nome": "Itaara",
+    "sigla": "RS"
+  },
+  {
+    "id": 431055,
+    "nome": "Itacurubi",
+    "sigla": "RS"
+  },
+  {
+    "id": 431057,
+    "nome": "Itapuca",
+    "sigla": "RS"
+  },
+  {
+    "id": 431060,
+    "nome": "Itaqui",
+    "sigla": "RS"
+  },
+  {
+    "id": 431065,
+    "nome": "Itati",
+    "sigla": "RS"
+  },
+  {
+    "id": 431070,
+    "nome": "Itatiba do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431075,
+    "nome": "Ivorá",
+    "sigla": "RS"
+  },
+  {
+    "id": 431080,
+    "nome": "Ivoti",
+    "sigla": "RS"
+  },
+  {
+    "id": 431085,
+    "nome": "Jaboticaba",
+    "sigla": "RS"
+  },
+  {
+    "id": 431087,
+    "nome": "Jacuizinho",
+    "sigla": "RS"
+  },
+  {
+    "id": 431090,
+    "nome": "Jacutinga",
+    "sigla": "RS"
+  },
+  {
+    "id": 431100,
+    "nome": "Jaguarão",
+    "sigla": "RS"
+  },
+  {
+    "id": 431110,
+    "nome": "Jaguari",
+    "sigla": "RS"
+  },
+  {
+    "id": 431112,
+    "nome": "Jaquirana",
+    "sigla": "RS"
+  },
+  {
+    "id": 431113,
+    "nome": "Jari",
+    "sigla": "RS"
+  },
+  {
+    "id": 431115,
+    "nome": "Jóia",
+    "sigla": "RS"
+  },
+  {
+    "id": 431120,
+    "nome": "Júlio de Castilhos",
+    "sigla": "RS"
+  },
+  {
+    "id": 431123,
+    "nome": "Lagoa Bonita do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431125,
+    "nome": "Lagoão",
+    "sigla": "RS"
+  },
+  {
+    "id": 431127,
+    "nome": "Lagoa dos Três Cantos",
+    "sigla": "RS"
+  },
+  {
+    "id": 431130,
+    "nome": "Lagoa Vermelha",
+    "sigla": "RS"
+  },
+  {
+    "id": 431140,
+    "nome": "Lajeado",
+    "sigla": "RS"
+  },
+  {
+    "id": 431142,
+    "nome": "Lajeado do Bugre",
+    "sigla": "RS"
+  },
+  {
+    "id": 431150,
+    "nome": "Lavras do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431160,
+    "nome": "Liberato Salzano",
+    "sigla": "RS"
+  },
+  {
+    "id": 431162,
+    "nome": "Lindolfo Collor",
+    "sigla": "RS"
+  },
+  {
+    "id": 431164,
+    "nome": "Linha Nova",
+    "sigla": "RS"
+  },
+  {
+    "id": 431170,
+    "nome": "Machadinho",
+    "sigla": "RS"
+  },
+  {
+    "id": 431171,
+    "nome": "Maçambará",
+    "sigla": "RS"
+  },
+  {
+    "id": 431173,
+    "nome": "Mampituba",
+    "sigla": "RS"
+  },
+  {
+    "id": 431175,
+    "nome": "Manoel Viana",
+    "sigla": "RS"
+  },
+  {
+    "id": 431177,
+    "nome": "Maquiné",
+    "sigla": "RS"
+  },
+  {
+    "id": 431179,
+    "nome": "Maratá",
+    "sigla": "RS"
+  },
+  {
+    "id": 431180,
+    "nome": "Marau",
+    "sigla": "RS"
+  },
+  {
+    "id": 431190,
+    "nome": "Marcelino Ramos",
+    "sigla": "RS"
+  },
+  {
+    "id": 431198,
+    "nome": "Mariana Pimentel",
+    "sigla": "RS"
+  },
+  {
+    "id": 431200,
+    "nome": "Mariano Moro",
+    "sigla": "RS"
+  },
+  {
+    "id": 431205,
+    "nome": "Marques de Souza",
+    "sigla": "RS"
+  },
+  {
+    "id": 431210,
+    "nome": "Mata",
+    "sigla": "RS"
+  },
+  {
+    "id": 431213,
+    "nome": "Mato Castelhano",
+    "sigla": "RS"
+  },
+  {
+    "id": 431215,
+    "nome": "Mato Leitão",
+    "sigla": "RS"
+  },
+  {
+    "id": 431217,
+    "nome": "Mato Queimado",
+    "sigla": "RS"
+  },
+  {
+    "id": 431220,
+    "nome": "Maximiliano de Almeida",
+    "sigla": "RS"
+  },
+  {
+    "id": 431225,
+    "nome": "Minas do Leão",
+    "sigla": "RS"
+  },
+  {
+    "id": 431230,
+    "nome": "Miraguaí",
+    "sigla": "RS"
+  },
+  {
+    "id": 431235,
+    "nome": "Montauri",
+    "sigla": "RS"
+  },
+  {
+    "id": 431237,
+    "nome": "Monte Alegre dos Campos",
+    "sigla": "RS"
+  },
+  {
+    "id": 431238,
+    "nome": "Monte Belo do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431240,
+    "nome": "Montenegro",
+    "sigla": "RS"
+  },
+  {
+    "id": 431242,
+    "nome": "Mormaço",
+    "sigla": "RS"
+  },
+  {
+    "id": 431244,
+    "nome": "Morrinhos do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431245,
+    "nome": "Morro Redondo",
+    "sigla": "RS"
+  },
+  {
+    "id": 431247,
+    "nome": "Morro Reuter",
+    "sigla": "RS"
+  },
+  {
+    "id": 431250,
+    "nome": "Mostardas",
+    "sigla": "RS"
+  },
+  {
+    "id": 431260,
+    "nome": "Muçum",
+    "sigla": "RS"
+  },
+  {
+    "id": 431261,
+    "nome": "Muitos Capões",
+    "sigla": "RS"
+  },
+  {
+    "id": 431262,
+    "nome": "Muliterno",
+    "sigla": "RS"
+  },
+  {
+    "id": 431265,
+    "nome": "Não-Me-Toque",
+    "sigla": "RS"
+  },
+  {
+    "id": 431267,
+    "nome": "Nicolau Vergueiro",
+    "sigla": "RS"
+  },
+  {
+    "id": 431270,
+    "nome": "Nonoai",
+    "sigla": "RS"
+  },
+  {
+    "id": 431275,
+    "nome": "Nova Alvorada",
+    "sigla": "RS"
+  },
+  {
+    "id": 431280,
+    "nome": "Nova Araçá",
+    "sigla": "RS"
+  },
+  {
+    "id": 431290,
+    "nome": "Nova Bassano",
+    "sigla": "RS"
+  },
+  {
+    "id": 431295,
+    "nome": "Nova Boa Vista",
+    "sigla": "RS"
+  },
+  {
+    "id": 431300,
+    "nome": "Nova Bréscia",
+    "sigla": "RS"
+  },
+  {
+    "id": 431301,
+    "nome": "Nova Candelária",
+    "sigla": "RS"
+  },
+  {
+    "id": 431303,
+    "nome": "Nova Esperança do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431306,
+    "nome": "Nova Hartz",
+    "sigla": "RS"
+  },
+  {
+    "id": 431308,
+    "nome": "Nova Pádua",
+    "sigla": "RS"
+  },
+  {
+    "id": 431310,
+    "nome": "Nova Palma",
+    "sigla": "RS"
+  },
+  {
+    "id": 431320,
+    "nome": "Nova Petrópolis",
+    "sigla": "RS"
+  },
+  {
+    "id": 431330,
+    "nome": "Nova Prata",
+    "sigla": "RS"
+  },
+  {
+    "id": 431333,
+    "nome": "Nova Ramada",
+    "sigla": "RS"
+  },
+  {
+    "id": 431335,
+    "nome": "Nova Roma do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431337,
+    "nome": "Nova Santa Rita",
+    "sigla": "RS"
+  },
+  {
+    "id": 431339,
+    "nome": "Novo Cabrais",
+    "sigla": "RS"
+  },
+  {
+    "id": 431340,
+    "nome": "Novo Hamburgo",
+    "sigla": "RS"
+  },
+  {
+    "id": 431342,
+    "nome": "Novo Machado",
+    "sigla": "RS"
+  },
+  {
+    "id": 431344,
+    "nome": "Novo Tiradentes",
+    "sigla": "RS"
+  },
+  {
+    "id": 431346,
+    "nome": "Novo Xingu",
+    "sigla": "RS"
+  },
+  {
+    "id": 431349,
+    "nome": "Novo Barreiro",
+    "sigla": "RS"
+  },
+  {
+    "id": 431350,
+    "nome": "Osório",
+    "sigla": "RS"
+  },
+  {
+    "id": 431360,
+    "nome": "Paim Filho",
+    "sigla": "RS"
+  },
+  {
+    "id": 431365,
+    "nome": "Palmares do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431370,
+    "nome": "Palmeira das Missões",
+    "sigla": "RS"
+  },
+  {
+    "id": 431380,
+    "nome": "Palmitinho",
+    "sigla": "RS"
+  },
+  {
+    "id": 431390,
+    "nome": "Panambi",
+    "sigla": "RS"
+  },
+  {
+    "id": 431395,
+    "nome": "Pantano Grande",
+    "sigla": "RS"
+  },
+  {
+    "id": 431400,
+    "nome": "Paraí",
+    "sigla": "RS"
+  },
+  {
+    "id": 431402,
+    "nome": "Paraíso do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431403,
+    "nome": "Pareci Novo",
+    "sigla": "RS"
+  },
+  {
+    "id": 431405,
+    "nome": "Parobé",
+    "sigla": "RS"
+  },
+  {
+    "id": 431406,
+    "nome": "Passa Sete",
+    "sigla": "RS"
+  },
+  {
+    "id": 431407,
+    "nome": "Passo do Sobrado",
+    "sigla": "RS"
+  },
+  {
+    "id": 431410,
+    "nome": "Passo Fundo",
+    "sigla": "RS"
+  },
+  {
+    "id": 431413,
+    "nome": "Paulo Bento",
+    "sigla": "RS"
+  },
+  {
+    "id": 431415,
+    "nome": "Paverama",
+    "sigla": "RS"
+  },
+  {
+    "id": 431417,
+    "nome": "Pedras Altas",
+    "sigla": "RS"
+  },
+  {
+    "id": 431420,
+    "nome": "Pedro Osório",
+    "sigla": "RS"
+  },
+  {
+    "id": 431430,
+    "nome": "Pejuçara",
+    "sigla": "RS"
+  },
+  {
+    "id": 431440,
+    "nome": "Pelotas",
+    "sigla": "RS"
+  },
+  {
+    "id": 431442,
+    "nome": "Picada Café",
+    "sigla": "RS"
+  },
+  {
+    "id": 431445,
+    "nome": "Pinhal",
+    "sigla": "RS"
+  },
+  {
+    "id": 431446,
+    "nome": "Pinhal da Serra",
+    "sigla": "RS"
+  },
+  {
+    "id": 431447,
+    "nome": "Pinhal Grande",
+    "sigla": "RS"
+  },
+  {
+    "id": 431449,
+    "nome": "Pinheirinho do Vale",
+    "sigla": "RS"
+  },
+  {
+    "id": 431450,
+    "nome": "Pinheiro Machado",
+    "sigla": "RS"
+  },
+  {
+    "id": 431454,
+    "nome": "Pinto Bandeira",
+    "sigla": "RS"
+  },
+  {
+    "id": 431455,
+    "nome": "Pirapó",
+    "sigla": "RS"
+  },
+  {
+    "id": 431460,
+    "nome": "Piratini",
+    "sigla": "RS"
+  },
+  {
+    "id": 431470,
+    "nome": "Planalto",
+    "sigla": "RS"
+  },
+  {
+    "id": 431475,
+    "nome": "Poço das Antas",
+    "sigla": "RS"
+  },
+  {
+    "id": 431477,
+    "nome": "Pontão",
+    "sigla": "RS"
+  },
+  {
+    "id": 431478,
+    "nome": "Ponte Preta",
+    "sigla": "RS"
+  },
+  {
+    "id": 431480,
+    "nome": "Portão",
+    "sigla": "RS"
+  },
+  {
+    "id": 431490,
+    "nome": "Porto Alegre",
+    "sigla": "RS"
+  },
+  {
+    "id": 431500,
+    "nome": "Porto Lucena",
+    "sigla": "RS"
+  },
+  {
+    "id": 431505,
+    "nome": "Porto Mauá",
+    "sigla": "RS"
+  },
+  {
+    "id": 431507,
+    "nome": "Porto Vera Cruz",
+    "sigla": "RS"
+  },
+  {
+    "id": 431510,
+    "nome": "Porto Xavier",
+    "sigla": "RS"
+  },
+  {
+    "id": 431513,
+    "nome": "Pouso Novo",
+    "sigla": "RS"
+  },
+  {
+    "id": 431514,
+    "nome": "Presidente Lucena",
+    "sigla": "RS"
+  },
+  {
+    "id": 431515,
+    "nome": "Progresso",
+    "sigla": "RS"
+  },
+  {
+    "id": 431517,
+    "nome": "Protásio Alves",
+    "sigla": "RS"
+  },
+  {
+    "id": 431520,
+    "nome": "Putinga",
+    "sigla": "RS"
+  },
+  {
+    "id": 431530,
+    "nome": "Quaraí",
+    "sigla": "RS"
+  },
+  {
+    "id": 431531,
+    "nome": "Quatro Irmãos",
+    "sigla": "RS"
+  },
+  {
+    "id": 431532,
+    "nome": "Quevedos",
+    "sigla": "RS"
+  },
+  {
+    "id": 431535,
+    "nome": "Quinze de Novembro",
+    "sigla": "RS"
+  },
+  {
+    "id": 431540,
+    "nome": "Redentora",
+    "sigla": "RS"
+  },
+  {
+    "id": 431545,
+    "nome": "Relvado",
+    "sigla": "RS"
+  },
+  {
+    "id": 431550,
+    "nome": "Restinga Sêca",
+    "sigla": "RS"
+  },
+  {
+    "id": 431555,
+    "nome": "Rio dos Índios",
+    "sigla": "RS"
+  },
+  {
+    "id": 431560,
+    "nome": "Rio Grande",
+    "sigla": "RS"
+  },
+  {
+    "id": 431570,
+    "nome": "Rio Pardo",
+    "sigla": "RS"
+  },
+  {
+    "id": 431575,
+    "nome": "Riozinho",
+    "sigla": "RS"
+  },
+  {
+    "id": 431580,
+    "nome": "Roca Sales",
+    "sigla": "RS"
+  },
+  {
+    "id": 431590,
+    "nome": "Rodeio Bonito",
+    "sigla": "RS"
+  },
+  {
+    "id": 431595,
+    "nome": "Rolador",
+    "sigla": "RS"
+  },
+  {
+    "id": 431600,
+    "nome": "Rolante",
+    "sigla": "RS"
+  },
+  {
+    "id": 431610,
+    "nome": "Ronda Alta",
+    "sigla": "RS"
+  },
+  {
+    "id": 431620,
+    "nome": "Rondinha",
+    "sigla": "RS"
+  },
+  {
+    "id": 431630,
+    "nome": "Roque Gonzales",
+    "sigla": "RS"
+  },
+  {
+    "id": 431640,
+    "nome": "Rosário do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431642,
+    "nome": "Sagrada Família",
+    "sigla": "RS"
+  },
+  {
+    "id": 431643,
+    "nome": "Saldanha Marinho",
+    "sigla": "RS"
+  },
+  {
+    "id": 431645,
+    "nome": "Salto do Jacuí",
+    "sigla": "RS"
+  },
+  {
+    "id": 431647,
+    "nome": "Salvador das Missões",
+    "sigla": "RS"
+  },
+  {
+    "id": 431650,
+    "nome": "Salvador do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431660,
+    "nome": "Sananduva",
+    "sigla": "RS"
+  },
+  {
+    "id": 431670,
+    "nome": "Santa Bárbara do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431673,
+    "nome": "Santa Cecília do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431675,
+    "nome": "Santa Clara do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431680,
+    "nome": "Santa Cruz do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431690,
+    "nome": "Santa Maria",
+    "sigla": "RS"
+  },
+  {
+    "id": 431695,
+    "nome": "Santa Maria do Herval",
+    "sigla": "RS"
+  },
+  {
+    "id": 431697,
+    "nome": "Santa Margarida do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431700,
+    "nome": "Santana da Boa Vista",
+    "sigla": "RS"
+  },
+  {
+    "id": 431710,
+    "nome": "Sant'Ana do Livramento",
+    "sigla": "RS"
+  },
+  {
+    "id": 431720,
+    "nome": "Santa Rosa",
+    "sigla": "RS"
+  },
+  {
+    "id": 431725,
+    "nome": "Santa Tereza",
+    "sigla": "RS"
+  },
+  {
+    "id": 431730,
+    "nome": "Santa Vitória do Palmar",
+    "sigla": "RS"
+  },
+  {
+    "id": 431740,
+    "nome": "Santiago",
+    "sigla": "RS"
+  },
+  {
+    "id": 431750,
+    "nome": "Santo Ângelo",
+    "sigla": "RS"
+  },
+  {
+    "id": 431755,
+    "nome": "Santo Antônio do Palma",
+    "sigla": "RS"
+  },
+  {
+    "id": 431760,
+    "nome": "Santo Antônio da Patrulha",
+    "sigla": "RS"
+  },
+  {
+    "id": 431770,
+    "nome": "Santo Antônio das Missões",
+    "sigla": "RS"
+  },
+  {
+    "id": 431775,
+    "nome": "Santo Antônio do Planalto",
+    "sigla": "RS"
+  },
+  {
+    "id": 431780,
+    "nome": "Santo Augusto",
+    "sigla": "RS"
+  },
+  {
+    "id": 431790,
+    "nome": "Santo Cristo",
+    "sigla": "RS"
+  },
+  {
+    "id": 431795,
+    "nome": "Santo Expedito do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431800,
+    "nome": "São Borja",
+    "sigla": "RS"
+  },
+  {
+    "id": 431805,
+    "nome": "São Domingos do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431810,
+    "nome": "São Francisco de Assis",
+    "sigla": "RS"
+  },
+  {
+    "id": 431820,
+    "nome": "São Francisco de Paula",
+    "sigla": "RS"
+  },
+  {
+    "id": 431830,
+    "nome": "São Gabriel",
+    "sigla": "RS"
+  },
+  {
+    "id": 431840,
+    "nome": "São Jerônimo",
+    "sigla": "RS"
+  },
+  {
+    "id": 431842,
+    "nome": "São João da Urtiga",
+    "sigla": "RS"
+  },
+  {
+    "id": 431843,
+    "nome": "São João do Polêsine",
+    "sigla": "RS"
+  },
+  {
+    "id": 431844,
+    "nome": "São Jorge",
+    "sigla": "RS"
+  },
+  {
+    "id": 431845,
+    "nome": "São José das Missões",
+    "sigla": "RS"
+  },
+  {
+    "id": 431846,
+    "nome": "São José do Herval",
+    "sigla": "RS"
+  },
+  {
+    "id": 431848,
+    "nome": "São José do Hortêncio",
+    "sigla": "RS"
+  },
+  {
+    "id": 431849,
+    "nome": "São José do Inhacorá",
+    "sigla": "RS"
+  },
+  {
+    "id": 431850,
+    "nome": "São José do Norte",
+    "sigla": "RS"
+  },
+  {
+    "id": 431860,
+    "nome": "São José do Ouro",
+    "sigla": "RS"
+  },
+  {
+    "id": 431861,
+    "nome": "São José do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431862,
+    "nome": "São José dos Ausentes",
+    "sigla": "RS"
+  },
+  {
+    "id": 431870,
+    "nome": "São Leopoldo",
+    "sigla": "RS"
+  },
+  {
+    "id": 431880,
+    "nome": "São Lourenço do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431890,
+    "nome": "São Luiz Gonzaga",
+    "sigla": "RS"
+  },
+  {
+    "id": 431900,
+    "nome": "São Marcos",
+    "sigla": "RS"
+  },
+  {
+    "id": 431910,
+    "nome": "São Martinho",
+    "sigla": "RS"
+  },
+  {
+    "id": 431912,
+    "nome": "São Martinho da Serra",
+    "sigla": "RS"
+  },
+  {
+    "id": 431915,
+    "nome": "São Miguel das Missões",
+    "sigla": "RS"
+  },
+  {
+    "id": 431920,
+    "nome": "São Nicolau",
+    "sigla": "RS"
+  },
+  {
+    "id": 431930,
+    "nome": "São Paulo das Missões",
+    "sigla": "RS"
+  },
+  {
+    "id": 431935,
+    "nome": "São Pedro da Serra",
+    "sigla": "RS"
+  },
+  {
+    "id": 431936,
+    "nome": "São Pedro das Missões",
+    "sigla": "RS"
+  },
+  {
+    "id": 431937,
+    "nome": "São Pedro do Butiá",
+    "sigla": "RS"
+  },
+  {
+    "id": 431940,
+    "nome": "São Pedro do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431950,
+    "nome": "São Sebastião do Caí",
+    "sigla": "RS"
+  },
+  {
+    "id": 431960,
+    "nome": "São Sepé",
+    "sigla": "RS"
+  },
+  {
+    "id": 431970,
+    "nome": "São Valentim",
+    "sigla": "RS"
+  },
+  {
+    "id": 431971,
+    "nome": "São Valentim do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431973,
+    "nome": "São Valério do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431975,
+    "nome": "São Vendelino",
+    "sigla": "RS"
+  },
+  {
+    "id": 431980,
+    "nome": "São Vicente do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 431990,
+    "nome": "Sapiranga",
+    "sigla": "RS"
+  },
+  {
+    "id": 432000,
+    "nome": "Sapucaia do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 432010,
+    "nome": "Sarandi",
+    "sigla": "RS"
+  },
+  {
+    "id": 432020,
+    "nome": "Seberi",
+    "sigla": "RS"
+  },
+  {
+    "id": 432023,
+    "nome": "Sede Nova",
+    "sigla": "RS"
+  },
+  {
+    "id": 432026,
+    "nome": "Segredo",
+    "sigla": "RS"
+  },
+  {
+    "id": 432030,
+    "nome": "Selbach",
+    "sigla": "RS"
+  },
+  {
+    "id": 432032,
+    "nome": "Senador Salgado Filho",
+    "sigla": "RS"
+  },
+  {
+    "id": 432035,
+    "nome": "Sentinela do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 432040,
+    "nome": "Serafina Corrêa",
+    "sigla": "RS"
+  },
+  {
+    "id": 432045,
+    "nome": "Sério",
+    "sigla": "RS"
+  },
+  {
+    "id": 432050,
+    "nome": "Sertão",
+    "sigla": "RS"
+  },
+  {
+    "id": 432055,
+    "nome": "Sertão Santana",
+    "sigla": "RS"
+  },
+  {
+    "id": 432057,
+    "nome": "Sete de Setembro",
+    "sigla": "RS"
+  },
+  {
+    "id": 432060,
+    "nome": "Severiano de Almeida",
+    "sigla": "RS"
+  },
+  {
+    "id": 432065,
+    "nome": "Silveira Martins",
+    "sigla": "RS"
+  },
+  {
+    "id": 432067,
+    "nome": "Sinimbu",
+    "sigla": "RS"
+  },
+  {
+    "id": 432070,
+    "nome": "Sobradinho",
+    "sigla": "RS"
+  },
+  {
+    "id": 432080,
+    "nome": "Soledade",
+    "sigla": "RS"
+  },
+  {
+    "id": 432085,
+    "nome": "Tabaí",
+    "sigla": "RS"
+  },
+  {
+    "id": 432090,
+    "nome": "Tapejara",
+    "sigla": "RS"
+  },
+  {
+    "id": 432100,
+    "nome": "Tapera",
+    "sigla": "RS"
+  },
+  {
+    "id": 432110,
+    "nome": "Tapes",
+    "sigla": "RS"
+  },
+  {
+    "id": 432120,
+    "nome": "Taquara",
+    "sigla": "RS"
+  },
+  {
+    "id": 432130,
+    "nome": "Taquari",
+    "sigla": "RS"
+  },
+  {
+    "id": 432132,
+    "nome": "Taquaruçu do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 432135,
+    "nome": "Tavares",
+    "sigla": "RS"
+  },
+  {
+    "id": 432140,
+    "nome": "Tenente Portela",
+    "sigla": "RS"
+  },
+  {
+    "id": 432143,
+    "nome": "Terra de Areia",
+    "sigla": "RS"
+  },
+  {
+    "id": 432145,
+    "nome": "Teutônia",
+    "sigla": "RS"
+  },
+  {
+    "id": 432146,
+    "nome": "Tio Hugo",
+    "sigla": "RS"
+  },
+  {
+    "id": 432147,
+    "nome": "Tiradentes do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 432149,
+    "nome": "Toropi",
+    "sigla": "RS"
+  },
+  {
+    "id": 432150,
+    "nome": "Torres",
+    "sigla": "RS"
+  },
+  {
+    "id": 432160,
+    "nome": "Tramandaí",
+    "sigla": "RS"
+  },
+  {
+    "id": 432162,
+    "nome": "Travesseiro",
+    "sigla": "RS"
+  },
+  {
+    "id": 432163,
+    "nome": "Três Arroios",
+    "sigla": "RS"
+  },
+  {
+    "id": 432166,
+    "nome": "Três Cachoeiras",
+    "sigla": "RS"
+  },
+  {
+    "id": 432170,
+    "nome": "Três Coroas",
+    "sigla": "RS"
+  },
+  {
+    "id": 432180,
+    "nome": "Três de Maio",
+    "sigla": "RS"
+  },
+  {
+    "id": 432183,
+    "nome": "Três Forquilhas",
+    "sigla": "RS"
+  },
+  {
+    "id": 432185,
+    "nome": "Três Palmeiras",
+    "sigla": "RS"
+  },
+  {
+    "id": 432190,
+    "nome": "Três Passos",
+    "sigla": "RS"
+  },
+  {
+    "id": 432195,
+    "nome": "Trindade do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 432200,
+    "nome": "Triunfo",
+    "sigla": "RS"
+  },
+  {
+    "id": 432210,
+    "nome": "Tucunduva",
+    "sigla": "RS"
+  },
+  {
+    "id": 432215,
+    "nome": "Tunas",
+    "sigla": "RS"
+  },
+  {
+    "id": 432218,
+    "nome": "Tupanci do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 432220,
+    "nome": "Tupanciretã",
+    "sigla": "RS"
+  },
+  {
+    "id": 432225,
+    "nome": "Tupandi",
+    "sigla": "RS"
+  },
+  {
+    "id": 432230,
+    "nome": "Tuparendi",
+    "sigla": "RS"
+  },
+  {
+    "id": 432232,
+    "nome": "Turuçu",
+    "sigla": "RS"
+  },
+  {
+    "id": 432234,
+    "nome": "Ubiretama",
+    "sigla": "RS"
+  },
+  {
+    "id": 432235,
+    "nome": "União da Serra",
+    "sigla": "RS"
+  },
+  {
+    "id": 432237,
+    "nome": "Unistalda",
+    "sigla": "RS"
+  },
+  {
+    "id": 432240,
+    "nome": "Uruguaiana",
+    "sigla": "RS"
+  },
+  {
+    "id": 432250,
+    "nome": "Vacaria",
+    "sigla": "RS"
+  },
+  {
+    "id": 432252,
+    "nome": "Vale Verde",
+    "sigla": "RS"
+  },
+  {
+    "id": 432253,
+    "nome": "Vale do Sol",
+    "sigla": "RS"
+  },
+  {
+    "id": 432254,
+    "nome": "Vale Real",
+    "sigla": "RS"
+  },
+  {
+    "id": 432255,
+    "nome": "Vanini",
+    "sigla": "RS"
+  },
+  {
+    "id": 432260,
+    "nome": "Venâncio Aires",
+    "sigla": "RS"
+  },
+  {
+    "id": 432270,
+    "nome": "Vera Cruz",
+    "sigla": "RS"
+  },
+  {
+    "id": 432280,
+    "nome": "Veranópolis",
+    "sigla": "RS"
+  },
+  {
+    "id": 432285,
+    "nome": "Vespasiano Corrêa",
+    "sigla": "RS"
+  },
+  {
+    "id": 432290,
+    "nome": "Viadutos",
+    "sigla": "RS"
+  },
+  {
+    "id": 432300,
+    "nome": "Viamão",
+    "sigla": "RS"
+  },
+  {
+    "id": 432310,
+    "nome": "Vicente Dutra",
+    "sigla": "RS"
+  },
+  {
+    "id": 432320,
+    "nome": "Victor Graeff",
+    "sigla": "RS"
+  },
+  {
+    "id": 432330,
+    "nome": "Vila Flores",
+    "sigla": "RS"
+  },
+  {
+    "id": 432335,
+    "nome": "Vila Lângaro",
+    "sigla": "RS"
+  },
+  {
+    "id": 432340,
+    "nome": "Vila Maria",
+    "sigla": "RS"
+  },
+  {
+    "id": 432345,
+    "nome": "Vila Nova do Sul",
+    "sigla": "RS"
+  },
+  {
+    "id": 432350,
+    "nome": "Vista Alegre",
+    "sigla": "RS"
+  },
+  {
+    "id": 432360,
+    "nome": "Vista Alegre do Prata",
+    "sigla": "RS"
+  },
+  {
+    "id": 432370,
+    "nome": "Vista Gaúcha",
+    "sigla": "RS"
+  },
+  {
+    "id": 432375,
+    "nome": "Vitória das Missões",
+    "sigla": "RS"
+  },
+  {
+    "id": 432377,
+    "nome": "Westfália",
+    "sigla": "RS"
+  },
+  {
+    "id": 432380,
+    "nome": "Xangri-lá",
+    "sigla": "RS"
+  },
+  {
+    "id": 500020,
+    "nome": "Água Clara",
+    "sigla": "MS"
+  },
+  {
+    "id": 500025,
+    "nome": "Alcinópolis",
+    "sigla": "MS"
+  },
+  {
+    "id": 500060,
+    "nome": "Amambai",
+    "sigla": "MS"
+  },
+  {
+    "id": 500070,
+    "nome": "Anastácio",
+    "sigla": "MS"
+  },
+  {
+    "id": 500080,
+    "nome": "Anaurilândia",
+    "sigla": "MS"
+  },
+  {
+    "id": 500085,
+    "nome": "Angélica",
+    "sigla": "MS"
+  },
+  {
+    "id": 500090,
+    "nome": "Antônio João",
+    "sigla": "MS"
+  },
+  {
+    "id": 500100,
+    "nome": "Aparecida do Taboado",
+    "sigla": "MS"
+  },
+  {
+    "id": 500110,
+    "nome": "Aquidauana",
+    "sigla": "MS"
+  },
+  {
+    "id": 500124,
+    "nome": "Aral Moreira",
+    "sigla": "MS"
+  },
+  {
+    "id": 500150,
+    "nome": "Bandeirantes",
+    "sigla": "MS"
+  },
+  {
+    "id": 500190,
+    "nome": "Bataguassu",
+    "sigla": "MS"
+  },
+  {
+    "id": 500200,
+    "nome": "Batayporã",
+    "sigla": "MS"
+  },
+  {
+    "id": 500210,
+    "nome": "Bela Vista",
+    "sigla": "MS"
+  },
+  {
+    "id": 500215,
+    "nome": "Bodoquena",
+    "sigla": "MS"
+  },
+  {
+    "id": 500220,
+    "nome": "Bonito",
+    "sigla": "MS"
+  },
+  {
+    "id": 500230,
+    "nome": "Brasilândia",
+    "sigla": "MS"
+  },
+  {
+    "id": 500240,
+    "nome": "Caarapó",
+    "sigla": "MS"
+  },
+  {
+    "id": 500260,
+    "nome": "Camapuã",
+    "sigla": "MS"
+  },
+  {
+    "id": 500270,
+    "nome": "Campo Grande",
+    "sigla": "MS"
+  },
+  {
+    "id": 500280,
+    "nome": "Caracol",
+    "sigla": "MS"
+  },
+  {
+    "id": 500290,
+    "nome": "Cassilândia",
+    "sigla": "MS"
+  },
+  {
+    "id": 500295,
+    "nome": "Chapadão do Sul",
+    "sigla": "MS"
+  },
+  {
+    "id": 500310,
+    "nome": "Corguinho",
+    "sigla": "MS"
+  },
+  {
+    "id": 500315,
+    "nome": "Coronel Sapucaia",
+    "sigla": "MS"
+  },
+  {
+    "id": 500320,
+    "nome": "Corumbá",
+    "sigla": "MS"
+  },
+  {
+    "id": 500325,
+    "nome": "Costa Rica",
+    "sigla": "MS"
+  },
+  {
+    "id": 500330,
+    "nome": "Coxim",
+    "sigla": "MS"
+  },
+  {
+    "id": 500345,
+    "nome": "Deodápolis",
+    "sigla": "MS"
+  },
+  {
+    "id": 500348,
+    "nome": "Dois Irmãos do Buriti",
+    "sigla": "MS"
+  },
+  {
+    "id": 500350,
+    "nome": "Douradina",
+    "sigla": "MS"
+  },
+  {
+    "id": 500370,
+    "nome": "Dourados",
+    "sigla": "MS"
+  },
+  {
+    "id": 500375,
+    "nome": "Eldorado",
+    "sigla": "MS"
+  },
+  {
+    "id": 500380,
+    "nome": "Fátima do Sul",
+    "sigla": "MS"
+  },
+  {
+    "id": 500390,
+    "nome": "Figueirão",
+    "sigla": "MS"
+  },
+  {
+    "id": 500400,
+    "nome": "Glória de Dourados",
+    "sigla": "MS"
+  },
+  {
+    "id": 500410,
+    "nome": "Guia Lopes da Laguna",
+    "sigla": "MS"
+  },
+  {
+    "id": 500430,
+    "nome": "Iguatemi",
+    "sigla": "MS"
+  },
+  {
+    "id": 500440,
+    "nome": "Inocência",
+    "sigla": "MS"
+  },
+  {
+    "id": 500450,
+    "nome": "Itaporã",
+    "sigla": "MS"
+  },
+  {
+    "id": 500460,
+    "nome": "Itaquiraí",
+    "sigla": "MS"
+  },
+  {
+    "id": 500470,
+    "nome": "Ivinhema",
+    "sigla": "MS"
+  },
+  {
+    "id": 500480,
+    "nome": "Japorã",
+    "sigla": "MS"
+  },
+  {
+    "id": 500490,
+    "nome": "Jaraguari",
+    "sigla": "MS"
+  },
+  {
+    "id": 500500,
+    "nome": "Jardim",
+    "sigla": "MS"
+  },
+  {
+    "id": 500510,
+    "nome": "Jateí",
+    "sigla": "MS"
+  },
+  {
+    "id": 500515,
+    "nome": "Juti",
+    "sigla": "MS"
+  },
+  {
+    "id": 500520,
+    "nome": "Ladário",
+    "sigla": "MS"
+  },
+  {
+    "id": 500525,
+    "nome": "Laguna Carapã",
+    "sigla": "MS"
+  },
+  {
+    "id": 500540,
+    "nome": "Maracaju",
+    "sigla": "MS"
+  },
+  {
+    "id": 500560,
+    "nome": "Miranda",
+    "sigla": "MS"
+  },
+  {
+    "id": 500568,
+    "nome": "Mundo Novo",
+    "sigla": "MS"
+  },
+  {
+    "id": 500570,
+    "nome": "Naviraí",
+    "sigla": "MS"
+  },
+  {
+    "id": 500580,
+    "nome": "Nioaque",
+    "sigla": "MS"
+  },
+  {
+    "id": 500600,
+    "nome": "Nova Alvorada do Sul",
+    "sigla": "MS"
+  },
+  {
+    "id": 500620,
+    "nome": "Nova Andradina",
+    "sigla": "MS"
+  },
+  {
+    "id": 500625,
+    "nome": "Novo Horizonte do Sul",
+    "sigla": "MS"
+  },
+  {
+    "id": 500627,
+    "nome": "Paraíso das Águas",
+    "sigla": "MS"
+  },
+  {
+    "id": 500630,
+    "nome": "Paranaíba",
+    "sigla": "MS"
+  },
+  {
+    "id": 500635,
+    "nome": "Paranhos",
+    "sigla": "MS"
+  },
+  {
+    "id": 500640,
+    "nome": "Pedro Gomes",
+    "sigla": "MS"
+  },
+  {
+    "id": 500660,
+    "nome": "Ponta Porã",
+    "sigla": "MS"
+  },
+  {
+    "id": 500690,
+    "nome": "Porto Murtinho",
+    "sigla": "MS"
+  },
+  {
+    "id": 500710,
+    "nome": "Ribas do Rio Pardo",
+    "sigla": "MS"
+  },
+  {
+    "id": 500720,
+    "nome": "Rio Brilhante",
+    "sigla": "MS"
+  },
+  {
+    "id": 500730,
+    "nome": "Rio Negro",
+    "sigla": "MS"
+  },
+  {
+    "id": 500740,
+    "nome": "Rio Verde de Mato Grosso",
+    "sigla": "MS"
+  },
+  {
+    "id": 500750,
+    "nome": "Rochedo",
+    "sigla": "MS"
+  },
+  {
+    "id": 500755,
+    "nome": "Santa Rita do Pardo",
+    "sigla": "MS"
+  },
+  {
+    "id": 500769,
+    "nome": "São Gabriel do Oeste",
+    "sigla": "MS"
+  },
+  {
+    "id": 500770,
+    "nome": "Sete Quedas",
+    "sigla": "MS"
+  },
+  {
+    "id": 500780,
+    "nome": "Selvíria",
+    "sigla": "MS"
+  },
+  {
+    "id": 500790,
+    "nome": "Sidrolândia",
+    "sigla": "MS"
+  },
+  {
+    "id": 500793,
+    "nome": "Sonora",
+    "sigla": "MS"
+  },
+  {
+    "id": 500795,
+    "nome": "Tacuru",
+    "sigla": "MS"
+  },
+  {
+    "id": 500797,
+    "nome": "Taquarussu",
+    "sigla": "MS"
+  },
+  {
+    "id": 500800,
+    "nome": "Terenos",
+    "sigla": "MS"
+  },
+  {
+    "id": 500830,
+    "nome": "Três Lagoas",
+    "sigla": "MS"
+  },
+  {
+    "id": 500840,
+    "nome": "Vicentina",
+    "sigla": "MS"
+  },
+  {
+    "id": 510010,
+    "nome": "Acorizal",
+    "sigla": "MT"
+  },
+  {
+    "id": 510020,
+    "nome": "Água Boa",
+    "sigla": "MT"
+  },
+  {
+    "id": 510025,
+    "nome": "Alta Floresta",
+    "sigla": "MT"
+  },
+  {
+    "id": 510030,
+    "nome": "Alto Araguaia",
+    "sigla": "MT"
+  },
+  {
+    "id": 510035,
+    "nome": "Alto Boa Vista",
+    "sigla": "MT"
+  },
+  {
+    "id": 510040,
+    "nome": "Alto Garças",
+    "sigla": "MT"
+  },
+  {
+    "id": 510050,
+    "nome": "Alto Paraguai",
+    "sigla": "MT"
+  },
+  {
+    "id": 510060,
+    "nome": "Alto Taquari",
+    "sigla": "MT"
+  },
+  {
+    "id": 510080,
+    "nome": "Apiacás",
+    "sigla": "MT"
+  },
+  {
+    "id": 510100,
+    "nome": "Araguaiana",
+    "sigla": "MT"
+  },
+  {
+    "id": 510120,
+    "nome": "Araguainha",
+    "sigla": "MT"
+  },
+  {
+    "id": 510125,
+    "nome": "Araputanga",
+    "sigla": "MT"
+  },
+  {
+    "id": 510130,
+    "nome": "Arenápolis",
+    "sigla": "MT"
+  },
+  {
+    "id": 510140,
+    "nome": "Aripuanã",
+    "sigla": "MT"
+  },
+  {
+    "id": 510160,
+    "nome": "Barão de Melgaço",
+    "sigla": "MT"
+  },
+  {
+    "id": 510170,
+    "nome": "Barra do Bugres",
+    "sigla": "MT"
+  },
+  {
+    "id": 510180,
+    "nome": "Barra do Garças",
+    "sigla": "MT"
+  },
+  {
+    "id": 510183,
+    "nome": "Boa Esperança do Norte",
+    "sigla": "MT"
+  },
+  {
+    "id": 510185,
+    "nome": "Bom Jesus do Araguaia",
+    "sigla": "MT"
+  },
+  {
+    "id": 510190,
+    "nome": "Brasnorte",
+    "sigla": "MT"
+  },
+  {
+    "id": 510250,
+    "nome": "Cáceres",
+    "sigla": "MT"
+  },
+  {
+    "id": 510260,
+    "nome": "Campinápolis",
+    "sigla": "MT"
+  },
+  {
+    "id": 510263,
+    "nome": "Campo Novo do Parecis",
+    "sigla": "MT"
+  },
+  {
+    "id": 510267,
+    "nome": "Campo Verde",
+    "sigla": "MT"
+  },
+  {
+    "id": 510268,
+    "nome": "Campos de Júlio",
+    "sigla": "MT"
+  },
+  {
+    "id": 510269,
+    "nome": "Canabrava do Norte",
+    "sigla": "MT"
+  },
+  {
+    "id": 510270,
+    "nome": "Canarana",
+    "sigla": "MT"
+  },
+  {
+    "id": 510279,
+    "nome": "Carlinda",
+    "sigla": "MT"
+  },
+  {
+    "id": 510285,
+    "nome": "Castanheira",
+    "sigla": "MT"
+  },
+  {
+    "id": 510300,
+    "nome": "Chapada dos Guimarães",
+    "sigla": "MT"
+  },
+  {
+    "id": 510305,
+    "nome": "Cláudia",
+    "sigla": "MT"
+  },
+  {
+    "id": 510310,
+    "nome": "Cocalinho",
+    "sigla": "MT"
+  },
+  {
+    "id": 510320,
+    "nome": "Colíder",
+    "sigla": "MT"
+  },
+  {
+    "id": 510325,
+    "nome": "Colniza",
+    "sigla": "MT"
+  },
+  {
+    "id": 510330,
+    "nome": "Comodoro",
+    "sigla": "MT"
+  },
+  {
+    "id": 510335,
+    "nome": "Confresa",
+    "sigla": "MT"
+  },
+  {
+    "id": 510336,
+    "nome": "Conquista D'Oeste",
+    "sigla": "MT"
+  },
+  {
+    "id": 510337,
+    "nome": "Cotriguaçu",
+    "sigla": "MT"
+  },
+  {
+    "id": 510340,
+    "nome": "Cuiabá",
+    "sigla": "MT"
+  },
+  {
+    "id": 510343,
+    "nome": "Curvelândia",
+    "sigla": "MT"
+  },
+  {
+    "id": 510345,
+    "nome": "Denise",
+    "sigla": "MT"
+  },
+  {
+    "id": 510350,
+    "nome": "Diamantino",
+    "sigla": "MT"
+  },
+  {
+    "id": 510360,
+    "nome": "Dom Aquino",
+    "sigla": "MT"
+  },
+  {
+    "id": 510370,
+    "nome": "Feliz Natal",
+    "sigla": "MT"
+  },
+  {
+    "id": 510380,
+    "nome": "Figueirópolis D'Oeste",
+    "sigla": "MT"
+  },
+  {
+    "id": 510385,
+    "nome": "Gaúcha do Norte",
+    "sigla": "MT"
+  },
+  {
+    "id": 510390,
+    "nome": "General Carneiro",
+    "sigla": "MT"
+  },
+  {
+    "id": 510395,
+    "nome": "Glória D'Oeste",
+    "sigla": "MT"
+  },
+  {
+    "id": 510410,
+    "nome": "Guarantã do Norte",
+    "sigla": "MT"
+  },
+  {
+    "id": 510420,
+    "nome": "Guiratinga",
+    "sigla": "MT"
+  },
+  {
+    "id": 510450,
+    "nome": "Indiavaí",
+    "sigla": "MT"
+  },
+  {
+    "id": 510452,
+    "nome": "Ipiranga do Norte",
+    "sigla": "MT"
+  },
+  {
+    "id": 510454,
+    "nome": "Itanhangá",
+    "sigla": "MT"
+  },
+  {
+    "id": 510455,
+    "nome": "Itaúba",
+    "sigla": "MT"
+  },
+  {
+    "id": 510460,
+    "nome": "Itiquira",
+    "sigla": "MT"
+  },
+  {
+    "id": 510480,
+    "nome": "Jaciara",
+    "sigla": "MT"
+  },
+  {
+    "id": 510490,
+    "nome": "Jangada",
+    "sigla": "MT"
+  },
+  {
+    "id": 510500,
+    "nome": "Jauru",
+    "sigla": "MT"
+  },
+  {
+    "id": 510510,
+    "nome": "Juara",
+    "sigla": "MT"
+  },
+  {
+    "id": 510515,
+    "nome": "Juína",
+    "sigla": "MT"
+  },
+  {
+    "id": 510517,
+    "nome": "Juruena",
+    "sigla": "MT"
+  },
+  {
+    "id": 510520,
+    "nome": "Juscimeira",
+    "sigla": "MT"
+  },
+  {
+    "id": 510523,
+    "nome": "Lambari D'Oeste",
+    "sigla": "MT"
+  },
+  {
+    "id": 510525,
+    "nome": "Lucas do Rio Verde",
+    "sigla": "MT"
+  },
+  {
+    "id": 510530,
+    "nome": "Luciara",
+    "sigla": "MT"
+  },
+  {
+    "id": 510550,
+    "nome": "Vila Bela da Santíssima Trindade",
+    "sigla": "MT"
+  },
+  {
+    "id": 510558,
+    "nome": "Marcelândia",
+    "sigla": "MT"
+  },
+  {
+    "id": 510560,
+    "nome": "Matupá",
+    "sigla": "MT"
+  },
+  {
+    "id": 510562,
+    "nome": "Mirassol d'Oeste",
+    "sigla": "MT"
+  },
+  {
+    "id": 510590,
+    "nome": "Nobres",
+    "sigla": "MT"
+  },
+  {
+    "id": 510600,
+    "nome": "Nortelândia",
+    "sigla": "MT"
+  },
+  {
+    "id": 510610,
+    "nome": "Nossa Senhora do Livramento",
+    "sigla": "MT"
+  },
+  {
+    "id": 510615,
+    "nome": "Nova Bandeirantes",
+    "sigla": "MT"
+  },
+  {
+    "id": 510617,
+    "nome": "Nova Nazaré",
+    "sigla": "MT"
+  },
+  {
+    "id": 510618,
+    "nome": "Nova Lacerda",
+    "sigla": "MT"
+  },
+  {
+    "id": 510619,
+    "nome": "Nova Santa Helena",
+    "sigla": "MT"
+  },
+  {
+    "id": 510620,
+    "nome": "Nova Brasilândia",
+    "sigla": "MT"
+  },
+  {
+    "id": 510621,
+    "nome": "Nova Canaã do Norte",
+    "sigla": "MT"
+  },
+  {
+    "id": 510622,
+    "nome": "Nova Mutum",
+    "sigla": "MT"
+  },
+  {
+    "id": 510623,
+    "nome": "Nova Olímpia",
+    "sigla": "MT"
+  },
+  {
+    "id": 510624,
+    "nome": "Nova Ubiratã",
+    "sigla": "MT"
+  },
+  {
+    "id": 510625,
+    "nome": "Nova Xavantina",
+    "sigla": "MT"
+  },
+  {
+    "id": 510626,
+    "nome": "Novo Mundo",
+    "sigla": "MT"
+  },
+  {
+    "id": 510627,
+    "nome": "Novo Horizonte do Norte",
+    "sigla": "MT"
+  },
+  {
+    "id": 510628,
+    "nome": "Novo São Joaquim",
+    "sigla": "MT"
+  },
+  {
+    "id": 510629,
+    "nome": "Paranaíta",
+    "sigla": "MT"
+  },
+  {
+    "id": 510630,
+    "nome": "Paranatinga",
+    "sigla": "MT"
+  },
+  {
+    "id": 510631,
+    "nome": "Novo Santo Antônio",
+    "sigla": "MT"
+  },
+  {
+    "id": 510637,
+    "nome": "Pedra Preta",
+    "sigla": "MT"
+  },
+  {
+    "id": 510642,
+    "nome": "Peixoto de Azevedo",
+    "sigla": "MT"
+  },
+  {
+    "id": 510645,
+    "nome": "Planalto da Serra",
+    "sigla": "MT"
+  },
+  {
+    "id": 510650,
+    "nome": "Poconé",
+    "sigla": "MT"
+  },
+  {
+    "id": 510665,
+    "nome": "Pontal do Araguaia",
+    "sigla": "MT"
+  },
+  {
+    "id": 510670,
+    "nome": "Ponte Branca",
+    "sigla": "MT"
+  },
+  {
+    "id": 510675,
+    "nome": "Pontes e Lacerda",
+    "sigla": "MT"
+  },
+  {
+    "id": 510677,
+    "nome": "Porto Alegre do Norte",
+    "sigla": "MT"
+  },
+  {
+    "id": 510680,
+    "nome": "Porto dos Gaúchos",
+    "sigla": "MT"
+  },
+  {
+    "id": 510682,
+    "nome": "Porto Esperidião",
+    "sigla": "MT"
+  },
+  {
+    "id": 510685,
+    "nome": "Porto Estrela",
+    "sigla": "MT"
+  },
+  {
+    "id": 510700,
+    "nome": "Poxoréu",
+    "sigla": "MT"
+  },
+  {
+    "id": 510704,
+    "nome": "Primavera do Leste",
+    "sigla": "MT"
+  },
+  {
+    "id": 510706,
+    "nome": "Querência",
+    "sigla": "MT"
+  },
+  {
+    "id": 510710,
+    "nome": "São José dos Quatro Marcos",
+    "sigla": "MT"
+  },
+  {
+    "id": 510715,
+    "nome": "Reserva do Cabaçal",
+    "sigla": "MT"
+  },
+  {
+    "id": 510718,
+    "nome": "Ribeirão Cascalheira",
+    "sigla": "MT"
+  },
+  {
+    "id": 510719,
+    "nome": "Ribeirãozinho",
+    "sigla": "MT"
+  },
+  {
+    "id": 510720,
+    "nome": "Rio Branco",
+    "sigla": "MT"
+  },
+  {
+    "id": 510724,
+    "nome": "Santa Carmem",
+    "sigla": "MT"
+  },
+  {
+    "id": 510726,
+    "nome": "Santo Afonso",
+    "sigla": "MT"
+  },
+  {
+    "id": 510729,
+    "nome": "São José do Povo",
+    "sigla": "MT"
+  },
+  {
+    "id": 510730,
+    "nome": "São José do Rio Claro",
+    "sigla": "MT"
+  },
+  {
+    "id": 510735,
+    "nome": "São José do Xingu",
+    "sigla": "MT"
+  },
+  {
+    "id": 510740,
+    "nome": "São Pedro da Cipa",
+    "sigla": "MT"
+  },
+  {
+    "id": 510757,
+    "nome": "Rondolândia",
+    "sigla": "MT"
+  },
+  {
+    "id": 510760,
+    "nome": "Rondonópolis",
+    "sigla": "MT"
+  },
+  {
+    "id": 510770,
+    "nome": "Rosário Oeste",
+    "sigla": "MT"
+  },
+  {
+    "id": 510774,
+    "nome": "Santa Cruz do Xingu",
+    "sigla": "MT"
+  },
+  {
+    "id": 510775,
+    "nome": "Salto do Céu",
+    "sigla": "MT"
+  },
+  {
+    "id": 510776,
+    "nome": "Santa Rita do Trivelato",
+    "sigla": "MT"
+  },
+  {
+    "id": 510777,
+    "nome": "Santa Terezinha",
+    "sigla": "MT"
+  },
+  {
+    "id": 510779,
+    "nome": "Santo Antônio do Leste",
+    "sigla": "MT"
+  },
+  {
+    "id": 510780,
+    "nome": "Santo Antônio de Leverger",
+    "sigla": "MT"
+  },
+  {
+    "id": 510785,
+    "nome": "São Félix do Araguaia",
+    "sigla": "MT"
+  },
+  {
+    "id": 510787,
+    "nome": "Sapezal",
+    "sigla": "MT"
+  },
+  {
+    "id": 510788,
+    "nome": "Serra Nova Dourada",
+    "sigla": "MT"
+  },
+  {
+    "id": 510790,
+    "nome": "Sinop",
+    "sigla": "MT"
+  },
+  {
+    "id": 510792,
+    "nome": "Sorriso",
+    "sigla": "MT"
+  },
+  {
+    "id": 510794,
+    "nome": "Tabaporã",
+    "sigla": "MT"
+  },
+  {
+    "id": 510795,
+    "nome": "Tangará da Serra",
+    "sigla": "MT"
+  },
+  {
+    "id": 510800,
+    "nome": "Tapurah",
+    "sigla": "MT"
+  },
+  {
+    "id": 510805,
+    "nome": "Terra Nova do Norte",
+    "sigla": "MT"
+  },
+  {
+    "id": 510810,
+    "nome": "Tesouro",
+    "sigla": "MT"
+  },
+  {
+    "id": 510820,
+    "nome": "Torixoréu",
+    "sigla": "MT"
+  },
+  {
+    "id": 510830,
+    "nome": "União do Sul",
+    "sigla": "MT"
+  },
+  {
+    "id": 510835,
+    "nome": "Vale de São Domingos",
+    "sigla": "MT"
+  },
+  {
+    "id": 510840,
+    "nome": "Várzea Grande",
+    "sigla": "MT"
+  },
+  {
+    "id": 510850,
+    "nome": "Vera",
+    "sigla": "MT"
+  },
+  {
+    "id": 510860,
+    "nome": "Vila Rica",
+    "sigla": "MT"
+  },
+  {
+    "id": 510880,
+    "nome": "Nova Guarita",
+    "sigla": "MT"
+  },
+  {
+    "id": 510885,
+    "nome": "Nova Marilândia",
+    "sigla": "MT"
+  },
+  {
+    "id": 510890,
+    "nome": "Nova Maringá",
+    "sigla": "MT"
+  },
+  {
+    "id": 510895,
+    "nome": "Nova Monte Verde",
+    "sigla": "MT"
+  },
+  {
+    "id": 520005,
+    "nome": "Abadia de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520010,
+    "nome": "Abadiânia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520013,
+    "nome": "Acreúna",
+    "sigla": "GO"
+  },
+  {
+    "id": 520015,
+    "nome": "Adelândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520017,
+    "nome": "Água Fria de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520020,
+    "nome": "Água Limpa",
+    "sigla": "GO"
+  },
+  {
+    "id": 520025,
+    "nome": "Águas Lindas de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520030,
+    "nome": "Alexânia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520050,
+    "nome": "Aloândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520055,
+    "nome": "Alto Horizonte",
+    "sigla": "GO"
+  },
+  {
+    "id": 520060,
+    "nome": "Alto Paraíso de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520080,
+    "nome": "Alvorada do Norte",
+    "sigla": "GO"
+  },
+  {
+    "id": 520082,
+    "nome": "Amaralina",
+    "sigla": "GO"
+  },
+  {
+    "id": 520085,
+    "nome": "Americano do Brasil",
+    "sigla": "GO"
+  },
+  {
+    "id": 520090,
+    "nome": "Amorinópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 520110,
+    "nome": "Anápolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 520120,
+    "nome": "Anhanguera",
+    "sigla": "GO"
+  },
+  {
+    "id": 520130,
+    "nome": "Anicuns",
+    "sigla": "GO"
+  },
+  {
+    "id": 520140,
+    "nome": "Aparecida de Goiânia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520145,
+    "nome": "Aparecida do Rio Doce",
+    "sigla": "GO"
+  },
+  {
+    "id": 520150,
+    "nome": "Aporé",
+    "sigla": "GO"
+  },
+  {
+    "id": 520160,
+    "nome": "Araçu",
+    "sigla": "GO"
+  },
+  {
+    "id": 520170,
+    "nome": "Aragarças",
+    "sigla": "GO"
+  },
+  {
+    "id": 520180,
+    "nome": "Aragoiânia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520215,
+    "nome": "Araguapaz",
+    "sigla": "GO"
+  },
+  {
+    "id": 520235,
+    "nome": "Arenópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 520250,
+    "nome": "Aruanã",
+    "sigla": "GO"
+  },
+  {
+    "id": 520260,
+    "nome": "Aurilândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520280,
+    "nome": "Avelinópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 520310,
+    "nome": "Baliza",
+    "sigla": "GO"
+  },
+  {
+    "id": 520320,
+    "nome": "Barro Alto",
+    "sigla": "GO"
+  },
+  {
+    "id": 520330,
+    "nome": "Bela Vista de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520340,
+    "nome": "Bom Jardim de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520350,
+    "nome": "Bom Jesus de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520355,
+    "nome": "Bonfinópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 520357,
+    "nome": "Bonópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 520360,
+    "nome": "Brazabrantes",
+    "sigla": "GO"
+  },
+  {
+    "id": 520380,
+    "nome": "Britânia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520390,
+    "nome": "Buriti Alegre",
+    "sigla": "GO"
+  },
+  {
+    "id": 520393,
+    "nome": "Buriti de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520396,
+    "nome": "Buritinópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 520400,
+    "nome": "Cabeceiras",
+    "sigla": "GO"
+  },
+  {
+    "id": 520410,
+    "nome": "Cachoeira Alta",
+    "sigla": "GO"
+  },
+  {
+    "id": 520420,
+    "nome": "Cachoeira de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520425,
+    "nome": "Cachoeira Dourada",
+    "sigla": "GO"
+  },
+  {
+    "id": 520430,
+    "nome": "Caçu",
+    "sigla": "GO"
+  },
+  {
+    "id": 520440,
+    "nome": "Caiapônia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520450,
+    "nome": "Caldas Novas",
+    "sigla": "GO"
+  },
+  {
+    "id": 520455,
+    "nome": "Caldazinha",
+    "sigla": "GO"
+  },
+  {
+    "id": 520460,
+    "nome": "Campestre de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520465,
+    "nome": "Campinaçu",
+    "sigla": "GO"
+  },
+  {
+    "id": 520470,
+    "nome": "Campinorte",
+    "sigla": "GO"
+  },
+  {
+    "id": 520480,
+    "nome": "Campo Alegre de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520485,
+    "nome": "Campo Limpo de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520490,
+    "nome": "Campos Belos",
+    "sigla": "GO"
+  },
+  {
+    "id": 520495,
+    "nome": "Campos Verdes",
+    "sigla": "GO"
+  },
+  {
+    "id": 520500,
+    "nome": "Carmo do Rio Verde",
+    "sigla": "GO"
+  },
+  {
+    "id": 520505,
+    "nome": "Castelândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520510,
+    "nome": "Catalão",
+    "sigla": "GO"
+  },
+  {
+    "id": 520520,
+    "nome": "Caturaí",
+    "sigla": "GO"
+  },
+  {
+    "id": 520530,
+    "nome": "Cavalcante",
+    "sigla": "GO"
+  },
+  {
+    "id": 520540,
+    "nome": "Ceres",
+    "sigla": "GO"
+  },
+  {
+    "id": 520545,
+    "nome": "Cezarina",
+    "sigla": "GO"
+  },
+  {
+    "id": 520547,
+    "nome": "Chapadão do Céu",
+    "sigla": "GO"
+  },
+  {
+    "id": 520549,
+    "nome": "Cidade Ocidental",
+    "sigla": "GO"
+  },
+  {
+    "id": 520551,
+    "nome": "Cocalzinho de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520552,
+    "nome": "Colinas do Sul",
+    "sigla": "GO"
+  },
+  {
+    "id": 520570,
+    "nome": "Córrego do Ouro",
+    "sigla": "GO"
+  },
+  {
+    "id": 520580,
+    "nome": "Corumbá de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520590,
+    "nome": "Corumbaíba",
+    "sigla": "GO"
+  },
+  {
+    "id": 520620,
+    "nome": "Cristalina",
+    "sigla": "GO"
+  },
+  {
+    "id": 520630,
+    "nome": "Cristianópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 520640,
+    "nome": "Crixás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520650,
+    "nome": "Cromínia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520660,
+    "nome": "Cumari",
+    "sigla": "GO"
+  },
+  {
+    "id": 520670,
+    "nome": "Damianópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 520680,
+    "nome": "Damolândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520690,
+    "nome": "Davinópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 520710,
+    "nome": "Diorama",
+    "sigla": "GO"
+  },
+  {
+    "id": 520725,
+    "nome": "Doverlândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520735,
+    "nome": "Edealina",
+    "sigla": "GO"
+  },
+  {
+    "id": 520740,
+    "nome": "Edéia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520750,
+    "nome": "Estrela do Norte",
+    "sigla": "GO"
+  },
+  {
+    "id": 520753,
+    "nome": "Faina",
+    "sigla": "GO"
+  },
+  {
+    "id": 520760,
+    "nome": "Fazenda Nova",
+    "sigla": "GO"
+  },
+  {
+    "id": 520780,
+    "nome": "Firminópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 520790,
+    "nome": "Flores de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520800,
+    "nome": "Formosa",
+    "sigla": "GO"
+  },
+  {
+    "id": 520810,
+    "nome": "Formoso",
+    "sigla": "GO"
+  },
+  {
+    "id": 520815,
+    "nome": "Gameleira de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520830,
+    "nome": "Divinópolis de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520840,
+    "nome": "Goianápolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 520850,
+    "nome": "Goiandira",
+    "sigla": "GO"
+  },
+  {
+    "id": 520860,
+    "nome": "Goianésia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520870,
+    "nome": "Goiânia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520880,
+    "nome": "Goianira",
+    "sigla": "GO"
+  },
+  {
+    "id": 520890,
+    "nome": "Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520910,
+    "nome": "Goiatuba",
+    "sigla": "GO"
+  },
+  {
+    "id": 520915,
+    "nome": "Gouvelândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520920,
+    "nome": "Guapó",
+    "sigla": "GO"
+  },
+  {
+    "id": 520929,
+    "nome": "Guaraíta",
+    "sigla": "GO"
+  },
+  {
+    "id": 520940,
+    "nome": "Guarani de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 520945,
+    "nome": "Guarinos",
+    "sigla": "GO"
+  },
+  {
+    "id": 520960,
+    "nome": "Heitoraí",
+    "sigla": "GO"
+  },
+  {
+    "id": 520970,
+    "nome": "Hidrolândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520980,
+    "nome": "Hidrolina",
+    "sigla": "GO"
+  },
+  {
+    "id": 520990,
+    "nome": "Iaciara",
+    "sigla": "GO"
+  },
+  {
+    "id": 520993,
+    "nome": "Inaciolândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 520995,
+    "nome": "Indiara",
+    "sigla": "GO"
+  },
+  {
+    "id": 521000,
+    "nome": "Inhumas",
+    "sigla": "GO"
+  },
+  {
+    "id": 521010,
+    "nome": "Ipameri",
+    "sigla": "GO"
+  },
+  {
+    "id": 521015,
+    "nome": "Ipiranga de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521020,
+    "nome": "Iporá",
+    "sigla": "GO"
+  },
+  {
+    "id": 521030,
+    "nome": "Israelândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 521040,
+    "nome": "Itaberaí",
+    "sigla": "GO"
+  },
+  {
+    "id": 521056,
+    "nome": "Itaguari",
+    "sigla": "GO"
+  },
+  {
+    "id": 521060,
+    "nome": "Itaguaru",
+    "sigla": "GO"
+  },
+  {
+    "id": 521080,
+    "nome": "Itajá",
+    "sigla": "GO"
+  },
+  {
+    "id": 521090,
+    "nome": "Itapaci",
+    "sigla": "GO"
+  },
+  {
+    "id": 521100,
+    "nome": "Itapirapuã",
+    "sigla": "GO"
+  },
+  {
+    "id": 521120,
+    "nome": "Itapuranga",
+    "sigla": "GO"
+  },
+  {
+    "id": 521130,
+    "nome": "Itarumã",
+    "sigla": "GO"
+  },
+  {
+    "id": 521140,
+    "nome": "Itauçu",
+    "sigla": "GO"
+  },
+  {
+    "id": 521150,
+    "nome": "Itumbiara",
+    "sigla": "GO"
+  },
+  {
+    "id": 521160,
+    "nome": "Ivolândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 521170,
+    "nome": "Jandaia",
+    "sigla": "GO"
+  },
+  {
+    "id": 521180,
+    "nome": "Jaraguá",
+    "sigla": "GO"
+  },
+  {
+    "id": 521190,
+    "nome": "Jataí",
+    "sigla": "GO"
+  },
+  {
+    "id": 521200,
+    "nome": "Jaupaci",
+    "sigla": "GO"
+  },
+  {
+    "id": 521205,
+    "nome": "Jesúpolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 521210,
+    "nome": "Joviânia",
+    "sigla": "GO"
+  },
+  {
+    "id": 521220,
+    "nome": "Jussara",
+    "sigla": "GO"
+  },
+  {
+    "id": 521225,
+    "nome": "Lagoa Santa",
+    "sigla": "GO"
+  },
+  {
+    "id": 521230,
+    "nome": "Leopoldo de Bulhões",
+    "sigla": "GO"
+  },
+  {
+    "id": 521250,
+    "nome": "Luziânia",
+    "sigla": "GO"
+  },
+  {
+    "id": 521260,
+    "nome": "Mairipotaba",
+    "sigla": "GO"
+  },
+  {
+    "id": 521270,
+    "nome": "Mambaí",
+    "sigla": "GO"
+  },
+  {
+    "id": 521280,
+    "nome": "Mara Rosa",
+    "sigla": "GO"
+  },
+  {
+    "id": 521290,
+    "nome": "Marzagão",
+    "sigla": "GO"
+  },
+  {
+    "id": 521295,
+    "nome": "Matrinchã",
+    "sigla": "GO"
+  },
+  {
+    "id": 521300,
+    "nome": "Maurilândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 521305,
+    "nome": "Mimoso de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521308,
+    "nome": "Minaçu",
+    "sigla": "GO"
+  },
+  {
+    "id": 521310,
+    "nome": "Mineiros",
+    "sigla": "GO"
+  },
+  {
+    "id": 521340,
+    "nome": "Moiporá",
+    "sigla": "GO"
+  },
+  {
+    "id": 521350,
+    "nome": "Monte Alegre de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521370,
+    "nome": "Montes Claros de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521375,
+    "nome": "Montividiu",
+    "sigla": "GO"
+  },
+  {
+    "id": 521377,
+    "nome": "Montividiu do Norte",
+    "sigla": "GO"
+  },
+  {
+    "id": 521380,
+    "nome": "Morrinhos",
+    "sigla": "GO"
+  },
+  {
+    "id": 521385,
+    "nome": "Morro Agudo de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521390,
+    "nome": "Mossâmedes",
+    "sigla": "GO"
+  },
+  {
+    "id": 521400,
+    "nome": "Mozarlândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 521405,
+    "nome": "Mundo Novo",
+    "sigla": "GO"
+  },
+  {
+    "id": 521410,
+    "nome": "Mutunópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 521440,
+    "nome": "Nazário",
+    "sigla": "GO"
+  },
+  {
+    "id": 521450,
+    "nome": "Nerópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 521460,
+    "nome": "Niquelândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 521470,
+    "nome": "Nova América",
+    "sigla": "GO"
+  },
+  {
+    "id": 521480,
+    "nome": "Nova Aurora",
+    "sigla": "GO"
+  },
+  {
+    "id": 521483,
+    "nome": "Nova Crixás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521486,
+    "nome": "Nova Glória",
+    "sigla": "GO"
+  },
+  {
+    "id": 521487,
+    "nome": "Nova Iguaçu de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521490,
+    "nome": "Nova Roma",
+    "sigla": "GO"
+  },
+  {
+    "id": 521500,
+    "nome": "Nova Veneza",
+    "sigla": "GO"
+  },
+  {
+    "id": 521520,
+    "nome": "Novo Brasil",
+    "sigla": "GO"
+  },
+  {
+    "id": 521523,
+    "nome": "Novo Gama",
+    "sigla": "GO"
+  },
+  {
+    "id": 521525,
+    "nome": "Novo Planalto",
+    "sigla": "GO"
+  },
+  {
+    "id": 521530,
+    "nome": "Orizona",
+    "sigla": "GO"
+  },
+  {
+    "id": 521540,
+    "nome": "Ouro Verde de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521550,
+    "nome": "Ouvidor",
+    "sigla": "GO"
+  },
+  {
+    "id": 521560,
+    "nome": "Padre Bernardo",
+    "sigla": "GO"
+  },
+  {
+    "id": 521565,
+    "nome": "Palestina de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521570,
+    "nome": "Palmeiras de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521580,
+    "nome": "Palmelo",
+    "sigla": "GO"
+  },
+  {
+    "id": 521590,
+    "nome": "Palminópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 521600,
+    "nome": "Panamá",
+    "sigla": "GO"
+  },
+  {
+    "id": 521630,
+    "nome": "Paranaiguara",
+    "sigla": "GO"
+  },
+  {
+    "id": 521640,
+    "nome": "Paraúna",
+    "sigla": "GO"
+  },
+  {
+    "id": 521645,
+    "nome": "Perolândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 521680,
+    "nome": "Petrolina de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521690,
+    "nome": "Pilar de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521710,
+    "nome": "Piracanjuba",
+    "sigla": "GO"
+  },
+  {
+    "id": 521720,
+    "nome": "Piranhas",
+    "sigla": "GO"
+  },
+  {
+    "id": 521730,
+    "nome": "Pirenópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 521740,
+    "nome": "Pires do Rio",
+    "sigla": "GO"
+  },
+  {
+    "id": 521760,
+    "nome": "Planaltina",
+    "sigla": "GO"
+  },
+  {
+    "id": 521770,
+    "nome": "Pontalina",
+    "sigla": "GO"
+  },
+  {
+    "id": 521800,
+    "nome": "Porangatu",
+    "sigla": "GO"
+  },
+  {
+    "id": 521805,
+    "nome": "Porteirão",
+    "sigla": "GO"
+  },
+  {
+    "id": 521810,
+    "nome": "Portelândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 521830,
+    "nome": "Posse",
+    "sigla": "GO"
+  },
+  {
+    "id": 521839,
+    "nome": "Professor Jamil",
+    "sigla": "GO"
+  },
+  {
+    "id": 521850,
+    "nome": "Quirinópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 521860,
+    "nome": "Rialma",
+    "sigla": "GO"
+  },
+  {
+    "id": 521870,
+    "nome": "Rianápolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 521878,
+    "nome": "Rio Quente",
+    "sigla": "GO"
+  },
+  {
+    "id": 521880,
+    "nome": "Rio Verde",
+    "sigla": "GO"
+  },
+  {
+    "id": 521890,
+    "nome": "Rubiataba",
+    "sigla": "GO"
+  },
+  {
+    "id": 521900,
+    "nome": "Sanclerlândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 521910,
+    "nome": "Santa Bárbara de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521920,
+    "nome": "Santa Cruz de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521925,
+    "nome": "Santa Fé de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521930,
+    "nome": "Santa Helena de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521935,
+    "nome": "Santa Isabel",
+    "sigla": "GO"
+  },
+  {
+    "id": 521940,
+    "nome": "Santa Rita do Araguaia",
+    "sigla": "GO"
+  },
+  {
+    "id": 521945,
+    "nome": "Santa Rita do Novo Destino",
+    "sigla": "GO"
+  },
+  {
+    "id": 521950,
+    "nome": "Santa Rosa de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521960,
+    "nome": "Santa Tereza de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521970,
+    "nome": "Santa Terezinha de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521971,
+    "nome": "Santo Antônio da Barra",
+    "sigla": "GO"
+  },
+  {
+    "id": 521973,
+    "nome": "Santo Antônio de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 521975,
+    "nome": "Santo Antônio do Descoberto",
+    "sigla": "GO"
+  },
+  {
+    "id": 521980,
+    "nome": "São Domingos",
+    "sigla": "GO"
+  },
+  {
+    "id": 521990,
+    "nome": "São Francisco de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 522000,
+    "nome": "São João d'Aliança",
+    "sigla": "GO"
+  },
+  {
+    "id": 522005,
+    "nome": "São João da Paraúna",
+    "sigla": "GO"
+  },
+  {
+    "id": 522010,
+    "nome": "São Luís de Montes Belos",
+    "sigla": "GO"
+  },
+  {
+    "id": 522015,
+    "nome": "São Luiz do Norte",
+    "sigla": "GO"
+  },
+  {
+    "id": 522020,
+    "nome": "São Miguel do Araguaia",
+    "sigla": "GO"
+  },
+  {
+    "id": 522026,
+    "nome": "São Miguel do Passa Quatro",
+    "sigla": "GO"
+  },
+  {
+    "id": 522028,
+    "nome": "São Patrício",
+    "sigla": "GO"
+  },
+  {
+    "id": 522040,
+    "nome": "São Simão",
+    "sigla": "GO"
+  },
+  {
+    "id": 522045,
+    "nome": "Senador Canedo",
+    "sigla": "GO"
+  },
+  {
+    "id": 522050,
+    "nome": "Serranópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 522060,
+    "nome": "Silvânia",
+    "sigla": "GO"
+  },
+  {
+    "id": 522068,
+    "nome": "Simolândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 522070,
+    "nome": "Sítio d'Abadia",
+    "sigla": "GO"
+  },
+  {
+    "id": 522100,
+    "nome": "Taquaral de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 522108,
+    "nome": "Teresina de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 522119,
+    "nome": "Terezópolis de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 522130,
+    "nome": "Três Ranchos",
+    "sigla": "GO"
+  },
+  {
+    "id": 522140,
+    "nome": "Trindade",
+    "sigla": "GO"
+  },
+  {
+    "id": 522145,
+    "nome": "Trombas",
+    "sigla": "GO"
+  },
+  {
+    "id": 522150,
+    "nome": "Turvânia",
+    "sigla": "GO"
+  },
+  {
+    "id": 522155,
+    "nome": "Turvelândia",
+    "sigla": "GO"
+  },
+  {
+    "id": 522157,
+    "nome": "Uirapuru",
+    "sigla": "GO"
+  },
+  {
+    "id": 522160,
+    "nome": "Uruaçu",
+    "sigla": "GO"
+  },
+  {
+    "id": 522170,
+    "nome": "Uruana",
+    "sigla": "GO"
+  },
+  {
+    "id": 522180,
+    "nome": "Urutaí",
+    "sigla": "GO"
+  },
+  {
+    "id": 522185,
+    "nome": "Valparaíso de Goiás",
+    "sigla": "GO"
+  },
+  {
+    "id": 522190,
+    "nome": "Varjão",
+    "sigla": "GO"
+  },
+  {
+    "id": 522200,
+    "nome": "Vianópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 522205,
+    "nome": "Vicentinópolis",
+    "sigla": "GO"
+  },
+  {
+    "id": 522220,
+    "nome": "Vila Boa",
+    "sigla": "GO"
+  },
+  {
+    "id": 522230,
+    "nome": "Vila Propício",
+    "sigla": "GO"
+  },
+  {
+    "id": 530010,
+    "nome": "Brasília",
+    "sigla": "DF"
   }
 ];
 var pragas = [
@@ -6315,9 +49078,12 @@ var status_municipio = [
 
 export {
   dbVersion,
+  archive,
+  configuracoes,
   estados,
   hospedeiros,
   legislacoes,
+  municipios,
   pragas,
   rules,
   status_municipio
