@@ -85,7 +85,11 @@ const Select = function Select({ source, name }: PropsSelect) {
           onChange={handleInput}
           placeholder="Digite para filtrar..."
           className="form-select"
-          style={{ minWidth: '145px' }}
+          style={{ minWidth: "145px" }}
+          autoComplete="off"
+          disabled={
+            !storeDb.dados[name === "municipioOrigem" ? "orig" : "dest"]
+          }
         />
         <datalist id={`list-${name}`}>
           {options.map((option) => {

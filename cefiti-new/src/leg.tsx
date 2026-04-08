@@ -1,5 +1,5 @@
 import { render } from 'preact'
-import 'md-block'
+import { marked } from 'marked'
 import { leg_texto } from '#legislacao'
 
 interface LegislacaoText {
@@ -24,9 +24,7 @@ function LegView() {
   document.title = `${id} - CEFiTI`
 
   return (
-    <div>
-      <md-block>{legislation.texto}</md-block>
-    </div>
+    <div dangerouslySetInnerHTML={{ __html: marked.parse(legislation.texto) as string }} />
   )
 }
 

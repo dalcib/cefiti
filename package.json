@@ -27,7 +27,6 @@
     "#legislacao": "./cefiti-new/public/legislacao.js",
     "#municipios": "./cefiti-new/public/municipios.js"
   },
-
   "scripts": {
     "start": "node dev.mjs cefiti",
     "start:new": "node dev.mjs cefiti-new",
@@ -47,7 +46,7 @@
   },
   "dependencies": {
     "@preact/signals": "^2.8.1",
-    "md-block": "^0.0.1",
+    "marked": "^18.0.0",
     "preact": "^10.28.4"
   },
   "devDependencies": {

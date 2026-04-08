@@ -1,4 +1,4 @@
-import type { ComponentChildren } from 'preact'
+
 
 /**
  * --- Common Database Interfaces ---
@@ -167,11 +167,6 @@ declare global {
 declare module 'preact' {
   namespace JSX {
     interface IntrinsicElements {
-      'md-block': {
-        children?: ComponentChildren
-        class?: string
-        style?: string | Record<string, string | number>
-      }
     }
   }
 }
