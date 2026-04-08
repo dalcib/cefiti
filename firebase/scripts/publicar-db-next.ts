@@ -30,14 +30,7 @@ async function generateDbNext() {
 
   try {
     const collections = await db.listCollections()
-    const excludes = [
-      'archive',
-      'configuracoes',
-      'municipios',
-      'leg_texto',
-      'regras',
-      'status_fitossanitário', // User requested exclusion
-    ]
+    const excludes = ['archive', 'configuracoes', 'municipios', 'leg_texto']
 
     const data: Record<string, Record<string, unknown>[]> = {}
     let legTextoData: Record<string, unknown>[] = []
@@ -54,11 +47,6 @@ async function generateDbNext() {
       if (collName === 'leg_texto') {
         const snapshot = await collectionRef.get()
         legTextoData = snapshot.docs.map((doc) => doc.data())
-        continue
-      }
-
-      // Check against excludes (also ignoring without accents if present)
-      if (excludes.includes(collName) || collName === 'status_fitossanitario') {
         continue
       }
 
@@ -113,15 +101,15 @@ async function generateDbNext() {
       const cefitiNewFilePath = join(cefitiNewPublicDir, 'db-next.js')
       writeFileSync(cefitiNewFilePath, dbNextContent, 'utf8')
       console.log(`Also saved copy to ${cefitiNewFilePath}`)
-      
+
       // Copy municipios.js from cefiti-new/public to firebase/public
-      const municipiosSource = join(cefitiNewPublicDir, 'municipios.js')
+      /* const municipiosSource = join(cefitiNewPublicDir, 'municipios.js')
       const municipiosDest = join(publicDir, 'municipios.js')
       if (existsSync(municipiosSource)) {
         const municipiosContent = readFileSync(municipiosSource, 'utf8')
         writeFileSync(municipiosDest, municipiosContent, 'utf8')
         console.log(`Copied municipios.js to ${municipiosDest}`)
-      }
+      }*/
     }
 
     // 2. Generate legislacao.js
@@ -133,6 +121,12 @@ async function generateDbNext() {
     const legislacaoPath = join(publicDir, 'legislacao.js')
     writeFileSync(legislacaoPath, legislacaoContent, 'utf8')
     console.log(`Generated legislacao.js successfully at ${legislacaoPath}`)
+
+    const cefitiNewLegislacaoPath = join(cefitiNewPublicDir, 'legislacao.js')
+    writeFileSync(cefitiNewLegislacaoPath, legislacaoContent, 'utf8')
+    console.log(
+      `Generated legislacao.js successfully at ${cefitiNewLegislacaoPath}`,
+    )
 
     console.log('\nSuccess!')
     process.exit(0)
