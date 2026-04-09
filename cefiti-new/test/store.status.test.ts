@@ -15,11 +15,11 @@ describe('Store: phytosanitary status logic', () => {
     assert.deepEqual(status, ['Área Com Ocorrência'])
   })
 
-  it('should return "Área Com Ocorrência" for any municipality in AP (169999) for Sternochetus mangiferae', () => {
+  it('should return "Área Com Ocorrência" for any municipality in AP (169999) for Bactrocera carambolae', () => {
     // 16 is AP, 9999 is "Todos" (but any 4 digit should work if 9999 is set)
     // biome-ignore lint/suspicious/noExplicitAny: Internal method testing
     const status = (store as any).resolveStatus(
-      'Sternochetus mangiferae',
+      'Bactrocera carambolae',
       '160010',
     )
     assert.deepEqual(status, ['Área Com Ocorrência'])

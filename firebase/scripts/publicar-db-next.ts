@@ -44,15 +44,42 @@ async function generateDbNext() {
     for (const collectionRef of collections) {
       const collName = collectionRef.id
 
-      if (collName === 'leg_texto') {
-        const snapshot = await collectionRef.get()
-        legTextoData = snapshot.docs.map((doc) => doc.data())
+      if (excludes.includes(collName)) {
+        if (collName === 'leg_texto') {
+          console.log(`Reading collection for standalone file: ${collName}`)
+          const snapshot = await collectionRef.get()
+          legTextoData = snapshot.docs.map((doc) => doc.data())
+        }
         continue
       }
 
       console.log(`Reading collection: ${collName}`)
       const snapshot = await collectionRef.get()
-      data[collName] = snapshot.docs.map((doc) => doc.data())
+      let docs = snapshot.docs.map((doc) => doc.data())
+
+      if (collName === 'status_municipio') {
+        docs = docs.map((doc: any) => {
+          if (doc.status) {
+            doc.status = doc.status.map((s: any) => {
+              if (s.estados) {
+                s.estados = s.estados.map((e: any) => {
+                  if (e.municipios && !Array.isArray(e.municipios)) {
+                    // Transform { "0090": "Amorinópolis" } -> [90]
+                    e.municipios = Object.keys(e.municipios)
+                      .map((key) => Number.parseInt(key, 10))
+                      .filter((n) => !Number.isNaN(n))
+                  }
+                  return e
+                })
+              }
+              return s
+            })
+          }
+          return doc
+        })
+      }
+
+      data[collName] = docs
     }
 
     // 1. Generate db-next.js content

@@ -18,17 +18,15 @@ Table hospedeiros {
   nomeVul String[]
 }
 
-// Removed legacy Table regras in favor of Table rules
-
 
 Table legislacoes {
   id String [pk]
-  leg String [unique]
+  leg String 
   data String
 }
 
-Table files {
-  id Int [pk, increment] [Ref: - legislacoes.file]
+Table leg_texto {
+  id Int [pk] [Ref: - legislacoes.id]
   text String
 }
 

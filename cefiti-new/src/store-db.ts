@@ -252,16 +252,15 @@ export class StoreDb {
 
       if (stateMatch) {
         const municipios = stateMatch.municipios
-        const isTodos = Object.entries(municipios).some(
-          ([k, v]) =>
-            (k === '9999' || k === 'Todos') &&
-            (v === 'Todos' ||
-              v === 'Tudo' ||
-              v === statusTitle ||
-              v === 'Liberado'),
-        )
+        const isTodos = municipios.includes(9999)
+        const mPartNum = Number(muniPart)
+        const mIdNum = Number(municipioId)
 
-        if (isTodos || municipios[muniPart] || municipios[municipioId]) {
+        if (
+          isTodos ||
+          municipios.includes(mPartNum) ||
+          municipios.includes(mIdNum)
+        ) {
           results.push(statusTitle)
         }
       }

@@ -1,5 +1,17 @@
 import { Fragment, type JSX } from 'preact'
 import { type DB_StatusMunicipio, pragas, status_municipio } from '#db-next'
+import { municipiosBrutos } from '#municipios'
+
+const municipalityMap = new Map<number, string>()
+municipalityMap.set(9999, 'Todos')
+
+if (municipiosBrutos) {
+  for (const raw of municipiosBrutos) {
+    const id = Number.parseInt(raw.slice(2, 6), 10)
+    const name = raw.slice(6).trim()
+    municipalityMap.set(id, name)
+  }
+}
 
 const Status = () => {
   // Group data by Pest to create separator rows
@@ -13,7 +25,10 @@ const Status = () => {
           status: s.status_fitossanitário,
           states: s.estados.map((e) => ({
             uf: e.uf,
-            municipios: Object.values(e.municipios).sort().join(', '),
+            municipios: e.municipios
+              .map((mId: number) => municipalityMap.get(mId) || String(mId))
+              .sort((a, b) => a.localeCompare(b))
+              .join(', '),
           })),
         })),
       }

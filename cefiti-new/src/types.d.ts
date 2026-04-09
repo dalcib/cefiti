@@ -61,7 +61,7 @@ export interface DB_PragaEstadoStatus {
   uf: string
   ibge?: number
   id?: number
-  municipios: Record<string, string>
+  municipios: number[]
 }
 
 export interface DB_PragaStatusAction {
@@ -115,7 +115,7 @@ export type AppView = 'home' | 'result' | 'base' | 'status'
 export interface PestStatusMunicipio {
   uf: string
   ibge: number
-  municipios: Record<string, string>
+  municipios: number[]
 }
 
 export interface PestStatusQueryResult {
