@@ -53,6 +53,7 @@ const commonConfig = {
     'process.env.NODE_ENV': isBuild ? '"production"' : '"development"',
   },
   metafile: true,
+  charset: 'utf8',
 }
 
 const entryPoints = [`${baseDir}/src/index.tsx`]

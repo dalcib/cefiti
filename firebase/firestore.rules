@@ -1,0 +1,91 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ======================================================
+    // FUNÇÕES AUXILIARES
+    // ======================================================
+
+    // Verifica se o usuário está autenticado
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Verifica se uma praga existe (ID é o nome científico)
+    function pragaExists(pragName) {
+      return exists(/databases/$(database)/documents/pragas/$(pragName));
+    }
+
+    // Verifica se uma legislação existe
+    function legislacaoExists(legId) {
+      return exists(/databases/$(database)/documents/legislacoes/$(legId));
+    }
+
+    // ======================================================
+    // REGRAS POR COLEÇÃO
+    // ======================================================
+
+    // 1. HOSPEDEIROS
+    // Uso: Cadastro base. Não pode ser excluído via cliente.
+    match /hospedeiros/{hospId} {
+      allow read: if true;
+      allow create, update: if isAuthenticated();
+      allow delete: if false; 
+    }
+
+    // 2. LEGISLAÇÕES E TEXTOS (Relação 1:1)
+    // Uso: Referências legais. Não podem ser excluídos via cliente.
+    match /legislacoes/{legId} {
+      allow read: if true;
+      allow create, update: if isAuthenticated();
+      allow delete: if false;
+    }
+
+    match /leg_texto/{legId} {
+      allow read: if true;
+      // Garante que o texto só exista se houver o metadado em 'legislacoes'
+      allow create, update: if isAuthenticated() && legislacaoExists(legId);
+      allow delete: if false;
+    }
+
+    // 3. PRAGAS
+    // Uso: Registro central. Não pode ser excluído via cliente.
+    match /pragas/{pragName} {
+      allow read: if true;
+      allow create, update: if isAuthenticated();
+      allow delete: if false;
+    }
+
+    // 4. REGRAS DE TRÂNSITO (RULES)
+    // Uso: Exigências para trânsito entre estados. Pode ser deletado/alterado.
+    match /rules/{ruleId} {
+      allow read: if true;
+      // Valida que a praga referenciada existe
+      allow create, update: if isAuthenticated() && pragaExists(request.resource.data.prag);
+      allow delete: if isAuthenticated();
+    }
+
+    // 5. STATUS MUNICÍPIO
+    // Uso: Mapa de ocorrência de pragas. Pode ser deletado/alterado.
+    match /status_municipio/{pragName} {
+      allow read: if true;
+      // Valida que a praga referenciada existe
+      allow create, update: if isAuthenticated() && pragaExists(request.resource.data.praga);
+      allow delete: if isAuthenticated();
+    }
+    
+    // ======================================================
+    // COLEÇÕES ESTÁTICAS
+    // ======================================================
+    
+    match /estados/{estadoId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    match /municipios/{municipioId} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}

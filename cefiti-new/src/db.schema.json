@@ -108,19 +108,75 @@
       "items": {
         "type": "object",
         "properties": {
-          "id": {
+          "ibge": {
             "type": "integer"
           },
-          "uf": {
+          "UF": {
             "type": "string"
           },
-          "nome": {
+          "estado": {
             "type": "string"
           }
         },
-        "required": ["id", "uf", "nome"]
+        "required": ["ibge", "UF", "estado"]
       }
+    },
+    "status_municipio": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "praga": {
+            "type": "string"
+          },
+          "status": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "status_fitossanitário": {
+                  "type": "string"
+                },
+                "estados": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "uf": {
+                        "type": "string"
+                      },
+                      "ibge": {
+                        "type": "integer"
+                      },
+                      "municipios": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "required": ["uf", "ibge", "municipios"]
+                  }
+                }
+              },
+              "required": ["status_fitossanitário", "estados"]
+            }
+          }
+        },
+        "required": ["praga", "status"]
+      }
+    },
+    "dbVersion": {
+      "type": "integer"
     }
   },
-  "required": ["hospedeiros", "pragas", "rules", "legislacoes", "estados"]
+  "required": [
+    "hospedeiros",
+    "pragas",
+    "rules",
+    "legislacoes",
+    "estados",
+    "status_municipio",
+    "dbVersion"
+  ]
 }

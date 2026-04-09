@@ -40,6 +40,7 @@ export type DB_StatusFitossanitario =
   | 'Área Com Ocorrência'
   | 'Área Livre de Praga'
   | 'Área Sem Registro'
+  | 'Área Sem Registro de UF Com Ocorrência'
   | 'UF Sem Registro'
   | 'Zona Tampão'
   | 'Área de SMR'

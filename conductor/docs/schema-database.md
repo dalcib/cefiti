@@ -38,9 +38,9 @@ Table archive {
 }
 
 Table estados {
-  id Int [pk]
-  uf String [unique]
-  nome String [unique]
+  ibge Int [pk]
+  UF String [unique]
+  estado String [unique]
 }
 
 Table municipios {
@@ -60,9 +60,9 @@ Table StatusItem {
 }
 
 Table EstadoItem {
-  uf String [Ref: > estados.uf]
+  uf String [Ref: > estados.UF]
   ibge Int(2) [note: "Código IBGE do estado (ex: 33 para RJ)"]
-  municipios Map<IBGE_Suffix(4), Name> [note: "Mapeamento de sufixos IBGE (4 dígitos) para nomes de municípios. Use {'9999': 'Todos'}para abranger todo o estado."]
+  municipios Int[] [note: "Lista de sufixos IBGE (4 dígitos). Use [9999] para abranger todo o estado."]
 }
 
 Table rules {
@@ -80,6 +80,7 @@ enum status {
  "Área Com Ocorrência",
  "Área Livre de Praga",
  "Área Sem Registro",
+ "Área Sem Registro de UF Com Ocorrência",
  "UF Sem Registro",
  "Zona Tampão",
  "Área de Status Desconhecido",

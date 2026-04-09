@@ -4,11 +4,7 @@
   "description": "Firebase management and scripts",
   "private": true,
   "type": "module",
-  "scripts": {
-    "publish:prod": "node scripts/publicar-db-legacy.ts && npx firebase-tools deploy --only hosting",
-    "publish:dev": "node scripts/publicar-db.ts && npx firebase-tools deploy --only hosting",
-    "publish:next": "node scripts/publicar-db-next.ts && npx firebase-tools deploy --only hosting"
-  },
+  "scripts": {},
   "dependencies": {
     "firebase-admin": "^13.6.0",
     "firebase-tools": "^15.4.0"
