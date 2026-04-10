@@ -1,5 +1,6 @@
 import { render } from 'preact'
 import { App } from './app.tsx'
+import './css/admin.css'
 
 const container = document.getElementById('root')
 if (!container) {

@@ -70,7 +70,7 @@ const appConfig = {
   entryPoints,
   minify: true,
   plugins:
-    ['cefiti', 'cefiti-new'].includes(project) && isBuild
+    ['cefiti', 'cefiti-new', 'cefiti-admin'].includes(project) && isBuild
       ? [externalDbPlugin]
       : [],
 }
