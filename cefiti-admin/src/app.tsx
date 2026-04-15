@@ -1,4 +1,5 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { useEffect } from 'preact/hooks'
 import { version } from './../package.json'
 import { auth } from './firebase'
 import { type AdminView, store } from './store'
@@ -10,9 +11,13 @@ import { RulesView } from './views/RulesView'
 import { StatusMunicipiosView } from './views/StatusMunicipiosView'
 
 export function App() {
+  useEffect(() => {
+    store.fetchCatalogos()
+  }, [])
+
   if (store.authLoading) {
     return (
-      <div style="display: flex; height: 100vh; align-items: center; justify-content: center;">
+      <div className="carregando">
         <p>Carregando...</p>
       </div>
     )
@@ -23,87 +28,121 @@ export function App() {
   }
 
   return (
-    <div className="admin-layout">
-      <aside className={`sidebar ${store.sidebarOpen ? '' : 'closed'}`}>
-        <div className="sidebar-header">CEFiTI Admin</div>
-        <nav className="sidebar-nav">
-          <NavItem view="dashboard" label="Painel de Controle" icon="📊" />
-          <NavItem view="pragas" label="Pragas" icon="🪲" />
-          <NavItem view="hospedeiros" label="Hospedeiros" icon="🌿" />
-          <NavItem view="legislacoes" label="Legislações" icon="📜" />
-          <NavItem view="rules" label="Regras" icon="⚖️" />
-          <NavItem
-            view="status_municipios"
-            label="Status Municipais"
-            icon="📍"
-          />
-          <NavItem view="catalogos" label="Catálogos" icon="📁" />
-        </nav>
-        <div style="padding: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; opacity: 0.8; display: flex; align-items: center; gap: 0.5rem; margin-top: auto;">
-          <img
-            src={store.user?.photoURL || ''}
-            alt="Avatar"
-            style="width: 24px; height: 24px; border-radius: 50%;"
-          />
-          <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-            {store.user?.email}
+    <div id="resolucao">
+      <Header />
+      <Nav />
+      <main id="corpo">
+        <CurrentView />
+      </main>
+    </div>
+  )
+}
+
+function Header() {
+  const appVersion = `${version.split('.')[0]}.${store.catalogos.dbVersion}`
+  return (
+    <div id="moldura-topo">
+      <div id="topo">
+        <div id="identificacao-ministerio">
+          <span>
+            <div id="imagemGov">
+              <span className="ministerio-text">Ministério da Agricultura e Pecuária</span>
+              <a
+                href="http://www.brasil.gov.br"
+                target="_blank"
+                rel="noopener noreferrer"
+                id="brasilgov"
+                className="visually-hidden"
+              >
+                Brasil.gov.br
+              </a>
+            </div>
           </span>
         </div>
-        <div style="padding: 1rem; font-size: 0.8rem; opacity: 0.5;">
-          Versão {version}
-        </div>
-      </aside>
-
-      <div className="main-container">
-        <header className="header">
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={() => store.toggleSidebar()}
-            aria-label="Alternar menu lateral"
-          >
-            ☰
-          </button>
-          <div style="display: flex; align-items: center; gap: 1rem;">
-            <span>{store.user?.email}</span>
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={() => store.logout()}
-            >
-              Sair
-            </button>
+        <div id="identificacao-sistema">
+          <div>
+            <h1>CEFiTI Admin</h1>
+            <h2>Catálogo de Exigências Fitossanitárias - Administração</h2>
           </div>
-        </header>
 
-        <main className="content">
-          <CurrentView />
-        </main>
+          <div
+            style={{
+              textAlign: 'right',
+              marginRight: '20px',
+              marginTop: '10px',
+            }}
+          >
+            <div
+              style={{
+                color: '#dcecff',
+                fontSize: '0.9em',
+                fontWeight: 'bold',
+                borderBottom: '1px solid #dcecff',
+                marginBottom: '5px',
+                paddingBottom: '2px',
+              }}
+            >
+              Versão {appVersion}
+            </div>
+            {store.user && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault()
+                  store.logout()
+                }}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: '#ffffff',
+                  textDecoration: 'underline',
+                  fontSize: '0.8em',
+                  padding: 0,
+                }}
+              >
+                Sair
+              </button>
+            )}
+          </div>
+        </div>
+        <div id="dados-login" />
       </div>
     </div>
   )
 }
 
-function NavItem({
-  view,
-  label,
-  icon,
-}: {
-  view: AdminView
-  label: string
-  icon: string
-}) {
+function Nav() {
+  return (
+    <div id="moldura-navegacao-global">
+      <div id="navegacao-global">
+        <p>
+          <NavItem view="dashboard" label="Painel" />
+          <NavItem view="pragas" label="Pragas" />
+          <NavItem view="hospedeiros" label="Hospedeiros" />
+          <NavItem view="legislacoes" label="Legislações" />
+          <NavItem view="rules" label="Regras" />
+          <NavItem view="status_municipios" label="Status Municipais" />
+          <NavItem view="catalogos" label="Configurações" />
+        </p>
+      </div>
+    </div>
+  )
+}
+
+function NavItem({ view, label }: { view: AdminView; label: string }) {
   const active = store.view === view
   return (
-    <button
-      type="button"
-      className={`nav-item ${active ? 'active' : ''}`}
-      onClick={() => store.setView(view)}
-      style="width: 100%; text-align: left;"
-    >
-      <span style="font-size: 1.2rem; margin-right: 0.5rem;">{icon}</span>
-      <span>{label}</span>
-    </button>
+    <span>
+      <button
+        type="button"
+        className={active ? 'active' : ''}
+        onClick={() => store.setView(view)}
+        style={active ? { backgroundColor: 'rgba(255,255,255,0.1)', fontWeight: 'bold' } : {}}
+      >
+        {label.toUpperCase()}
+      </button>
+    </span>
   )
 }
 
@@ -119,18 +158,36 @@ function LoginView() {
   }
 
   return (
-    <div className="login-page">
-      <div className="login-card">
-        <h2 style="margin-top: 0">Acesso Restrito</h2>
-        <p>Por favor, faça login para continuar.</p>
-        <button
-          type="button"
-          className="btn btn-primary"
-          style="width: 100%; margin-top: 1rem;"
-          onClick={login}
-        >
-          Entrar com Google
-        </button>
+    <div id="resolucao">
+      <div id="moldura-topo">
+        <div id="topo" style="height: 116px;">
+          <div id="identificacao-ministerio">
+            <span>
+              <div id="imagemGov">
+                <span className="ministerio-text">Ministério da Agricultura e Pecuária</span>
+              </div>
+            </span>
+          </div>
+          <div id="identificacao-sistema">
+            <h1>CEFiTI Admin</h1>
+            <h2>Controle de Acesso</h2>
+          </div>
+        </div>
+      </div>
+      
+      <div id="corpo" style="display: flex; justify-content: center; align-items: center; min-height: 400px; background: #f4f6f9;">
+        <div id="conteudo-login-novo" style="text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          <h3 style="margin-bottom: 20px; color: #0f4098;">Acesso Restrito</h3>
+          <p style="margin-bottom: 30px;">Identifique-se para gerenciar o catálogo.</p>
+          <button
+            type="button"
+            className="form-button"
+            style="width: 100%; padding: 10px; font-size: 1.1em;"
+            onClick={login}
+          >
+            ENTRAR COM GOOGLE
+          </button>
+        </div>
       </div>
     </div>
   )
@@ -140,42 +197,41 @@ function CurrentView() {
   switch (store.view) {
     case 'dashboard':
       return (
-        <div>
-          <h1>Painel de Controle</h1>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        <div id="conteudo">
+          <h4>PAINEL DE CONTROLE</h4>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
             <div className="card" style="text-align: center;">
-              <h3>Sistema Ativo</h3>
-              <p style="font-size: 3rem; margin: 0.5rem 0;">✅</p>
+              <h5>SISTEMA</h5>
+              <p style="font-size: 3em; margin: 10px 0;">🌐</p>
               <p>Firestore Conectado</p>
             </div>
-            <button
-              type="button"
-              className="card"
-              onClick={() => store.setView('pragas')}
-              style="cursor: pointer; text-align: center; border: none; font: inherit; background: white;"
-            >
-              <h3>Manutenção</h3>
-              <p style="font-size: 3rem; margin: 0.5rem 0;">⚙️</p>
-              <p>Acesse o menu lateral</p>
-            </button>
             <div className="card" style="text-align: center;">
-              <h3>Admin</h3>
-              <p style="font-size: 1rem; margin-top: 1rem;">
-                {store.user?.displayName}
-              </p>
-              <p style="font-size: 0.8rem; color: #666;">{store.user?.email}</p>
+              <h5>ATUALIZAÇÃO</h5>
+              <p style="font-size: 3em; margin: 10px 0;">📅</p>
+              <p>Última carga: {store.catalogos.lastUpdate || '---'}</p>
+            </div>
+            <div className="card" style="text-align: center;">
+              <h5>USUÁRIO</h5>
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;">
+                <img
+                  src={store.user?.photoURL || ''}
+                  alt="Avatar"
+                  style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #0f4098;"
+                />
+                <div>
+                   <p style="font-weight: bold;">{store.user?.displayName}</p>
+                   <p style="font-size: 0.9em; color: #666;">{store.user?.email}</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="card" style="margin-top: 2rem;">
-            <h2>Bem-vindo ao sistema de manutenção do CEFiTI.</h2>
-            <p>
-              Este sistema permite a edição direta dos dados no Firestore
-              utilizados pela aplicação pública.
-            </p>
-            <p style="color: var(--danger-color); font-weight: bold;">
-              ⚠️ Atenção: Todas as alterações são salvas em tempo real no banco
-              de dados de produção.
-            </p>
+          
+          <div id="area-mensagens" style="margin-top: 30px;">
+            <ul className="msg-informativa">
+              <li>Bem-vindo ao sistema de manutenção do CEFiTI.</li>
+              <li>Utilize o menu superior para navegar pelas seções de dados.</li>
+              <li style="color: #d12f19;">⚠️ Alterações são salvas em tempo real no banco de dados.</li>
+            </ul>
           </div>
         </div>
       )

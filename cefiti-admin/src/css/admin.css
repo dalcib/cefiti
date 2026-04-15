@@ -1,103 +1,36 @@
 :root {
-  --primary-color: #004a8d;
+  --primary-color: #0f4098;
   --secondary-color: #f8f9fa;
   --text-color: #333;
   --border-color: #dee2e6;
-  --sidebar-width: 250px;
-  --header-height: 60px;
-  --accent-color: #ffc107;
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
 
+/* Base adjustment to ensure IDG layout looks correct */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  color: var(--text-color);
-  background-color: #f4f6f9;
+  padding: 0;
+  background-color: #fff;
 }
 
-.admin-layout {
-  display: flex;
-  min-height: 100vh;
-}
-
-.sidebar {
-  width: var(--sidebar-width);
-  background-color: var(--primary-color);
-  color: white;
-  transition: margin-left 0.3s;
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar.closed {
-  margin-left: calc(-1 * var(--sidebar-width));
-}
-
-.sidebar-header {
-  padding: 1.5rem;
-  font-size: 1.25rem;
-  font-weight: bold;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.sidebar-nav {
-  padding: 1rem 0;
-  flex-grow: 1;
-}
-
-.nav-item {
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  display: block;
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  transition: background 0.2s;
-}
-
-.nav-item:hover,
-.nav-item.active {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
-.main-container {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.header {
-  height: var(--header-height);
-  background-color: white;
-  border-bottom: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  padding: 0 1.5rem;
-  justify-content: space-between;
-}
-
-.content {
-  padding: 2rem;
-  flex-grow: 1;
+.content-wrapper {
+  padding: 20px;
+  min-height: calc(100vh - 200px);
 }
 
 .card {
   background: white;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
 .btn {
   padding: 0.5rem 1rem;
-  border-radius: 4px;
-  border: none;
   cursor: pointer;
   font-weight: 500;
-  transition: opacity 0.2s;
+  border: 1px solid #ccc;
 }
 
 .btn-primary {
@@ -108,24 +41,12 @@ body {
 .btn-secondary {
   background-color: var(--secondary-color);
   color: var(--text-color);
-  border: 1px solid var(--border-color);
 }
 
-.login-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: var(--primary-color);
-}
-
-.login-card {
-  width: 100%;
-  max-width: 400px;
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+/* Adjustments for the view components */
+h1, h2, h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
 }
 
 form div {
@@ -135,13 +56,12 @@ form div {
 label {
   display: block;
   margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  font-weight: bold;
 }
 
-input {
+input, select, textarea {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
   box-sizing: border-box;
 }

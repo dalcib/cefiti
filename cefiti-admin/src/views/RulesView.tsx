@@ -79,30 +79,34 @@ export function RulesView() {
 
   if (state.editing) {
     return (
-      <div>
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <h1>{state.isNew ? 'Nova Regra' : 'Editar Regra'}</h1>
+      <div id="conteudo">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h4>{state.isNew ? 'NOVA REGRA' : 'EDITAR REGRA'}</h4>
           <button
             type="button"
-            className="btn btn-secondary"
+            className="form-button"
+            style="background: #ccc; color: #333;"
             onClick={() => (state.editing = null)}
           >
-            Voltar
+            VOLTAR
           </button>
         </div>
-        <div className="card">
-          <form onSubmit={handleSave}>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div>
+          <form onSubmit={handleSave} className="card">
+            <h5>DADOS DA REGRA</h5>
+            <br />
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
               <div>
                 <label htmlFor="prag-select">Praga</label>
                 <select
                   id="prag-select"
+                  className="form-select"
                   value={state.editing.prag}
                   required
                   onChange={(e) =>
                     (state.editing!.prag = (e.target as HTMLSelectElement).value)
                   }
-                  style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px;"
+                  style="width: 100%; padding: 5px;"
                 >
                   <option value="">Selecione a Praga</option>
                   {store.pragas.map((p) => (
@@ -116,12 +120,13 @@ export function RulesView() {
                 <label htmlFor="leg-select">Legislação</label>
                 <select
                   id="leg-select"
+                  className="form-select"
                   value={state.editing.leg}
                   required
                   onChange={(e) =>
                     (state.editing!.leg = (e.target as HTMLSelectElement).value)
                   }
-                  style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px;"
+                  style="width: 100%; padding: 5px;"
                 >
                   <option value="">Selecione a Legislação</option>
                   {store.legislacoes.map((l) => (
@@ -133,13 +138,14 @@ export function RulesView() {
               </div>
             </div>
 
-            <div style="margin-top: 1rem;">
+            <div style="margin-top: 10px;">
               <label htmlFor="rule-desc">
                 Descrição Curta / Título da Regra
               </label>
               <input
                 id="rule-desc"
                 type="text"
+                className="form-text"
                 value={state.editing.desc}
                 required
                 onInput={(e) =>
@@ -148,16 +154,16 @@ export function RulesView() {
               />
             </div>
 
-            <div style="margin-top: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-              <fieldset style="border: none; padding: 0; margin: 0;">
-                <legend style="margin-bottom: 0.5rem; font-weight: bold;">
-                  Partes do Hospedeiro
+            <div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <fieldset style="border: 1px solid #eee; padding: 10px; margin: 0;">
+                <legend style="margin-bottom: 5px; font-weight: bold; background: #fff; padding: 0 5px;">
+                  PARTES DO HOSPEDEIRO
                 </legend>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.5rem; border: 1px solid #eee;">
+                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
                   {PART_OPTIONS.map((part) => (
                     <label
                       key={part}
-                      style="font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 0.25rem;"
+                      style="font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 5px; background: #f9f9f9; padding: 2px 8px; border: 1px solid #eee; border-radius: 4px;"
                     >
                       <input
                         type="checkbox"
@@ -173,10 +179,11 @@ export function RulesView() {
               </fieldset>
               <div>
                 <label htmlFor="exig-textarea">
-                  Exigências (IDs ou frases separadas por vírgula)
+                  Exigências (IDs ou frases separadas por quebra de linha)
                 </label>
                 <textarea
                   id="exig-textarea"
+                  className="form-textarea"
                   value={state.editing.exig.join('\n')}
                   onInput={(e) =>
                     (state.editing!.exig = (e.target as HTMLTextAreaElement).value
@@ -184,21 +191,21 @@ export function RulesView() {
                       .filter((l) => l.trim()))
                   }
                   placeholder="Ex: Exigência 1&#10;Exigência 2"
-                  style="width: 100%; min-height: 100px; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px;"
+                  style="width: 100%; min-height: 100px; padding: 5px;"
                 />
               </div>
             </div>
 
-            <div style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-              <fieldset style="border: none; padding: 0; margin: 0;">
-                <legend style="margin-bottom: 0.5rem; font-weight: bold;">
-                  Status na Origem
+            <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <fieldset style="border: 1px solid #eee; padding: 10px; margin: 0;">
+                <legend style="margin-bottom: 5px; font-weight: bold; background: #fff; padding: 0 5px;">
+                  STATUS NA ORIGEM
                 </legend>
-                <div style="max-height: 200px; overflow-y: auto; padding: 0.5rem; border: 1px solid #eee;">
+                <div style="max-height: 200px; overflow-y: auto; background: #f9f9f9; padding: 5px; border: 1px solid #eee;">
                   {STATUS_LIST.map((st) => (
                     <label
                       key={st}
-                      style="display: block; font-weight: normal; margin-bottom: 0.25rem; cursor: pointer;"
+                      style="display: block; font-weight: normal; margin-bottom: 2px; cursor: pointer; padding: 2px;"
                     >
                       <input
                         type="checkbox"
@@ -215,15 +222,15 @@ export function RulesView() {
                   ))}
                 </div>
               </fieldset>
-              <fieldset style="border: none; padding: 0; margin: 0;">
-                <legend style="margin-bottom: 0.5rem; font-weight: bold;">
-                  Status no Destino
+              <fieldset style="border: 1px solid #eee; padding: 10px; margin: 0;">
+                <legend style="margin-bottom: 5px; font-weight: bold; background: #fff; padding: 0 5px;">
+                  STATUS NO DESTINO
                 </legend>
-                <div style="max-height: 200px; overflow-y: auto; padding: 0.5rem; border: 1px solid #eee;">
+                <div style="max-height: 200px; overflow-y: auto; background: #f9f9f9; padding: 5px; border: 1px solid #eee;">
                   {STATUS_LIST.map((st) => (
                     <label
                       key={st}
-                      style="display: block; font-weight: normal; margin-bottom: 0.25rem; cursor: pointer;"
+                      style="display: block; font-weight: normal; margin-bottom: 2px; cursor: pointer; padding: 2px;"
                     >
                       <input
                         type="checkbox"
@@ -241,13 +248,13 @@ export function RulesView() {
                 </div>
               </fieldset>
             </div>
-
+            <br />
             <button
-              className="btn btn-primary"
+              className="form-button"
               type="submit"
-              style="margin-top: 2rem; width: 100%;"
+              style="width: 100%; padding: 8px;"
             >
-              Salvar Regra
+              SALVAR REGRA
             </button>
           </form>
         </div>
@@ -256,50 +263,48 @@ export function RulesView() {
   }
 
   return (
-    <div>
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h1>Exigências Fitossanitárias (Regras)</h1>
-        <button type="button" className="btn btn-primary" onClick={handleAdd}>
-          + Nova Regra
+    <div id="conteudo">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h4>EXIGÊNCIAS FITOSSANITÁRIAS (REGRAS)</h4>
+        <button type="button" className="form-button" onClick={handleAdd}>
+          NOVA REGRA
         </button>
       </div>
-      <div className="card">
-        <table style="width: 100%; border-collapse: collapse;">
+      <div>
+        <table className="table-grid" style="width: 100%;">
           <thead>
-            <tr style="border-bottom: 2px solid var(--border-color); text-align: left;">
-              <th style="padding: 0.5rem;">Praga</th>
-              <th style="padding: 0.5rem;">Descrição / Desc</th>
-              <th style="padding: 0.5rem;">Partes</th>
-              <th style="padding: 0.5rem;">Legislação</th>
-              <th style="padding: 0.5rem;">Ações</th>
+            <tr>
+              <th style="width: 15%;">Praga</th>
+              <th style="width: 35%;">Descrição / Desc</th>
+              <th style="width: 20%;">Partes</th>
+              <th style="width: 15%;">Legislação</th>
+              <th style="width: 15%;">Ações</th>
             </tr>
           </thead>
           <tbody>
             {store.rules.map((r) => (
-              <tr
-                key={r.id}
-                style="border-bottom: 1px solid var(--border-color);"
-              >
-                <td style="padding: 0.5rem;">
+              <tr key={r.id}>
+                <td>
                   <strong>{r.prag}</strong>
                 </td>
-                <td style="padding: 0.5rem;">{r.desc}</td>
-                <td style="padding: 0.5rem; font-size: 0.85rem; color: #666;">
+                <td>{r.desc}</td>
+                <td style="font-size: 0.85rem; color: #666;">
                   {r.part.join(', ')}
                 </td>
-                <td style="padding: 0.5rem;">{r.leg}</td>
-                <td style="padding: 0.5rem;">
+                <td style="text-align: center;">{r.leg}</td>
+                <td style="text-align: center;">
                   <button
                     type="button"
-                    className="btn btn-secondary"
+                    className="form-button"
+                    style="font-size: 0.8em; padding: 2px 5px; margin-right: 5px;"
                     onClick={() => handleEdit(r)}
                   >
                     Editar
                   </button>
                   <button
                     type="button"
-                    className="btn btn-secondary"
-                    style="margin-left: 0.5rem; color: var(--danger-color);"
+                    className="form-button"
+                    style="font-size: 0.8em; padding: 2px 5px; background: #dc3545;"
                     onClick={() => handleDelete(r.id ?? '')}
                   >
                     Excluir

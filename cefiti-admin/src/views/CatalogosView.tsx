@@ -34,20 +34,23 @@ export function CatalogosView() {
   if (store.loading.catalogos) return <p>Carregando catálogos...</p>
 
   return (
-    <div>
-      <h1>Gerenciamento de Catálogos</h1>
+    <div id="conteudo">
+      <div style="margin-bottom: 20px;">
+        <h4>GERENCIAMENTO DE CATÁLOGOS</h4>
+      </div>
       <div className="card">
-        <h3>Status Fitossanitários</h3>
-        <p style="color: #666; font-size: 0.9rem;">
+        <h5>STATUS FITOSSANITÁRIOS</h5>
+        <p style="color: #666; font-size: 0.9rem; margin-bottom: 20px;">
           Esses valores são usados nas listas de seleção do sistema.
         </p>
 
-        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem;">
-          <label htmlFor="new-status-input">Novo Status</label>
-          <div style="display: flex; gap: 0.5rem;">
+        <div style="display: flex; flex-direction: column; gap: 5px; margin-bottom: 20px;">
+          <label htmlFor="new-status-input">NOVO STATUS</label>
+          <div style="display: flex; gap: 10px;">
             <input
               id="new-status-input"
               type="text"
+              className="form-text"
               placeholder="Ex: Área Livre de Praga"
               value={state.newStatus}
               onInput={(e) =>
@@ -62,25 +65,25 @@ export function CatalogosView() {
             />
             <button
               type="button"
-              className="btn btn-primary"
+              className="form-button"
               onClick={addStatus}
             >
-              Adicionar
+              ADICIONAR
             </button>
           </div>
         </div>
 
-        <ul style="list-style: none; padding: 0;">
-          {store.catalogos.status_fitossanitario.map((s) => (
+        <ul style="list-style: none; padding: 0; border: 1px solid #eee; border-radius: 4px;">
+          {store.catalogos.status_fitossanitario.map((s, idx) => (
             <li
               key={s}
-              style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid #eee;"
+              style={`display: flex; justify-content: space-between; align-items: center; padding: 10px; ${idx < store.catalogos.status_fitossanitario.length - 1 ? 'border-bottom: 1px solid #eee;' : ''} background: ${idx % 2 === 0 ? '#fff' : '#f9f9f9'};`}
             >
-              {s}
+              <span style="font-weight: 500;">{s}</span>
               <button
                 type="button"
-                className="btn btn-secondary"
-                style="color: var(--danger-color); padding: 0.25rem 0.5rem;"
+                className="form-button"
+                style="color: #fff; background: #dc3545; padding: 2px 10px; font-size: 0.85em;"
                 onClick={() => removeStatus(s)}
               >
                 Remover

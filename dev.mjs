@@ -54,6 +54,15 @@ const commonConfig = {
   },
   metafile: true,
   charset: 'utf8',
+  alias: {
+    '#municipios': './cefiti-new/public/municipios.js',
+  },
+  loader: {
+    '.gif': 'file',
+    '.png': 'file',
+    '.jpg': 'file',
+    '.svg': 'file',
+  },
 }
 
 const entryPoints = [`${baseDir}/src/index.tsx`]

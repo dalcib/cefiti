@@ -40,24 +40,28 @@ export function PragasView() {
 
   if (state.editing) {
     return (
-      <div>
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <h1>{state.isNew ? 'Nova Praga' : 'Editar Praga'}</h1>
+      <div id="conteudo">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h4>{state.isNew ? 'NOVA PRAGA' : 'EDITAR PRAGA'}</h4>
           <button
             type="button"
-            className="btn btn-secondary"
+            className="form-button"
             onClick={() => (state.editing = null)}
+            style="background: #ccc; color: #333;"
           >
-            Voltar
+            VOLTAR
           </button>
         </div>
-        <div className="card">
-          <form onSubmit={handleSave}>
+        <div>
+          <form onSubmit={handleSave} className="card">
+            <h5>DADOS DA PRAGA</h5>
+            <br />
             <div>
               <label htmlFor="prag">Nome Científico</label>
               <input
                 id="prag"
                 type="text"
+                className="form-text"
                 value={state.editing.prag}
                 readOnly={!state.isNew}
                 required
@@ -72,6 +76,7 @@ export function PragasView() {
               <input
                 id="pragc"
                 type="text"
+                className="form-text"
                 value={state.editing.pragc}
                 required
                 onInput={(e) =>
@@ -79,8 +84,9 @@ export function PragasView() {
                 }
               />
             </div>
-            <button className="btn btn-primary" type="submit">
-              Salvar
+            <br />
+            <button className="form-button" type="submit">
+              SALVAR
             </button>
           </form>
         </div>
@@ -89,42 +95,40 @@ export function PragasView() {
   }
 
   return (
-    <div>
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h1>Manutenção de Pragas</h1>
-        <button type="button" className="btn btn-primary" onClick={handleAdd}>
-          + Nova Praga
+    <div id="conteudo">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h4>MANUTENÇÃO DE PRAGAS</h4>
+        <button type="button" className="form-button" onClick={handleAdd}>
+          NOVA PRAGA
         </button>
       </div>
-      <div className="card">
-        <table style="width: 100%; border-collapse: collapse;">
+      <div>
+        <table className="table-grid" style="width: 100%;">
           <thead>
-            <tr style="border-bottom: 2px solid var(--border-color); text-align: left;">
-              <th style="padding: 0.5rem;">Nome Científico</th>
-              <th style="padding: 0.5rem;">Nome Comum</th>
-              <th style="padding: 0.5rem;">Ações</th>
+            <tr>
+              <th style="width: 40%;">Nome Científico</th>
+              <th style="width: 40%;">Nome Comum</th>
+              <th style="width: 20%;">Ações</th>
             </tr>
           </thead>
           <tbody>
             {store.pragas.map((praga) => (
-              <tr
-                key={praga.prag}
-                style="border-bottom: 1px solid var(--border-color);"
-              >
-                <td style="padding: 0.5rem;">{praga.prag}</td>
-                <td style="padding: 0.5rem;">{praga.pragc}</td>
-                <td style="padding: 0.5rem;">
+              <tr key={praga.prag}>
+                <td>{praga.prag}</td>
+                <td>{praga.pragc}</td>
+                <td style="text-align: center;">
                   <button
                     type="button"
-                    className="btn btn-secondary"
+                    className="form-button"
+                    style="font-size: 0.8em; padding: 2px 5px; margin-right: 5px;"
                     onClick={() => handleEdit(praga)}
                   >
                     Editar
                   </button>
                   <button
                     type="button"
-                    className="btn btn-secondary"
-                    style="margin-left: 0.5rem; color: var(--danger-color);"
+                    className="form-button"
+                    style="font-size: 0.8em; padding: 2px 5px; background: #dc3545;"
                     onClick={() => handleDelete(praga.prag)}
                   >
                     Excluir

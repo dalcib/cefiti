@@ -33,6 +33,7 @@
     "start:admin": "node dev.mjs cefiti-admin",
     "test": "node --test --experimental-strip-types \"cefiti/test/**/*.test.ts\"",
     "test:new": "node --test --experimental-strip-types \"cefiti-new/test/**/*.test.ts\"",
+    "test:admin": "node --test --experimental-strip-types --experimental-test-module-mocks \"cefiti-admin/test/**/*.test.ts\"",
     "analyze": "source-map-explorer cefiti/public/*.js",
     "lint": "biome lint .",
     "format": "biome format . --write",

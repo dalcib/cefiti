@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 .form-select,
 .form-text,
 .form-textarea {
@@ -15,7 +17,7 @@
 }
 
 .form-button {
-  background: #3866b5;
+  background: #0f4098;
   color: #fff;
   cursor: pointer;
   font-weight: 700;
@@ -37,7 +39,7 @@ table {
 }
 * {
   border: 0;
-  font-family: arial, verdana, helvetica, sans-serif;
+  font-family: 'Inter', arial, verdana, helvetica, sans-serif;
   margin: 0;
   padding: 0;
 }

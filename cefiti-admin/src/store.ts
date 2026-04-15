@@ -9,9 +9,9 @@ import {
   query,
   setDoc,
 } from 'firebase/firestore'
-import { deepSignal } from '../../cefiti/src/deep-signals.ts'
 import { municipiosBrutos } from '#municipios'
-import { auth, db } from './firebase'
+import { deepSignal } from '../../cefiti/src/deep-signals.ts'
+import { auth, db } from './firebase.ts'
 
 export type AdminView =
   | 'login'
@@ -80,7 +80,7 @@ export interface DB_StatusMunicipio {
   }[]
 }
 
-class Store {
+export class Store {
   view: AdminView = 'dashboard' //'login'
   user: User | null = null
   authLoading: boolean = false //true
@@ -94,7 +94,9 @@ class Store {
   estados: Estado[] = []
   status_municipios: DB_StatusMunicipio[] = []
   catalogos = {
-    status_fitossanitario: [] as string[]
+    status_fitossanitario: [] as string[],
+    dbVersion: 0,
+    lastUpdate: null as string | null
   }
 
   loading = {
@@ -368,6 +370,8 @@ class Store {
         const data = snap.data()
         this.catalogos.status_fitossanitario =
           data.catalogos?.status_fitossanitário || []
+        this.catalogos.dbVersion = data.version || 0
+        this.catalogos.lastUpdate = data.lastUpdate ? new Date(data.lastUpdate).toLocaleDateString() : null
       }
     } finally {
       this.loading.catalogos = false
