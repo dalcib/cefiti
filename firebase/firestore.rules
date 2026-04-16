@@ -6,12 +6,17 @@ service cloud.firestore {
     // FUNÇÕES AUXILIARES
     // ======================================================
 
-    // Verifica se o usuário está autenticado
-    function isAuthenticated() {
-      return request.auth != null;
+    // Verifica se o usuário está autenticado e presente na lista de autorizados
+    function isAuthorized() {
+      return request.auth != null && exists(/databases/$(database)/documents/configuracoes/geral/usuarios/$(request.auth.token.email.lower()));
     }
 
-    // Verifica se uma praga existe (ID é o nome científico)
+    // Verifica se o usuário é administrador
+    function isAdmin() {
+      return isAuthorized() && get(/databases/$(database)/documents/configuracoes/geral/usuarios/$(request.auth.token.email.lower())).data.perfil == 'administrador';
+    }
+
+    // Verifica se uma praga existe
     function pragaExists(pragName) {
       return exists(/databases/$(database)/documents/pragas/$(pragName));
     }
@@ -25,53 +30,59 @@ service cloud.firestore {
     // REGRAS POR COLEÇÃO
     // ======================================================
 
-    // 1. HOSPEDEIROS
-    // Uso: Cadastro base. Não pode ser excluído via cliente.
-    match /hospedeiros/{hospId} {
-      allow read: if true;
-      allow create, update: if isAuthenticated();
-      allow delete: if false; 
+    // 0. USUÁRIOS AUTORIZADOS (Subcoleção em configuracoes/geral/usuarios)
+    match /configuracoes/geral/usuarios/{email} {
+      allow read: if isAuthorized();
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin() || (request.auth.token.email.lower() == email && 
+                      !request.resource.data.diff(resource.data).affectedKeys().hasAny(['perfil', 'email']));
     }
 
-    // 2. LEGISLAÇÕES E TEXTOS (Relação 1:1)
-    // Uso: Referências legais. Não podem ser excluídos via cliente.
+    // 1. HOSPEDEIROS
+    match /hospedeiros/{hospId} {
+      allow read: if isAuthorized();
+      allow create, update: if isAuthorized();
+      allow delete: if isAdmin(); 
+    }
+
+    // 2. LEGISLAÇÕES E TEXTOS
     match /legislacoes/{legId} {
-      allow read: if true;
-      allow create, update: if isAuthenticated();
-      allow delete: if false;
+      allow read: if isAuthorized();
+      allow create, update: if isAuthorized();
+      allow delete: if isAdmin();
     }
 
     match /leg_texto/{legId} {
-      allow read: if true;
-      // Garante que o texto só exista se houver o metadado em 'legislacoes'
-      allow create, update: if isAuthenticated() && legislacaoExists(legId);
-      allow delete: if false;
+      allow read: if isAuthorized();
+      allow create, update: if isAuthorized() && legislacaoExists(legId);
+      allow delete: if isAdmin();
     }
 
     // 3. PRAGAS
-    // Uso: Registro central. Não pode ser excluído via cliente.
     match /pragas/{pragName} {
-      allow read: if true;
-      allow create, update: if isAuthenticated();
-      allow delete: if false;
+      allow read: if isAuthorized();
+      allow create, update: if isAuthorized();
+      allow delete: if isAdmin();
     }
 
     // 4. REGRAS DE TRÂNSITO (RULES)
-    // Uso: Exigências para trânsito entre estados. Pode ser deletado/alterado.
     match /rules/{ruleId} {
-      allow read: if true;
-      // Valida que a praga referenciada existe
-      allow create, update: if isAuthenticated() && pragaExists(request.resource.data.prag);
-      allow delete: if isAuthenticated();
+      allow read: if isAuthorized();
+      allow create, update: if isAuthorized() && pragaExists(request.resource.data.prag);
+      allow delete: if isAuthorized();
     }
 
     // 5. STATUS MUNICÍPIO
-    // Uso: Mapa de ocorrência de pragas. Pode ser deletado/alterado.
     match /status_municipio/{pragName} {
-      allow read: if true;
-      // Valida que a praga referenciada existe
-      allow create, update: if isAuthenticated() && pragaExists(request.resource.data.praga);
-      allow delete: if isAuthenticated();
+      allow read: if isAuthorized();
+      allow create, update: if isAuthorized() && pragaExists(request.resource.data.praga);
+      allow delete: if isAuthorized();
+    }
+    
+    // 6. CONFIGURAÇÕES / CATÁLOGOS
+    match /configuracoes/{configId} {
+      allow read: if isAuthorized();
+      allow write: if isAdmin();
     }
     
     // ======================================================
@@ -79,12 +90,12 @@ service cloud.firestore {
     // ======================================================
     
     match /estados/{estadoId} {
-      allow read: if true;
+      allow read: if isAuthorized();
       allow write: if false;
     }
     
     match /municipios/{municipioId} {
-      allow read: if true;
+      allow read: if isAuthorized();
       allow write: if false;
     }
   }

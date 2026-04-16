@@ -1,4 +1,4 @@
-import { onAuthStateChanged, type User } from 'firebase/auth'
+import { onAuthStateChanged, type User, OAuthProvider, signInWithPopup } from 'firebase/auth'
 import {
   collection,
   deleteDoc,
@@ -22,6 +22,16 @@ export type AdminView =
   | 'rules'
   | 'status_municipios'
   | 'catalogos'
+  | 'usuarios'
+  | 'perfil'
+
+export interface AuthorizedUser {
+  email: string
+  nome: string
+  cargo: string
+  lotacao: string
+  perfil: 'administrador' | 'usuário'
+}
 
 export interface Praga {
   prag: string
@@ -81,9 +91,10 @@ export interface DB_StatusMunicipio {
 }
 
 export class Store {
-  view: AdminView = 'dashboard' //'login'
+  view: AdminView = 'login' //'dashboard'
   user: User | null = null
-  authLoading: boolean = false //true
+  currentProfile: AuthorizedUser | null = null
+  authLoading: boolean = true
   sidebarOpen: boolean = true
 
   // Collections
@@ -93,10 +104,11 @@ export class Store {
   rules: Rule[] = []
   estados: Estado[] = []
   status_municipios: DB_StatusMunicipio[] = []
+  authorized_users: AuthorizedUser[] = []
   catalogos = {
     status_fitossanitario: [] as string[],
     dbVersion: 0,
-    lastUpdate: null as string | null
+    lastUpdate: null as string | null,
   }
 
   loading = {
@@ -107,6 +119,7 @@ export class Store {
     estados: false,
     status_municipios: false,
     catalogos: false,
+    authorized_users: false
   }
 
   // UI State for Views
@@ -142,22 +155,72 @@ export class Store {
     catalogos: {
       newStatus: '',
     },
+    usuarios: {
+      editing: null as AuthorizedUser | null,
+      isNew: false
+    },
+    perfil: {
+      editing: null as AuthorizedUser | null
+    }
   }
 
-  constructor() {
-    this.initAuth()
-  }
+  constructor() {}
 
-  private initAuth() {
-    onAuthStateChanged(auth, (user) => {
+  initAuth() {
+    console.log('[Store] Initing Auth listener...')
+    onAuthStateChanged(auth, async (user) => {
+      console.log('[Store] Auth State Changed:', user ? user.email : 'No user')
       this.user = user
-      this.authLoading = false
-      if (user && this.view === 'login') {
-        this.view = 'dashboard'
-      } else if (!user) {
+
+      try {
+        if (!user) {
+          this.currentProfile = null
+          this.view = 'login'
+        } else {
+          console.log('[Store] Fetching profile for:', user.email)
+          await this.fetchProfile()
+          console.log('[Store] Profile loaded:', this.currentProfile?.perfil)
+
+          if (this.view === 'login') {
+            this.view = 'dashboard'
+          }
+          this.fetchCatalogos()
+        }
+      } catch (e) {
+        console.error('[Store] Auth error:', e)
         this.view = 'login'
+        // Only alert if there was a real user but profile fetch failed
+        if (user) {
+          alert('Acesso negado: seu e-mail não está cadastrado ou houve erro no sistema.')
+          await this.logout()
+        }
+      } finally {
+        this.authLoading = false
+        console.log('[Store] Auth initialization complete. View:', this.view)
       }
     })
+  }
+
+  async fetchProfile() {
+    if (!this.user?.email) return
+    const docRef = doc(db, 'configuracoes', 'geral', 'usuarios', this.user.email.toLowerCase())
+    const snap = await getDoc(docRef)
+    if (snap.exists()) {
+      this.currentProfile = snap.data() as AuthorizedUser
+    } else {
+      throw new Error('Não autorizado')
+    }
+  }
+
+  async loginWithMicrosoft() {
+    const provider = new OAuthProvider('microsoft.com')
+    // Adicione escopos se necessário para obter mais infos, mas o Firebase lida com o básico
+    try {
+      await signInWithPopup(auth, provider)
+    } catch (error) {
+      console.error('Erro no login Microsoft:', error)
+      alert('Erro ao entrar com Microsoft. Verifique se o pop-up foi bloqueado.')
+    }
   }
 
   async setView(view: AdminView) {
@@ -184,6 +247,14 @@ export class Store {
         break
       case 'catalogos':
         await this.fetchCatalogos()
+        break
+      case 'usuarios':
+        await this.fetchAuthorizedUsers()
+        break
+      case 'perfil':
+        if (this.currentProfile) {
+          this.views.perfil.editing = { ...this.currentProfile }
+        }
         break
     }
   }
@@ -371,7 +442,9 @@ export class Store {
         this.catalogos.status_fitossanitario =
           data.catalogos?.status_fitossanitário || []
         this.catalogos.dbVersion = data.version || 0
-        this.catalogos.lastUpdate = data.lastUpdate ? new Date(data.lastUpdate).toLocaleDateString() : null
+        this.catalogos.lastUpdate = data.lastUpdate
+          ? new Date(data.lastUpdate).toLocaleDateString()
+          : null
       }
     } finally {
       this.loading.catalogos = false
@@ -391,6 +464,37 @@ export class Store {
     )
     await this.fetchCatalogos()
   }
+
+  // --- Authorized Users Methods ---
+
+  async fetchAuthorizedUsers() {
+    if (this.currentProfile?.perfil !== 'administrador') return
+    this.loading.authorized_users = true
+    try {
+      const snapshot = await getDocs(collection(db, 'configuracoes', 'geral', 'usuarios'))
+      this.authorized_users = snapshot.docs.map(
+        (doc) => doc.data() as AuthorizedUser,
+      )
+    } finally {
+      this.loading.authorized_users = false
+    }
+  }
+
+  async saveAuthorizedUser(user: AuthorizedUser) {
+    const email = user.email.toLowerCase()
+    await setDoc(doc(db, 'configuracoes', 'geral', 'usuarios', email), { ...user, email })
+    await this.fetchAuthorizedUsers()
+    // Se estiver editando o próprio perfil, atualiza o currentProfile
+    if (email === this.user?.email?.toLowerCase()) {
+      this.currentProfile = { ...user, email }
+    }
+  }
+
+  async deleteAuthorizedUser(email: string) {
+    await deleteDoc(doc(db, 'configuracoes', 'geral', 'usuarios', email.toLowerCase()))
+    await this.fetchAuthorizedUsers()
+  }
 }
 
 export const store = deepSignal(new Store())
+store.initAuth()

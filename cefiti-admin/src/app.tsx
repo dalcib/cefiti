@@ -1,5 +1,4 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-import { useEffect } from 'preact/hooks'
 import { version } from './../package.json'
 import { auth } from './firebase'
 import { type AdminView, store } from './store'
@@ -9,11 +8,10 @@ import { LegislacoesView } from './views/LegislacoesView'
 import { PragasView } from './views/PragasView'
 import { RulesView } from './views/RulesView'
 import { StatusMunicipiosView } from './views/StatusMunicipiosView'
+import { UsuariosView } from './views/UsuariosView'
+import { PerfilView } from './views/PerfilView'
 
 export function App() {
-  useEffect(() => {
-    store.fetchCatalogos()
-  }, [])
 
   if (store.authLoading) {
     return (
@@ -124,6 +122,10 @@ function Nav() {
           <NavItem view="rules" label="Regras" />
           <NavItem view="status_municipios" label="Status Municipais" />
           <NavItem view="catalogos" label="Configurações" />
+          {store.currentProfile?.perfil === 'administrador' && (
+            <NavItem view="usuarios" label="Usuários" />
+          )}
+          <NavItem view="perfil" label="Meu Perfil" />
         </p>
       </div>
     </div>
@@ -147,20 +149,24 @@ function NavItem({ view, label }: { view: AdminView; label: string }) {
 }
 
 function LoginView() {
-  const login = async () => {
+  const loginGoogle = async () => {
     const provider = new GoogleAuthProvider()
     try {
       await signInWithPopup(auth, provider)
     } catch (error) {
       console.error('Login failed:', error)
-      alert('Falha no login. Verifique o console para mais detalhes.')
+      alert('Falha no login com Google.')
     }
+  }
+
+  const loginMicrosoft = async () => {
+    await store.loginWithMicrosoft()
   }
 
   return (
     <div id="resolucao">
       <div id="moldura-topo">
-        <div id="topo" style="height: 116px;">
+        <div id="topo" style={{ height: '116px' }}>
           <div id="identificacao-ministerio">
             <span>
               <div id="imagemGov">
@@ -175,15 +181,23 @@ function LoginView() {
         </div>
       </div>
       
-      <div id="corpo" style="display: flex; justify-content: center; align-items: center; min-height: 400px; background: #f4f6f9;">
-        <div id="conteudo-login-novo" style="text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-          <h3 style="margin-bottom: 20px; color: #0f4098;">Acesso Restrito</h3>
-          <p style="margin-bottom: 30px;">Identifique-se para gerenciar o catálogo.</p>
+      <div id="corpo" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '400px', background: '#f4f6f9' }}>
+        <div id="conteudo-login-novo" style={{ textAlign: 'center', boxShadow: '0 4px 15px rgba(0,0,0,0.1)', padding: '40px', backgroundColor: 'white', borderRadius: '8px' }}>
+          <h3 style={{ marginBottom: '20px', color: '#0f4098' }}>Acesso Restrito</h3>
+          <p style={{ marginBottom: '30px' }}>Identifique-se para gerenciar o catálogo.</p>
           <button
             type="button"
             className="form-button"
-            style="width: 100%; padding: 10px; font-size: 1.1em;"
-            onClick={login}
+            style={{ width: '100%', padding: '10px', fontSize: '1.1em', backgroundColor: '#00a4ef', marginBottom: '10px', color: 'white', border: 'none' }}
+            onClick={loginMicrosoft}
+          >
+            ENTRAR COM MICROSOFT (MAPA)
+          </button>
+          <button
+            type="button"
+            className="form-button"
+            style={{ width: '100%', padding: '10px', fontSize: '1.1em', backgroundColor: '#4285f4', color: 'white', border: 'none' }}
+            onClick={loginGoogle}
           >
             ENTRAR COM GOOGLE
           </button>
@@ -199,38 +213,38 @@ function CurrentView() {
       return (
         <div id="conteudo">
           <h4>PAINEL DE CONTROLE</h4>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
-            <div className="card" style="text-align: center;">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '20px' }}>
+            <div className="card" style={{ textAlign: 'center' }}>
               <h5>SISTEMA</h5>
-              <p style="font-size: 3em; margin: 10px 0;">🌐</p>
+              <p style={{ fontSize: '3em', margin: '10px 0' }}>🌐</p>
               <p>Firestore Conectado</p>
             </div>
-            <div className="card" style="text-align: center;">
+            <div className="card" style={{ textAlign: 'center' }}>
               <h5>ATUALIZAÇÃO</h5>
-              <p style="font-size: 3em; margin: 10px 0;">📅</p>
+              <p style={{ fontSize: '3em', margin: '10px 0' }}>📅</p>
               <p>Última carga: {store.catalogos.lastUpdate || '---'}</p>
             </div>
-            <div className="card" style="text-align: center;">
+            <div className="card" style={{ textAlign: 'center' }}>
               <h5>USUÁRIO</h5>
-              <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;">
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', marginTop: '10px' }}>
                 <img
                   src={store.user?.photoURL || ''}
                   alt="Avatar"
-                  style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #0f4098;"
+                  style={{ width: '48px', height: '48px', borderRadius: '50%', border: '2px solid #0f4098' }}
                 />
                 <div>
-                   <p style="font-weight: bold;">{store.user?.displayName}</p>
-                   <p style="font-size: 0.9em; color: #666;">{store.user?.email}</p>
+                   <p style={{ fontWeight: 'bold' }}>{store.user?.displayName}</p>
+                   <p style={{ fontSize: '0.9em', color: '#666' }}>{store.user?.email}</p>
                 </div>
               </div>
             </div>
           </div>
           
-          <div id="area-mensagens" style="margin-top: 30px;">
+          <div id="area-mensagens" style={{ marginTop: '30px' }}>
             <ul className="msg-informativa">
               <li>Bem-vindo ao sistema de manutenção do CEFiTI.</li>
               <li>Utilize o menu superior para navegar pelas seções de dados.</li>
-              <li style="color: #d12f19;">⚠️ Alterações são salvas em tempo real no banco de dados.</li>
+              <li style={{ color: '#d12f19' }}>⚠️ Alterações são salvas em tempo real no banco de dados.</li>
             </ul>
           </div>
         </div>
@@ -247,6 +261,10 @@ function CurrentView() {
       return <StatusMunicipiosView />
     case 'catalogos':
       return <CatalogosView />
+    case 'usuarios':
+      return <UsuariosView />
+    case 'perfil':
+      return <PerfilView />
     default:
       return <div>View não encontrada: {store.view}</div>
   }

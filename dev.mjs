@@ -103,9 +103,11 @@ if (isBuild) {
 
   const serveResult = await appContext.serve({
     servedir: `${baseDir}/public`,
-    host: 'localhost',
+    host: '192.168.100.251',
     port: project === 'cefiti' ? 3001 : 3002,
   })
 
-  console.log(`${project} listening on http://localhost:${serveResult.port}`)
+  console.log(
+    `${project} listening on http://192.168.100.251/:${serveResult.port}`,
+  )
 }
