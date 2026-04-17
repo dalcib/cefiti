@@ -5,6 +5,9 @@
   --border-color: #dee2e6;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --muted-color: #666;
+  --neutral-color: #ccc;
+  --light-bg: #f9f9f9;
 }
 
 /* Base adjustment to ensure IDG layout looks correct */
@@ -31,6 +34,10 @@ body {
   cursor: pointer;
   font-weight: 500;
   border: 1px solid #ccc;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .btn-primary {
@@ -43,8 +50,193 @@ body {
   color: var(--text-color);
 }
 
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  color: white;
+  border: none;
+}
+
+.btn-neutral {
+  background-color: var(--neutral-color);
+  color: var(--text-color);
+}
+
+.btn-full {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+/* Layout Utilities */
+.view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.view-title-container {
+  margin-bottom: 20px;
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.grid-3col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.flex-row {
+  display: flex;
+  gap: 20px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.relative-container {
+  position: relative;
+}
+
+/* Components */
+.popup-card {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin-top: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-fieldset {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin: 0;
+}
+
+.form-legend {
+  margin-bottom: 5px;
+  font-weight: bold;
+  background: #fff;
+  padding: 0 5px;
+  font-size: 0.85rem;
+}
+
+.checkbox-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.checkbox-item {
+  font-weight: normal;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  background: var(--light-bg);
+  padding: 2px 8px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.checkbox-item input {
+  margin-top: 3px;
+  width: auto;
+}
+
+.readonly-input {
+  background-color: #eee !important;
+}
+
+.muted-text {
+  color: var(--muted-color);
+}
+
+/* Status Municípios Selection */
+.muni-association-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 15px;
+}
+
+.muni-list-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.muni-actions-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  height: 320px;
+}
+
+/* Exigencies List */
+.exig-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.exig-item {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  align-items: stretch;
+}
+
+.exig-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+  min-width: 22px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: var(--muted-color);
+}
+
+.exig-textarea {
+  flex: 1;
+  min-height: 50px;
+  padding: 6px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+}
+
 /* Adjustments for the view components */
-h1, h2, h3 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
@@ -59,7 +251,9 @@ label {
   font-weight: bold;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid var(--border-color);

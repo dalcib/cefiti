@@ -20,7 +20,7 @@ export function PerfilView() {
 
   return (
     <div id="conteudo">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+      <div className="view-header">
         <h4>MEUS DADOS PESSOAIS</h4>
       </div>
       <div>
@@ -32,12 +32,11 @@ export function PerfilView() {
             <input
               id="perfil-email"
               type="email"
-              className="form-text"
+              className="form-text readonly-input"
               value={state.editing.email}
               readOnly
-              style={{ backgroundColor: '#eee' }}
             />
-            <small style={{ color: '#666' }}>O e-mail é a sua identidade e não pode ser alterado aqui.</small>
+            <small className="muted-text">O e-mail é a sua identidade e não pode ser alterado aqui.</small>
           </div>
           <br/>
           <div>
@@ -84,12 +83,11 @@ export function PerfilView() {
             <input
               id="perfil-p"
               type="text"
-              className="form-text"
+              className="form-text readonly-input"
               value={state.editing.perfil.toUpperCase()}
               readOnly
-              style={{ backgroundColor: '#eee' }}
             />
-            <small style={{ color: '#666' }}>Somente administradores podem alterar o perfil de acesso.</small>
+            <small className="muted-text">Somente administradores podem alterar o perfil de acesso.</small>
           </div>
           <br />
           <button

@@ -69,12 +69,11 @@ export function RulesView() {
   if (state.editing) {
     return (
       <div id="conteudo">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div className="view-header">
           <h4>{state.isNew ? 'NOVA REGRA' : 'EDITAR REGRA'}</h4>
           <button
             type="button"
-            className="form-button"
-            style="background: #ccc; color: #333;"
+            className="btn btn-neutral"
             onClick={() => (state.editing = null)}
           >
             VOLTAR
@@ -84,7 +83,7 @@ export function RulesView() {
           <form onSubmit={handleSave} className="card">
             <h5>DADOS DA REGRA</h5>
             <br />
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div className="grid-2col">
               <div>
                 <label htmlFor="prag-select">Praga</label>
                 <select
@@ -95,7 +94,6 @@ export function RulesView() {
                   onChange={(e) =>
                     (state.editing!.prag = (e.target as HTMLSelectElement).value)
                   }
-                  style="width: 100%; padding: 5px;"
                 >
                   <option value="">Selecione a Praga</option>
                   {store.pragas.map((p) => (
@@ -116,13 +114,12 @@ export function RulesView() {
                   onInput={(e) =>
                     (state.editing!.leg = (e.target as HTMLInputElement).value)
                   }
-                  style="width: 100%; padding: 5px;"
                   placeholder="Ex: Portaria nº 123/2024"
                 />
               </div>
             </div>
 
-            <div style="margin-top: 10px;">
+            <div className="view-title-container">
               <label htmlFor="rule-desc">
                 Descrição Curta / Título da Regra
               </label>
@@ -138,20 +135,19 @@ export function RulesView() {
               />
             </div>
 
-            <div style="margin-top: 10px;">
-              <fieldset style="border: 1px solid #eee; padding: 10px; margin: 0;">
-                <legend style="margin-bottom: 5px; font-weight: bold; background: #fff; padding: 0 5px; font-size: 0.85rem;">
+            <div className="view-title-container">
+              <fieldset className="form-fieldset">
+                <legend className="form-legend">
                   PARTES DO HOSPEDEIRO
                 </legend>
-                <div style="display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-start; align-content: flex-start;">
+                <div className="checkbox-list">
                   {PART_OPTIONS.map((part) => (
                     <label
                       key={part}
-                      style="font-weight: normal; cursor: pointer; display: flex; align-items: flex-start; gap: 4px; background: #f9f9f9; padding: 2px 8px; border: 1px solid #eee; border-radius: 4px; font-size: 0.85rem;"
+                      className="checkbox-item"
                     >
                       <input
                         type="checkbox"
-                        style="margin-top: 3px;"
                         checked={state.editing!.part.includes(part)}
                         onChange={() =>
                           (state.editing!.part = toggleItem(state.editing!.part, part))
@@ -164,20 +160,19 @@ export function RulesView() {
               </fieldset>
             </div>
 
-            <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
-              <fieldset style="border: 1px solid #eee; padding: 10px; margin: 0;">
-                <legend style="margin-bottom: 5px; font-weight: bold; background: #fff; padding: 0 5px; font-size: 0.85rem;">
+            <div className="grid-2col" style="align-items: start;">
+              <fieldset className="form-fieldset">
+                <legend className="form-legend">
                   STATUS NA ORIGEM
                 </legend>
-                <div style="display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-start; align-content: flex-start;">
+                <div className="checkbox-list">
                   {store.catalogos.status_fitossanitario.map((st) => (
                     <label
                       key={st}
-                      style="display: flex; align-items: flex-start; gap: 4px; font-weight: normal; cursor: pointer; background: #f9f9f9; padding: 2px 8px; border: 1px solid #eee; border-radius: 4px; font-size: 0.85rem;"
+                      className="checkbox-item"
                     >
                       <input
                         type="checkbox"
-                        style="margin-top: 3px;"
                         checked={state.editing!.status_origem.includes(st)}
                         onChange={() =>
                           (state.editing!.status_origem = toggleItem(
@@ -191,19 +186,18 @@ export function RulesView() {
                   ))}
                 </div>
               </fieldset>
-              <fieldset style="border: 1px solid #eee; padding: 10px; margin: 0;">
-                <legend style="margin-bottom: 5px; font-weight: bold; background: #fff; padding: 0 5px; font-size: 0.85rem;">
+              <fieldset className="form-fieldset">
+                <legend className="form-legend">
                   STATUS NO DESTINO
                 </legend>
-                <div style="display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-start; align-content: flex-start;">
+                <div className="checkbox-list">
                   {store.catalogos.status_fitossanitario.map((st) => (
                     <label
                       key={st}
-                      style="display: flex; align-items: flex-start; gap: 4px; font-weight: normal; cursor: pointer; background: #f9f9f9; padding: 2px 8px; border: 1px solid #eee; border-radius: 4px; font-size: 0.85rem;"
+                      className="checkbox-item"
                     >
                       <input
                         type="checkbox"
-                        style="margin-top: 3px;"
                         checked={state.editing!.status_destino.includes(st)}
                         onChange={() =>
                           (state.editing!.status_destino = toggleItem(
@@ -220,12 +214,12 @@ export function RulesView() {
             </div>
 
             <div style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 5px; width: 100%; display: block; clear: both;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; width: 100%;">
+              <div className="view-header" style="margin-bottom: 4px;">
                 <label htmlFor="exig-list" style="font-weight: bold; font-size: 1rem; margin: 0;">Exigências</label>
                 <button
                   type="button"
-                  className="form-button"
-                  style="padding: 2px 10px; font-size: 0.75rem; background: #28a745; border: none; border-radius: 4px;"
+                  className="btn btn-success"
+                  style="font-size: 0.75rem;"
                   onClick={() => {
                     state.editing!.exig = [...state.editing!.exig, '']
                   }}
@@ -235,18 +229,18 @@ export function RulesView() {
               </div>
               <div
                 id="exig-list"
-                style="display: flex; flex-direction: column; gap: 2px; width: 100%;"
+                className="exig-list-container"
               >
                 {state.editing.exig.map((item, index) => (
                   <div
                     key={index}
-                    style="display: flex; gap: 4px; width: 100%; align-items: stretch;"
+                    className="exig-item"
                   >
-                    <div style="display: flex; align-items: center; justify-content: center; background: #eee; min-width: 22px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; color: #666;">
+                    <div className="exig-index">
                       {index + 1}
                     </div>
                     <textarea
-                      className="form-textarea"
+                      className="form-textarea exig-textarea"
                       value={item}
                       onInput={(e) => {
                         const newList = [...state.editing!.exig]
@@ -254,12 +248,11 @@ export function RulesView() {
                         state.editing!.exig = newList
                       }}
                       placeholder={`Descreva a exigência ${index + 1}...`}
-                      style="flex: 1; min-height: 50px; padding: 6px; font-size: 0.9rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; width: 100%; display: block; margin: 0;"
                     />
                     <button
                       type="button"
-                      className="form-button"
-                      style="background: #dc3545; width: 22px; height: 22px; color: white; border: none; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; padding: 0;"
+                      className="btn btn-danger"
+                      style="width: 22px; height: 22px; font-size: 0.8rem; flex-shrink: 0; padding: 0;"
                       onClick={() => {
                         if (confirm(`Excluir a exigência #${index + 1}?`)) {
                           state.editing!.exig = state.editing!.exig.filter(
@@ -282,9 +275,8 @@ export function RulesView() {
             </div>
             <br />
             <button
-              className="form-button"
+              className="btn btn-primary btn-full"
               type="submit"
-              style="width: 100%; padding: 8px;"
             >
               SALVAR REGRA
             </button>
@@ -296,9 +288,9 @@ export function RulesView() {
 
   return (
     <div id="conteudo">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <div className="view-header">
         <h4>EXIGÊNCIAS FITOSSANITÁRIAS (REGRAS)</h4>
-        <button type="button" className="form-button" onClick={handleAdd}>
+        <button type="button" className="btn btn-primary" onClick={handleAdd}>
           NOVA REGRA
         </button>
       </div>
@@ -327,16 +319,16 @@ export function RulesView() {
                 <td style="text-align: center;">
                   <button
                     type="button"
-                    className="form-button"
-                    style="font-size: 0.8em; padding: 2px 5px; margin-right: 5px;"
+                    className="btn btn-primary"
+                    style="font-size: 0.8em; padding: 2px 8px;"
                     onClick={() => handleEdit(r)}
                   >
                     Editar
                   </button>
                   <button
                     type="button"
-                    className="form-button"
-                    style="font-size: 0.8em; padding: 2px 5px; background: #dc3545;"
+                    className="btn btn-danger"
+                    style="font-size: 0.8em; padding: 2px 8px; margin-left: 5px;"
                     onClick={() => handleDelete(r.id ?? '')}
                   >
                     Excluir

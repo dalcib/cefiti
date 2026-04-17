@@ -211,12 +211,11 @@ export function StatusMunicipiosView() {
 
   return (
     <div id="conteudo">
-      <div style="margin-bottom: 20px;">
+      <div className="view-title-container">
         <h4>STATUS FITOSSANITÁRIO POR MUNICÍPIO</h4>
       </div>
       <div
-        className="card"
-        style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;"
+        className="card grid-3col"
       >
         <div>
           <label htmlFor="praga-select">PRAGA</label>
@@ -224,7 +223,6 @@ export function StatusMunicipiosView() {
             id="praga-select"
             className="form-select"
             value={state.selectedPraga}
-            style="width: 100%; padding: 5px;"
             onChange={(e) =>
               handlePragaChange((e.target as HTMLSelectElement).value)
             }
@@ -237,18 +235,17 @@ export function StatusMunicipiosView() {
             ))}
           </select>
         </div>
-        <div style="position: relative;">
+        <div className="relative-container">
           <label htmlFor="status-select">STATUS</label>
           <div style="display: flex; gap: 5px;">
-            <select
-              id="status-select"
-              className="form-select"
-              value={state.selectedStatus}
-              style="flex: 1; padding: 5px;"
-              onChange={(e) =>
-                handleStatusChange((e.target as HTMLSelectElement).value)
-              }
-            >
+              <select
+                id="status-select"
+                className="form-select"
+                value={state.selectedStatus}
+                onChange={(e) =>
+                  handleStatusChange((e.target as HTMLSelectElement).value)
+                }
+              >
               <option value="">Selecione o Status</option>
               {state.currentEntry?.status.map((s) => (
                 <option
@@ -261,8 +258,7 @@ export function StatusMunicipiosView() {
             </select>
             <button
               type="button"
-              className="form-button"
-              style="padding: 0 10px;"
+              className="btn btn-primary"
               onClick={() => (state.showAddStatus = !state.showAddStatus)}
               title="Adicionar novo status a esta praga"
             >
@@ -270,16 +266,10 @@ export function StatusMunicipiosView() {
             </button>
           </div>
           {state.showAddStatus && (
-            <div
-              className="card"
-              style="position: absolute; top: 100%; left: 0; right: 0; z-index: 10; margin-top: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
-            >
-              <p style="margin-bottom: 5px; font-weight: bold; font-size: 0.8em;">
-                ADICIONAR STATUS:
-              </p>
+            <div className="card popup-card">
+              <p className="form-legend">ADICIONAR STATUS:</p>
               <select
                 className="form-select"
-                style="width: 100%; padding: 5px; font-size: 0.9em;"
                 onChange={(e) => addStatus((e.target as HTMLSelectElement).value)}
               >
                 <option value="">Escolha um status do catálogo...</option>
@@ -300,18 +290,17 @@ export function StatusMunicipiosView() {
             </div>
           )}
         </div>
-        <div style="position: relative;">
+        <div className="relative-container">
           <label htmlFor="uf-select">ESTADO</label>
           <div style="display: flex; gap: 5px;">
-            <select
-              id="uf-select"
-              className="form-select"
-              value={state.selectedUF}
-              style="flex: 1; padding: 5px;"
-              onChange={(e) =>
-                handleUFChange((e.target as HTMLSelectElement).value)
-              }
-            >
+              <select
+                id="uf-select"
+                className="form-select"
+                value={state.selectedUF}
+                onChange={(e) =>
+                  handleUFChange((e.target as HTMLSelectElement).value)
+                }
+              >
               <option value="">Selecione o Estado</option>
               {state.currentEntry?.status
                 .find((s) => s.status_fitossanitário === state.selectedStatus)
@@ -326,8 +315,7 @@ export function StatusMunicipiosView() {
             </select>
             <button
               type="button"
-              className="form-button"
-              style="padding: 0 10px;"
+              className="btn btn-primary"
               onClick={() => (state.showAddEstado = !state.showAddEstado)}
               title="Adicionar novo estado a este status"
               disabled={!state.selectedStatus}
@@ -336,16 +324,10 @@ export function StatusMunicipiosView() {
             </button>
           </div>
           {state.showAddEstado && (
-            <div
-              className="card"
-              style="position: absolute; top: 100%; left: 0; right: 0; z-index: 10; margin-top: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
-            >
-              <p style="margin-bottom: 5px; font-weight: bold; font-size: 0.8em;">
-                ADICIONAR ESTADO:
-              </p>
+            <div className="card popup-card">
+              <p className="form-legend">ADICIONAR ESTADO:</p>
               <select
                 className="form-select"
-                style="width: 100%; padding: 5px; font-size: 0.9em;"
                 onChange={(e) => addEstado((e.target as HTMLSelectElement).value)}
               >
                 <option value="">Escolha um estado...</option>
@@ -370,14 +352,14 @@ export function StatusMunicipiosView() {
       {state.selectedPraga && state.selectedStatus && state.selectedUF && (
         <div className="card" style="margin-top: 20px;">
           <h5>ASSOCIAÇÃO DE MUNICÍPIOS</h5>
-          <div style="display: flex; gap: 20px; align-items: flex-start; margin-top: 15px;">
-            <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+          <div className="muni-association-container">
+            <div className="muni-list-box">
               <label htmlFor="avail-muni-select" style="margin: 0;">Municípios Disponíveis</label>
               <select
                 id="avail-muni-select"
                 multiple
                 className="form-textarea"
-                style="height: 300px; font-size: 0.9em; width: 100%;"
+                style="height: 300px;"
                 onInput={(e) => {
                   const opts = (e.target as HTMLSelectElement).selectedOptions
                   state.selectedInAvailable = Array.from(opts).map((o) => o.value)
@@ -394,11 +376,11 @@ export function StatusMunicipiosView() {
               </select>
             </div>
 
-            <div style="display: flex; flex-direction: column; justify-content: center; gap: 10px; height: 320px;">
+            <div className="muni-actions-center">
               <button
                 type="button"
-                className="form-button"
-                style="padding: 10px; font-weight: bold; min-width: 40px;"
+                className="btn btn-primary"
+                style="min-width: 40px;"
                 onClick={handleInclude}
                 title="Incluir selecionados"
               >
@@ -406,8 +388,8 @@ export function StatusMunicipiosView() {
               </button>
               <button
                 type="button"
-                className="form-button"
-                style="padding: 10px; font-weight: bold; min-width: 40px;"
+                className="btn btn-primary"
+                style="min-width: 40px;"
                 onClick={handleExclude}
                 title="Excluir selecionados"
               >
@@ -415,7 +397,7 @@ export function StatusMunicipiosView() {
               </button>
             </div>
 
-            <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+            <div className="muni-list-box">
               <label htmlFor="status-muni-select" style="margin: 0;">
                 Municípios com este Status
               </label>
@@ -423,7 +405,7 @@ export function StatusMunicipiosView() {
                 id="status-muni-select"
                 multiple
                 className="form-textarea"
-                style="height: 300px; font-size: 0.9em; width: 100%;"
+                style="height: 300px;"
                 onInput={(e) => {
                   const opts = (e.target as HTMLSelectElement).selectedOptions
                   state.selectedInStatus = Array.from(opts).map((o) => o.value)
@@ -443,8 +425,7 @@ export function StatusMunicipiosView() {
           <br />
           <button
             type="button"
-            className="form-button"
-            style="width: 100%; padding: 10px; font-size: 1.1em;"
+            className="btn btn-primary btn-full"
             onClick={handleSave}
           >
             SALVAR ALTERAÇÕES PARA ESTA PRAGA/STATUS
