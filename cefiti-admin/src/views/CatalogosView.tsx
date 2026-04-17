@@ -19,6 +19,20 @@ export function CatalogosView() {
   }
 
   const removeStatus = async (s: string) => {
+    try {
+      const usage = await store.checkStatusInUse(s)
+      if (usage.inUse) {
+        alert(
+          `Não é possível remover o status "${s}" pois ele está sendo utilizado em:\n\n` +
+            usage.locations.join('\n') +
+            '\n\nRemova as associações antes de excluir este status do catálogo.',
+        )
+        return
+      }
+    } catch (e) {
+      console.error('Error checking status usage:', e)
+    }
+
     if (!confirm(`Deseja remover o status "${s}"?`)) return
     const updated = store.catalogos.status_fitossanitario.filter(
       (item) => item !== s,

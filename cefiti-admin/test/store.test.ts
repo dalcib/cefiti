@@ -41,7 +41,9 @@ mock.module(firebasePath, {
 // Mocking onAuthStateChanged which is imported from firebase/auth
 mock.module(authPath, {
   namedExports: {
-    onAuthStateChanged: mockOnAuthStateChanged
+    onAuthStateChanged: mockOnAuthStateChanged,
+    OAuthProvider: class {},
+    signInWithPopup: mock.fn(async () => {}),
   }
 })
 
@@ -56,6 +58,7 @@ mock.module('firebase/firestore', {
     setDoc: mockSetDoc,
     deleteDoc: mockDeleteDoc,
     orderBy: mockOrderBy,
+    where: mock.fn(() => ({})),
   }
 })
 

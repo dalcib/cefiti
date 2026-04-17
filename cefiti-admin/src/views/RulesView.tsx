@@ -1,17 +1,6 @@
 import { store } from '../store'
 
-const STATUS_LIST = [
-  'Área Com Ocorrência',
-  'Área Livre de Praga',
-  'Área Sem Registro',
-  'Área Sem Registro de UF Com Ocorrência',
-  'UF Sem Registro',
-  'Zona Tampão',
-  'Área de SMR',
-  'Área de Status Desconhecido',
-  'Área Sob Erradicação',
-  'Todas as Áreas',
-]
+// O STATUS_LIST agora é obtido do store.catalogos.status_fitossanitario
 
 const PART_OPTIONS = [
   'frutos',
@@ -117,24 +106,19 @@ export function RulesView() {
                 </select>
               </div>
               <div>
-                <label htmlFor="leg-select">Legislação</label>
-                <select
-                  id="leg-select"
-                  className="form-select"
+                <label htmlFor="leg-input">Legislação</label>
+                <input
+                  id="leg-input"
+                  type="text"
+                  className="form-text"
                   value={state.editing.leg}
                   required
-                  onChange={(e) =>
-                    (state.editing!.leg = (e.target as HTMLSelectElement).value)
+                  onInput={(e) =>
+                    (state.editing!.leg = (e.target as HTMLInputElement).value)
                   }
                   style="width: 100%; padding: 5px;"
-                >
-                  <option value="">Selecione a Legislação</option>
-                  {store.legislacoes.map((l) => (
-                    <option key={l.id} value={l.id}>
-                      {l.id}
-                    </option>
-                  ))}
-                </select>
+                  placeholder="Ex: Portaria nº 123/2024"
+                />
               </div>
             </div>
 
@@ -154,19 +138,20 @@ export function RulesView() {
               />
             </div>
 
-            <div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="margin-top: 10px;">
               <fieldset style="border: 1px solid #eee; padding: 10px; margin: 0;">
-                <legend style="margin-bottom: 5px; font-weight: bold; background: #fff; padding: 0 5px;">
+                <legend style="margin-bottom: 5px; font-weight: bold; background: #fff; padding: 0 5px; font-size: 0.85rem;">
                   PARTES DO HOSPEDEIRO
                 </legend>
-                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                <div style="display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-start; align-content: flex-start;">
                   {PART_OPTIONS.map((part) => (
                     <label
                       key={part}
-                      style="font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 5px; background: #f9f9f9; padding: 2px 8px; border: 1px solid #eee; border-radius: 4px;"
+                      style="font-weight: normal; cursor: pointer; display: flex; align-items: flex-start; gap: 4px; background: #f9f9f9; padding: 2px 8px; border: 1px solid #eee; border-radius: 4px; font-size: 0.85rem;"
                     >
                       <input
                         type="checkbox"
+                        style="margin-top: 3px;"
                         checked={state.editing!.part.includes(part)}
                         onChange={() =>
                           (state.editing!.part = toggleItem(state.editing!.part, part))
@@ -177,38 +162,22 @@ export function RulesView() {
                   ))}
                 </div>
               </fieldset>
-              <div>
-                <label htmlFor="exig-textarea">
-                  Exigências (IDs ou frases separadas por quebra de linha)
-                </label>
-                <textarea
-                  id="exig-textarea"
-                  className="form-textarea"
-                  value={state.editing.exig.join('\n')}
-                  onInput={(e) =>
-                    (state.editing!.exig = (e.target as HTMLTextAreaElement).value
-                      .split('\n')
-                      .filter((l) => l.trim()))
-                  }
-                  placeholder="Ex: Exigência 1&#10;Exigência 2"
-                  style="width: 100%; min-height: 100px; padding: 5px;"
-                />
-              </div>
             </div>
 
-            <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
               <fieldset style="border: 1px solid #eee; padding: 10px; margin: 0;">
-                <legend style="margin-bottom: 5px; font-weight: bold; background: #fff; padding: 0 5px;">
+                <legend style="margin-bottom: 5px; font-weight: bold; background: #fff; padding: 0 5px; font-size: 0.85rem;">
                   STATUS NA ORIGEM
                 </legend>
-                <div style="max-height: 200px; overflow-y: auto; background: #f9f9f9; padding: 5px; border: 1px solid #eee;">
-                  {STATUS_LIST.map((st) => (
+                <div style="display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-start; align-content: flex-start;">
+                  {store.catalogos.status_fitossanitario.map((st) => (
                     <label
                       key={st}
-                      style="display: block; font-weight: normal; margin-bottom: 2px; cursor: pointer; padding: 2px;"
+                      style="display: flex; align-items: flex-start; gap: 4px; font-weight: normal; cursor: pointer; background: #f9f9f9; padding: 2px 8px; border: 1px solid #eee; border-radius: 4px; font-size: 0.85rem;"
                     >
                       <input
                         type="checkbox"
+                        style="margin-top: 3px;"
                         checked={state.editing!.status_origem.includes(st)}
                         onChange={() =>
                           (state.editing!.status_origem = toggleItem(
@@ -223,17 +192,18 @@ export function RulesView() {
                 </div>
               </fieldset>
               <fieldset style="border: 1px solid #eee; padding: 10px; margin: 0;">
-                <legend style="margin-bottom: 5px; font-weight: bold; background: #fff; padding: 0 5px;">
+                <legend style="margin-bottom: 5px; font-weight: bold; background: #fff; padding: 0 5px; font-size: 0.85rem;">
                   STATUS NO DESTINO
                 </legend>
-                <div style="max-height: 200px; overflow-y: auto; background: #f9f9f9; padding: 5px; border: 1px solid #eee;">
-                  {STATUS_LIST.map((st) => (
+                <div style="display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-start; align-content: flex-start;">
+                  {store.catalogos.status_fitossanitario.map((st) => (
                     <label
                       key={st}
-                      style="display: block; font-weight: normal; margin-bottom: 2px; cursor: pointer; padding: 2px;"
+                      style="display: flex; align-items: flex-start; gap: 4px; font-weight: normal; cursor: pointer; background: #f9f9f9; padding: 2px 8px; border: 1px solid #eee; border-radius: 4px; font-size: 0.85rem;"
                     >
                       <input
                         type="checkbox"
+                        style="margin-top: 3px;"
                         checked={state.editing!.status_destino.includes(st)}
                         onChange={() =>
                           (state.editing!.status_destino = toggleItem(
@@ -247,6 +217,68 @@ export function RulesView() {
                   ))}
                 </div>
               </fieldset>
+            </div>
+
+            <div style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 5px; width: 100%; display: block; clear: both;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; width: 100%;">
+                <label htmlFor="exig-list" style="font-weight: bold; font-size: 1rem; margin: 0;">Exigências</label>
+                <button
+                  type="button"
+                  className="form-button"
+                  style="padding: 2px 10px; font-size: 0.75rem; background: #28a745; border: none; border-radius: 4px;"
+                  onClick={() => {
+                    state.editing!.exig = [...state.editing!.exig, '']
+                  }}
+                >
+                  + ADICIONAR EXIGÊNCIA
+                </button>
+              </div>
+              <div
+                id="exig-list"
+                style="display: flex; flex-direction: column; gap: 2px; width: 100%;"
+              >
+                {state.editing.exig.map((item, index) => (
+                  <div
+                    key={index}
+                    style="display: flex; gap: 4px; width: 100%; align-items: stretch;"
+                  >
+                    <div style="display: flex; align-items: center; justify-content: center; background: #eee; min-width: 22px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; color: #666;">
+                      {index + 1}
+                    </div>
+                    <textarea
+                      className="form-textarea"
+                      value={item}
+                      onInput={(e) => {
+                        const newList = [...state.editing!.exig]
+                        newList[index] = (e.target as HTMLTextAreaElement).value
+                        state.editing!.exig = newList
+                      }}
+                      placeholder={`Descreva a exigência ${index + 1}...`}
+                      style="flex: 1; min-height: 50px; padding: 6px; font-size: 0.9rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; width: 100%; display: block; margin: 0;"
+                    />
+                    <button
+                      type="button"
+                      className="form-button"
+                      style="background: #dc3545; width: 22px; height: 22px; color: white; border: none; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; padding: 0;"
+                      onClick={() => {
+                        if (confirm(`Excluir a exigência #${index + 1}?`)) {
+                          state.editing!.exig = state.editing!.exig.filter(
+                            (_, i) => i !== index,
+                          )
+                        }
+                      }}
+                      title="Excluir exigência"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+                {state.editing.exig.length === 0 && (
+                  <div style="font-size: 0.85rem; color: #999; font-style: italic; margin: 2px 0; text-align: center; background: #fdfdfd; padding: 10px; border: 1px dashed #ddd; border-radius: 6px;">
+                    Nenhuma exigência adicionada ainda.
+                  </div>
+                )}
+              </div>
             </div>
             <br />
             <button

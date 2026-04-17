@@ -47,7 +47,9 @@ export function HospedeirosView() {
 
   const removeVul = (v: string) => {
     if (!state.editing) return
-    state.editing.nomeVul = state.editing.nomeVul.filter((item) => item !== v)
+    if (confirm(`Deseja remover o nome vulgar "${v}"?`)) {
+      state.editing.nomeVul = state.editing.nomeVul.filter((item) => item !== v)
+    }
   }
 
   if (store.loading.hospedeiros) return <p>Carregando hospedeiros...</p>

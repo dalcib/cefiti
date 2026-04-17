@@ -8,6 +8,7 @@ import {
   orderBy,
   query,
   setDoc,
+  where,
 } from 'firebase/firestore'
 import { municipiosBrutos } from '#municipios'
 import { deepSignal } from '../../cefiti/src/deep-signals.ts'
@@ -85,7 +86,7 @@ export interface DB_StatusMunicipio {
     estados: {
       uf: string
       ibge: number
-      municipios: number[]
+      municipios: Record<string, string>
     }[]
   }[]
 }
@@ -148,9 +149,12 @@ export class Store {
       selectedStatus: '',
       selectedUF: '',
       currentEntry: null as DB_StatusMunicipio | null,
+      originalEntryJson: '',
       municipios: [] as Municipio[],
-      selectedInStatus: [] as number[],
-      selectedInAvailable: [] as number[],
+      selectedInStatus: [] as string[],
+      selectedInAvailable: [] as string[],
+      showAddStatus: false,
+      showAddEstado: false,
     },
     catalogos: {
       newStatus: '',
@@ -203,12 +207,18 @@ export class Store {
 
   async fetchProfile() {
     if (!this.user?.email) return
-    const docRef = doc(db, 'configuracoes', 'geral', 'usuarios', this.user.email.toLowerCase())
-    const snap = await getDoc(docRef)
-    if (snap.exists()) {
-      this.currentProfile = snap.data() as AuthorizedUser
-    } else {
-      throw new Error('Não autorizado')
+    try {
+      const docRef = doc(db, 'configuracoes', 'geral', 'usuarios', this.user.email.toLowerCase())
+      const snap = await getDoc(docRef)
+      if (snap.exists()) {
+        this.currentProfile = snap.data() as AuthorizedUser
+      } else {
+        console.warn('[Store] Profile not found for:', this.user.email)
+        throw new Error('Não autorizado')
+      }
+    } catch (e) {
+      console.error('[Store] Error fetching profile:', e)
+      throw e
     }
   }
 
@@ -240,11 +250,15 @@ export class Store {
           this.fetchRules(),
           this.fetchPragas(),
           this.fetchLegislacoes(),
+          this.fetchCatalogos(),
         ])
         break
       case 'status_municipios':
-        await this.initStatusMunicipiosView()
-        break
+        await Promise.all([
+          this.initStatusMunicipiosView(),
+          this.fetchCatalogos(),
+        ])
+        break;
       case 'catalogos':
         await this.fetchCatalogos()
         break
@@ -276,6 +290,8 @@ export class Store {
       const q = query(collection(db, 'pragas'), orderBy('prag'))
       const snapshot = await getDocs(q)
       this.pragas = snapshot.docs.map((doc) => doc.data() as Praga)
+    } catch (e) {
+      console.error('[Store] Error fetching pragas:', e)
     } finally {
       this.loading.pragas = false
     }
@@ -297,6 +313,8 @@ export class Store {
       const q = query(collection(db, 'hospedeiros'), orderBy('nomeSci'))
       const snapshot = await getDocs(q)
       this.hospedeiros = snapshot.docs.map((doc) => doc.data() as Hospedeiro)
+    } catch (e) {
+      console.error('[Store] Error fetching hospedeiros:', e)
     } finally {
       this.loading.hospedeiros = false
     }
@@ -318,6 +336,8 @@ export class Store {
       const q = query(collection(db, 'legislacoes'), orderBy('id', 'desc'))
       const snapshot = await getDocs(q)
       this.legislacoes = snapshot.docs.map((doc) => doc.data() as Legislacao)
+    } catch (e) {
+      console.error('[Store] Error fetching legislacoes:', e)
     } finally {
       this.loading.legislacoes = false
     }
@@ -344,9 +364,11 @@ export class Store {
   async fetchRules() {
     this.loading.rules = true
     try {
-      const q = query(collection(db, 'regras'), orderBy('prag'))
+      const q = query(collection(db, 'rules'), orderBy('prag'))
       const snapshot = await getDocs(q)
       this.rules = snapshot.docs.map((d) => ({ ...d.data(), id: d.id }) as Rule)
+    } catch (e) {
+      console.error('[Store] Error fetching rules:', e)
     } finally {
       this.loading.rules = false
     }
@@ -355,12 +377,12 @@ export class Store {
   async saveRule(rule: Rule) {
     const docId = rule.id || `${rule.prag}_${Date.now()}`
     const { id, ...data } = rule
-    await setDoc(doc(db, 'regras', docId), data)
+    await setDoc(doc(db, 'rules', docId), data)
     await this.fetchRules()
   }
 
   async deleteRule(id: string) {
-    await deleteDoc(doc(db, 'regras', id))
+    await deleteDoc(doc(db, 'rules', id))
     await this.fetchRules()
   }
 
@@ -392,6 +414,7 @@ export class Store {
     const id = entry.id || entry.praga.replace(/\s+/g, '_')
     const { id: _, ...data } = entry
     await setDoc(doc(db, 'status_municipio', id), data)
+    this.views.statusMunicipios.originalEntryJson = JSON.stringify(entry)
     await this.fetchStatusMunicipios()
   }
 
@@ -426,24 +449,36 @@ export class Store {
 
     const found = this.status_municipios.find((d) => d.praga === praga)
     if (found) {
-      this.views.statusMunicipios.currentEntry = { ...found }
+      this.views.statusMunicipios.currentEntry = JSON.parse(JSON.stringify(found))
     } else {
       this.views.statusMunicipios.currentEntry = { praga, status: [] }
     }
+    this.views.statusMunicipios.originalEntryJson = JSON.stringify(
+      this.views.statusMunicipios.currentEntry,
+    )
   }
 
   async fetchCatalogos() {
     this.loading.catalogos = true
     try {
-      const docRef = doc(db, 'configuracoes', 'geral')
-      const snap = await getDoc(docRef)
-      if (snap.exists()) {
-        const data = snap.data()
-        this.catalogos.status_fitossanitario =
-          data.catalogos?.status_fitossanitário || []
+      // Fetch status list
+      const catRef = doc(db, 'configuracoes', 'catalogos')
+      const catSnap = await getDoc(catRef)
+      if (catSnap.exists()) {
+        const data = catSnap.data()
+        this.catalogos.status_fitossanitario = data.status_fitossanitario || []
+      }
+
+      // Fetch version and last update info
+      const geralRef = doc(db, 'configuracoes', 'geral')
+      const geralSnap = await getDoc(geralRef)
+      if (geralSnap.exists()) {
+        const data = geralSnap.data()
         this.catalogos.dbVersion = data.version || 0
         this.catalogos.lastUpdate = data.lastUpdate
-          ? new Date(data.lastUpdate).toLocaleDateString()
+          ? new Date(
+              data.lastUpdate.seconds ? data.lastUpdate.seconds * 1000 : data.lastUpdate,
+            ).toLocaleDateString()
           : null
       }
     } finally {
@@ -451,14 +486,64 @@ export class Store {
     }
   }
 
+  async checkStatusInUse(s: string): Promise<{ inUse: boolean; locations: string[] }> {
+    const locations: string[] = []
+
+    try {
+      // 1. Check in Rules (Origem)
+      const qOrigem = query(
+        collection(db, 'rules'),
+        where('status_origem', 'array-contains', s),
+      )
+      const snapOrigem = await getDocs(qOrigem)
+      if (!snapOrigem.empty) {
+        locations.push(
+          ...snapOrigem.docs.map(
+            (d) => `Regra (Praga: ${d.data().prag}): ${d.data().desc || d.id} (NA ORIGEM)`,
+          ),
+        )
+      }
+
+      // 2. Check in Rules (Destino)
+      const qDestino = query(
+        collection(db, 'rules'),
+        where('status_destino', 'array-contains', s),
+      )
+      const snapDestino = await getDocs(qDestino)
+      if (!snapDestino.empty) {
+        locations.push(
+          ...snapDestino.docs.map(
+            (d) => `Regra (Praga: ${d.data().prag}): ${d.data().desc || d.id} (NO DESTINO)`,
+          ),
+        )
+      }
+
+      // 3. Check in Status Município
+      // We list and check in-memory since Firestore doesn't support array-contains for nested object fields
+      const qMun = collection(db, 'status_municipio')
+      const snapMun = await getDocs(qMun)
+      snapMun.docs.forEach((doc) => {
+        const data = doc.data() as DB_StatusMunicipio
+        if (data.status?.some((st) => st.status_fitossanitário === s)) {
+          locations.push(`Status Município: ${data.praga}`)
+        }
+      })
+    } catch (e) {
+      console.error('[Store] Error checking status usage:', e)
+    }
+
+    return {
+      inUse: locations.length > 0,
+      locations,
+    }
+  }
+
   async saveCatalogos(updatedStatuses: string[]) {
-    const docRef = doc(db, 'configuracoes', 'geral')
+    const docRef = doc(db, 'configuracoes', 'catalogos')
     await setDoc(
       docRef,
       {
-        catalogos: {
-          status_fitossanitário: updatedStatuses,
-        },
+        status_fitossanitario: updatedStatuses,
       },
       { merge: true },
     )
