@@ -1,5 +1,3 @@
-
-
 /**
  * --- Common Database Interfaces ---
  */
@@ -167,7 +165,6 @@ declare global {
  */
 declare module 'preact' {
   namespace JSX {
-    interface IntrinsicElements {
-    }
+    interface IntrinsicElements {}
   }
 }

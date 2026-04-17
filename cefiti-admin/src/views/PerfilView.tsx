@@ -36,9 +36,11 @@ export function PerfilView() {
               value={state.editing.email}
               readOnly
             />
-            <small className="muted-text">O e-mail é a sua identidade e não pode ser alterado aqui.</small>
+            <small className="muted-text">
+              O e-mail é a sua identidade e não pode ser alterado aqui.
+            </small>
           </div>
-          <br/>
+          <br />
           <div>
             <label htmlFor="perfil-nome">Nome Completo</label>
             <input
@@ -87,13 +89,12 @@ export function PerfilView() {
               value={state.editing.perfil.toUpperCase()}
               readOnly
             />
-            <small className="muted-text">Somente administradores podem alterar o perfil de acesso.</small>
+            <small className="muted-text">
+              Somente administradores podem alterar o perfil de acesso.
+            </small>
           </div>
           <br />
-          <button
-            className="form-button"
-            type="submit"
-          >
+          <button className="form-button" type="submit">
             ATUALIZAR MEUS DADOS
           </button>
         </form>

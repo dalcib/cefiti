@@ -12,7 +12,6 @@ import { UsuariosView } from './views/UsuariosView'
 import { PerfilView } from './views/PerfilView'
 
 export function App() {
-
   if (store.authLoading) {
     return (
       <div className="carregando">
@@ -44,7 +43,9 @@ function Header() {
         <div id="identificacao-ministerio">
           <span>
             <div id="imagemGov">
-              <span className="ministerio-text">Ministério da Agricultura e Pecuária</span>
+              <span className="ministerio-text">
+                Ministério da Agricultura e Pecuária
+              </span>
               <a
                 href="http://www.brasil.gov.br"
                 target="_blank"
@@ -140,7 +141,11 @@ function NavItem({ view, label }: { view: AdminView; label: string }) {
         type="button"
         className={active ? 'active' : ''}
         onClick={() => store.setView(view)}
-        style={active ? { backgroundColor: 'rgba(255,255,255,0.1)', fontWeight: 'bold' } : {}}
+        style={
+          active
+            ? { backgroundColor: 'rgba(255,255,255,0.1)', fontWeight: 'bold' }
+            : {}
+        }
       >
         {label.toUpperCase()}
       </button>
@@ -170,7 +175,9 @@ function LoginView() {
           <div id="identificacao-ministerio">
             <span>
               <div id="imagemGov">
-                <span className="ministerio-text">Ministério da Agricultura e Pecuária</span>
+                <span className="ministerio-text">
+                  Ministério da Agricultura e Pecuária
+                </span>
               </div>
             </span>
           </div>
@@ -180,15 +187,45 @@ function LoginView() {
           </div>
         </div>
       </div>
-      
-      <div id="corpo" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '400px', background: '#f4f6f9' }}>
-        <div id="conteudo-login-novo" style={{ textAlign: 'center', boxShadow: '0 4px 15px rgba(0,0,0,0.1)', padding: '40px', backgroundColor: 'white', borderRadius: '8px' }}>
-          <h3 style={{ marginBottom: '20px', color: '#0f4098' }}>Acesso Restrito</h3>
-          <p style={{ marginBottom: '30px' }}>Identifique-se para gerenciar o catálogo.</p>
+
+      <div
+        id="corpo"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '400px',
+          background: '#f4f6f9',
+        }}
+      >
+        <div
+          id="conteudo-login-novo"
+          style={{
+            textAlign: 'center',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+            padding: '40px',
+            backgroundColor: 'white',
+            borderRadius: '8px',
+          }}
+        >
+          <h3 style={{ marginBottom: '20px', color: '#0f4098' }}>
+            Acesso Restrito
+          </h3>
+          <p style={{ marginBottom: '30px' }}>
+            Identifique-se para gerenciar o catálogo.
+          </p>
           <button
             type="button"
             className="form-button"
-            style={{ width: '100%', padding: '10px', fontSize: '1.1em', backgroundColor: '#00a4ef', marginBottom: '10px', color: 'white', border: 'none' }}
+            style={{
+              width: '100%',
+              padding: '10px',
+              fontSize: '1.1em',
+              backgroundColor: '#00a4ef',
+              marginBottom: '10px',
+              color: 'white',
+              border: 'none',
+            }}
             onClick={loginMicrosoft}
           >
             ENTRAR COM MICROSOFT (MAPA)
@@ -196,7 +233,14 @@ function LoginView() {
           <button
             type="button"
             className="form-button"
-            style={{ width: '100%', padding: '10px', fontSize: '1.1em', backgroundColor: '#4285f4', color: 'white', border: 'none' }}
+            style={{
+              width: '100%',
+              padding: '10px',
+              fontSize: '1.1em',
+              backgroundColor: '#4285f4',
+              color: 'white',
+              border: 'none',
+            }}
             onClick={loginGoogle}
           >
             ENTRAR COM GOOGLE
@@ -213,7 +257,14 @@ function CurrentView() {
       return (
         <div id="conteudo">
           <h4>PAINEL DE CONTROLE</h4>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '20px' }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '20px',
+              marginTop: '20px',
+            }}
+          >
             <div className="card" style={{ textAlign: 'center' }}>
               <h5>SISTEMA</h5>
               <p style={{ fontSize: '3em', margin: '10px 0' }}>🌐</p>
@@ -225,26 +276,54 @@ function CurrentView() {
               <p>Última carga: {store.catalogos.lastUpdate || '---'}</p>
             </div>
             <div className="card" style={{ textAlign: 'center' }}>
+              <h5>VERSÃO DADOS</h5>
+              <p style={{ fontSize: '3em', margin: '10px 0' }}>📂</p>
+              <p style={{ fontSize: '1.2em', fontWeight: 'bold' }}>
+                Versão {store.catalogos.dbVersion}
+              </p>
+            </div>
+            <div className="card" style={{ textAlign: 'center' }}>
               <h5>USUÁRIO</h5>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', marginTop: '10px' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '10px',
+                  marginTop: '10px',
+                }}
+              >
                 <img
                   src={store.user?.photoURL || ''}
                   alt="Avatar"
-                  style={{ width: '48px', height: '48px', borderRadius: '50%', border: '2px solid #0f4098' }}
+                  style={{
+                    width: '48px',
+                    height: '48px',
+                    borderRadius: '50%',
+                    border: '2px solid #0f4098',
+                  }}
                 />
                 <div>
-                   <p style={{ fontWeight: 'bold' }}>{store.user?.displayName}</p>
-                   <p style={{ fontSize: '0.9em', color: '#666' }}>{store.user?.email}</p>
+                  <p style={{ fontWeight: 'bold' }}>
+                    {store.user?.displayName}
+                  </p>
+                  <p style={{ fontSize: '0.9em', color: '#666' }}>
+                    {store.user?.email}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div id="area-mensagens" style={{ marginTop: '30px' }}>
             <ul className="msg-informativa">
               <li>Bem-vindo ao sistema de manutenção do CEFiTI.</li>
-              <li>Utilize o menu superior para navegar pelas seções de dados.</li>
-              <li style={{ color: '#d12f19' }}>⚠️ Alterações são salvas em tempo real no banco de dados.</li>
+              <li>
+                Utilize o menu superior para navegar pelas seções de dados.
+              </li>
+              <li style={{ color: '#d12f19' }}>
+                ⚠️ Alterações são salvas em tempo real no banco de dados.
+              </li>
             </ul>
           </div>
         </div>

@@ -1,4 +1,9 @@
-import { onAuthStateChanged, type User, OAuthProvider, signInWithPopup } from 'firebase/auth'
+import {
+  onAuthStateChanged,
+  type User,
+  OAuthProvider,
+  signInWithPopup,
+} from 'firebase/auth'
 import {
   collection,
   deleteDoc,
@@ -120,7 +125,7 @@ export class Store {
     estados: false,
     status_municipios: false,
     catalogos: false,
-    authorized_users: false
+    authorized_users: false,
   }
 
   // UI State for Views
@@ -161,11 +166,11 @@ export class Store {
     },
     usuarios: {
       editing: null as AuthorizedUser | null,
-      isNew: false
+      isNew: false,
     },
     perfil: {
-      editing: null as AuthorizedUser | null
-    }
+      editing: null as AuthorizedUser | null,
+    },
   }
 
   constructor() {}
@@ -195,7 +200,9 @@ export class Store {
         this.view = 'login'
         // Only alert if there was a real user but profile fetch failed
         if (user) {
-          alert('Acesso negado: seu e-mail não está cadastrado ou houve erro no sistema.')
+          alert(
+            'Acesso negado: seu e-mail não está cadastrado ou houve erro no sistema.',
+          )
           await this.logout()
         }
       } finally {
@@ -208,7 +215,13 @@ export class Store {
   async fetchProfile() {
     if (!this.user?.email) return
     try {
-      const docRef = doc(db, 'configuracoes', 'geral', 'usuarios', this.user.email.toLowerCase())
+      const docRef = doc(
+        db,
+        'configuracoes',
+        'geral',
+        'usuarios',
+        this.user.email.toLowerCase(),
+      )
       const snap = await getDoc(docRef)
       if (snap.exists()) {
         this.currentProfile = snap.data() as AuthorizedUser
@@ -229,7 +242,9 @@ export class Store {
       await signInWithPopup(auth, provider)
     } catch (error) {
       console.error('Erro no login Microsoft:', error)
-      alert('Erro ao entrar com Microsoft. Verifique se o pop-up foi bloqueado.')
+      alert(
+        'Erro ao entrar com Microsoft. Verifique se o pop-up foi bloqueado.',
+      )
     }
   }
 
@@ -258,7 +273,7 @@ export class Store {
           this.initStatusMunicipiosView(),
           this.fetchCatalogos(),
         ])
-        break;
+        break
       case 'catalogos':
         await this.fetchCatalogos()
         break
@@ -449,7 +464,9 @@ export class Store {
 
     const found = this.status_municipios.find((d) => d.praga === praga)
     if (found) {
-      this.views.statusMunicipios.currentEntry = JSON.parse(JSON.stringify(found))
+      this.views.statusMunicipios.currentEntry = JSON.parse(
+        JSON.stringify(found),
+      )
     } else {
       this.views.statusMunicipios.currentEntry = { praga, status: [] }
     }
@@ -477,7 +494,9 @@ export class Store {
         this.catalogos.dbVersion = data.version || 0
         this.catalogos.lastUpdate = data.lastUpdate
           ? new Date(
-              data.lastUpdate.seconds ? data.lastUpdate.seconds * 1000 : data.lastUpdate,
+              data.lastUpdate.seconds
+                ? data.lastUpdate.seconds * 1000
+                : data.lastUpdate,
             ).toLocaleDateString()
           : null
       }
@@ -486,7 +505,9 @@ export class Store {
     }
   }
 
-  async checkStatusInUse(s: string): Promise<{ inUse: boolean; locations: string[] }> {
+  async checkStatusInUse(
+    s: string,
+  ): Promise<{ inUse: boolean; locations: string[] }> {
     const locations: string[] = []
 
     try {
@@ -499,7 +520,8 @@ export class Store {
       if (!snapOrigem.empty) {
         locations.push(
           ...snapOrigem.docs.map(
-            (d) => `Regra (Praga: ${d.data().prag}): ${d.data().desc || d.id} (NA ORIGEM)`,
+            (d) =>
+              `Regra (Praga: ${d.data().prag}): ${d.data().desc || d.id} (NA ORIGEM)`,
           ),
         )
       }
@@ -513,7 +535,8 @@ export class Store {
       if (!snapDestino.empty) {
         locations.push(
           ...snapDestino.docs.map(
-            (d) => `Regra (Praga: ${d.data().prag}): ${d.data().desc || d.id} (NO DESTINO)`,
+            (d) =>
+              `Regra (Praga: ${d.data().prag}): ${d.data().desc || d.id} (NO DESTINO)`,
           ),
         )
       }
@@ -556,7 +579,9 @@ export class Store {
     if (this.currentProfile?.perfil !== 'administrador') return
     this.loading.authorized_users = true
     try {
-      const snapshot = await getDocs(collection(db, 'configuracoes', 'geral', 'usuarios'))
+      const snapshot = await getDocs(
+        collection(db, 'configuracoes', 'geral', 'usuarios'),
+      )
       this.authorized_users = snapshot.docs.map(
         (doc) => doc.data() as AuthorizedUser,
       )
@@ -567,7 +592,10 @@ export class Store {
 
   async saveAuthorizedUser(user: AuthorizedUser) {
     const email = user.email.toLowerCase()
-    await setDoc(doc(db, 'configuracoes', 'geral', 'usuarios', email), { ...user, email })
+    await setDoc(doc(db, 'configuracoes', 'geral', 'usuarios', email), {
+      ...user,
+      email,
+    })
     await this.fetchAuthorizedUsers()
     // Se estiver editando o próprio perfil, atualiza o currentProfile
     if (email === this.user?.email?.toLowerCase()) {
@@ -576,7 +604,9 @@ export class Store {
   }
 
   async deleteAuthorizedUser(email: string) {
-    await deleteDoc(doc(db, 'configuracoes', 'geral', 'usuarios', email.toLowerCase()))
+    await deleteDoc(
+      doc(db, 'configuracoes', 'geral', 'usuarios', email.toLowerCase()),
+    )
     await this.fetchAuthorizedUsers()
   }
 }

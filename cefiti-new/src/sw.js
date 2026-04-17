@@ -15,7 +15,7 @@ self.addEventListener('install', (event) => {
         './index.js',
         'https://cefiti.web.app/db-next.js',
         'https://cefiti.web.app/legislacao.js',
-        'https://cefiti.web.app/municipios.js'
+        'https://cefiti.web.app/municipios.js',
       ])
     }),
   )

@@ -77,7 +77,6 @@ const getSignal = (target: object, key: string | symbol, receiver: object) => {
       signals.set(key, signal(value))
     }
   }
-  // biome-ignore lint/style/noNonNullAssertion: Guaranteed to exist after the check above
   return signals.get(key)!
 }
 
@@ -144,7 +143,6 @@ const arrayHandlers: ProxyHandler<object[]> = {
         getSignal(target, 'length', receiver).value
 
         // Native method on raw target
-        // biome-ignore lint/suspicious/noExplicitAny: Native methods need index access
         const func = Array.prototype[key as any]
 
         return func.apply(

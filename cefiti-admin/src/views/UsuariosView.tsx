@@ -9,12 +9,12 @@ export function UsuariosView() {
   }
 
   const handleAdd = () => {
-    state.editing = { 
-      email: '', 
-      nome: '', 
-      cargo: '', 
-      lotacao: '', 
-      perfil: 'usuário' 
+    state.editing = {
+      email: '',
+      nome: '',
+      cargo: '',
+      lotacao: '',
+      perfil: 'usuário',
     }
     state.isNew = true
   }
@@ -28,7 +28,9 @@ export function UsuariosView() {
       state.editing = null
     } catch (error) {
       console.error('Error saving user:', error)
-      alert('Erro ao salvar usuário. Verifique se você tem permissões de administrador.')
+      alert(
+        'Erro ao salvar usuário. Verifique se você tem permissões de administrador.',
+      )
     }
   }
 
@@ -37,7 +39,10 @@ export function UsuariosView() {
       alert('Você não pode se excluir da lista de acesso.')
       return
     }
-    if (!confirm(`Deseja realmente remover o acesso de ${u.nome} (${u.email})?`)) return
+    if (
+      !confirm(`Deseja realmente remover o acesso de ${u.nome} (${u.email})?`)
+    )
+      return
     try {
       await store.deleteAuthorizedUser(u.email)
     } catch (error) {
@@ -51,7 +56,14 @@ export function UsuariosView() {
   if (state.editing) {
     return (
       <div id="conteudo">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '20px',
+          }}
+        >
           <h4>{state.isNew ? 'NOVO USUÁRIO AUTORIZADO' : 'EDITAR USUÁRIO'}</h4>
           <button
             type="button"
@@ -117,7 +129,9 @@ export function UsuariosView() {
                 value={state.editing.lotacao}
                 required
                 onInput={(e) =>
-                  (state.editing!.lotacao = (e.target as HTMLInputElement).value)
+                  (state.editing!.lotacao = (
+                    e.target as HTMLInputElement
+                  ).value)
                 }
               />
             </div>
@@ -129,18 +143,20 @@ export function UsuariosView() {
                 value={state.editing.perfil}
                 required
                 onChange={(e) =>
-                  (state.editing!.perfil = (e.target as HTMLSelectElement).value as any)
+                  (state.editing!.perfil = (e.target as HTMLSelectElement)
+                    .value as any)
                 }
               >
-                <option value="usuário">Usuário (Pode editar o próprio perfil)</option>
-                <option value="administrador">Administrador (Gestão de usuários)</option>
+                <option value="usuário">
+                  Usuário (Pode editar o próprio perfil)
+                </option>
+                <option value="administrador">
+                  Administrador (Gestão de usuários)
+                </option>
               </select>
             </div>
             <br />
-            <button
-              className="form-button"
-              type="submit"
-            >
+            <button className="form-button" type="submit">
               SALVAR AUTORIZAÇÃO
             </button>
           </form>
@@ -151,7 +167,14 @@ export function UsuariosView() {
 
   return (
     <div id="conteudo">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '20px',
+        }}
+      >
         <h4>GESTÃO DE USUÁRIOS AUTORIZADOS</h4>
         <button type="button" className="form-button" onClick={handleAdd}>
           NOVO USUÁRIO
@@ -174,23 +197,30 @@ export function UsuariosView() {
                 <td>{u.nome}</td>
                 <td>{u.email}</td>
                 <td>
-                    <span style={{
-                        padding: '2px 6px',
-                        borderRadius: '4px',
-                        fontSize: '0.85em',
-                        backgroundColor: u.perfil === 'administrador' ? '#ffd70033' : '#eee',
-                        color: u.perfil === 'administrador' ? '#856404' : '#666',
-                        fontWeight: 'bold'
-                    }}>
-                        {u.perfil.toUpperCase()}
-                    </span>
+                  <span
+                    style={{
+                      padding: '2px 6px',
+                      borderRadius: '4px',
+                      fontSize: '0.85em',
+                      backgroundColor:
+                        u.perfil === 'administrador' ? '#ffd70033' : '#eee',
+                      color: u.perfil === 'administrador' ? '#856404' : '#666',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    {u.perfil.toUpperCase()}
+                  </span>
                 </td>
                 <td>{u.lotacao}</td>
                 <td style={{ textAlign: 'center' }}>
                   <button
                     type="button"
                     className="form-button"
-                    style={{ fontSize: '0.8em', padding: '2px 5px', marginRight: '5px' }}
+                    style={{
+                      fontSize: '0.8em',
+                      padding: '2px 5px',
+                      marginRight: '5px',
+                    }}
                     onClick={() => handleEdit(u)}
                   >
                     Editar
@@ -198,7 +228,11 @@ export function UsuariosView() {
                   <button
                     type="button"
                     className="form-button"
-                    style={{ fontSize: '0.8em', padding: '2px 5px', background: '#dc3545' }}
+                    style={{
+                      fontSize: '0.8em',
+                      padding: '2px 5px',
+                      background: '#dc3545',
+                    }}
                     onClick={() => handleDelete(u)}
                   >
                     Excluir

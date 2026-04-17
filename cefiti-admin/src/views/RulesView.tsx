@@ -92,7 +92,9 @@ export function RulesView() {
                   value={state.editing.prag}
                   required
                   onChange={(e) =>
-                    (state.editing!.prag = (e.target as HTMLSelectElement).value)
+                    (state.editing!.prag = (
+                      e.target as HTMLSelectElement
+                    ).value)
                   }
                 >
                   <option value="">Selecione a Praga</option>
@@ -137,20 +139,18 @@ export function RulesView() {
 
             <div className="view-title-container">
               <fieldset className="form-fieldset">
-                <legend className="form-legend">
-                  PARTES DO HOSPEDEIRO
-                </legend>
+                <legend className="form-legend">PARTES DO HOSPEDEIRO</legend>
                 <div className="checkbox-list">
                   {PART_OPTIONS.map((part) => (
-                    <label
-                      key={part}
-                      className="checkbox-item"
-                    >
+                    <label key={part} className="checkbox-item">
                       <input
                         type="checkbox"
                         checked={state.editing!.part.includes(part)}
                         onChange={() =>
-                          (state.editing!.part = toggleItem(state.editing!.part, part))
+                          (state.editing!.part = toggleItem(
+                            state.editing!.part,
+                            part,
+                          ))
                         }
                       />
                       {part}
@@ -162,15 +162,10 @@ export function RulesView() {
 
             <div className="grid-2col" style="align-items: start;">
               <fieldset className="form-fieldset">
-                <legend className="form-legend">
-                  STATUS NA ORIGEM
-                </legend>
+                <legend className="form-legend">STATUS NA ORIGEM</legend>
                 <div className="checkbox-list">
                   {store.catalogos.status_fitossanitario.map((st) => (
-                    <label
-                      key={st}
-                      className="checkbox-item"
-                    >
+                    <label key={st} className="checkbox-item">
                       <input
                         type="checkbox"
                         checked={state.editing!.status_origem.includes(st)}
@@ -187,15 +182,10 @@ export function RulesView() {
                 </div>
               </fieldset>
               <fieldset className="form-fieldset">
-                <legend className="form-legend">
-                  STATUS NO DESTINO
-                </legend>
+                <legend className="form-legend">STATUS NO DESTINO</legend>
                 <div className="checkbox-list">
                   {store.catalogos.status_fitossanitario.map((st) => (
-                    <label
-                      key={st}
-                      className="checkbox-item"
-                    >
+                    <label key={st} className="checkbox-item">
                       <input
                         type="checkbox"
                         checked={state.editing!.status_destino.includes(st)}
@@ -215,7 +205,12 @@ export function RulesView() {
 
             <div style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 5px; width: 100%; display: block; clear: both;">
               <div className="view-header" style="margin-bottom: 4px;">
-                <label htmlFor="exig-list" style="font-weight: bold; font-size: 1rem; margin: 0;">Exigências</label>
+                <label
+                  htmlFor="exig-list"
+                  style="font-weight: bold; font-size: 1rem; margin: 0;"
+                >
+                  Exigências
+                </label>
                 <button
                   type="button"
                   className="btn btn-success"
@@ -227,18 +222,10 @@ export function RulesView() {
                   + ADICIONAR EXIGÊNCIA
                 </button>
               </div>
-              <div
-                id="exig-list"
-                className="exig-list-container"
-              >
+              <div id="exig-list" className="exig-list-container">
                 {state.editing.exig.map((item, index) => (
-                  <div
-                    key={index}
-                    className="exig-item"
-                  >
-                    <div className="exig-index">
-                      {index + 1}
-                    </div>
+                  <div key={index} className="exig-item">
+                    <div className="exig-index">{index + 1}</div>
                     <textarea
                       className="form-textarea exig-textarea"
                       value={item}
@@ -274,10 +261,7 @@ export function RulesView() {
               </div>
             </div>
             <br />
-            <button
-              className="btn btn-primary btn-full"
-              type="submit"
-            >
+            <button className="btn btn-primary btn-full" type="submit">
               SALVAR REGRA
             </button>
           </form>

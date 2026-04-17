@@ -4,7 +4,6 @@ import {
   estados,
   hospedeiros,
   status_municipio,
-  type DB_StatusFitossanitario,
 } from '../public/db-next.js'
 import { municipiosBrutos } from '../public/municipios.js'
 
@@ -155,7 +154,8 @@ const targetCount = 100
 for (let i = 0; i < targetCount; i++) {
   const pragaName = targetPests[i % targetPests.length]
   const pragaData = pragas.find((p) => p.prag === pragaName)
-  const hostId = pragaData.hosp[Math.floor(Math.random() * pragaData.hosp.length)]
+  const hostId =
+    pragaData.hosp[Math.floor(Math.random() * pragaData.hosp.length)]
   const hospSci = hospedeiroSciMap.get(hostId)
 
   // Find valid parts (products) for this pest in rules
@@ -165,7 +165,7 @@ for (let i = 0; i < targetCount; i++) {
 
   // Origin
   const uniformOrigs = getUniformStates(pragaName)
-  let origMuni
+  let origMuni: (typeof allMunicipios)[0]
   if (uniformOrigs.length > 0 && Math.random() > 0.2) {
     const pick = uniformOrigs[Math.floor(Math.random() * uniformOrigs.length)]
     const candidates = allMunicipios.filter((m) => m.uf === pick.uf)
@@ -175,7 +175,7 @@ for (let i = 0; i < targetCount; i++) {
   }
 
   // Destination
-  let destMuni
+  let destMuni: (typeof allMunicipios)[0]
   const uniformDests = uniformOrigs // Same set
   if (uniformDests.length > 0 && Math.random() > 0.3) {
     const pick = uniformDests[Math.floor(Math.random() * uniformDests.length)]
@@ -212,7 +212,8 @@ for (let i = 0; i < targetCount; i++) {
 import fs from 'node:fs'
 
 // --- Output Table ---
-let outputTable = '| ID | Praga | Hospedeiro | Produto | Origem [Status] | Destino [Status] | Resultado (Exigências) |\n'
+let outputTable =
+  '| ID | Praga | Hospedeiro | Produto | Origem [Status] | Destino [Status] | Resultado (Exigências) |\n'
 outputTable += '|---:|:---|:---|:---|:---|:---|:---|\n'
 for (const s of samples) {
   outputTable += `| ${s.id} | ${s.praga} | ${s.host} | ${s.part} | ${s.orig} | ${s.dest} | ${s.result} |\n`

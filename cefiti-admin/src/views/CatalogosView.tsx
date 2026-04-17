@@ -77,11 +77,7 @@ export function CatalogosView() {
                 }
               }}
             />
-            <button
-              type="button"
-              className="form-button"
-              onClick={addStatus}
-            >
+            <button type="button" className="form-button" onClick={addStatus}>
               ADICIONAR
             </button>
           </div>

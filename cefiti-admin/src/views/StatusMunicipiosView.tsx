@@ -1,4 +1,4 @@
-import { store } from '../store'
+import { type DB_StatusMunicipio, store } from '../store'
 
 export function StatusMunicipiosView() {
   const { statusMunicipios: state } = store.views
@@ -67,7 +67,9 @@ export function StatusMunicipiosView() {
 
   const addStatus = (status: string) => {
     if (!state.currentEntry) return
-    if (state.currentEntry.status.some((s) => s.status_fitossanitário === status))
+    if (
+      state.currentEntry.status.some((s) => s.status_fitossanitário === status)
+    )
       return
     const newEntry = { ...state.currentEntry }
     newEntry.status.push({ status_fitossanitário: status, estados: [] })
@@ -214,9 +216,7 @@ export function StatusMunicipiosView() {
       <div className="view-title-container">
         <h4>STATUS FITOSSANITÁRIO POR MUNICÍPIO</h4>
       </div>
-      <div
-        className="card grid-3col"
-      >
+      <div className="card grid-3col">
         <div>
           <label htmlFor="praga-select">PRAGA</label>
           <select
@@ -238,14 +238,14 @@ export function StatusMunicipiosView() {
         <div className="relative-container">
           <label htmlFor="status-select">STATUS</label>
           <div style="display: flex; gap: 5px;">
-              <select
-                id="status-select"
-                className="form-select"
-                value={state.selectedStatus}
-                onChange={(e) =>
-                  handleStatusChange((e.target as HTMLSelectElement).value)
-                }
-              >
+            <select
+              id="status-select"
+              className="form-select"
+              value={state.selectedStatus}
+              onChange={(e) =>
+                handleStatusChange((e.target as HTMLSelectElement).value)
+              }
+            >
               <option value="">Selecione o Status</option>
               {state.currentEntry?.status.map((s) => (
                 <option
@@ -270,7 +270,9 @@ export function StatusMunicipiosView() {
               <p className="form-legend">ADICIONAR STATUS:</p>
               <select
                 className="form-select"
-                onChange={(e) => addStatus((e.target as HTMLSelectElement).value)}
+                onChange={(e) =>
+                  addStatus((e.target as HTMLSelectElement).value)
+                }
               >
                 <option value="">Escolha um status do catálogo...</option>
                 {store.catalogos.status_fitossanitario
@@ -293,14 +295,14 @@ export function StatusMunicipiosView() {
         <div className="relative-container">
           <label htmlFor="uf-select">ESTADO</label>
           <div style="display: flex; gap: 5px;">
-              <select
-                id="uf-select"
-                className="form-select"
-                value={state.selectedUF}
-                onChange={(e) =>
-                  handleUFChange((e.target as HTMLSelectElement).value)
-                }
-              >
+            <select
+              id="uf-select"
+              className="form-select"
+              value={state.selectedUF}
+              onChange={(e) =>
+                handleUFChange((e.target as HTMLSelectElement).value)
+              }
+            >
               <option value="">Selecione o Estado</option>
               {state.currentEntry?.status
                 .find((s) => s.status_fitossanitário === state.selectedStatus)
@@ -328,7 +330,9 @@ export function StatusMunicipiosView() {
               <p className="form-legend">ADICIONAR ESTADO:</p>
               <select
                 className="form-select"
-                onChange={(e) => addEstado((e.target as HTMLSelectElement).value)}
+                onChange={(e) =>
+                  addEstado((e.target as HTMLSelectElement).value)
+                }
               >
                 <option value="">Escolha um estado...</option>
                 {store.estados
@@ -354,7 +358,9 @@ export function StatusMunicipiosView() {
           <h5>ASSOCIAÇÃO DE MUNICÍPIOS</h5>
           <div className="muni-association-container">
             <div className="muni-list-box">
-              <label htmlFor="avail-muni-select" style="margin: 0;">Municípios Disponíveis</label>
+              <label htmlFor="avail-muni-select" style="margin: 0;">
+                Municípios Disponíveis
+              </label>
               <select
                 id="avail-muni-select"
                 multiple
@@ -362,10 +368,12 @@ export function StatusMunicipiosView() {
                 style="height: 300px;"
                 onInput={(e) => {
                   const opts = (e.target as HTMLSelectElement).selectedOptions
-                  state.selectedInAvailable = Array.from(opts).map((o) => o.value)
+                  state.selectedInAvailable = Array.from(opts).map(
+                    (o) => o.value,
+                  )
                 }}
               >
-                {(!('9999' in getInStatus())) && (
+                {!('9999' in getInStatus()) && (
                   <option value="9999-TODOS">TODOS OS MUNICÍPIOS</option>
                 )}
                 {getAvailable().map((m) => (

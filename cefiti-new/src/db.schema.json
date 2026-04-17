@@ -170,13 +170,5 @@
       "type": "integer"
     }
   },
-  "required": [
-    "hospedeiros",
-    "pragas",
-    "rules",
-    "legislacoes",
-    "estados",
-    "status_municipio",
-    "dbVersion"
-  ]
+  "required": ["hospedeiros", "pragas", "rules", "legislacoes", "estados", "status_municipio", "dbVersion"]
 }

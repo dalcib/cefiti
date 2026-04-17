@@ -6,7 +6,6 @@ import './mocks/dom.mock.ts'
 
 const mockAuth = { signOut: mock.fn(async () => {}) }
 const mockDb = {}
-// biome-ignore lint/suspicious/noExplicitAny: mock implementation
 const mockOnAuthStateChanged = mock.fn((_auth: any, cb: any) => {
   cb(null) // Simulate not logged in
   return () => {}
@@ -17,16 +16,15 @@ const authPath = 'firebase/auth'
 const municipiosPath = '#municipios'
 
 // Mock Firestore functions
-// biome-ignore lint/suspicious/noExplicitAny: mock implementation
 const mockGetDocs = mock.fn(async () => ({ docs: [] as any[] }))
-const mockGetDoc = mock.fn(async () => ({ exists: () => false, data: () => ({}) }))
+const mockGetDoc = mock.fn(async () => ({
+  exists: () => false as boolean,
+  data: () => ({}),
+}))
 const mockSetDoc = mock.fn(async () => {})
 const mockDeleteDoc = mock.fn(async () => {})
-// biome-ignore lint/suspicious/noExplicitAny: mock implementation
 const mockCollection = mock.fn((_db: any, name: string) => ({ name }))
-// biome-ignore lint/suspicious/noExplicitAny: mock implementation
 const mockDoc = mock.fn((_db: any, col: string, id: string) => ({ col, id }))
-// biome-ignore lint/suspicious/noExplicitAny: mock implementation
 const mockQuery = mock.fn((q: any) => q)
 const mockOrderBy = mock.fn(() => ({}))
 
@@ -35,7 +33,7 @@ mock.module(firebasePath, {
   namedExports: {
     auth: mockAuth,
     db: mockDb,
-  }
+  },
 })
 
 // Mocking onAuthStateChanged which is imported from firebase/auth
@@ -44,7 +42,7 @@ mock.module(authPath, {
     onAuthStateChanged: mockOnAuthStateChanged,
     OAuthProvider: class {},
     signInWithPopup: mock.fn(async () => {}),
-  }
+  },
 })
 
 // Mocking firebase/firestore
@@ -59,20 +57,18 @@ mock.module('firebase/firestore', {
     deleteDoc: mockDeleteDoc,
     orderBy: mockOrderBy,
     where: mock.fn(() => ({})),
-  }
+  },
 })
 
 // Mocking #municipios alias
 mock.module(municipiosPath, {
   namedExports: {
-    municipiosBrutos: []
-  }
+    municipiosBrutos: [],
+  },
 })
 
 describe('Cefiti Admin Store', () => {
-  // biome-ignore lint/suspicious/noExplicitAny: dynamic import for test environment
   let Store: any
-  // biome-ignore lint/suspicious/noExplicitAny: dynamic instance for test environment
   let store: any
 
   beforeEach(async () => {
@@ -85,26 +81,49 @@ describe('Cefiti Admin Store', () => {
   })
 
   it('should initialize with view "login" when no user is present', async () => {
-    // biome-ignore lint/suspicious/noExplicitAny: mock implementation
-    mockOnAuthStateChanged.mock.mockImplementationOnce((_auth: any, cb: any) => {
-      cb(null)
-      return () => {}
-    })
+    mockOnAuthStateChanged.mock.mockImplementationOnce(
+      (_auth: any, cb: any) => {
+        cb(null)
+        return () => {}
+      },
+    )
     store = new Store()
+    store.initAuth()
+
     assert.strictEqual(store.view, 'login')
     assert.strictEqual(store.user, null)
   })
 
   it('should initialize with view "dashboard" when user is present', async () => {
     const mockUser = { uid: '123', email: 'test@example.com' }
-    // biome-ignore lint/suspicious/noExplicitAny: mock implementation
-    mockOnAuthStateChanged.mock.mockImplementationOnce((_auth: any, cb: any) => {
-      cb(mockUser)
-      return () => {}
-    })
+    const mockProfile = {
+      email: 'test@example.com',
+      nome: 'Test User',
+      perfil: 'administrador',
+    }
+
+    // Mock successful profile fetch
+    mockGetDoc.mock.mockImplementationOnce(async () => ({
+      exists: () => true,
+      data: () => mockProfile,
+    }))
+
+    mockOnAuthStateChanged.mock.mockImplementationOnce(
+      (_auth: any, cb: any) => {
+        cb(mockUser)
+        return () => {}
+      },
+    )
+
     store = new Store()
+    store.initAuth()
+
+    // Give time for async fetchProfile to complete
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
     assert.strictEqual(store.view, 'dashboard')
     assert.strictEqual(store.user, mockUser)
+    assert.deepEqual(store.currentProfile, mockProfile)
   })
 
   it('should toggle sidebar', () => {
@@ -118,11 +137,11 @@ describe('Cefiti Admin Store', () => {
     store = new Store()
     const mockPragas = [
       { prag: 'Praga A', pragc: 'Cientifico A', hosp: [1], files: [] },
-      { prag: 'Praga B', pragc: 'Cientifico B', hosp: [2], files: [] }
+      { prag: 'Praga B', pragc: 'Cientifico B', hosp: [2], files: [] },
     ]
 
     mockGetDocs.mock.mockImplementationOnce(async () => ({
-      docs: mockPragas.map(p => ({ data: () => p }))
+      docs: mockPragas.map((p) => ({ data: () => p })),
     }))
 
     await store.fetchPragas()
@@ -134,7 +153,7 @@ describe('Cefiti Admin Store', () => {
   it('should change view via setView and trigger fetch', async () => {
     store = new Store()
     const fetchPragasSpy = mock.method(store, 'fetchPragas', async () => {})
-    
+
     await store.setView('pragas')
     assert.strictEqual(store.view, 'pragas')
     assert.strictEqual(fetchPragasSpy.mock.callCount(), 1)

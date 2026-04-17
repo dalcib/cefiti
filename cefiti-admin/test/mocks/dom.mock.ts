@@ -85,16 +85,16 @@ export const doc = {
 // biome-ignore lint/suspicious/noTsIgnore: direct global modification for test environment
 // @ts-ignore
 globalThis.window = {
-	document: doc,
-	// biome-ignore lint/suspicious/noExplicitAny: mock implementation
-	requestAnimationFrame: (cb: any) => setTimeout(() => cb(Date.now()), 0),
-	cancelAnimationFrame: clearTimeout,
-	console: console,
-	location: { href: '', search: '', hash: '', protocol: 'file:' },
-	navigator: { userAgent: 'Node' },
-	addEventListener: noop,
-	removeEventListener: noop,
-	// biome-ignore lint/suspicious/noExplicitAny: mock implementation
+  document: doc,
+  // biome-ignore lint/suspicious/noExplicitAny: mock implementation
+  requestAnimationFrame: (cb: any) => setTimeout(() => cb(Date.now()), 0),
+  cancelAnimationFrame: clearTimeout,
+  console: console,
+  location: { href: '', search: '', hash: '', protocol: 'file:' },
+  navigator: { userAgent: 'Node' },
+  addEventListener: noop,
+  removeEventListener: noop,
+  // biome-ignore lint/suspicious/noExplicitAny: mock implementation
 } as any
 
 // biome-ignore lint/suspicious/noTsIgnore: direct global modification for test environment

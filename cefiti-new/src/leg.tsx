@@ -24,7 +24,11 @@ function LegView() {
   document.title = `${id} - CEFiTI`
 
   return (
-    <div dangerouslySetInnerHTML={{ __html: marked.parse(legislation.texto) as string }} />
+    <div
+      dangerouslySetInnerHTML={{
+        __html: marked.parse(legislation.texto) as string,
+      }}
+    />
   )
 }
 

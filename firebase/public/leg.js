@@ -1,67 +1,3011 @@
-var pa=Object.defineProperty,ua=Object.defineProperties;var Aa=Object.getOwnPropertyDescriptors;var Me=Object.getOwnPropertySymbols;var ga=Object.prototype.hasOwnProperty,va=Object.prototype.propertyIsEnumerable;var me=(a,e,o)=>e in a?pa(a,e,{enumerable:!0,configurable:!0,writable:!0,value:o}):a[e]=o,E=(a,e)=>{for(var o in e||(e={}))ga.call(e,o)&&me(a,o,e[o]);if(Me)for(var o of Me(e))va.call(e,o)&&me(a,o,e[o]);return a},w=(a,e)=>ua(a,Aa(e));var b=(a,e,o)=>me(a,typeof e!="symbol"?e+"":e,o);var oe,O,Ue,fa,k,xe,Fe,Le,Be,ge,pe,ue,Ia,Y={},ee=[],ha=/acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i,re=Array.isArray;function M(a,e){for(var o in e)a[o]=e[o];return a}function ve(a){a&&a.parentNode&&a.parentNode.removeChild(a)}function ba(a,e,o){var i,r,n,t={};for(n in e)n=="key"?i=e[n]:n=="ref"?r=e[n]:t[n]=e[n];if(arguments.length>2&&(t.children=arguments.length>3?oe.call(arguments,2):o),typeof a=="function"&&a.defaultProps!=null)for(n in a.defaultProps)t[n]===void 0&&(t[n]=a.defaultProps[n]);return W(a,t,i,r,null)}function W(a,e,o,i,r){var n={type:a,props:e,key:o,ref:i,__k:null,__:null,__b:0,__e:null,__c:null,constructor:void 0,__v:r==null?++Ue:r,__i:-1,__u:0};return r==null&&O.vnode!=null&&O.vnode(n),n}function j(a){return a.children}function K(a,e){this.props=a,this.context=e}function y(a,e){if(e==null)return a.__?y(a.__,a.__i+1):null;for(var o;e<a.__k.length;e++)if((o=a.__k[e])!=null&&o.__e!=null)return o.__e;return typeof a.type=="function"?y(a):null}function Sa(a){if(a.__P&&a.__d){var e=a.__v,o=e.__e,i=[],r=[],n=M({},e);n.__v=e.__v+1,O.vnode&&O.vnode(n),fe(a.__P,n,e,a.__n,a.__P.namespaceURI,32&e.__u?[o]:null,i,o==null?y(e):o,!!(32&e.__u),r),n.__v=e.__v,n.__.__k[n.__i]=n,Ge(i,n,r),e.__e=e.__=null,n.__e!=o&&we(n)}}function we(a){if((a=a.__)!=null&&a.__c!=null)return a.__e=a.__c.base=null,a.__k.some(function(e){if(e!=null&&e.__e!=null)return a.__e=a.__c.base=e.__e}),we(a)}function ze(a){(!a.__d&&(a.__d=!0)&&k.push(a)&&!ae.__r++||xe!=O.debounceRendering)&&((xe=O.debounceRendering)||Fe)(ae)}function ae(){for(var a,e=1;k.length;)k.length>e&&k.sort(Le),a=k.shift(),e=k.length,Sa(a);ae.__r=0}function ye(a,e,o,i,r,n,t,s,l,d,m){var c,u,A,p,S,g,h,v=i&&i.__k||ee,D=e.length;for(l=Oa(o,e,v,l,D),c=0;c<D;c++)(A=o.__k[c])!=null&&(u=A.__i!=-1&&v[A.__i]||Y,A.__i=c,g=fe(a,A,u,r,n,t,s,l,d,m),p=A.__e,A.ref&&u.ref!=A.ref&&(u.ref&&Ie(u.ref,null,A),m.push(A.ref,A.__c||p,A)),S==null&&p!=null&&(S=p),(h=!!(4&A.__u))||u.__k===A.__k?l=je(A,l,a,h):typeof A.type=="function"&&g!==void 0?l=g:p&&(l=p.nextSibling),A.__u&=-7);return o.__e=S,l}function Oa(a,e,o,i,r){var n,t,s,l,d,m=o.length,c=m,u=0;for(a.__k=new Array(r),n=0;n<r;n++)(t=e[n])!=null&&typeof t!="boolean"&&typeof t!="function"?(typeof t=="string"||typeof t=="number"||typeof t=="bigint"||t.constructor==String?t=a.__k[n]=W(null,t,null,null,null):re(t)?t=a.__k[n]=W(j,{children:t},null,null,null):t.constructor===void 0&&t.__b>0?t=a.__k[n]=W(t.type,t.props,t.key,t.ref?t.ref:null,t.__v):a.__k[n]=t,l=n+u,t.__=a,t.__b=a.__b+1,s=null,(d=t.__i=Pa(t,o,l,c))!=-1&&(c--,(s=o[d])&&(s.__u|=2)),s==null||s.__v==null?(d==-1&&(r>m?u--:r<m&&u++),typeof t.type!="function"&&(t.__u|=4)):d!=l&&(d==l-1?u--:d==l+1?u++:(d>l?u--:u++,t.__u|=4))):a.__k[n]=null;if(c)for(n=0;n<m;n++)(s=o[n])!=null&&(2&s.__u)==0&&(s.__e==i&&(i=y(s)),He(s,s));return i}function je(a,e,o,i){var r,n;if(typeof a.type=="function"){for(r=a.__k,n=0;r&&n<r.length;n++)r[n]&&(r[n].__=a,e=je(r[n],e,o,i));return e}a.__e!=e&&(i&&(e&&a.type&&!e.parentNode&&(e=y(a)),o.insertBefore(a.__e,e||null)),e=a.__e);do e=e&&e.nextSibling;while(e!=null&&e.nodeType==8);return e}function Pa(a,e,o,i){var r,n,t,s=a.key,l=a.type,d=e[o],m=d!=null&&(2&d.__u)==0;if(d===null&&s==null||m&&s==d.key&&l==d.type)return o;if(i>(m?1:0)){for(r=o-1,n=o+1;r>=0||n<e.length;)if((d=e[t=r>=0?r--:n++])!=null&&(2&d.__u)==0&&s==d.key&&l==d.type)return t}return-1}function Ve(a,e,o){e[0]=="-"?a.setProperty(e,o==null?"":o):a[e]=o==null?"":typeof o!="number"||ha.test(e)?o:o+"px"}function Q(a,e,o,i,r){var n,t;e:if(e=="style")if(typeof o=="string")a.style.cssText=o;else{if(typeof i=="string"&&(a.style.cssText=i=""),i)for(e in i)o&&e in o||Ve(a.style,e,"");if(o)for(e in o)i&&o[e]==i[e]||Ve(a.style,e,o[e])}else if(e[0]=="o"&&e[1]=="n")n=e!=(e=e.replace(Be,"$1")),t=e.toLowerCase(),e=t in a||e=="onFocusOut"||e=="onFocusIn"?t.slice(2):e.slice(2),a.l||(a.l={}),a.l[e+n]=o,o?i?o.u=i.u:(o.u=ge,a.addEventListener(e,n?ue:pe,n)):a.removeEventListener(e,n?ue:pe,n);else{if(r=="http://www.w3.org/2000/svg")e=e.replace(/xlink(H|:h)/,"h").replace(/sName$/,"s");else if(e!="width"&&e!="height"&&e!="href"&&e!="list"&&e!="form"&&e!="tabIndex"&&e!="download"&&e!="rowSpan"&&e!="colSpan"&&e!="role"&&e!="popover"&&e in a)try{a[e]=o==null?"":o;break e}catch(s){}typeof o=="function"||(o==null||o===!1&&e[4]!="-"?a.removeAttribute(e):a.setAttribute(e,e=="popover"&&o==1?"":o))}}function ke(a){return function(e){if(this.l){var o=this.l[e.type+a];if(e.t==null)e.t=ge++;else if(e.t<o.u)return;return o(O.event?O.event(e):e)}}}function fe(a,e,o,i,r,n,t,s,l,d){var m,c,u,A,p,S,g,h,v,D,R,V,J,x,N,T=e.type;if(e.constructor!==void 0)return null;128&o.__u&&(l=!!(32&o.__u),n=[s=e.__e=o.__e]),(m=O.__b)&&m(e);e:if(typeof T=="function")try{if(h=e.props,v="prototype"in T&&T.prototype.render,D=(m=T.contextType)&&i[m.__c],R=m?D?D.props.value:m.__:i,o.__c?g=(c=e.__c=o.__c).__=c.__E:(v?e.__c=c=new T(h,R):(e.__c=c=new K(h,R),c.constructor=T,c.render=Da),D&&D.sub(c),c.state||(c.state={}),c.__n=i,u=c.__d=!0,c.__h=[],c._sb=[]),v&&c.__s==null&&(c.__s=c.state),v&&T.getDerivedStateFromProps!=null&&(c.__s==c.state&&(c.__s=M({},c.__s)),M(c.__s,T.getDerivedStateFromProps(h,c.__s))),A=c.props,p=c.state,c.__v=e,u)v&&T.getDerivedStateFromProps==null&&c.componentWillMount!=null&&c.componentWillMount(),v&&c.componentDidMount!=null&&c.__h.push(c.componentDidMount);else{if(v&&T.getDerivedStateFromProps==null&&h!==A&&c.componentWillReceiveProps!=null&&c.componentWillReceiveProps(h,R),e.__v==o.__v||!c.__e&&c.shouldComponentUpdate!=null&&c.shouldComponentUpdate(h,c.__s,R)===!1){e.__v!=o.__v&&(c.props=h,c.state=c.__s,c.__d=!1),e.__e=o.__e,e.__k=o.__k,e.__k.some(function(B){B&&(B.__=e)}),ee.push.apply(c.__h,c._sb),c._sb=[],c.__h.length&&t.push(c);break e}c.componentWillUpdate!=null&&c.componentWillUpdate(h,c.__s,R),v&&c.componentDidUpdate!=null&&c.__h.push(function(){c.componentDidUpdate(A,p,S)})}if(c.context=R,c.props=h,c.__P=a,c.__e=!1,V=O.__r,J=0,v)c.state=c.__s,c.__d=!1,V&&V(e),m=c.render(c.props,c.state,c.context),ee.push.apply(c.__h,c._sb),c._sb=[];else do c.__d=!1,V&&V(e),m=c.render(c.props,c.state,c.context),c.state=c.__s;while(c.__d&&++J<25);c.state=c.__s,c.getChildContext!=null&&(i=M(M({},i),c.getChildContext())),v&&!u&&c.getSnapshotBeforeUpdate!=null&&(S=c.getSnapshotBeforeUpdate(A,p)),x=m!=null&&m.type===j&&m.key==null?$e(m.props.children):m,s=ye(a,re(x)?x:[x],e,o,i,r,n,t,s,l,d),c.base=e.__e,e.__u&=-161,c.__h.length&&t.push(c),g&&(c.__E=c.__=null)}catch(B){if(e.__v=null,l||n!=null)if(B.then){for(e.__u|=l?160:128;s&&s.nodeType==8&&s.nextSibling;)s=s.nextSibling;n[n.indexOf(s)]=null,e.__e=s}else{for(N=n.length;N--;)ve(n[N]);Ae(e)}else e.__e=o.__e,e.__k=o.__k,B.then||Ae(e);O.__e(B,e,o)}else n==null&&e.__v==o.__v?(e.__k=o.__k,e.__e=o.__e):s=e.__e=Ea(o.__e,e,o,i,r,n,t,l,d);return(m=O.diffed)&&m(e),128&e.__u?void 0:s}function Ae(a){a&&(a.__c&&(a.__c.__e=!0),a.__k&&a.__k.some(Ae))}function Ge(a,e,o){for(var i=0;i<o.length;i++)Ie(o[i],o[++i],o[++i]);O.__c&&O.__c(e,a),a.some(function(r){try{a=r.__h,r.__h=[],a.some(function(n){n.call(r)})}catch(n){O.__e(n,r.__v)}})}function $e(a){return typeof a!="object"||a==null||a.__b>0?a:re(a)?a.map($e):M({},a)}function Ea(a,e,o,i,r,n,t,s,l){var d,m,c,u,A,p,S,g=o.props||Y,h=e.props,v=e.type;if(v=="svg"?r="http://www.w3.org/2000/svg":v=="math"?r="http://www.w3.org/1998/Math/MathML":r||(r="http://www.w3.org/1999/xhtml"),n!=null){for(d=0;d<n.length;d++)if((A=n[d])&&"setAttribute"in A==!!v&&(v?A.localName==v:A.nodeType==3)){a=A,n[d]=null;break}}if(a==null){if(v==null)return document.createTextNode(h);a=document.createElementNS(r,v,h.is&&h),s&&(O.__m&&O.__m(e,n),s=!1),n=null}if(v==null)g===h||s&&a.data==h||(a.data=h);else{if(n=n&&oe.call(a.childNodes),!s&&n!=null)for(g={},d=0;d<a.attributes.length;d++)g[(A=a.attributes[d]).name]=A.value;for(d in g)A=g[d],d=="dangerouslySetInnerHTML"?c=A:d=="children"||d in h||d=="value"&&"defaultValue"in h||d=="checked"&&"defaultChecked"in h||Q(a,d,null,A,r);for(d in h)A=h[d],d=="children"?u=A:d=="dangerouslySetInnerHTML"?m=A:d=="value"?p=A:d=="checked"?S=A:s&&typeof A!="function"||g[d]===A||Q(a,d,A,g[d],r);if(m)s||c&&(m.__html==c.__html||m.__html==a.innerHTML)||(a.innerHTML=m.__html),e.__k=[];else if(c&&(a.innerHTML=""),ye(e.type=="template"?a.content:a,re(u)?u:[u],e,o,i,v=="foreignObject"?"http://www.w3.org/1999/xhtml":r,n,t,n?n[0]:o.__k&&y(o,0),s,l),n!=null)for(d=n.length;d--;)ve(n[d]);s||(d="value",v=="progress"&&p==null?a.removeAttribute("value"):p!=null&&(p!==a[d]||v=="progress"&&!p||v=="option"&&p!=g[d])&&Q(a,d,p,g[d],r),d="checked",S!=null&&S!=a[d]&&Q(a,d,S,g[d],r))}return a}function Ie(a,e,o){try{if(typeof a=="function"){var i=typeof a.__u=="function";i&&a.__u(),i&&e==null||(a.__u=a(e))}else a.current=e}catch(r){O.__e(r,o)}}function He(a,e,o){var i,r;if(O.unmount&&O.unmount(a),(i=a.ref)&&(i.current&&i.current!=a.__e||Ie(i,null,e)),(i=a.__c)!=null){if(i.componentWillUnmount)try{i.componentWillUnmount()}catch(n){O.__e(n,e)}i.base=i.__P=null}if(i=a.__k)for(r=0;r<i.length;r++)i[r]&&He(i[r],e,o||typeof a.type!="function");o||ve(a.__e),a.__c=a.__=a.__e=void 0}function Da(a,e,o){return this.constructor(a,o)}function Xe(a,e,o){var i,r,n,t;e==document&&(e=document.documentElement),O.__&&O.__(a,e),r=(i=typeof o=="function")?null:o&&o.__k||e.__k,n=[],t=[],fe(e,a=(!i&&o||e).__k=ba(j,null,[a]),r||Y,Y,e.namespaceURI,!i&&o?[o]:r?null:e.firstChild?oe.call(e.childNodes):null,n,!i&&o?o:r?r.__e:e.firstChild,i,t),Ge(n,a,t)}oe=ee.slice,O={__e:function(a,e,o,i){for(var r,n,t;e=e.__;)if((r=e.__c)&&!r.__)try{if((n=r.constructor)&&n.getDerivedStateFromError!=null&&(r.setState(n.getDerivedStateFromError(a)),t=r.__d),r.componentDidCatch!=null&&(r.componentDidCatch(a,i||{}),t=r.__d),t)return r.__E=r}catch(s){a=s}throw a}},Ue=0,fa=function(a){return a!=null&&a.constructor===void 0},K.prototype.setState=function(a,e){var o;o=this.__s!=null&&this.__s!=this.state?this.__s:this.__s=M({},this.state),typeof a=="function"&&(a=a(M({},o),this.props)),a&&M(o,a),a!=null&&this.__v&&(e&&this._sb.push(e),ze(this))},K.prototype.forceUpdate=function(a){this.__v&&(this.__e=!0,a&&this.__h.push(a),ze(this))},K.prototype.render=j,k=[],Fe=typeof Promise=="function"?Promise.prototype.then.bind(Promise.resolve()):setTimeout,Le=function(a,e){return a.__v.__b-e.__v.__b},ae.__r=0,Be=/(PointerCapture)$|Capture$/i,ge=0,pe=ke(!1),ue=ke(!0),Ia=0;function Oe(){return{async:!1,breaks:!1,extensions:null,gfm:!0,hooks:null,pedantic:!1,renderer:null,silent:!1,tokenizer:null,walkTokens:null}}var L=Oe();function aa(a){L=a}var U={exec:()=>null};function f(a,e=""){let o=typeof a=="string"?a:a.source,i={replace:(r,n)=>{let t=typeof n=="string"?n:n.source;return t=t.replace(P.caret,"$1"),o=o.replace(r,t),i},getRegex:()=>new RegExp(o,e)};return i}var _a=(()=>{try{return!!new RegExp("(?<=1)(?<!1)")}catch(a){return!1}})(),P={codeRemoveIndent:/^(?: {1,4}| {0,3}\t)/gm,outputLinkReplace:/\\([\[\]])/g,indentCodeCompensation:/^(\s+)(?:```)/,beginningSpace:/^\s+/,endingHash:/#$/,startingSpaceChar:/^ /,endingSpaceChar:/ $/,nonSpaceChar:/[^ ]/,newLineCharGlobal:/\n/g,tabCharGlobal:/\t/g,multipleSpaceGlobal:/\s+/g,blankLine:/^[ \t]*$/,doubleBlankLine:/\n[ \t]*\n[ \t]*$/,blockquoteStart:/^ {0,3}>/,blockquoteSetextReplace:/\n {0,3}((?:=+|-+) *)(?=\n|$)/g,blockquoteSetextReplace2:/^ {0,3}>[ \t]?/gm,listReplaceNesting:/^ {1,4}(?=( {4})*[^ ])/g,listIsTask:/^\[[ xX]\] +\S/,listReplaceTask:/^\[[ xX]\] +/,listTaskCheckbox:/\[[ xX]\]/,anyLine:/\n.*\n/,hrefBrackets:/^<(.*)>$/,tableDelimiter:/[:|]/,tableAlignChars:/^\||\| *$/g,tableRowBlankLine:/\n[ \t]*$/,tableAlignRight:/^ *-+: *$/,tableAlignCenter:/^ *:-+: *$/,tableAlignLeft:/^ *:-+ *$/,startATag:/^<a /i,endATag:/^<\/a>/i,startPreScriptTag:/^<(pre|code|kbd|script)(\s|>)/i,endPreScriptTag:/^<\/(pre|code|kbd|script)(\s|>)/i,startAngleBracket:/^</,endAngleBracket:/>$/,pedanticHrefTitle:/^([^'"]*[^\s])\s+(['"])(.*)\2/,unicodeAlphaNumeric:/[\p{L}\p{N}]/u,escapeTest:/[&<>"']/,escapeReplace:/[&<>"']/g,escapeTestNoEncode:/[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/,escapeReplaceNoEncode:/[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/g,caret:/(^|[^\[])\^/g,percentDecode:/%25/g,findPipe:/\|/g,splitPipe:/ \|/,slashPipe:/\\\|/g,carriageReturn:/\r\n|\r/g,spaceLine:/^ +$/gm,notSpaceStart:/^\S*/,endingNewline:/\n$/,listItemRegex:a=>new RegExp(`^( {0,3}${a})((?:[	 ][^\\n]*)?(?:\\n|$))`),nextBulletRegex:a=>new RegExp(`^ {0,${Math.min(3,a-1)}}(?:[*+-]|\\d{1,9}[.)])((?:[ 	][^\\n]*)?(?:\\n|$))`),hrRegex:a=>new RegExp(`^ {0,${Math.min(3,a-1)}}((?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$)`),fencesBeginRegex:a=>new RegExp(`^ {0,${Math.min(3,a-1)}}(?:\`\`\`|~~~)`),headingBeginRegex:a=>new RegExp(`^ {0,${Math.min(3,a-1)}}#`),htmlBeginRegex:a=>new RegExp(`^ {0,${Math.min(3,a-1)}}<(?:[a-z].*>|!--)`,"i"),blockquoteBeginRegex:a=>new RegExp(`^ {0,${Math.min(3,a-1)}}>`)},Ca=/^(?:[ \t]*(?:\n|$))+/,Ra=/^((?: {4}| {0,3}\t)[^\n]+(?:\n(?:[ \t]*(?:\n|$))*)?)+/,Ta=/^ {0,3}(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))(?: {0,3}\1[~`]* *(?=\n|$)|$)/,Z=/^ {0,3}((?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/,qa=/^ {0,3}(#{1,6})(?=\s|$)(.*)(?:\n+|$)/,Pe=/ {0,3}(?:[*+-]|\d{1,9}[.)])/,oa=/^(?!bull |blockCode|fences|blockquote|heading|html|table)((?:.|\n(?!\s*?\n|bull |blockCode|fences|blockquote|heading|html|table))+?)\n {0,3}(=+|-+) *(?:\n+|$)/,ra=f(oa).replace(/bull/g,Pe).replace(/blockCode/g,/(?: {4}| {0,3}\t)/).replace(/fences/g,/ {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g,/ {0,3}>/).replace(/heading/g,/ {0,3}#{1,6}/).replace(/html/g,/ {0,3}<[^\n>]+>\n/).replace(/\|table/g,"").getRegex(),Na=f(oa).replace(/bull/g,Pe).replace(/blockCode/g,/(?: {4}| {0,3}\t)/).replace(/fences/g,/ {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g,/ {0,3}>/).replace(/heading/g,/ {0,3}#{1,6}/).replace(/html/g,/ {0,3}<[^\n>]+>\n/).replace(/table/g,/ {0,3}\|?(?:[:\- ]*\|)+[\:\- ]*\n/).getRegex(),Ee=/^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html|table| +\n)[^\n]+)*)/,Ma=/^[^\n]+/,De=/(?!\s*\])(?:\\[\s\S]|[^\[\]\\])+/,xa=f(/^ {0,3}\[(label)\]: *(?:\n[ \t]*)?([^<\s][^\s]*|<.*?>)(?:(?: +(?:\n[ \t]*)?| *\n[ \t]*)(title))? *(?:\n+|$)/).replace("label",De).replace("title",/(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/).getRegex(),za=f(/^(bull)([ \t][^\n]+?)?(?:\n|$)/).replace(/bull/g,Pe).getRegex(),ce="address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|search|section|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul",_e=/<!--(?:-?>|[\s\S]*?(?:-->|$))/,Va=f("^ {0,3}(?:<(script|pre|style|textarea)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\S]*?(?:\\?>\\n*|$)|<![A-Z][\\s\\S]*?(?:>\\n*|$)|<!\\[CDATA\\[[\\s\\S]*?(?:\\]\\]>\\n*|$)|</?(tag)(?: +|\\n|/?>)[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|<(?!script|pre|style|textarea)([a-z][\\w-]*)(?:attribute)*? */?>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|</(?!script|pre|style|textarea)[a-z][\\w-]*\\s*>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$))","i").replace("comment",_e).replace("tag",ce).replace("attribute",/ +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex(),ia=f(Ee).replace("hr",Z).replace("heading"," {0,3}#{1,6}(?:\\s|$)").replace("|lheading","").replace("|table","").replace("blockquote"," {0,3}>").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list"," {0,3}(?:[*+-]|1[.)])[ \\t]").replace("html","</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag",ce).getRegex(),ka=f(/^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/).replace("paragraph",ia).getRegex(),Ce={blockquote:ka,code:Ra,def:xa,fences:Ta,heading:qa,hr:Z,html:Va,lheading:ra,list:za,newline:Ca,paragraph:ia,table:U,text:Ma},Ze=f("^ *([^\\n ].*)\\n {0,3}((?:\\| *)?:?-+:? *(?:\\| *:?-+:? *)*(?:\\| *)?)(?:\\n((?:(?! *\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)").replace("hr",Z).replace("heading"," {0,3}#{1,6}(?:\\s|$)").replace("blockquote"," {0,3}>").replace("code","(?: {4}| {0,3}	)[^\\n]").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list"," {0,3}(?:[*+-]|1[.)])[ \\t]").replace("html","</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag",ce).getRegex(),Ua=w(E({},Ce),{lheading:Na,table:Ze,paragraph:f(Ee).replace("hr",Z).replace("heading"," {0,3}#{1,6}(?:\\s|$)").replace("|lheading","").replace("table",Ze).replace("blockquote"," {0,3}>").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list"," {0,3}(?:[*+-]|1[.)])[ \\t]").replace("html","</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag",ce).getRegex()}),Fa=w(E({},Ce),{html:f(`^ *(?:comment *(?:\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)|<tag(?:"[^"]*"|'[^']*'|\\s[^'"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))`).replace("comment",_e).replace(/tag/g,"(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b").getRegex(),def:/^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/,heading:/^(#{1,6})(.*)(?:\n+|$)/,fences:U,lheading:/^(.+?)\n {0,3}(=+|-+) *(?:\n+|$)/,paragraph:f(Ee).replace("hr",Z).replace("heading",` *#{1,6} *[^
-]`).replace("lheading",ra).replace("|table","").replace("blockquote"," {0,3}>").replace("|fences","").replace("|list","").replace("|html","").replace("|tag","").getRegex()}),La=/^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/,Ba=/^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/,na=/^( {2,}|\\)\n(?!\s*$)/,wa=/^(`+|[^`])(?:(?= {2,}\n)|[\s\S]*?(?:(?=[\\<!\[`*_]|\b_|$)|[^ ](?= {2,}\n)))/,G=/[\p{P}\p{S}]/u,le=/[\s\p{P}\p{S}]/u,Re=/[^\s\p{P}\p{S}]/u,ya=f(/^((?![*_])punctSpace)/,"u").replace(/punctSpace/g,le).getRegex(),sa=/(?!~)[\p{P}\p{S}]/u,ja=/(?!~)[\s\p{P}\p{S}]/u,Ga=/(?:[^\s\p{P}\p{S}]|~)/u,$a=f(/link|precode-code|html/,"g").replace("link",new RegExp("\\[(?:[^\\[\\]`]|(?<a>`+)[^`]+\\k<a>(?!`))*?\\]\\((?:\\\\[\\s\\S]|[^\\\\\\(\\)]|\\((?:\\\\[\\s\\S]|[^\\\\\\(\\)])*\\))*\\)")).replace("precode-",_a?"(?<!`)()":"(^^|[^`])").replace("code",new RegExp("(?<b>`+)[^`]+\\k<b>(?!`)")).replace("html",/<(?! )[^<>]*?>/).getRegex(),ta=/^(?:\*+(?:((?!\*)punct)|([^\s*]))?)|^_+(?:((?!_)punct)|([^\s_]))?/,Ha=f(ta,"u").replace(/punct/g,G).getRegex(),Xa=f(ta,"u").replace(/punct/g,sa).getRegex(),da="^[^_*]*?__[^_*]*?\\*[^_*]*?(?=__)|[^*]+(?=[^*])|(?!\\*)punct(\\*+)(?=[\\s]|$)|notPunctSpace(\\*+)(?!\\*)(?=punctSpace|$)|(?!\\*)punctSpace(\\*+)(?=notPunctSpace)|[\\s](\\*+)(?!\\*)(?=punct)|(?!\\*)punct(\\*+)(?!\\*)(?=punct)|notPunctSpace(\\*+)(?=notPunctSpace)",Za=f(da,"gu").replace(/notPunctSpace/g,Re).replace(/punctSpace/g,le).replace(/punct/g,G).getRegex(),Ja=f(da,"gu").replace(/notPunctSpace/g,Ga).replace(/punctSpace/g,ja).replace(/punct/g,sa).getRegex(),Qa=f("^[^_*]*?\\*\\*[^_*]*?_[^_*]*?(?=\\*\\*)|[^_]+(?=[^_])|(?!_)punct(_+)(?=[\\s]|$)|notPunctSpace(_+)(?!_)(?=punctSpace|$)|(?!_)punctSpace(_+)(?=notPunctSpace)|[\\s](_+)(?!_)(?=punct)|(?!_)punct(_+)(?!_)(?=punct)","gu").replace(/notPunctSpace/g,Re).replace(/punctSpace/g,le).replace(/punct/g,G).getRegex(),Wa=f(/^~~?(?:((?!~)punct)|[^\s~])/,"u").replace(/punct/g,G).getRegex(),Ka="^[^~]+(?=[^~])|(?!~)punct(~~?)(?=[\\s]|$)|notPunctSpace(~~?)(?!~)(?=punctSpace|$)|(?!~)punctSpace(~~?)(?=notPunctSpace)|[\\s](~~?)(?!~)(?=punct)|(?!~)punct(~~?)(?!~)(?=punct)|notPunctSpace(~~?)(?=notPunctSpace)",Ya=f(Ka,"gu").replace(/notPunctSpace/g,Re).replace(/punctSpace/g,le).replace(/punct/g,G).getRegex(),eo=f(/\\(punct)/,"gu").replace(/punct/g,G).getRegex(),ao=f(/^<(scheme:[^\s\x00-\x1f<>]*|email)>/).replace("scheme",/[a-zA-Z][a-zA-Z0-9+.-]{1,31}/).replace("email",/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/).getRegex(),oo=f(_e).replace("(?:-->|$)","-->").getRegex(),ro=f("^comment|^</[a-zA-Z][\\w:-]*\\s*>|^<[a-zA-Z][\\w-]*(?:attribute)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>").replace("comment",oo).replace("attribute",/\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/).getRegex(),se=/(?:\[(?:\\[\s\S]|[^\[\]\\])*\]|\\[\s\S]|`+(?!`)[^`]*?`+(?!`)|``+(?=\])|[^\[\]\\`])*?/,io=f(/^!?\[(label)\]\(\s*(href)(?:(?:[ \t]+(?:\n[ \t]*)?|\n[ \t]*)(title))?\s*\)/).replace("label",se).replace("href",/<(?:\\.|[^\n<>\\])+>|[^ \t\n\x00-\x1f]*/).replace("title",/"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/).getRegex(),ca=f(/^!?\[(label)\]\[(ref)\]/).replace("label",se).replace("ref",De).getRegex(),la=f(/^!?\[(ref)\](?:\[\])?/).replace("ref",De).getRegex(),no=f("reflink|nolink(?!\\()","g").replace("reflink",ca).replace("nolink",la).getRegex(),Je=/[hH][tT][tT][pP][sS]?|[fF][tT][pP]/,Te={_backpedal:U,anyPunctuation:eo,autolink:ao,blockSkip:$a,br:na,code:Ba,del:U,delLDelim:U,delRDelim:U,emStrongLDelim:Ha,emStrongRDelimAst:Za,emStrongRDelimUnd:Qa,escape:La,link:io,nolink:la,punctuation:ya,reflink:ca,reflinkSearch:no,tag:ro,text:wa,url:U},so=w(E({},Te),{link:f(/^!?\[(label)\]\((.*?)\)/).replace("label",se).getRegex(),reflink:f(/^!?\[(label)\]\s*\[([^\]]*)\]/).replace("label",se).getRegex()}),he=w(E({},Te),{emStrongRDelimAst:Ja,emStrongLDelim:Xa,delLDelim:Wa,delRDelim:Ya,url:f(/^((?:protocol):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/).replace("protocol",Je).replace("email",/[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![-_])/).getRegex(),_backpedal:/(?:[^?!.,:;*_'"~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_'"~)]+(?!$))+/,del:/^(~~?)(?=[^\s~])((?:\\[\s\S]|[^\\])*?(?:\\[\s\S]|[^\s~\\]))\1(?=[^~]|$)/,text:f(/^([`~]+|[^`~])(?:(?= {2,}\n)|(?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)|[\s\S]*?(?:(?=[\\<!\[`*~_]|\b_|protocol:\/\/|www\.|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-](?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)))/).replace("protocol",Je).getRegex()}),to=w(E({},he),{br:f(na).replace("{2,}","*").getRegex(),text:f(he.text).replace("\\b_","\\b_| {2,}\\n").replace(/\{2,\}/g,"*").getRegex()}),ie={normal:Ce,gfm:Ua,pedantic:Fa},H={normal:Te,gfm:he,breaks:to,pedantic:so},co={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"},Qe=a=>co[a];function q(a,e){if(e){if(P.escapeTest.test(a))return a.replace(P.escapeReplace,Qe)}else if(P.escapeTestNoEncode.test(a))return a.replace(P.escapeReplaceNoEncode,Qe);return a}function We(a){try{a=encodeURI(a).replace(P.percentDecode,"%")}catch(e){return null}return a}function Ke(a,e){var n;let o=a.replace(P.findPipe,(t,s,l)=>{let d=!1,m=s;for(;--m>=0&&l[m]==="\\";)d=!d;return d?"|":" |"}),i=o.split(P.splitPipe),r=0;if(i[0].trim()||i.shift(),i.length>0&&!((n=i.at(-1))!=null&&n.trim())&&i.pop(),e)if(i.length>e)i.splice(e);else for(;i.length<e;)i.push("");for(;r<i.length;r++)i[r]=i[r].trim().replace(P.slashPipe,"|");return i}function z(a,e,o){let i=a.length;if(i===0)return"";let r=0;for(;r<i;){let n=a.charAt(i-r-1);if(n===e&&!o)r++;else if(n!==e&&o)r++;else break}return a.slice(0,i-r)}function Ye(a){let e=a.split(`
-`),o=e.length-1;for(;o>=0&&!e[o].trim();)o--;return e.length-o<=2?a:e.slice(0,o+1).join(`
-`)}function lo(a,e){if(a.indexOf(e[1])===-1)return-1;let o=0;for(let i=0;i<a.length;i++)if(a[i]==="\\")i++;else if(a[i]===e[0])o++;else if(a[i]===e[1]&&(o--,o<0))return i;return o>0?-2:-1}function mo(a,e=0){let o=e,i="";for(let r of a)if(r==="	"){let n=4-o%4;i+=" ".repeat(n),o+=n}else i+=r,o++;return i}function ea(a,e,o,i,r){let n=e.href,t=e.title||null,s=a[1].replace(r.other.outputLinkReplace,"$1");i.state.inLink=!0;let l={type:a[0].charAt(0)==="!"?"image":"link",raw:o,href:n,title:t,text:s,tokens:i.inlineTokens(s)};return i.state.inLink=!1,l}function po(a,e,o){let i=a.match(o.other.indentCodeCompensation);if(i===null)return e;let r=i[1];return e.split(`
-`).map(n=>{let t=n.match(o.other.beginningSpace);if(t===null)return n;let[s]=t;return s.length>=r.length?n.slice(r.length):n}).join(`
-`)}var te=class{constructor(a){b(this,"options");b(this,"rules");b(this,"lexer");this.options=a||L}space(a){let e=this.rules.block.newline.exec(a);if(e&&e[0].length>0)return{type:"space",raw:e[0]}}code(a){let e=this.rules.block.code.exec(a);if(e){let o=this.options.pedantic?e[0]:Ye(e[0]),i=o.replace(this.rules.other.codeRemoveIndent,"");return{type:"code",raw:o,codeBlockStyle:"indented",text:i}}}fences(a){let e=this.rules.block.fences.exec(a);if(e){let o=e[0],i=po(o,e[3]||"",this.rules);return{type:"code",raw:o,lang:e[2]?e[2].trim().replace(this.rules.inline.anyPunctuation,"$1"):e[2],text:i}}}heading(a){let e=this.rules.block.heading.exec(a);if(e){let o=e[2].trim();if(this.rules.other.endingHash.test(o)){let i=z(o,"#");(this.options.pedantic||!i||this.rules.other.endingSpaceChar.test(i))&&(o=i.trim())}return{type:"heading",raw:z(e[0],`
-`),depth:e[1].length,text:o,tokens:this.lexer.inline(o)}}}hr(a){let e=this.rules.block.hr.exec(a);if(e)return{type:"hr",raw:z(e[0],`
-`)}}blockquote(a){let e=this.rules.block.blockquote.exec(a);if(e){let o=z(e[0],`
-`).split(`
-`),i="",r="",n=[];for(;o.length>0;){let t=!1,s=[],l;for(l=0;l<o.length;l++)if(this.rules.other.blockquoteStart.test(o[l]))s.push(o[l]),t=!0;else if(!t)s.push(o[l]);else break;o=o.slice(l);let d=s.join(`
-`),m=d.replace(this.rules.other.blockquoteSetextReplace,`
-    $1`).replace(this.rules.other.blockquoteSetextReplace2,"");i=i?`${i}
-${d}`:d,r=r?`${r}
-${m}`:m;let c=this.lexer.state.top;if(this.lexer.state.top=!0,this.lexer.blockTokens(m,n,!0),this.lexer.state.top=c,o.length===0)break;let u=n.at(-1);if((u==null?void 0:u.type)==="code")break;if((u==null?void 0:u.type)==="blockquote"){let A=u,p=A.raw+`
-`+o.join(`
-`),S=this.blockquote(p);n[n.length-1]=S,i=i.substring(0,i.length-A.raw.length)+S.raw,r=r.substring(0,r.length-A.text.length)+S.text;break}else if((u==null?void 0:u.type)==="list"){let A=u,p=A.raw+`
-`+o.join(`
-`),S=this.list(p);n[n.length-1]=S,i=i.substring(0,i.length-u.raw.length)+S.raw,r=r.substring(0,r.length-A.raw.length)+S.raw,o=p.substring(n.at(-1).raw.length).split(`
-`);continue}}return{type:"blockquote",raw:i,tokens:n,text:r}}}list(a){var o,i;let e=this.rules.block.list.exec(a);if(e){let r=e[1].trim(),n=r.length>1,t={type:"list",raw:"",ordered:n,start:n?+r.slice(0,-1):"",loose:!1,items:[]};r=n?`\\d{1,9}\\${r.slice(-1)}`:`\\${r}`,this.options.pedantic&&(r=n?r:"[*+-]");let s=this.rules.other.listItemRegex(r),l=!1;for(;a;){let m=!1,c="",u="";if(!(e=s.exec(a))||this.rules.block.hr.test(a))break;c=e[0],a=a.substring(c.length);let A=mo(e[2].split(`
-`,1)[0],e[1].length),p=a.split(`
-`,1)[0],S=!A.trim(),g=0;if(this.options.pedantic?(g=2,u=A.trimStart()):S?g=e[1].length+1:(g=A.search(this.rules.other.nonSpaceChar),g=g>4?1:g,u=A.slice(g),g+=e[1].length),S&&this.rules.other.blankLine.test(p)&&(c+=p+`
-`,a=a.substring(p.length+1),m=!0),!m){let h=this.rules.other.nextBulletRegex(g),v=this.rules.other.hrRegex(g),D=this.rules.other.fencesBeginRegex(g),R=this.rules.other.headingBeginRegex(g),V=this.rules.other.htmlBeginRegex(g),J=this.rules.other.blockquoteBeginRegex(g);for(;a;){let x=a.split(`
-`,1)[0],N;if(p=x,this.options.pedantic?(p=p.replace(this.rules.other.listReplaceNesting,"  "),N=p):N=p.replace(this.rules.other.tabCharGlobal,"    "),D.test(p)||R.test(p)||V.test(p)||J.test(p)||h.test(p)||v.test(p))break;if(N.search(this.rules.other.nonSpaceChar)>=g||!p.trim())u+=`
-`+N.slice(g);else{if(S||A.replace(this.rules.other.tabCharGlobal,"    ").search(this.rules.other.nonSpaceChar)>=4||D.test(A)||R.test(A)||v.test(A))break;u+=`
-`+p}S=!p.trim(),c+=x+`
-`,a=a.substring(x.length+1),A=N.slice(g)}}t.loose||(l?t.loose=!0:this.rules.other.doubleBlankLine.test(c)&&(l=!0)),t.items.push({type:"list_item",raw:c,task:!!this.options.gfm&&this.rules.other.listIsTask.test(u),loose:!1,text:u,tokens:[]}),t.raw+=c}let d=t.items.at(-1);if(d)d.raw=d.raw.trimEnd(),d.text=d.text.trimEnd();else return;t.raw=t.raw.trimEnd();for(let m of t.items){if(this.lexer.state.top=!1,m.tokens=this.lexer.blockTokens(m.text,[]),m.task){if(m.text=m.text.replace(this.rules.other.listReplaceTask,""),((o=m.tokens[0])==null?void 0:o.type)==="text"||((i=m.tokens[0])==null?void 0:i.type)==="paragraph"){m.tokens[0].raw=m.tokens[0].raw.replace(this.rules.other.listReplaceTask,""),m.tokens[0].text=m.tokens[0].text.replace(this.rules.other.listReplaceTask,"");for(let u=this.lexer.inlineQueue.length-1;u>=0;u--)if(this.rules.other.listIsTask.test(this.lexer.inlineQueue[u].src)){this.lexer.inlineQueue[u].src=this.lexer.inlineQueue[u].src.replace(this.rules.other.listReplaceTask,"");break}}let c=this.rules.other.listTaskCheckbox.exec(m.raw);if(c){let u={type:"checkbox",raw:c[0]+" ",checked:c[0]!=="[ ]"};m.checked=u.checked,t.loose?m.tokens[0]&&["paragraph","text"].includes(m.tokens[0].type)&&"tokens"in m.tokens[0]&&m.tokens[0].tokens?(m.tokens[0].raw=u.raw+m.tokens[0].raw,m.tokens[0].text=u.raw+m.tokens[0].text,m.tokens[0].tokens.unshift(u)):m.tokens.unshift({type:"paragraph",raw:u.raw,text:u.raw,tokens:[u]}):m.tokens.unshift(u)}}if(!t.loose){let c=m.tokens.filter(A=>A.type==="space"),u=c.length>0&&c.some(A=>this.rules.other.anyLine.test(A.raw));t.loose=u}}if(t.loose)for(let m of t.items){m.loose=!0;for(let c of m.tokens)c.type==="text"&&(c.type="paragraph")}return t}}html(a){let e=this.rules.block.html.exec(a);if(e){let o=Ye(e[0]);return{type:"html",block:!0,raw:o,pre:e[1]==="pre"||e[1]==="script"||e[1]==="style",text:o}}}def(a){let e=this.rules.block.def.exec(a);if(e){let o=e[1].toLowerCase().replace(this.rules.other.multipleSpaceGlobal," "),i=e[2]?e[2].replace(this.rules.other.hrefBrackets,"$1").replace(this.rules.inline.anyPunctuation,"$1"):"",r=e[3]?e[3].substring(1,e[3].length-1).replace(this.rules.inline.anyPunctuation,"$1"):e[3];return{type:"def",tag:o,raw:z(e[0],`
-`),href:i,title:r}}}table(a){var t;let e=this.rules.block.table.exec(a);if(!e||!this.rules.other.tableDelimiter.test(e[2]))return;let o=Ke(e[1]),i=e[2].replace(this.rules.other.tableAlignChars,"").split("|"),r=(t=e[3])!=null&&t.trim()?e[3].replace(this.rules.other.tableRowBlankLine,"").split(`
-`):[],n={type:"table",raw:z(e[0],`
-`),header:[],align:[],rows:[]};if(o.length===i.length){for(let s of i)this.rules.other.tableAlignRight.test(s)?n.align.push("right"):this.rules.other.tableAlignCenter.test(s)?n.align.push("center"):this.rules.other.tableAlignLeft.test(s)?n.align.push("left"):n.align.push(null);for(let s=0;s<o.length;s++)n.header.push({text:o[s],tokens:this.lexer.inline(o[s]),header:!0,align:n.align[s]});for(let s of r)n.rows.push(Ke(s,n.header.length).map((l,d)=>({text:l,tokens:this.lexer.inline(l),header:!1,align:n.align[d]})));return n}}lheading(a){let e=this.rules.block.lheading.exec(a);if(e){let o=e[1].trim();return{type:"heading",raw:z(e[0],`
-`),depth:e[2].charAt(0)==="="?1:2,text:o,tokens:this.lexer.inline(o)}}}paragraph(a){let e=this.rules.block.paragraph.exec(a);if(e){let o=e[1].charAt(e[1].length-1)===`
-`?e[1].slice(0,-1):e[1];return{type:"paragraph",raw:e[0],text:o,tokens:this.lexer.inline(o)}}}text(a){let e=this.rules.block.text.exec(a);if(e)return{type:"text",raw:e[0],text:e[0],tokens:this.lexer.inline(e[0])}}escape(a){let e=this.rules.inline.escape.exec(a);if(e)return{type:"escape",raw:e[0],text:e[1]}}tag(a){let e=this.rules.inline.tag.exec(a);if(e)return!this.lexer.state.inLink&&this.rules.other.startATag.test(e[0])?this.lexer.state.inLink=!0:this.lexer.state.inLink&&this.rules.other.endATag.test(e[0])&&(this.lexer.state.inLink=!1),!this.lexer.state.inRawBlock&&this.rules.other.startPreScriptTag.test(e[0])?this.lexer.state.inRawBlock=!0:this.lexer.state.inRawBlock&&this.rules.other.endPreScriptTag.test(e[0])&&(this.lexer.state.inRawBlock=!1),{type:"html",raw:e[0],inLink:this.lexer.state.inLink,inRawBlock:this.lexer.state.inRawBlock,block:!1,text:e[0]}}link(a){let e=this.rules.inline.link.exec(a);if(e){let o=e[2].trim();if(!this.options.pedantic&&this.rules.other.startAngleBracket.test(o)){if(!this.rules.other.endAngleBracket.test(o))return;let n=z(o.slice(0,-1),"\\");if((o.length-n.length)%2===0)return}else{let n=lo(e[2],"()");if(n===-2)return;if(n>-1){let t=(e[0].indexOf("!")===0?5:4)+e[1].length+n;e[2]=e[2].substring(0,n),e[0]=e[0].substring(0,t).trim(),e[3]=""}}let i=e[2],r="";if(this.options.pedantic){let n=this.rules.other.pedanticHrefTitle.exec(i);n&&(i=n[1],r=n[3])}else r=e[3]?e[3].slice(1,-1):"";return i=i.trim(),this.rules.other.startAngleBracket.test(i)&&(this.options.pedantic&&!this.rules.other.endAngleBracket.test(o)?i=i.slice(1):i=i.slice(1,-1)),ea(e,{href:i&&i.replace(this.rules.inline.anyPunctuation,"$1"),title:r&&r.replace(this.rules.inline.anyPunctuation,"$1")},e[0],this.lexer,this.rules)}}reflink(a,e){let o;if((o=this.rules.inline.reflink.exec(a))||(o=this.rules.inline.nolink.exec(a))){let i=(o[2]||o[1]).replace(this.rules.other.multipleSpaceGlobal," "),r=e[i.toLowerCase()];if(!r){let n=o[0].charAt(0);return{type:"text",raw:n,text:n}}return ea(o,r,o[0],this.lexer,this.rules)}}emStrong(a,e,o=""){let i=this.rules.inline.emStrongLDelim.exec(a);if(!(!i||!i[1]&&!i[2]&&!i[3]&&!i[4]||i[4]&&o.match(this.rules.other.unicodeAlphaNumeric))&&(!(i[1]||i[3])||!o||this.rules.inline.punctuation.exec(o))){let r=[...i[0]].length-1,n,t,s=r,l=0,d=i[0][0]==="*"?this.rules.inline.emStrongRDelimAst:this.rules.inline.emStrongRDelimUnd;for(d.lastIndex=0,e=e.slice(-1*a.length+r);(i=d.exec(e))!==null;){if(n=i[1]||i[2]||i[3]||i[4]||i[5]||i[6],!n)continue;if(t=[...n].length,i[3]||i[4]){s+=t;continue}else if((i[5]||i[6])&&r%3&&!((r+t)%3)){l+=t;continue}if(s-=t,s>0)continue;t=Math.min(t,t+s+l);let m=[...i[0]][0].length,c=a.slice(0,r+i.index+m+t);if(Math.min(r,t)%2){let A=c.slice(1,-1);return{type:"em",raw:c,text:A,tokens:this.lexer.inlineTokens(A)}}let u=c.slice(2,-2);return{type:"strong",raw:c,text:u,tokens:this.lexer.inlineTokens(u)}}}}codespan(a){let e=this.rules.inline.code.exec(a);if(e){let o=e[2].replace(this.rules.other.newLineCharGlobal," "),i=this.rules.other.nonSpaceChar.test(o),r=this.rules.other.startingSpaceChar.test(o)&&this.rules.other.endingSpaceChar.test(o);return i&&r&&(o=o.substring(1,o.length-1)),{type:"codespan",raw:e[0],text:o}}}br(a){let e=this.rules.inline.br.exec(a);if(e)return{type:"br",raw:e[0]}}del(a,e,o=""){let i=this.rules.inline.delLDelim.exec(a);if(i&&(!i[1]||!o||this.rules.inline.punctuation.exec(o))){let r=[...i[0]].length-1,n,t,s=r,l=this.rules.inline.delRDelim;for(l.lastIndex=0,e=e.slice(-1*a.length+r);(i=l.exec(e))!==null;){if(n=i[1]||i[2]||i[3]||i[4]||i[5]||i[6],!n||(t=[...n].length,t!==r))continue;if(i[3]||i[4]){s+=t;continue}if(s-=t,s>0)continue;t=Math.min(t,t+s);let d=[...i[0]][0].length,m=a.slice(0,r+i.index+d+t),c=m.slice(r,-r);return{type:"del",raw:m,text:c,tokens:this.lexer.inlineTokens(c)}}}}autolink(a){let e=this.rules.inline.autolink.exec(a);if(e){let o,i;return e[2]==="@"?(o=e[1],i="mailto:"+o):(o=e[1],i=o),{type:"link",raw:e[0],text:o,href:i,tokens:[{type:"text",raw:o,text:o}]}}}url(a){var o,i;let e;if(e=this.rules.inline.url.exec(a)){let r,n;if(e[2]==="@")r=e[0],n="mailto:"+r;else{let t;do t=e[0],e[0]=(i=(o=this.rules.inline._backpedal.exec(e[0]))==null?void 0:o[0])!=null?i:"";while(t!==e[0]);r=e[0],e[1]==="www."?n="http://"+e[0]:n=e[0]}return{type:"link",raw:e[0],text:r,href:n,tokens:[{type:"text",raw:r,text:r}]}}}inlineText(a){let e=this.rules.inline.text.exec(a);if(e){let o=this.lexer.state.inRawBlock;return{type:"text",raw:e[0],text:e[0],escaped:o}}}},_=class be{constructor(e){b(this,"tokens");b(this,"options");b(this,"state");b(this,"inlineQueue");b(this,"tokenizer");this.tokens=[],this.tokens.links=Object.create(null),this.options=e||L,this.options.tokenizer=this.options.tokenizer||new te,this.tokenizer=this.options.tokenizer,this.tokenizer.options=this.options,this.tokenizer.lexer=this,this.inlineQueue=[],this.state={inLink:!1,inRawBlock:!1,top:!0};let o={other:P,block:ie.normal,inline:H.normal};this.options.pedantic?(o.block=ie.pedantic,o.inline=H.pedantic):this.options.gfm&&(o.block=ie.gfm,this.options.breaks?o.inline=H.breaks:o.inline=H.gfm),this.tokenizer.rules=o}static get rules(){return{block:ie,inline:H}}static lex(e,o){return new be(o).lex(e)}static lexInline(e,o){return new be(o).inlineTokens(e)}lex(e){e=e.replace(P.carriageReturn,`
-`),this.blockTokens(e,this.tokens);for(let o=0;o<this.inlineQueue.length;o++){let i=this.inlineQueue[o];this.inlineTokens(i.src,i.tokens)}return this.inlineQueue=[],this.tokens}blockTokens(e,o=[],i=!1){var r,n,t;for(this.tokenizer.lexer=this,this.options.pedantic&&(e=e.replace(P.tabCharGlobal,"    ").replace(P.spaceLine,""));e;){let s;if((n=(r=this.options.extensions)==null?void 0:r.block)!=null&&n.some(d=>(s=d.call({lexer:this},e,o))?(e=e.substring(s.raw.length),o.push(s),!0):!1))continue;if(s=this.tokenizer.space(e)){e=e.substring(s.raw.length);let d=o.at(-1);s.raw.length===1&&d!==void 0?d.raw+=`
-`:o.push(s);continue}if(s=this.tokenizer.code(e)){e=e.substring(s.raw.length);let d=o.at(-1);(d==null?void 0:d.type)==="paragraph"||(d==null?void 0:d.type)==="text"?(d.raw+=(d.raw.endsWith(`
-`)?"":`
-`)+s.raw,d.text+=`
-`+s.text,this.inlineQueue.at(-1).src=d.text):o.push(s);continue}if(s=this.tokenizer.fences(e)){e=e.substring(s.raw.length),o.push(s);continue}if(s=this.tokenizer.heading(e)){e=e.substring(s.raw.length),o.push(s);continue}if(s=this.tokenizer.hr(e)){e=e.substring(s.raw.length),o.push(s);continue}if(s=this.tokenizer.blockquote(e)){e=e.substring(s.raw.length),o.push(s);continue}if(s=this.tokenizer.list(e)){e=e.substring(s.raw.length),o.push(s);continue}if(s=this.tokenizer.html(e)){e=e.substring(s.raw.length),o.push(s);continue}if(s=this.tokenizer.def(e)){e=e.substring(s.raw.length);let d=o.at(-1);(d==null?void 0:d.type)==="paragraph"||(d==null?void 0:d.type)==="text"?(d.raw+=(d.raw.endsWith(`
-`)?"":`
-`)+s.raw,d.text+=`
-`+s.raw,this.inlineQueue.at(-1).src=d.text):this.tokens.links[s.tag]||(this.tokens.links[s.tag]={href:s.href,title:s.title},o.push(s));continue}if(s=this.tokenizer.table(e)){e=e.substring(s.raw.length),o.push(s);continue}if(s=this.tokenizer.lheading(e)){e=e.substring(s.raw.length),o.push(s);continue}let l=e;if((t=this.options.extensions)!=null&&t.startBlock){let d=1/0,m=e.slice(1),c;this.options.extensions.startBlock.forEach(u=>{c=u.call({lexer:this},m),typeof c=="number"&&c>=0&&(d=Math.min(d,c))}),d<1/0&&d>=0&&(l=e.substring(0,d+1))}if(this.state.top&&(s=this.tokenizer.paragraph(l))){let d=o.at(-1);i&&(d==null?void 0:d.type)==="paragraph"?(d.raw+=(d.raw.endsWith(`
-`)?"":`
-`)+s.raw,d.text+=`
-`+s.text,this.inlineQueue.pop(),this.inlineQueue.at(-1).src=d.text):o.push(s),i=l.length!==e.length,e=e.substring(s.raw.length);continue}if(s=this.tokenizer.text(e)){e=e.substring(s.raw.length);let d=o.at(-1);(d==null?void 0:d.type)==="text"?(d.raw+=(d.raw.endsWith(`
-`)?"":`
-`)+s.raw,d.text+=`
-`+s.text,this.inlineQueue.pop(),this.inlineQueue.at(-1).src=d.text):o.push(s);continue}if(e){let d="Infinite loop on byte: "+e.charCodeAt(0);if(this.options.silent){console.error(d);break}else throw new Error(d)}}return this.state.top=!0,o}inline(e,o=[]){return this.inlineQueue.push({src:e,tokens:o}),o}inlineTokens(e,o=[]){var l,d,m,c,u,A;this.tokenizer.lexer=this;let i=e,r=null;if(this.tokens.links){let p=Object.keys(this.tokens.links);if(p.length>0)for(;(r=this.tokenizer.rules.inline.reflinkSearch.exec(i))!==null;)p.includes(r[0].slice(r[0].lastIndexOf("[")+1,-1))&&(i=i.slice(0,r.index)+"["+"a".repeat(r[0].length-2)+"]"+i.slice(this.tokenizer.rules.inline.reflinkSearch.lastIndex))}for(;(r=this.tokenizer.rules.inline.anyPunctuation.exec(i))!==null;)i=i.slice(0,r.index)+"++"+i.slice(this.tokenizer.rules.inline.anyPunctuation.lastIndex);let n;for(;(r=this.tokenizer.rules.inline.blockSkip.exec(i))!==null;)n=r[2]?r[2].length:0,i=i.slice(0,r.index+n)+"["+"a".repeat(r[0].length-n-2)+"]"+i.slice(this.tokenizer.rules.inline.blockSkip.lastIndex);i=(m=(d=(l=this.options.hooks)==null?void 0:l.emStrongMask)==null?void 0:d.call({lexer:this},i))!=null?m:i;let t=!1,s="";for(;e;){t||(s=""),t=!1;let p;if((u=(c=this.options.extensions)==null?void 0:c.inline)!=null&&u.some(g=>(p=g.call({lexer:this},e,o))?(e=e.substring(p.raw.length),o.push(p),!0):!1))continue;if(p=this.tokenizer.escape(e)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.tag(e)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.link(e)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.reflink(e,this.tokens.links)){e=e.substring(p.raw.length);let g=o.at(-1);p.type==="text"&&(g==null?void 0:g.type)==="text"?(g.raw+=p.raw,g.text+=p.text):o.push(p);continue}if(p=this.tokenizer.emStrong(e,i,s)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.codespan(e)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.br(e)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.del(e,i,s)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.autolink(e)){e=e.substring(p.raw.length),o.push(p);continue}if(!this.state.inLink&&(p=this.tokenizer.url(e))){e=e.substring(p.raw.length),o.push(p);continue}let S=e;if((A=this.options.extensions)!=null&&A.startInline){let g=1/0,h=e.slice(1),v;this.options.extensions.startInline.forEach(D=>{v=D.call({lexer:this},h),typeof v=="number"&&v>=0&&(g=Math.min(g,v))}),g<1/0&&g>=0&&(S=e.substring(0,g+1))}if(p=this.tokenizer.inlineText(S)){e=e.substring(p.raw.length),p.raw.slice(-1)!=="_"&&(s=p.raw.slice(-1)),t=!0;let g=o.at(-1);(g==null?void 0:g.type)==="text"?(g.raw+=p.raw,g.text+=p.text):o.push(p);continue}if(e){let g="Infinite loop on byte: "+e.charCodeAt(0);if(this.options.silent){console.error(g);break}else throw new Error(g)}}return o}},de=class{constructor(a){b(this,"options");b(this,"parser");this.options=a||L}space(a){return""}code({text:a,lang:e,escaped:o}){var n;let i=(n=(e||"").match(P.notSpaceStart))==null?void 0:n[0],r=a.replace(P.endingNewline,"")+`
-`;return i?'<pre><code class="language-'+q(i)+'">'+(o?r:q(r,!0))+`</code></pre>
-`:"<pre><code>"+(o?r:q(r,!0))+`</code></pre>
-`}blockquote({tokens:a}){return`<blockquote>
+var pa = Object.defineProperty,
+  ua = Object.defineProperties
+var Aa = Object.getOwnPropertyDescriptors
+var Me = Object.getOwnPropertySymbols
+var ga = Object.prototype.hasOwnProperty,
+  va = Object.prototype.propertyIsEnumerable
+var me = (a, e, o) =>
+    e in a
+      ? pa(a, e, { enumerable: !0, configurable: !0, writable: !0, value: o })
+      : (a[e] = o),
+  E = (a, e) => {
+    for (var o in e || (e = {})) ga.call(e, o) && me(a, o, e[o])
+    if (Me) for (var o of Me(e)) va.call(e, o) && me(a, o, e[o])
+    return a
+  },
+  w = (a, e) => ua(a, Aa(e))
+var b = (a, e, o) => me(a, typeof e != 'symbol' ? e + '' : e, o)
+var oe,
+  O,
+  Ue,
+  fa,
+  k,
+  xe,
+  Fe,
+  Le,
+  Be,
+  ge,
+  pe,
+  ue,
+  Ia,
+  Y = {},
+  ee = [],
+  ha = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i,
+  re = Array.isArray
+function M(a, e) {
+  for (var o in e) a[o] = e[o]
+  return a
+}
+function ve(a) {
+  a && a.parentNode && a.parentNode.removeChild(a)
+}
+function ba(a, e, o) {
+  var i,
+    r,
+    n,
+    t = {}
+  for (n in e) n == 'key' ? (i = e[n]) : n == 'ref' ? (r = e[n]) : (t[n] = e[n])
+  if (
+    (arguments.length > 2 &&
+      (t.children = arguments.length > 3 ? oe.call(arguments, 2) : o),
+    typeof a == 'function' && a.defaultProps != null)
+  )
+    for (n in a.defaultProps) t[n] === void 0 && (t[n] = a.defaultProps[n])
+  return W(a, t, i, r, null)
+}
+function W(a, e, o, i, r) {
+  var n = {
+    type: a,
+    props: e,
+    key: o,
+    ref: i,
+    __k: null,
+    __: null,
+    __b: 0,
+    __e: null,
+    __c: null,
+    constructor: void 0,
+    __v: r == null ? ++Ue : r,
+    __i: -1,
+    __u: 0,
+  }
+  return r == null && O.vnode != null && O.vnode(n), n
+}
+function j(a) {
+  return a.children
+}
+function K(a, e) {
+  ;(this.props = a), (this.context = e)
+}
+function y(a, e) {
+  if (e == null) return a.__ ? y(a.__, a.__i + 1) : null
+  for (var o; e < a.__k.length; e++)
+    if ((o = a.__k[e]) != null && o.__e != null) return o.__e
+  return typeof a.type == 'function' ? y(a) : null
+}
+function Sa(a) {
+  if (a.__P && a.__d) {
+    var e = a.__v,
+      o = e.__e,
+      i = [],
+      r = [],
+      n = M({}, e)
+    ;(n.__v = e.__v + 1),
+      O.vnode && O.vnode(n),
+      fe(
+        a.__P,
+        n,
+        e,
+        a.__n,
+        a.__P.namespaceURI,
+        32 & e.__u ? [o] : null,
+        i,
+        o == null ? y(e) : o,
+        !!(32 & e.__u),
+        r,
+      ),
+      (n.__v = e.__v),
+      (n.__.__k[n.__i] = n),
+      Ge(i, n, r),
+      (e.__e = e.__ = null),
+      n.__e != o && we(n)
+  }
+}
+function we(a) {
+  if ((a = a.__) != null && a.__c != null)
+    return (
+      (a.__e = a.__c.base = null),
+      a.__k.some((e) => {
+        if (e != null && e.__e != null) return (a.__e = a.__c.base = e.__e)
+      }),
+      we(a)
+    )
+}
+function ze(a) {
+  ;((!a.__d && (a.__d = !0) && k.push(a) && !ae.__r++) ||
+    xe != O.debounceRendering) &&
+    ((xe = O.debounceRendering) || Fe)(ae)
+}
+function ae() {
+  for (var a, e = 1; k.length; )
+    k.length > e && k.sort(Le), (a = k.shift()), (e = k.length), Sa(a)
+  ae.__r = 0
+}
+function ye(a, e, o, i, r, n, t, s, l, d, m) {
+  var c,
+    u,
+    A,
+    p,
+    S,
+    g,
+    h,
+    v = (i && i.__k) || ee,
+    D = e.length
+  for (l = Oa(o, e, v, l, D), c = 0; c < D; c++)
+    (A = o.__k[c]) != null &&
+      ((u = (A.__i != -1 && v[A.__i]) || Y),
+      (A.__i = c),
+      (g = fe(a, A, u, r, n, t, s, l, d, m)),
+      (p = A.__e),
+      A.ref &&
+        u.ref != A.ref &&
+        (u.ref && Ie(u.ref, null, A), m.push(A.ref, A.__c || p, A)),
+      S == null && p != null && (S = p),
+      (h = !!(4 & A.__u)) || u.__k === A.__k
+        ? (l = je(A, l, a, h))
+        : typeof A.type == 'function' && g !== void 0
+          ? (l = g)
+          : p && (l = p.nextSibling),
+      (A.__u &= -7))
+  return (o.__e = S), l
+}
+function Oa(a, e, o, i, r) {
+  var n,
+    t,
+    s,
+    l,
+    d,
+    m = o.length,
+    c = m,
+    u = 0
+  for (a.__k = new Array(r), n = 0; n < r; n++)
+    (t = e[n]) != null && typeof t != 'boolean' && typeof t != 'function'
+      ? (typeof t == 'string' ||
+        typeof t == 'number' ||
+        typeof t == 'bigint' ||
+        t.constructor == String
+          ? (t = a.__k[n] = W(null, t, null, null, null))
+          : re(t)
+            ? (t = a.__k[n] = W(j, { children: t }, null, null, null))
+            : t.constructor === void 0 && t.__b > 0
+              ? (t = a.__k[n] =
+                  W(t.type, t.props, t.key, t.ref ? t.ref : null, t.__v))
+              : (a.__k[n] = t),
+        (l = n + u),
+        (t.__ = a),
+        (t.__b = a.__b + 1),
+        (s = null),
+        (d = t.__i = Pa(t, o, l, c)) != -1 && (c--, (s = o[d]) && (s.__u |= 2)),
+        s == null || s.__v == null
+          ? (d == -1 && (r > m ? u-- : r < m && u++),
+            typeof t.type != 'function' && (t.__u |= 4))
+          : d != l &&
+            (d == l - 1
+              ? u--
+              : d == l + 1
+                ? u++
+                : (d > l ? u-- : u++, (t.__u |= 4))))
+      : (a.__k[n] = null)
+  if (c)
+    for (n = 0; n < m; n++)
+      (s = o[n]) != null &&
+        (2 & s.__u) == 0 &&
+        (s.__e == i && (i = y(s)), He(s, s))
+  return i
+}
+function je(a, e, o, i) {
+  var r, n
+  if (typeof a.type == 'function') {
+    for (r = a.__k, n = 0; r && n < r.length; n++)
+      r[n] && ((r[n].__ = a), (e = je(r[n], e, o, i)))
+    return e
+  }
+  a.__e != e &&
+    (i &&
+      (e && a.type && !e.parentNode && (e = y(a)),
+      o.insertBefore(a.__e, e || null)),
+    (e = a.__e))
+  do e = e && e.nextSibling
+  while (e != null && e.nodeType == 8)
+  return e
+}
+function Pa(a, e, o, i) {
+  var r,
+    n,
+    t,
+    s = a.key,
+    l = a.type,
+    d = e[o],
+    m = d != null && (2 & d.__u) == 0
+  if ((d === null && s == null) || (m && s == d.key && l == d.type)) return o
+  if (i > (m ? 1 : 0)) {
+    for (r = o - 1, n = o + 1; r >= 0 || n < e.length; )
+      if (
+        (d = e[(t = r >= 0 ? r-- : n++)]) != null &&
+        (2 & d.__u) == 0 &&
+        s == d.key &&
+        l == d.type
+      )
+        return t
+  }
+  return -1
+}
+function Ve(a, e, o) {
+  e[0] == '-'
+    ? a.setProperty(e, o == null ? '' : o)
+    : (a[e] =
+        o == null ? '' : typeof o != 'number' || ha.test(e) ? o : o + 'px')
+}
+function Q(a, e, o, i, r) {
+  var n, t
+  e: if (e == 'style')
+    if (typeof o == 'string') a.style.cssText = o
+    else {
+      if ((typeof i == 'string' && (a.style.cssText = i = ''), i))
+        for (e in i) (o && e in o) || Ve(a.style, e, '')
+      if (o) for (e in o) (i && o[e] == i[e]) || Ve(a.style, e, o[e])
+    }
+  else if (e[0] == 'o' && e[1] == 'n')
+    (n = e != (e = e.replace(Be, '$1'))),
+      (t = e.toLowerCase()),
+      (e =
+        t in a || e == 'onFocusOut' || e == 'onFocusIn'
+          ? t.slice(2)
+          : e.slice(2)),
+      a.l || (a.l = {}),
+      (a.l[e + n] = o),
+      o
+        ? i
+          ? (o.u = i.u)
+          : ((o.u = ge), a.addEventListener(e, n ? ue : pe, n))
+        : a.removeEventListener(e, n ? ue : pe, n)
+  else {
+    if (r == 'http://www.w3.org/2000/svg')
+      e = e.replace(/xlink(H|:h)/, 'h').replace(/sName$/, 's')
+    else if (
+      e != 'width' &&
+      e != 'height' &&
+      e != 'href' &&
+      e != 'list' &&
+      e != 'form' &&
+      e != 'tabIndex' &&
+      e != 'download' &&
+      e != 'rowSpan' &&
+      e != 'colSpan' &&
+      e != 'role' &&
+      e != 'popover' &&
+      e in a
+    )
+      try {
+        a[e] = o == null ? '' : o
+        break e
+      } catch (s) {}
+    typeof o == 'function' ||
+      (o == null || (o === !1 && e[4] != '-')
+        ? a.removeAttribute(e)
+        : a.setAttribute(e, e == 'popover' && o == 1 ? '' : o))
+  }
+}
+function ke(a) {
+  return function (e) {
+    if (this.l) {
+      var o = this.l[e.type + a]
+      if (e.t == null) e.t = ge++
+      else if (e.t < o.u) return
+      return o(O.event ? O.event(e) : e)
+    }
+  }
+}
+function fe(a, e, o, i, r, n, t, s, l, d) {
+  var m,
+    c,
+    u,
+    A,
+    p,
+    S,
+    g,
+    h,
+    v,
+    D,
+    R,
+    V,
+    J,
+    x,
+    N,
+    T = e.type
+  if (e.constructor !== void 0) return null
+  128 & o.__u && ((l = !!(32 & o.__u)), (n = [(s = e.__e = o.__e)])),
+    (m = O.__b) && m(e)
+  e: if (typeof T == 'function')
+    try {
+      if (
+        ((h = e.props),
+        (v = 'prototype' in T && T.prototype.render),
+        (D = (m = T.contextType) && i[m.__c]),
+        (R = m ? (D ? D.props.value : m.__) : i),
+        o.__c
+          ? (g = (c = e.__c = o.__c).__ = c.__E)
+          : (v
+              ? (e.__c = c = new T(h, R))
+              : ((e.__c = c = new K(h, R)),
+                (c.constructor = T),
+                (c.render = Da)),
+            D && D.sub(c),
+            c.state || (c.state = {}),
+            (c.__n = i),
+            (u = c.__d = !0),
+            (c.__h = []),
+            (c._sb = [])),
+        v && c.__s == null && (c.__s = c.state),
+        v &&
+          T.getDerivedStateFromProps != null &&
+          (c.__s == c.state && (c.__s = M({}, c.__s)),
+          M(c.__s, T.getDerivedStateFromProps(h, c.__s))),
+        (A = c.props),
+        (p = c.state),
+        (c.__v = e),
+        u)
+      )
+        v &&
+          T.getDerivedStateFromProps == null &&
+          c.componentWillMount != null &&
+          c.componentWillMount(),
+          v && c.componentDidMount != null && c.__h.push(c.componentDidMount)
+      else {
+        if (
+          (v &&
+            T.getDerivedStateFromProps == null &&
+            h !== A &&
+            c.componentWillReceiveProps != null &&
+            c.componentWillReceiveProps(h, R),
+          e.__v == o.__v ||
+            (!c.__e &&
+              c.shouldComponentUpdate != null &&
+              c.shouldComponentUpdate(h, c.__s, R) === !1))
+        ) {
+          e.__v != o.__v && ((c.props = h), (c.state = c.__s), (c.__d = !1)),
+            (e.__e = o.__e),
+            (e.__k = o.__k),
+            e.__k.some((B) => {
+              B && (B.__ = e)
+            }),
+            ee.push.apply(c.__h, c._sb),
+            (c._sb = []),
+            c.__h.length && t.push(c)
+          break e
+        }
+        c.componentWillUpdate != null && c.componentWillUpdate(h, c.__s, R),
+          v &&
+            c.componentDidUpdate != null &&
+            c.__h.push(() => {
+              c.componentDidUpdate(A, p, S)
+            })
+      }
+      if (
+        ((c.context = R),
+        (c.props = h),
+        (c.__P = a),
+        (c.__e = !1),
+        (V = O.__r),
+        (J = 0),
+        v)
+      )
+        (c.state = c.__s),
+          (c.__d = !1),
+          V && V(e),
+          (m = c.render(c.props, c.state, c.context)),
+          ee.push.apply(c.__h, c._sb),
+          (c._sb = [])
+      else
+        do
+          (c.__d = !1),
+            V && V(e),
+            (m = c.render(c.props, c.state, c.context)),
+            (c.state = c.__s)
+        while (c.__d && ++J < 25)
+      ;(c.state = c.__s),
+        c.getChildContext != null && (i = M(M({}, i), c.getChildContext())),
+        v &&
+          !u &&
+          c.getSnapshotBeforeUpdate != null &&
+          (S = c.getSnapshotBeforeUpdate(A, p)),
+        (x =
+          m != null && m.type === j && m.key == null
+            ? $e(m.props.children)
+            : m),
+        (s = ye(a, re(x) ? x : [x], e, o, i, r, n, t, s, l, d)),
+        (c.base = e.__e),
+        (e.__u &= -161),
+        c.__h.length && t.push(c),
+        g && (c.__E = c.__ = null)
+    } catch (B) {
+      if (((e.__v = null), l || n != null))
+        if (B.then) {
+          for (e.__u |= l ? 160 : 128; s && s.nodeType == 8 && s.nextSibling; )
+            s = s.nextSibling
+          ;(n[n.indexOf(s)] = null), (e.__e = s)
+        } else {
+          for (N = n.length; N--; ) ve(n[N])
+          Ae(e)
+        }
+      else (e.__e = o.__e), (e.__k = o.__k), B.then || Ae(e)
+      O.__e(B, e, o)
+    }
+  else
+    n == null && e.__v == o.__v
+      ? ((e.__k = o.__k), (e.__e = o.__e))
+      : (s = e.__e = Ea(o.__e, e, o, i, r, n, t, l, d))
+  return (m = O.diffed) && m(e), 128 & e.__u ? void 0 : s
+}
+function Ae(a) {
+  a && (a.__c && (a.__c.__e = !0), a.__k && a.__k.some(Ae))
+}
+function Ge(a, e, o) {
+  for (var i = 0; i < o.length; i++) Ie(o[i], o[++i], o[++i])
+  O.__c && O.__c(e, a),
+    a.some((r) => {
+      try {
+        ;(a = r.__h),
+          (r.__h = []),
+          a.some((n) => {
+            n.call(r)
+          })
+      } catch (n) {
+        O.__e(n, r.__v)
+      }
+    })
+}
+function $e(a) {
+  return typeof a != 'object' || a == null || a.__b > 0
+    ? a
+    : re(a)
+      ? a.map($e)
+      : M({}, a)
+}
+function Ea(a, e, o, i, r, n, t, s, l) {
+  var d,
+    m,
+    c,
+    u,
+    A,
+    p,
+    S,
+    g = o.props || Y,
+    h = e.props,
+    v = e.type
+  if (
+    (v == 'svg'
+      ? (r = 'http://www.w3.org/2000/svg')
+      : v == 'math'
+        ? (r = 'http://www.w3.org/1998/Math/MathML')
+        : r || (r = 'http://www.w3.org/1999/xhtml'),
+    n != null)
+  ) {
+    for (d = 0; d < n.length; d++)
+      if (
+        (A = n[d]) &&
+        'setAttribute' in A == !!v &&
+        (v ? A.localName == v : A.nodeType == 3)
+      ) {
+        ;(a = A), (n[d] = null)
+        break
+      }
+  }
+  if (a == null) {
+    if (v == null) return document.createTextNode(h)
+    ;(a = document.createElementNS(r, v, h.is && h)),
+      s && (O.__m && O.__m(e, n), (s = !1)),
+      (n = null)
+  }
+  if (v == null) g === h || (s && a.data == h) || (a.data = h)
+  else {
+    if (((n = n && oe.call(a.childNodes)), !s && n != null))
+      for (g = {}, d = 0; d < a.attributes.length; d++)
+        g[(A = a.attributes[d]).name] = A.value
+    for (d in g)
+      (A = g[d]),
+        d == 'dangerouslySetInnerHTML'
+          ? (c = A)
+          : d == 'children' ||
+            d in h ||
+            (d == 'value' && 'defaultValue' in h) ||
+            (d == 'checked' && 'defaultChecked' in h) ||
+            Q(a, d, null, A, r)
+    for (d in h)
+      (A = h[d]),
+        d == 'children'
+          ? (u = A)
+          : d == 'dangerouslySetInnerHTML'
+            ? (m = A)
+            : d == 'value'
+              ? (p = A)
+              : d == 'checked'
+                ? (S = A)
+                : (s && typeof A != 'function') ||
+                  g[d] === A ||
+                  Q(a, d, A, g[d], r)
+    if (m)
+      s ||
+        (c && (m.__html == c.__html || m.__html == a.innerHTML)) ||
+        (a.innerHTML = m.__html),
+        (e.__k = [])
+    else if (
+      (c && (a.innerHTML = ''),
+      ye(
+        e.type == 'template' ? a.content : a,
+        re(u) ? u : [u],
+        e,
+        o,
+        i,
+        v == 'foreignObject' ? 'http://www.w3.org/1999/xhtml' : r,
+        n,
+        t,
+        n ? n[0] : o.__k && y(o, 0),
+        s,
+        l,
+      ),
+      n != null)
+    )
+      for (d = n.length; d--; ) ve(n[d])
+    s ||
+      ((d = 'value'),
+      v == 'progress' && p == null
+        ? a.removeAttribute('value')
+        : p != null &&
+          (p !== a[d] ||
+            (v == 'progress' && !p) ||
+            (v == 'option' && p != g[d])) &&
+          Q(a, d, p, g[d], r),
+      (d = 'checked'),
+      S != null && S != a[d] && Q(a, d, S, g[d], r))
+  }
+  return a
+}
+function Ie(a, e, o) {
+  try {
+    if (typeof a == 'function') {
+      var i = typeof a.__u == 'function'
+      i && a.__u(), (i && e == null) || (a.__u = a(e))
+    } else a.current = e
+  } catch (r) {
+    O.__e(r, o)
+  }
+}
+function He(a, e, o) {
+  var i, r
+  if (
+    (O.unmount && O.unmount(a),
+    (i = a.ref) && ((i.current && i.current != a.__e) || Ie(i, null, e)),
+    (i = a.__c) != null)
+  ) {
+    if (i.componentWillUnmount)
+      try {
+        i.componentWillUnmount()
+      } catch (n) {
+        O.__e(n, e)
+      }
+    i.base = i.__P = null
+  }
+  if ((i = a.__k))
+    for (r = 0; r < i.length; r++)
+      i[r] && He(i[r], e, o || typeof a.type != 'function')
+  o || ve(a.__e), (a.__c = a.__ = a.__e = void 0)
+}
+function Da(a, e, o) {
+  return this.constructor(a, o)
+}
+function Xe(a, e, o) {
+  var i, r, n, t
+  e == document && (e = document.documentElement),
+    O.__ && O.__(a, e),
+    (r = (i = typeof o == 'function') ? null : (o && o.__k) || e.__k),
+    (n = []),
+    (t = []),
+    fe(
+      e,
+      (a = ((!i && o) || e).__k = ba(j, null, [a])),
+      r || Y,
+      Y,
+      e.namespaceURI,
+      !i && o ? [o] : r ? null : e.firstChild ? oe.call(e.childNodes) : null,
+      n,
+      !i && o ? o : r ? r.__e : e.firstChild,
+      i,
+      t,
+    ),
+    Ge(n, a, t)
+}
+;(oe = ee.slice),
+  (O = {
+    __e: (a, e, o, i) => {
+      for (var r, n, t; (e = e.__); )
+        if ((r = e.__c) && !r.__)
+          try {
+            if (
+              ((n = r.constructor) &&
+                n.getDerivedStateFromError != null &&
+                (r.setState(n.getDerivedStateFromError(a)), (t = r.__d)),
+              r.componentDidCatch != null &&
+                (r.componentDidCatch(a, i || {}), (t = r.__d)),
+              t)
+            )
+              return (r.__E = r)
+          } catch (s) {
+            a = s
+          }
+      throw a
+    },
+  }),
+  (Ue = 0),
+  (fa = (a) => a != null && a.constructor === void 0),
+  (K.prototype.setState = function (a, e) {
+    var o
+    ;(o =
+      this.__s != null && this.__s != this.state
+        ? this.__s
+        : (this.__s = M({}, this.state))),
+      typeof a == 'function' && (a = a(M({}, o), this.props)),
+      a && M(o, a),
+      a != null && this.__v && (e && this._sb.push(e), ze(this))
+  }),
+  (K.prototype.forceUpdate = function (a) {
+    this.__v && ((this.__e = !0), a && this.__h.push(a), ze(this))
+  }),
+  (K.prototype.render = j),
+  (k = []),
+  (Fe =
+    typeof Promise == 'function'
+      ? Promise.prototype.then.bind(Promise.resolve())
+      : setTimeout),
+  (Le = (a, e) => a.__v.__b - e.__v.__b),
+  (ae.__r = 0),
+  (Be = /(PointerCapture)$|Capture$/i),
+  (ge = 0),
+  (pe = ke(!1)),
+  (ue = ke(!0)),
+  (Ia = 0)
+function Oe() {
+  return {
+    async: !1,
+    breaks: !1,
+    extensions: null,
+    gfm: !0,
+    hooks: null,
+    pedantic: !1,
+    renderer: null,
+    silent: !1,
+    tokenizer: null,
+    walkTokens: null,
+  }
+}
+var L = Oe()
+function aa(a) {
+  L = a
+}
+var U = { exec: () => null }
+function f(a, e = '') {
+  let o = typeof a == 'string' ? a : a.source,
+    i = {
+      replace: (r, n) => {
+        let t = typeof n == 'string' ? n : n.source
+        return (t = t.replace(P.caret, '$1')), (o = o.replace(r, t)), i
+      },
+      getRegex: () => new RegExp(o, e),
+    }
+  return i
+}
+var _a = (() => {
+    try {
+      return !!/(?<=1)(?<!1)/
+    } catch (a) {
+      return !1
+    }
+  })(),
+  P = {
+    codeRemoveIndent: /^(?: {1,4}| {0,3}\t)/gm,
+    outputLinkReplace: /\\([[\]])/g,
+    indentCodeCompensation: /^(\s+)(?:```)/,
+    beginningSpace: /^\s+/,
+    endingHash: /#$/,
+    startingSpaceChar: /^ /,
+    endingSpaceChar: / $/,
+    nonSpaceChar: /[^ ]/,
+    newLineCharGlobal: /\n/g,
+    tabCharGlobal: /\t/g,
+    multipleSpaceGlobal: /\s+/g,
+    blankLine: /^[ \t]*$/,
+    doubleBlankLine: /\n[ \t]*\n[ \t]*$/,
+    blockquoteStart: /^ {0,3}>/,
+    blockquoteSetextReplace: /\n {0,3}((?:=+|-+) *)(?=\n|$)/g,
+    blockquoteSetextReplace2: /^ {0,3}>[ \t]?/gm,
+    listReplaceNesting: /^ {1,4}(?=( {4})*[^ ])/g,
+    listIsTask: /^\[[ xX]\] +\S/,
+    listReplaceTask: /^\[[ xX]\] +/,
+    listTaskCheckbox: /\[[ xX]\]/,
+    anyLine: /\n.*\n/,
+    hrefBrackets: /^<(.*)>$/,
+    tableDelimiter: /[:|]/,
+    tableAlignChars: /^\||\| *$/g,
+    tableRowBlankLine: /\n[ \t]*$/,
+    tableAlignRight: /^ *-+: *$/,
+    tableAlignCenter: /^ *:-+: *$/,
+    tableAlignLeft: /^ *:-+ *$/,
+    startATag: /^<a /i,
+    endATag: /^<\/a>/i,
+    startPreScriptTag: /^<(pre|code|kbd|script)(\s|>)/i,
+    endPreScriptTag: /^<\/(pre|code|kbd|script)(\s|>)/i,
+    startAngleBracket: /^</,
+    endAngleBracket: />$/,
+    pedanticHrefTitle: /^([^'"]*[^\s])\s+(['"])(.*)\2/,
+    unicodeAlphaNumeric: /[\p{L}\p{N}]/u,
+    escapeTest: /[&<>"']/,
+    escapeReplace: /[&<>"']/g,
+    escapeTestNoEncode: /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/,
+    escapeReplaceNoEncode: /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/g,
+    caret: /(^|[^[])\^/g,
+    percentDecode: /%25/g,
+    findPipe: /\|/g,
+    splitPipe: / \|/,
+    slashPipe: /\\\|/g,
+    carriageReturn: /\r\n|\r/g,
+    spaceLine: /^ +$/gm,
+    notSpaceStart: /^\S*/,
+    endingNewline: /\n$/,
+    listItemRegex: (a) =>
+      new RegExp(`^( {0,3}${a})((?:[	 ][^\\n]*)?(?:\\n|$))`),
+    nextBulletRegex: (a) =>
+      new RegExp(
+        `^ {0,${Math.min(3, a - 1)}}(?:[*+-]|\\d{1,9}[.)])((?:[ 	][^\\n]*)?(?:\\n|$))`,
+      ),
+    hrRegex: (a) =>
+      new RegExp(
+        `^ {0,${Math.min(3, a - 1)}}((?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$)`,
+      ),
+    fencesBeginRegex: (a) =>
+      new RegExp(`^ {0,${Math.min(3, a - 1)}}(?:\`\`\`|~~~)`),
+    headingBeginRegex: (a) => new RegExp(`^ {0,${Math.min(3, a - 1)}}#`),
+    htmlBeginRegex: (a) =>
+      new RegExp(`^ {0,${Math.min(3, a - 1)}}<(?:[a-z].*>|!--)`, 'i'),
+    blockquoteBeginRegex: (a) => new RegExp(`^ {0,${Math.min(3, a - 1)}}>`),
+  },
+  Ca = /^(?:[ \t]*(?:\n|$))+/,
+  Ra = /^((?: {4}| {0,3}\t)[^\n]+(?:\n(?:[ \t]*(?:\n|$))*)?)+/,
+  Ta =
+    /^ {0,3}(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))(?: {0,3}\1[~`]* *(?=\n|$)|$)/,
+  Z = /^ {0,3}((?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/,
+  qa = /^ {0,3}(#{1,6})(?=\s|$)(.*)(?:\n+|$)/,
+  Pe = / {0,3}(?:[*+-]|\d{1,9}[.)])/,
+  oa =
+    /^(?!bull |blockCode|fences|blockquote|heading|html|table)((?:.|\n(?!\s*?\n|bull |blockCode|fences|blockquote|heading|html|table))+?)\n {0,3}(=+|-+) *(?:\n+|$)/,
+  ra = f(oa)
+    .replace(/bull/g, Pe)
+    .replace(/blockCode/g, /(?: {4}| {0,3}\t)/)
+    .replace(/fences/g, / {0,3}(?:`{3,}|~{3,})/)
+    .replace(/blockquote/g, / {0,3}>/)
+    .replace(/heading/g, / {0,3}#{1,6}/)
+    .replace(/html/g, / {0,3}<[^\n>]+>\n/)
+    .replace(/\|table/g, '')
+    .getRegex(),
+  Na = f(oa)
+    .replace(/bull/g, Pe)
+    .replace(/blockCode/g, /(?: {4}| {0,3}\t)/)
+    .replace(/fences/g, / {0,3}(?:`{3,}|~{3,})/)
+    .replace(/blockquote/g, / {0,3}>/)
+    .replace(/heading/g, / {0,3}#{1,6}/)
+    .replace(/html/g, / {0,3}<[^\n>]+>\n/)
+    .replace(/table/g, / {0,3}\|?(?:[:\- ]*\|)+[:\- ]*\n/)
+    .getRegex(),
+  Ee =
+    /^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html|table| +\n)[^\n]+)*)/,
+  Ma = /^[^\n]+/,
+  De = /(?!\s*\])(?:\\[\s\S]|[^[\]\\])+/,
+  xa = f(
+    /^ {0,3}\[(label)\]: *(?:\n[ \t]*)?([^<\s][^\s]*|<.*?>)(?:(?: +(?:\n[ \t]*)?| *\n[ \t]*)(title))? *(?:\n+|$)/,
+  )
+    .replace('label', De)
+    .replace(
+      'title',
+      /(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/,
+    )
+    .getRegex(),
+  za = f(/^(bull)([ \t][^\n]+?)?(?:\n|$)/)
+    .replace(/bull/g, Pe)
+    .getRegex(),
+  ce =
+    'address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|search|section|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul',
+  _e = /<!--(?:-?>|[\s\S]*?(?:-->|$))/,
+  Va = f(
+    '^ {0,3}(?:<(script|pre|style|textarea)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\S]*?(?:\\?>\\n*|$)|<![A-Z][\\s\\S]*?(?:>\\n*|$)|<!\\[CDATA\\[[\\s\\S]*?(?:\\]\\]>\\n*|$)|</?(tag)(?: +|\\n|/?>)[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|<(?!script|pre|style|textarea)([a-z][\\w-]*)(?:attribute)*? */?>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|</(?!script|pre|style|textarea)[a-z][\\w-]*\\s*>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$))',
+    'i',
+  )
+    .replace('comment', _e)
+    .replace('tag', ce)
+    .replace(
+      'attribute',
+      / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/,
+    )
+    .getRegex(),
+  ia = f(Ee)
+    .replace('hr', Z)
+    .replace('heading', ' {0,3}#{1,6}(?:\\s|$)')
+    .replace('|lheading', '')
+    .replace('|table', '')
+    .replace('blockquote', ' {0,3}>')
+    .replace('fences', ' {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n')
+    .replace('list', ' {0,3}(?:[*+-]|1[.)])[ \\t]')
+    .replace(
+      'html',
+      '</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)',
+    )
+    .replace('tag', ce)
+    .getRegex(),
+  ka = f(/^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/)
+    .replace('paragraph', ia)
+    .getRegex(),
+  Ce = {
+    blockquote: ka,
+    code: Ra,
+    def: xa,
+    fences: Ta,
+    heading: qa,
+    hr: Z,
+    html: Va,
+    lheading: ra,
+    list: za,
+    newline: Ca,
+    paragraph: ia,
+    table: U,
+    text: Ma,
+  },
+  Ze = f(
+    '^ *([^\\n ].*)\\n {0,3}((?:\\| *)?:?-+:? *(?:\\| *:?-+:? *)*(?:\\| *)?)(?:\\n((?:(?! *\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)',
+  )
+    .replace('hr', Z)
+    .replace('heading', ' {0,3}#{1,6}(?:\\s|$)')
+    .replace('blockquote', ' {0,3}>')
+    .replace('code', '(?: {4}| {0,3}	)[^\\n]')
+    .replace('fences', ' {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n')
+    .replace('list', ' {0,3}(?:[*+-]|1[.)])[ \\t]')
+    .replace(
+      'html',
+      '</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)',
+    )
+    .replace('tag', ce)
+    .getRegex(),
+  Ua = w(E({}, Ce), {
+    lheading: Na,
+    table: Ze,
+    paragraph: f(Ee)
+      .replace('hr', Z)
+      .replace('heading', ' {0,3}#{1,6}(?:\\s|$)')
+      .replace('|lheading', '')
+      .replace('table', Ze)
+      .replace('blockquote', ' {0,3}>')
+      .replace('fences', ' {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n')
+      .replace('list', ' {0,3}(?:[*+-]|1[.)])[ \\t]')
+      .replace(
+        'html',
+        '</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)',
+      )
+      .replace('tag', ce)
+      .getRegex(),
+  }),
+  Fa = w(E({}, Ce), {
+    html: f(
+      `^ *(?:comment *(?:\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)|<tag(?:"[^"]*"|'[^']*'|\\s[^'"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))`,
+    )
+      .replace('comment', _e)
+      .replace(
+        /tag/g,
+        '(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b',
+      )
+      .getRegex(),
+    def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/,
+    heading: /^(#{1,6})(.*)(?:\n+|$)/,
+    fences: U,
+    lheading: /^(.+?)\n {0,3}(=+|-+) *(?:\n+|$)/,
+    paragraph: f(Ee)
+      .replace('hr', Z)
+      .replace(
+        'heading',
+        ` *#{1,6} *[^
+]`,
+      )
+      .replace('lheading', ra)
+      .replace('|table', '')
+      .replace('blockquote', ' {0,3}>')
+      .replace('|fences', '')
+      .replace('|list', '')
+      .replace('|html', '')
+      .replace('|tag', '')
+      .getRegex(),
+  }),
+  La = /^\\([!"#$%&'()*+,\-./:;<=>?@[\]\\^_`{|}~])/,
+  Ba = /^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/,
+  na = /^( {2,}|\\)\n(?!\s*$)/,
+  wa =
+    /^(`+|[^`])(?:(?= {2,}\n)|[\s\S]*?(?:(?=[\\<![`*_]|\b_|$)|[^ ](?= {2,}\n)))/,
+  G = /[\p{P}\p{S}]/u,
+  le = /[\s\p{P}\p{S}]/u,
+  Re = /[^\s\p{P}\p{S}]/u,
+  ya = f(/^((?![*_])punctSpace)/, 'u')
+    .replace(/punctSpace/g, le)
+    .getRegex(),
+  sa = /(?!~)[\p{P}\p{S}]/u,
+  ja = /(?!~)[\s\p{P}\p{S}]/u,
+  Ga = /(?:[^\s\p{P}\p{S}]|~)/u,
+  $a = f(/link|precode-code|html/, 'g')
+    .replace(
+      'link',
+      /\[(?:[^[\]`]|(?<a>`+)[^`]+\k<a>(?!`))*?\]\((?:\\[\s\S]|[^\\()]|\((?:\\[\s\S]|[^\\()])*\))*\)/,
+    )
+    .replace('precode-', _a ? '(?<!`)()' : '(^^|[^`])')
+    .replace('code', /(?<b>`+)[^`]+\k<b>(?!`)/)
+    .replace('html', /<(?! )[^<>]*?>/)
+    .getRegex(),
+  ta = /^(?:\*+(?:((?!\*)punct)|([^\s*]))?)|^_+(?:((?!_)punct)|([^\s_]))?/,
+  Ha = f(ta, 'u').replace(/punct/g, G).getRegex(),
+  Xa = f(ta, 'u').replace(/punct/g, sa).getRegex(),
+  da =
+    '^[^_*]*?__[^_*]*?\\*[^_*]*?(?=__)|[^*]+(?=[^*])|(?!\\*)punct(\\*+)(?=[\\s]|$)|notPunctSpace(\\*+)(?!\\*)(?=punctSpace|$)|(?!\\*)punctSpace(\\*+)(?=notPunctSpace)|[\\s](\\*+)(?!\\*)(?=punct)|(?!\\*)punct(\\*+)(?!\\*)(?=punct)|notPunctSpace(\\*+)(?=notPunctSpace)',
+  Za = f(da, 'gu')
+    .replace(/notPunctSpace/g, Re)
+    .replace(/punctSpace/g, le)
+    .replace(/punct/g, G)
+    .getRegex(),
+  Ja = f(da, 'gu')
+    .replace(/notPunctSpace/g, Ga)
+    .replace(/punctSpace/g, ja)
+    .replace(/punct/g, sa)
+    .getRegex(),
+  Qa = f(
+    '^[^_*]*?\\*\\*[^_*]*?_[^_*]*?(?=\\*\\*)|[^_]+(?=[^_])|(?!_)punct(_+)(?=[\\s]|$)|notPunctSpace(_+)(?!_)(?=punctSpace|$)|(?!_)punctSpace(_+)(?=notPunctSpace)|[\\s](_+)(?!_)(?=punct)|(?!_)punct(_+)(?!_)(?=punct)',
+    'gu',
+  )
+    .replace(/notPunctSpace/g, Re)
+    .replace(/punctSpace/g, le)
+    .replace(/punct/g, G)
+    .getRegex(),
+  Wa = f(/^~~?(?:((?!~)punct)|[^\s~])/, 'u')
+    .replace(/punct/g, G)
+    .getRegex(),
+  Ka =
+    '^[^~]+(?=[^~])|(?!~)punct(~~?)(?=[\\s]|$)|notPunctSpace(~~?)(?!~)(?=punctSpace|$)|(?!~)punctSpace(~~?)(?=notPunctSpace)|[\\s](~~?)(?!~)(?=punct)|(?!~)punct(~~?)(?!~)(?=punct)|notPunctSpace(~~?)(?=notPunctSpace)',
+  Ya = f(Ka, 'gu')
+    .replace(/notPunctSpace/g, Re)
+    .replace(/punctSpace/g, le)
+    .replace(/punct/g, G)
+    .getRegex(),
+  eo = f(/\\(punct)/, 'gu')
+    .replace(/punct/g, G)
+    .getRegex(),
+  ao = f(/^<(scheme:[^\s\x00-\x1f<>]*|email)>/)
+    .replace('scheme', /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/)
+    .replace(
+      'email',
+      /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/,
+    )
+    .getRegex(),
+  oo = f(_e).replace('(?:-->|$)', '-->').getRegex(),
+  ro = f(
+    '^comment|^</[a-zA-Z][\\w:-]*\\s*>|^<[a-zA-Z][\\w-]*(?:attribute)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>',
+  )
+    .replace('comment', oo)
+    .replace(
+      'attribute',
+      /\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/,
+    )
+    .getRegex(),
+  se =
+    /(?:\[(?:\\[\s\S]|[^[\]\\])*\]|\\[\s\S]|`+(?!`)[^`]*?`+(?!`)|``+(?=\])|[^[\]\\`])*?/,
+  io = f(
+    /^!?\[(label)\]\(\s*(href)(?:(?:[ \t]+(?:\n[ \t]*)?|\n[ \t]*)(title))?\s*\)/,
+  )
+    .replace('label', se)
+    .replace('href', /<(?:\\.|[^\n<>\\])+>|[^ \t\n\x00-\x1f]*/)
+    .replace(
+      'title',
+      /"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/,
+    )
+    .getRegex(),
+  ca = f(/^!?\[(label)\]\[(ref)\]/)
+    .replace('label', se)
+    .replace('ref', De)
+    .getRegex(),
+  la = f(/^!?\[(ref)\](?:\[\])?/)
+    .replace('ref', De)
+    .getRegex(),
+  no = f('reflink|nolink(?!\\()', 'g')
+    .replace('reflink', ca)
+    .replace('nolink', la)
+    .getRegex(),
+  Je = /[hH][tT][tT][pP][sS]?|[fF][tT][pP]/,
+  Te = {
+    _backpedal: U,
+    anyPunctuation: eo,
+    autolink: ao,
+    blockSkip: $a,
+    br: na,
+    code: Ba,
+    del: U,
+    delLDelim: U,
+    delRDelim: U,
+    emStrongLDelim: Ha,
+    emStrongRDelimAst: Za,
+    emStrongRDelimUnd: Qa,
+    escape: La,
+    link: io,
+    nolink: la,
+    punctuation: ya,
+    reflink: ca,
+    reflinkSearch: no,
+    tag: ro,
+    text: wa,
+    url: U,
+  },
+  so = w(E({}, Te), {
+    link: f(/^!?\[(label)\]\((.*?)\)/)
+      .replace('label', se)
+      .getRegex(),
+    reflink: f(/^!?\[(label)\]\s*\[([^\]]*)\]/)
+      .replace('label', se)
+      .getRegex(),
+  }),
+  he = w(E({}, Te), {
+    emStrongRDelimAst: Ja,
+    emStrongLDelim: Xa,
+    delLDelim: Wa,
+    delRDelim: Ya,
+    url: f(/^((?:protocol):\/\/|www\.)(?:[a-zA-Z0-9-]+\.?)+[^\s<]*|^email/)
+      .replace('protocol', Je)
+      .replace(
+        'email',
+        /[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![-_])/,
+      )
+      .getRegex(),
+    _backpedal:
+      /(?:[^?!.,:;*_'"~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_'"~)]+(?!$))+/,
+    del: /^(~~?)(?=[^\s~])((?:\\[\s\S]|[^\\])*?(?:\\[\s\S]|[^\s~\\]))\1(?=[^~]|$)/,
+    text: f(
+      /^([`~]+|[^`~])(?:(?= {2,}\n)|(?=[a-zA-Z0-9.!#$%&'*+/=?_`{|}~-]+@)|[\s\S]*?(?:(?=[\\<![`*~_]|\b_|protocol:\/\/|www\.|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9.!#$%&'*+/=?_`{|}~-](?=[a-zA-Z0-9.!#$%&'*+/=?_`{|}~-]+@)))/,
+    )
+      .replace('protocol', Je)
+      .getRegex(),
+  }),
+  to = w(E({}, he), {
+    br: f(na).replace('{2,}', '*').getRegex(),
+    text: f(he.text)
+      .replace('\\b_', '\\b_| {2,}\\n')
+      .replace(/\{2,\}/g, '*')
+      .getRegex(),
+  }),
+  ie = { normal: Ce, gfm: Ua, pedantic: Fa },
+  H = { normal: Te, gfm: he, breaks: to, pedantic: so },
+  co = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' },
+  Qe = (a) => co[a]
+function q(a, e) {
+  if (e) {
+    if (P.escapeTest.test(a)) return a.replace(P.escapeReplace, Qe)
+  } else if (P.escapeTestNoEncode.test(a))
+    return a.replace(P.escapeReplaceNoEncode, Qe)
+  return a
+}
+function We(a) {
+  try {
+    a = encodeURI(a).replace(P.percentDecode, '%')
+  } catch (e) {
+    return null
+  }
+  return a
+}
+function Ke(a, e) {
+  var n
+  let o = a.replace(P.findPipe, (t, s, l) => {
+      let d = !1,
+        m = s
+      for (; --m >= 0 && l[m] === '\\'; ) d = !d
+      return d ? '|' : ' |'
+    }),
+    i = o.split(P.splitPipe),
+    r = 0
+  if (
+    (i[0].trim() || i.shift(),
+    i.length > 0 && !((n = i.at(-1)) != null && n.trim()) && i.pop(),
+    e)
+  )
+    if (i.length > e) i.splice(e)
+    else for (; i.length < e; ) i.push('')
+  for (; r < i.length; r++) i[r] = i[r].trim().replace(P.slashPipe, '|')
+  return i
+}
+function z(a, e, o) {
+  const i = a.length
+  if (i === 0) return ''
+  let r = 0
+  for (; r < i; ) {
+    const n = a.charAt(i - r - 1)
+    if (n === e && !o) r++
+    else if (n !== e && o) r++
+    else break
+  }
+  return a.slice(0, i - r)
+}
+function Ye(a) {
+  let e = a.split(`
+`),
+    o = e.length - 1
+  for (; o >= 0 && !e[o].trim(); ) o--
+  return e.length - o <= 2
+    ? a
+    : e.slice(0, o + 1).join(`
+`)
+}
+function lo(a, e) {
+  if (a.indexOf(e[1]) === -1) return -1
+  let o = 0
+  for (let i = 0; i < a.length; i++)
+    if (a[i] === '\\') i++
+    else if (a[i] === e[0]) o++
+    else if (a[i] === e[1] && (o--, o < 0)) return i
+  return o > 0 ? -2 : -1
+}
+function mo(a, e = 0) {
+  let o = e,
+    i = ''
+  for (const r of a)
+    if (r === '	') {
+      const n = 4 - (o % 4)
+      ;(i += ' '.repeat(n)), (o += n)
+    } else (i += r), o++
+  return i
+}
+function ea(a, e, o, i, r) {
+  const n = e.href,
+    t = e.title || null,
+    s = a[1].replace(r.other.outputLinkReplace, '$1')
+  i.state.inLink = !0
+  const l = {
+    type: a[0].charAt(0) === '!' ? 'image' : 'link',
+    raw: o,
+    href: n,
+    title: t,
+    text: s,
+    tokens: i.inlineTokens(s),
+  }
+  return (i.state.inLink = !1), l
+}
+function po(a, e, o) {
+  const i = a.match(o.other.indentCodeCompensation)
+  if (i === null) return e
+  const r = i[1]
+  return e
+    .split(`
+`)
+    .map((n) => {
+      const t = n.match(o.other.beginningSpace)
+      if (t === null) return n
+      const [s] = t
+      return s.length >= r.length ? n.slice(r.length) : n
+    })
+    .join(`
+`)
+}
+var te = class {
+    constructor(a) {
+      b(this, 'options')
+      b(this, 'rules')
+      b(this, 'lexer')
+      this.options = a || L
+    }
+    space(a) {
+      const e = this.rules.block.newline.exec(a)
+      if (e && e[0].length > 0) return { type: 'space', raw: e[0] }
+    }
+    code(a) {
+      const e = this.rules.block.code.exec(a)
+      if (e) {
+        const o = this.options.pedantic ? e[0] : Ye(e[0]),
+          i = o.replace(this.rules.other.codeRemoveIndent, '')
+        return { type: 'code', raw: o, codeBlockStyle: 'indented', text: i }
+      }
+    }
+    fences(a) {
+      const e = this.rules.block.fences.exec(a)
+      if (e) {
+        const o = e[0],
+          i = po(o, e[3] || '', this.rules)
+        return {
+          type: 'code',
+          raw: o,
+          lang: e[2]
+            ? e[2].trim().replace(this.rules.inline.anyPunctuation, '$1')
+            : e[2],
+          text: i,
+        }
+      }
+    }
+    heading(a) {
+      const e = this.rules.block.heading.exec(a)
+      if (e) {
+        let o = e[2].trim()
+        if (this.rules.other.endingHash.test(o)) {
+          const i = z(o, '#')
+          ;(this.options.pedantic ||
+            !i ||
+            this.rules.other.endingSpaceChar.test(i)) &&
+            (o = i.trim())
+        }
+        return {
+          type: 'heading',
+          raw: z(
+            e[0],
+            `
+`,
+          ),
+          depth: e[1].length,
+          text: o,
+          tokens: this.lexer.inline(o),
+        }
+      }
+    }
+    hr(a) {
+      const e = this.rules.block.hr.exec(a)
+      if (e)
+        return {
+          type: 'hr',
+          raw: z(
+            e[0],
+            `
+`,
+          ),
+        }
+    }
+    blockquote(a) {
+      const e = this.rules.block.blockquote.exec(a)
+      if (e) {
+        let o = z(
+            e[0],
+            `
+`,
+          ).split(`
+`),
+          i = '',
+          r = '',
+          n = []
+        for (; o.length > 0; ) {
+          let t = !1,
+            s = [],
+            l
+          for (l = 0; l < o.length; l++)
+            if (this.rules.other.blockquoteStart.test(o[l]))
+              s.push(o[l]), (t = !0)
+            else if (!t) s.push(o[l])
+            else break
+          o = o.slice(l)
+          const d = s.join(`
+`),
+            m = d
+              .replace(
+                this.rules.other.blockquoteSetextReplace,
+                `
+    $1`,
+              )
+              .replace(this.rules.other.blockquoteSetextReplace2, '')
+          ;(i = i
+            ? `${i}
+${d}`
+            : d),
+            (r = r
+              ? `${r}
+${m}`
+              : m)
+          const c = this.lexer.state.top
+          if (
+            ((this.lexer.state.top = !0),
+            this.lexer.blockTokens(m, n, !0),
+            (this.lexer.state.top = c),
+            o.length === 0)
+          )
+            break
+          const u = n.at(-1)
+          if ((u == null ? void 0 : u.type) === 'code') break
+          if ((u == null ? void 0 : u.type) === 'blockquote') {
+            const A = u,
+              p =
+                A.raw +
+                `
+` +
+                o.join(`
+`),
+              S = this.blockquote(p)
+            ;(n[n.length - 1] = S),
+              (i = i.substring(0, i.length - A.raw.length) + S.raw),
+              (r = r.substring(0, r.length - A.text.length) + S.text)
+            break
+          } else if ((u == null ? void 0 : u.type) === 'list') {
+            const A = u,
+              p =
+                A.raw +
+                `
+` +
+                o.join(`
+`),
+              S = this.list(p)
+            ;(n[n.length - 1] = S),
+              (i = i.substring(0, i.length - u.raw.length) + S.raw),
+              (r = r.substring(0, r.length - A.raw.length) + S.raw),
+              (o = p.substring(n.at(-1).raw.length).split(`
+`))
+          }
+        }
+        return { type: 'blockquote', raw: i, tokens: n, text: r }
+      }
+    }
+    list(a) {
+      var o, i
+      let e = this.rules.block.list.exec(a)
+      if (e) {
+        let r = e[1].trim(),
+          n = r.length > 1,
+          t = {
+            type: 'list',
+            raw: '',
+            ordered: n,
+            start: n ? +r.slice(0, -1) : '',
+            loose: !1,
+            items: [],
+          }
+        ;(r = n ? `\\d{1,9}\\${r.slice(-1)}` : `\\${r}`),
+          this.options.pedantic && (r = n ? r : '[*+-]')
+        let s = this.rules.other.listItemRegex(r),
+          l = !1
+        for (; a; ) {
+          let m = !1,
+            c = '',
+            u = ''
+          if (!(e = s.exec(a)) || this.rules.block.hr.test(a)) break
+          ;(c = e[0]), (a = a.substring(c.length))
+          let A = mo(
+              e[2].split(
+                `
+`,
+                1,
+              )[0],
+              e[1].length,
+            ),
+            p = a.split(
+              `
+`,
+              1,
+            )[0],
+            S = !A.trim(),
+            g = 0
+          if (
+            (this.options.pedantic
+              ? ((g = 2), (u = A.trimStart()))
+              : S
+                ? (g = e[1].length + 1)
+                : ((g = A.search(this.rules.other.nonSpaceChar)),
+                  (g = g > 4 ? 1 : g),
+                  (u = A.slice(g)),
+                  (g += e[1].length)),
+            S &&
+              this.rules.other.blankLine.test(p) &&
+              ((c +=
+                p +
+                `
+`),
+              (a = a.substring(p.length + 1)),
+              (m = !0)),
+            !m)
+          ) {
+            const h = this.rules.other.nextBulletRegex(g),
+              v = this.rules.other.hrRegex(g),
+              D = this.rules.other.fencesBeginRegex(g),
+              R = this.rules.other.headingBeginRegex(g),
+              V = this.rules.other.htmlBeginRegex(g),
+              J = this.rules.other.blockquoteBeginRegex(g)
+            for (; a; ) {
+              let x = a.split(
+                  `
+`,
+                  1,
+                )[0],
+                N
+              if (
+                ((p = x),
+                this.options.pedantic
+                  ? ((p = p.replace(this.rules.other.listReplaceNesting, '  ')),
+                    (N = p))
+                  : (N = p.replace(this.rules.other.tabCharGlobal, '    ')),
+                D.test(p) ||
+                  R.test(p) ||
+                  V.test(p) ||
+                  J.test(p) ||
+                  h.test(p) ||
+                  v.test(p))
+              )
+                break
+              if (N.search(this.rules.other.nonSpaceChar) >= g || !p.trim())
+                u +=
+                  `
+` + N.slice(g)
+              else {
+                if (
+                  S ||
+                  A.replace(this.rules.other.tabCharGlobal, '    ').search(
+                    this.rules.other.nonSpaceChar,
+                  ) >= 4 ||
+                  D.test(A) ||
+                  R.test(A) ||
+                  v.test(A)
+                )
+                  break
+                u +=
+                  `
+` + p
+              }
+              ;(S = !p.trim()),
+                (c +=
+                  x +
+                  `
+`),
+                (a = a.substring(x.length + 1)),
+                (A = N.slice(g))
+            }
+          }
+          t.loose ||
+            (l
+              ? (t.loose = !0)
+              : this.rules.other.doubleBlankLine.test(c) && (l = !0)),
+            t.items.push({
+              type: 'list_item',
+              raw: c,
+              task: !!this.options.gfm && this.rules.other.listIsTask.test(u),
+              loose: !1,
+              text: u,
+              tokens: [],
+            }),
+            (t.raw += c)
+        }
+        const d = t.items.at(-1)
+        if (d) (d.raw = d.raw.trimEnd()), (d.text = d.text.trimEnd())
+        else return
+        t.raw = t.raw.trimEnd()
+        for (const m of t.items) {
+          if (
+            ((this.lexer.state.top = !1),
+            (m.tokens = this.lexer.blockTokens(m.text, [])),
+            m.task)
+          ) {
+            if (
+              ((m.text = m.text.replace(this.rules.other.listReplaceTask, '')),
+              ((o = m.tokens[0]) == null ? void 0 : o.type) === 'text' ||
+                ((i = m.tokens[0]) == null ? void 0 : i.type) === 'paragraph')
+            ) {
+              ;(m.tokens[0].raw = m.tokens[0].raw.replace(
+                this.rules.other.listReplaceTask,
+                '',
+              )),
+                (m.tokens[0].text = m.tokens[0].text.replace(
+                  this.rules.other.listReplaceTask,
+                  '',
+                ))
+              for (let u = this.lexer.inlineQueue.length - 1; u >= 0; u--)
+                if (
+                  this.rules.other.listIsTask.test(
+                    this.lexer.inlineQueue[u].src,
+                  )
+                ) {
+                  this.lexer.inlineQueue[u].src = this.lexer.inlineQueue[
+                    u
+                  ].src.replace(this.rules.other.listReplaceTask, '')
+                  break
+                }
+            }
+            const c = this.rules.other.listTaskCheckbox.exec(m.raw)
+            if (c) {
+              const u = {
+                type: 'checkbox',
+                raw: c[0] + ' ',
+                checked: c[0] !== '[ ]',
+              }
+              ;(m.checked = u.checked),
+                t.loose
+                  ? m.tokens[0] &&
+                    ['paragraph', 'text'].includes(m.tokens[0].type) &&
+                    'tokens' in m.tokens[0] &&
+                    m.tokens[0].tokens
+                    ? ((m.tokens[0].raw = u.raw + m.tokens[0].raw),
+                      (m.tokens[0].text = u.raw + m.tokens[0].text),
+                      m.tokens[0].tokens.unshift(u))
+                    : m.tokens.unshift({
+                        type: 'paragraph',
+                        raw: u.raw,
+                        text: u.raw,
+                        tokens: [u],
+                      })
+                  : m.tokens.unshift(u)
+            }
+          }
+          if (!t.loose) {
+            const c = m.tokens.filter((A) => A.type === 'space'),
+              u =
+                c.length > 0 &&
+                c.some((A) => this.rules.other.anyLine.test(A.raw))
+            t.loose = u
+          }
+        }
+        if (t.loose)
+          for (const m of t.items) {
+            m.loose = !0
+            for (const c of m.tokens)
+              c.type === 'text' && (c.type = 'paragraph')
+          }
+        return t
+      }
+    }
+    html(a) {
+      const e = this.rules.block.html.exec(a)
+      if (e) {
+        const o = Ye(e[0])
+        return {
+          type: 'html',
+          block: !0,
+          raw: o,
+          pre: e[1] === 'pre' || e[1] === 'script' || e[1] === 'style',
+          text: o,
+        }
+      }
+    }
+    def(a) {
+      const e = this.rules.block.def.exec(a)
+      if (e) {
+        const o = e[1]
+            .toLowerCase()
+            .replace(this.rules.other.multipleSpaceGlobal, ' '),
+          i = e[2]
+            ? e[2]
+                .replace(this.rules.other.hrefBrackets, '$1')
+                .replace(this.rules.inline.anyPunctuation, '$1')
+            : '',
+          r = e[3]
+            ? e[3]
+                .substring(1, e[3].length - 1)
+                .replace(this.rules.inline.anyPunctuation, '$1')
+            : e[3]
+        return {
+          type: 'def',
+          tag: o,
+          raw: z(
+            e[0],
+            `
+`,
+          ),
+          href: i,
+          title: r,
+        }
+      }
+    }
+    table(a) {
+      var t
+      const e = this.rules.block.table.exec(a)
+      if (!e || !this.rules.other.tableDelimiter.test(e[2])) return
+      const o = Ke(e[1]),
+        i = e[2].replace(this.rules.other.tableAlignChars, '').split('|'),
+        r =
+          (t = e[3]) != null && t.trim()
+            ? e[3].replace(this.rules.other.tableRowBlankLine, '').split(`
+`)
+            : [],
+        n = {
+          type: 'table',
+          raw: z(
+            e[0],
+            `
+`,
+          ),
+          header: [],
+          align: [],
+          rows: [],
+        }
+      if (o.length === i.length) {
+        for (const s of i)
+          this.rules.other.tableAlignRight.test(s)
+            ? n.align.push('right')
+            : this.rules.other.tableAlignCenter.test(s)
+              ? n.align.push('center')
+              : this.rules.other.tableAlignLeft.test(s)
+                ? n.align.push('left')
+                : n.align.push(null)
+        for (let s = 0; s < o.length; s++)
+          n.header.push({
+            text: o[s],
+            tokens: this.lexer.inline(o[s]),
+            header: !0,
+            align: n.align[s],
+          })
+        for (const s of r)
+          n.rows.push(
+            Ke(s, n.header.length).map((l, d) => ({
+              text: l,
+              tokens: this.lexer.inline(l),
+              header: !1,
+              align: n.align[d],
+            })),
+          )
+        return n
+      }
+    }
+    lheading(a) {
+      const e = this.rules.block.lheading.exec(a)
+      if (e) {
+        const o = e[1].trim()
+        return {
+          type: 'heading',
+          raw: z(
+            e[0],
+            `
+`,
+          ),
+          depth: e[2].charAt(0) === '=' ? 1 : 2,
+          text: o,
+          tokens: this.lexer.inline(o),
+        }
+      }
+    }
+    paragraph(a) {
+      const e = this.rules.block.paragraph.exec(a)
+      if (e) {
+        const o =
+          e[1].charAt(e[1].length - 1) ===
+          `
+`
+            ? e[1].slice(0, -1)
+            : e[1]
+        return {
+          type: 'paragraph',
+          raw: e[0],
+          text: o,
+          tokens: this.lexer.inline(o),
+        }
+      }
+    }
+    text(a) {
+      const e = this.rules.block.text.exec(a)
+      if (e)
+        return {
+          type: 'text',
+          raw: e[0],
+          text: e[0],
+          tokens: this.lexer.inline(e[0]),
+        }
+    }
+    escape(a) {
+      const e = this.rules.inline.escape.exec(a)
+      if (e) return { type: 'escape', raw: e[0], text: e[1] }
+    }
+    tag(a) {
+      const e = this.rules.inline.tag.exec(a)
+      if (e)
+        return (
+          !this.lexer.state.inLink && this.rules.other.startATag.test(e[0])
+            ? (this.lexer.state.inLink = !0)
+            : this.lexer.state.inLink &&
+              this.rules.other.endATag.test(e[0]) &&
+              (this.lexer.state.inLink = !1),
+          !this.lexer.state.inRawBlock &&
+          this.rules.other.startPreScriptTag.test(e[0])
+            ? (this.lexer.state.inRawBlock = !0)
+            : this.lexer.state.inRawBlock &&
+              this.rules.other.endPreScriptTag.test(e[0]) &&
+              (this.lexer.state.inRawBlock = !1),
+          {
+            type: 'html',
+            raw: e[0],
+            inLink: this.lexer.state.inLink,
+            inRawBlock: this.lexer.state.inRawBlock,
+            block: !1,
+            text: e[0],
+          }
+        )
+    }
+    link(a) {
+      const e = this.rules.inline.link.exec(a)
+      if (e) {
+        const o = e[2].trim()
+        if (
+          !this.options.pedantic &&
+          this.rules.other.startAngleBracket.test(o)
+        ) {
+          if (!this.rules.other.endAngleBracket.test(o)) return
+          const n = z(o.slice(0, -1), '\\')
+          if ((o.length - n.length) % 2 === 0) return
+        } else {
+          const n = lo(e[2], '()')
+          if (n === -2) return
+          if (n > -1) {
+            const t = (e[0].indexOf('!') === 0 ? 5 : 4) + e[1].length + n
+            ;(e[2] = e[2].substring(0, n)),
+              (e[0] = e[0].substring(0, t).trim()),
+              (e[3] = '')
+          }
+        }
+        let i = e[2],
+          r = ''
+        if (this.options.pedantic) {
+          const n = this.rules.other.pedanticHrefTitle.exec(i)
+          n && ((i = n[1]), (r = n[3]))
+        } else r = e[3] ? e[3].slice(1, -1) : ''
+        return (
+          (i = i.trim()),
+          this.rules.other.startAngleBracket.test(i) &&
+            (this.options.pedantic && !this.rules.other.endAngleBracket.test(o)
+              ? (i = i.slice(1))
+              : (i = i.slice(1, -1))),
+          ea(
+            e,
+            {
+              href: i && i.replace(this.rules.inline.anyPunctuation, '$1'),
+              title: r && r.replace(this.rules.inline.anyPunctuation, '$1'),
+            },
+            e[0],
+            this.lexer,
+            this.rules,
+          )
+        )
+      }
+    }
+    reflink(a, e) {
+      let o
+      if (
+        (o = this.rules.inline.reflink.exec(a)) ||
+        (o = this.rules.inline.nolink.exec(a))
+      ) {
+        const i = (o[2] || o[1]).replace(
+            this.rules.other.multipleSpaceGlobal,
+            ' ',
+          ),
+          r = e[i.toLowerCase()]
+        if (!r) {
+          const n = o[0].charAt(0)
+          return { type: 'text', raw: n, text: n }
+        }
+        return ea(o, r, o[0], this.lexer, this.rules)
+      }
+    }
+    emStrong(a, e, o = '') {
+      let i = this.rules.inline.emStrongLDelim.exec(a)
+      if (
+        !(
+          !i ||
+          (!i[1] && !i[2] && !i[3] && !i[4]) ||
+          (i[4] && o.match(this.rules.other.unicodeAlphaNumeric))
+        ) &&
+        (!(i[1] || i[3]) || !o || this.rules.inline.punctuation.exec(o))
+      ) {
+        let r = [...i[0]].length - 1,
+          n,
+          t,
+          s = r,
+          l = 0,
+          d =
+            i[0][0] === '*'
+              ? this.rules.inline.emStrongRDelimAst
+              : this.rules.inline.emStrongRDelimUnd
+        for (
+          d.lastIndex = 0, e = e.slice(-1 * a.length + r);
+          (i = d.exec(e)) !== null;
+        ) {
+          if (((n = i[1] || i[2] || i[3] || i[4] || i[5] || i[6]), !n)) continue
+          if (((t = [...n].length), i[3] || i[4])) {
+            s += t
+            continue
+          } else if ((i[5] || i[6]) && r % 3 && !((r + t) % 3)) {
+            l += t
+            continue
+          }
+          if (((s -= t), s > 0)) continue
+          t = Math.min(t, t + s + l)
+          const m = [...i[0]][0].length,
+            c = a.slice(0, r + i.index + m + t)
+          if (Math.min(r, t) % 2) {
+            const A = c.slice(1, -1)
+            return {
+              type: 'em',
+              raw: c,
+              text: A,
+              tokens: this.lexer.inlineTokens(A),
+            }
+          }
+          const u = c.slice(2, -2)
+          return {
+            type: 'strong',
+            raw: c,
+            text: u,
+            tokens: this.lexer.inlineTokens(u),
+          }
+        }
+      }
+    }
+    codespan(a) {
+      const e = this.rules.inline.code.exec(a)
+      if (e) {
+        let o = e[2].replace(this.rules.other.newLineCharGlobal, ' '),
+          i = this.rules.other.nonSpaceChar.test(o),
+          r =
+            this.rules.other.startingSpaceChar.test(o) &&
+            this.rules.other.endingSpaceChar.test(o)
+        return (
+          i && r && (o = o.substring(1, o.length - 1)),
+          { type: 'codespan', raw: e[0], text: o }
+        )
+      }
+    }
+    br(a) {
+      const e = this.rules.inline.br.exec(a)
+      if (e) return { type: 'br', raw: e[0] }
+    }
+    del(a, e, o = '') {
+      let i = this.rules.inline.delLDelim.exec(a)
+      if (i && (!i[1] || !o || this.rules.inline.punctuation.exec(o))) {
+        let r = [...i[0]].length - 1,
+          n,
+          t,
+          s = r,
+          l = this.rules.inline.delRDelim
+        for (
+          l.lastIndex = 0, e = e.slice(-1 * a.length + r);
+          (i = l.exec(e)) !== null;
+        ) {
+          if (
+            ((n = i[1] || i[2] || i[3] || i[4] || i[5] || i[6]),
+            !n || ((t = [...n].length), t !== r))
+          )
+            continue
+          if (i[3] || i[4]) {
+            s += t
+            continue
+          }
+          if (((s -= t), s > 0)) continue
+          t = Math.min(t, t + s)
+          const d = [...i[0]][0].length,
+            m = a.slice(0, r + i.index + d + t),
+            c = m.slice(r, -r)
+          return {
+            type: 'del',
+            raw: m,
+            text: c,
+            tokens: this.lexer.inlineTokens(c),
+          }
+        }
+      }
+    }
+    autolink(a) {
+      const e = this.rules.inline.autolink.exec(a)
+      if (e) {
+        let o, i
+        return (
+          e[2] === '@'
+            ? ((o = e[1]), (i = 'mailto:' + o))
+            : ((o = e[1]), (i = o)),
+          {
+            type: 'link',
+            raw: e[0],
+            text: o,
+            href: i,
+            tokens: [{ type: 'text', raw: o, text: o }],
+          }
+        )
+      }
+    }
+    url(a) {
+      var o, i
+      let e
+      if ((e = this.rules.inline.url.exec(a))) {
+        let r, n
+        if (e[2] === '@') (r = e[0]), (n = 'mailto:' + r)
+        else {
+          let t
+          do
+            (t = e[0]),
+              (e[0] =
+                (i =
+                  (o = this.rules.inline._backpedal.exec(e[0])) == null
+                    ? void 0
+                    : o[0]) != null
+                  ? i
+                  : '')
+          while (t !== e[0])
+          ;(r = e[0]), e[1] === 'www.' ? (n = 'http://' + e[0]) : (n = e[0])
+        }
+        return {
+          type: 'link',
+          raw: e[0],
+          text: r,
+          href: n,
+          tokens: [{ type: 'text', raw: r, text: r }],
+        }
+      }
+    }
+    inlineText(a) {
+      const e = this.rules.inline.text.exec(a)
+      if (e) {
+        const o = this.lexer.state.inRawBlock
+        return { type: 'text', raw: e[0], text: e[0], escaped: o }
+      }
+    }
+  },
+  _ = class be {
+    constructor(e) {
+      b(this, 'tokens')
+      b(this, 'options')
+      b(this, 'state')
+      b(this, 'inlineQueue')
+      b(this, 'tokenizer')
+      ;(this.tokens = []),
+        (this.tokens.links = Object.create(null)),
+        (this.options = e || L),
+        (this.options.tokenizer = this.options.tokenizer || new te()),
+        (this.tokenizer = this.options.tokenizer),
+        (this.tokenizer.options = this.options),
+        (this.tokenizer.lexer = this),
+        (this.inlineQueue = []),
+        (this.state = { inLink: !1, inRawBlock: !1, top: !0 })
+      const o = { other: P, block: ie.normal, inline: H.normal }
+      this.options.pedantic
+        ? ((o.block = ie.pedantic), (o.inline = H.pedantic))
+        : this.options.gfm &&
+          ((o.block = ie.gfm),
+          this.options.breaks ? (o.inline = H.breaks) : (o.inline = H.gfm)),
+        (this.tokenizer.rules = o)
+    }
+    static get rules() {
+      return { block: ie, inline: H }
+    }
+    static lex(e, o) {
+      return new be(o).lex(e)
+    }
+    static lexInline(e, o) {
+      return new be(o).inlineTokens(e)
+    }
+    lex(e) {
+      ;(e = e.replace(
+        P.carriageReturn,
+        `
+`,
+      )),
+        this.blockTokens(e, this.tokens)
+      for (let o = 0; o < this.inlineQueue.length; o++) {
+        const i = this.inlineQueue[o]
+        this.inlineTokens(i.src, i.tokens)
+      }
+      return (this.inlineQueue = []), this.tokens
+    }
+    blockTokens(e, o = [], i = !1) {
+      var r, n, t
+      for (
+        this.tokenizer.lexer = this,
+          this.options.pedantic &&
+            (e = e.replace(P.tabCharGlobal, '    ').replace(P.spaceLine, ''));
+        e;
+      ) {
+        let s
+        if (
+          (n = (r = this.options.extensions) == null ? void 0 : r.block) !=
+            null &&
+          n.some((d) =>
+            (s = d.call({ lexer: this }, e, o))
+              ? ((e = e.substring(s.raw.length)), o.push(s), !0)
+              : !1,
+          )
+        )
+          continue
+        if ((s = this.tokenizer.space(e))) {
+          e = e.substring(s.raw.length)
+          const d = o.at(-1)
+          s.raw.length === 1 && d !== void 0
+            ? (d.raw += `
+`)
+            : o.push(s)
+          continue
+        }
+        if ((s = this.tokenizer.code(e))) {
+          e = e.substring(s.raw.length)
+          const d = o.at(-1)
+          ;(d == null ? void 0 : d.type) === 'paragraph' ||
+          (d == null ? void 0 : d.type) === 'text'
+            ? ((d.raw +=
+                (d.raw.endsWith(`
+`)
+                  ? ''
+                  : `
+`) + s.raw),
+              (d.text +=
+                `
+` + s.text),
+              (this.inlineQueue.at(-1).src = d.text))
+            : o.push(s)
+          continue
+        }
+        if ((s = this.tokenizer.fences(e))) {
+          ;(e = e.substring(s.raw.length)), o.push(s)
+          continue
+        }
+        if ((s = this.tokenizer.heading(e))) {
+          ;(e = e.substring(s.raw.length)), o.push(s)
+          continue
+        }
+        if ((s = this.tokenizer.hr(e))) {
+          ;(e = e.substring(s.raw.length)), o.push(s)
+          continue
+        }
+        if ((s = this.tokenizer.blockquote(e))) {
+          ;(e = e.substring(s.raw.length)), o.push(s)
+          continue
+        }
+        if ((s = this.tokenizer.list(e))) {
+          ;(e = e.substring(s.raw.length)), o.push(s)
+          continue
+        }
+        if ((s = this.tokenizer.html(e))) {
+          ;(e = e.substring(s.raw.length)), o.push(s)
+          continue
+        }
+        if ((s = this.tokenizer.def(e))) {
+          e = e.substring(s.raw.length)
+          const d = o.at(-1)
+          ;(d == null ? void 0 : d.type) === 'paragraph' ||
+          (d == null ? void 0 : d.type) === 'text'
+            ? ((d.raw +=
+                (d.raw.endsWith(`
+`)
+                  ? ''
+                  : `
+`) + s.raw),
+              (d.text +=
+                `
+` + s.raw),
+              (this.inlineQueue.at(-1).src = d.text))
+            : this.tokens.links[s.tag] ||
+              ((this.tokens.links[s.tag] = { href: s.href, title: s.title }),
+              o.push(s))
+          continue
+        }
+        if ((s = this.tokenizer.table(e))) {
+          ;(e = e.substring(s.raw.length)), o.push(s)
+          continue
+        }
+        if ((s = this.tokenizer.lheading(e))) {
+          ;(e = e.substring(s.raw.length)), o.push(s)
+          continue
+        }
+        let l = e
+        if ((t = this.options.extensions) != null && t.startBlock) {
+          let d = 1 / 0,
+            m = e.slice(1),
+            c
+          this.options.extensions.startBlock.forEach((u) => {
+            ;(c = u.call({ lexer: this }, m)),
+              typeof c == 'number' && c >= 0 && (d = Math.min(d, c))
+          }),
+            d < 1 / 0 && d >= 0 && (l = e.substring(0, d + 1))
+        }
+        if (this.state.top && (s = this.tokenizer.paragraph(l))) {
+          const d = o.at(-1)
+          i && (d == null ? void 0 : d.type) === 'paragraph'
+            ? ((d.raw +=
+                (d.raw.endsWith(`
+`)
+                  ? ''
+                  : `
+`) + s.raw),
+              (d.text +=
+                `
+` + s.text),
+              this.inlineQueue.pop(),
+              (this.inlineQueue.at(-1).src = d.text))
+            : o.push(s),
+            (i = l.length !== e.length),
+            (e = e.substring(s.raw.length))
+          continue
+        }
+        if ((s = this.tokenizer.text(e))) {
+          e = e.substring(s.raw.length)
+          const d = o.at(-1)
+          ;(d == null ? void 0 : d.type) === 'text'
+            ? ((d.raw +=
+                (d.raw.endsWith(`
+`)
+                  ? ''
+                  : `
+`) + s.raw),
+              (d.text +=
+                `
+` + s.text),
+              this.inlineQueue.pop(),
+              (this.inlineQueue.at(-1).src = d.text))
+            : o.push(s)
+          continue
+        }
+        if (e) {
+          const d = 'Infinite loop on byte: ' + e.charCodeAt(0)
+          if (this.options.silent) {
+            console.error(d)
+            break
+          } else throw new Error(d)
+        }
+      }
+      return (this.state.top = !0), o
+    }
+    inline(e, o = []) {
+      return this.inlineQueue.push({ src: e, tokens: o }), o
+    }
+    inlineTokens(e, o = []) {
+      var l, d, m, c, u, A
+      this.tokenizer.lexer = this
+      let i = e,
+        r = null
+      if (this.tokens.links) {
+        const p = Object.keys(this.tokens.links)
+        if (p.length > 0)
+          for (
+            ;
+            (r = this.tokenizer.rules.inline.reflinkSearch.exec(i)) !== null;
+          )
+            p.includes(r[0].slice(r[0].lastIndexOf('[') + 1, -1)) &&
+              (i =
+                i.slice(0, r.index) +
+                '[' +
+                'a'.repeat(r[0].length - 2) +
+                ']' +
+                i.slice(this.tokenizer.rules.inline.reflinkSearch.lastIndex))
+      }
+      for (
+        ;
+        (r = this.tokenizer.rules.inline.anyPunctuation.exec(i)) !== null;
+      )
+        i =
+          i.slice(0, r.index) +
+          '++' +
+          i.slice(this.tokenizer.rules.inline.anyPunctuation.lastIndex)
+      let n
+      for (; (r = this.tokenizer.rules.inline.blockSkip.exec(i)) !== null; )
+        (n = r[2] ? r[2].length : 0),
+          (i =
+            i.slice(0, r.index + n) +
+            '[' +
+            'a'.repeat(r[0].length - n - 2) +
+            ']' +
+            i.slice(this.tokenizer.rules.inline.blockSkip.lastIndex))
+      i =
+        (m =
+          (d = (l = this.options.hooks) == null ? void 0 : l.emStrongMask) ==
+          null
+            ? void 0
+            : d.call({ lexer: this }, i)) != null
+          ? m
+          : i
+      let t = !1,
+        s = ''
+      for (; e; ) {
+        t || (s = ''), (t = !1)
+        let p
+        if (
+          (u = (c = this.options.extensions) == null ? void 0 : c.inline) !=
+            null &&
+          u.some((g) =>
+            (p = g.call({ lexer: this }, e, o))
+              ? ((e = e.substring(p.raw.length)), o.push(p), !0)
+              : !1,
+          )
+        )
+          continue
+        if ((p = this.tokenizer.escape(e))) {
+          ;(e = e.substring(p.raw.length)), o.push(p)
+          continue
+        }
+        if ((p = this.tokenizer.tag(e))) {
+          ;(e = e.substring(p.raw.length)), o.push(p)
+          continue
+        }
+        if ((p = this.tokenizer.link(e))) {
+          ;(e = e.substring(p.raw.length)), o.push(p)
+          continue
+        }
+        if ((p = this.tokenizer.reflink(e, this.tokens.links))) {
+          e = e.substring(p.raw.length)
+          const g = o.at(-1)
+          p.type === 'text' && (g == null ? void 0 : g.type) === 'text'
+            ? ((g.raw += p.raw), (g.text += p.text))
+            : o.push(p)
+          continue
+        }
+        if ((p = this.tokenizer.emStrong(e, i, s))) {
+          ;(e = e.substring(p.raw.length)), o.push(p)
+          continue
+        }
+        if ((p = this.tokenizer.codespan(e))) {
+          ;(e = e.substring(p.raw.length)), o.push(p)
+          continue
+        }
+        if ((p = this.tokenizer.br(e))) {
+          ;(e = e.substring(p.raw.length)), o.push(p)
+          continue
+        }
+        if ((p = this.tokenizer.del(e, i, s))) {
+          ;(e = e.substring(p.raw.length)), o.push(p)
+          continue
+        }
+        if ((p = this.tokenizer.autolink(e))) {
+          ;(e = e.substring(p.raw.length)), o.push(p)
+          continue
+        }
+        if (!this.state.inLink && (p = this.tokenizer.url(e))) {
+          ;(e = e.substring(p.raw.length)), o.push(p)
+          continue
+        }
+        let S = e
+        if ((A = this.options.extensions) != null && A.startInline) {
+          let g = 1 / 0,
+            h = e.slice(1),
+            v
+          this.options.extensions.startInline.forEach((D) => {
+            ;(v = D.call({ lexer: this }, h)),
+              typeof v == 'number' && v >= 0 && (g = Math.min(g, v))
+          }),
+            g < 1 / 0 && g >= 0 && (S = e.substring(0, g + 1))
+        }
+        if ((p = this.tokenizer.inlineText(S))) {
+          ;(e = e.substring(p.raw.length)),
+            p.raw.slice(-1) !== '_' && (s = p.raw.slice(-1)),
+            (t = !0)
+          const g = o.at(-1)
+          ;(g == null ? void 0 : g.type) === 'text'
+            ? ((g.raw += p.raw), (g.text += p.text))
+            : o.push(p)
+          continue
+        }
+        if (e) {
+          const g = 'Infinite loop on byte: ' + e.charCodeAt(0)
+          if (this.options.silent) {
+            console.error(g)
+            break
+          } else throw new Error(g)
+        }
+      }
+      return o
+    }
+  },
+  de = class {
+    constructor(a) {
+      b(this, 'options')
+      b(this, 'parser')
+      this.options = a || L
+    }
+    space(a) {
+      return ''
+    }
+    code({ text: a, lang: e, escaped: o }) {
+      var n
+      const i = (n = (e || '').match(P.notSpaceStart)) == null ? void 0 : n[0],
+        r =
+          a.replace(P.endingNewline, '') +
+          `
+`
+      return i
+        ? '<pre><code class="language-' +
+            q(i) +
+            '">' +
+            (o ? r : q(r, !0)) +
+            `</code></pre>
+`
+        : '<pre><code>' +
+            (o ? r : q(r, !0)) +
+            `</code></pre>
+`
+    }
+    blockquote({ tokens: a }) {
+      return `<blockquote>
 ${this.parser.parse(a)}</blockquote>
-`}html({text:a}){return a}def(a){return""}heading({tokens:a,depth:e}){return`<h${e}>${this.parser.parseInline(a)}</h${e}>
-`}hr(a){return`<hr>
-`}list(a){let e=a.ordered,o=a.start,i="";for(let t=0;t<a.items.length;t++){let s=a.items[t];i+=this.listitem(s)}let r=e?"ol":"ul",n=e&&o!==1?' start="'+o+'"':"";return"<"+r+n+`>
-`+i+"</"+r+`>
-`}listitem(a){return`<li>${this.parser.parse(a.tokens)}</li>
-`}checkbox({checked:a}){return"<input "+(a?'checked="" ':"")+'disabled="" type="checkbox"> '}paragraph({tokens:a}){return`<p>${this.parser.parseInline(a)}</p>
-`}table(a){let e="",o="";for(let r=0;r<a.header.length;r++)o+=this.tablecell(a.header[r]);e+=this.tablerow({text:o});let i="";for(let r=0;r<a.rows.length;r++){let n=a.rows[r];o="";for(let t=0;t<n.length;t++)o+=this.tablecell(n[t]);i+=this.tablerow({text:o})}return i&&(i=`<tbody>${i}</tbody>`),`<table>
+`
+    }
+    html({ text: a }) {
+      return a
+    }
+    def(a) {
+      return ''
+    }
+    heading({ tokens: a, depth: e }) {
+      return `<h${e}>${this.parser.parseInline(a)}</h${e}>
+`
+    }
+    hr(a) {
+      return `<hr>
+`
+    }
+    list(a) {
+      let e = a.ordered,
+        o = a.start,
+        i = ''
+      for (let t = 0; t < a.items.length; t++) {
+        const s = a.items[t]
+        i += this.listitem(s)
+      }
+      const r = e ? 'ol' : 'ul',
+        n = e && o !== 1 ? ' start="' + o + '"' : ''
+      return (
+        '<' +
+        r +
+        n +
+        `>
+` +
+        i +
+        '</' +
+        r +
+        `>
+`
+      )
+    }
+    listitem(a) {
+      return `<li>${this.parser.parse(a.tokens)}</li>
+`
+    }
+    checkbox({ checked: a }) {
+      return (
+        '<input ' + (a ? 'checked="" ' : '') + 'disabled="" type="checkbox"> '
+      )
+    }
+    paragraph({ tokens: a }) {
+      return `<p>${this.parser.parseInline(a)}</p>
+`
+    }
+    table(a) {
+      let e = '',
+        o = ''
+      for (let r = 0; r < a.header.length; r++) o += this.tablecell(a.header[r])
+      e += this.tablerow({ text: o })
+      let i = ''
+      for (let r = 0; r < a.rows.length; r++) {
+        const n = a.rows[r]
+        o = ''
+        for (let t = 0; t < n.length; t++) o += this.tablecell(n[t])
+        i += this.tablerow({ text: o })
+      }
+      return (
+        i && (i = `<tbody>${i}</tbody>`),
+        `<table>
 <thead>
-`+e+`</thead>
-`+i+`</table>
-`}tablerow({text:a}){return`<tr>
+` +
+          e +
+          `</thead>
+` +
+          i +
+          `</table>
+`
+      )
+    }
+    tablerow({ text: a }) {
+      return `<tr>
 ${a}</tr>
-`}tablecell(a){let e=this.parser.parseInline(a.tokens),o=a.header?"th":"td";return(a.align?`<${o} align="${a.align}">`:`<${o}>`)+e+`</${o}>
-`}strong({tokens:a}){return`<strong>${this.parser.parseInline(a)}</strong>`}em({tokens:a}){return`<em>${this.parser.parseInline(a)}</em>`}codespan({text:a}){return`<code>${q(a,!0)}</code>`}br(a){return"<br>"}del({tokens:a}){return`<del>${this.parser.parseInline(a)}</del>`}link({href:a,title:e,tokens:o}){let i=this.parser.parseInline(o),r=We(a);if(r===null)return i;a=r;let n='<a href="'+a+'"';return e&&(n+=' title="'+q(e)+'"'),n+=">"+i+"</a>",n}image({href:a,title:e,text:o,tokens:i}){i&&(o=this.parser.parseInline(i,this.parser.textRenderer));let r=We(a);if(r===null)return q(o);a=r;let n=`<img src="${a}" alt="${q(o)}"`;return e&&(n+=` title="${q(e)}"`),n+=">",n}text(a){return"tokens"in a&&a.tokens?this.parser.parseInline(a.tokens):"escaped"in a&&a.escaped?a.text:q(a.text)}},qe=class{strong({text:a}){return a}em({text:a}){return a}codespan({text:a}){return a}del({text:a}){return a}html({text:a}){return a}text({text:a}){return a}link({text:a}){return""+a}image({text:a}){return""+a}br(){return""}checkbox({raw:a}){return a}},C=class Se{constructor(e){b(this,"options");b(this,"renderer");b(this,"textRenderer");this.options=e||L,this.options.renderer=this.options.renderer||new de,this.renderer=this.options.renderer,this.renderer.options=this.options,this.renderer.parser=this,this.textRenderer=new qe}static parse(e,o){return new Se(o).parse(e)}static parseInline(e,o){return new Se(o).parseInline(e)}parse(e){var i,r;this.renderer.parser=this;let o="";for(let n=0;n<e.length;n++){let t=e[n];if((r=(i=this.options.extensions)==null?void 0:i.renderers)!=null&&r[t.type]){let l=t,d=this.options.extensions.renderers[l.type].call({parser:this},l);if(d!==!1||!["space","hr","heading","code","table","blockquote","list","html","def","paragraph","text"].includes(l.type)){o+=d||"";continue}}let s=t;switch(s.type){case"space":{o+=this.renderer.space(s);break}case"hr":{o+=this.renderer.hr(s);break}case"heading":{o+=this.renderer.heading(s);break}case"code":{o+=this.renderer.code(s);break}case"table":{o+=this.renderer.table(s);break}case"blockquote":{o+=this.renderer.blockquote(s);break}case"list":{o+=this.renderer.list(s);break}case"checkbox":{o+=this.renderer.checkbox(s);break}case"html":{o+=this.renderer.html(s);break}case"def":{o+=this.renderer.def(s);break}case"paragraph":{o+=this.renderer.paragraph(s);break}case"text":{o+=this.renderer.text(s);break}default:{let l='Token with "'+s.type+'" type was not found.';if(this.options.silent)return console.error(l),"";throw new Error(l)}}}return o}parseInline(e,o=this.renderer){var r,n;this.renderer.parser=this;let i="";for(let t=0;t<e.length;t++){let s=e[t];if((n=(r=this.options.extensions)==null?void 0:r.renderers)!=null&&n[s.type]){let d=this.options.extensions.renderers[s.type].call({parser:this},s);if(d!==!1||!["escape","html","link","image","strong","em","codespan","br","del","text"].includes(s.type)){i+=d||"";continue}}let l=s;switch(l.type){case"escape":{i+=o.text(l);break}case"html":{i+=o.html(l);break}case"link":{i+=o.link(l);break}case"image":{i+=o.image(l);break}case"checkbox":{i+=o.checkbox(l);break}case"strong":{i+=o.strong(l);break}case"em":{i+=o.em(l);break}case"codespan":{i+=o.codespan(l);break}case"br":{i+=o.br(l);break}case"del":{i+=o.del(l);break}case"text":{i+=o.text(l);break}default:{let d='Token with "'+l.type+'" type was not found.';if(this.options.silent)return console.error(d),"";throw new Error(d)}}}return i}},ne,X=(ne=class{constructor(a){b(this,"options");b(this,"block");this.options=a||L}preprocess(a){return a}postprocess(a){return a}processAllTokens(a){return a}emStrongMask(a){return a}provideLexer(a=this.block){return a?_.lex:_.lexInline}provideParser(a=this.block){return a?C.parse:C.parseInline}},b(ne,"passThroughHooks",new Set(["preprocess","postprocess","processAllTokens","emStrongMask"])),b(ne,"passThroughHooksRespectAsync",new Set(["preprocess","postprocess","processAllTokens"])),ne),uo=class{constructor(...a){b(this,"defaults",Oe());b(this,"options",this.setOptions);b(this,"parse",this.parseMarkdown(!0));b(this,"parseInline",this.parseMarkdown(!1));b(this,"Parser",C);b(this,"Renderer",de);b(this,"TextRenderer",qe);b(this,"Lexer",_);b(this,"Tokenizer",te);b(this,"Hooks",X);this.use(...a)}walkTokens(a,e){var i,r;let o=[];for(let n of a)switch(o=o.concat(e.call(this,n)),n.type){case"table":{let t=n;for(let s of t.header)o=o.concat(this.walkTokens(s.tokens,e));for(let s of t.rows)for(let l of s)o=o.concat(this.walkTokens(l.tokens,e));break}case"list":{let t=n;o=o.concat(this.walkTokens(t.items,e));break}default:{let t=n;(r=(i=this.defaults.extensions)==null?void 0:i.childTokens)!=null&&r[t.type]?this.defaults.extensions.childTokens[t.type].forEach(s=>{let l=t[s].flat(1/0);o=o.concat(this.walkTokens(l,e))}):t.tokens&&(o=o.concat(this.walkTokens(t.tokens,e)))}}return o}use(...a){let e=this.defaults.extensions||{renderers:{},childTokens:{}};return a.forEach(o=>{let i=E({},o);if(i.async=this.defaults.async||i.async||!1,o.extensions&&(o.extensions.forEach(r=>{if(!r.name)throw new Error("extension name required");if("renderer"in r){let n=e.renderers[r.name];n?e.renderers[r.name]=function(...t){let s=r.renderer.apply(this,t);return s===!1&&(s=n.apply(this,t)),s}:e.renderers[r.name]=r.renderer}if("tokenizer"in r){if(!r.level||r.level!=="block"&&r.level!=="inline")throw new Error("extension level must be 'block' or 'inline'");let n=e[r.level];n?n.unshift(r.tokenizer):e[r.level]=[r.tokenizer],r.start&&(r.level==="block"?e.startBlock?e.startBlock.push(r.start):e.startBlock=[r.start]:r.level==="inline"&&(e.startInline?e.startInline.push(r.start):e.startInline=[r.start]))}"childTokens"in r&&r.childTokens&&(e.childTokens[r.name]=r.childTokens)}),i.extensions=e),o.renderer){let r=this.defaults.renderer||new de(this.defaults);for(let n in o.renderer){if(!(n in r))throw new Error(`renderer '${n}' does not exist`);if(["options","parser"].includes(n))continue;let t=n,s=o.renderer[t],l=r[t];r[t]=(...d)=>{let m=s.apply(r,d);return m===!1&&(m=l.apply(r,d)),m||""}}i.renderer=r}if(o.tokenizer){let r=this.defaults.tokenizer||new te(this.defaults);for(let n in o.tokenizer){if(!(n in r))throw new Error(`tokenizer '${n}' does not exist`);if(["options","rules","lexer"].includes(n))continue;let t=n,s=o.tokenizer[t],l=r[t];r[t]=(...d)=>{let m=s.apply(r,d);return m===!1&&(m=l.apply(r,d)),m}}i.tokenizer=r}if(o.hooks){let r=this.defaults.hooks||new X;for(let n in o.hooks){if(!(n in r))throw new Error(`hook '${n}' does not exist`);if(["options","block"].includes(n))continue;let t=n,s=o.hooks[t],l=r[t];X.passThroughHooks.has(n)?r[t]=d=>{if(this.defaults.async&&X.passThroughHooksRespectAsync.has(n))return(async()=>{let c=await s.call(r,d);return l.call(r,c)})();let m=s.call(r,d);return l.call(r,m)}:r[t]=(...d)=>{if(this.defaults.async)return(async()=>{let c=await s.apply(r,d);return c===!1&&(c=await l.apply(r,d)),c})();let m=s.apply(r,d);return m===!1&&(m=l.apply(r,d)),m}}i.hooks=r}if(o.walkTokens){let r=this.defaults.walkTokens,n=o.walkTokens;i.walkTokens=function(t){let s=[];return s.push(n.call(this,t)),r&&(s=s.concat(r.call(this,t))),s}}this.defaults=E(E({},this.defaults),i)}),this}setOptions(a){return this.defaults=E(E({},this.defaults),a),this}lexer(a,e){return _.lex(a,e!=null?e:this.defaults)}parser(a,e){return C.parse(a,e!=null?e:this.defaults)}parseMarkdown(a){return(e,o)=>{let i=E({},o),r=E(E({},this.defaults),i),n=this.onError(!!r.silent,!!r.async);if(this.defaults.async===!0&&i.async===!1)return n(new Error("marked(): The async option was set to true by an extension. Remove async: false from the parse options object to return a Promise."));if(typeof e>"u"||e===null)return n(new Error("marked(): input parameter is undefined or null"));if(typeof e!="string")return n(new Error("marked(): input parameter is of type "+Object.prototype.toString.call(e)+", string expected"));if(r.hooks&&(r.hooks.options=r,r.hooks.block=a),r.async)return(async()=>{let t=r.hooks?await r.hooks.preprocess(e):e,s=await(r.hooks?await r.hooks.provideLexer(a):a?_.lex:_.lexInline)(t,r),l=r.hooks?await r.hooks.processAllTokens(s):s;r.walkTokens&&await Promise.all(this.walkTokens(l,r.walkTokens));let d=await(r.hooks?await r.hooks.provideParser(a):a?C.parse:C.parseInline)(l,r);return r.hooks?await r.hooks.postprocess(d):d})().catch(n);try{r.hooks&&(e=r.hooks.preprocess(e));let t=(r.hooks?r.hooks.provideLexer(a):a?_.lex:_.lexInline)(e,r);r.hooks&&(t=r.hooks.processAllTokens(t)),r.walkTokens&&this.walkTokens(t,r.walkTokens);let s=(r.hooks?r.hooks.provideParser(a):a?C.parse:C.parseInline)(t,r);return r.hooks&&(s=r.hooks.postprocess(s)),s}catch(t){return n(t)}}}onError(a,e){return o=>{if(o.message+=`
-Please report this to https://github.com/markedjs/marked.`,a){let i="<p>An error occurred:</p><pre>"+q(o.message+"",!0)+"</pre>";return e?Promise.resolve(i):i}if(e)return Promise.reject(o);throw o}}},F=new uo;function I(a,e){return F.parse(a,e)}I.options=I.setOptions=function(a){return F.setOptions(a),I.defaults=F.defaults,aa(I.defaults),I};I.getDefaults=Oe;I.defaults=L;I.use=function(...a){return F.use(...a),I.defaults=F.defaults,aa(I.defaults),I};I.walkTokens=function(a,e){return F.walkTokens(a,e)};I.parseInline=F.parseInline;I.Parser=C;I.parser=C.parse;I.Renderer=de;I.TextRenderer=qe;I.Lexer=_;I.lexer=_.lex;I.Tokenizer=te;I.Hooks=X;I.parse=I;var Io=I.options,ho=I.setOptions,bo=I.use,So=I.walkTokens,Oo=I.parseInline;var Po=C.parse,Eo=_.lex;var ma=[{id:"IN02-2014",texto:`MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
+`
+    }
+    tablecell(a) {
+      const e = this.parser.parseInline(a.tokens),
+        o = a.header ? 'th' : 'td'
+      return (
+        (a.align ? `<${o} align="${a.align}">` : `<${o}>`) +
+        e +
+        `</${o}>
+`
+      )
+    }
+    strong({ tokens: a }) {
+      return `<strong>${this.parser.parseInline(a)}</strong>`
+    }
+    em({ tokens: a }) {
+      return `<em>${this.parser.parseInline(a)}</em>`
+    }
+    codespan({ text: a }) {
+      return `<code>${q(a, !0)}</code>`
+    }
+    br(a) {
+      return '<br>'
+    }
+    del({ tokens: a }) {
+      return `<del>${this.parser.parseInline(a)}</del>`
+    }
+    link({ href: a, title: e, tokens: o }) {
+      const i = this.parser.parseInline(o),
+        r = We(a)
+      if (r === null) return i
+      a = r
+      let n = '<a href="' + a + '"'
+      return e && (n += ' title="' + q(e) + '"'), (n += '>' + i + '</a>'), n
+    }
+    image({ href: a, title: e, text: o, tokens: i }) {
+      i && (o = this.parser.parseInline(i, this.parser.textRenderer))
+      const r = We(a)
+      if (r === null) return q(o)
+      a = r
+      let n = `<img src="${a}" alt="${q(o)}"`
+      return e && (n += ` title="${q(e)}"`), (n += '>'), n
+    }
+    text(a) {
+      return 'tokens' in a && a.tokens
+        ? this.parser.parseInline(a.tokens)
+        : 'escaped' in a && a.escaped
+          ? a.text
+          : q(a.text)
+    }
+  },
+  qe = class {
+    strong({ text: a }) {
+      return a
+    }
+    em({ text: a }) {
+      return a
+    }
+    codespan({ text: a }) {
+      return a
+    }
+    del({ text: a }) {
+      return a
+    }
+    html({ text: a }) {
+      return a
+    }
+    text({ text: a }) {
+      return a
+    }
+    link({ text: a }) {
+      return '' + a
+    }
+    image({ text: a }) {
+      return '' + a
+    }
+    br() {
+      return ''
+    }
+    checkbox({ raw: a }) {
+      return a
+    }
+  },
+  C = class Se {
+    constructor(e) {
+      b(this, 'options')
+      b(this, 'renderer')
+      b(this, 'textRenderer')
+      ;(this.options = e || L),
+        (this.options.renderer = this.options.renderer || new de()),
+        (this.renderer = this.options.renderer),
+        (this.renderer.options = this.options),
+        (this.renderer.parser = this),
+        (this.textRenderer = new qe())
+    }
+    static parse(e, o) {
+      return new Se(o).parse(e)
+    }
+    static parseInline(e, o) {
+      return new Se(o).parseInline(e)
+    }
+    parse(e) {
+      var i, r
+      this.renderer.parser = this
+      let o = ''
+      for (let n = 0; n < e.length; n++) {
+        const t = e[n]
+        if (
+          (r = (i = this.options.extensions) == null ? void 0 : i.renderers) !=
+            null &&
+          r[t.type]
+        ) {
+          const l = t,
+            d = this.options.extensions.renderers[l.type].call(
+              { parser: this },
+              l,
+            )
+          if (
+            d !== !1 ||
+            ![
+              'space',
+              'hr',
+              'heading',
+              'code',
+              'table',
+              'blockquote',
+              'list',
+              'html',
+              'def',
+              'paragraph',
+              'text',
+            ].includes(l.type)
+          ) {
+            o += d || ''
+            continue
+          }
+        }
+        const s = t
+        switch (s.type) {
+          case 'space': {
+            o += this.renderer.space(s)
+            break
+          }
+          case 'hr': {
+            o += this.renderer.hr(s)
+            break
+          }
+          case 'heading': {
+            o += this.renderer.heading(s)
+            break
+          }
+          case 'code': {
+            o += this.renderer.code(s)
+            break
+          }
+          case 'table': {
+            o += this.renderer.table(s)
+            break
+          }
+          case 'blockquote': {
+            o += this.renderer.blockquote(s)
+            break
+          }
+          case 'list': {
+            o += this.renderer.list(s)
+            break
+          }
+          case 'checkbox': {
+            o += this.renderer.checkbox(s)
+            break
+          }
+          case 'html': {
+            o += this.renderer.html(s)
+            break
+          }
+          case 'def': {
+            o += this.renderer.def(s)
+            break
+          }
+          case 'paragraph': {
+            o += this.renderer.paragraph(s)
+            break
+          }
+          case 'text': {
+            o += this.renderer.text(s)
+            break
+          }
+          default: {
+            const l = 'Token with "' + s.type + '" type was not found.'
+            if (this.options.silent) return console.error(l), ''
+            throw new Error(l)
+          }
+        }
+      }
+      return o
+    }
+    parseInline(e, o = this.renderer) {
+      var r, n
+      this.renderer.parser = this
+      let i = ''
+      for (let t = 0; t < e.length; t++) {
+        const s = e[t]
+        if (
+          (n = (r = this.options.extensions) == null ? void 0 : r.renderers) !=
+            null &&
+          n[s.type]
+        ) {
+          const d = this.options.extensions.renderers[s.type].call(
+            { parser: this },
+            s,
+          )
+          if (
+            d !== !1 ||
+            ![
+              'escape',
+              'html',
+              'link',
+              'image',
+              'strong',
+              'em',
+              'codespan',
+              'br',
+              'del',
+              'text',
+            ].includes(s.type)
+          ) {
+            i += d || ''
+            continue
+          }
+        }
+        const l = s
+        switch (l.type) {
+          case 'escape': {
+            i += o.text(l)
+            break
+          }
+          case 'html': {
+            i += o.html(l)
+            break
+          }
+          case 'link': {
+            i += o.link(l)
+            break
+          }
+          case 'image': {
+            i += o.image(l)
+            break
+          }
+          case 'checkbox': {
+            i += o.checkbox(l)
+            break
+          }
+          case 'strong': {
+            i += o.strong(l)
+            break
+          }
+          case 'em': {
+            i += o.em(l)
+            break
+          }
+          case 'codespan': {
+            i += o.codespan(l)
+            break
+          }
+          case 'br': {
+            i += o.br(l)
+            break
+          }
+          case 'del': {
+            i += o.del(l)
+            break
+          }
+          case 'text': {
+            i += o.text(l)
+            break
+          }
+          default: {
+            const d = 'Token with "' + l.type + '" type was not found.'
+            if (this.options.silent) return console.error(d), ''
+            throw new Error(d)
+          }
+        }
+      }
+      return i
+    }
+  },
+  ne,
+  X =
+    ((ne = class {
+      constructor(a) {
+        b(this, 'options')
+        b(this, 'block')
+        this.options = a || L
+      }
+      preprocess(a) {
+        return a
+      }
+      postprocess(a) {
+        return a
+      }
+      processAllTokens(a) {
+        return a
+      }
+      emStrongMask(a) {
+        return a
+      }
+      provideLexer(a = this.block) {
+        return a ? _.lex : _.lexInline
+      }
+      provideParser(a = this.block) {
+        return a ? C.parse : C.parseInline
+      }
+    }),
+    b(
+      ne,
+      'passThroughHooks',
+      new Set([
+        'preprocess',
+        'postprocess',
+        'processAllTokens',
+        'emStrongMask',
+      ]),
+    ),
+    b(
+      ne,
+      'passThroughHooksRespectAsync',
+      new Set(['preprocess', 'postprocess', 'processAllTokens']),
+    ),
+    ne),
+  uo = class {
+    constructor(...a) {
+      b(this, 'defaults', Oe())
+      b(this, 'options', this.setOptions)
+      b(this, 'parse', this.parseMarkdown(!0))
+      b(this, 'parseInline', this.parseMarkdown(!1))
+      b(this, 'Parser', C)
+      b(this, 'Renderer', de)
+      b(this, 'TextRenderer', qe)
+      b(this, 'Lexer', _)
+      b(this, 'Tokenizer', te)
+      b(this, 'Hooks', X)
+      this.use(...a)
+    }
+    walkTokens(a, e) {
+      var i, r
+      let o = []
+      for (const n of a)
+        switch (((o = o.concat(e.call(this, n))), n.type)) {
+          case 'table': {
+            const t = n
+            for (const s of t.header) o = o.concat(this.walkTokens(s.tokens, e))
+            for (const s of t.rows)
+              for (const l of s) o = o.concat(this.walkTokens(l.tokens, e))
+            break
+          }
+          case 'list': {
+            const t = n
+            o = o.concat(this.walkTokens(t.items, e))
+            break
+          }
+          default: {
+            const t = n
+            ;(r =
+              (i = this.defaults.extensions) == null
+                ? void 0
+                : i.childTokens) != null && r[t.type]
+              ? this.defaults.extensions.childTokens[t.type].forEach((s) => {
+                  const l = t[s].flat(1 / 0)
+                  o = o.concat(this.walkTokens(l, e))
+                })
+              : t.tokens && (o = o.concat(this.walkTokens(t.tokens, e)))
+          }
+        }
+      return o
+    }
+    use(...a) {
+      const e = this.defaults.extensions || { renderers: {}, childTokens: {} }
+      return (
+        a.forEach((o) => {
+          const i = E({}, o)
+          if (
+            ((i.async = this.defaults.async || i.async || !1),
+            o.extensions &&
+              (o.extensions.forEach((r) => {
+                if (!r.name) throw new Error('extension name required')
+                if ('renderer' in r) {
+                  const n = e.renderers[r.name]
+                  n
+                    ? (e.renderers[r.name] = function (...t) {
+                        let s = r.renderer.apply(this, t)
+                        return s === !1 && (s = n.apply(this, t)), s
+                      })
+                    : (e.renderers[r.name] = r.renderer)
+                }
+                if ('tokenizer' in r) {
+                  if (!r.level || (r.level !== 'block' && r.level !== 'inline'))
+                    throw new Error(
+                      "extension level must be 'block' or 'inline'",
+                    )
+                  const n = e[r.level]
+                  n ? n.unshift(r.tokenizer) : (e[r.level] = [r.tokenizer]),
+                    r.start &&
+                      (r.level === 'block'
+                        ? e.startBlock
+                          ? e.startBlock.push(r.start)
+                          : (e.startBlock = [r.start])
+                        : r.level === 'inline' &&
+                          (e.startInline
+                            ? e.startInline.push(r.start)
+                            : (e.startInline = [r.start])))
+                }
+                'childTokens' in r &&
+                  r.childTokens &&
+                  (e.childTokens[r.name] = r.childTokens)
+              }),
+              (i.extensions = e)),
+            o.renderer)
+          ) {
+            const r = this.defaults.renderer || new de(this.defaults)
+            for (const n in o.renderer) {
+              if (!(n in r)) throw new Error(`renderer '${n}' does not exist`)
+              if (['options', 'parser'].includes(n)) continue
+              const t = n,
+                s = o.renderer[t],
+                l = r[t]
+              r[t] = (...d) => {
+                let m = s.apply(r, d)
+                return m === !1 && (m = l.apply(r, d)), m || ''
+              }
+            }
+            i.renderer = r
+          }
+          if (o.tokenizer) {
+            const r = this.defaults.tokenizer || new te(this.defaults)
+            for (const n in o.tokenizer) {
+              if (!(n in r)) throw new Error(`tokenizer '${n}' does not exist`)
+              if (['options', 'rules', 'lexer'].includes(n)) continue
+              const t = n,
+                s = o.tokenizer[t],
+                l = r[t]
+              r[t] = (...d) => {
+                let m = s.apply(r, d)
+                return m === !1 && (m = l.apply(r, d)), m
+              }
+            }
+            i.tokenizer = r
+          }
+          if (o.hooks) {
+            const r = this.defaults.hooks || new X()
+            for (const n in o.hooks) {
+              if (!(n in r)) throw new Error(`hook '${n}' does not exist`)
+              if (['options', 'block'].includes(n)) continue
+              const t = n,
+                s = o.hooks[t],
+                l = r[t]
+              X.passThroughHooks.has(n)
+                ? (r[t] = (d) => {
+                    if (
+                      this.defaults.async &&
+                      X.passThroughHooksRespectAsync.has(n)
+                    )
+                      return (async () => {
+                        const c = await s.call(r, d)
+                        return l.call(r, c)
+                      })()
+                    const m = s.call(r, d)
+                    return l.call(r, m)
+                  })
+                : (r[t] = (...d) => {
+                    if (this.defaults.async)
+                      return (async () => {
+                        let c = await s.apply(r, d)
+                        return c === !1 && (c = await l.apply(r, d)), c
+                      })()
+                    let m = s.apply(r, d)
+                    return m === !1 && (m = l.apply(r, d)), m
+                  })
+            }
+            i.hooks = r
+          }
+          if (o.walkTokens) {
+            const r = this.defaults.walkTokens,
+              n = o.walkTokens
+            i.walkTokens = function (t) {
+              let s = []
+              return (
+                s.push(n.call(this, t)), r && (s = s.concat(r.call(this, t))), s
+              )
+            }
+          }
+          this.defaults = E(E({}, this.defaults), i)
+        }),
+        this
+      )
+    }
+    setOptions(a) {
+      return (this.defaults = E(E({}, this.defaults), a)), this
+    }
+    lexer(a, e) {
+      return _.lex(a, e != null ? e : this.defaults)
+    }
+    parser(a, e) {
+      return C.parse(a, e != null ? e : this.defaults)
+    }
+    parseMarkdown(a) {
+      return (e, o) => {
+        const i = E({}, o),
+          r = E(E({}, this.defaults), i),
+          n = this.onError(!!r.silent, !!r.async)
+        if (this.defaults.async === !0 && i.async === !1)
+          return n(
+            new Error(
+              'marked(): The async option was set to true by an extension. Remove async: false from the parse options object to return a Promise.',
+            ),
+          )
+        if (typeof e > 'u' || e === null)
+          return n(new Error('marked(): input parameter is undefined or null'))
+        if (typeof e != 'string')
+          return n(
+            new Error(
+              'marked(): input parameter is of type ' +
+                Object.prototype.toString.call(e) +
+                ', string expected',
+            ),
+          )
+        if ((r.hooks && ((r.hooks.options = r), (r.hooks.block = a)), r.async))
+          return (async () => {
+            const t = r.hooks ? await r.hooks.preprocess(e) : e,
+              s = await (r.hooks
+                ? await r.hooks.provideLexer(a)
+                : a
+                  ? _.lex
+                  : _.lexInline)(t, r),
+              l = r.hooks ? await r.hooks.processAllTokens(s) : s
+            r.walkTokens &&
+              (await Promise.all(this.walkTokens(l, r.walkTokens)))
+            const d = await (r.hooks
+              ? await r.hooks.provideParser(a)
+              : a
+                ? C.parse
+                : C.parseInline)(l, r)
+            return r.hooks ? await r.hooks.postprocess(d) : d
+          })().catch(n)
+        try {
+          r.hooks && (e = r.hooks.preprocess(e))
+          let t = (r.hooks ? r.hooks.provideLexer(a) : a ? _.lex : _.lexInline)(
+            e,
+            r,
+          )
+          r.hooks && (t = r.hooks.processAllTokens(t)),
+            r.walkTokens && this.walkTokens(t, r.walkTokens)
+          let s = (
+            r.hooks ? r.hooks.provideParser(a) : a ? C.parse : C.parseInline
+          )(t, r)
+          return r.hooks && (s = r.hooks.postprocess(s)), s
+        } catch (t) {
+          return n(t)
+        }
+      }
+    }
+    onError(a, e) {
+      return (o) => {
+        if (
+          ((o.message += `
+Please report this to https://github.com/markedjs/marked.`),
+          a)
+        ) {
+          const i =
+            '<p>An error occurred:</p><pre>' + q(o.message + '', !0) + '</pre>'
+          return e ? Promise.resolve(i) : i
+        }
+        if (e) return Promise.reject(o)
+        throw o
+      }
+    }
+  },
+  F = new uo()
+function I(a, e) {
+  return F.parse(a, e)
+}
+I.options = I.setOptions = (a) => (
+  F.setOptions(a), (I.defaults = F.defaults), aa(I.defaults), I
+)
+I.getDefaults = Oe
+I.defaults = L
+I.use = (...a) => (F.use(...a), (I.defaults = F.defaults), aa(I.defaults), I)
+I.walkTokens = (a, e) => F.walkTokens(a, e)
+I.parseInline = F.parseInline
+I.Parser = C
+I.parser = C.parse
+I.Renderer = de
+I.TextRenderer = qe
+I.Lexer = _
+I.lexer = _.lex
+I.Tokenizer = te
+I.Hooks = X
+I.parse = I
+var Io = I.options,
+  ho = I.setOptions,
+  bo = I.use,
+  So = I.walkTokens,
+  Oo = I.parseInline
+var Po = C.parse,
+  Eo = _.lex
+var ma = [
+  {
+    id: 'IN02-2014',
+    texto: `MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
 
 GABINETE DO MINISTRO
 
@@ -164,7 +3108,11 @@ Art. 8\xBA Esta Instru\xE7\xE3o Normativa entra em vigor decorridos 30 (trinta) 
 Art. 9\xBA Fica revogada a Instru\xE7\xE3o Normativa n\xBA 9, de 20 de abril de 2006.
 
 ANT\xD4NIO ANDRADE
-D.O.U., 07/02/2014 - Se\xE7\xE3o 1`},{id:"IN02-2018",texto:`MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
+D.O.U., 07/02/2014 - Se\xE7\xE3o 1`,
+  },
+  {
+    id: 'IN02-2018',
+    texto: `MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
 
 GABINETE DA SDA
 
@@ -182,7 +3130,11 @@ publica\xE7\xE3o.
 
  **BAIXO:** Mato Grosso do Sul, Cear\xE1, Rio Grande do Norte, Para\xEDba, Pernambuco, Bahia, Alagoas, Sergipe, Minas Gerais, Esp\xEDrito Santo, Rio de Janeiro, S\xE3o Paulo, Paran\xE1, Santa Catarina e Rio Grande do Sul.
 **M\xC9DIO:** Acre, Piau\xED, Rond\xF4nia, Goi\xE1s e Distrito Federal 
-**ALTO:** Amazonas, Tocantins, Mato Grosso e Maranh\xE3o Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada.`},{id:"IN08-2012",texto:`MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
+**ALTO:** Amazonas, Tocantins, Mato Grosso e Maranh\xE3o Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada.`,
+  },
+  {
+    id: 'IN08-2012',
+    texto: `MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
 
 GABINETE DO MINISTRO
 
@@ -223,7 +3175,11 @@ Art. 5\xBA Fica revogada a Instru\xE7\xE3o Normativa n\xBA 34, de 8 de setembro 
 
 JOS\xC9 CARLOS VAZ
 
-D.O.U., 18/04/2012 - Se\xE7\xE3o 1`},{id:"IN112-2020",texto:`DI\xC1RIO OFICIAL DA UNI\xC3O
+D.O.U., 18/04/2012 - Se\xE7\xE3o 1`,
+  },
+  {
+    id: 'IN112-2020',
+    texto: `DI\xC1RIO OFICIAL DA UNI\xC3O
 Publicado em: 15/12/2020 | Edi\xE7\xE3o: 239 | Se\xE7\xE3o: 1 | P\xE1gina: 10
 \xD3rg\xE3o: Minist\xE9rio da Agricultura, Pecu\xE1ria e Abastecimento/Secretaria de Defesa Agropecu\xE1ria
 
@@ -305,7 +3261,11 @@ Art. 18. As institui\xE7\xF5es, p\xFAblicas ou privadas, que receberem miss\xF5e
 
 Art. 19. Esta Instru\xE7\xE3o Normativa entra em vigor na data de 04 de janeiro de 2021.
 
-JOS\xC9 GUILHERME TOLLSTADIUS LEAL`},{id:"IN17-2005",texto:`MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
+JOS\xC9 GUILHERME TOLLSTADIUS LEAL`,
+  },
+  {
+    id: 'IN17-2005',
+    texto: `MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
 
 SECRETARIA DE DEFESA AGROPECU\xC1RIA
 
@@ -509,7 +3469,11 @@ de pragas das quais pelo menos duas atuam independentemente com efeito acumulati
 
 10 - PENALIDADES
 10.1 - A UP, a Casa de Embalagem ou o RT poder\xE3o ter os seus cadastros cancelados quando n\xE3o forem atendidas as exig\xEAncias e responsabilidades previstas, respectivamente, nesta Instru\xE7\xE3o Normativa.
-D.O.U., 03/06/2005`},{id:"IN17-2009",texto:`MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
+D.O.U., 03/06/2005`,
+  },
+  {
+    id: 'IN17-2009',
+    texto: `MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
 
 SECRETARIA DE DEFESA AGROPECU\xC1RIA
 
@@ -744,7 +3708,11 @@ Art. 15. A aplica\xE7\xE3o das san\xE7\xF5es previstas nesta se\xE7\xE3o III, do
 
 Art. 16. O propriet\xE1rio de UP exclu\xEDda do SMR Moko da Bananeira, n\xE3o poder\xE1 solicitar novo cadastramento, mesmo de outra UP, pelo prazo de doze meses, da data da exclus\xE3o.
 
-D.O.U., 29/05/2009 - Se\xE7\xE3o 1`},{id:"IN20-2013",texto:`MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
+D.O.U., 29/05/2009 - Se\xE7\xE3o 1`,
+  },
+  {
+    id: 'IN20-2013',
+    texto: `MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
 
 GABINETE DO MINISTRO
 
@@ -955,7 +3923,11 @@ ANO DA SAFRA: ____________
 | Local e Data |  |  |  |
 | Assinatura e carimbo |  |  |  |
 
-D.O.U., 21/06/2013 - Se\xE7\xE3o 1`},{id:"IN21-2018",texto:`MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO GABINETE DO MINISTRO
+D.O.U., 21/06/2013 - Se\xE7\xE3o 1`,
+  },
+  {
+    id: 'IN21-2018',
+    texto: `MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO GABINETE DO MINISTRO
 
 GABINETE DO MINISTRO
 
@@ -1531,7 +4503,10 @@ adequa\xE7\xE3o ou para atender requisitos fitossanit\xE1rios de importa\xE7\xE3
 Art. 89 - Fica revogada a Instru\xE7\xE3o Normativa n\xBA 37, de 5 de setembro de 2016.
 
 Art. 90 - Esta Instru\xE7\xE3o Normativa entra em vigor na data de sua publica\xE7\xE3o.
-BLAIRO MAGGI`},{texto:`MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
+BLAIRO MAGGI`,
+  },
+  {
+    texto: `MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
 
 GABINETE DO MINISTRO
 
@@ -1666,7 +4641,12 @@ BLAIRO MAGGI
 ANEXO I
 ANEXO I\xADA
 ANEXO II
-ANEXO III`,id:"IN28-2016"},{id:"IN34-2017",texto:`\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO/SECRETARIA DE DEFESA AGROPECU\xC1RIA
+ANEXO III`,
+    id: 'IN28-2016',
+  },
+  {
+    id: 'IN34-2017',
+    texto: `\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO/SECRETARIA DE DEFESA AGROPECU\xC1RIA
 
 INSTRU\xC7\xC3O NORMATIVA N\xBA 34, DE 5 DE SETEMBRO DE 2017
 Decreto n\xBA 5.759, de17 de abril de 2006, na Instru\xE7\xE3o Normativa n\xBA 52, de 20 de novembrode 2007, alterada pela Instru\xE7\xE3o Normativa
@@ -1684,7 +4664,11 @@ Art. 4\xBA Fica o Departamento de Sanidade Vegetal autorizadoa editar instru\xE7
 Art. 5\xBA Esta Instru\xE7\xE3o Normativa entra em vigor na data desua publica\xE7\xE3o.
 
 LUIS EDUARDO PACIFICI RANGEL
-Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada (pdf).`},{id:"IN38-2008",texto:`| Minist\xE9rio da Agricultura, Pecu\xE1ria e Abastecimento | BINAGRI - SISLEGIS |
+Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada (pdf).`,
+  },
+  {
+    id: 'IN38-2008',
+    texto: `| Minist\xE9rio da Agricultura, Pecu\xE1ria e Abastecimento | BINAGRI - SISLEGIS |
 
 GABINETE DO MINISTRO
 
@@ -1886,7 +4870,11 @@ segundo as dimens\xF5es especificadas para o peso l\xEDquido, em legisla\xE7\xE3
 
 Art. 16. Os casos omissos e as d\xFAvidas porventura surgidas na aplica\xE7\xE3o deste Regulamento
 T\xE9cnico ser\xE3o resolvidos pelo MAPA.
-D.O.U., 24/06/2008 - Se\xE7\xE3o 1`},{id:"IN46-2010",texto:`MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
+D.O.U., 24/06/2008 - Se\xE7\xE3o 1`,
+  },
+  {
+    id: 'IN46-2010',
+    texto: `MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO
 
 GABINETE DO MINISTRO
 
@@ -1972,7 +4960,11 @@ nesta Instru\xE7\xE3o Normativa.
 
 Art. 15. Esta Instru\xE7\xE3o Normativa entra em vigor 120 (cento e vinte) dias ap\xF3s a data de sua publica\xE7\xE3o.
 WAGNER ROSSI
-D.O.U., 28/12/2010 - Se\xE7\xE3o 1`},{id:"PORT1257-2025",texto:`\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA/SECRETARIA DE DEFESA AGROPECU\xC1RIA
+D.O.U., 28/12/2010 - Se\xE7\xE3o 1`,
+  },
+  {
+    id: 'PORT1257-2025',
+    texto: `\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA/SECRETARIA DE DEFESA AGROPECU\xC1RIA
 
 PORTARIA SDA/MAPA N\xBA 1.257, DE 19 DE MAR\xC7O DE 2025
 
@@ -2018,7 +5010,11 @@ Superintend\xEAncia de Agricultura e Pecu\xE1ria o relat\xF3rio consolidado rela
 Art. 10. Esta Portaria entra em vigor na data de sua publica\xE7\xE3o.
 ALLAN ROG\xC9RIO DE ALVARENGA
 Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada.
-https://www.in.gov.br/en/web/dou/-/portaria-sda/mapa-n-1.257-de-19-de-marco-de-2025-618705995 2/2`},{if:"PORT1326-2025",texto:`**Minist\xE9rio da Agricultura e Pecu\xE1ria**
+https://www.in.gov.br/en/web/dou/-/portaria-sda/mapa-n-1.257-de-19-de-marco-de-2025-618705995 2/2`,
+  },
+  {
+    if: 'PORT1326-2025',
+    texto: `**Minist\xE9rio da Agricultura e Pecu\xE1ria**
 **Secretaria de Defesa Agropecu\xE1ria**
 **PORTARIA SDA/MAPA N\xBA 1.326, DE 4 DE JULHO DE 2025**
 
@@ -2093,7 +5089,11 @@ IV - fiscalizar o tr\xE2nsito de plantas hospedeiras e seus produtos.
 
 **CARLOS GOULART**
 
-Publicado em: 07/07/2025 | Edi\xE7\xE3o: 128 | Se\xE7\xE3o: 1 | P\xE1gina: 45`},{id:"PORT1503-2025",texto:`## PORTARIA SDA/MAPA N\xBA 1.503, DE 19 DE DEZEMBRO DE 2025
+Publicado em: 07/07/2025 | Edi\xE7\xE3o: 128 | Se\xE7\xE3o: 1 | P\xE1gina: 45`,
+  },
+  {
+    id: 'PORT1503-2025',
+    texto: `## PORTARIA SDA/MAPA N\xBA 1.503, DE 19 DE DEZEMBRO DE 2025
 
 Declara os munic\xEDpios de Itacoatiara, Manaus e Rio Preto da Eva, no Amazonas, como \xC1rea Sob Quarentena para a praga quarenten\xE1ria presente *Bactrocera carambolae* (mosca-da-carambola).
 
@@ -2109,7 +5109,11 @@ Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada.
 
 CARLOS GOULART
 
-https://www.in.gov.br/en/web/dou/-/portaria-sda/mapa-n-1.503-de-19-de-dezembro-de-2025-676919455`},{id:"PORT1512-2026",texto:`\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA/SECRETARIA DE DEFESA AGROPECU\xC1RIA
+https://www.in.gov.br/en/web/dou/-/portaria-sda/mapa-n-1.503-de-19-de-dezembro-de-2025-676919455`,
+  },
+  {
+    id: 'PORT1512-2026',
+    texto: `\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA/SECRETARIA DE DEFESA AGROPECU\xC1RIA
 
 PORTARIA SDA/MAPA N\xBA 1.512, DE 7 DE JANEIRO DE 2026
 
@@ -2124,7 +5128,11 @@ seguintes altera\xE7\xF5es:
 Art. 2\xBA Esta Portaria entra em vigor na data de sua publica\xE7\xE3o.
 CARLOS GOULART
 Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada.
-https://in.gov.br/web/dou/-/portaria-sda/mapa-n-1.512-de-7-de-janeiro-de-2026-679863714 1/1`},{id:"PORT627-2023",texto:`\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA/GABINETE DO MINISTRO
+https://in.gov.br/web/dou/-/portaria-sda/mapa-n-1.512-de-7-de-janeiro-de-2026-679863714 1/1`,
+  },
+  {
+    id: 'PORT627-2023',
+    texto: `\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA/GABINETE DO MINISTRO
 
 PORTARIA MAPA N\xBA 627, DE 10 DE NOVEMBRO DE 2023
 
@@ -2142,7 +5150,11 @@ contar da data de publica\xE7\xE3o desta Portaria.
 Art. 3\xBA Esta Portaria entra em vigor na data de sua publica\xE7\xE3o.
 CARLOS F\xC1VARO
 Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada.
-https://www.in.gov.br/en/web/dou/-/portaria-mapa-n-627-de-10-de-novembro-de-2023-522497468 1/1`},{id:"PORT703-2022",texto:`\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO/SECRETARIA DE DEFESA AGROPECU\xC1RIA
+https://www.in.gov.br/en/web/dou/-/portaria-mapa-n-627-de-10-de-novembro-de-2023-522497468 1/1`,
+  },
+  {
+    id: 'PORT703-2022',
+    texto: `\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO/SECRETARIA DE DEFESA AGROPECU\xC1RIA
 
 PORTARIA SDA N\xBA 703, DE 21 DE NOVEMBRO DE 2022
 
@@ -2162,7 +5174,11 @@ Oficial da Uni\xE3o, Edi\xE7\xE3o 36, Se\xE7\xE3o 1, pagina 4, de 21 de fevereir
 Art. 4\xBA Esta Portaria entra em vigor na data da sua publica\xE7\xE3o.
 JOS\xC9 GUILHERME TOLLSTADIUS LEAL
 Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada.
-https://in.gov.br/web/dou/-/portaria-sda-n-703-de-21-de-novembro-de-2022-444937315 1/1`},{id:"PORT734-2024",texto:`MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA
+https://in.gov.br/web/dou/-/portaria-sda-n-703-de-21-de-novembro-de-2022-444937315 1/1`,
+  },
+  {
+    id: 'PORT734-2024',
+    texto: `MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA
 
 GABINETE DO MINISTRO
 
@@ -2175,7 +5191,11 @@ presente *Bactrocera carambolae* (mosca-dacarambola), nos estados do Amap\xE1, A
 
 Art. 2\xBA Esta Portaria entra em vigor na data de sua publica\xE7\xE3o.
 CARLOS F\xC1VARO
-D.O.U., 13/11/2024 - Edi\xE7\xE3o Extra 1A`},{id:"PORT776-2025",texto:`MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA
+D.O.U., 13/11/2024 - Edi\xE7\xE3o Extra 1A`,
+  },
+  {
+    id: 'PORT776-2025',
+    texto: `MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA
 
 GABINETE DO MINISTRO
 
@@ -2401,7 +5421,11 @@ Art. 26. Fica revogada a Instru\xE7\xE3o Normativa n\xBA 28, de 20 de julho de 2
 
 Art. 27. Esta Portaria entra em vigor na data de sua publica\xE7\xE3o.
 CARLOS F\xC1VARO
-Publicado em: 14/03/2025 | Edi\xE7\xE3o: 50 | Se\xE7\xE3o: 1 | P\xE1gina: 37`},{id:"PORT780-2023",texto:`MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA
+Publicado em: 14/03/2025 | Edi\xE7\xE3o: 50 | Se\xE7\xE3o: 1 | P\xE1gina: 37`,
+  },
+  {
+    id: 'PORT780-2023',
+    texto: `MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA
 
 SECRETARIA DE DEFESA AGROPECU\xC1RIA
 
@@ -2421,7 +5445,11 @@ Se\xE7\xE3o 1, P\xE1gina 4.
 
 Art. 4\xBA Esta Portaria entra em vigor na data da sua publica\xE7\xE3o.
 CARLOS GOULART
-Publicado em: 10/04/2023 | Edi\xE7\xE3o: 68 | Se\xE7\xE3o: 1 | P\xE1gina: 43`},{id:"PORT859-2023",texto:`\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA/SECRETARIA DE DEFESA AGROPECU\xC1RIA
+Publicado em: 10/04/2023 | Edi\xE7\xE3o: 68 | Se\xE7\xE3o: 1 | P\xE1gina: 43`,
+  },
+  {
+    id: 'PORT859-2023',
+    texto: `\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA/SECRETARIA DE DEFESA AGROPECU\xC1RIA
 
 PORTARIA SDA/MAPA N\xBA 859, DE 19 DE JULHO DE 2023
 
@@ -2444,7 +5472,11 @@ indeterminado, desde que n\xE3o ocorra altera\xE7\xE3o de status fitossanit\xE1r
 Art. 4\xBA Esta Portaria entra em vigor em 1\xBA de agosto de 2023.
 M\xC1RCIO REZENDE EVARISTO CARLOS
 Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada.
-https://www.in.gov.br/web/dou/-/portaria-sda/mapa-n-859-de-19-de-julho-de-2023-498428679 1/1`},{id:"PORT940-2023",texto:`\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA/SECRETARIA DE DEFESA AGROPECU\xC1RIA
+https://www.in.gov.br/web/dou/-/portaria-sda/mapa-n-859-de-19-de-julho-de-2023-498428679 1/1`,
+  },
+  {
+    id: 'PORT940-2023',
+    texto: `\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA E PECU\xC1RIA/SECRETARIA DE DEFESA AGROPECU\xC1RIA
 
 PORTARIA SDA/MAPA N\xBA 940, DE 17 DE NOVEMBRO DE 2023
 
@@ -2470,7 +5502,11 @@ Art. 5\xBA Fica revogada a Resolu\xE7\xE3o DSV n\xBA 04, de 29 de mar\xE7o de 20
 Art. 6\xBA Esta Portaria entra em vigor na data da sua publica\xE7\xE3o.
 CARLOS GOULART
 Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada.
-https://www.in.gov.br/web/dou/-/portaria-sda/mapa-n-940-de-17-de-novembro-de-2023-524269456 1/1`},{id:"RES04-2019",texto:`\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO/SECRETARIA DE DEFESA AGROPECU\xC1RIA/DEPARTAMENTO DE SANIDADE
+https://www.in.gov.br/web/dou/-/portaria-sda/mapa-n-940-de-17-de-novembro-de-2023-524269456 1/1`,
+  },
+  {
+    id: 'RES04-2019',
+    texto: `\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO/SECRETARIA DE DEFESA AGROPECU\xC1RIA/DEPARTAMENTO DE SANIDADE
 
 RESOLU\xC7\xC3O N\xBA 4, DE 29 DE MAR\xC7O DE 2019
 
@@ -2490,7 +5526,11 @@ altera\xE7\xE3o de status fitossanit\xE1rio e sejam observadas as exig\xEAncias 
 
 Art. 5\xBA - Esta Resolu\xE7\xE3o entra em vigor na data de sua publica\xE7\xE3o.
 CARLOS GOULART
-Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada (pdf).`},{id:"RES05-2018",texto:`\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO/SECRETARIA DE DEFESA AGROPECU\xC1RIA
+Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada (pdf).`,
+  },
+  {
+    id: 'RES05-2018',
+    texto: `\xD3RG\xC3O: MINIST\xC9RIO DA AGRICULTURA, PECU\xC1RIA E ABASTECIMENTO/SECRETARIA DE DEFESA AGROPECU\xC1RIA
 
 RESOLU\xC7\xC3O N\xBA5, DE 31 DE OUTUBRO DE 2018 -IMPRENSA NACIONAL P\xC1GINA 1 DE 1
 RESOLU\xC7\xC3O N\xBA 5, DE 31 DE OUTUBRO DE 2018
@@ -2503,5 +5543,50 @@ Art. 1\xBA Declarar o Estado do Amap\xE1 como \xC1rea Sob Quarentena para a prag
 Art. 2\xBA Esta Resolu\xE7\xE3o entra em vigor na data de sua publica\xE7\xE3o.
 GRACIANE GON\xC7ALVES MAGALH\xC3ES DE CASTRO
 Este conte\xFAdo n\xE3o substitui o publicado na vers\xE3o certificada.
-http://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/48228468 13/05/2019`}];var Ao=0;function $(a,e,o,i,r,n){e||(e={});var t,s,l=e;if("ref"in l)for(s in l={},e)s=="ref"?t=e[s]:l[s]=e[s];var d={type:a,props:l,key:o,ref:t,__k:null,__:null,__b:0,__e:null,__c:null,constructor:void 0,__v:--Ao,__i:-1,__u:0,__source:r,__self:n};if(typeof a=="function"&&(t=a.defaultProps))for(s in t)l[s]===void 0&&(l[s]=t[s]);return O.vnode&&O.vnode(d),d}function go(){let e=new URLSearchParams(window.location.search).get("id");if(!e)return $("h3",{children:"ID da legisla\xE7\xE3o n\xE3o fornecido."});let o=ma.find(i=>i.id===e);return o?(document.title=`${e} - CEFiTI`,$("div",{dangerouslySetInnerHTML:{__html:I.parse(o.texto)}})):$("h3",{children:['Legisla\xE7\xE3o com ID "',e,'" n\xE3o encontrada.']})}var Ne=document.getElementById("root");Ne&&(Ne.textContent="",Xe($(go,{}),Ne));
+http://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/48228468 13/05/2019`,
+  },
+]
+var Ao = 0
+function $(a, e, o, i, r, n) {
+  e || (e = {})
+  var t,
+    s,
+    l = e
+  if ('ref' in l)
+    for (s in ((l = {}), e)) s == 'ref' ? (t = e[s]) : (l[s] = e[s])
+  var d = {
+    type: a,
+    props: l,
+    key: o,
+    ref: t,
+    __k: null,
+    __: null,
+    __b: 0,
+    __e: null,
+    __c: null,
+    constructor: void 0,
+    __v: --Ao,
+    __i: -1,
+    __u: 0,
+    __source: r,
+    __self: n,
+  }
+  if (typeof a == 'function' && (t = a.defaultProps))
+    for (s in t) l[s] === void 0 && (l[s] = t[s])
+  return O.vnode && O.vnode(d), d
+}
+function go() {
+  const e = new URLSearchParams(window.location.search).get('id')
+  if (!e)
+    return $('h3', { children: 'ID da legisla\xE7\xE3o n\xE3o fornecido.' })
+  const o = ma.find((i) => i.id === e)
+  return o
+    ? ((document.title = `${e} - CEFiTI`),
+      $('div', { dangerouslySetInnerHTML: { __html: I.parse(o.texto) } }))
+    : $('h3', {
+        children: ['Legisla\xE7\xE3o com ID "', e, '" n\xE3o encontrada.'],
+      })
+}
+var Ne = document.getElementById('root')
+Ne && ((Ne.textContent = ''), Xe($(go, {}), Ne))
 //# sourceMappingURL=leg.js.map

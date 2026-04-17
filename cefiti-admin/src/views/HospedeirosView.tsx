@@ -92,7 +92,9 @@ export function HospedeirosView() {
                 value={state.editing.nomeSci}
                 required
                 onInput={(e) =>
-                  (state.editing!.nomeSci = (e.target as HTMLInputElement).value)
+                  (state.editing!.nomeSci = (
+                    e.target as HTMLInputElement
+                  ).value)
                 }
               />
             </div>
@@ -114,11 +116,7 @@ export function HospedeirosView() {
                     }
                   }}
                 />
-                <button
-                  type="button"
-                  className="form-button"
-                  onClick={addVul}
-                >
+                <button type="button" className="form-button" onClick={addVul}>
                   ADICIONAR
                 </button>
               </div>
@@ -142,10 +140,7 @@ export function HospedeirosView() {
               </div>
             </div>
             <br />
-            <button
-              className="form-button"
-              type="submit"
-            >
+            <button className="form-button" type="submit">
               SALVAR
             </button>
           </form>
