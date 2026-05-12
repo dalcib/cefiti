@@ -173,7 +173,7 @@ export class Store {
     },
   }
 
-  constructor() {}
+  //constructor() {}
 
   initAuth() {
     console.log('[Store] Initing Auth listener...')

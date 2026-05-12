@@ -2344,7 +2344,7 @@
         "estados": [
           { "uf": "AC", "ibge": 12, "municipios": { "9999": "Todos" } },
           { "uf": "AP", "ibge": 16, "municipios": { "9999": "Todos" } },
-          { "uf": "AM", "ibge": 21, "municipios": { "9999": "Todos" } }
+          { "uf": "MA", "ibge": 21, "municipios": { "9999": "Todos" } }
         ]
       },
       {

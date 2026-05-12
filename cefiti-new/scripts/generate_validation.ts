@@ -32,21 +32,23 @@ function loadMunicipios() {
 const allMunicipios = loadMunicipios()
 
 // --- Logic: resolveStatus (Simplified from StoreDb) ---
-function resolveStatus(pragaName, municipioId) {
+function resolveStatus(pragaName: string, municipioId: string): string[] {
   if (!municipioId || municipioId.length !== 6) return []
 
   const stateCodeNum = Number(municipioId.slice(0, 2))
   const muniPartNum = Number(municipioId.slice(2, 6))
   const mIdNum = Number(municipioId)
 
-  const pestEntry = status_municipio.find((entry) => entry.praga === pragaName)
+  const pestEntry = status_municipio.find(
+    (entry: any) => entry.praga === pragaName,
+  )
   if (!pestEntry) return ['Área Sem Registro']
 
   const results = []
   for (const statusObj of pestEntry.status) {
     const statusTitle = statusObj.status_fitossanitário
     const stateMatch = statusObj.estados.find(
-      (e) => e.ibge === stateCodeNum || e.id === stateCodeNum,
+      (e: any) => e.ibge === stateCodeNum || e.id === stateCodeNum,
     )
 
     if (stateMatch) {
@@ -67,10 +69,15 @@ function resolveStatus(pragaName, municipioId) {
 }
 
 // --- Logic: Search Result (Simplified from StoreDb) ---
-function getResult(hospSci, part, origId, destId) {
-  const matchingRules = rules.filter((rule) => {
+function getResult(
+  hospSci: string | undefined,
+  part: string,
+  origId: string,
+  destId: string,
+) {
+  const matchingRules = rules.filter((rule: any) => {
     // Check host species
-    const praga = pragas.find((p) => p.prag === rule.prag)
+    const praga = pragas.find((p: any) => p.prag === rule.prag)
     if (!praga) return false
 
     // Check statuses
@@ -79,10 +86,10 @@ function getResult(hospSci, part, origId, destId) {
 
     const matchesOrig =
       rule.status_origem.includes('Todas as Áreas') ||
-      statusOrig.some((s) => rule.status_origem.includes(s))
+      statusOrig.some((s: string) => rule.status_origem.includes(s))
     const matchesDest =
       rule.status_destino.includes('Todas as Áreas') ||
-      statusDest.some((s) => rule.status_destino.includes(s))
+      statusDest.some((s: string) => rule.status_destino.includes(s))
 
     return (
       rule.part.includes(part) &&
@@ -95,12 +102,18 @@ function getResult(hospSci, part, origId, destId) {
   return matchingRules
 }
 
-const hospedeiroSciMap = new Map(hospedeiros.map((h) => [h.id, h.nomeSci]))
+const hospedeiroSciMap = new Map<number, string>(
+  hospedeiros.map((h: any) => [h.id, h.nomeSci]),
+)
 
-function isHostMatch(pestHostIds, selectedNomeSci) {
+function isHostMatch(
+  pestHostIds: number[],
+  selectedNomeSci: string | undefined,
+): boolean {
   if (!pestHostIds || pestHostIds.length === 0) return true
+  if (!selectedNomeSci) return false
   const selectedGenus = selectedNomeSci.split(' ')[0]
-  return pestHostIds.some((id) => {
+  return pestHostIds.some((id: number) => {
     const pestHostName = hospedeiroSciMap.get(id)
     if (!pestHostName) return false
     const pestGenus = pestHostName.split(' ')[0]
@@ -126,8 +139,10 @@ const targetPests = [
 ]
 
 // --- Uniform State Finder ---
-function getUniformStates(pragaName) {
-  const pestEntry = status_municipio.find((entry) => entry.praga === pragaName)
+function getUniformStates(pragaName: string): { uf: string; status: string }[] {
+  const pestEntry = status_municipio.find(
+    (entry: any) => entry.praga === pragaName,
+  )
   if (!pestEntry) return []
 
   const uniformUFs = []
@@ -136,7 +151,7 @@ function getUniformStates(pragaName) {
     for (const e of statusObj.estados) {
       if (e.municipios.includes(9999)) {
         const estado = estados.find(
-          (est) => est.ibge === e.ibge || est.id === e.ibge,
+          (est: any) => est.ibge === e.ibge || est.id === e.ibge,
         )
         if (estado) {
           uniformUFs.push({ uf: estado.UF, status })
@@ -153,14 +168,15 @@ const targetCount = 100
 
 for (let i = 0; i < targetCount; i++) {
   const pragaName = targetPests[i % targetPests.length]
-  const pragaData = pragas.find((p) => p.prag === pragaName)
+  const pragaData = pragas.find((p: any) => p.prag === pragaName)
+  if (!pragaData) continue
   const hostId =
     pragaData.hosp[Math.floor(Math.random() * pragaData.hosp.length)]
   const hospSci = hospedeiroSciMap.get(hostId)
 
   // Find valid parts (products) for this pest in rules
-  const pestRules = rules.filter((r) => r.prag === pragaName)
-  const allParts = Array.from(new Set(pestRules.flatMap((r) => r.part)))
+  const pestRules = rules.filter((r: any) => r.prag === pragaName)
+  const allParts = Array.from(new Set(pestRules.flatMap((r: any) => r.part)))
   const part = allParts[Math.floor(Math.random() * allParts.length)] || 'frutos'
 
   // Origin
