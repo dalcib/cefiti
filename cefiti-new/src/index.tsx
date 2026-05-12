@@ -19,13 +19,24 @@ if (!container) {
 render(<App />, container)
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('./sw.js')
-    .then(() => {
-      console.log('Service worker registered!')
-    })
-    .catch((error) => {
-      console.warn('Error registering service worker:')
-      console.warn(error)
-    })
+  navigator.serviceWorker.register('./sw.js').then((registration) => {
+    console.log('Service worker registered!')
+
+    // Detect updates
+    registration.onupdatefound = () => {
+      const installingWorker = registration.installing
+      if (installingWorker) {
+        installingWorker.onstatechange = () => {
+          if (
+            installingWorker.state === 'installed' &&
+            navigator.serviceWorker.controller
+          ) {
+            // New content is available; reload the page
+            console.log('New content available, reloading...')
+            window.location.reload()
+          }
+        }
+      }
+    }
+  })
 }

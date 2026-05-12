@@ -23,6 +23,19 @@
           {
             "key": "Content-Disposition",
             "value": "inline; filename=\"db.js\""
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "/@(db-next|municipios|legislacao|sw).js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
           }
         ]
       }

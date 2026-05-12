@@ -45,7 +45,7 @@
     "deploy": "cd firebase && npx firebase-tools deploy --only hosting --project cefiti",
     "publish:prod": "node --experimental-strip-types firebase/scripts/publicar-db-legacy.ts && cd firebase && npx firebase-tools deploy --only hosting --project cefiti",
     "publish:dev": "node --experimental-strip-types firebase/scripts/publicar-db.ts && cd firebase && npx firebase-tools deploy --only hosting --project cefiti",
-    "publish:next": "node --experimental-strip-types firebase/scripts/publicar-db-next.ts && cd firebase && npx firebase-tools deploy --only hosting --project cefiti",
+    "publish:next": "node dev.mjs cefiti-new --build && xcopy /s /y /i cefiti-new\\public\\* firebase\\public\\ && node --experimental-strip-types firebase/scripts/publicar-db-next.ts && cd firebase && npx firebase-tools deploy --only hosting --project cefiti",
     "meta": "esbuild cefiti/src/index.tsx --bundle --metafile=meta.json --outfile=out.js"
   },
   "dependencies": {

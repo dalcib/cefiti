@@ -3,6 +3,7 @@ import { version } from './../package.json'
 const cacheKey = `CEFiTI${version}`
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting() // Force the waiting service worker to become the active service worker
   event.waitUntil(
     caches.open(cacheKey).then((cache) => {
       return cache.addAll([
@@ -21,40 +22,40 @@ self.addEventListener('install', (event) => {
   )
 })
 
-//Portaria SDA nº 780, de 6 de abril de 2023
-//Portaria 317, de 21 de maio de 2021
-
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys
-          .filter((key) => !cacheKey.includes(key))
-          .map((key) => caches.delete(key)),
-      )
-    }),
+    Promise.all([
+      self.clients.claim(), // Become available to all pages immediately
+      caches.keys().then((keys) => {
+        return Promise.all(
+          keys
+            .filter((key) => key !== cacheKey)
+            .map((key) => caches.delete(key)),
+        )
+      }),
+    ]),
   )
 })
 
 self.addEventListener('fetch', (event) => {
+  // Only handle GET requests and avoid chrome extensions
+  if (event.request.method !== 'GET' || new URL(event.request.url).protocol === 'chrome-extension:') {
+    return
+  }
+
   event.respondWith(
     caches.open(cacheKey).then((cache) => {
       return fetch(event.request)
         .then((fetchedResponse) => {
-          if (new URL(event.request.url).protocol !== 'chrome-extension:') {
-            console.log(
-              event.request.url,
-              //new URL(event.request.url).protocol,
-              'cached',
-            )
-            cache.put(event.request, fetchedResponse.clone())
-          }
+          // Update cache with fresh version
+          cache.put(event.request, fetchedResponse.clone())
           return fetchedResponse
         })
         .catch(() => {
+          // If network fails, try cache
           return cache.match(event.request)
         })
     }),
   )
-  //}
 })
+
