@@ -46,11 +46,6 @@ async function generateDbNext() {
     const version = configDoc.exists ? configDoc.data()?.version : 'unknown'
     console.log(`Version found: ${version}`)
 
-    // Fetch leg_texto
-    console.log('Reading collection for standalone file: leg_texto')
-    const legTextoSnapshot = await db.collection('producao/dados/leg_texto').get()
-    legTextoData = legTextoSnapshot.docs.map((doc) => doc.data())
-
     // Fetch estados
     console.log('Reading collection: estados')
     const estadosSnapshot = await db.collection('geodata/dados/estados').get()
@@ -60,6 +55,19 @@ async function generateDbNext() {
       console.log(`Reading collection: ${collName}`)
       const snapshot = await db.collection(`producao/dados/${collName}`).get()
       let docs = snapshot.docs.map((doc) => doc.data())
+
+      if (collName === 'legislacoes') {
+        // Extract texts for the standalone legislacao.js file
+        legTextoData = docs.map((doc: any) => ({
+          id: doc.id || doc.legId,
+          texto: doc.texto || '',
+        }))
+        // Strip text field from db-next.js to keep search database lightweight
+        docs = docs.map((doc: any) => {
+          const { texto, ...rest } = doc
+          return rest
+        })
+      }
 
       if (collName === 'status_municipio') {
         docs = docs.map((doc: any) => {

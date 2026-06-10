@@ -24,7 +24,6 @@ async function check() {
     'pragas',
     'hospedeiros',
     'legislacoes',
-    'leg_texto',
     'rules',
     'status_municipio',
   ]

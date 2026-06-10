@@ -39,7 +39,6 @@ async function migrate() {
       'pragas',
       'hospedeiros',
       'legislacoes',
-      'leg_texto',
       'rules',
       'status_municipio',
     ]

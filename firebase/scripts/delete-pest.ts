@@ -85,7 +85,6 @@ async function deletePestSurgically(pestDocId: string) {
       // 3. Delete Orphaned Legislations
       for (const lId of orphanedLegs) {
         transaction.delete(db.collection('legislacoes').doc(lId))
-        transaction.delete(db.collection('leg_texto').doc(lId))
       }
     })
 

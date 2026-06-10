@@ -449,22 +449,20 @@ export class Store {
   }
 
   async getLegislacaoTexto(id: string) {
-    const textDoc = await getDoc(this.envDoc('leg_texto', id))
-    return textDoc.exists() ? textDoc.data().texto : ''
+    const leg = this.legislacoes.find((l) => l.id === id)
+    return leg?.texto || ''
   }
 
   async saveLegislacao(l: Legislacao, texto: string) {
     if (this.isReadOnly) throw new Error('Apenas visualização em produção')
-    const { texto: _, ...metadata } = l
-    await setDoc(this.envDoc('legislacoes', metadata.id), metadata)
-    await setDoc(this.envDoc('leg_texto', metadata.id), { id: metadata.id, texto })
+    const updated = { ...l, texto }
+    await setDoc(this.envDoc('legislacoes', updated.id), updated)
     await this.fetchLegislacoes()
   }
 
   async deleteLegislacao(id: string) {
     if (this.isReadOnly) throw new Error('Apenas visualização em produção')
     await deleteDoc(this.envDoc('legislacoes', id))
-    await deleteDoc(this.envDoc('leg_texto', id))
     await this.fetchLegislacoes()
   }
 
@@ -691,7 +689,6 @@ export class Store {
         'pragas',
         'hospedeiros',
         'legislacoes',
-        'leg_texto',
         'rules',
         'status_municipio',
       ]
@@ -734,7 +731,6 @@ export class Store {
           if (col === 'pragas') docId = item.prag
           else if (col === 'hospedeiros') docId = item.id.toString()
           else if (col === 'legislacoes') docId = item.id
-          else if (col === 'leg_texto') docId = item.id
           else if (col === 'rules') docId = item.id || `${item.prag}_${Date.now()}`
           else if (col === 'status_municipio') docId = item.id || item.praga.replace(/\s+/g, '_')
 
@@ -788,7 +784,6 @@ export class Store {
         'pragas',
         'hospedeiros',
         'legislacoes',
-        'leg_texto',
         'rules',
         'status_municipio',
       ]
@@ -816,7 +811,6 @@ export class Store {
           if (col === 'pragas') docId = item.prag
           else if (col === 'hospedeiros') docId = item.id.toString()
           else if (col === 'legislacoes') docId = item.id
-          else if (col === 'leg_texto') docId = item.id
           else if (col === 'rules') docId = item.id || `${item.prag}_${Date.now()}`
           else if (col === 'status_municipio') docId = item.id || item.praga.replace(/\s+/g, '_')
 

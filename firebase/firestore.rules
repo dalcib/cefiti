@@ -71,12 +71,6 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    match /{env}/dados/leg_texto/{legId} {
-      allow read: if isAuthorized();
-      allow create, update: if envCanWrite(env) && exists(/databases/$(database)/documents/$(env)/dados/legislacoes/$(legId));
-      allow delete: if isAdmin();
-    }
-
     // PRAGAS
     match /{env}/dados/pragas/{pragName} {
       allow read: if isAuthorized();
@@ -109,7 +103,6 @@ service cloud.firestore {
     // ======================================================
     match /hospedeiros/{hospId} { allow read: if isAuthorized(); allow write: if isAdmin(); }
     match /legislacoes/{legId} { allow read: if isAuthorized(); allow write: if isAdmin(); }
-    match /leg_texto/{legId} { allow read: if isAuthorized(); allow write: if isAdmin(); }
     match /pragas/{pragName} { allow read: if isAuthorized(); allow write: if isAdmin(); }
     match /rules/{ruleId} { allow read: if isAuthorized(); allow write: if isAdmin(); }
     match /status_municipio/{pragName} { allow read: if isAuthorized(); allow write: if isAdmin(); }

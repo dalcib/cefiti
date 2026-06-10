@@ -44,10 +44,6 @@ async function createTestData() {
     id: 'LEG-TEST-01',
     leg: 'Legislação Única de Teste',
     data: '01/01/2026',
-  })
-  const leg1Texto = db.collection('leg_texto').doc('LEG-TEST-01')
-  batch.set(leg1Texto, {
-    id: 'LEG-TEST-01',
     texto: 'Conteúdo da legislação única.',
   })
 
@@ -57,10 +53,6 @@ async function createTestData() {
     id: 'LEG-TEST-SHARED',
     leg: 'Legislação Compartilhada de Teste',
     data: '01/01/2026',
-  })
-  const leg2Texto = db.collection('leg_texto').doc('LEG-TEST-SHARED')
-  batch.set(leg2Texto, {
-    id: 'LEG-TEST-SHARED',
     texto: 'Conteúdo da legislação compartilhada.',
   })
 
