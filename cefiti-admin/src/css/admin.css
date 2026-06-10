@@ -259,3 +259,20 @@ textarea {
   border: 1px solid var(--border-color);
   box-sizing: border-box;
 }
+
+/* Markdown Preview Styles */
+.markdown-preview p,
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4,
+.markdown-preview h5,
+.markdown-preview ul,
+.markdown-preview ol {
+  margin-bottom: 1rem;
+}
+.markdown-preview li {
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+

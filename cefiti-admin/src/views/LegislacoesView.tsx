@@ -1,6 +1,24 @@
 import { marked } from 'marked'
 import { type Legislacao, store } from '../store'
 
+const formatDateToInput = (dateStr: string) => {
+  if (!dateStr) return '';
+  const parts = dateStr.split('/');
+  if (parts.length === 3) {
+    return `${parts[2]}-${parts[1]}-${parts[0]}`;
+  }
+  return dateStr;
+};
+
+const formatDateFromInput = (dateStr: string) => {
+  if (!dateStr) return '';
+  const parts = dateStr.split('-');
+  if (parts.length === 3) {
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+  }
+  return dateStr;
+};
+
 export function LegislacoesView() {
   const { legislacoes: state } = store.views
 
@@ -116,12 +134,12 @@ export function LegislacoesView() {
                   id="leg-date"
                   type="date"
                   className="form-text"
-                  value={editing.data}
+                  value={formatDateToInput(editing.data)}
                   required
                   readOnly={store.isReadOnly}
                   onInput={(e) => {
                     if (!store.isReadOnly) {
-                      editing.data = (e.target as HTMLInputElement).value
+                      editing.data = formatDateFromInput((e.target as HTMLInputElement).value)
                     }
                   }}
                   style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
@@ -133,10 +151,10 @@ export function LegislacoesView() {
               <label htmlFor="leg-content">Conteúdo (Markdown)</label>
               {state.showPreview ? (
                 <div
-                  className="card"
-                  style="border: 1px solid #ccc; min-height: 300px; padding: 20px; overflow-y: auto;"
+                  className="card markdown-preview"
+                  style="display: block; border: 1px solid #ccc; min-height: 300px; padding: 20px; overflow-y: auto;"
                   dangerouslySetInnerHTML={{
-                    __html: (marked.parse(state.texto) as string) || '',
+                    __html: (marked.parse(state.texto, { breaks: true }) as string) || '',
                   }}
                 />
               ) : (
