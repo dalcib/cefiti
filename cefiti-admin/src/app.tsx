@@ -24,6 +24,10 @@ export function App() {
     return <LoginView />
   }
 
+  if (store.view === 'select_environment') {
+    return <SelectEnvironmentView />
+  }
+
   return (
     <div id="resolucao">
       <Header />
@@ -37,6 +41,9 @@ export function App() {
 
 function Header() {
   const appVersion = `${version.split('.')[0]}.${store.catalogos.dbVersion}`
+  const envLabel = store.environment === 'producao' ? 'PRODUÇÃO (Visualização)' : 'DESENVOLVIMENTO (Edição)'
+  const envColor = store.environment === 'producao' ? '#28a745' : '#007bff'
+
   return (
     <div id="moldura-topo">
       <div id="topo">
@@ -83,6 +90,45 @@ function Header() {
             >
               Versão {appVersion}
             </div>
+            {store.environment && (
+              <div
+                style={{
+                  fontSize: '0.85em',
+                  marginBottom: '5px',
+                  color: '#ffffff',
+                }}
+              >
+                Ambiente:{' '}
+                <span
+                  style={{
+                    backgroundColor: envColor,
+                    color: 'white',
+                    padding: '2px 6px',
+                    borderRadius: '4px',
+                    fontWeight: 'bold',
+                    fontSize: '0.95em',
+                  }}
+                >
+                  {envLabel}
+                </span>{' '}
+                <button
+                  type="button"
+                  onClick={() => store.setView('select_environment')}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#ffffff',
+                    cursor: 'pointer',
+                    textDecoration: 'underline',
+                    padding: 0,
+                    marginLeft: '8px',
+                    fontSize: '0.95em',
+                  }}
+                >
+                  [Alterar]
+                </button>
+              </div>
+            )}
             {store.user && (
               <button
                 type="button"
@@ -321,13 +367,17 @@ function CurrentView() {
               <li>
                 Utilize o menu superior para navegar pelas seções de dados.
               </li>
-              <li style={{ color: '#d12f19' }}>
-                ⚠️ Alterações são salvas em tempo real no banco de dados.
+              <li style={store.isReadOnly ? { color: '#28a745' } : { color: '#d12f19' }}>
+                {store.isReadOnly 
+                  ? 'ℹ️ Você está no ambiente de PRODUÇÃO (Apenas Visualização).' 
+                  : '⚠️ Você está no ambiente de DESENVOLVIMENTO. Alterações são salvas em tempo real no banco de dados.'}
               </li>
             </ul>
           </div>
         </div>
       )
+    case 'select_environment':
+      return <SelectEnvironmentView />
     case 'pragas':
       return <PragasView />
     case 'hospedeiros':
@@ -347,4 +397,192 @@ function CurrentView() {
     default:
       return <div>View não encontrada: {store.view}</div>
   }
+}
+
+function SelectEnvironmentView() {
+  const handleSelect = async (env: 'producao' | 'desenvolvimento') => {
+    try {
+      await store.selectEnvironment(env)
+    } catch (e) {
+      alert('Erro ao selecionar ambiente.')
+    }
+  }
+
+  return (
+    <div id="resolucao">
+      <div id="moldura-topo">
+        <div id="topo" style={{ height: '116px' }}>
+          <div id="identificacao-ministerio">
+            <span>
+              <div id="imagemGov">
+                <span className="ministerio-text">
+                  Ministério da Agricultura e Pecuária
+                </span>
+              </div>
+            </span>
+          </div>
+          <div id="identificacao-sistema">
+            <h1>CEFiTI Admin</h1>
+            <h2>Seleção de Ambiente de Dados</h2>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="corpo"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '450px',
+          background: '#f4f6f9',
+          padding: '20px',
+        }}
+      >
+        <h3 style={{ marginBottom: '10px', color: '#0f4098' }}>Selecione o Ambiente de Trabalho</h3>
+        <p style={{ marginBottom: '30px', color: '#555' }}>
+          Escolha entre a base de produção (somente leitura) ou de desenvolvimento (edição).
+        </p>
+
+        {store.loadingVersions ? (
+          <p>Carregando informações das versões...</p>
+        ) : (
+          <div
+            style={{
+              display: 'flex',
+              gap: '30px',
+              maxWidth: '800px',
+              width: '100%',
+              justifyContent: 'center',
+              flexWrap: 'wrap'
+            }}
+          >
+            {/* Card Produção */}
+            <div
+              className="card"
+              style={{
+                flex: '1',
+                minWidth: '280px',
+                maxWidth: '350px',
+                textAlign: 'center',
+                padding: '30px',
+                border: '1px solid #ccc',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.05)',
+                backgroundColor: 'white',
+                borderRadius: '8px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
+              }}
+            >
+              <div>
+                <h4 style={{ color: '#28a745', fontWeight: 'bold', margin: '0 0 10px 0' }}>PRODUÇÃO</h4>
+                <p style={{ fontSize: '0.9em', color: '#666', marginBottom: '15px' }}>
+                  Base oficial do aplicativo público (cefiti-new). Alterações não permitidas.
+                </p>
+                <div style={{ padding: '15px 0', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', margin: '15px 0' }}>
+                  <p style={{ fontSize: '1.3em', fontWeight: 'bold', margin: '0 0 5px 0' }}>
+                    Versão {store.prodVersion}
+                  </p>
+                  <p style={{ fontSize: '0.8em', color: '#888', margin: 0 }}>
+                    Última carga: {store.prodLastUpdate || 'Nenhuma'}
+                  </p>
+                </div>
+                <p style={{ color: '#28a745', fontSize: '0.85em', fontWeight: 'bold', marginBottom: '20px' }}>
+                  ℹ️ MODO APENAS VISUALIZAÇÃO
+                </p>
+              </div>
+              <button
+                type="button"
+                className="form-button"
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  backgroundColor: '#28a745',
+                  color: 'white',
+                  border: 'none',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}
+                onClick={() => handleSelect('producao')}
+              >
+                VISUALIZAR PRODUÇÃO
+              </button>
+            </div>
+
+            {/* Card Desenvolvimento */}
+            <div
+              className="card"
+              style={{
+                flex: '1',
+                minWidth: '280px',
+                maxWidth: '350px',
+                textAlign: 'center',
+                padding: '30px',
+                border: '1px solid #ccc',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.05)',
+                backgroundColor: 'white',
+                borderRadius: '8px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
+              }}
+            >
+              <div>
+                <h4 style={{ color: '#007bff', fontWeight: 'bold', margin: '0 0 10px 0' }}>DESENVOLVIMENTO</h4>
+                <p style={{ fontSize: '0.9em', color: '#666', marginBottom: '15px' }}>
+                  Base de rascunhos para edição de pragas, hospedeiros, exigências e regras.
+                </p>
+                <div style={{ padding: '15px 0', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', margin: '15px 0' }}>
+                  <p style={{ fontSize: '1.3em', fontWeight: 'bold', margin: '0 0 5px 0' }}>
+                    Versão {store.devVersion}
+                  </p>
+                  <p style={{ fontSize: '0.8em', color: '#888', margin: 0 }}>
+                    Status: Edição habilitada
+                  </p>
+                </div>
+                <p style={{ color: '#007bff', fontSize: '0.85em', fontWeight: 'bold', marginBottom: '20px' }}>
+                  ✍️ MODO EDIÇÃO E TESTES
+                </p>
+              </div>
+              <button
+                type="button"
+                className="form-button"
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  backgroundColor: '#007bff',
+                  color: 'white',
+                  border: 'none',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}
+                onClick={() => handleSelect('desenvolvimento')}
+              >
+                EDITAR DESENVOLVIMENTO
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div style={{ marginTop: '30px' }}>
+          <button
+            type="button"
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: '#666',
+              textDecoration: 'underline',
+              fontSize: '0.9em'
+            }}
+            onClick={() => store.logout()}
+          >
+            Sair da Conta
+          </button>
+        </div>
+      </div>
+    </div>
+  )
 }

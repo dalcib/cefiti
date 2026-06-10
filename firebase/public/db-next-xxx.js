@@ -138,204 +138,6 @@ var estados = [
     "ibge": 17
   }
 ];
-var pragas = [
-  {
-    "id": 4,
-    "prag": "BSV e CMV",
-    "pragc": "BANANA STREAK VIRUS e CUCUMBER MOSAIC VIRUS",
-    "hosp": [
-      41
-    ],
-    "files": [
-      "IN46-2010"
-    ]
-  },
-  {
-    "id": 1,
-    "prag": "Bactrocera carambolae",
-    "pragc": "MOSCA-DA-CARAMBOLA",
-    "hosp": [
-      70,
-      125,
-      120,
-      127,
-      52,
-      71,
-      29,
-      177,
-      149,
-      9,
-      137,
-      181,
-      42,
-      138,
-      179,
-      39,
-      202,
-      8,
-      152,
-      30,
-      122,
-      69,
-      68,
-      194,
-      128,
-      129,
-      131,
-      130,
-      26,
-      133,
-      134,
-      155,
-      178,
-      3,
-      28,
-      139,
-      4,
-      106,
-      123,
-      53,
-      23
-    ],
-    "files": [
-      "PORT776-2025",
-      "RES04-2019",
-      "PORT780-2023",
-      "PORT734-2024",
-      "PORT940-2023",
-      "PORT627-2023",
-      "PORT859-2023",
-      "RES05-2018",
-      "IN02-2018",
-      "PORT1503-2025"
-    ]
-  },
-  {
-    "id": 7,
-    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
-    "pragc": "HLB",
-    "hosp": [
-      103,
-      117,
-      182,
-      156
-    ],
-    "files": [
-      "PORT1326-2025"
-    ]
-  },
-  {
-    "id": 11,
-    "prag": "Moniliophthora roreri",
-    "pragc": "MONILÍASE",
-    "hosp": [
-      200
-    ],
-    "files": [
-      "PORT703-2022",
-      "IN112-2020",
-      "IN38-2008"
-    ]
-  },
-  {
-    "id": 6,
-    "prag": "Neonectria ditissima (Neonectria galligena)",
-    "pragc": "CANCRO EUROPEU DAS POMÁCEAS",
-    "hosp": [
-      148
-    ],
-    "files": [
-      "IN20-2013"
-    ]
-  },
-  {
-    "id": 9,
-    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
-    "pragc": "SIGATOKA NEGRA",
-    "hosp": [
-      41,
-      126
-    ],
-    "files": [
-      "IN17-2005"
-    ]
-  },
-  {
-    "id": 8,
-    "prag": "Ralstonia solanacearum raça 2",
-    "pragc": "MOKO-DA-BANANEIRA",
-    "hosp": [
-      41,
-      126
-    ],
-    "files": [
-      "IN17-2009"
-    ]
-  },
-  {
-    "id": 12,
-    "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
-    "pragc": "VASSOURA DE BRUXA DA MANDIOCA",
-    "hosp": [
-      151
-    ],
-    "files": [
-      "PORT1257-2025",
-      "PORT1512-2026"
-    ]
-  },
-  {
-    "id": 2,
-    "prag": "Schizotetranychus hindustanicus",
-    "pragc": "ÁCARO HINDU",
-    "hosp": [
-      105,
-      158,
-      196,
-      5,
-      100,
-      103
-    ],
-    "files": [
-      "IN08-2012"
-    ]
-  },
-  {
-    "id": 3,
-    "prag": "Sternochetus mangiferae",
-    "pragc": "GORGULHO DA MANGA",
-    "hosp": [
-      152
-    ],
-    "files": [
-      "IN34-2017"
-    ]
-  },
-  {
-    "id": 5,
-    "prag": "Xanthomonas campestris pv. viticola",
-    "pragc": "CANCRO-DA-VIDEIRA",
-    "hosp": [
-      205
-    ],
-    "files": [
-      "IN02-2014"
-    ]
-  },
-  {
-    "id": 10,
-    "prag": "Xanthomonas citri subsp. citri",
-    "pragc": "CANCRO CÍTRICO",
-    "hosp": [
-      103,
-      117,
-      182
-    ],
-    "files": [
-      "IN21-2018"
-    ]
-  }
-];
 var hospedeiros = [
   {
     "id": 100,
@@ -895,6 +697,204 @@ var legislacoes = [
     "id": "RES05-2018",
     "leg": "Resolução nº 05",
     "data": "31/10/2018"
+  }
+];
+var pragas = [
+  {
+    "id": 4,
+    "prag": "BSV e CMV",
+    "pragc": "BANANA STREAK VIRUS e CUCUMBER MOSAIC VIRUS",
+    "hosp": [
+      41
+    ],
+    "files": [
+      "IN46-2010"
+    ]
+  },
+  {
+    "id": 1,
+    "prag": "Bactrocera carambolae",
+    "pragc": "MOSCA-DA-CARAMBOLA",
+    "hosp": [
+      70,
+      125,
+      120,
+      127,
+      52,
+      71,
+      29,
+      177,
+      149,
+      9,
+      137,
+      181,
+      42,
+      138,
+      179,
+      39,
+      202,
+      8,
+      152,
+      30,
+      122,
+      69,
+      68,
+      194,
+      128,
+      129,
+      131,
+      130,
+      26,
+      133,
+      134,
+      155,
+      178,
+      3,
+      28,
+      139,
+      4,
+      106,
+      123,
+      53,
+      23
+    ],
+    "files": [
+      "PORT776-2025",
+      "RES04-2019",
+      "PORT780-2023",
+      "PORT734-2024",
+      "PORT940-2023",
+      "PORT627-2023",
+      "PORT859-2023",
+      "RES05-2018",
+      "IN02-2018",
+      "PORT1503-2025"
+    ]
+  },
+  {
+    "id": 7,
+    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+    "pragc": "HLB",
+    "hosp": [
+      103,
+      117,
+      182,
+      156
+    ],
+    "files": [
+      "PORT1326-2025"
+    ]
+  },
+  {
+    "id": 11,
+    "prag": "Moniliophthora roreri",
+    "pragc": "MONILÍASE",
+    "hosp": [
+      200
+    ],
+    "files": [
+      "PORT703-2022",
+      "IN112-2020",
+      "IN38-2008"
+    ]
+  },
+  {
+    "id": 6,
+    "prag": "Neonectria ditissima (Neonectria galligena)",
+    "pragc": "CANCRO EUROPEU DAS POMÁCEAS",
+    "hosp": [
+      148
+    ],
+    "files": [
+      "IN20-2013"
+    ]
+  },
+  {
+    "id": 9,
+    "prag": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+    "pragc": "SIGATOKA NEGRA",
+    "hosp": [
+      41,
+      126
+    ],
+    "files": [
+      "IN17-2005"
+    ]
+  },
+  {
+    "id": 8,
+    "prag": "Ralstonia solanacearum raça 2",
+    "pragc": "MOKO-DA-BANANEIRA",
+    "hosp": [
+      41,
+      126
+    ],
+    "files": [
+      "IN17-2009"
+    ]
+  },
+  {
+    "id": 12,
+    "prag": "Rhizoctonia theobromae (Ceratobasidium theobromae)",
+    "pragc": "VASSOURA DE BRUXA DA MANDIOCA",
+    "hosp": [
+      151
+    ],
+    "files": [
+      "PORT1257-2025",
+      "PORT1512-2026"
+    ]
+  },
+  {
+    "id": 2,
+    "prag": "Schizotetranychus hindustanicus",
+    "pragc": "ÁCARO HINDU",
+    "hosp": [
+      105,
+      158,
+      196,
+      5,
+      100,
+      103
+    ],
+    "files": [
+      "IN08-2012"
+    ]
+  },
+  {
+    "id": 3,
+    "prag": "Sternochetus mangiferae",
+    "pragc": "GORGULHO DA MANGA",
+    "hosp": [
+      152
+    ],
+    "files": [
+      "IN34-2017"
+    ]
+  },
+  {
+    "id": 5,
+    "prag": "Xanthomonas campestris pv. viticola",
+    "pragc": "CANCRO-DA-VIDEIRA",
+    "hosp": [
+      205
+    ],
+    "files": [
+      "IN02-2014"
+    ]
+  },
+  {
+    "id": 10,
+    "prag": "Xanthomonas citri subsp. citri",
+    "pragc": "CANCRO CÍTRICO",
+    "hosp": [
+      103,
+      117,
+      182
+    ],
+    "files": [
+      "IN21-2018"
+    ]
   }
 ];
 var rules = [
@@ -6316,9 +6316,9 @@ var status_municipio = [
 export {
   dbVersion,
   estados,
-  pragas,
   hospedeiros,
   legislacoes,
+  pragas,
   rules,
   status_municipio
 };

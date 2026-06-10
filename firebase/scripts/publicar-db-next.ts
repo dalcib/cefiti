@@ -29,32 +29,36 @@ async function generateDbNext() {
   console.log('Fetching collections from Firestore...')
 
   try {
-    const collections = await db.listCollections()
-    const excludes = ['archive', 'configuracoes', 'municipios', 'leg_texto']
+    const collections = [
+      'pragas',
+      'hospedeiros',
+      'legislacoes',
+      'rules',
+      'status_municipio',
+    ]
 
     const data: Record<string, Record<string, unknown>[]> = {}
     let legTextoData: Record<string, unknown>[] = []
 
     // Fetch version
-    console.log('Fetching version from configuracoes/geral...')
-    const configDoc = await db.doc('configuracoes/geral').get()
+    console.log('Fetching version from producao/versao...')
+    const configDoc = await db.doc('producao/versao').get()
     const version = configDoc.exists ? configDoc.data()?.version : 'unknown'
     console.log(`Version found: ${version}`)
 
-    for (const collectionRef of collections) {
-      const collName = collectionRef.id
+    // Fetch leg_texto
+    console.log('Reading collection for standalone file: leg_texto')
+    const legTextoSnapshot = await db.collection('producao/dados/leg_texto').get()
+    legTextoData = legTextoSnapshot.docs.map((doc) => doc.data())
 
-      if (excludes.includes(collName)) {
-        if (collName === 'leg_texto') {
-          console.log(`Reading collection for standalone file: ${collName}`)
-          const snapshot = await collectionRef.get()
-          legTextoData = snapshot.docs.map((doc) => doc.data())
-        }
-        continue
-      }
+    // Fetch estados
+    console.log('Reading collection: estados')
+    const estadosSnapshot = await db.collection('geodata/dados/estados').get()
+    data['estados'] = estadosSnapshot.docs.map((doc) => doc.data())
 
+    for (const collName of collections) {
       console.log(`Reading collection: ${collName}`)
-      const snapshot = await collectionRef.get()
+      const snapshot = await db.collection(`producao/dados/${collName}`).get()
       let docs = snapshot.docs.map((doc) => doc.data())
 
       if (collName === 'status_municipio') {

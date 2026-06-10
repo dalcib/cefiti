@@ -256,16 +256,18 @@ export function StatusMunicipiosView() {
                 </option>
               ))}
             </select>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => (state.showAddStatus = !state.showAddStatus)}
-              title="Adicionar novo status a esta praga"
-            >
-              +
-            </button>
+            {!store.isReadOnly && (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => (state.showAddStatus = !state.showAddStatus)}
+                title="Adicionar novo status a esta praga"
+              >
+                +
+              </button>
+            )}
           </div>
-          {state.showAddStatus && (
+          {state.showAddStatus && !store.isReadOnly && (
             <div className="card popup-card">
               <p className="form-legend">ADICIONAR STATUS:</p>
               <select
@@ -315,17 +317,19 @@ export function StatusMunicipiosView() {
                   )
                 })}
             </select>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => (state.showAddEstado = !state.showAddEstado)}
-              title="Adicionar novo estado a este status"
-              disabled={!state.selectedStatus}
-            >
-              +
-            </button>
+            {!store.isReadOnly && (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => (state.showAddEstado = !state.showAddEstado)}
+                title="Adicionar novo estado a este status"
+                disabled={!state.selectedStatus}
+              >
+                +
+              </button>
+            )}
           </div>
-          {state.showAddEstado && (
+          {state.showAddEstado && !store.isReadOnly && (
             <div className="card popup-card">
               <p className="form-legend">ADICIONAR ESTADO:</p>
               <select
@@ -366,6 +370,7 @@ export function StatusMunicipiosView() {
                 multiple
                 className="form-textarea"
                 style="height: 300px;"
+                disabled={store.isReadOnly}
                 onInput={(e) => {
                   const opts = (e.target as HTMLSelectElement).selectedOptions
                   state.selectedInAvailable = Array.from(opts).map(
@@ -390,6 +395,7 @@ export function StatusMunicipiosView() {
                 className="btn btn-primary"
                 style="min-width: 40px;"
                 onClick={handleInclude}
+                disabled={store.isReadOnly}
                 title="Incluir selecionados"
               >
                 &gt;
@@ -399,6 +405,7 @@ export function StatusMunicipiosView() {
                 className="btn btn-primary"
                 style="min-width: 40px;"
                 onClick={handleExclude}
+                disabled={store.isReadOnly}
                 title="Excluir selecionados"
               >
                 &lt;
@@ -414,6 +421,7 @@ export function StatusMunicipiosView() {
                 multiple
                 className="form-textarea"
                 style="height: 300px;"
+                disabled={store.isReadOnly}
                 onInput={(e) => {
                   const opts = (e.target as HTMLSelectElement).selectedOptions
                   state.selectedInStatus = Array.from(opts).map((o) => o.value)
@@ -431,13 +439,15 @@ export function StatusMunicipiosView() {
             </div>
           </div>
           <br />
-          <button
-            type="button"
-            className="btn btn-primary btn-full"
-            onClick={handleSave}
-          >
-            SALVAR ALTERAÇÕES PARA ESTA PRAGA/STATUS
-          </button>
+          {!store.isReadOnly && (
+            <button
+              type="button"
+              className="btn btn-primary btn-full"
+              onClick={handleSave}
+            >
+              SALVAR ALTERAÇÕES PARA ESTA PRAGA/STATUS
+            </button>
+          )}
         </div>
       )}
     </div>

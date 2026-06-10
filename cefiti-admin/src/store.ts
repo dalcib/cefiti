@@ -21,6 +21,7 @@ import { auth, db } from './firebase.ts'
 
 export type AdminView =
   | 'login'
+  | 'select_environment'
   | 'dashboard'
   | 'pragas'
   | 'hospedeiros'
@@ -102,6 +103,36 @@ export class Store {
   currentProfile: AuthorizedUser | null = null
   authLoading: boolean = true
   sidebarOpen: boolean = true
+
+  // Environment isolated state
+  environment: 'producao' | 'desenvolvimento' | null = null
+  prodVersion: number = 0
+  devVersion: number = 0
+  prodLastUpdate: string | null = null
+  devLastUpdate: string | null = null
+  loadingVersions: boolean = false
+
+  get isReadOnly() {
+    return this.environment === 'producao'
+  }
+
+  envCol(name: string) {
+    if (!this.environment) throw new Error('Ambiente não selecionado')
+    return collection(db, this.environment, 'dados', name)
+  }
+
+  envDoc(name: string, id: string) {
+    if (!this.environment) throw new Error('Ambiente não selecionado')
+    return doc(db, this.environment, 'dados', name, id)
+  }
+
+  geodataCol(name: string) {
+    return collection(db, 'geodata', 'dados', name)
+  }
+
+  geodataDoc(name: string, id: string) {
+    return doc(db, 'geodata', 'dados', name, id)
+  }
 
   // Collections
   pragas: Praga[] = []
@@ -185,15 +216,18 @@ export class Store {
         if (!user) {
           this.currentProfile = null
           this.view = 'login'
+          this.environment = null
         } else {
           console.log('[Store] Fetching profile for:', user.email)
           await this.fetchProfile()
           console.log('[Store] Profile loaded:', this.currentProfile?.perfil)
 
-          if (this.view === 'login') {
-            this.view = 'dashboard'
+          if (this.view === 'login' || this.view === 'dashboard') {
+            this.view = 'select_environment'
+            await this.fetchEnvironmentsInfo()
+          } else if (this.environment) {
+            this.fetchCatalogos()
           }
-          this.fetchCatalogos()
         }
       } catch (e) {
         console.error('[Store] Auth error:', e)
@@ -210,6 +244,46 @@ export class Store {
         console.log('[Store] Auth initialization complete. View:', this.view)
       }
     })
+  }
+
+  async fetchEnvironmentsInfo() {
+    this.loadingVersions = true
+    try {
+      const prodSnap = await getDoc(doc(db, 'producao', 'versao'))
+      if (prodSnap.exists()) {
+        const d = prodSnap.data()
+        this.prodVersion = d.version || 0
+        this.prodLastUpdate = d.lastUpdate
+          ? new Date(
+              d.lastUpdate.seconds
+                ? d.lastUpdate.seconds * 1000
+                : d.lastUpdate,
+            ).toLocaleDateString()
+          : null
+      }
+      const devSnap = await getDoc(doc(db, 'desenvolvimento', 'versao'))
+      if (devSnap.exists()) {
+        const d = devSnap.data()
+        this.devVersion = d.version || 0
+        this.devLastUpdate = d.lastUpdate
+          ? new Date(
+              d.lastUpdate.seconds
+                ? d.lastUpdate.seconds * 1000
+                : d.lastUpdate,
+            ).toLocaleDateString()
+          : null
+      }
+    } catch (e) {
+      console.error('Error fetching environments info:', e)
+    } finally {
+      this.loadingVersions = false
+    }
+  }
+
+  async selectEnvironment(env: 'producao' | 'desenvolvimento') {
+    this.environment = env
+    this.view = 'dashboard'
+    await this.fetchCatalogos()
   }
 
   async fetchProfile() {
@@ -250,6 +324,17 @@ export class Store {
 
   async setView(view: AdminView) {
     this.view = view
+    if (view === 'select_environment') {
+      await this.fetchEnvironmentsInfo()
+      return
+    }
+
+    if (!this.environment && view !== 'login' && view !== 'perfil' && view !== 'usuarios') {
+      this.view = 'select_environment'
+      await this.fetchEnvironmentsInfo()
+      return
+    }
+
     switch (view) {
       case 'pragas':
         await this.fetchPragas()
@@ -294,6 +379,7 @@ export class Store {
 
   async logout() {
     await auth.signOut()
+    this.environment = null
     this.view = 'login'
   }
 
@@ -302,7 +388,7 @@ export class Store {
   async fetchPragas() {
     this.loading.pragas = true
     try {
-      const q = query(collection(db, 'pragas'), orderBy('prag'))
+      const q = query(this.envCol('pragas'), orderBy('prag'))
       const snapshot = await getDocs(q)
       this.pragas = snapshot.docs.map((doc) => doc.data() as Praga)
     } catch (e) {
@@ -313,19 +399,21 @@ export class Store {
   }
 
   async savePraga(praga: Praga) {
-    await setDoc(doc(db, 'pragas', praga.prag), praga)
+    if (this.isReadOnly) throw new Error('Apenas visualização em produção')
+    await setDoc(this.envDoc('pragas', praga.prag), praga)
     await this.fetchPragas()
   }
 
   async deletePraga(prag: string) {
-    await deleteDoc(doc(db, 'pragas', prag))
+    if (this.isReadOnly) throw new Error('Apenas visualização em produção')
+    await deleteDoc(this.envDoc('pragas', prag))
     await this.fetchPragas()
   }
 
   async fetchHospedeiros() {
     this.loading.hospedeiros = true
     try {
-      const q = query(collection(db, 'hospedeiros'), orderBy('nomeSci'))
+      const q = query(this.envCol('hospedeiros'), orderBy('nomeSci'))
       const snapshot = await getDocs(q)
       this.hospedeiros = snapshot.docs.map((doc) => doc.data() as Hospedeiro)
     } catch (e) {
@@ -336,19 +424,21 @@ export class Store {
   }
 
   async saveHospedeiro(h: Hospedeiro) {
-    await setDoc(doc(db, 'hospedeiros', h.id.toString()), h)
+    if (this.isReadOnly) throw new Error('Apenas visualização em produção')
+    await setDoc(this.envDoc('hospedeiros', h.id.toString()), h)
     await this.fetchHospedeiros()
   }
 
   async deleteHospedeiro(id: number) {
-    await deleteDoc(doc(db, 'hospedeiros', id.toString()))
+    if (this.isReadOnly) throw new Error('Apenas visualização em produção')
+    await deleteDoc(this.envDoc('hospedeiros', id.toString()))
     await this.fetchHospedeiros()
   }
 
   async fetchLegislacoes() {
     this.loading.legislacoes = true
     try {
-      const q = query(collection(db, 'legislacoes'), orderBy('id', 'desc'))
+      const q = query(this.envCol('legislacoes'), orderBy('id', 'desc'))
       const snapshot = await getDocs(q)
       this.legislacoes = snapshot.docs.map((doc) => doc.data() as Legislacao)
     } catch (e) {
@@ -359,27 +449,29 @@ export class Store {
   }
 
   async getLegislacaoTexto(id: string) {
-    const textDoc = await getDoc(doc(db, 'leg_texto', id))
+    const textDoc = await getDoc(this.envDoc('leg_texto', id))
     return textDoc.exists() ? textDoc.data().texto : ''
   }
 
   async saveLegislacao(l: Legislacao, texto: string) {
+    if (this.isReadOnly) throw new Error('Apenas visualização em produção')
     const { texto: _, ...metadata } = l
-    await setDoc(doc(db, 'legislacoes', metadata.id), metadata)
-    await setDoc(doc(db, 'leg_texto', metadata.id), { id: metadata.id, texto })
+    await setDoc(this.envDoc('legislacoes', metadata.id), metadata)
+    await setDoc(this.envDoc('leg_texto', metadata.id), { id: metadata.id, texto })
     await this.fetchLegislacoes()
   }
 
   async deleteLegislacao(id: string) {
-    await deleteDoc(doc(db, 'legislacoes', id))
-    await deleteDoc(doc(db, 'leg_texto', id))
+    if (this.isReadOnly) throw new Error('Apenas visualização em produção')
+    await deleteDoc(this.envDoc('legislacoes', id))
+    await deleteDoc(this.envDoc('leg_texto', id))
     await this.fetchLegislacoes()
   }
 
   async fetchRules() {
     this.loading.rules = true
     try {
-      const q = query(collection(db, 'rules'), orderBy('prag'))
+      const q = query(this.envCol('rules'), orderBy('prag'))
       const snapshot = await getDocs(q)
       this.rules = snapshot.docs.map((d) => ({ ...d.data(), id: d.id }) as Rule)
     } catch (e) {
@@ -390,21 +482,23 @@ export class Store {
   }
 
   async saveRule(rule: Rule) {
+    if (this.isReadOnly) throw new Error('Apenas visualização em produção')
     const docId = rule.id || `${rule.prag}_${Date.now()}`
     const { id, ...data } = rule
-    await setDoc(doc(db, 'rules', docId), data)
+    await setDoc(this.envDoc('rules', docId), data)
     await this.fetchRules()
   }
 
   async deleteRule(id: string) {
-    await deleteDoc(doc(db, 'rules', id))
+    if (this.isReadOnly) throw new Error('Apenas visualização em produção')
+    await deleteDoc(this.envDoc('rules', id))
     await this.fetchRules()
   }
 
   async fetchEstados() {
     this.loading.estados = true
     try {
-      const snapshot = await getDocs(collection(db, 'estados'))
+      const snapshot = await getDocs(this.geodataCol('estados'))
       this.estados = snapshot.docs
         .map((d) => d.data() as Estado)
         .sort((a, b) => a.estado.localeCompare(b.estado))
@@ -416,7 +510,7 @@ export class Store {
   async fetchStatusMunicipios() {
     this.loading.status_municipios = true
     try {
-      const snapshot = await getDocs(collection(db, 'status_municipio'))
+      const snapshot = await getDocs(this.envCol('status_municipio'))
       this.status_municipios = snapshot.docs.map(
         (d) => ({ ...d.data(), id: d.id }) as DB_StatusMunicipio,
       )
@@ -426,9 +520,10 @@ export class Store {
   }
 
   async saveStatusMunicipio(entry: DB_StatusMunicipio) {
+    if (this.isReadOnly) throw new Error('Apenas visualização em produção')
     const id = entry.id || entry.praga.replace(/\s+/g, '_')
     const { id: _, ...data } = entry
-    await setDoc(doc(db, 'status_municipio', id), data)
+    await setDoc(this.envDoc('status_municipio', id), data)
     this.views.statusMunicipios.originalEntryJson = JSON.stringify(entry)
     await this.fetchStatusMunicipios()
   }
@@ -478,7 +573,7 @@ export class Store {
   async fetchCatalogos() {
     this.loading.catalogos = true
     try {
-      // Fetch status list
+      // Fetch status list (global)
       const catRef = doc(db, 'configuracoes', 'catalogos')
       const catSnap = await getDoc(catRef)
       if (catSnap.exists()) {
@@ -486,19 +581,21 @@ export class Store {
         this.catalogos.status_fitossanitario = data.status_fitossanitario || []
       }
 
-      // Fetch version and last update info
-      const geralRef = doc(db, 'configuracoes', 'geral')
-      const geralSnap = await getDoc(geralRef)
-      if (geralSnap.exists()) {
-        const data = geralSnap.data()
-        this.catalogos.dbVersion = data.version || 0
-        this.catalogos.lastUpdate = data.lastUpdate
-          ? new Date(
-              data.lastUpdate.seconds
-                ? data.lastUpdate.seconds * 1000
-                : data.lastUpdate,
-            ).toLocaleDateString()
-          : null
+      // Fetch version and last update info (environment specific)
+      if (this.environment) {
+        const geralRef = doc(db, this.environment, 'versao')
+        const geralSnap = await getDoc(geralRef)
+        if (geralSnap.exists()) {
+          const data = geralSnap.data()
+          this.catalogos.dbVersion = data.version || 0
+          this.catalogos.lastUpdate = data.lastUpdate
+            ? new Date(
+                data.lastUpdate.seconds
+                  ? data.lastUpdate.seconds * 1000
+                  : data.lastUpdate,
+              ).toLocaleDateString()
+            : null
+        }
       }
     } finally {
       this.loading.catalogos = false
@@ -513,7 +610,7 @@ export class Store {
     try {
       // 1. Check in Rules (Origem)
       const qOrigem = query(
-        collection(db, 'rules'),
+        this.envCol('rules'),
         where('status_origem', 'array-contains', s),
       )
       const snapOrigem = await getDocs(qOrigem)
@@ -528,7 +625,7 @@ export class Store {
 
       // 2. Check in Rules (Destino)
       const qDestino = query(
-        collection(db, 'rules'),
+        this.envCol('rules'),
         where('status_destino', 'array-contains', s),
       )
       const snapDestino = await getDocs(qDestino)
@@ -543,7 +640,7 @@ export class Store {
 
       // 3. Check in Status Município
       // We list and check in-memory since Firestore doesn't support array-contains for nested object fields
-      const qMun = collection(db, 'status_municipio')
+      const qMun = this.envCol('status_municipio')
       const snapMun = await getDocs(qMun)
       snapMun.docs.forEach((doc) => {
         const data = doc.data() as DB_StatusMunicipio
@@ -562,6 +659,7 @@ export class Store {
   }
 
   async saveCatalogos(updatedStatuses: string[]) {
+    if (this.isReadOnly) throw new Error('Apenas visualização em produção')
     const docRef = doc(db, 'configuracoes', 'catalogos')
     await setDoc(
       docRef,
@@ -571,6 +669,178 @@ export class Store {
       { merge: true },
     )
     await this.fetchCatalogos()
+  }
+
+  async promoteDevToProd() {
+    if (this.currentProfile?.perfil !== 'administrador') {
+      alert('Apenas administradores podem promover a base.')
+      return
+    }
+    if (!confirm('Tem certeza de que deseja promover a base de DESENVOLVIMENTO para PRODUÇÃO? Isso substituirá todos os dados em produção.')) {
+      return
+    }
+
+    this.loading.catalogos = true // block UI
+    try {
+      // 1. Fetch current production version and data
+      const prodVersaoRef = doc(db, 'producao', 'versao')
+      const prodVersaoSnap = await getDoc(prodVersaoRef)
+      const currentProdVersion = prodVersaoSnap.exists() ? prodVersaoSnap.data()?.version || 0 : 0
+      
+      const collections = [
+        'pragas',
+        'hospedeiros',
+        'legislacoes',
+        'leg_texto',
+        'rules',
+        'status_municipio',
+      ]
+
+      const prodData: Record<string, any[]> = {}
+      for (const col of collections) {
+        const snap = await getDocs(collection(db, 'producao', 'dados', col))
+        prodData[col] = snap.docs.map(d => d.data())
+      }
+
+      // 2. Archive production database
+      console.log(`Archiving production version ${currentProdVersion}...`)
+      const archiveRef = doc(db, 'archive', `v${currentProdVersion}_${Date.now()}`)
+      await setDoc(archiveRef, {
+        version: currentProdVersion,
+        timestamp: new Date(),
+        data: prodData
+      })
+
+      // 3. Fetch all development data
+      console.log('Fetching development data...')
+      const devData: Record<string, any[]> = {}
+      for (const col of collections) {
+        const snap = await getDocs(collection(db, 'desenvolvimento', 'dados', col))
+        devData[col] = snap.docs.map(d => d.data())
+      }
+
+      // 4. Copy development to production
+      console.log('Copying development to production...')
+      for (const col of collections) {
+        // Delete all production documents
+        const prodColSnap = await getDocs(collection(db, 'producao', 'dados', col))
+        for (const docSnap of prodColSnap.docs) {
+          await deleteDoc(doc(db, 'producao', 'dados', col, docSnap.id))
+        }
+
+        // Write development documents to production
+        for (const item of devData[col]) {
+          let docId = ''
+          if (col === 'pragas') docId = item.prag
+          else if (col === 'hospedeiros') docId = item.id.toString()
+          else if (col === 'legislacoes') docId = item.id
+          else if (col === 'leg_texto') docId = item.id
+          else if (col === 'rules') docId = item.id || `${item.prag}_${Date.now()}`
+          else if (col === 'status_municipio') docId = item.id || item.praga.replace(/\s+/g, '_')
+
+          const { id, ...data } = item
+          await setDoc(doc(db, 'producao', 'dados', col, docId), { ...data, ...(id ? { id } : {}) })
+        }
+      }
+
+      // 5. Update production version to V_dev (prodVersion + 1)
+      const nextProdVersion = currentProdVersion + 1
+      await setDoc(prodVersaoRef, {
+        version: nextProdVersion,
+        lastUpdate: new Date()
+      })
+
+      // 6. Increment development version to V_dev + 1
+      const nextDevVersion = nextProdVersion + 1
+      await setDoc(doc(db, 'desenvolvimento', 'versao'), {
+        version: nextDevVersion,
+        lastUpdate: new Date()
+      })
+
+      alert('Base promovida com sucesso! Produção atualizada.')
+      await this.fetchEnvironmentsInfo()
+      await this.fetchCatalogos()
+    } catch (e) {
+      console.error('Error promoting dev to prod:', e)
+      alert(`Erro ao promover base: ${(e as Error).message}`)
+    } finally {
+      this.loading.catalogos = false
+    }
+  }
+
+  async restoreDevFromProd() {
+    if (this.currentProfile?.perfil !== 'administrador') {
+      alert('Apenas administradores podem restaurar a base.')
+      return
+    }
+    if (!confirm('ATENÇÃO: Isso apagará TODOS os dados do ambiente de DESENVOLVIMENTO e os substituirá pela base de PRODUÇÃO atual. Deseja prosseguir?')) {
+      return
+    }
+
+    this.loading.catalogos = true // block UI
+    try {
+      // 1. Fetch production version
+      const prodVersaoRef = doc(db, 'producao', 'versao')
+      const prodVersaoSnap = await getDoc(prodVersaoRef)
+      const prodVersion = prodVersaoSnap.exists() ? prodVersaoSnap.data()?.version || 0 : 0
+
+      const collections = [
+        'pragas',
+        'hospedeiros',
+        'legislacoes',
+        'leg_texto',
+        'rules',
+        'status_municipio',
+      ]
+
+      // 2. Fetch all production data
+      console.log('Fetching production data...')
+      const prodData: Record<string, any[]> = {}
+      for (const col of collections) {
+        const snap = await getDocs(collection(db, 'producao', 'dados', col))
+        prodData[col] = snap.docs.map(d => d.data())
+      }
+
+      // 3. Clear and copy to development
+      console.log('Overwriting development with production...')
+      for (const col of collections) {
+        // Delete all dev documents
+        const devColSnap = await getDocs(collection(db, 'desenvolvimento', 'dados', col))
+        for (const docSnap of devColSnap.docs) {
+          await deleteDoc(doc(db, 'desenvolvimento', 'dados', col, docSnap.id))
+        }
+
+        // Write production documents to development
+        for (const item of prodData[col]) {
+          let docId = ''
+          if (col === 'pragas') docId = item.prag
+          else if (col === 'hospedeiros') docId = item.id.toString()
+          else if (col === 'legislacoes') docId = item.id
+          else if (col === 'leg_texto') docId = item.id
+          else if (col === 'rules') docId = item.id || `${item.prag}_${Date.now()}`
+          else if (col === 'status_municipio') docId = item.id || item.praga.replace(/\s+/g, '_')
+
+          const { id, ...data } = item
+          await setDoc(doc(db, 'desenvolvimento', 'dados', col, docId), { ...data, ...(id ? { id } : {}) })
+        }
+      }
+
+      // 4. Update dev version to prodVersion + 1
+      const nextDevVersion = prodVersion + 1
+      await setDoc(doc(db, 'desenvolvimento', 'versao'), {
+        version: nextDevVersion,
+        lastUpdate: new Date()
+      })
+
+      alert('Base de desenvolvimento restaurada com sucesso.')
+      await this.fetchEnvironmentsInfo()
+      await this.fetchCatalogos()
+    } catch (e) {
+      console.error('Error restoring dev from prod:', e)
+      alert(`Erro ao restaurar base: ${(e as Error).message}`)
+    } finally {
+      this.loading.catalogos = false
+    }
   }
 
   // --- Authorized Users Methods ---

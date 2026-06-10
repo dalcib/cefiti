@@ -1,13 +1,8 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { cert, initializeApp } from 'firebase-admin/app'
-import { FieldValue, getFirestore } from 'firebase-admin/firestore'
+import { getFirestore } from 'firebase-admin/firestore'
 
-// AUTHENTICATION OPTIONS:
-// 1. Recommended: Save your Service Account Key as 'firebase/service-account.json'
-//    (Generate at: Firebase Console > Project Settings > Service Accounts)
-// 2. Alternative: Install Google Cloud SDK and run: gcloud auth application-default login
-//    The script will then use those credentials automatically.
 const serviceAccountPath = existsSync(
   join(process.cwd(), 'service-account.json'),
 )
@@ -29,70 +24,45 @@ async function publicar() {
   console.log('Starting local database generation for Hosting...')
 
   try {
-    const result = await db.runTransaction(async (transaction) => {
-      // 1. Get current version
-      const configRef = db.collection('configuracoes').doc('geral')
-      const configDoc = await transaction.get(configRef)
-      const currentVersion = configDoc.exists
-        ? configDoc.data()?.version || 0
-        : 0
-      const nextVersion = currentVersion + 1
+    // 1. Get current version
+    console.log('Fetching version from producao/versao...')
+    const configDoc = await db.doc('producao/versao').get()
+    const currentVersion = configDoc.exists
+      ? configDoc.data()?.version || 0
+      : 0
 
-      // 2. Read all data
-      console.log('Reading data from Firestore...')
-      const collections = [
-        'pragas',
-        'hospedeiros',
-        'regras',
-        'legislacoes',
-        'estados',
-      ]
-      const data: Record<string, Record<string, unknown>[]> = {}
+    // 2. Read all data
+    console.log('Reading data from Firestore...')
+    const collections = [
+      'pragas',
+      'hospedeiros',
+      'rules',
+      'legislacoes',
+    ]
+    const data: Record<string, Record<string, unknown>[]> = {}
 
-      for (const collName of collections) {
-        const snapshot = await db.collection(collName).get()
-        data[collName] = snapshot.docs.map((doc) => doc.data())
-      }
-
-      // 3. Increment version and update metadata
-      const lastUpdate = FieldValue.serverTimestamp()
-      transaction.set(
-        configRef,
-        {
-          version: nextVersion,
-          lastUpdate,
-        },
-        { merge: true },
-      )
-
-      // 4. Archive snapshot (Backup of the state being replaced)
-      console.log(`Archiving version ${currentVersion} in Firestore...`)
-      const archiveRef = db
-        .collection('archive')
-        .doc(`v${currentVersion}_${Date.now()}`)
-      transaction.set(archiveRef, {
-        version: currentVersion,
-        timestamp: lastUpdate,
-        data: data,
-      })
-
-      return { nextVersion, data }
-    })
-
-    const { nextVersion, data } = result as {
-      nextVersion: number
-      data: Record<string, Record<string, unknown>[]>
+    for (const collName of collections) {
+      // Map 'rules' output key to 'regras' if expected by legacy, or keep rules.
+      // Let's output 'rules' as 'regras' to maintain backward compatibility in the JS bundle.
+      const outputName = collName === 'rules' ? 'regras' : collName
+      const snapshot = await db.collection(`producao/dados/${collName}`).get()
+      data[outputName] = snapshot.docs.map((doc) => doc.data())
     }
 
-    // 5. Generate JS content (ESM format)
+    // Read states from geodata/dados/estados
+    console.log('Reading collection: estados')
+    const estadosSnapshot = await db.collection('geodata/dados/estados').get()
+    data['estados'] = estadosSnapshot.docs.map((doc) => doc.data())
+
+    // 3. Generate JS content (ESM format)
     console.log('Generating db.js file content...')
     let jsContent = '// CEFiTI - Database\n\n'
     for (const [key, items] of Object.entries(data)) {
       jsContent += `export const ${key} = ${JSON.stringify(items, null, 2)};\n\n`
     }
-    jsContent += `export const dbVersion = ${nextVersion};\n`
+    jsContent += `export const dbVersion = ${currentVersion};\n`
 
-    // 6. Save locally for Hosting deploy
+    // 4. Save locally for Hosting deploy
     const publicDir = join(process.cwd(), 'public')
     if (!existsSync(publicDir)) {
       mkdirSync(publicDir)
@@ -101,9 +71,8 @@ async function publicar() {
     writeFileSync(filePath, jsContent, 'utf8')
 
     console.log(
-      `\nLocal database version ${nextVersion} generated successfully at ${filePath}`,
+      `\nLocal database version ${currentVersion} generated successfully at ${filePath}`,
     )
-    console.log('Deploying to Firebase Hosting...')
   } catch (error) {
     const err = error as Error
     console.error('\nFAILED to publish database:', err.message)

@@ -16,21 +16,11 @@ service cloud.firestore {
       return isAuthorized() && get(/databases/$(database)/documents/configuracoes/geral/usuarios/$(request.auth.token.email.lower())).data.perfil == 'administrador';
     }
 
-    // Verifica se uma praga existe
-    function pragaExists(pragName) {
-      return exists(/databases/$(database)/documents/pragas/$(pragName));
-    }
-
-    // Verifica se uma legislação existe
-    function legislacaoExists(legId) {
-      return exists(/databases/$(database)/documents/legislacoes/$(legId));
-    }
-
     // ======================================================
-    // REGRAS POR COLEÇÃO
+    // REGRAS GLOBAIS
     // ======================================================
 
-    // 0. USUÁRIOS AUTORIZADOS (Subcoleção em configuracoes/geral/usuarios)
+    // 0. USUÁRIOS AUTORIZADOS
     match /configuracoes/geral/usuarios/{email} {
       allow read: if isAuthorized();
       allow create, delete: if isAdmin();
@@ -38,65 +28,92 @@ service cloud.firestore {
                       !request.resource.data.diff(resource.data).affectedKeys().hasAny(['perfil', 'email']));
     }
 
-    // 1. HOSPEDEIROS
-    match /hospedeiros/{hospId} {
-      allow read: if isAuthorized();
-      allow create, update: if isAuthorized();
-      allow delete: if isAdmin(); 
-    }
-
-    // 2. LEGISLAÇÕES E TEXTOS
-    match /legislacoes/{legId} {
-      allow read: if isAuthorized();
-      allow create, update: if isAuthorized();
-      allow delete: if isAdmin();
-    }
-
-    match /leg_texto/{legId} {
-      allow read: if isAuthorized();
-      allow create, update: if isAuthorized() && legislacaoExists(legId);
-      allow delete: if isAdmin();
-    }
-
-    // 3. PRAGAS
-    match /pragas/{pragName} {
-      allow read: if isAuthorized();
-      allow create, update: if isAuthorized();
-      allow delete: if isAdmin();
-    }
-
-    // 4. REGRAS DE TRÂNSITO (RULES)
-    match /rules/{ruleId} {
-      allow read: if isAuthorized();
-      allow create, update: if isAuthorized() && pragaExists(request.resource.data.prag);
-      allow delete: if isAuthorized();
-    }
-
-    // 5. STATUS MUNICÍPIO
-    match /status_municipio/{pragName} {
-      allow read: if isAuthorized();
-      allow create, update: if isAuthorized() && pragaExists(request.resource.data.praga);
-      allow delete: if isAuthorized();
-    }
-    
-    // 6. CONFIGURAÇÕES / CATÁLOGOS
-    match /configuracoes/{configId} {
+    // CATÁLOGOS (Status fitossanitários, etc. - Compartilhados)
+    match /configuracoes/catalogos {
       allow read: if isAuthorized();
       allow write: if isAdmin();
     }
-    
-    // ======================================================
-    // COLEÇÕES ESTÁTICAS
-    // ======================================================
-    
-    match /estados/{estadoId} {
+
+    // GEODATA (estados e municípios)
+    match /geodata/dados/estados/{estadoId} {
       allow read: if isAuthorized();
       allow write: if false;
     }
-    
-    match /municipios/{municipioId} {
+
+    match /geodata/dados/municipios/{municipioId} {
       allow read: if isAuthorized();
       allow write: if false;
     }
+
+    // ======================================================
+    // REGRAS POR AMBIENTE (producao / desenvolvimento)
+    // ======================================================
+
+    // Regras de escrita dependem do ambiente:
+    // - desenvolvimento: Qualquer usuário autorizado pode criar/atualizar dados. Admin pode excluir.
+    // - producao: Apenas administradores podem gravar/excluir (necessário para promoção).
+    
+    function envCanWrite(env) {
+      return isAuthorized() && (env == 'desenvolvimento' || isAdmin());
+    }
+
+    // HOSPEDEIROS
+    match /{env}/dados/hospedeiros/{hospId} {
+      allow read: if isAuthorized();
+      allow create, update: if envCanWrite(env);
+      allow delete: if isAdmin(); 
+    }
+
+    // LEGISLAÇÕES E TEXTOS
+    match /{env}/dados/legislacoes/{legId} {
+      allow read: if isAuthorized();
+      allow create, update: if envCanWrite(env);
+      allow delete: if isAdmin();
+    }
+
+    match /{env}/dados/leg_texto/{legId} {
+      allow read: if isAuthorized();
+      allow create, update: if envCanWrite(env) && exists(/databases/$(database)/documents/$(env)/dados/legislacoes/$(legId));
+      allow delete: if isAdmin();
+    }
+
+    // PRAGAS
+    match /{env}/dados/pragas/{pragName} {
+      allow read: if isAuthorized();
+      allow create, update: if envCanWrite(env);
+      allow delete: if isAdmin();
+    }
+
+    // REGRAS DE TRÂNSITO (RULES)
+    match /{env}/dados/rules/{ruleId} {
+      allow read: if isAuthorized();
+      allow create, update: if envCanWrite(env) && exists(/databases/$(database)/documents/$(env)/dados/pragas/$(request.resource.data.prag));
+      allow delete: if envCanWrite(env);
+    }
+
+    // STATUS MUNICÍPIO
+    match /{env}/dados/status_municipio/{pragName} {
+      allow read: if isAuthorized();
+      allow create, update: if envCanWrite(env) && exists(/databases/$(database)/documents/$(env)/dados/pragas/$(request.resource.data.praga));
+      allow delete: if envCanWrite(env);
+    }
+
+    // VERSÃO DO AMBIENTE
+    match /{env}/versao {
+      allow read: if isAuthorized();
+      allow write: if isAdmin();
+    }
+
+    // ======================================================
+    // REGRAS LEGACY (Temporárias - mantêm compatibilidade da raiz)
+    // ======================================================
+    match /hospedeiros/{hospId} { allow read: if isAuthorized(); allow write: if isAdmin(); }
+    match /legislacoes/{legId} { allow read: if isAuthorized(); allow write: if isAdmin(); }
+    match /leg_texto/{legId} { allow read: if isAuthorized(); allow write: if isAdmin(); }
+    match /pragas/{pragName} { allow read: if isAuthorized(); allow write: if isAdmin(); }
+    match /rules/{ruleId} { allow read: if isAuthorized(); allow write: if isAdmin(); }
+    match /status_municipio/{pragName} { allow read: if isAuthorized(); allow write: if isAdmin(); }
+    match /estados/{estadoId} { allow read: if isAuthorized(); }
+    match /municipios/{municipioId} { allow read: if isAuthorized(); }
   }
 }

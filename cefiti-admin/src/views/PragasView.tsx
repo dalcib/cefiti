@@ -42,7 +42,7 @@ export function PragasView() {
     return (
       <div id="conteudo">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <h4>{state.isNew ? 'NOVA PRAGA' : 'EDITAR PRAGA'}</h4>
+          <h4>{state.isNew ? 'NOVA PRAGA' : (store.isReadOnly ? 'VISUALIZAR PRAGA' : 'EDITAR PRAGA')}</h4>
           <button
             type="button"
             className="form-button"
@@ -63,12 +63,14 @@ export function PragasView() {
                 type="text"
                 className="form-text"
                 value={state.editing.prag}
-                readOnly={!state.isNew}
+                readOnly={!state.isNew || store.isReadOnly}
                 required
-                onInput={(e) =>
-                  (state.editing!.prag = (e.target as HTMLInputElement).value)
-                }
-                style={!state.isNew ? { backgroundColor: '#eee' } : {}}
+                onInput={(e) => {
+                  if (!store.isReadOnly) {
+                    state.editing!.prag = (e.target as HTMLInputElement).value
+                  }
+                }}
+                style={(!state.isNew || store.isReadOnly) ? { backgroundColor: '#eee' } : {}}
               />
             </div>
             <div>
@@ -78,16 +80,22 @@ export function PragasView() {
                 type="text"
                 className="form-text"
                 value={state.editing.pragc}
+                readOnly={store.isReadOnly}
                 required
-                onInput={(e) =>
-                  (state.editing!.pragc = (e.target as HTMLInputElement).value)
-                }
+                onInput={(e) => {
+                  if (!store.isReadOnly) {
+                    state.editing!.pragc = (e.target as HTMLInputElement).value
+                  }
+                }}
+                style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
               />
             </div>
             <br />
-            <button className="form-button" type="submit">
-              SALVAR
-            </button>
+            {!store.isReadOnly && (
+              <button className="form-button" type="submit">
+                SALVAR
+              </button>
+            )}
           </form>
         </div>
       </div>
@@ -98,9 +106,11 @@ export function PragasView() {
     <div id="conteudo">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h4>MANUTENÇÃO DE PRAGAS</h4>
-        <button type="button" className="form-button" onClick={handleAdd}>
-          NOVA PRAGA
-        </button>
+        {!store.isReadOnly && (
+          <button type="button" className="form-button" onClick={handleAdd}>
+            NOVA PRAGA
+          </button>
+        )}
       </div>
       <div>
         <table className="table-grid" style="width: 100%;">
@@ -123,16 +133,18 @@ export function PragasView() {
                     style="font-size: 0.8em; padding: 2px 5px; margin-right: 5px;"
                     onClick={() => handleEdit(praga)}
                   >
-                    Editar
+                    {store.isReadOnly ? 'Visualizar' : 'Editar'}
                   </button>
-                  <button
-                    type="button"
-                    className="form-button"
-                    style="font-size: 0.8em; padding: 2px 5px; background: #dc3545;"
-                    onClick={() => handleDelete(praga.prag)}
-                  >
-                    Excluir
-                  </button>
+                  {!store.isReadOnly && (
+                    <button
+                      type="button"
+                      className="form-button"
+                      style="font-size: 0.8em; padding: 2px 5px; background: #dc3545;"
+                      onClick={() => handleDelete(praga.prag)}
+                    >
+                      Excluir
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

@@ -49,7 +49,7 @@ export function LegislacoesView() {
     return (
       <div id="conteudo">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <h4>{state.isNew ? 'NOVA LEGISLAÇÃO' : 'EDITAR LEGISLAÇÃO'}</h4>
+          <h4>{state.isNew ? 'NOVA LEGISLAÇÃO' : (store.isReadOnly ? 'VISUALIZAR LEGISLAÇÃO' : 'EDITAR LEGISLAÇÃO')}</h4>
           <div style="display: flex; gap: 10px;">
             <button
               type="button"
@@ -84,11 +84,13 @@ export function LegislacoesView() {
                   className="form-text"
                   value={editing.id}
                   required
-                  readOnly={!state.isNew}
-                  onInput={(e) =>
-                    (editing.id = (e.target as HTMLInputElement).value)
-                  }
-                  style={!state.isNew ? { backgroundColor: '#eee' } : {}}
+                  readOnly={!state.isNew || store.isReadOnly}
+                  onInput={(e) => {
+                    if (!store.isReadOnly) {
+                      editing.id = (e.target as HTMLInputElement).value
+                    }
+                  }}
+                  style={(!state.isNew || store.isReadOnly) ? { backgroundColor: '#eee' } : {}}
                 />
               </div>
               <div>
@@ -99,9 +101,13 @@ export function LegislacoesView() {
                   className="form-text"
                   value={editing.leg}
                   required
-                  onInput={(e) =>
-                    (editing.leg = (e.target as HTMLInputElement).value)
-                  }
+                  readOnly={store.isReadOnly}
+                  onInput={(e) => {
+                    if (!store.isReadOnly) {
+                      editing.leg = (e.target as HTMLInputElement).value
+                    }
+                  }}
+                  style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
                 />
               </div>
               <div>
@@ -112,9 +118,13 @@ export function LegislacoesView() {
                   className="form-text"
                   value={editing.data}
                   required
-                  onInput={(e) =>
-                    (editing.data = (e.target as HTMLInputElement).value)
-                  }
+                  readOnly={store.isReadOnly}
+                  onInput={(e) => {
+                    if (!store.isReadOnly) {
+                      editing.data = (e.target as HTMLInputElement).value
+                    }
+                  }}
+                  style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
                 />
               </div>
             </div>
@@ -134,15 +144,18 @@ export function LegislacoesView() {
                   id="leg-content"
                   className="form-textarea"
                   value={state.texto}
-                  onInput={(e) =>
-                    (state.texto = (e.target as HTMLTextAreaElement).value)
-                  }
-                  style="width: 100%; min-height: 400px; padding: 10px; font-family: monospace;"
+                  readOnly={store.isReadOnly}
+                  onInput={(e) => {
+                    if (!store.isReadOnly) {
+                      state.texto = (e.target as HTMLTextAreaElement).value
+                    }
+                  }}
+                  style={`width: 100%; min-height: 400px; padding: 10px; font-family: monospace; ${store.isReadOnly ? 'background-color: #eee;' : ''}`}
                 />
               )}
             </div>
             <br />
-            {!state.showPreview && (
+            {!state.showPreview && !store.isReadOnly && (
               <button className="form-button" type="submit">
                 SALVAR
               </button>
@@ -157,9 +170,11 @@ export function LegislacoesView() {
     <div id="conteudo">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h4>LEGISLAÇÕES</h4>
-        <button type="button" className="form-button" onClick={handleAdd}>
-          NOVA LEGISLAÇÃO
-        </button>
+        {!store.isReadOnly && (
+          <button type="button" className="form-button" onClick={handleAdd}>
+            NOVA LEGISLAÇÃO
+          </button>
+        )}
       </div>
       <div>
         <table className="table-grid" style="width: 100%;">
@@ -184,16 +199,18 @@ export function LegislacoesView() {
                     style="font-size: 0.8em; padding: 2px 5px; margin-right: 5px;"
                     onClick={() => handleEdit(l)}
                   >
-                    Editar
+                    {store.isReadOnly ? 'Visualizar' : 'Editar'}
                   </button>
-                  <button
-                    type="button"
-                    className="form-button"
-                    style="font-size: 0.8em; padding: 2px 5px; background: #dc3545;"
-                    onClick={() => handleDelete(l)}
-                  >
-                    Excluir
-                  </button>
+                  {!store.isReadOnly && (
+                    <button
+                      type="button"
+                      className="form-button"
+                      style="font-size: 0.8em; padding: 2px 5px; background: #dc3545;"
+                      onClick={() => handleDelete(l)}
+                    >
+                      Excluir
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

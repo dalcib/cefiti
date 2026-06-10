@@ -23,8 +23,8 @@ const mockGetDoc = mock.fn(async () => ({
 }))
 const mockSetDoc = mock.fn(async () => {})
 const mockDeleteDoc = mock.fn(async () => {})
-const mockCollection = mock.fn((_db: any, name: string) => ({ name }))
-const mockDoc = mock.fn((_db: any, col: string, id: string) => ({ col, id }))
+const mockCollection = mock.fn((_db: any, ...segments: string[]) => ({ path: segments.join('/') }))
+const mockDoc = mock.fn((_db: any, ...segments: string[]) => ({ path: segments.join('/') }))
 const mockQuery = mock.fn((q: any) => q)
 const mockOrderBy = mock.fn(() => ({}))
 
@@ -94,7 +94,7 @@ describe('Cefiti Admin Store', () => {
     assert.strictEqual(store.user, null)
   })
 
-  it('should initialize with view "dashboard" when user is present', async () => {
+  it('should initialize with view "select_environment" when user is present', async () => {
     const mockUser = { uid: '123', email: 'test@example.com' }
     const mockProfile = {
       email: 'test@example.com',
@@ -116,12 +116,13 @@ describe('Cefiti Admin Store', () => {
     )
 
     store = new Store()
+    mock.method(store, 'fetchEnvironmentsInfo', async () => {})
     store.initAuth()
 
     // Give time for async fetchProfile to complete
     await new Promise((resolve) => setTimeout(resolve, 0))
 
-    assert.strictEqual(store.view, 'dashboard')
+    assert.strictEqual(store.view, 'select_environment')
     assert.strictEqual(store.user, mockUser)
     assert.deepEqual(store.currentProfile, mockProfile)
   })
@@ -133,8 +134,26 @@ describe('Cefiti Admin Store', () => {
     assert.strictEqual(store.sidebarOpen, !initial)
   })
 
+  it('should set isReadOnly correctly depending on environment', () => {
+    store = new Store()
+    store.environment = 'producao'
+    assert.strictEqual(store.isReadOnly, true)
+    store.environment = 'desenvolvimento'
+    assert.strictEqual(store.isReadOnly, false)
+  })
+
+  it('should select environment and load catalogos', async () => {
+    store = new Store()
+    const fetchCatalogosSpy = mock.method(store, 'fetchCatalogos', async () => {})
+    await store.selectEnvironment('producao')
+    assert.strictEqual(store.environment, 'producao')
+    assert.strictEqual(store.view, 'dashboard')
+    assert.strictEqual(fetchCatalogosSpy.mock.callCount(), 1)
+  })
+
   it('should fetch pragas and update state', async () => {
     store = new Store()
+    store.environment = 'desenvolvimento'
     const mockPragas = [
       { prag: 'Praga A', pragc: 'Cientifico A', hosp: [1], files: [] },
       { prag: 'Praga B', pragc: 'Cientifico B', hosp: [2], files: [] },
@@ -152,6 +171,7 @@ describe('Cefiti Admin Store', () => {
 
   it('should change view via setView and trigger fetch', async () => {
     store = new Store()
+    store.environment = 'desenvolvimento'
     const fetchPragasSpy = mock.method(store, 'fetchPragas', async () => {})
 
     await store.setView('pragas')
@@ -164,5 +184,6 @@ describe('Cefiti Admin Store', () => {
     await store.logout()
     assert.strictEqual(mockAuth.signOut.mock.callCount(), 1)
     assert.strictEqual(store.view, 'login')
+    assert.strictEqual(store.environment, null)
   })
 })

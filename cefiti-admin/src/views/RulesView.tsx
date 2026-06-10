@@ -70,7 +70,7 @@ export function RulesView() {
     return (
       <div id="conteudo">
         <div className="view-header">
-          <h4>{state.isNew ? 'NOVA REGRA' : 'EDITAR REGRA'}</h4>
+          <h4>{state.isNew ? 'NOVA REGRA' : (store.isReadOnly ? 'VISUALIZAR REGRA' : 'EDITAR REGRA')}</h4>
           <button
             type="button"
             className="btn btn-neutral"
@@ -91,11 +91,13 @@ export function RulesView() {
                   className="form-select"
                   value={state.editing.prag}
                   required
-                  onChange={(e) =>
-                    (state.editing!.prag = (
-                      e.target as HTMLSelectElement
-                    ).value)
-                  }
+                  disabled={store.isReadOnly}
+                  onChange={(e) => {
+                    if (!store.isReadOnly) {
+                      state.editing!.prag = (e.target as HTMLSelectElement).value
+                    }
+                  }}
+                  style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
                 >
                   <option value="">Selecione a Praga</option>
                   {store.pragas.map((p) => (
@@ -113,10 +115,14 @@ export function RulesView() {
                   className="form-text"
                   value={state.editing.leg}
                   required
-                  onInput={(e) =>
-                    (state.editing!.leg = (e.target as HTMLInputElement).value)
-                  }
+                  readOnly={store.isReadOnly}
+                  onInput={(e) => {
+                    if (!store.isReadOnly) {
+                      state.editing!.leg = (e.target as HTMLInputElement).value
+                    }
+                  }}
                   placeholder="Ex: Portaria nº 123/2024"
+                  style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
                 />
               </div>
             </div>
@@ -131,9 +137,13 @@ export function RulesView() {
                 className="form-text"
                 value={state.editing.desc}
                 required
-                onInput={(e) =>
-                  (state.editing!.desc = (e.target as HTMLInputElement).value)
-                }
+                readOnly={store.isReadOnly}
+                onInput={(e) => {
+                  if (!store.isReadOnly) {
+                    state.editing!.desc = (e.target as HTMLInputElement).value
+                  }
+                }}
+                style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
               />
             </div>
 
@@ -146,12 +156,15 @@ export function RulesView() {
                       <input
                         type="checkbox"
                         checked={state.editing!.part.includes(part)}
-                        onChange={() =>
-                          (state.editing!.part = toggleItem(
-                            state.editing!.part,
-                            part,
-                          ))
-                        }
+                        disabled={store.isReadOnly}
+                        onChange={() => {
+                          if (!store.isReadOnly) {
+                            state.editing!.part = toggleItem(
+                              state.editing!.part,
+                              part,
+                            )
+                          }
+                        }}
                       />
                       {part}
                     </label>
@@ -169,12 +182,15 @@ export function RulesView() {
                       <input
                         type="checkbox"
                         checked={state.editing!.status_origem.includes(st)}
-                        onChange={() =>
-                          (state.editing!.status_origem = toggleItem(
-                            state.editing!.status_origem,
-                            st,
-                          ))
-                        }
+                        disabled={store.isReadOnly}
+                        onChange={() => {
+                          if (!store.isReadOnly) {
+                            state.editing!.status_origem = toggleItem(
+                              state.editing!.status_origem,
+                              st,
+                            )
+                          }
+                        }}
                       />
                       {st}
                     </label>
@@ -189,12 +205,15 @@ export function RulesView() {
                       <input
                         type="checkbox"
                         checked={state.editing!.status_destino.includes(st)}
-                        onChange={() =>
-                          (state.editing!.status_destino = toggleItem(
-                            state.editing!.status_destino,
-                            st,
-                          ))
-                        }
+                        disabled={store.isReadOnly}
+                        onChange={() => {
+                          if (!store.isReadOnly) {
+                            state.editing!.status_destino = toggleItem(
+                              state.editing!.status_destino,
+                              st,
+                            )
+                          }
+                        }}
                       />
                       {st}
                     </label>
@@ -211,16 +230,18 @@ export function RulesView() {
                 >
                   Exigências
                 </label>
-                <button
-                  type="button"
-                  className="btn btn-success"
-                  style="font-size: 0.75rem;"
-                  onClick={() => {
-                    state.editing!.exig = [...state.editing!.exig, '']
-                  }}
-                >
-                  + ADICIONAR EXIGÊNCIA
-                </button>
+                {!store.isReadOnly && (
+                  <button
+                    type="button"
+                    className="btn btn-success"
+                    style="font-size: 0.75rem;"
+                    onClick={() => {
+                      state.editing!.exig = [...state.editing!.exig, '']
+                    }}
+                  >
+                    + ADICIONAR EXIGÊNCIA
+                  </button>
+                )}
               </div>
               <div id="exig-list" className="exig-list-container">
                 {state.editing.exig.map((item, index) => (
@@ -229,28 +250,34 @@ export function RulesView() {
                     <textarea
                       className="form-textarea exig-textarea"
                       value={item}
+                      readOnly={store.isReadOnly}
                       onInput={(e) => {
-                        const newList = [...state.editing!.exig]
-                        newList[index] = (e.target as HTMLTextAreaElement).value
-                        state.editing!.exig = newList
-                      }}
-                      placeholder={`Descreva a exigência ${index + 1}...`}
-                    />
-                    <button
-                      type="button"
-                      className="btn btn-danger"
-                      style="width: 22px; height: 22px; font-size: 0.8rem; flex-shrink: 0; padding: 0;"
-                      onClick={() => {
-                        if (confirm(`Excluir a exigência #${index + 1}?`)) {
-                          state.editing!.exig = state.editing!.exig.filter(
-                            (_, i) => i !== index,
-                          )
+                        if (!store.isReadOnly) {
+                          const newList = [...state.editing!.exig]
+                          newList[index] = (e.target as HTMLTextAreaElement).value
+                          state.editing!.exig = newList
                         }
                       }}
-                      title="Excluir exigência"
-                    >
-                      ✕
-                    </button>
+                      placeholder={`Descreva a exigência ${index + 1}...`}
+                      style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
+                    />
+                    {!store.isReadOnly && (
+                      <button
+                        type="button"
+                        className="btn btn-danger"
+                        style="width: 22px; height: 22px; font-size: 0.8rem; flex-shrink: 0; padding: 0;"
+                        onClick={() => {
+                          if (confirm(`Excluir a exigência #${index + 1}?`)) {
+                            state.editing!.exig = state.editing!.exig.filter(
+                              (_, i) => i !== index,
+                            )
+                          }
+                        }}
+                        title="Excluir exigência"
+                      >
+                        ✕
+                      </button>
+                    )}
                   </div>
                 ))}
                 {state.editing.exig.length === 0 && (
@@ -261,9 +288,11 @@ export function RulesView() {
               </div>
             </div>
             <br />
-            <button className="btn btn-primary btn-full" type="submit">
-              SALVAR REGRA
-            </button>
+            {!store.isReadOnly && (
+              <button className="btn btn-primary btn-full" type="submit">
+                SALVAR REGRA
+              </button>
+            )}
           </form>
         </div>
       </div>
@@ -274,9 +303,11 @@ export function RulesView() {
     <div id="conteudo">
       <div className="view-header">
         <h4>EXIGÊNCIAS FITOSSANITÁRIAS (REGRAS)</h4>
-        <button type="button" className="btn btn-primary" onClick={handleAdd}>
-          NOVA REGRA
-        </button>
+        {!store.isReadOnly && (
+          <button type="button" className="btn btn-primary" onClick={handleAdd}>
+            NOVA REGRA
+          </button>
+        )}
       </div>
       <div>
         <table className="table-grid" style="width: 100%;">
@@ -307,16 +338,18 @@ export function RulesView() {
                     style="font-size: 0.8em; padding: 2px 8px;"
                     onClick={() => handleEdit(r)}
                   >
-                    Editar
+                    {store.isReadOnly ? 'Visualizar' : 'Editar'}
                   </button>
-                  <button
-                    type="button"
-                    className="btn btn-danger"
-                    style="font-size: 0.8em; padding: 2px 8px; margin-left: 5px;"
-                    onClick={() => handleDelete(r.id ?? '')}
-                  >
-                    Excluir
-                  </button>
+                  {!store.isReadOnly && (
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      style="font-size: 0.8em; padding: 2px 8px; margin-left: 5px;"
+                      onClick={() => handleDelete(r.id ?? '')}
+                    >
+                      Excluir
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

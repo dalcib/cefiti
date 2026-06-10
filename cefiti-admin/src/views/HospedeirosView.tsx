@@ -58,7 +58,7 @@ export function HospedeirosView() {
     return (
       <div id="conteudo">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <h4>{state.isNew ? 'NOVO HOSPEDEIRO' : 'EDITAR HOSPEDEIRO'}</h4>
+          <h4>{state.isNew ? 'NOVO HOSPEDEIRO' : (store.isReadOnly ? 'VISUALIZAR HOSPEDEIRO' : 'EDITAR HOSPEDEIRO')}</h4>
           <button
             type="button"
             className="form-button"
@@ -90,36 +90,40 @@ export function HospedeirosView() {
                 type="text"
                 className="form-text"
                 value={state.editing.nomeSci}
+                readOnly={store.isReadOnly}
                 required
-                onInput={(e) =>
-                  (state.editing!.nomeSci = (
-                    e.target as HTMLInputElement
-                  ).value)
-                }
+                onInput={(e) => {
+                  if (!store.isReadOnly) {
+                    state.editing!.nomeSci = (e.target as HTMLInputElement).value
+                  }
+                }}
+                style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
               />
             </div>
             <div>
               <label htmlFor="vul-input">Nomes Vulgares</label>
-              <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                <input
-                  id="vul-input"
-                  type="text"
-                  className="form-text"
-                  value={state.vulInput}
-                  onInput={(e) =>
-                    (state.vulInput = (e.target as HTMLInputElement).value)
-                  }
-                  onKeyPress={(e) => {
-                    if (e.key === 'Enter') {
-                      e.preventDefault()
-                      addVul()
+              {!store.isReadOnly && (
+                <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                  <input
+                    id="vul-input"
+                    type="text"
+                    className="form-text"
+                    value={state.vulInput}
+                    onInput={(e) =>
+                      (state.vulInput = (e.target as HTMLInputElement).value)
                     }
-                  }}
-                />
-                <button type="button" className="form-button" onClick={addVul}>
-                  ADICIONAR
-                </button>
-              </div>
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault()
+                        addVul()
+                      }
+                    }}
+                  />
+                  <button type="button" className="form-button" onClick={addVul}>
+                    ADICIONAR
+                  </button>
+                </div>
+              )}
               <div style="display: flex; flex-wrap: wrap; gap: 5px;">
                 {state.editing.nomeVul.map((v) => (
                   <span
@@ -127,22 +131,26 @@ export function HospedeirosView() {
                     style="background: #e9ecef; padding: 5px 10px; border: 1px solid #ccc; border-radius: 4px; display: flex; align-items: center; gap: 5px;"
                   >
                     {v}
-                    <button
-                      type="button"
-                      style="cursor: pointer; color: #dc3545; font-weight: bold; background: none; border: none; padding: 0;"
-                      onClick={() => removeVul(v)}
-                      aria-label={`Remover ${v}`}
-                    >
-                      &times;
-                    </button>
+                    {!store.isReadOnly && (
+                      <button
+                        type="button"
+                        style="cursor: pointer; color: #dc3545; font-weight: bold; background: none; border: none; padding: 0;"
+                        onClick={() => removeVul(v)}
+                        aria-label={`Remover ${v}`}
+                      >
+                        &times;
+                      </button>
+                    )}
                   </span>
                 ))}
               </div>
             </div>
             <br />
-            <button className="form-button" type="submit">
-              SALVAR
-            </button>
+            {!store.isReadOnly && (
+              <button className="form-button" type="submit">
+                SALVAR
+              </button>
+            )}
           </form>
         </div>
       </div>
@@ -153,9 +161,11 @@ export function HospedeirosView() {
     <div id="conteudo">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h4>MANUTENÇÃO DE HOSPEDEIROS</h4>
-        <button type="button" className="form-button" onClick={handleAdd}>
-          NOVO HOSPEDEIRO
-        </button>
+        {!store.isReadOnly && (
+          <button type="button" className="form-button" onClick={handleAdd}>
+            NOVO HOSPEDEIRO
+          </button>
+        )}
       </div>
       <div>
         <table className="table-grid" style="width: 100%;">
@@ -180,16 +190,18 @@ export function HospedeirosView() {
                     style="font-size: 0.8em; padding: 2px 5px; margin-right: 5px;"
                     onClick={() => handleEdit(h)}
                   >
-                    Editar
+                    {store.isReadOnly ? 'Visualizar' : 'Editar'}
                   </button>
-                  <button
-                    type="button"
-                    className="form-button"
-                    style="font-size: 0.8em; padding: 2px 5px; background: #dc3545;"
-                    onClick={() => handleDelete(h)}
-                  >
-                    Excluir
-                  </button>
+                  {!store.isReadOnly && (
+                    <button
+                      type="button"
+                      className="form-button"
+                      style="font-size: 0.8em; padding: 2px 5px; background: #dc3545;"
+                      onClick={() => handleDelete(h)}
+                    >
+                      Excluir
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

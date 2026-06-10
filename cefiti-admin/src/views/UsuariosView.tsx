@@ -64,7 +64,7 @@ export function UsuariosView() {
             marginBottom: '20px',
           }}
         >
-          <h4>{state.isNew ? 'NOVO USUÁRIO AUTORIZADO' : 'EDITAR USUÁRIO'}</h4>
+          <h4>{state.isNew ? 'NOVO USUÁRIO AUTORIZADO' : (store.isReadOnly ? 'VISUALIZAR USUÁRIO' : 'EDITAR USUÁRIO')}</h4>
           <button
             type="button"
             className="form-button"
@@ -86,11 +86,13 @@ export function UsuariosView() {
                 className="form-text"
                 value={state.editing.email}
                 required
-                readOnly={!state.isNew}
-                style={!state.isNew ? { backgroundColor: '#eee' } : {}}
-                onInput={(e) =>
-                  (state.editing!.email = (e.target as HTMLInputElement).value)
-                }
+                readOnly={!state.isNew || store.isReadOnly}
+                style={(!state.isNew || store.isReadOnly) ? { backgroundColor: '#eee' } : {}}
+                onInput={(e) => {
+                  if (!store.isReadOnly) {
+                    state.editing!.email = (e.target as HTMLInputElement).value
+                  }
+                }}
                 placeholder="exemplo@agro.gov.br"
               />
             </div>
@@ -102,9 +104,13 @@ export function UsuariosView() {
                 className="form-text"
                 value={state.editing.nome}
                 required
-                onInput={(e) =>
-                  (state.editing!.nome = (e.target as HTMLInputElement).value)
-                }
+                readOnly={store.isReadOnly}
+                onInput={(e) => {
+                  if (!store.isReadOnly) {
+                    state.editing!.nome = (e.target as HTMLInputElement).value
+                  }
+                }}
+                style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
               />
             </div>
             <div>
@@ -115,9 +121,13 @@ export function UsuariosView() {
                 className="form-text"
                 value={state.editing.cargo}
                 required
-                onInput={(e) =>
-                  (state.editing!.cargo = (e.target as HTMLInputElement).value)
-                }
+                readOnly={store.isReadOnly}
+                onInput={(e) => {
+                  if (!store.isReadOnly) {
+                    state.editing!.cargo = (e.target as HTMLInputElement).value
+                  }
+                }}
+                style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
               />
             </div>
             <div>
@@ -128,11 +138,13 @@ export function UsuariosView() {
                 className="form-text"
                 value={state.editing.lotacao}
                 required
-                onInput={(e) =>
-                  (state.editing!.lotacao = (
-                    e.target as HTMLInputElement
-                  ).value)
-                }
+                readOnly={store.isReadOnly}
+                onInput={(e) => {
+                  if (!store.isReadOnly) {
+                    state.editing!.lotacao = (e.target as HTMLInputElement).value
+                  }
+                }}
+                style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
               />
             </div>
             <div>
@@ -142,10 +154,13 @@ export function UsuariosView() {
                 className="form-text"
                 value={state.editing.perfil}
                 required
-                onChange={(e) =>
-                  (state.editing!.perfil = (e.target as HTMLSelectElement)
-                    .value as any)
-                }
+                disabled={store.isReadOnly}
+                onChange={(e) => {
+                  if (!store.isReadOnly) {
+                    state.editing!.perfil = (e.target as HTMLSelectElement).value as any
+                  }
+                }}
+                style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
               >
                 <option value="usuário">
                   Usuário (Pode editar o próprio perfil)
@@ -156,9 +171,11 @@ export function UsuariosView() {
               </select>
             </div>
             <br />
-            <button className="form-button" type="submit">
-              SALVAR AUTORIZAÇÃO
-            </button>
+            {!store.isReadOnly && (
+              <button className="form-button" type="submit">
+                SALVAR AUTORIZAÇÃO
+              </button>
+            )}
           </form>
         </div>
       </div>
@@ -176,9 +193,11 @@ export function UsuariosView() {
         }}
       >
         <h4>GESTÃO DE USUÁRIOS AUTORIZADOS</h4>
-        <button type="button" className="form-button" onClick={handleAdd}>
-          NOVO USUÁRIO
-        </button>
+        {!store.isReadOnly && (
+          <button type="button" className="form-button" onClick={handleAdd}>
+            NOVO USUÁRIO
+          </button>
+        )}
       </div>
       <div>
         <table className="table-grid" style={{ width: '100%' }}>
@@ -206,7 +225,7 @@ export function UsuariosView() {
                         u.perfil === 'administrador' ? '#ffd70033' : '#eee',
                       color: u.perfil === 'administrador' ? '#856404' : '#666',
                       fontWeight: 'bold',
-                    }}
+                      }}
                   >
                     {u.perfil.toUpperCase()}
                   </span>
@@ -223,20 +242,22 @@ export function UsuariosView() {
                     }}
                     onClick={() => handleEdit(u)}
                   >
-                    Editar
+                    {store.isReadOnly ? 'Visualizar' : 'Editar'}
                   </button>
-                  <button
-                    type="button"
-                    className="form-button"
-                    style={{
-                      fontSize: '0.8em',
-                      padding: '2px 5px',
-                      background: '#dc3545',
-                    }}
-                    onClick={() => handleDelete(u)}
-                  >
-                    Excluir
-                  </button>
+                  {!store.isReadOnly && (
+                    <button
+                      type="button"
+                      className="form-button"
+                      style={{
+                        fontSize: '0.8em',
+                        padding: '2px 5px',
+                        background: '#dc3545',
+                      }}
+                      onClick={() => handleDelete(u)}
+                    >
+                      Excluir
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
