@@ -1,5 +1,6 @@
 import { render } from 'preact'
 import { App } from './app.tsx'
+import 'leaflet/dist/leaflet.css'
 import './css/main.css'
 import './css/estilo-template.css'
 import './css/estilo-menu.css'

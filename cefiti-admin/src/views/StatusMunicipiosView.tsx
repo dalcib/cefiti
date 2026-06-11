@@ -1,7 +1,142 @@
+import L from 'leaflet'
+import { effect } from '@preact/signals'
 import { type DB_StatusMunicipio, store } from '../store'
+
+let disposeEffect: (() => void) | null = null
+let mapInstance: L.Map | null = null
+let stateOutlineLayer: L.GeoJSON | null = null
+let fillLayer: L.GeoJSON | null = null
+let lastUF = ''
+let cachedGeoJSON: any = null
+let cachedStateGeoJSON: any = null
 
 export function StatusMunicipiosView() {
   const { statusMunicipios: state } = store.views
+
+  const mapRefCallback = (el: HTMLDivElement | null) => {
+    if (el) {
+      if (mapInstance) {
+        if (disposeEffect) {
+          disposeEffect()
+          disposeEffect = null
+        }
+        mapInstance.remove()
+        mapInstance = null
+      }
+
+      mapInstance = L.map(el, {
+        zoomControl: true,
+        attributionControl: false,
+      })
+
+      disposeEffect = effect(() => {
+        const activeUF = state.selectedUF
+        const activeStatus = state.selectedStatus
+        const currentEntry = state.currentEntry
+
+        // Track changes to current entry and selected municipalities
+        const inStatusObj = getInStatus()
+        const selectedMuniCodesStr = JSON.stringify(inStatusObj)
+
+        if (!activeUF || !activeStatus || !currentEntry) {
+          if (stateOutlineLayer) stateOutlineLayer.remove()
+          if (fillLayer) fillLayer.remove()
+          return
+        }
+
+        const estadoObj = store.estados.find((e) => e.UF === activeUF)
+        if (!estadoObj) return
+        const ibgeCode = estadoObj.ibge
+
+        const updateLayers = (stateGeo: any, munGeo: any) => {
+          if (!mapInstance) return
+
+          // Clear old layers
+          if (stateOutlineLayer) stateOutlineLayer.remove()
+          if (fillLayer) fillLayer.remove()
+
+          // 1. Render state outline
+          stateOutlineLayer = L.geoJSON(stateGeo, {
+            style: {
+              color: '#34495e',
+              weight: 2,
+              fillOpacity: 0,
+              interactive: false,
+            },
+          }).addTo(mapInstance)
+
+          // Fit bounds
+          mapInstance.fitBounds(stateOutlineLayer.getBounds())
+
+          // 2. Render filled municipalities
+          const selectedMuniCodes = getInStatus()
+          const isAllSelected = '9999' in selectedMuniCodes
+
+          // Filter features
+          const filteredFeatures = munGeo.features.filter((feature: any) => {
+            if (isAllSelected) return true
+            const codarea = feature.properties.codarea
+            if (!codarea) return false
+            const code4 = codarea.slice(2, 6)
+            return code4 in selectedMuniCodes
+          })
+
+          const filteredGeo = {
+            type: 'FeatureCollection',
+            features: filteredFeatures,
+          }
+
+          fillLayer = L.geoJSON(filteredGeo, {
+            style: {
+              fillColor: '#d32f2f',
+              fillOpacity: 0.6,
+              stroke: false,
+              interactive: false,
+            },
+          }).addTo(mapInstance)
+        }
+
+        if (lastUF !== activeUF || !cachedGeoJSON) {
+          lastUF = activeUF
+          cachedGeoJSON = null
+          cachedStateGeoJSON = null
+
+          Promise.all([
+            fetch(
+              `https://servicodados.ibge.gov.br/api/v2/malhas/${ibgeCode}?formato=application/vnd.geo+json`,
+            ).then((r) => r.json()),
+            fetch(
+              `https://servicodados.ibge.gov.br/api/v2/malhas/${ibgeCode}?formato=application/vnd.geo+json&resolucao=5`,
+            ).then((r) => r.json()),
+          ])
+            .then(([stateGeo, munGeo]) => {
+              cachedStateGeoJSON = stateGeo
+              cachedGeoJSON = munGeo
+              updateLayers(stateGeo, munGeo)
+            })
+            .catch((err) => {
+              console.error('Error loading geodata:', err)
+            })
+        } else {
+          updateLayers(cachedStateGeoJSON, cachedGeoJSON)
+        }
+      })
+    } else {
+      if (disposeEffect) {
+        disposeEffect()
+        disposeEffect = null
+      }
+      if (mapInstance) {
+        mapInstance.remove()
+        mapInstance = null
+      }
+      stateOutlineLayer = null
+      fillLayer = null
+      cachedGeoJSON = null
+      cachedStateGeoJSON = null
+      lastUF = ''
+    }
+  }
 
   const isDirty = () => {
     if (!state.currentEntry) return false
@@ -438,6 +573,23 @@ export function StatusMunicipiosView() {
               </select>
             </div>
           </div>
+          
+          <div
+            id="map-container"
+            style={{
+              height: '400px',
+              backgroundColor: '#f8f9fa',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              marginTop: '20px',
+              marginBottom: '20px',
+              position: 'relative',
+              overflow: 'hidden',
+              zIndex: 1,
+            }}
+            ref={mapRefCallback}
+          />
+          
           <br />
           {!store.isReadOnly && (
             <button
