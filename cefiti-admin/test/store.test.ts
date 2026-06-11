@@ -75,6 +75,10 @@ describe('Cefiti Admin Store', () => {
     // Reset mocks before each test
     mockOnAuthStateChanged.mock.resetCalls()
     mockAuth.signOut.mock.resetCalls()
+    mockGetDoc.mock.resetCalls()
+    mockGetDocs.mock.resetCalls()
+    mockGetDoc.mock.restore()
+    mockGetDocs.mock.restore()
 
     const module = await import('../src/store.ts')
     Store = module.Store
@@ -185,5 +189,70 @@ describe('Cefiti Admin Store', () => {
     assert.strictEqual(mockAuth.signOut.mock.callCount(), 1)
     assert.strictEqual(store.view, 'login')
     assert.strictEqual(store.environment, null)
+  })
+
+  it('should generate environment JSON correctly', async () => {
+    store = new Store()
+    store.environment = 'desenvolvimento'
+
+    // Mock getDoc for version
+    mockGetDoc.mock.mockImplementation(async (d: any) => {
+      return {
+        exists: () => true,
+        data: () => ({ version: 10 }),
+      }
+    })
+
+    // Mock getDocs with path-based implementation
+    mockGetDocs.mock.mockImplementation(async (q: any) => {
+      const path = q.path
+      if (path === 'geodata/dados/estados') {
+        return {
+          docs: [{ data: () => ({ ibge: 35, UF: 'SP', estado: 'São Paulo' }) }]
+        }
+      }
+      if (path === 'desenvolvimento/dados/pragas') {
+        return {
+          docs: [{ data: () => ({ pragc: 'Cientifico', prag: 'Anastrepha fraterculus', hosp: [1] }) }]
+        }
+      }
+      if (path === 'desenvolvimento/dados/hospedeiros') {
+        return {
+          docs: [{ data: () => ({ id: 5, nomeSci: 'Citrus sinensis' }) }]
+        }
+      }
+      if (path === 'desenvolvimento/dados/legislacoes') {
+        return {
+          docs: [{ data: () => ({ id: 'leg1', texto: 'Texto Legislacao' }) }]
+        }
+      }
+      if (path === 'desenvolvimento/dados/rules') {
+        return {
+          docs: [{ data: () => ({ prag: 'Anastrepha fraterculus', desc: 'Rule 1' }) }]
+        }
+      }
+      if (path === 'desenvolvimento/dados/status_municipio') {
+        return {
+          docs: [{ data: () => ({ praga: 'Anastrepha fraterculus', status: [] }) }]
+        }
+      }
+      return { docs: [] }
+    })
+
+    const json = await store.generateEnvironmentJson('desenvolvimento', false)
+    assert.strictEqual(json.dbVersion, 10)
+    assert.strictEqual(json.estados.length, 1)
+    assert.strictEqual(json.pragas.length, 1)
+    // Assert keys are sorted alphabetically
+    assert.deepEqual(Object.keys(json.pragas[0]), ['hosp', 'prag', 'pragc'])
+    assert.strictEqual(json.hospedeiros.length, 1)
+    assert.strictEqual(json.legislacoes.length, 1)
+    assert.strictEqual(json.legislacoes[0].texto, 'Texto Legislacao')
+    assert.strictEqual(json.regras.length, 1)
+    assert.strictEqual(json.status_municipio.length, 1)
+
+    // With stripTexto = true
+    const jsonStripped = await store.generateEnvironmentJson('desenvolvimento', true)
+    assert.strictEqual(jsonStripped.legislacoes[0].texto, undefined)
   })
 })

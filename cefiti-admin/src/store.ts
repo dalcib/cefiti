@@ -18,6 +18,7 @@ import {
 import { municipiosBrutos } from '#municipios'
 import { deepSignal } from '../../cefiti/src/deep-signals.ts'
 import { auth, db } from './firebase.ts'
+import { diffLines } from 'diff'
 
 export type AdminView =
   | 'login'
@@ -31,6 +32,7 @@ export type AdminView =
   | 'catalogos'
   | 'usuarios'
   | 'perfil'
+  | 'diff'
 
 export interface AuthorizedUser {
   email: string
@@ -111,6 +113,10 @@ export class Store {
   prodLastUpdate: string | null = null
   devLastUpdate: string | null = null
   loadingVersions: boolean = false
+  diffLinesResult: { added?: boolean; removed?: boolean; value: string }[] = []
+  loadingDiff: boolean = false
+  loadingDbAction: boolean = false
+  loadingDbActionMessage: string = ''
 
   get isReadOnly() {
     return this.environment === 'producao'
@@ -369,6 +375,9 @@ export class Store {
         if (this.currentProfile) {
           this.views.perfil.editing = { ...this.currentProfile }
         }
+        break
+      case 'diff':
+        await this.fetchAndDiff()
         break
     }
   }
@@ -678,6 +687,8 @@ export class Store {
       return
     }
 
+    this.loadingDbAction = true
+    this.loadingDbActionMessage = 'Publicando versão (Promovendo DESENVOLVIMENTO para PRODUÇÃO)...'
     this.loading.catalogos = true // block UI
     try {
       // 1. Fetch current production version and data
@@ -761,6 +772,8 @@ export class Store {
       alert(`Erro ao promover base: ${(e as Error).message}`)
     } finally {
       this.loading.catalogos = false
+      this.loadingDbAction = false
+      this.loadingDbActionMessage = ''
     }
   }
 
@@ -773,6 +786,8 @@ export class Store {
       return
     }
 
+    this.loadingDbAction = true
+    this.loadingDbActionMessage = 'Descartando alterações e restaurando a partir de PRODUÇÃO...'
     this.loading.catalogos = true // block UI
     try {
       // 1. Fetch production version
@@ -834,6 +849,8 @@ export class Store {
       alert(`Erro ao restaurar base: ${(e as Error).message}`)
     } finally {
       this.loading.catalogos = false
+      this.loadingDbAction = false
+      this.loadingDbActionMessage = ''
     }
   }
 
@@ -872,6 +889,179 @@ export class Store {
       doc(db, 'configuracoes', 'geral', 'usuarios', email.toLowerCase()),
     )
     await this.fetchAuthorizedUsers()
+  }
+
+  // --- Diff & Export Methods ---
+
+  async generateEnvironmentJson(env: 'desenvolvimento' | 'producao', stripTexto = false) {
+    const collections = [
+      'pragas',
+      'hospedeiros',
+      'legislacoes',
+      'rules',
+      'status_municipio',
+    ]
+
+    const data: Record<string, any[]> = {}
+    let version: any = 'unknown'
+
+    // Fetch version
+    const configDoc = await getDoc(doc(db, env, 'versao'))
+    if (configDoc.exists()) {
+      version = configDoc.data()?.version || 0
+    }
+
+    // Fetch estados
+    const estadosSnapshot = await getDocs(collection(db, 'geodata', 'dados', 'estados'))
+    data['estados'] = estadosSnapshot.docs
+      .map((doc) => doc.data())
+      .sort((a: any, b: any) => (a.estado || '').localeCompare(b.estado || ''))
+
+    for (const collName of collections) {
+      const snapshot = await getDocs(collection(db, env, 'dados', collName))
+      let docs = snapshot.docs.map((doc) => doc.data())
+
+      // Sort docs to make diff deterministic
+      if (collName === 'pragas') {
+        docs.sort((a: any, b: any) => (a.prag || '').localeCompare(b.prag || ''))
+      } else if (collName === 'hospedeiros') {
+        docs.sort((a: any, b: any) => (a.id || 0) - (b.id || 0))
+      } else if (collName === 'legislacoes') {
+        docs.sort((a: any, b: any) => (a.id || '').localeCompare(b.id || ''))
+        if (stripTexto) {
+          docs = docs.map((doc: any) => {
+            const { texto, ...rest } = doc
+            return rest
+          })
+        }
+      } else if (collName === 'rules') {
+        docs.sort((a: any, b: any) => {
+          const pragComp = (a.prag || '').localeCompare(b.prag || '')
+          if (pragComp !== 0) return pragComp
+          return (a.desc || '').localeCompare(b.desc || '')
+        })
+      } else if (collName === 'status_municipio') {
+        docs.sort((a: any, b: any) => (a.praga || '').localeCompare(b.praga || ''))
+        docs = docs.map((doc: any) => {
+          if (doc.status) {
+            doc.status = doc.status.map((s: any) => {
+              if (s.estados) {
+                s.estados = s.estados.map((e: any) => {
+                  if (e.municipios && !Array.isArray(e.municipios)) {
+                    // Transform { "0090": "Amorinópolis" } -> [90]
+                    e.municipios = Object.keys(e.municipios)
+                      .map((key) => Number.parseInt(key, 10))
+                      .filter((n) => !Number.isNaN(n))
+                  }
+                  if (Array.isArray(e.municipios)) {
+                    e.municipios.sort((a: number, b: number) => a - b)
+                  }
+                  return e
+                })
+                s.estados.sort((a: any, b: any) => (a.uf || '').localeCompare(b.uf || ''))
+              }
+              return s
+            })
+            doc.status.sort((a: any, b: any) => (a.status_fitossanitário || '').localeCompare(b.status_fitossanitário || ''))
+          }
+          return doc
+        })
+      }
+
+      data[collName === 'rules' ? 'regras' : collName] = docs
+    }
+
+    const finalJson = {
+      dbVersion: version,
+      ...data
+    }
+    return this.sortObjectKeys(finalJson)
+  }
+
+  async fetchAndDiff() {
+    this.loadingDiff = true
+    this.diffLinesResult = []
+    try {
+      const prodJson = await this.generateEnvironmentJson('producao', false)
+      const devJson = await this.generateEnvironmentJson('desenvolvimento', false)
+
+      const prodStr = JSON.stringify(prodJson, null, 2)
+      const devStr = JSON.stringify(devJson, null, 2)
+
+      this.diffLinesResult = diffLines(prodStr, devStr)
+    } catch (e) {
+      console.error('Error generating diff:', e)
+      alert('Erro ao carregar e gerar o diff.')
+      this.view = 'catalogos'
+    } finally {
+      this.loadingDiff = false
+    }
+  }
+
+  async downloadProductionDb() {
+    try {
+      this.loading.catalogos = true
+      const prodJson = await this.generateEnvironmentJson('producao', true)
+      const content = JSON.stringify(prodJson, null, 2)
+      this.triggerDownload(content, 'db-next.json', 'application/json')
+    } catch (e) {
+      console.error('Error downloading production db:', e)
+      alert('Erro ao baixar db-next.json de produção.')
+    } finally {
+      this.loading.catalogos = false
+    }
+  }
+
+  async downloadProductionLegislacao() {
+    try {
+      this.loading.catalogos = true
+      const snapshot = await getDocs(collection(db, 'producao', 'dados', 'legislacoes'))
+      const docs = snapshot.docs.map((doc) => doc.data())
+      docs.sort((a: any, b: any) => (a.id || '').localeCompare(b.id || ''))
+
+      const legTextoData = docs.map((doc: any) => ({
+        id: doc.id || doc.legId,
+        texto: doc.texto || '',
+      }))
+
+      let jsContent = '// CEFiTI - Legislacao\n\n'
+      jsContent += `var leg_texto = ${JSON.stringify(legTextoData, null, 2)};\n`
+      jsContent += `\nexport {\n  leg_texto\n};\n`
+
+      this.triggerDownload(jsContent, 'legislacao.js', 'application/javascript')
+    } catch (e) {
+      console.error('Error downloading legislacoes:', e)
+      alert('Erro ao baixar legislacao.js de produção.')
+    } finally {
+      this.loading.catalogos = false
+    }
+  }
+
+  private triggerDownload(content: string, filename: string, contentType: string) {
+    const blob = new Blob([content], { type: contentType })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = filename
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
+  private sortObjectKeys(obj: any): any {
+    if (obj === null || typeof obj !== 'object') {
+      return obj
+    }
+    if (Array.isArray(obj)) {
+      return obj.map((item) => this.sortObjectKeys(item))
+    }
+    const sortedKeys = Object.keys(obj).sort()
+    const sortedObj: Record<string, any> = {}
+    for (const key of sortedKeys) {
+      sortedObj[key] = this.sortObjectKeys(obj[key])
+    }
+    return sortedObj
   }
 }
 

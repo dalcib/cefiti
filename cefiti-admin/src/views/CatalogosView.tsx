@@ -106,39 +106,6 @@ export function CatalogosView() {
           ))}
         </ul>
       </div>
-
-      {store.currentProfile?.perfil === 'administrador' && (
-        <div className="card" style="margin-top: 20px;">
-          <h5>AÇÕES DE ADMINISTRAÇÃO DA BASE</h5>
-          <p style="color: #666; font-size: 0.9rem; margin-bottom: 20px;">
-            Essas operações controlam a publicação e restauração dos ambientes de dados no Firestore.
-          </p>
-          {store.environment === 'desenvolvimento' ? (
-            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-              <button
-                type="button"
-                className="form-button"
-                style="background: #28a745; color: white; padding: 10px 20px; font-weight: bold; cursor: pointer; border: none;"
-                onClick={() => store.promoteDevToProd()}
-              >
-                PUBLICAR VERSÃO (PROMOVER DEV PARA PROD)
-              </button>
-              <button
-                type="button"
-                className="form-button"
-                style="background: #dc3545; color: white; padding: 10px 20px; font-weight: bold; cursor: pointer; border: none;"
-                onClick={() => store.restoreDevFromProd()}
-              >
-                DESCARTAR ALTERAÇÕES E RESTAURAR DE PRODUÇÃO
-              </button>
-            </div>
-          ) : (
-            <p style="color: #e65100; font-weight: bold; margin: 0;">
-              ⚠️ Altere para o ambiente de DESENVOLVIMENTO para poder publicar novas versões ou descartar alterações locais.
-            </p>
-          )}
-        </div>
-      )}
     </div>
   )
 }

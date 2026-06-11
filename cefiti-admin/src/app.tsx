@@ -10,12 +10,29 @@ import { RulesView } from './views/RulesView'
 import { StatusMunicipiosView } from './views/StatusMunicipiosView'
 import { UsuariosView } from './views/UsuariosView'
 import { PerfilView } from './views/PerfilView'
+import { DiffView } from './views/DiffView'
 
 export function App() {
   if (store.authLoading) {
     return (
       <div className="carregando">
         <p>Carregando...</p>
+      </div>
+    )
+  }
+
+  if (store.loadingDbAction) {
+    return (
+      <div className="carregando" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#f4f6f9' }}>
+        <h3 style={{ color: '#0f4098', marginBottom: '10px' }}>{store.loadingDbActionMessage || 'Processando...'}</h3>
+        <p style={{ color: '#666', marginBottom: '20px' }}>Esta operação pode levar alguns segundos devido à sincronização com o banco de dados.</p>
+        <div style={{ border: '4px solid #f3f3f3', borderTop: '4px solid #17a2b8', borderRadius: '50%', width: '40px', height: '40px', animation: 'spin 1s linear infinite' }}></div>
+        <style>{`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}</style>
       </div>
     )
   }
@@ -374,6 +391,74 @@ function CurrentView() {
               </li>
             </ul>
           </div>
+
+          {store.environment === 'desenvolvimento' && (
+            <div className="card" style={{ marginTop: '30px' }}>
+              <h5>COMPARAÇÃO E EXPORTAÇÃO</h5>
+              <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '20px' }}>
+                Compare a base de desenvolvimento com a base de produção ou exporte os arquivos de produção para publicação manual.
+              </p>
+              <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+                <button
+                  type="button"
+                  className="form-button"
+                  style={{ background: '#17a2b8', color: 'white', padding: '10px 20px', fontWeight: 'bold', cursor: 'pointer', border: 'none', borderRadius: '4px' }}
+                  onClick={() => store.setView('diff')}
+                >
+                  VISUALIZAR ALTERAÇÕES (DIFF COM PRODUÇÃO)
+                </button>
+                <button
+                  type="button"
+                  className="form-button"
+                  style={{ background: '#6c757d', color: 'white', padding: '10px 20px', fontWeight: 'bold', cursor: 'pointer', border: 'none', borderRadius: '4px' }}
+                  onClick={() => store.downloadProductionDb()}
+                >
+                  SALVAR DB-NEXT.JSON (PRODUÇÃO)
+                </button>
+                <button
+                  type="button"
+                  className="form-button"
+                  style={{ background: '#6c757d', color: 'white', padding: '10px 20px', fontWeight: 'bold', cursor: 'pointer', border: 'none', borderRadius: '4px' }}
+                  onClick={() => store.downloadProductionLegislacao()}
+                >
+                  SALVAR LEGISLACAO.JS (PRODUÇÃO)
+                </button>
+              </div>
+            </div>
+          )}
+
+          {store.currentProfile?.perfil === 'administrador' && (
+            <div className="card" style={{ marginTop: '20px' }}>
+              <h5>AÇÕES DE ADMINISTRAÇÃO DA BASE</h5>
+              <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '20px' }}>
+                Essas operações controlam a publicação e restauração dos ambientes de dados no Firestore.
+              </p>
+              {store.environment === 'desenvolvimento' ? (
+                <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+                  <button
+                    type="button"
+                    className="form-button"
+                    style={{ background: '#28a745', color: 'white', padding: '10px 20px', fontWeight: 'bold', cursor: 'pointer', border: 'none' }}
+                    onClick={() => store.promoteDevToProd()}
+                  >
+                    PUBLICAR VERSÃO (PROMOVER DEV PARA PROD)
+                  </button>
+                  <button
+                    type="button"
+                    className="form-button"
+                    style={{ background: '#dc3545', color: 'white', padding: '10px 20px', fontWeight: 'bold', cursor: 'pointer', border: 'none' }}
+                    onClick={() => store.restoreDevFromProd()}
+                  >
+                    DESCARTAR ALTERAÇÕES E RESTAURAR DE PRODUÇÃO
+                  </button>
+                </div>
+              ) : (
+                <p style={{ color: '#e65100', fontWeight: 'bold', margin: 0 }}>
+                  ⚠️ Altere para o ambiente de DESENVOLVIMENTO para poder publicar novas versões ou descartar alterações locais.
+                </p>
+              )}
+            </div>
+          )}
         </div>
       )
     case 'select_environment':
@@ -394,6 +479,8 @@ function CurrentView() {
       return <UsuariosView />
     case 'perfil':
       return <PerfilView />
+    case 'diff':
+      return <DiffView />
     default:
       return <div>View não encontrada: {store.view}</div>
   }
