@@ -1,4 +1,5 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { useState } from 'preact/hooks'
 import { version } from './../package.json'
 import { auth } from './firebase'
 import { type AdminView, store } from './store'
@@ -244,6 +245,11 @@ function NavItem({ view, label }: { view: AdminView; label: string }) {
 }
 
 function LoginView() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
+  const [loading, setLoading] = useState(false)
+
   const loginGoogle = async () => {
     const provider = new GoogleAuthProvider()
     try {
@@ -256,6 +262,19 @@ function LoginView() {
 
   const loginMicrosoft = async () => {
     await store.loginWithMicrosoft()
+  }
+
+  const handlePasswordLogin = async (e: Event) => {
+    e.preventDefault()
+    setErrorMsg('')
+    setLoading(true)
+    try {
+      await store.loginWithPassword(email, password)
+    } catch (err) {
+      setErrorMsg((err as Error).message || 'Usuário ou senha incorretos.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -284,41 +303,142 @@ function LoginView() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          minHeight: '400px',
+          minHeight: '500px',
           background: '#f4f6f9',
+          padding: '20px 0',
         }}
       >
         <div
           id="conteudo-login-novo"
           style={{
-            textAlign: 'center',
+            textAlign: 'left',
             boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-            padding: '40px',
+            padding: '30px',
             backgroundColor: 'white',
             borderRadius: '8px',
+            maxWidth: '360px',
+            width: '100%',
           }}
         >
-          <h3 style={{ marginBottom: '20px', color: '#0f4098' }}>
+          <h3 style={{ marginBottom: '15px', color: '#0f4098', textAlign: 'center' }}>
             Acesso Restrito
           </h3>
-          <p style={{ marginBottom: '30px' }}>
+          <p style={{ marginBottom: '20px', textAlign: 'center', color: '#666' }}>
             Identifique-se para gerenciar o catálogo.
           </p>
+
+          {errorMsg && (
+            <div
+              style={{
+                backgroundColor: '#fbe3e4',
+                color: '#d12f19',
+                padding: '10px',
+                borderRadius: '4px',
+                border: '1px solid #fbc2c4',
+                marginBottom: '15px',
+                fontSize: '0.9em',
+                fontWeight: 'bold',
+              }}
+            >
+              ⚠️ {errorMsg}
+            </div>
+          )}
+
+          <form onSubmit={handlePasswordLogin} style={{ padding: 0, margin: 0, border: 'none' }}>
+            <div style={{ marginBottom: '12px' }}>
+              <label htmlFor="login-email" style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>
+                E-mail
+              </label>
+              <input
+                id="login-email"
+                type="email"
+                required
+                placeholder="exemplo@agro.gov.br"
+                value={email}
+                onInput={(e) => setEmail((e.target as HTMLInputElement).value)}
+                style={{
+                  width: '100%',
+                  padding: '8px',
+                  borderRadius: '4px',
+                  border: '1px solid #ccc',
+                  boxSizing: 'border-box',
+                }}
+              />
+            </div>
+
+            <div style={{ marginBottom: '20px' }}>
+              <label htmlFor="login-password" style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>
+                Senha
+              </label>
+              <input
+                id="login-password"
+                type="password"
+                required
+                placeholder="Sua senha"
+                value={password}
+                onInput={(e) => setPassword((e.target as HTMLInputElement).value)}
+                style={{
+                  width: '100%',
+                  padding: '8px',
+                  borderRadius: '4px',
+                  border: '1px solid #ccc',
+                  boxSizing: 'border-box',
+                }}
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="form-button"
+              disabled={loading}
+              style={{
+                width: '100%',
+                padding: '10px',
+                fontSize: '1.1em',
+                backgroundColor: '#0f4098',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontWeight: 'bold',
+                marginBottom: '20px',
+              }}
+            >
+              {loading ? 'Entrando...' : 'ENTRAR'}
+            </button>
+          </form>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              margin: '15px 0',
+              color: '#888',
+            }}
+          >
+            <hr style={{ flex: 1, borderTop: '1px solid #eee', margin: 0 }} />
+            <span style={{ padding: '0 10px', fontSize: '0.9em' }}>ou entrar com</span>
+            <hr style={{ flex: 1, borderTop: '1px solid #eee', margin: 0 }} />
+          </div>
+
           <button
             type="button"
             className="form-button"
             style={{
               width: '100%',
               padding: '10px',
-              fontSize: '1.1em',
+              fontSize: '1.0em',
               backgroundColor: '#00a4ef',
               marginBottom: '10px',
               color: 'white',
               border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontWeight: '500',
             }}
             onClick={loginMicrosoft}
           >
-            ENTRAR COM MICROSOFT (MAPA)
+            Microsoft (MAPA)
           </button>
           <button
             type="button"
@@ -326,14 +446,17 @@ function LoginView() {
             style={{
               width: '100%',
               padding: '10px',
-              fontSize: '1.1em',
+              fontSize: '1.0em',
               backgroundColor: '#4285f4',
               color: 'white',
               border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontWeight: '500',
             }}
             onClick={loginGoogle}
           >
-            ENTRAR COM GOOGLE
+            Google
           </button>
         </div>
       </div>
@@ -574,7 +697,7 @@ function SelectEnvironmentView() {
   const handleSelect = async (env: 'producao' | 'desenvolvimento') => {
     try {
       await store.selectEnvironment(env)
-    } catch (e) {
+    } catch {
       alert('Erro ao selecionar ambiente.')
     }
   }

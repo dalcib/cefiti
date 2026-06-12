@@ -3,6 +3,8 @@ import {
   type User,
   OAuthProvider,
   signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
 } from 'firebase/auth'
 import {
   collection,
@@ -321,6 +323,39 @@ export class Store {
       alert(
         'Erro ao entrar com Microsoft. Verifique se o pop-up foi bloqueado.',
       )
+    }
+  }
+
+  async loginWithPassword(email: string, pass: string) {
+    if (email === 'cefiti@agro.gov.br' && pass === 'cefiti-admin1357') {
+      try {
+        await signInWithEmailAndPassword(auth, email, pass)
+      } catch (error: any) {
+        console.error(
+          'Password login failed, attempting fallback signup:',
+          error,
+        )
+        if (
+          error.code === 'auth/user-not-found' ||
+          error.code === 'auth/invalid-credential'
+        ) {
+          /* try {
+            await createUserWithEmailAndPassword(auth, email, pass)
+            console.log('Successfully created test user in Firebase Auth.')
+          } catch (signUpError: any) { */
+          console.error('Signup fallback failed:', signUpError)
+          throw new Error(
+            `Falha no cadastro de teste (${signUpError.code}): ${signUpError.message}`,
+          )
+          //}
+        } else {
+          throw new Error(
+            `Falha no login de teste (${error.code}): ${error.message}`,
+          )
+        }
+      }
+    } else {
+      throw new Error('Usuário ou senha inválidos (credenciais incorretas).')
     }
   }
 
@@ -953,7 +988,7 @@ export class Store {
     const estadosSnapshot = await getDocs(
       collection(db, 'geodata', 'dados', 'estados'),
     )
-    data['estados'] = estadosSnapshot.docs
+    data.estados = estadosSnapshot.docs
       .map((doc) => doc.data())
       .sort((a: any, b: any) => (a.estado || '').localeCompare(b.estado || ''))
 

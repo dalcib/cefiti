@@ -87,4 +87,5 @@ This project is a Single Page Application (SPA) and Progressive Web App (PWA).
 
 ## Instructions
 - When necessary, always run `npm test` automatically after you finish modifying any file to validate the changes.
+- Always run `npm run lint` automatically after you finish modifying any file to validate code style and linting.
 

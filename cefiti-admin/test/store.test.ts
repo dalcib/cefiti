@@ -41,11 +41,15 @@ mock.module(firebasePath, {
 })
 
 // Mocking onAuthStateChanged which is imported from firebase/auth
+const mockSignInWithEmailAndPassword = mock.fn(async (_auth?: any, _email?: string, _pass?: string) => {})
+const mockCreateUserWithEmailAndPassword = mock.fn(async (_auth?: any, _email?: string, _pass?: string) => {})
 mock.module(authPath, {
   namedExports: {
     onAuthStateChanged: mockOnAuthStateChanged,
     OAuthProvider: class {},
     signInWithPopup: mock.fn(async () => {}),
+    signInWithEmailAndPassword: mockSignInWithEmailAndPassword,
+    createUserWithEmailAndPassword: mockCreateUserWithEmailAndPassword,
   },
 })
 
@@ -198,6 +202,57 @@ describe('Cefiti Admin Store', () => {
     assert.strictEqual(store.view, 'login')
     assert.strictEqual(store.environment, null)
   })
+
+  it('should login with valid password credentials', async () => {
+    store = new Store()
+    mock.method(store, 'fetchEnvironmentsInfo', async () => {})
+
+    let authStateCallback: any = null
+    mockOnAuthStateChanged.mock.mockImplementationOnce((_auth: any, cb: any) => {
+      authStateCallback = cb
+      cb(null) // initial state
+      return () => {}
+    })
+
+    store.initAuth()
+
+    mockSignInWithEmailAndPassword.mock.mockImplementationOnce(async (_auth: any, email: string) => {
+      if (authStateCallback) {
+        authStateCallback({ uid: '123', email })
+      }
+    })
+
+    const mockProfile = {
+      email: 'cefiti@agro.gov.br',
+      nome: 'Test Admin',
+      perfil: 'administrador',
+    }
+    mockGetDoc.mock.mockImplementationOnce(async () => ({
+      exists: () => true,
+      data: () => mockProfile,
+    }))
+
+    await store.loginWithPassword('cefiti@agro.gov.br', 'cefiti-admin1357')
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    assert.strictEqual(store.view, 'select_environment')
+    assert.strictEqual(store.user.email, 'cefiti@agro.gov.br')
+    assert.deepEqual(store.currentProfile, mockProfile)
+  })
+
+  it('should throw error with invalid password credentials', async () => {
+    store = new Store()
+    mockSignInWithEmailAndPassword.mock.mockImplementationOnce(async () => {
+      throw new Error('Auth error')
+    })
+    await assert.rejects(
+      async () => {
+        await store.loginWithPassword('wrong@agro.gov.br', 'wrongpassword')
+      },
+      /Usuário ou senha inválidos./
+    )
+  })
+
 
   it('should generate environment JSON correctly', async () => {
     store = new Store()
