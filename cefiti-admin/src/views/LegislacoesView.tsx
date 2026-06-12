@@ -2,22 +2,22 @@ import { marked } from 'marked'
 import { type Legislacao, store } from '../store'
 
 const formatDateToInput = (dateStr: string) => {
-  if (!dateStr) return '';
-  const parts = dateStr.split('/');
+  if (!dateStr) return ''
+  const parts = dateStr.split('/')
   if (parts.length === 3) {
-    return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    return `${parts[2]}-${parts[1]}-${parts[0]}`
   }
-  return dateStr;
-};
+  return dateStr
+}
 
 const formatDateFromInput = (dateStr: string) => {
-  if (!dateStr) return '';
-  const parts = dateStr.split('-');
+  if (!dateStr) return ''
+  const parts = dateStr.split('-')
   if (parts.length === 3) {
-    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    return `${parts[2]}/${parts[1]}/${parts[0]}`
   }
-  return dateStr;
-};
+  return dateStr
+}
 
 export function LegislacoesView() {
   const { legislacoes: state } = store.views
@@ -67,7 +67,13 @@ export function LegislacoesView() {
     return (
       <div id="conteudo">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <h4>{state.isNew ? 'NOVA LEGISLAÇÃO' : (store.isReadOnly ? 'VISUALIZAR LEGISLAÇÃO' : 'EDITAR LEGISLAÇÃO')}</h4>
+          <h4>
+            {state.isNew
+              ? 'NOVA LEGISLAÇÃO'
+              : store.isReadOnly
+                ? 'VISUALIZAR LEGISLAÇÃO'
+                : 'EDITAR LEGISLAÇÃO'}
+          </h4>
           <div style="display: flex; gap: 10px;">
             <button
               type="button"
@@ -108,7 +114,11 @@ export function LegislacoesView() {
                       editing.id = (e.target as HTMLInputElement).value
                     }
                   }}
-                  style={(!state.isNew || store.isReadOnly) ? { backgroundColor: '#eee' } : {}}
+                  style={
+                    !state.isNew || store.isReadOnly
+                      ? { backgroundColor: '#eee' }
+                      : {}
+                  }
                 />
               </div>
               <div>
@@ -139,7 +149,9 @@ export function LegislacoesView() {
                   readOnly={store.isReadOnly}
                   onInput={(e) => {
                     if (!store.isReadOnly) {
-                      editing.data = formatDateFromInput((e.target as HTMLInputElement).value)
+                      editing.data = formatDateFromInput(
+                        (e.target as HTMLInputElement).value,
+                      )
                     }
                   }}
                   style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
@@ -154,7 +166,9 @@ export function LegislacoesView() {
                   className="card markdown-preview"
                   style="display: block; border: 1px solid #ccc; min-height: 300px; padding: 20px; overflow-y: auto;"
                   dangerouslySetInnerHTML={{
-                    __html: (marked.parse(state.texto, { breaks: true }) as string) || '',
+                    __html:
+                      (marked.parse(state.texto, { breaks: true }) as string) ||
+                      '',
                   }}
                 />
               ) : (

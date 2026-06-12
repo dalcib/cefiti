@@ -21,11 +21,13 @@ const db = getFirestore()
 
 async function unifyCollection(legislacoesPath: string, legTextoPath: string) {
   console.log(`Unifying: ${legislacoesPath} and ${legTextoPath}...`)
-  
+
   const legislacoesSnap = await db.collection(legislacoesPath).get()
   const legTextoSnap = await db.collection(legTextoPath).get()
 
-  console.log(`Found ${legislacoesSnap.size} legislations and ${legTextoSnap.size} texts.`)
+  console.log(
+    `Found ${legislacoesSnap.size} legislations and ${legTextoSnap.size} texts.`,
+  )
 
   const textMap = new Map<string, string>()
   for (const docSnap of legTextoSnap.docs) {
@@ -47,7 +49,7 @@ async function unifyCollection(legislacoesPath: string, legTextoPath: string) {
     batch.set(
       db.collection(legislacoesPath).doc(docId),
       { ...data, texto },
-      { merge: true }
+      { merge: true },
     )
     count++
 
@@ -92,13 +94,13 @@ async function startUnification() {
     // 1. Unify in Desenvolvimento
     await unifyCollection(
       'desenvolvimento/dados/legislacoes',
-      'desenvolvimento/dados/leg_texto'
+      'desenvolvimento/dados/leg_texto',
     )
 
     // 2. Unify in Produção
     await unifyCollection(
       'producao/dados/legislacoes',
-      'producao/dados/leg_texto'
+      'producao/dados/leg_texto',
     )
 
     // 3. Unify legacy root if it exists

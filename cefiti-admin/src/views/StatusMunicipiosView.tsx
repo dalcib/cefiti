@@ -37,7 +37,7 @@ export function StatusMunicipiosView() {
 
         // Track changes to current entry and selected municipalities
         const inStatusObj = getInStatus()
-        const selectedMuniCodesStr = JSON.stringify(inStatusObj)
+        JSON.stringify(inStatusObj)
 
         if (!activeUF || !activeStatus || !currentEntry) {
           if (stateOutlineLayer) stateOutlineLayer.remove()
@@ -83,7 +83,7 @@ export function StatusMunicipiosView() {
           })
 
           const filteredGeo = {
-            type: 'FeatureCollection',
+            type: 'FeatureCollection' as const,
             features: filteredFeatures,
           }
 
@@ -366,9 +366,11 @@ export function StatusMunicipiosView() {
     const header = document.createElement('div')
     header.style.borderBottom = '3px solid #0f4098'
     header.style.paddingBottom = '12px'
-    
+
     const estadoObj = store.estados.find((e) => e.UF === state.selectedUF)
-    const estadoName = estadoObj ? `${estadoObj.estado} (${estadoObj.UF})` : state.selectedUF
+    const estadoName = estadoObj
+      ? `${estadoObj.estado} (${estadoObj.UF})`
+      : state.selectedUF
 
     header.innerHTML = `
       <h2 style="margin: 0; color: #0f4098; font-size: 1.8em; font-family: system-ui, -apple-system, sans-serif;">CEFiTI - Status Fitossanitário</h2>
@@ -449,7 +451,9 @@ export function StatusMunicipiosView() {
       })
 
       const link = document.createElement('a')
-      const safePraga = state.selectedPraga.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+      const safePraga = state.selectedPraga
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
       link.download = `mapa-${safePraga}-${state.selectedUF.toLowerCase()}.png`
       link.href = canvas.toDataURL('image/png')
       link.click()
@@ -708,7 +712,7 @@ export function StatusMunicipiosView() {
               </select>
             </div>
           </div>
-          
+
           <div
             id="map-container"
             style={{
@@ -724,7 +728,7 @@ export function StatusMunicipiosView() {
             }}
             ref={mapRefCallback}
           />
-          
+
           <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
             {!store.isReadOnly && (
               <button
@@ -739,7 +743,15 @@ export function StatusMunicipiosView() {
             <button
               type="button"
               className="btn btn-success"
-              style={{ flex: 1, padding: '10px 20px', fontWeight: 'bold', display: 'inline-flex', gap: '8px', alignItems: 'center', justifyContent: 'center' }}
+              style={{
+                flex: 1,
+                padding: '10px 20px',
+                fontWeight: 'bold',
+                display: 'inline-flex',
+                gap: '8px',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
               onClick={handleDownloadMap}
             >
               📥 BAIXAR MAPA E RELATÓRIO

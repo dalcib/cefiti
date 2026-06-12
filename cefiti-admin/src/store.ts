@@ -261,9 +261,7 @@ export class Store {
         this.prodVersion = d.version || 0
         this.prodLastUpdate = d.lastUpdate
           ? new Date(
-              d.lastUpdate.seconds
-                ? d.lastUpdate.seconds * 1000
-                : d.lastUpdate,
+              d.lastUpdate.seconds ? d.lastUpdate.seconds * 1000 : d.lastUpdate,
             ).toLocaleDateString()
           : null
       }
@@ -273,9 +271,7 @@ export class Store {
         this.devVersion = d.version || 0
         this.devLastUpdate = d.lastUpdate
           ? new Date(
-              d.lastUpdate.seconds
-                ? d.lastUpdate.seconds * 1000
-                : d.lastUpdate,
+              d.lastUpdate.seconds ? d.lastUpdate.seconds * 1000 : d.lastUpdate,
             ).toLocaleDateString()
           : null
       }
@@ -335,7 +331,12 @@ export class Store {
       return
     }
 
-    if (!this.environment && view !== 'login' && view !== 'perfil' && view !== 'usuarios') {
+    if (
+      !this.environment &&
+      view !== 'login' &&
+      view !== 'perfil' &&
+      view !== 'usuarios'
+    ) {
       this.view = 'select_environment'
       await this.fetchEnvironmentsInfo()
       return
@@ -683,19 +684,26 @@ export class Store {
       alert('Apenas administradores podem promover a base.')
       return
     }
-    if (!confirm('Tem certeza de que deseja promover a base de DESENVOLVIMENTO para PRODUÇÃO? Isso substituirá todos os dados em produção.')) {
+    if (
+      !confirm(
+        'Tem certeza de que deseja promover a base de DESENVOLVIMENTO para PRODUÇÃO? Isso substituirá todos os dados em produção.',
+      )
+    ) {
       return
     }
 
     this.loadingDbAction = true
-    this.loadingDbActionMessage = 'Publicando versão (Promovendo DESENVOLVIMENTO para PRODUÇÃO)...'
+    this.loadingDbActionMessage =
+      'Publicando versão (Promovendo DESENVOLVIMENTO para PRODUÇÃO)...'
     this.loading.catalogos = true // block UI
     try {
       // 1. Fetch current production version and data
       const prodVersaoRef = doc(db, 'producao', 'versao')
       const prodVersaoSnap = await getDoc(prodVersaoRef)
-      const currentProdVersion = prodVersaoSnap.exists() ? prodVersaoSnap.data()?.version || 0 : 0
-      
+      const currentProdVersion = prodVersaoSnap.exists()
+        ? prodVersaoSnap.data()?.version || 0
+        : 0
+
       const collections = [
         'pragas',
         'hospedeiros',
@@ -707,31 +715,39 @@ export class Store {
       const prodData: Record<string, any[]> = {}
       for (const col of collections) {
         const snap = await getDocs(collection(db, 'producao', 'dados', col))
-        prodData[col] = snap.docs.map(d => d.data())
+        prodData[col] = snap.docs.map((d) => d.data())
       }
 
       // 2. Archive production database
       console.log(`Archiving production version ${currentProdVersion}...`)
-      const archiveRef = doc(db, 'archive', `v${currentProdVersion}_${Date.now()}`)
+      const archiveRef = doc(
+        db,
+        'archive',
+        `v${currentProdVersion}_${Date.now()}`,
+      )
       await setDoc(archiveRef, {
         version: currentProdVersion,
         timestamp: new Date(),
-        data: prodData
+        data: prodData,
       })
 
       // 3. Fetch all development data
       console.log('Fetching development data...')
       const devData: Record<string, any[]> = {}
       for (const col of collections) {
-        const snap = await getDocs(collection(db, 'desenvolvimento', 'dados', col))
-        devData[col] = snap.docs.map(d => d.data())
+        const snap = await getDocs(
+          collection(db, 'desenvolvimento', 'dados', col),
+        )
+        devData[col] = snap.docs.map((d) => d.data())
       }
 
       // 4. Copy development to production
       console.log('Copying development to production...')
       for (const col of collections) {
         // Delete all production documents
-        const prodColSnap = await getDocs(collection(db, 'producao', 'dados', col))
+        const prodColSnap = await getDocs(
+          collection(db, 'producao', 'dados', col),
+        )
         for (const docSnap of prodColSnap.docs) {
           await deleteDoc(doc(db, 'producao', 'dados', col, docSnap.id))
         }
@@ -742,11 +758,16 @@ export class Store {
           if (col === 'pragas') docId = item.prag
           else if (col === 'hospedeiros') docId = item.id.toString()
           else if (col === 'legislacoes') docId = item.id
-          else if (col === 'rules') docId = item.id || `${item.prag}_${Date.now()}`
-          else if (col === 'status_municipio') docId = item.id || item.praga.replace(/\s+/g, '_')
+          else if (col === 'rules')
+            docId = item.id || `${item.prag}_${Date.now()}`
+          else if (col === 'status_municipio')
+            docId = item.id || item.praga.replace(/\s+/g, '_')
 
           const { id, ...data } = item
-          await setDoc(doc(db, 'producao', 'dados', col, docId), { ...data, ...(id ? { id } : {}) })
+          await setDoc(doc(db, 'producao', 'dados', col, docId), {
+            ...data,
+            ...(id ? { id } : {}),
+          })
         }
       }
 
@@ -754,14 +775,14 @@ export class Store {
       const nextProdVersion = currentProdVersion + 1
       await setDoc(prodVersaoRef, {
         version: nextProdVersion,
-        lastUpdate: new Date()
+        lastUpdate: new Date(),
       })
 
       // 6. Increment development version to V_dev + 1
       const nextDevVersion = nextProdVersion + 1
       await setDoc(doc(db, 'desenvolvimento', 'versao'), {
         version: nextDevVersion,
-        lastUpdate: new Date()
+        lastUpdate: new Date(),
       })
 
       alert('Base promovida com sucesso! Produção atualizada.')
@@ -782,18 +803,25 @@ export class Store {
       alert('Apenas administradores podem restaurar a base.')
       return
     }
-    if (!confirm('ATENÇÃO: Isso apagará TODOS os dados do ambiente de DESENVOLVIMENTO e os substituirá pela base de PRODUÇÃO atual. Deseja prosseguir?')) {
+    if (
+      !confirm(
+        'ATENÇÃO: Isso apagará TODOS os dados do ambiente de DESENVOLVIMENTO e os substituirá pela base de PRODUÇÃO atual. Deseja prosseguir?',
+      )
+    ) {
       return
     }
 
     this.loadingDbAction = true
-    this.loadingDbActionMessage = 'Descartando alterações e restaurando a partir de PRODUÇÃO...'
+    this.loadingDbActionMessage =
+      'Descartando alterações e restaurando a partir de PRODUÇÃO...'
     this.loading.catalogos = true // block UI
     try {
       // 1. Fetch production version
       const prodVersaoRef = doc(db, 'producao', 'versao')
       const prodVersaoSnap = await getDoc(prodVersaoRef)
-      const prodVersion = prodVersaoSnap.exists() ? prodVersaoSnap.data()?.version || 0 : 0
+      const prodVersion = prodVersaoSnap.exists()
+        ? prodVersaoSnap.data()?.version || 0
+        : 0
 
       const collections = [
         'pragas',
@@ -808,14 +836,16 @@ export class Store {
       const prodData: Record<string, any[]> = {}
       for (const col of collections) {
         const snap = await getDocs(collection(db, 'producao', 'dados', col))
-        prodData[col] = snap.docs.map(d => d.data())
+        prodData[col] = snap.docs.map((d) => d.data())
       }
 
       // 3. Clear and copy to development
       console.log('Overwriting development with production...')
       for (const col of collections) {
         // Delete all dev documents
-        const devColSnap = await getDocs(collection(db, 'desenvolvimento', 'dados', col))
+        const devColSnap = await getDocs(
+          collection(db, 'desenvolvimento', 'dados', col),
+        )
         for (const docSnap of devColSnap.docs) {
           await deleteDoc(doc(db, 'desenvolvimento', 'dados', col, docSnap.id))
         }
@@ -826,11 +856,16 @@ export class Store {
           if (col === 'pragas') docId = item.prag
           else if (col === 'hospedeiros') docId = item.id.toString()
           else if (col === 'legislacoes') docId = item.id
-          else if (col === 'rules') docId = item.id || `${item.prag}_${Date.now()}`
-          else if (col === 'status_municipio') docId = item.id || item.praga.replace(/\s+/g, '_')
+          else if (col === 'rules')
+            docId = item.id || `${item.prag}_${Date.now()}`
+          else if (col === 'status_municipio')
+            docId = item.id || item.praga.replace(/\s+/g, '_')
 
           const { id, ...data } = item
-          await setDoc(doc(db, 'desenvolvimento', 'dados', col, docId), { ...data, ...(id ? { id } : {}) })
+          await setDoc(doc(db, 'desenvolvimento', 'dados', col, docId), {
+            ...data,
+            ...(id ? { id } : {}),
+          })
         }
       }
 
@@ -838,7 +873,7 @@ export class Store {
       const nextDevVersion = prodVersion + 1
       await setDoc(doc(db, 'desenvolvimento', 'versao'), {
         version: nextDevVersion,
-        lastUpdate: new Date()
+        lastUpdate: new Date(),
       })
 
       alert('Base de desenvolvimento restaurada com sucesso.')
@@ -893,7 +928,10 @@ export class Store {
 
   // --- Diff & Export Methods ---
 
-  async generateEnvironmentJson(env: 'desenvolvimento' | 'producao', stripTexto = false) {
+  async generateEnvironmentJson(
+    env: 'desenvolvimento' | 'producao',
+    stripTexto = false,
+  ) {
     const collections = [
       'pragas',
       'hospedeiros',
@@ -912,7 +950,9 @@ export class Store {
     }
 
     // Fetch estados
-    const estadosSnapshot = await getDocs(collection(db, 'geodata', 'dados', 'estados'))
+    const estadosSnapshot = await getDocs(
+      collection(db, 'geodata', 'dados', 'estados'),
+    )
     data['estados'] = estadosSnapshot.docs
       .map((doc) => doc.data())
       .sort((a: any, b: any) => (a.estado || '').localeCompare(b.estado || ''))
@@ -923,7 +963,9 @@ export class Store {
 
       // Sort docs to make diff deterministic
       if (collName === 'pragas') {
-        docs.sort((a: any, b: any) => (a.prag || '').localeCompare(b.prag || ''))
+        docs.sort((a: any, b: any) =>
+          (a.prag || '').localeCompare(b.prag || ''),
+        )
       } else if (collName === 'hospedeiros') {
         docs.sort((a: any, b: any) => (a.id || 0) - (b.id || 0))
       } else if (collName === 'legislacoes') {
@@ -941,7 +983,9 @@ export class Store {
           return (a.desc || '').localeCompare(b.desc || '')
         })
       } else if (collName === 'status_municipio') {
-        docs.sort((a: any, b: any) => (a.praga || '').localeCompare(b.praga || ''))
+        docs.sort((a: any, b: any) =>
+          (a.praga || '').localeCompare(b.praga || ''),
+        )
         docs = docs.map((doc: any) => {
           if (doc.status) {
             doc.status = doc.status.map((s: any) => {
@@ -958,11 +1002,17 @@ export class Store {
                   }
                   return e
                 })
-                s.estados.sort((a: any, b: any) => (a.uf || '').localeCompare(b.uf || ''))
+                s.estados.sort((a: any, b: any) =>
+                  (a.uf || '').localeCompare(b.uf || ''),
+                )
               }
               return s
             })
-            doc.status.sort((a: any, b: any) => (a.status_fitossanitário || '').localeCompare(b.status_fitossanitário || ''))
+            doc.status.sort((a: any, b: any) =>
+              (a.status_fitossanitário || '').localeCompare(
+                b.status_fitossanitário || '',
+              ),
+            )
           }
           return doc
         })
@@ -973,7 +1023,7 @@ export class Store {
 
     const finalJson = {
       dbVersion: version,
-      ...data
+      ...data,
     }
     return this.sortObjectKeys(finalJson)
   }
@@ -983,7 +1033,10 @@ export class Store {
     this.diffLinesResult = []
     try {
       const prodJson = await this.generateEnvironmentJson('producao', false)
-      const devJson = await this.generateEnvironmentJson('desenvolvimento', false)
+      const devJson = await this.generateEnvironmentJson(
+        'desenvolvimento',
+        false,
+      )
 
       const prodStr = JSON.stringify(prodJson, null, 2)
       const devStr = JSON.stringify(devJson, null, 2)
@@ -1015,7 +1068,9 @@ export class Store {
   async downloadProductionLegislacao() {
     try {
       this.loading.catalogos = true
-      const snapshot = await getDocs(collection(db, 'producao', 'dados', 'legislacoes'))
+      const snapshot = await getDocs(
+        collection(db, 'producao', 'dados', 'legislacoes'),
+      )
       const docs = snapshot.docs.map((doc) => doc.data())
       docs.sort((a: any, b: any) => (a.id || '').localeCompare(b.id || ''))
 
@@ -1037,7 +1092,11 @@ export class Store {
     }
   }
 
-  private triggerDownload(content: string, filename: string, contentType: string) {
+  private triggerDownload(
+    content: string,
+    filename: string,
+    contentType: string,
+  ) {
     const blob = new Blob([content], { type: contentType })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')

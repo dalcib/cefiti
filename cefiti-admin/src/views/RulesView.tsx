@@ -70,7 +70,13 @@ export function RulesView() {
     return (
       <div id="conteudo">
         <div className="view-header">
-          <h4>{state.isNew ? 'NOVA REGRA' : (store.isReadOnly ? 'VISUALIZAR REGRA' : 'EDITAR REGRA')}</h4>
+          <h4>
+            {state.isNew
+              ? 'NOVA REGRA'
+              : store.isReadOnly
+                ? 'VISUALIZAR REGRA'
+                : 'EDITAR REGRA'}
+          </h4>
           <button
             type="button"
             className="btn btn-neutral"
@@ -94,7 +100,9 @@ export function RulesView() {
                   disabled={store.isReadOnly}
                   onChange={(e) => {
                     if (!store.isReadOnly) {
-                      state.editing!.prag = (e.target as HTMLSelectElement).value
+                      state.editing!.prag = (
+                        e.target as HTMLSelectElement
+                      ).value
                     }
                   }}
                   style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
@@ -254,12 +262,16 @@ export function RulesView() {
                       onInput={(e) => {
                         if (!store.isReadOnly) {
                           const newList = [...state.editing!.exig]
-                          newList[index] = (e.target as HTMLTextAreaElement).value
+                          newList[index] = (
+                            e.target as HTMLTextAreaElement
+                          ).value
                           state.editing!.exig = newList
                         }
                       }}
                       placeholder={`Descreva a exigência ${index + 1}...`}
-                      style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
+                      style={
+                        store.isReadOnly ? { backgroundColor: '#eee' } : {}
+                      }
                     />
                     {!store.isReadOnly && (
                       <button

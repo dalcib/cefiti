@@ -54,10 +54,7 @@ async function migrate() {
         const data = docSnap.data()
 
         // Copy to production environment
-        await db
-          .collection(`producao/dados/${collName}`)
-          .doc(docId)
-          .set(data)
+        await db.collection(`producao/dados/${collName}`).doc(docId).set(data)
         // Copy to development environment
         await db
           .collection(`desenvolvimento/dados/${collName}`)
@@ -86,7 +83,10 @@ async function migrate() {
     const estadosSnapshot = await db.collection('estados').get()
     console.log(`Found ${estadosSnapshot.size} states.`)
     for (const docSnap of estadosSnapshot.docs) {
-      await db.collection('geodata/dados/estados').doc(docSnap.id).set(docSnap.data())
+      await db
+        .collection('geodata/dados/estados')
+        .doc(docSnap.id)
+        .set(docSnap.data())
     }
 
     // 5. Migrate static municipalities to geodata/dados/municipios

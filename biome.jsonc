@@ -1,16 +1,52 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.4.4/schema.json",
   "files": {
-    "ignoreUnknown": false
+    "ignoreUnknown": false,
+    "includes": [
+      "**",
+      "!**/assets/**/*",
+      "!**/conductor/**/*",
+      "!**/docs/**/*",
+      "!**/cefiti/public/**/*",
+      "!**/cefiti-new/public/**/*",
+      "!**/cefiti-admin/public/**/*",
+      "!**/cefiti/test/**/*",
+      "!**/cefiti/src/db.ts",
+      "!**/firebase/public/**/*"
+    ]
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
-    "lineWidth": 80
+    "lineWidth": 80,
+    "includes": [
+      "**",
+      "!**/assets/**/*",
+      "!**/conductor/**/*",
+      "!**/docs/**/*",
+      "!**/cefiti/public/**/*",
+      "!**/cefiti-new/public/**/*",
+      "!**/cefiti-admin/public/**/*",
+      "!**/cefiti/test/**/*",
+      "!**/cefiti/src/db.ts",
+      "!**/firebase/public/**/*"
+    ]
   },
   "linter": {
     "enabled": true,
+    "includes": [
+      "**",
+      "!**/assets/**/*",
+      "!**/conductor/**/*",
+      "!**/docs/**/*",
+      "!**/cefiti/public/**/*",
+      "!**/cefiti-new/public/**/*",
+      "!**/cefiti-admin/public/**/*",
+      "!**/cefiti/test/**/*",
+      "!**/cefiti/src/db.ts",
+      "!**/firebase/public/**/*"
+    ],
     "rules": {
       "recommended": true,
       "style": {
@@ -60,12 +96,7 @@
         "cefiti-admin/public/**/*",
         "cefiti/test/**/*",
         "cefiti/src/db.ts",
-        "firebase/public/db.js",
-        "firebase/public/db-next.js",
-        "firebase/public/index.js",
-        "firebase/public/leg.js",
-        "firebase/public/legislacao.js",
-        "firebase/public/sw.js",
+        "firebase/public/**/*",
         "cefiti-admin/src/status_município.json",
         "cefiti-admin/src/rules.jsonc",
         "cefiti-admin/src/status.jsonc",

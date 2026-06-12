@@ -27,18 +27,11 @@ async function publicar() {
     // 1. Get current version
     console.log('Fetching version from producao/versao...')
     const configDoc = await db.doc('producao/versao').get()
-    const currentVersion = configDoc.exists
-      ? configDoc.data()?.version || 0
-      : 0
+    const currentVersion = configDoc.exists ? configDoc.data()?.version || 0 : 0
 
     // 2. Read all data
     console.log('Reading data from Firestore...')
-    const collections = [
-      'pragas',
-      'hospedeiros',
-      'rules',
-      'legislacoes',
-    ]
+    const collections = ['pragas', 'hospedeiros', 'rules', 'legislacoes']
     const data: Record<string, Record<string, unknown>[]> = {}
 
     for (const collName of collections) {

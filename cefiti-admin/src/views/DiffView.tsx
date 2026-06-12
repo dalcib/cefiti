@@ -5,7 +5,10 @@ export function DiffView() {
     return (
       <div id="conteudo" style="text-align: center; padding: 40px;">
         <h4 style="color: #0f4098;">GERANDO COMPARATIVO (DIFF)...</h4>
-        <p style="color: #666;">Buscando dados das bases de produção e desenvolvimento no Firestore, aguarde.</p>
+        <p style="color: #666;">
+          Buscando dados das bases de produção e desenvolvimento no Firestore,
+          aguarde.
+        </p>
         <div style="margin: 20px auto; border: 4px solid #f3f3f3; border-top: 4px solid #17a2b8; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;"></div>
         <style>{`
           @keyframes spin {
@@ -21,7 +24,10 @@ export function DiffView() {
   let additions = 0
   let deletions = 0
 
-  const processedLines: { type: 'added' | 'removed' | 'unchanged'; text: string }[] = []
+  const processedLines: {
+    type: 'added' | 'removed' | 'unchanged'
+    text: string
+  }[] = []
 
   for (const part of store.diffLinesResult) {
     const lines = part.value.split('\n')
@@ -29,7 +35,7 @@ export function DiffView() {
     if (lines.length > 1 && lines[lines.length - 1] === '') {
       lines.pop()
     }
-    
+
     for (const line of lines) {
       if (part.added) {
         additions++
@@ -71,17 +77,17 @@ export function DiffView() {
             style="background: #161b22; color: #8b949e; padding: 6px 15px; font-family: sans-serif; font-size: 0.85em; border-top: 1px solid #21262d; border-bottom: 1px solid #21262d; user-select: none; text-align: center;"
           >
             ••• Omitidas {skipCount} linhas idênticas •••
-          </div>
+          </div>,
         )
         skipping = false
         skipCount = 0
       }
-      
+
       const line = processedLines[i]
       let bg = 'transparent'
       let color = '#c9d1d9'
       let prefix = ' '
-      
+
       if (line.type === 'added') {
         bg = 'rgba(46, 160, 67, 0.15)'
         color = '#58a6ff'
@@ -101,7 +107,8 @@ export function DiffView() {
             display: 'flex',
             whiteSpace: 'pre-wrap',
             padding: '1px 15px',
-            fontFamily: 'SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace',
+            fontFamily:
+              'SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace',
             lineHeight: '1.5',
           }}
         >
@@ -111,10 +118,8 @@ export function DiffView() {
           <span style="width: 15px; color: #8b949e; user-select: none; display: inline-block; margin-right: 5px;">
             {prefix}
           </span>
-          <span style="flex: 1;">
-            {line.text}
-          </span>
-        </div>
+          <span style="flex: 1;">{line.text}</span>
+        </div>,
       )
     } else {
       skipping = true
@@ -129,7 +134,7 @@ export function DiffView() {
         style="background: #161b22; color: #8b949e; padding: 6px 15px; font-family: sans-serif; font-size: 0.85em; border-top: 1px solid #21262d; user-select: none; text-align: center;"
       >
         ••• Omitidas {skipCount} linhas idênticas •••
-      </div>
+      </div>,
     )
   }
 
@@ -139,7 +144,9 @@ export function DiffView() {
         <div>
           <h4 style="color: #0f4098;">COMPARAÇÃO DE BASE DE DADOS</h4>
           <p style="color: #666; margin: 0;">
-            Visualização das alterações preparadas em <strong>desenvolvimento</strong> em relação a <strong>produção</strong>.
+            Visualização das alterações preparadas em{' '}
+            <strong>desenvolvimento</strong> em relação a{' '}
+            <strong>produção</strong>.
           </p>
         </div>
         <button
@@ -174,9 +181,11 @@ export function DiffView() {
       >
         <div style="background: #161b22; padding: 10px; border-bottom: 1px solid #30363d; font-weight: bold; font-family: sans-serif; display: flex; justify-content: space-between; align-items: center; color: #c9d1d9;">
           <span>db_diff.json</span>
-          <span style="font-size: 0.8em; color: #8b949e; background: #21262d; padding: 2px 8px; border-radius: 10px;">VISTA UNIFICADA (HUNKS)</span>
+          <span style="font-size: 0.8em; color: #8b949e; background: #21262d; padding: 2px 8px; border-radius: 10px;">
+            VISTA UNIFICADA (HUNKS)
+          </span>
         </div>
-        
+
         <div
           style={{
             maxHeight: '600px',

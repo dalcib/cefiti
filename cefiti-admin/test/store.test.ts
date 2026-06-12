@@ -16,15 +16,19 @@ const authPath = 'firebase/auth'
 const municipiosPath = '#municipios'
 
 // Mock Firestore functions
-const mockGetDocs = mock.fn(async () => ({ docs: [] as any[] }))
-const mockGetDoc = mock.fn(async () => ({
+const mockGetDocs = mock.fn(async (..._args: any[]) => ({ docs: [] as any[] }))
+const mockGetDoc = mock.fn(async (..._args: any[]) => ({
   exists: () => false as boolean,
   data: () => ({}),
 }))
 const mockSetDoc = mock.fn(async () => {})
 const mockDeleteDoc = mock.fn(async () => {})
-const mockCollection = mock.fn((_db: any, ...segments: string[]) => ({ path: segments.join('/') }))
-const mockDoc = mock.fn((_db: any, ...segments: string[]) => ({ path: segments.join('/') }))
+const mockCollection = mock.fn((_db: any, ...segments: string[]) => ({
+  path: segments.join('/'),
+}))
+const mockDoc = mock.fn((_db: any, ...segments: string[]) => ({
+  path: segments.join('/'),
+}))
 const mockQuery = mock.fn((q: any) => q)
 const mockOrderBy = mock.fn(() => ({}))
 
@@ -148,7 +152,11 @@ describe('Cefiti Admin Store', () => {
 
   it('should select environment and load catalogos', async () => {
     store = new Store()
-    const fetchCatalogosSpy = mock.method(store, 'fetchCatalogos', async () => {})
+    const fetchCatalogosSpy = mock.method(
+      store,
+      'fetchCatalogos',
+      async () => {},
+    )
     await store.selectEnvironment('producao')
     assert.strictEqual(store.environment, 'producao')
     assert.strictEqual(store.view, 'dashboard')
@@ -196,7 +204,7 @@ describe('Cefiti Admin Store', () => {
     store.environment = 'desenvolvimento'
 
     // Mock getDoc for version
-    mockGetDoc.mock.mockImplementation(async (d: any) => {
+    mockGetDoc.mock.mockImplementation(async () => {
       return {
         exists: () => true,
         data: () => ({ version: 10 }),
@@ -208,32 +216,46 @@ describe('Cefiti Admin Store', () => {
       const path = q.path
       if (path === 'geodata/dados/estados') {
         return {
-          docs: [{ data: () => ({ ibge: 35, UF: 'SP', estado: 'São Paulo' }) }]
+          docs: [{ data: () => ({ ibge: 35, UF: 'SP', estado: 'São Paulo' }) }],
         }
       }
       if (path === 'desenvolvimento/dados/pragas') {
         return {
-          docs: [{ data: () => ({ pragc: 'Cientifico', prag: 'Anastrepha fraterculus', hosp: [1] }) }]
+          docs: [
+            {
+              data: () => ({
+                pragc: 'Cientifico',
+                prag: 'Anastrepha fraterculus',
+                hosp: [1],
+              }),
+            },
+          ],
         }
       }
       if (path === 'desenvolvimento/dados/hospedeiros') {
         return {
-          docs: [{ data: () => ({ id: 5, nomeSci: 'Citrus sinensis' }) }]
+          docs: [{ data: () => ({ id: 5, nomeSci: 'Citrus sinensis' }) }],
         }
       }
       if (path === 'desenvolvimento/dados/legislacoes') {
         return {
-          docs: [{ data: () => ({ id: 'leg1', texto: 'Texto Legislacao' }) }]
+          docs: [{ data: () => ({ id: 'leg1', texto: 'Texto Legislacao' }) }],
         }
       }
       if (path === 'desenvolvimento/dados/rules') {
         return {
-          docs: [{ data: () => ({ prag: 'Anastrepha fraterculus', desc: 'Rule 1' }) }]
+          docs: [
+            {
+              data: () => ({ prag: 'Anastrepha fraterculus', desc: 'Rule 1' }),
+            },
+          ],
         }
       }
       if (path === 'desenvolvimento/dados/status_municipio') {
         return {
-          docs: [{ data: () => ({ praga: 'Anastrepha fraterculus', status: [] }) }]
+          docs: [
+            { data: () => ({ praga: 'Anastrepha fraterculus', status: [] }) },
+          ],
         }
       }
       return { docs: [] }
@@ -252,7 +274,10 @@ describe('Cefiti Admin Store', () => {
     assert.strictEqual(json.status_municipio.length, 1)
 
     // With stripTexto = true
-    const jsonStripped = await store.generateEnvironmentJson('desenvolvimento', true)
+    const jsonStripped = await store.generateEnvironmentJson(
+      'desenvolvimento',
+      true,
+    )
     assert.strictEqual(jsonStripped.legislacoes[0].texto, undefined)
   })
 })

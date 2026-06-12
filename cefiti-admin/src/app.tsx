@@ -23,10 +23,34 @@ export function App() {
 
   if (store.loadingDbAction) {
     return (
-      <div className="carregando" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#f4f6f9' }}>
-        <h3 style={{ color: '#0f4098', marginBottom: '10px' }}>{store.loadingDbActionMessage || 'Processando...'}</h3>
-        <p style={{ color: '#666', marginBottom: '20px' }}>Esta operação pode levar alguns segundos devido à sincronização com o banco de dados.</p>
-        <div style={{ border: '4px solid #f3f3f3', borderTop: '4px solid #17a2b8', borderRadius: '50%', width: '40px', height: '40px', animation: 'spin 1s linear infinite' }}></div>
+      <div
+        className="carregando"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          background: '#f4f6f9',
+        }}
+      >
+        <h3 style={{ color: '#0f4098', marginBottom: '10px' }}>
+          {store.loadingDbActionMessage || 'Processando...'}
+        </h3>
+        <p style={{ color: '#666', marginBottom: '20px' }}>
+          Esta operação pode levar alguns segundos devido à sincronização com o
+          banco de dados.
+        </p>
+        <div
+          style={{
+            border: '4px solid #f3f3f3',
+            borderTop: '4px solid #17a2b8',
+            borderRadius: '50%',
+            width: '40px',
+            height: '40px',
+            animation: 'spin 1s linear infinite',
+          }}
+        ></div>
         <style>{`
           @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -58,7 +82,10 @@ export function App() {
 
 function Header() {
   const appVersion = `${version.split('.')[0]}.${store.catalogos.dbVersion}`
-  const envLabel = store.environment === 'producao' ? 'PRODUÇÃO (Visualização)' : 'DESENVOLVIMENTO (Edição)'
+  const envLabel =
+    store.environment === 'producao'
+      ? 'PRODUÇÃO (Visualização)'
+      : 'DESENVOLVIMENTO (Edição)'
   const envColor = store.environment === 'producao' ? '#28a745' : '#007bff'
 
   return (
@@ -384,9 +411,13 @@ function CurrentView() {
               <li>
                 Utilize o menu superior para navegar pelas seções de dados.
               </li>
-              <li style={store.isReadOnly ? { color: '#28a745' } : { color: '#d12f19' }}>
-                {store.isReadOnly 
-                  ? 'ℹ️ Você está no ambiente de PRODUÇÃO (Apenas Visualização).' 
+              <li
+                style={
+                  store.isReadOnly ? { color: '#28a745' } : { color: '#d12f19' }
+                }
+              >
+                {store.isReadOnly
+                  ? 'ℹ️ Você está no ambiente de PRODUÇÃO (Apenas Visualização).'
                   : '⚠️ Você está no ambiente de DESENVOLVIMENTO. Alterações são salvas em tempo real no banco de dados.'}
               </li>
             </ul>
@@ -395,14 +426,29 @@ function CurrentView() {
           {store.environment === 'desenvolvimento' && (
             <div className="card" style={{ marginTop: '30px' }}>
               <h5>COMPARAÇÃO E EXPORTAÇÃO</h5>
-              <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '20px' }}>
-                Compare a base de desenvolvimento com a base de produção ou exporte os arquivos de produção para publicação manual.
+              <p
+                style={{
+                  color: '#666',
+                  fontSize: '0.9rem',
+                  marginBottom: '20px',
+                }}
+              >
+                Compare a base de desenvolvimento com a base de produção ou
+                exporte os arquivos de produção para publicação manual.
               </p>
               <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
                 <button
                   type="button"
                   className="form-button"
-                  style={{ background: '#17a2b8', color: 'white', padding: '10px 20px', fontWeight: 'bold', cursor: 'pointer', border: 'none', borderRadius: '4px' }}
+                  style={{
+                    background: '#17a2b8',
+                    color: 'white',
+                    padding: '10px 20px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    border: 'none',
+                    borderRadius: '4px',
+                  }}
                   onClick={() => store.setView('diff')}
                 >
                   VISUALIZAR ALTERAÇÕES (DIFF COM PRODUÇÃO)
@@ -410,7 +456,15 @@ function CurrentView() {
                 <button
                   type="button"
                   className="form-button"
-                  style={{ background: '#6c757d', color: 'white', padding: '10px 20px', fontWeight: 'bold', cursor: 'pointer', border: 'none', borderRadius: '4px' }}
+                  style={{
+                    background: '#6c757d',
+                    color: 'white',
+                    padding: '10px 20px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    border: 'none',
+                    borderRadius: '4px',
+                  }}
                   onClick={() => store.downloadProductionDb()}
                 >
                   SALVAR DB-NEXT.JSON (PRODUÇÃO)
@@ -418,7 +472,15 @@ function CurrentView() {
                 <button
                   type="button"
                   className="form-button"
-                  style={{ background: '#6c757d', color: 'white', padding: '10px 20px', fontWeight: 'bold', cursor: 'pointer', border: 'none', borderRadius: '4px' }}
+                  style={{
+                    background: '#6c757d',
+                    color: 'white',
+                    padding: '10px 20px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    border: 'none',
+                    borderRadius: '4px',
+                  }}
                   onClick={() => store.downloadProductionLegislacao()}
                 >
                   SALVAR LEGISLACAO.JS (PRODUÇÃO)
@@ -430,15 +492,29 @@ function CurrentView() {
           {store.currentProfile?.perfil === 'administrador' && (
             <div className="card" style={{ marginTop: '20px' }}>
               <h5>AÇÕES DE ADMINISTRAÇÃO DA BASE</h5>
-              <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '20px' }}>
-                Essas operações controlam a publicação e restauração dos ambientes de dados no Firestore.
+              <p
+                style={{
+                  color: '#666',
+                  fontSize: '0.9rem',
+                  marginBottom: '20px',
+                }}
+              >
+                Essas operações controlam a publicação e restauração dos
+                ambientes de dados no Firestore.
               </p>
               {store.environment === 'desenvolvimento' ? (
                 <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
                   <button
                     type="button"
                     className="form-button"
-                    style={{ background: '#28a745', color: 'white', padding: '10px 20px', fontWeight: 'bold', cursor: 'pointer', border: 'none' }}
+                    style={{
+                      background: '#28a745',
+                      color: 'white',
+                      padding: '10px 20px',
+                      fontWeight: 'bold',
+                      cursor: 'pointer',
+                      border: 'none',
+                    }}
                     onClick={() => store.promoteDevToProd()}
                   >
                     PUBLICAR VERSÃO (PROMOVER DEV PARA PROD)
@@ -446,7 +522,14 @@ function CurrentView() {
                   <button
                     type="button"
                     className="form-button"
-                    style={{ background: '#dc3545', color: 'white', padding: '10px 20px', fontWeight: 'bold', cursor: 'pointer', border: 'none' }}
+                    style={{
+                      background: '#dc3545',
+                      color: 'white',
+                      padding: '10px 20px',
+                      fontWeight: 'bold',
+                      cursor: 'pointer',
+                      border: 'none',
+                    }}
                     onClick={() => store.restoreDevFromProd()}
                   >
                     DESCARTAR ALTERAÇÕES E RESTAURAR DE PRODUÇÃO
@@ -454,7 +537,8 @@ function CurrentView() {
                 </div>
               ) : (
                 <p style={{ color: '#e65100', fontWeight: 'bold', margin: 0 }}>
-                  ⚠️ Altere para o ambiente de DESENVOLVIMENTO para poder publicar novas versões ou descartar alterações locais.
+                  ⚠️ Altere para o ambiente de DESENVOLVIMENTO para poder
+                  publicar novas versões ou descartar alterações locais.
                 </p>
               )}
             </div>
@@ -527,9 +611,12 @@ function SelectEnvironmentView() {
           padding: '20px',
         }}
       >
-        <h3 style={{ marginBottom: '10px', color: '#0f4098' }}>Selecione o Ambiente de Trabalho</h3>
+        <h3 style={{ marginBottom: '10px', color: '#0f4098' }}>
+          Selecione o Ambiente de Trabalho
+        </h3>
         <p style={{ marginBottom: '30px', color: '#555' }}>
-          Escolha entre a base de produção (somente leitura) ou de desenvolvimento (edição).
+          Escolha entre a base de produção (somente leitura) ou de
+          desenvolvimento (edição).
         </p>
 
         {store.loadingVersions ? (
@@ -542,7 +629,7 @@ function SelectEnvironmentView() {
               maxWidth: '800px',
               width: '100%',
               justifyContent: 'center',
-              flexWrap: 'wrap'
+              flexWrap: 'wrap',
             }}
           >
             {/* Card Produção */}
@@ -560,23 +647,58 @@ function SelectEnvironmentView() {
                 borderRadius: '8px',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between'
+                justifyContent: 'space-between',
               }}
             >
               <div>
-                <h4 style={{ color: '#28a745', fontWeight: 'bold', margin: '0 0 10px 0' }}>PRODUÇÃO</h4>
-                <p style={{ fontSize: '0.9em', color: '#666', marginBottom: '15px' }}>
-                  Base oficial do aplicativo público (cefiti-new). Alterações não permitidas.
+                <h4
+                  style={{
+                    color: '#28a745',
+                    fontWeight: 'bold',
+                    margin: '0 0 10px 0',
+                  }}
+                >
+                  PRODUÇÃO
+                </h4>
+                <p
+                  style={{
+                    fontSize: '0.9em',
+                    color: '#666',
+                    marginBottom: '15px',
+                  }}
+                >
+                  Base oficial do aplicativo público (cefiti-new). Alterações
+                  não permitidas.
                 </p>
-                <div style={{ padding: '15px 0', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', margin: '15px 0' }}>
-                  <p style={{ fontSize: '1.3em', fontWeight: 'bold', margin: '0 0 5px 0' }}>
+                <div
+                  style={{
+                    padding: '15px 0',
+                    borderTop: '1px solid #eee',
+                    borderBottom: '1px solid #eee',
+                    margin: '15px 0',
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: '1.3em',
+                      fontWeight: 'bold',
+                      margin: '0 0 5px 0',
+                    }}
+                  >
                     Versão {store.prodVersion}
                   </p>
                   <p style={{ fontSize: '0.8em', color: '#888', margin: 0 }}>
                     Última carga: {store.prodLastUpdate || 'Nenhuma'}
                   </p>
                 </div>
-                <p style={{ color: '#28a745', fontSize: '0.85em', fontWeight: 'bold', marginBottom: '20px' }}>
+                <p
+                  style={{
+                    color: '#28a745',
+                    fontSize: '0.85em',
+                    fontWeight: 'bold',
+                    marginBottom: '20px',
+                  }}
+                >
                   ℹ️ MODO APENAS VISUALIZAÇÃO
                 </p>
               </div>
@@ -590,7 +712,7 @@ function SelectEnvironmentView() {
                   color: 'white',
                   border: 'none',
                   fontWeight: 'bold',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
                 }}
                 onClick={() => handleSelect('producao')}
               >
@@ -613,23 +735,58 @@ function SelectEnvironmentView() {
                 borderRadius: '8px',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between'
+                justifyContent: 'space-between',
               }}
             >
               <div>
-                <h4 style={{ color: '#007bff', fontWeight: 'bold', margin: '0 0 10px 0' }}>DESENVOLVIMENTO</h4>
-                <p style={{ fontSize: '0.9em', color: '#666', marginBottom: '15px' }}>
-                  Base de rascunhos para edição de pragas, hospedeiros, exigências e regras.
+                <h4
+                  style={{
+                    color: '#007bff',
+                    fontWeight: 'bold',
+                    margin: '0 0 10px 0',
+                  }}
+                >
+                  DESENVOLVIMENTO
+                </h4>
+                <p
+                  style={{
+                    fontSize: '0.9em',
+                    color: '#666',
+                    marginBottom: '15px',
+                  }}
+                >
+                  Base de rascunhos para edição de pragas, hospedeiros,
+                  exigências e regras.
                 </p>
-                <div style={{ padding: '15px 0', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', margin: '15px 0' }}>
-                  <p style={{ fontSize: '1.3em', fontWeight: 'bold', margin: '0 0 5px 0' }}>
+                <div
+                  style={{
+                    padding: '15px 0',
+                    borderTop: '1px solid #eee',
+                    borderBottom: '1px solid #eee',
+                    margin: '15px 0',
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: '1.3em',
+                      fontWeight: 'bold',
+                      margin: '0 0 5px 0',
+                    }}
+                  >
                     Versão {store.devVersion}
                   </p>
                   <p style={{ fontSize: '0.8em', color: '#888', margin: 0 }}>
                     Status: Edição habilitada
                   </p>
                 </div>
-                <p style={{ color: '#007bff', fontSize: '0.85em', fontWeight: 'bold', marginBottom: '20px' }}>
+                <p
+                  style={{
+                    color: '#007bff',
+                    fontSize: '0.85em',
+                    fontWeight: 'bold',
+                    marginBottom: '20px',
+                  }}
+                >
                   ✍️ MODO EDIÇÃO E TESTES
                 </p>
               </div>
@@ -643,7 +800,7 @@ function SelectEnvironmentView() {
                   color: 'white',
                   border: 'none',
                   fontWeight: 'bold',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
                 }}
                 onClick={() => handleSelect('desenvolvimento')}
               >
@@ -662,7 +819,7 @@ function SelectEnvironmentView() {
               cursor: 'pointer',
               color: '#666',
               textDecoration: 'underline',
-              fontSize: '0.9em'
+              fontSize: '0.9em',
             }}
             onClick={() => store.logout()}
           >

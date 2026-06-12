@@ -64,7 +64,13 @@ export function UsuariosView() {
             marginBottom: '20px',
           }}
         >
-          <h4>{state.isNew ? 'NOVO USUÁRIO AUTORIZADO' : (store.isReadOnly ? 'VISUALIZAR USUÁRIO' : 'EDITAR USUÁRIO')}</h4>
+          <h4>
+            {state.isNew
+              ? 'NOVO USUÁRIO AUTORIZADO'
+              : store.isReadOnly
+                ? 'VISUALIZAR USUÁRIO'
+                : 'EDITAR USUÁRIO'}
+          </h4>
           <button
             type="button"
             className="form-button"
@@ -87,7 +93,11 @@ export function UsuariosView() {
                 value={state.editing.email}
                 required
                 readOnly={!state.isNew || store.isReadOnly}
-                style={(!state.isNew || store.isReadOnly) ? { backgroundColor: '#eee' } : {}}
+                style={
+                  !state.isNew || store.isReadOnly
+                    ? { backgroundColor: '#eee' }
+                    : {}
+                }
                 onInput={(e) => {
                   if (!store.isReadOnly) {
                     state.editing!.email = (e.target as HTMLInputElement).value
@@ -141,7 +151,9 @@ export function UsuariosView() {
                 readOnly={store.isReadOnly}
                 onInput={(e) => {
                   if (!store.isReadOnly) {
-                    state.editing!.lotacao = (e.target as HTMLInputElement).value
+                    state.editing!.lotacao = (
+                      e.target as HTMLInputElement
+                    ).value
                   }
                 }}
                 style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
@@ -157,7 +169,8 @@ export function UsuariosView() {
                 disabled={store.isReadOnly}
                 onChange={(e) => {
                   if (!store.isReadOnly) {
-                    state.editing!.perfil = (e.target as HTMLSelectElement).value as any
+                    state.editing!.perfil = (e.target as HTMLSelectElement)
+                      .value as any
                   }
                 }}
                 style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
@@ -225,7 +238,7 @@ export function UsuariosView() {
                         u.perfil === 'administrador' ? '#ffd70033' : '#eee',
                       color: u.perfil === 'administrador' ? '#856404' : '#666',
                       fontWeight: 'bold',
-                      }}
+                    }}
                   >
                     {u.perfil.toUpperCase()}
                   </span>

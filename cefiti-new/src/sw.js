@@ -39,7 +39,10 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   // Only handle GET requests and avoid chrome extensions
-  if (event.request.method !== 'GET' || new URL(event.request.url).protocol === 'chrome-extension:') {
+  if (
+    event.request.method !== 'GET' ||
+    new URL(event.request.url).protocol === 'chrome-extension:'
+  ) {
     return
   }
 
@@ -58,4 +61,3 @@ self.addEventListener('fetch', (event) => {
     }),
   )
 })
-

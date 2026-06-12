@@ -42,7 +42,13 @@ export function PragasView() {
     return (
       <div id="conteudo">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <h4>{state.isNew ? 'NOVA PRAGA' : (store.isReadOnly ? 'VISUALIZAR PRAGA' : 'EDITAR PRAGA')}</h4>
+          <h4>
+            {state.isNew
+              ? 'NOVA PRAGA'
+              : store.isReadOnly
+                ? 'VISUALIZAR PRAGA'
+                : 'EDITAR PRAGA'}
+          </h4>
           <button
             type="button"
             className="form-button"
@@ -70,7 +76,11 @@ export function PragasView() {
                     state.editing!.prag = (e.target as HTMLInputElement).value
                   }
                 }}
-                style={(!state.isNew || store.isReadOnly) ? { backgroundColor: '#eee' } : {}}
+                style={
+                  !state.isNew || store.isReadOnly
+                    ? { backgroundColor: '#eee' }
+                    : {}
+                }
               />
             </div>
             <div>

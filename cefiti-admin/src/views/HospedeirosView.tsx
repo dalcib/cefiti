@@ -58,7 +58,13 @@ export function HospedeirosView() {
     return (
       <div id="conteudo">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <h4>{state.isNew ? 'NOVO HOSPEDEIRO' : (store.isReadOnly ? 'VISUALIZAR HOSPEDEIRO' : 'EDITAR HOSPEDEIRO')}</h4>
+          <h4>
+            {state.isNew
+              ? 'NOVO HOSPEDEIRO'
+              : store.isReadOnly
+                ? 'VISUALIZAR HOSPEDEIRO'
+                : 'EDITAR HOSPEDEIRO'}
+          </h4>
           <button
             type="button"
             className="form-button"
@@ -94,7 +100,9 @@ export function HospedeirosView() {
                 required
                 onInput={(e) => {
                   if (!store.isReadOnly) {
-                    state.editing!.nomeSci = (e.target as HTMLInputElement).value
+                    state.editing!.nomeSci = (
+                      e.target as HTMLInputElement
+                    ).value
                   }
                 }}
                 style={store.isReadOnly ? { backgroundColor: '#eee' } : {}}
@@ -119,7 +127,11 @@ export function HospedeirosView() {
                       }
                     }}
                   />
-                  <button type="button" className="form-button" onClick={addVul}>
+                  <button
+                    type="button"
+                    className="form-button"
+                    onClick={addVul}
+                  >
                     ADICIONAR
                   </button>
                 </div>

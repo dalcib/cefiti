@@ -41,9 +41,7 @@ export const getDoc = mock.fn(async (_docRef: any) => ({
 export const setDoc = mock.fn(
   async (_docRef: any, _data: unknown, _options?: unknown) => {},
 )
-export const deleteDoc = mock.fn(
-  async (_docRef: any) => {},
-)
+export const deleteDoc = mock.fn(async (_docRef: any) => {})
 
 // Mock Firebase App
 export const initializeApp = mock.fn(() => ({}))
