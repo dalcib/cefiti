@@ -27,6 +27,7 @@ export function StatusMunicipiosView() {
       mapInstance = L.map(el, {
         zoomControl: true,
         attributionControl: false,
+        preferCanvas: true,
       })
 
       disposeEffect = effect(() => {
@@ -339,6 +340,140 @@ export function StatusMunicipiosView() {
     }
   }
 
+  const handleDownloadMap = async () => {
+    const mapEl = document.getElementById('map-container')
+    if (!mapEl) return
+
+    const selectedMuniCodes = getInStatus()
+    const isAllSelected = '9999' in selectedMuniCodes
+    const muniList = getInStatusList()
+
+    // Create print container
+    const printContainer = document.createElement('div')
+    printContainer.style.position = 'fixed'
+    printContainer.style.left = '-9999px'
+    printContainer.style.top = '0'
+    printContainer.style.width = '1200px'
+    printContainer.style.background = 'white'
+    printContainer.style.padding = '25px'
+    printContainer.style.boxSizing = 'border-box'
+    printContainer.style.display = 'flex'
+    printContainer.style.flexDirection = 'column'
+    printContainer.style.gap = '20px'
+    printContainer.style.zIndex = '99999'
+
+    // Header containing praga, status, and estado
+    const header = document.createElement('div')
+    header.style.borderBottom = '3px solid #0f4098'
+    header.style.paddingBottom = '12px'
+    
+    const estadoObj = store.estados.find((e) => e.UF === state.selectedUF)
+    const estadoName = estadoObj ? `${estadoObj.estado} (${estadoObj.UF})` : state.selectedUF
+
+    header.innerHTML = `
+      <h2 style="margin: 0; color: #0f4098; font-size: 1.8em; font-family: system-ui, -apple-system, sans-serif;">CEFiTI - Status Fitossanitário</h2>
+      <div style="margin-top: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; font-size: 1em; font-family: system-ui, -apple-system, sans-serif; color: #333;">
+        <div><strong>Praga:</strong> ${state.selectedPraga}</div>
+        <div><strong>Status:</strong> ${state.selectedStatus}</div>
+        <div><strong>Estado:</strong> ${estadoName}</div>
+      </div>
+    `
+    printContainer.appendChild(header)
+
+    // Body container (Map and Table side by side or centered map)
+    const bodyContainer = document.createElement('div')
+    bodyContainer.style.display = 'flex'
+    bodyContainer.style.gap = '25px'
+    bodyContainer.style.alignItems = 'flex-start'
+    if (isAllSelected) {
+      bodyContainer.style.justifyContent = 'center'
+    }
+    printContainer.appendChild(bodyContainer)
+
+    // Map wrapper
+    const mapWrapper = document.createElement('div')
+    // If all are selected, map takes full width (1150px), otherwise 2/3 width (780px)
+    const targetMapWidth = isAllSelected ? 1150 : 780
+    mapWrapper.style.width = `${targetMapWidth}px`
+    mapWrapper.style.height = '480px'
+    bodyContainer.appendChild(mapWrapper)
+
+    // Table wrapper (only if NOT all selected)
+    if (!isAllSelected) {
+      const listWrapper = document.createElement('div')
+      listWrapper.style.width = '370px' // 1/3 width
+      listWrapper.style.minHeight = '480px'
+      listWrapper.style.border = '1px solid #ddd'
+      listWrapper.style.padding = '15px'
+      listWrapper.style.boxSizing = 'border-box'
+      listWrapper.style.background = '#fafafa'
+      bodyContainer.appendChild(listWrapper)
+
+      const muniNames = muniList.map((code) => selectedMuniCodes[code] || code)
+
+      listWrapper.innerHTML = `
+        <h4 style="margin-top: 0; margin-bottom: 10px; color: #0f4098; font-family: system-ui, -apple-system, sans-serif; font-size: 1.1em;">Municípios Afetados</h4>
+        <p style="margin: 0; line-height: 1.5; color: #333; font-family: system-ui, -apple-system, sans-serif; font-size: 0.9em; text-align: justify;">
+          ${muniNames.join(', ')}
+        </p>
+      `
+    }
+
+    document.body.appendChild(printContainer)
+
+    // Move map DOM element into offscreen print container
+    const originalParent = mapEl.parentNode
+    const originalSibling = mapEl.nextSibling
+    mapWrapper.appendChild(mapEl)
+
+    // Fit map element to target printing size
+    const originalWidth = mapEl.style.width
+    const originalHeight = mapEl.style.height
+    mapEl.style.width = `${targetMapWidth}px`
+    mapEl.style.height = '480px'
+
+    // Update Leaflet dimensions
+    if (mapInstance) {
+      mapInstance.invalidateSize()
+    }
+
+    // Wait for layout updates
+    await new Promise((resolve) => setTimeout(resolve, 350))
+
+    try {
+      const html2canvas = (await import('html2canvas')).default
+      const canvas = await html2canvas(printContainer, {
+        useCORS: true,
+        logging: false,
+        width: 1200,
+      })
+
+      const link = document.createElement('a')
+      const safePraga = state.selectedPraga.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+      link.download = `mapa-${safePraga}-${state.selectedUF.toLowerCase()}.png`
+      link.href = canvas.toDataURL('image/png')
+      link.click()
+    } catch (e) {
+      console.error('Error generating map screenshot:', e)
+      alert('Erro ao exportar a imagem do mapa.')
+    } finally {
+      // Restore map DOM element
+      mapEl.style.width = originalWidth
+      mapEl.style.height = originalHeight
+      if (originalSibling) {
+        originalParent?.insertBefore(mapEl, originalSibling)
+      } else {
+        originalParent?.appendChild(mapEl)
+      }
+
+      if (mapInstance) {
+        mapInstance.invalidateSize()
+      }
+
+      document.body.removeChild(printContainer)
+    }
+  }
+
   if (
     store.loading.pragas ||
     store.loading.estados ||
@@ -590,16 +725,26 @@ export function StatusMunicipiosView() {
             ref={mapRefCallback}
           />
           
-          <br />
-          {!store.isReadOnly && (
+          <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
+            {!store.isReadOnly && (
+              <button
+                type="button"
+                className="btn btn-primary"
+                style={{ flex: 1, padding: '10px 20px', fontWeight: 'bold' }}
+                onClick={handleSave}
+              >
+                SALVAR ALTERAÇÕES
+              </button>
+            )}
             <button
               type="button"
-              className="btn btn-primary btn-full"
-              onClick={handleSave}
+              className="btn btn-success"
+              style={{ flex: 1, padding: '10px 20px', fontWeight: 'bold', display: 'inline-flex', gap: '8px', alignItems: 'center', justifyContent: 'center' }}
+              onClick={handleDownloadMap}
             >
-              SALVAR ALTERAÇÕES PARA ESTA PRAGA/STATUS
+              📥 BAIXAR MAPA E RELATÓRIO
             </button>
-          )}
+          </div>
         </div>
       )}
     </div>
