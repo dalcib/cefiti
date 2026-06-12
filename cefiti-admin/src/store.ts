@@ -342,12 +342,12 @@ export class Store {
           /* try {
             await createUserWithEmailAndPassword(auth, email, pass)
             console.log('Successfully created test user in Firebase Auth.')
-          } catch (signUpError: any) { */
+          } catch (signUpError: any) {
           console.error('Signup fallback failed:', signUpError)
           throw new Error(
             `Falha no cadastro de teste (${signUpError.code}): ${signUpError.message}`,
           )
-          //}
+          } */
         } else {
           throw new Error(
             `Falha no login de teste (${error.code}): ${error.message}`,

@@ -320,10 +320,18 @@ function LoginView() {
             width: '100%',
           }}
         >
-          <h3 style={{ marginBottom: '15px', color: '#0f4098', textAlign: 'center' }}>
+          <h3
+            style={{
+              marginBottom: '15px',
+              color: '#0f4098',
+              textAlign: 'center',
+            }}
+          >
             Acesso Restrito
           </h3>
-          <p style={{ marginBottom: '20px', textAlign: 'center', color: '#666' }}>
+          <p
+            style={{ marginBottom: '20px', textAlign: 'center', color: '#666' }}
+          >
             Identifique-se para gerenciar o catálogo.
           </p>
 
@@ -344,9 +352,19 @@ function LoginView() {
             </div>
           )}
 
-          <form onSubmit={handlePasswordLogin} style={{ padding: 0, margin: 0, border: 'none' }}>
+          <form
+            onSubmit={handlePasswordLogin}
+            style={{ padding: 0, margin: 0, border: 'none' }}
+          >
             <div style={{ marginBottom: '12px' }}>
-              <label htmlFor="login-email" style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>
+              <label
+                htmlFor="login-email"
+                style={{
+                  display: 'block',
+                  fontWeight: 'bold',
+                  marginBottom: '4px',
+                }}
+              >
                 E-mail
               </label>
               <input
@@ -367,7 +385,14 @@ function LoginView() {
             </div>
 
             <div style={{ marginBottom: '20px' }}>
-              <label htmlFor="login-password" style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>
+              <label
+                htmlFor="login-password"
+                style={{
+                  display: 'block',
+                  fontWeight: 'bold',
+                  marginBottom: '4px',
+                }}
+              >
                 Senha
               </label>
               <input
@@ -376,7 +401,9 @@ function LoginView() {
                 required
                 placeholder="Sua senha"
                 value={password}
-                onInput={(e) => setPassword((e.target as HTMLInputElement).value)}
+                onInput={(e) =>
+                  setPassword((e.target as HTMLInputElement).value)
+                }
                 style={{
                   width: '100%',
                   padding: '8px',
@@ -417,7 +444,9 @@ function LoginView() {
             }}
           >
             <hr style={{ flex: 1, borderTop: '1px solid #eee', margin: 0 }} />
-            <span style={{ padding: '0 10px', fontSize: '0.9em' }}>ou entrar com</span>
+            <span style={{ padding: '0 10px', fontSize: '0.9em' }}>
+              ou entrar com
+            </span>
             <hr style={{ flex: 1, borderTop: '1px solid #eee', margin: 0 }} />
           </div>
 
@@ -630,12 +659,13 @@ function CurrentView() {
                   <button
                     type="button"
                     className="form-button"
+                    disabled
                     style={{
-                      background: '#28a745',
+                      background: '#a5d6a7', //background: '#28a745',
                       color: 'white',
                       padding: '10px 20px',
                       fontWeight: 'bold',
-                      cursor: 'pointer',
+                      cursor: 'not-allowed', //cursor: 'pointer',
                       border: 'none',
                     }}
                     onClick={() => store.promoteDevToProd()}
