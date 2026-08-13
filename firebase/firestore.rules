@@ -98,15 +98,6 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
-    // ======================================================
-    // REGRAS LEGACY (Temporárias - mantêm compatibilidade da raiz)
-    // ======================================================
-    match /hospedeiros/{hospId} { allow read: if isAuthorized(); allow write: if isAdmin(); }
-    match /legislacoes/{legId} { allow read: if isAuthorized(); allow write: if isAdmin(); }
-    match /pragas/{pragName} { allow read: if isAuthorized(); allow write: if isAdmin(); }
-    match /rules/{ruleId} { allow read: if isAuthorized(); allow write: if isAdmin(); }
-    match /status_municipio/{pragName} { allow read: if isAuthorized(); allow write: if isAdmin(); }
-    match /estados/{estadoId} { allow read: if isAuthorized(); }
-    match /municipios/{municipioId} { allow read: if isAuthorized(); }
+
   }
 }

@@ -1,16 +1,48 @@
 import { Fragment, type JSX } from 'preact'
-import { type DB_StatusMunicipio, pragas, status_municipio } from '#db-next'
+import {
+  type DB_StatusMunicipio,
+  type Estado,
+  estados,
+  pragas,
+  status_municipio,
+} from '#db-next'
 import { municipiosBrutos } from '#municipios'
 
-const municipalityMap = new Map<number, string>()
-municipalityMap.set(9999, 'Todos')
+const fullMunicipalityMap = new Map<number, string>()
+fullMunicipalityMap.set(9999, 'Todos')
 
 if (municipiosBrutos) {
   for (const raw of municipiosBrutos) {
-    const id = Number.parseInt(raw.slice(2, 6), 10)
+    const fullId = Number.parseInt(raw.slice(0, 6), 10)
     const name = raw.slice(6).trim()
-    municipalityMap.set(id, name)
+    fullMunicipalityMap.set(fullId, name)
   }
+}
+
+const ufIbgeMap = new Map<string, number>()
+if (estados) {
+  for (const st of estados as Estado[]) {
+    if (st.ibge && st.UF) {
+      ufIbgeMap.set(st.UF, st.ibge)
+    }
+  }
+}
+
+const getMuniName = (
+  mId: number,
+  stateIbge?: number,
+  stateUf?: string,
+): string => {
+  if (mId === 9999) return 'Todos'
+  if (mId >= 100000) {
+    return fullMunicipalityMap.get(mId) || String(mId)
+  }
+  const prefix = stateIbge || (stateUf ? ufIbgeMap.get(stateUf) : undefined)
+  if (prefix) {
+    const fullId = prefix * 10000 + mId
+    return fullMunicipalityMap.get(fullId) || String(mId)
+  }
+  return String(mId)
 }
 
 const Status = () => {
@@ -26,8 +58,8 @@ const Status = () => {
           states: s.estados.map((e) => ({
             uf: e.uf,
             municipios: e.municipios
-              .map((mId: number) => municipalityMap.get(mId) || String(mId))
-              .sort((a, b) => a.localeCompare(b))
+              .map((mId: number) => getMuniName(mId, e.ibge, e.uf))
+              .sort((a, b) => a.localeCompare(b, 'pt-BR'))
               .join(', '),
           })),
         })),
