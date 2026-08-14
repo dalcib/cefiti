@@ -189,10 +189,14 @@ describe('Cefiti Admin Store', () => {
     store = new Store()
     store.environment = 'desenvolvimento'
     const fetchPragasSpy = mock.method(store, 'fetchPragas', async () => {})
+    const fetchHospedeirosSpy = mock.method(store, 'fetchHospedeiros', async () => {})
+    const fetchLegislacoesSpy = mock.method(store, 'fetchLegislacoes', async () => {})
 
     await store.setView('pragas')
     assert.strictEqual(store.view, 'pragas')
     assert.strictEqual(fetchPragasSpy.mock.callCount(), 1)
+    assert.strictEqual(fetchHospedeirosSpy.mock.callCount(), 1)
+    assert.strictEqual(fetchLegislacoesSpy.mock.callCount(), 1)
   })
 
   it('should handle logout', async () => {
@@ -216,8 +220,8 @@ describe('Cefiti Admin Store', () => {
 
     store.initAuth()
 
-    mockSignInWithEmailAndPassword.mock.mockImplementationOnce(async (_auth: any, email: string) => {
-      if (authStateCallback) {
+    mockSignInWithEmailAndPassword.mock.mockImplementationOnce(async (_auth?: any, email?: string) => {
+      if (authStateCallback && email) {
         authStateCallback({ uid: '123', email })
       }
     })

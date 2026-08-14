@@ -4,7 +4,6 @@ import {
   OAuthProvider,
   signInWithPopup,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
 } from 'firebase/auth'
 import {
   collection,
@@ -172,6 +171,8 @@ export class Store {
     pragas: {
       editing: null as Praga | null,
       isNew: false,
+      selectedLegId: '',
+      selectedHospId: '',
     },
     hospedeiros: {
       editing: null as Hospedeiro | null,
@@ -379,7 +380,11 @@ export class Store {
 
     switch (view) {
       case 'pragas':
-        await this.fetchPragas()
+        await Promise.all([
+          this.fetchPragas(),
+          this.fetchHospedeiros(),
+          this.fetchLegislacoes(),
+        ])
         break
       case 'hospedeiros':
         await this.fetchHospedeiros()
